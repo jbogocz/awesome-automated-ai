@@ -18,14 +18,12 @@
     "@anthropic-ai/sdk": "^0.85.0",
     "@octokit/rest": "^22.0.1",
     "better-sqlite3": "^12.8.0",
-    "drizzle-orm": "^0.45.2",
     "yaml": "^2.8.3",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.5.2",
-    "drizzle-kit": "^0.31.10",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2",
     "vitest": "^4.1.3"

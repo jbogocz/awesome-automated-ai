@@ -16,3 +16,4 @@ data/
 *.db-wal
 *.db-shm
 coverage/
+api_cache.json
