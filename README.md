@@ -12,21 +12,25 @@
 
 </div>
 
-> 🔍 **[Explore interactively →](https://jbogocz.github.io/awesome-automl)** - Sort, filter, and search all tools.
+<div align="center">
 
-> 250+ tools and papers across 25 categories. Last updated: April 2026.
+### **[Explore interactively →](https://jbogocz.github.io/awesome-automl)**
+
+250+ tools and papers across 25 categories
+
+</div>
 
 > [!TIP]
 > ### Why this list?
 >
-> Every other awesome-automl list stopped updating in 2022. Since then:
+> Every other awesome-automl list stopped updating. Since then:
 >
 > - **Foundation models replaced entire ML pipelines** - TabPFN matches tuned XGBoost in 2.8 seconds on small datasets.
 > - **Autonomous AI agents** now run hundreds of ML experiments overnight without human intervention.
 > - **Prompt engineering became prompt optimization** - DSPy outperforms hand-crafted prompts by up to 46%.
 > - **ML engineering itself got automated** - from data labeling to deployment to monitoring.
 >
-> Yet traditional ML is far from dead: scikit-learn hit 207M monthly downloads in 2026 (its all-time high), XGBoost dominates 70% of tabular Kaggle competitions, and AutoML is a [$35.5B market by 2032](https://www.globenewswire.com/news-release/2026/01/08/3215160/0/en/). This list tracks both the foundations that still matter and the new wave reshaping them.
+> This list covers both the classical tools that still power production ML and the new wave that is replacing them.
 
 ### Who is this for?
 
