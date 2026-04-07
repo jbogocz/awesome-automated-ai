@@ -197,6 +197,41 @@ export class DB {
     return row.count;
   }
 
+  upsertProject(repo: string, name: string): number {
+    const existing = this.sqlite
+      .prepare("SELECT id FROM projects WHERE repo = ?")
+      .get(repo) as { id: number } | undefined;
+    if (existing) return existing.id;
+    const info = this.sqlite
+      .prepare(
+        "INSERT INTO projects (repo, name, status, discovered_via) VALUES (?, ?, 'listed', 'github')",
+      )
+      .run(repo, name);
+    return Number(info.lastInsertRowid);
+  }
+
+  insertSnapshot(projectId: number, stars: number, score: number): void {
+    const today = new Date().toISOString().split("T")[0];
+    this.sqlite
+      .prepare(
+        `INSERT OR REPLACE INTO snapshots (project_id, snapshot_date, stars, composite_score)
+         VALUES (?, ?, ?, ?)`,
+      )
+      .run(projectId, today, stars, score);
+  }
+
+  getPreviousStars(projectId: number): number | null {
+    const today = new Date().toISOString().split("T")[0];
+    const row = this.sqlite
+      .prepare(
+        `SELECT stars FROM snapshots
+         WHERE project_id = ? AND snapshot_date < ?
+         ORDER BY snapshot_date DESC LIMIT 1`,
+      )
+      .get(projectId, today) as { stars: number } | undefined;
+    return row?.stars ?? null;
+  }
+
   close(): void {
     this.sqlite.close();
   }
