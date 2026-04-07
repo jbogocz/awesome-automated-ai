@@ -30,9 +30,9 @@ const HEADER = "# Awesome AutoML\n\n## Contents\n";
 const FOOTER = "## Contributing\n\nContributions welcome!";
 
 describe("generateReadme", () => {
-  it("produces 6-column table with header", () => {
+  it("produces 5-column table with header", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
-    expect(result).toContain("| # | Project | Stars | Updated | License | Description |");
+    expect(result).toContain("| Project | Stars | Updated | License | Description |");
   });
 
   it("sorts by quality score descending (highest score first)", () => {

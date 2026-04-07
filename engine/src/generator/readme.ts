@@ -49,8 +49,8 @@ export function generateReadme(opts: GenerateOptions): string {
     if (cat.description) parts.push(`*${cat.description}*`, "");
     const entries = cat.entries ?? [];
     if (entries.length > 0) {
-      parts.push("| # | Project | Stars | Updated | License | Description |");
-      parts.push("|:--|:--------|------:|:--------|:--------|:------------|");
+      parts.push("| Project | Stars | Updated | License | Description |");
+      parts.push("|:--------|------:|:--------|:--------|:------------|");
       for (const row of buildTable(entries, apiData)) parts.push(row);
       parts.push("", LEGEND);
     }
@@ -119,24 +119,24 @@ function buildTable(entries: Entry[], apiData: ApiData): string[] {
     const desc = entry.description ?? "";
     const fullDesc = note ? `${desc} **${note}**` : desc;
 
-    let statusCol: string;
-    if (isDead && isHistorical) statusCol = HISTORICAL;
-    else if (isDead) statusCol = SLEEPING;
-    else statusCol = medals.get(i) ?? "";
+    let badge = "";
+    if (isDead && isHistorical) badge = `${HISTORICAL} `;
+    else if (isDead) badge = `${SLEEPING} `;
+    else if (medals.has(i)) badge = `${medals.get(i)} `;
 
     const trendText = !isDead ? formatTrend(rd.trend) : "";
     const projectCol = isDead
-      ? `*[${entry.name}](${url})*`
-      : `[${entry.name}](${url})${trendText}`;
+      ? `${badge}*[${entry.name}](${url})*`
+      : `${badge}[${entry.name}](${url})${trendText}`;
 
     const starsText = repo ? formatStars(rd.stars) : "-";
     const commitText = repo ? formatDate(rd.pushed) : "-";
     const licenseText = rd.license ? `\`${rd.license}\`` : "-";
 
     if (isDead) {
-      return `| ${statusCol} | ${projectCol} | *${starsText}* | *${commitText}* | ${licenseText} | *${fullDesc}* |`;
+      return `| ${projectCol} | *${starsText}* | *${commitText}* | ${licenseText} | *${fullDesc}* |`;
     }
-    return `| ${statusCol} | ${projectCol} | ${starsText} | ${commitText} | ${licenseText} | ${fullDesc} |`;
+    return `| ${projectCol} | ${starsText} | ${commitText} | ${licenseText} | ${fullDesc} |`;
   });
 }
 
