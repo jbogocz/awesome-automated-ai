@@ -2,7 +2,7 @@
 
 # Awesome AutoML [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-**The comprehensive guide to automating AI/ML** - from classical AutoML to LLM-powered agents<br>that build, optimize, and ship ML systems autonomously.
+A curated list of 250+ tools for automated machine learning - from hyperparameter optimization to autonomous AI agents.
 
 [![Views](https://hits.sh/github.com/jbogocz/awesome-automl.svg?style=flat-square&label=views)](https://hits.sh/github.com/jbogocz/awesome-automl/)
 [![GitHub stars](https://img.shields.io/github/stars/jbogocz/awesome-automl?style=flat-square)](https://github.com/jbogocz/awesome-automl/stargazers)
