@@ -4,6 +4,9 @@ export interface ApiRepoData {
   stars: number;
   pushed: string;
   archived: boolean;
+  license: string | null;
+  trend: number | null;
+  score: number;
 }
 export type ApiData = Record<string, ApiRepoData>;
 
