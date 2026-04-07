@@ -62,15 +62,14 @@ describe("generateReadme", () => {
     expect(result).toContain("*500*");
   });
 
-  it("assigns medal to top scorer", () => {
+  it("assigns medal after top scorer name", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
-    expect(result).toContain("\u{1F947}");
+    expect(result).toContain("autogluon) \u{1F947}");
   });
 
-  it("includes legend below table", () => {
+  it("does not repeat legend below each table", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
-    expect(result).toContain("quality score (top 3)");
-    expect(result).toContain("unmaintained");
+    expect(result).not.toContain("quality score (top 3)");
   });
 
   it("renders - for missing license", () => {

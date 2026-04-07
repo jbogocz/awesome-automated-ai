@@ -52,7 +52,6 @@ export function generateReadme(opts: GenerateOptions): string {
       parts.push("| Project | Stars | Updated | License | Description |");
       parts.push("|:--------|------:|:--------|:--------|:------------|");
       for (const row of buildTable(entries, apiData)) parts.push(row);
-      parts.push("", LEGEND);
     }
     parts.push("", "**[\u2b06 Back to Contents](#contents)**", "");
   }
@@ -120,14 +119,14 @@ function buildTable(entries: Entry[], apiData: ApiData): string[] {
     const fullDesc = note ? `${desc} **${note}**` : desc;
 
     let badge = "";
-    if (isDead && isHistorical) badge = `${HISTORICAL} `;
-    else if (isDead) badge = `${SLEEPING} `;
-    else if (medals.has(i)) badge = `${medals.get(i)} `;
+    if (isDead && isHistorical) badge = ` ${HISTORICAL}`;
+    else if (isDead) badge = ` ${SLEEPING}`;
+    else if (medals.has(i)) badge = ` ${medals.get(i)}`;
 
     const trendText = !isDead ? formatTrend(rd.trend) : "";
     const projectCol = isDead
-      ? `${badge}*[${entry.name}](${url})*`
-      : `${badge}[${entry.name}](${url})${trendText}`;
+      ? `*[${entry.name}](${url})*${badge}`
+      : `[${entry.name}](${url})${badge}${trendText}`;
 
     const starsText = repo ? formatStars(rd.stars) : "-";
     const commitText = repo ? formatDate(rd.pushed) : "-";
