@@ -592,19 +592,6 @@ A curated list of ~200 tools for automated machine learning - from hyperparamete
 
 **[⬆ Back to Contents](#contents)**
 
-## Related Awesome Lists
-
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
-| [awesome-machine-learning](https://github.com/josephmisiti/awesome-machine-learning) | ![](https://img.shields.io/github/stars/josephmisiti/awesome-machine-learning?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/josephmisiti/awesome-machine-learning?style=flat-square&label=&color=green) | Curated list of ML frameworks, libraries, and software organized by language. |
-| [awesome-deep-learning](https://github.com/ChristosChristofidis/awesome-deep-learning) | ![](https://img.shields.io/github/stars/ChristosChristofidis/awesome-deep-learning?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/ChristosChristofidis/awesome-deep-learning?style=flat-square&label=&color=green) | Curated list of deep learning tutorials, projects, and communities. |
-| [awesome-llm](https://github.com/Hannibal046/Awesome-LLM) | ![](https://img.shields.io/github/stars/Hannibal046/Awesome-LLM?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/Hannibal046/Awesome-LLM?style=flat-square&label=&color=green) | Curated list of large language model resources covering papers, tools, and applications. |
-| [awesome-production-machine-learning](https://github.com/EthicalML/awesome-production-machine-learning) | ![](https://img.shields.io/github/stars/EthicalML/awesome-production-machine-learning?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/EthicalML/awesome-production-machine-learning?style=flat-square&label=&color=green) | Curated list of tools for deploying, monitoring, and scaling ML in production. |
-| [awesome-mlops](https://github.com/visenger/awesome-mlops) | ![](https://img.shields.io/github/stars/visenger/awesome-mlops?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/visenger/awesome-mlops?style=flat-square&label=&color=green) | Curated list of MLOps tools and best practices for production ML. |
-| [awesome-generative-ai](https://github.com/steven2358/awesome-generative-ai) | ![](https://img.shields.io/github/stars/steven2358/awesome-generative-ai?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/steven2358/awesome-generative-ai?style=flat-square&label=&color=green) | Curated list of modern generative AI projects and services. |
-
-**[⬆ Back to Contents](#contents)**
-
 ## Contributing
 
 Contributions welcome! Read the [contributing guidelines](contributing.md) first.
