@@ -80,13 +80,15 @@ A curated list of 200+ tools for automated machine learning - from hyperparamete
 
 | Symbol | Meaning |
 |:-------|:--------|
-| 5,200 | GitHub stars (updates on each `generate` run) |
-| 2026-03 | Last commit date as YYYY-MM |
-| **Unmaintained** | No meaningful commits for 12+ months |
+| 12,100 | GitHub stars (updates on each `generate` run) |
+| 2026-04 | Last commit date as YYYY-MM |
+| `MIT` | SPDX license identifier |
+| :1st_place_medal: :2nd_place_medal: :3rd_place_medal: | Quality score - top 3 per category |
+| :arrow_upper_right: 340 | Stars gained in last 30 days |
+| :left_right_arrow: | Stable (fewer than 10 stars gained/lost) |
+| :zzz: | Unmaintained - no commits for 12+ months |
+| :file_cabinet: | Historical - included for foundational influence |
 | **Archived** | Repository archived by maintainer |
-| **Deprecated** | Superseded; named replacement provided |
-| **Historical** | Included for foundational influence, not active use |
-| **Low activity** | Infrequent updates but not abandoned |
 
 ### Quick Comparison: General-Purpose AutoML
 

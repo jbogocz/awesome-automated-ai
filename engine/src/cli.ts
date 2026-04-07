@@ -31,7 +31,7 @@ async function main() {
     const footer = readFileSync(FOOTER_MD, "utf-8");
 
     const noFetch = process.argv.includes("--no-fetch");
-    let apiData: Record<string, { stars: number; pushed: string; archived: boolean }>;
+    let apiData: Record<string, { stars: number; pushed: string; archived: boolean; license?: string | null; trend?: number | null; score?: number }>;
 
     if (noFetch) {
       apiData = JSON.parse(readFileSync(CACHE_FILE, "utf-8"));
