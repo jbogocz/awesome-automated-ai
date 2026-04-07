@@ -10,7 +10,7 @@ const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
 const HEADER_MD = resolve(ROOT, "config/header.md");
 const FOOTER_MD = resolve(ROOT, "config/footer.md");
 const README_MD = resolve(ROOT, "README.md");
-const CACHE_FILE = resolve(ROOT, ".github/api_cache.json");
+const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 
 async function main() {
   const command = process.argv[2];

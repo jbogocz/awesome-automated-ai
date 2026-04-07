@@ -105,8 +105,8 @@
 
 *End-to-end frameworks that automate model selection, hyperparameter tuning, and pipeline construction.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [Ludwig](https://github.com/ludwig-ai/ludwig) | 11,665 | 2026-04 | Declarative deep learning framework supporting custom model building and LLM fine-tuning via YAML configs. Now under Linux Foundation AI & Data. |
 | [AutoGluon](https://github.com/autogluon/autogluon) | 10,206 | 2026-04 | Multi-layer stack ensembling for tabular, text, image, time-series, and multimodal data - won medals in 15/18 Kaggle tabular contests in 2024 (Amazon). |
 | [TPOT](https://github.com/EpistasisLab/tpot) | 10,047 | 2025-09 | Genetic programming-based pipeline optimizer that designs and optimizes scikit-learn pipelines. |
@@ -129,9 +129,9 @@
 
 *Pretrained models that replace traditional pipeline-search AutoML with a single forward pass or zero-shot inference.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
-| [TimesFM](https://github.com/google-research/timesfm) | 15,396 | 2026-04 | Time-series foundation model for zero-shot forecasting across domains without task-specific training (Google). |
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
+| [TimesFM](https://github.com/google-research/timesfm) | 15,401 | 2026-04 | Time-series foundation model for zero-shot forecasting across domains without task-specific training (Google). |
 | [TabPFN](https://github.com/PriorLabs/TabPFN) | 6,011 | 2026-04 | Tabular foundation model that matches tuned XGBoost in 2.8 seconds with a single forward pass - 100% win rate vs default XGBoost on datasets under 10K rows (Nature 2024, now v2.6 supporting up to 100K rows). |
 | [Chronos](https://github.com/amazon-science/chronos-forecasting) | 5,087 | 2026-03 | Pretrained time-series foundation model for zero-shot probabilistic forecasting on unseen data (Amazon). |
 | [Moirai](https://github.com/SalesforceAIResearch/uni2ts) | 1,462 | 2026-01 | Universal time-series forecasting transformer supporting multivariate forecasting unlike most competitors. Moirai-MoE released Oct 2024 (Salesforce). |
@@ -146,10 +146,10 @@
 
 *Tools that automate the process of adapting large language models to specific tasks and domains.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [LLaMA-Factory](https://github.com/hiyouga/LlamaFactory) | 69,691 | 2026-04 | Unified fine-tuning framework for 100+ LLMs and VLMs with Full, LoRA, QLoRA, and DoRA methods plus web UI (ACL 2024). |
-| [Unsloth](https://github.com/unslothai/unsloth) | 59,946 | 2026-04 | Fine-tune LLMs 2-5x faster with 80% less memory on a single GPU through optimized kernels and custom autograd. |
+| [Unsloth](https://github.com/unslothai/unsloth) | 59,957 | 2026-04 | Fine-tune LLMs 2-5x faster with 80% less memory on a single GPU through optimized kernels and custom autograd. |
 | [PEFT](https://github.com/huggingface/peft) | 20,899 | 2026-04 | Standard library for parameter-efficient fine-tuning - LoRA, QLoRA, Spectrum, and more. Deeply integrated with the Hugging Face ecosystem. |
 | [TRL](https://github.com/huggingface/trl) | 17,961 | 2026-04 | Transformer Reinforcement Learning with SFT, DPO, RLHF, and GRPO trainers for alignment and preference tuning (Hugging Face). |
 | [LitGPT](https://github.com/Lightning-AI/litgpt) | 13,283 | 2026-04 | Recipes for pretraining, fine-tuning, and deploying 20+ LLM architectures on your own data (Lightning AI). |
@@ -165,12 +165,12 @@
 
 *Systematic optimization of prompts, instructions, and demonstrations to improve LLM performance without manual tuning.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
-| [DSPy](https://github.com/stanfordnlp/dspy) | 33,510 | 2026-04 | Declarative framework replacing hand-written prompts with automatic optimizers - GPT-3.5 with DSPy outperforms expert prompts by up to 46% (Stanford NLP). |
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
+| [DSPy](https://github.com/stanfordnlp/dspy) | 33,511 | 2026-04 | Declarative framework replacing hand-written prompts with automatic optimizers - GPT-3.5 with DSPy outperforms expert prompts by up to 46% (Stanford NLP). |
 | [PromptWizard](https://github.com/microsoft/PromptWizard) | 3,830 | 2025-10 | Task-aware agent-driven prompt optimization using self-evolving critique and synthesis (Microsoft). |
 | [TextGrad](https://github.com/zou-group/textgrad) | 3,474 | 2025-07 | Automatic differentiation via text feedback, enabling gradient-like optimization of compound AI systems (Nature 2024). |
-| [GEPA](https://github.com/gepa-ai/gepa) | 3,209 | 2026-04 | Reflective text evolution for prompt, code, and text optimization, integrated into MLflow (Cerebras). |
+| [GEPA](https://github.com/gepa-ai/gepa) | 3,211 | 2026-04 | Reflective text evolution for prompt, code, and text optimization, integrated into MLflow (Cerebras). |
 | [AutoPrompt](https://github.com/Eladlev/AutoPrompt) | 2,960 | 2025-12 | Intent-based prompt calibration using synthetic data generation for iterative prompt refinement. |
 | [Mirascope](https://github.com/Mirascope/mirascope) | 1,453 | 2026-04 | Pythonic toolkit for building LLM applications with integrated prompt versioning, tracing, and optimization. |
 | [Promptomatix](https://github.com/SalesforceAIResearch/promptomatix) | 938 | 2025-08 | DSPy-powered automatic prompt optimization that transforms task descriptions into optimized prompts with cost-aware objectives (Salesforce). |
@@ -183,15 +183,15 @@
 
 *Autonomous systems that design experiments, run them, and analyze results without human intervention.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
-| [AutoResearch](https://github.com/karpathy/autoresearch) | 68,044 | 2026-03 | Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026). |
-| [AutoGen](https://github.com/microsoft/autogen) | 56,794 | 2026-04 | Multi-agent conversation framework for building AI agent systems. Now in maintenance mode as AG2 (Microsoft). |
-| [CrewAI](https://github.com/crewAIInc/crewAI) | 48,270 | 2026-04 | Multi-agent framework orchestrating role-playing specialist agents for complex AI workflows. |
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
+| [AutoResearch](https://github.com/karpathy/autoresearch) | 68,055 | 2026-03 | Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026). |
+| [AutoGen](https://github.com/microsoft/autogen) | 56,795 | 2026-04 | Multi-agent conversation framework for building AI agent systems. Now in maintenance mode as AG2 (Microsoft). |
+| [CrewAI](https://github.com/crewAIInc/crewAI) | 48,273 | 2026-04 | Multi-agent framework orchestrating role-playing specialist agents for complex AI workflows. |
 | [STORM](https://github.com/stanford-oval/storm) | 28,060 | 2025-09 | LLM-powered knowledge curation that researches topics and generates full articles with citations (Stanford). |
-| [AI-Scientist](https://github.com/SakanaAI/AI-Scientist) | 13,097 | 2025-12 | Fully automated open-ended scientific discovery from idea generation to experiment execution to paper writing (Sakana AI). |
+| [AI-Scientist](https://github.com/SakanaAI/AI-Scientist) | 13,098 | 2025-12 | Fully automated open-ended scientific discovery from idea generation to experiment execution to paper writing (Sakana AI). |
 | [PaperQA](https://github.com/Future-House/paper-qa) | 8,347 | 2026-03 | High-accuracy retrieval-augmented generation for answering questions from scientific literature. |
-| [AI-Scientist-v2](https://github.com/SakanaAI/AI-Scientist-v2) | 5,205 | 2025-12 | Second generation using agentic tree search, producing the first AI-generated paper accepted at a peer-reviewed workshop. |
+| [AI-Scientist-v2](https://github.com/SakanaAI/AI-Scientist-v2) | 5,206 | 2025-12 | Second generation using agentic tree search, producing the first AI-generated paper accepted at a peer-reviewed workshop. |
 | [AI-Researcher](https://github.com/HKUDS/AI-Researcher) | 5,067 | 2025-10 | Autonomous agent automating the full research lifecycle from literature review to experimentation (NeurIPS 2025 Spotlight). |
 | [AIDE](https://github.com/WecoAI/aideml) | 1,211 | 2026-02 | ML engineering agent using tree search over solution space - exceeds 50% of human Kaggle competitors; top agents using AIDE achieve medals in 64%+ of MLE-Bench competitions (Weco AI). |
 | [AutoML-Agent](https://github.com/DeepAuto-AI/automl-agent) | 118 | 2025-07 | Multi-agent LLM framework for full-pipeline AutoML from data retrieval through model deployment (ICML 2025). |
@@ -202,11 +202,11 @@
 
 *AI agents that autonomously write, debug, and optimize code for software and ML engineering.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
-| [OpenHands](https://github.com/OpenHands/OpenHands) | 70,766 | 2026-04 | AI software development platform achieving 53-72% resolve rate on SWE-Bench Verified. |
-| [Aider](https://github.com/Aider-AI/aider) | 42,962 | 2026-03 | AI pair programmer in the terminal that edits code directly in your local repository. |
-| [SWE-agent](https://github.com/SWE-agent/SWE-agent) | 18,943 | 2026-04 | Autonomous agent that solves real GitHub issues by reading, editing, and testing code (NeurIPS 2024). |
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
+| [OpenHands](https://github.com/OpenHands/OpenHands) | 70,767 | 2026-04 | AI software development platform achieving 53-72% resolve rate on SWE-Bench Verified. |
+| [Aider](https://github.com/Aider-AI/aider) | 42,963 | 2026-03 | AI pair programmer in the terminal that edits code directly in your local repository. |
+| [SWE-agent](https://github.com/SWE-agent/SWE-agent) | 18,944 | 2026-04 | Autonomous agent that solves real GitHub issues by reading, editing, and testing code (NeurIPS 2024). |
 | [mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent) | 3,703 | 2026-04 | Minimalist 100-line coding agent achieving 74% on SWE-bench Verified as a learning reference. |
 | [AutoCodeRover](https://github.com/AutoCodeRoverSG/auto-code-rover) | 3,064 | 2025-04 | Structure-aware autonomous program repair combining code search with LLM-based patching. |
 
@@ -216,14 +216,14 @@
 
 *Frameworks for automated evaluation, testing, and benchmarking of language models and AI systems.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
-| [Promptfoo](https://github.com/promptfoo/promptfoo) | 19,706 | 2026-04 | Test and red-team LLM applications with automated evaluations, CI/CD integration, and vulnerability scanning. |
-| [DeepEval](https://github.com/confident-ai/deepeval) | 14,570 | 2026-04 | Pytest-like framework with 14+ evaluation metrics for RAG, fine-tuning, and alignment assessment. |
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
+| [Promptfoo](https://github.com/promptfoo/promptfoo) | 19,708 | 2026-04 | Test and red-team LLM applications with automated evaluations, CI/CD integration, and vulnerability scanning. |
+| [DeepEval](https://github.com/confident-ai/deepeval) | 14,573 | 2026-04 | Pytest-like framework with 14+ evaluation metrics for RAG, fine-tuning, and alignment assessment. |
 | [RAGAS](https://github.com/vibrantlabsai/ragas) | 13,265 | 2026-02 | Evaluation framework for RAG quality assessment measuring both retrieval and generation with LLM-based and traditional metrics. |
 | [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) | 12,040 | 2026-04 | Standard framework for few-shot evaluation of language models across hundreds of benchmarks (EleutherAI). |
 | [OpenCompass](https://github.com/open-compass/opencompass) | 6,835 | 2026-04 | One-stop evaluation platform supporting 100+ models across academic and real-world benchmarks. |
-| [Agenta](https://github.com/Agenta-AI/agenta) | 4,010 | 2026-04 | Open-source LLMOps platform combining prompt playground, evaluation workflows, and production observability. |
+| [Agenta](https://github.com/Agenta-AI/agenta) | 4,011 | 2026-04 | Open-source LLMOps platform combining prompt playground, evaluation workflows, and production observability. |
 | [TruLens](https://github.com/truera/trulens) | 3,232 | 2026-04 | OpenTelemetry-based tracing and evaluation for RAG and agent workflows with built-in feedback functions (Snowflake/TruEra). |
 | [LangWatch](https://github.com/langwatch/langwatch) | 3,187 | 2026-04 | Evaluation and testing platform for LLM applications and AI agents with automated quality guardrails. |
 | [LightEval](https://github.com/huggingface/lighteval) | 2,369 | 2026-04 | All-in-one LLM evaluation toolkit powering the Open LLM Leaderboard, supporting 1000+ tasks across multiple backends (Hugging Face). |
@@ -235,11 +235,11 @@
 
 *Intelligent routing of requests to the optimal model based on task complexity, cost, and performance.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
-| [LiteLLM](https://github.com/BerriAI/litellm) | 42,466 | 2026-04 | Unified API gateway for 100+ LLMs with load balancing, cost tracking, and automatic fallback routing. |
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
+| [LiteLLM](https://github.com/BerriAI/litellm) | 42,468 | 2026-04 | Unified API gateway for 100+ LLMs with load balancing, cost tracking, and automatic fallback routing. |
 | [Portkey Gateway](https://github.com/Portkey-AI/gateway) | 11,233 | 2026-03 | AI gateway for intelligent routing, caching, load balancing, and fallbacks across 200+ LLMs. |
-| [RouteLLM](https://github.com/lm-sys/RouteLLM) | 4,767 | 2024-08 | Framework for training and serving LLM routers that reduce costs by up to 85% without quality loss (LMSYS). **Unmaintained — no commits for 12+ months.** |
+| [RouteLLM](https://github.com/lm-sys/RouteLLM) | 4,768 | 2024-08 | Framework for training and serving LLM routers that reduce costs by up to 85% without quality loss (LMSYS). **Unmaintained — no commits for 12+ months.** |
 | [LLMRouter](https://github.com/ulab-uiuc/LLMRouter) | 1,607 | 2026-03 | Unified library with 16+ router implementations and standardized evaluation via command-line interface. |
 
 **[⬆ Back to Contents](#contents)**
@@ -248,8 +248,8 @@
 
 *Automated forecasting, classification, and anomaly detection for temporal data.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [sktime](https://github.com/sktime/sktime) | 9,712 | 2026-04 | Unified framework for time-series forecasting, classification, regression, and clustering with scikit-learn-compatible interfaces. |
 | [Darts](https://github.com/unit8co/darts) | 9,310 | 2026-04 | Unified API for 30+ forecasting models from ARIMA to transformers, with backtesting and ensembling built in. |
 | [Nixtla StatsForecast](https://github.com/Nixtla/statsforecast) | 4,746 | 2026-04 | Lightning-fast statistical models including AutoARIMA, AutoETS, and AutoCES for millions of time series. |
@@ -270,8 +270,8 @@
 
 *Automated design and discovery of optimal neural network architectures.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [NNI](https://github.com/microsoft/nni) | 14,346 | 2024-07 | Comprehensive AutoML toolkit for NAS, hyperparameter tuning, feature engineering, and model compression. **Archived by Microsoft in Sep 2024.** |
 | [Google AutoML](https://github.com/google/automl) | 6,463 | 2025-03 | Research code for EfficientNet, EfficientDet, MnasNet, and other NAS-discovered architectures (Google Brain). **Unmaintained — no commits for 12+ months.** |
 | [Once-For-All](https://github.com/mit-han-lab/once-for-all) | 1,947 | 2023-12 | Train one network and specialize sub-networks for diverse hardware without retraining (MIT HAN Lab, ICLR 2020). **Unmaintained — no commits for 12+ months.** |
@@ -286,9 +286,9 @@
 
 *Automated tuning of model hyperparameters using Bayesian, evolutionary, and other search strategies.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
-| [Ray Tune](https://docs.ray.io/en/latest/tune/) | 42,000 | 2026-04 | Distributed hyperparameter tuning at scale with support for any ML framework and many search algorithms. |
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
+| [Ray Tune](https://docs.ray.io/en/latest/tune/) | 42,001 | 2026-04 | Distributed hyperparameter tuning at scale with support for any ML framework and many search algorithms. |
 | [Optuna](https://github.com/optuna/optuna) | 13,866 | 2026-04 | Define-by-run API with pruning, distributed execution, and a dashboard - the most widely adopted HPO framework. |
 | [Hyperopt](https://github.com/hyperopt/hyperopt) | 7,615 | 2026-03 | Pioneered tree-structured Parzen estimators for HPO. **Deprecated since Nov 2021 - use Optuna instead.** |
 | [BoTorch](https://github.com/meta-pytorch/botorch) | 3,497 | 2026-04 | Bayesian optimization library in PyTorch for high-dimensional, noisy, and multi-objective problems (Meta). |
@@ -303,8 +303,8 @@
 
 *Automated generation, transformation, and selection of features from raw data.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [Cleanlab](https://github.com/cleanlab/cleanlab) | 11,411 | 2026-01 | Data-centric AI toolkit for finding and fixing label errors, outliers, and data quality issues automatically. |
 | [tsfresh](https://github.com/blue-yonder/tsfresh) | 9,168 | 2025-11 | Automatic extraction of hundreds of time-series features with built-in statistical relevance filtering. |
 | [Featuretools](https://github.com/alteryx/featuretools) | 7,627 | 2026-02 | Deep feature synthesis for automatically creating meaningful features from relational and temporal data (Alteryx). |
@@ -320,8 +320,8 @@
 
 *Automated data profiling, cleaning, validation, and quality assurance.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [ydata-profiling](https://github.com/Data-Centric-AI-Community/ydata-profiling) | 13,489 | 2026-03 | One-line data quality profiling and exploratory analysis for Pandas and Spark DataFrames. |
 | [Great Expectations](https://github.com/great-expectations/great_expectations) | 11,366 | 2026-04 | Programmable data validation and documentation framework for maintaining pipeline quality. |
 | [Pandera](https://github.com/unionai-oss/pandera) | 4,290 | 2026-04 | Statistical data testing and validation for dataframes with expressive schema definitions. |
@@ -336,8 +336,8 @@
 
 *Tools that automate or semi-automate the annotation process using AI-assisted labeling.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [Label Studio](https://github.com/HumanSignal/label-studio) | 26,946 | 2026-04 | Multi-type data labeling platform with ML-assisted annotation and LLM integration for text, images, audio, and video. |
 | [Snorkel](https://github.com/snorkel-team/snorkel) | 5,947 | 2024-05 | Programmatic labeling via weak supervision - write labeling functions instead of hand-labeling. **Unmaintained — no commits for 12+ months.** |
 | [Argilla](https://github.com/argilla-io/argilla) | 4,925 | 2026-04 | Collaboration platform for collecting and managing human and AI feedback for NLP and LLM development. |
@@ -351,8 +351,8 @@
 
 *Automated creation of artificial training data that preserves statistical properties of real datasets.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [SDV](https://github.com/sdv-dev/SDV) | 3,461 | 2026-04 | Synthetic Data Vault with multiple generative models (GaussianCopula, CTGAN, TVAE) for single-table, multi-table, and sequential data. |
 | [SDG](https://github.com/hitsz-ids/synthetic-data-generator) | 2,416 | 2026-04 | Framework for generating high-quality synthetic tabular data preserving statistical distributions and correlations. |
 | [DataDreamer](https://github.com/datadreamer-dev/DataDreamer) | 1,108 | 2025-02 | Reproducible LLM workflows for prompting, synthetic data generation, and model training in one pipeline. **Unmaintained — no commits for 12+ months.** |
@@ -364,13 +364,13 @@
 
 *Automated quantization, pruning, and distillation for efficient model deployment.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [LLM-AWQ](https://github.com/mit-han-lab/llm-awq) | 3,491 | 2025-07 | Activation-aware weight quantization achieving lossless 4-bit compression for LLMs (MIT HAN Lab, MLSys 2024 Best Paper). |
 | [Torch-Pruning](https://github.com/VainF/Torch-Pruning) | 3,282 | 2025-09 | Structural pruning framework for any PyTorch model including LLMs, YOLO, ViT, and diffusion models (CVPR 2023). |
 | [LLM Compressor](https://github.com/vllm-project/llm-compressor) | 2,986 | 2026-04 | Transformers-compatible compression library optimized for efficient vLLM inference. |
 | [Intel Neural Compressor](https://github.com/intel/neural-compressor) | 2,611 | 2026-04 | Unified quantization, sparsity, pruning, and distillation across PyTorch, TensorFlow, and ONNX (Intel). |
-| [NVIDIA TensorRT Model Optimizer](https://github.com/NVIDIA/Model-Optimizer) | 2,395 | 2026-04 | Quantization, pruning, distillation, and speculative decoding optimized for TensorRT and vLLM deployment. |
+| [NVIDIA TensorRT Model Optimizer](https://github.com/NVIDIA/Model-Optimizer) | 2,396 | 2026-04 | Quantization, pruning, distillation, and speculative decoding optimized for TensorRT and vLLM deployment. |
 | [GPTQModel](https://github.com/ModelCloud/GPTQModel) | 1,092 | 2026-04 | LLM quantization toolkit with support for NVIDIA CUDA, AMD ROCm, Intel, and Apple Silicon backends. |
 
 **[⬆ Back to Contents](#contents)**
@@ -379,17 +379,17 @@
 
 *Automated model serving, optimization, and inference infrastructure.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
-| [Ollama](https://github.com/ollama/ollama) | 168,021 | 2026-04 | Docker-like local LLM runner for getting models up and running quickly for prototyping. |
-| [llama.cpp](https://github.com/ggml-org/llama.cpp) | 102,325 | 2026-04 | LLM inference in C/C++ with broad hardware support - the foundation for most local LLM applications. |
-| [vLLM](https://github.com/vllm-project/vllm) | 75,591 | 2026-04 | High-throughput LLM serving engine with PagedAttention, powering most open-source LLM deployments in production. |
-| [SGLang](https://github.com/sgl-project/sglang) | 25,524 | 2026-04 | High-performance LLM serving framework powering 400K+ GPUs with best-in-class structured and constrained decoding. |
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
+| [Ollama](https://github.com/ollama/ollama) | 168,025 | 2026-04 | Docker-like local LLM runner for getting models up and running quickly for prototyping. |
+| [llama.cpp](https://github.com/ggml-org/llama.cpp) | 102,330 | 2026-04 | LLM inference in C/C++ with broad hardware support - the foundation for most local LLM applications. |
+| [vLLM](https://github.com/vllm-project/vllm) | 75,592 | 2026-04 | High-throughput LLM serving engine with PagedAttention, powering most open-source LLM deployments in production. |
+| [SGLang](https://github.com/sgl-project/sglang) | 25,525 | 2026-04 | High-performance LLM serving framework powering 400K+ GPUs with best-in-class structured and constrained decoding. |
 | [ONNX Runtime](https://github.com/microsoft/onnxruntime) | 19,784 | 2026-04 | Cross-platform inference accelerator supporting PyTorch, TensorFlow, scikit-learn, and XGBoost via the ONNX format (Microsoft). |
-| [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) | 13,313 | 2026-04 | High-performance LLM inference library with custom attention kernels, speculative decoding, and MoE support (NVIDIA). |
+| [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) | 13,314 | 2026-04 | High-performance LLM inference library with custom attention kernels, speculative decoding, and MoE support (NVIDIA). |
 | [Triton Inference Server](https://github.com/triton-inference-server/server) | 10,525 | 2026-04 | Multi-framework inference serving for TensorRT, PyTorch, ONNX, and custom backends (NVIDIA). |
 | [OpenVINO](https://github.com/openvinotoolkit/openvino) | 10,024 | 2026-04 | Inference optimization and deployment toolkit for CPUs, GPUs, and edge accelerators (Intel). |
-| [BentoML](https://github.com/bentoml/BentoML) | 8,560 | 2026-04 | Build production-ready inference APIs, batch jobs, and multi-model pipelines with unified Python framework. |
+| [BentoML](https://github.com/bentoml/BentoML) | 8,561 | 2026-04 | Build production-ready inference APIs, batch jobs, and multi-model pipelines with unified Python framework. |
 | [LMDeploy](https://github.com/InternLM/lmdeploy) | 7,757 | 2026-04 | Toolkit for compressing, deploying, and serving large language and vision-language models. |
 | [KServe](https://github.com/kserve/kserve) | 5,300 | 2026-04 | Kubernetes-native standardized model serving with canary rollouts, autoscaling, and multi-framework support (CNCF Incubating). |
 | [ExecuTorch](https://github.com/pytorch/executorch) | 4,480 | 2026-04 | On-device AI inference for mobile, embedded, and edge platforms with a 50KB base runtime footprint (Meta). |
@@ -401,8 +401,8 @@
 
 *Automated drift detection, performance monitoring, and quality assurance for deployed models.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [Evidently](https://github.com/evidentlyai/evidently) | 7,374 | 2026-03 | ML and LLM observability with 100+ metrics for evaluating, testing, and monitoring any AI system in production. |
 | [Giskard](https://github.com/Giskard-AI/giskard-oss) | 5,224 | 2026-04 | Testing and evaluation for ML and LLM models covering bias, performance regression, and security vulnerabilities. |
 | [Deepchecks](https://github.com/deepchecks/deepchecks) | 4,002 | 2025-12 | Holistic ML validation covering data integrity, drift detection, and model evaluation in a single suite. |
@@ -416,13 +416,13 @@
 
 *Automated testing, red-teaming, and guardrails for ensuring AI system safety and reliability.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
-| [Garak](https://github.com/NVIDIA/garak) | 7,486 | 2026-04 | LLM vulnerability scanner with 100+ attack modules covering prompt injection, data leakage, and jailbreaking. |
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
+| [Garak](https://github.com/NVIDIA/garak) | 7,487 | 2026-04 | LLM vulnerability scanner with 100+ attack modules covering prompt injection, data leakage, and jailbreaking. |
 | [Guardrails AI](https://github.com/guardrails-ai/guardrails) | 6,645 | 2026-04 | Framework for adding structural and semantic validation guardrails to LLM outputs. |
 | [Plano](https://github.com/katanemo/plano) | 6,222 | 2026-04 | AI-native proxy with built-in orchestration, safety controls, and observability for agentic applications. |
 | [NeMo Guardrails](https://github.com/NVIDIA-NeMo/Guardrails) | 5,935 | 2026-04 | Programmable safety rails for LLM-based conversational systems with topical and safety controls (NVIDIA). |
-| [DeepTeam](https://github.com/confident-ai/deepteam) | 1,483 | 2026-04 | Red-teaming framework for systematically testing LLM vulnerabilities across multiple attack vectors. |
+| [DeepTeam](https://github.com/confident-ai/deepteam) | 1,488 | 2026-04 | Red-teaming framework for systematically testing LLM vulnerabilities across multiple attack vectors. |
 
 **[⬆ Back to Contents](#contents)**
 
@@ -430,8 +430,8 @@
 
 *Standardized frameworks and datasets for evaluating and comparing AutoML systems.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [MLE-Bench](https://github.com/openai/mle-bench) | 1,448 | 2026-03 | Benchmark using 75 Kaggle competitions to evaluate ML engineering agents (OpenAI). |
 | [NAS-Bench-101](https://github.com/google-research/nasbench) | 717 | 2023-05 | Benchmark dataset with 423,624 evaluated neural architectures for efficient NAS research (Google). **Archived.** |
 | [NAS-Bench-201](https://github.com/D-X-Y/NAS-Bench-201) | 644 | 2025-10 | Reproducible benchmark with 15,625 evaluated architectures across three datasets for fair NAS comparison. |
@@ -444,12 +444,12 @@
 
 *Platforms for managing the ML lifecycle, tracking experiments, and orchestrating pipelines.*
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
-| [Ray](https://github.com/ray-project/ray) | 42,000 | 2026-04 | Unified AI compute engine for distributed training, tuning, and model serving with Ray Train, Ray Tune, and Ray Serve. |
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
+| [Ray](https://github.com/ray-project/ray) | 42,001 | 2026-04 | Unified AI compute engine for distributed training, tuning, and model serving with Ray Train, Ray Tune, and Ray Serve. |
 | [MLflow](https://github.com/mlflow/mlflow) | 25,181 | 2026-04 | End-to-end ML lifecycle platform with experiment tracking, model registry, and integrated prompt optimization. |
-| [Langfuse](https://github.com/langfuse/langfuse) | 24,476 | 2026-04 | Open-source LLM engineering platform with tracing, evaluations, prompt management, and cost analytics. |
-| [Prefect](https://github.com/PrefectHQ/prefect) | 22,087 | 2026-04 | Modern data workflow automation with retries, caching, and real-time logging. |
+| [Langfuse](https://github.com/langfuse/langfuse) | 24,477 | 2026-04 | Open-source LLM engineering platform with tracing, evaluations, prompt management, and cost analytics. |
+| [Prefect](https://github.com/PrefectHQ/prefect) | 22,090 | 2026-04 | Modern data workflow automation with retries, caching, and real-time logging. |
 | [Opik](https://github.com/comet-ml/opik) | 18,696 | 2026-04 | LLM debugging, evaluation, and monitoring platform with detailed tracing and quality dashboards (Comet). |
 | [Kubeflow](https://github.com/kubeflow/kubeflow) | 15,557 | 2026-01 | ML toolkit on Kubernetes for building portable, scalable ML pipelines and training workflows. |
 | [DVC](https://github.com/treeverse/dvc) | 15,510 | 2026-04 | Version control for data and models with built-in experiment tracking and pipeline management. |
@@ -460,17 +460,17 @@
 | [Phoenix](https://github.com/Arize-ai/phoenix) | 9,195 | 2026-04 | AI observability platform with OpenTelemetry-native tracing and LLM evaluation dashboards (Arize). |
 | [Feast](https://github.com/feast-dev/feast) | 6,913 | 2026-04 | Open-source feature store for managing and serving ML features in real-time and batch inference. |
 | [ClearML](https://github.com/clearml/clearml) | 6,612 | 2026-04 | Unified experiment manager, pipeline orchestrator, and data/model management platform. |
-| [Aim](https://github.com/aimhubio/aim) | 6,075 | 2026-04 | Self-hosted experiment tracker with a high-performance UI that handles 10,000+ training runs. |
+| [Aim](https://github.com/aimhubio/aim) | 6,076 | 2026-04 | Self-hosted experiment tracker with a high-performance UI that handles 10,000+ training runs. |
 | [ZenML](https://github.com/zenml-io/zenml) | 5,319 | 2026-04 | Framework for building portable, production-ready ML pipelines that run on any infrastructure. |
 
 **[⬆ Back to Contents](#contents)**
 
 ## Related Awesome Lists
 
-| Project | ⭐ | Updated | Description |
-|:--------|:---|:--------|:------------|
+| 📦 Project | ⭐ Stars | 🔄 Updated | 📝 Description |
+|:----------|:---------|:------------|:----------------|
 | [awesome-machine-learning](https://github.com/josephmisiti/awesome-machine-learning) | 72,188 | 2026-03 | Curated list of ML frameworks, libraries, and software organized by language. |
-| [awesome-deep-learning](https://github.com/ChristosChristofidis/awesome-deep-learning) | 27,862 | 2025-05 | Curated list of deep learning tutorials, projects, and communities. |
+| [awesome-deep-learning](https://github.com/ChristosChristofidis/awesome-deep-learning) | 27,863 | 2025-05 | Curated list of deep learning tutorials, projects, and communities. |
 | [awesome-llm](https://github.com/Hannibal046/Awesome-LLM) | 26,610 | 2025-07 | Curated list of large language model resources covering papers, tools, and applications. |
 | [awesome-production-machine-learning](https://github.com/EthicalML/awesome-production-machine-learning) | 20,346 | 2026-04 | Curated list of tools for deploying, monitoring, and scaling ML in production. |
 | [awesome-mlops](https://github.com/visenger/awesome-mlops) | 13,844 | 2024-11 | Curated list of MLOps tools and best practices for production ML. **Unmaintained — no commits for 12+ months.** |
