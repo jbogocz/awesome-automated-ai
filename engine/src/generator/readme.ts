@@ -30,6 +30,12 @@ interface Category {
   entries?: Entry[];
 }
 
+const MEDAL = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];
+const SLEEPING = "\u{1F4A4}";
+const HISTORICAL = "\u{1F5C4}\uFE0F";
+const LEGEND =
+  "> \u{1F947}\u{1F948}\u{1F949} quality score (top 3) | \u2197\uFE0F stars/30d | \u2194\uFE0F stable | \u{1F4A4} unmaintained | \u{1F5C4}\uFE0F historical";
+
 export function generateReadme(opts: GenerateOptions): string {
   const { yamlContent, header, footer, apiData } = opts;
   const doc = parseYaml(yamlContent) as { categories: Category[] };
@@ -43,9 +49,10 @@ export function generateReadme(opts: GenerateOptions): string {
     if (cat.description) parts.push(`*${cat.description}*`, "");
     const entries = cat.entries ?? [];
     if (entries.length > 0) {
-      parts.push("| Project | Stars | Updated | Description |");
-      parts.push("|:--------|:------|:--------|:------------|");
+      parts.push("| # | Project | Stars | Updated | License | Description |");
+      parts.push("|:--|:--------|------:|:--------|:--------|:------------|");
       for (const row of buildTable(entries, apiData)) parts.push(row);
+      parts.push("", LEGEND);
     }
     parts.push("", "**[\u2b06 Back to Contents](#contents)**", "");
   }
@@ -56,38 +63,108 @@ export function generateReadme(opts: GenerateOptions): string {
   for (const cat of categories) {
     const count = (cat.entries ?? []).length;
     const name = cat.name;
-    const anchor = name.toLowerCase().replace(/ /g, "-").replace(/\//g, "").replace(/&/g, "and");
+    const anchor = name
+      .toLowerCase()
+      .replace(/ /g, "-")
+      .replace(/\//g, "")
+      .replace(/&/g, "and");
     readme = readme.replace(
-      new RegExp(`(\\[${escapeRegex(name)}\\]\\(#${escapeRegex(anchor)}\\)) \\(\\d+\\)`),
+      new RegExp(
+        `(\\[${escapeRegex(name)}\\]\\(#${escapeRegex(anchor)}\\)) \\(\\d+\\)`,
+      ),
       `$1 (${count})`,
     );
   }
   return readme;
 }
 
+interface ScoredEntry {
+  entry: Entry;
+  rd: ApiRepoData;
+  note: string;
+  isDead: boolean;
+  isHistorical: boolean;
+}
+
 function buildTable(entries: Entry[], apiData: ApiData): string[] {
-  const rows: [number, string][] = [];
-  for (const entry of entries) {
+  const scored: ScoredEntry[] = entries.map((entry) => {
     const repo = entry.repo ?? "";
-    const rd = apiData[repo] ?? { stars: 0, pushed: "", archived: false };
+    const rd = apiData[repo] ?? {
+      stars: 0,
+      pushed: "",
+      archived: false,
+      license: null,
+      trend: null,
+      score: 0,
+    };
+    let note = entry.note ?? "";
+    if (rd.archived && !note.includes("Archived"))
+      note = `Archived. ${note}`.trim();
+    else if (!note && isUnmaintained(rd.pushed))
+      note = "Unmaintained - no commits for 12+ months.";
+    const isHistorical = /historical/i.test(note);
+    const isDead =
+      rd.archived || isUnmaintained(rd.pushed) || /unmaintained|deprecated/i.test(note);
+    return { entry, rd, note, isDead, isHistorical };
+  });
+
+  scored.sort((a, b) => b.rd.score - a.rd.score);
+
+  const medals = assignMedals(scored);
+
+  return scored.map((s, i) => {
+    const { entry, rd, note, isDead, isHistorical } = s;
+    const repo = entry.repo ?? "";
     const url = entry.url ?? `https://github.com/${repo}`;
     const desc = entry.description ?? "";
-    let note = entry.note ?? "";
-    if (rd.archived && !note.includes("Archived")) note = `Archived. ${note}`.trim();
-    else if (!note && isUnmaintained(rd.pushed)) note = "Unmaintained \u2014 no commits for 12+ months.";
     const fullDesc = note ? `${desc} **${note}**` : desc;
+
+    let statusCol: string;
+    if (isDead && isHistorical) statusCol = HISTORICAL;
+    else if (isDead) statusCol = SLEEPING;
+    else statusCol = medals.get(i) ?? "";
+
+    const trendText = !isDead ? formatTrend(rd.trend) : "";
+    const projectCol = isDead
+      ? `*[${entry.name}](${url})*`
+      : `[${entry.name}](${url})${trendText}`;
+
     const starsText = repo ? formatStars(rd.stars) : "-";
     const commitText = repo ? formatDate(rd.pushed) : "-";
-    rows.push([rd.stars, `| [${entry.name}](${url}) | ${starsText} | ${commitText} | ${fullDesc} |`]);
+    const licenseText = rd.license ? `\`${rd.license}\`` : "-";
+
+    if (isDead) {
+      return `| ${statusCol} | ${projectCol} | *${starsText}* | *${commitText}* | ${licenseText} | *${fullDesc}* |`;
+    }
+    return `| ${statusCol} | ${projectCol} | ${starsText} | ${commitText} | ${licenseText} | ${fullDesc} |`;
+  });
+}
+
+function assignMedals(scored: ScoredEntry[]): Map<number, string> {
+  const medals = new Map<number, string>();
+  let medalIdx = 0;
+  for (let i = 0; i < scored.length && medalIdx < 3; i++) {
+    if (!scored[i].isDead && scored[i].rd.score >= 40) {
+      medals.set(i, MEDAL[medalIdx]);
+      medalIdx++;
+    }
   }
-  rows.sort((a, b) => b[0] - a[0]);
-  return rows.map((r) => r[1]);
+  return medals;
+}
+
+function formatTrend(trend: number | null): string {
+  if (trend === null) return "";
+  if (trend >= 10) return ` <sup>\u2197\uFE0F ${trend}</sup>`;
+  if (trend <= -10) return ` <sup>\u2198\uFE0F ${Math.abs(trend)}</sup>`;
+  return ` <sup>\u2194\uFE0F</sup>`;
 }
 
 function isUnmaintained(pushed: string, months = 12): boolean {
   if (!pushed) return true;
   try {
-    return Date.now() - new Date(pushed).getTime() > months * 30 * 24 * 60 * 60 * 1000;
+    return (
+      Date.now() - new Date(pushed).getTime() > months * 30 * 24 * 60 * 60 * 1000
+    );
   } catch {
     return false;
   }
@@ -95,14 +172,20 @@ function isUnmaintained(pushed: string, months = 12): boolean {
 
 function replaceHeaderBadges(header: string, apiData: ApiData): string {
   return header
-    .replace(/!\[\]\(https:\/\/img\.shields\.io\/github\/stars\/([^?]+)\?[^)]+\)/g, (_match, repo) => {
-      const rd = apiData[repo];
-      return rd ? formatStars(rd.stars) : "-";
-    })
-    .replace(/!\[\]\(https:\/\/img\.shields\.io\/github\/last-commit\/([^?]+)\?[^)]+\)/g, (_match, repo) => {
-      const rd = apiData[repo];
-      return rd ? formatDate(rd.pushed) : "-";
-    });
+    .replace(
+      /!\[\]\(https:\/\/img\.shields\.io\/github\/stars\/([^?]+)\?[^)]+\)/g,
+      (_match, repo) => {
+        const rd = apiData[repo];
+        return rd ? formatStars(rd.stars) : "-";
+      },
+    )
+    .replace(
+      /!\[\]\(https:\/\/img\.shields\.io\/github\/last-commit\/([^?]+)\?[^)]+\)/g,
+      (_match, repo) => {
+        const rd = apiData[repo];
+        return rd ? formatDate(rd.pushed) : "-";
+      },
+    );
 }
 
 function formatStars(n: number): string {
