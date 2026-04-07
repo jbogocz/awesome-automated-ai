@@ -40,8 +40,8 @@ export function generateReadme(opts: GenerateOptions): string {
     if (cat.description) parts.push(`*${cat.description}*`, "");
     const entries = cat.entries ?? [];
     if (entries.length > 0) {
-      parts.push("| \ud83d\udce6 Project | \u2b50 Stars | \ud83d\udd04 Updated | \ud83d\udcdd Description |");
-      parts.push("|:----------|:---------|:------------|:----------------|");
+      parts.push("| \ud83d\udce6 Project | \u2b50\ufe0f Stars | \ud83d\udd04 Updated | \ud83d\udcdd Description |");
+      parts.push("|:------------|:------------|:------------|:-------------------------------|");
       for (const row of buildTable(entries, apiData)) parts.push(row);
     }
     parts.push("", "**[\u2b06 Back to Contents](#contents)**", "");
