@@ -111,6 +111,12 @@ categories:
   - name: LoRAX
     repo: predibase/lorax
     description: Multi-LoRA inference server that scales to thousands of fine-tuned LLMs on a single GPU (Predibase).
+  - name: H2O LLM Studio
+    repo: h2oai/h2o-llmstudio
+    description: No-code GUI for fine-tuning LLMs with SFT, DPO, and RLHF, plus experiment tracking and one-click Hugging Face Hub export (H2O.ai).
+  - name: LLM Foundry
+    repo: mosaicml/llm-foundry
+    description: Composable building blocks for pretraining, fine-tuning, and evaluating foundation models with efficient distributed training (Databricks).
 - name: Automated Prompt Optimization
   description: Systematic optimization of prompts, instructions, and demonstrations to improve LLM performance without manual tuning.
   entries:
@@ -192,6 +198,9 @@ categories:
   - name: AutoCodeRover
     repo: AutoCodeRoverSG/auto-code-rover
     description: Structure-aware autonomous program repair combining code search with LLM-based patching.
+  - name: AutoRAG
+    repo: Marker-Inc-Korea/AutoRAG
+    description: AutoML-style framework for RAG optimization that automatically finds the best retrieval, generation, and prompt pipeline configuration.
 - name: LLM Evaluation and Testing
   description: Frameworks for automated evaluation, testing, and benchmarking of language models and AI systems.
   entries:
@@ -240,6 +249,9 @@ categories:
   - name: LLMRouter
     repo: ulab-uiuc/LLMRouter
     description: Unified library with 16+ router implementations and standardized evaluation via command-line interface.
+  - name: TensorZero
+    repo: tensorzero/tensorzero
+    description: Open-source LLMOps platform unifying an LLM gateway, observability, evaluation, optimization, and experimentation with A/B testing across models.
 - name: Time-Series AutoML
   description: Automated forecasting, classification, and anomaly detection for temporal data.
   entries:
@@ -337,6 +349,9 @@ categories:
     repo: dragonfly/dragonfly
     description: Scalable Bayesian optimization library supporting multi-fidelity and multi-objective search.
     note: Low activity since 2020.
+  - name: Google Vizier
+    repo: google/vizier
+    description: Research interface for blackbox and hyperparameter optimization with Bayesian, evolutionary, and multi-objective algorithms based on Google's internal Vizier Service.
 - name: Automated Feature Engineering
   description: Automated generation, transformation, and selection of features from raw data.
   entries:
@@ -364,6 +379,9 @@ categories:
   - name: Feature-engine
     repo: feature-engine/feature_engine
     description: Scikit-learn-compatible transformers for feature creation, selection, encoding, and imputation.
+  - name: NVTabular
+    repo: NVIDIA-Merlin/NVTabular
+    description: GPU-accelerated feature engineering and preprocessing for terabyte-scale tabular data with automatic hashing, categorification, and normalization (NVIDIA).
 - name: Automated Data Preprocessing
   description: Automated data profiling, cleaning, validation, and quality assurance.
   entries:
@@ -388,6 +406,9 @@ categories:
   - name: Spotlight
     repo: Renumics/spotlight
     description: Interactive visualization tool for auditing and understanding unstructured ML datasets covering images, audio, and text.
+  - name: pyjanitor
+    repo: pyjanitor-devs/pyjanitor
+    description: Clean APIs for data cleaning with a fluent method-chaining interface for pandas DataFrames, inspired by the R Janitor package.
 - name: Automated Data Labeling
   description: Tools that automate or semi-automate the annotation process using AI-assisted labeling.
   entries:
@@ -409,6 +430,15 @@ categories:
   - name: Autolabel
     repo: refuel-ai/autolabel
     description: LLM-powered labeling, cleaning, and enrichment for text classification, NER, and entity matching.
+  - name: X-AnyLabeling
+    repo: CVHub520/X-AnyLabeling
+    description: AI-assisted annotation with Segment Anything and other foundation models for automatic segmentation, detection, and classification pre-labeling.
+  - name: Adala
+    repo: HumanSignal/Adala
+    description: Autonomous data labeling agent that uses LLMs to label data, learn from ground truth, and iteratively improve labeling quality (Label Studio team).
+  - name: LabelU
+    repo: opendatalab/labelU
+    description: Multi-modal annotation toolbox supporting image, audio, and video with configurable templates and collaborative labeling workflows.
 - name: Synthetic Data Generation
   description: Automated creation of artificial training data that preserves statistical properties of real datasets.
   entries:
@@ -424,6 +454,15 @@ categories:
   - name: Gretel Synthetics
     repo: gretelai/gretel-synthetics
     description: Synthetic data generators for structured and unstructured text with differential privacy guarantees.
+  - name: Curator
+    repo: bespokelabsai/curator
+    description: Pipeline-oriented synthetic data curation for post-training and structured data extraction with built-in quality filtering from LLMs.
+  - name: Synthetic Data Kit
+    repo: meta-llama/synthetic-data-kit
+    description: Toolkit for generating high-quality synthetic datasets to fine-tune models with LLM-generated training data at scale (Meta).
+  - name: NeMo Data Designer
+    repo: NVIDIA-NeMo/DataDesigner
+    description: Generates high-quality synthetic data from scratch or seed data with built-in evaluation and quality control for LLM training pipelines (NVIDIA).
 - name: Automated Model Compression
   description: Automated quantization, pruning, and distillation for efficient model deployment.
   entries:
@@ -445,6 +484,15 @@ categories:
   - name: GPTQModel
     repo: ModelCloud/GPTQModel
     description: LLM quantization toolkit with support for NVIDIA CUDA, AMD ROCm, Intel, and Apple Silicon backends.
+  - name: bitsandbytes
+    repo: bitsandbytes-foundation/bitsandbytes
+    description: De facto standard for k-bit quantization of LLMs in PyTorch - enables 4-bit and 8-bit inference and training, the backbone for QLoRA.
+  - name: Optimum
+    repo: huggingface/optimum
+    description: Toolkit for accelerating Transformers inference with hardware-optimized quantization, pruning, and graph optimization for ONNX Runtime, OpenVINO, and more (Hugging Face).
+  - name: Olive
+    repo: microsoft/Olive
+    description: End-to-end model optimization automating fine-tuning, conversion, quantization, and graph optimization for CPUs, GPUs, and NPUs (Microsoft).
 - name: Automated Deployment and Serving
   description: Automated model serving, optimization, and inference infrastructure.
   entries:
@@ -487,6 +535,15 @@ categories:
   - name: LitServe
     repo: Lightning-AI/LitServe
     description: Minimal, high-performance Python framework for AI model serving (Lightning AI).
+  - name: Cog
+    repo: replicate/cog
+    description: Package ML models as standard Docker containers with auto-generated HTTP APIs and GPU setup for reproducible, portable deployment (Replicate).
+  - name: LightLLM
+    repo: ModelTC/LightLLM
+    description: Lightweight LLM inference and serving framework with continuous batching, tensor parallelism, and efficient memory management.
+  - name: TFX
+    repo: tensorflow/tfx
+    description: End-to-end platform for deploying production ML pipelines with data validation, transformation, training, evaluation, and serving components (Google).
 - name: Automated Monitoring and Observability
   description: Automated drift detection, performance monitoring, and quality assurance for deployed models.
   entries:
@@ -508,6 +565,12 @@ categories:
   - name: NannyML
     repo: NannyML/nannyml
     description: Estimate model performance without ground truth labels and link data drift directly to accuracy degradation.
+  - name: OpenLLMetry
+    repo: traceloop/openllmetry
+    description: OpenTelemetry-based observability for LLM applications with automatic instrumentation for LangChain, LlamaIndex, and OpenAI SDK.
+  - name: Helicone
+    repo: Helicone/helicone
+    description: LLM observability platform with one-line integration for cost tracking, latency analysis, prompt versioning, and usage dashboards (YC W23).
 - name: Automated AI Safety
   description: Automated testing, red-teaming, and guardrails for ensuring AI system safety and reliability.
   entries:
@@ -526,6 +589,9 @@ categories:
   - name: DeepTeam
     repo: confident-ai/deepteam
     description: Red-teaming framework for systematically testing LLM vulnerabilities across multiple attack vectors.
+  - name: LLM Guard
+    repo: protectai/llm-guard
+    description: Security toolkit with input/output scanners for prompt injection, data leakage, toxic content, and other safety risks in production LLM applications.
 - name: AutoML Benchmarks
   description: Standardized frameworks and datasets for evaluating and comparing AutoML systems.
   entries:
