@@ -1,0 +1,7 @@
+packages:
+  - "engine"
+  - "dashboard"
+
+onlyBuiltDependencies:
+  - better-sqlite3
+  - esbuild

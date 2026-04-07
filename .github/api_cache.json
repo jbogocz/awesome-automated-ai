@@ -1,0 +1,902 @@
+{
+  "ludwig-ai/ludwig": {
+    "archived": false,
+    "pushed": "2026-04-07T18:23:29Z",
+    "stars": 11665
+  },
+  "autogluon/autogluon": {
+    "archived": false,
+    "pushed": "2026-04-06T15:59:21Z",
+    "stars": 10206
+  },
+  "EpistasisLab/tpot": {
+    "archived": false,
+    "pushed": "2025-09-11T21:32:19Z",
+    "stars": 10047
+  },
+  "pycaret/pycaret": {
+    "archived": false,
+    "pushed": "2025-04-21T01:09:12Z",
+    "stars": 9738
+  },
+  "keras-team/autokeras": {
+    "archived": false,
+    "pushed": "2025-11-25T02:26:35Z",
+    "stars": 9316
+  },
+  "automl/auto-sklearn": {
+    "archived": false,
+    "pushed": "2026-01-20T14:03:29Z",
+    "stars": 8079
+  },
+  "h2oai/h2o-3": {
+    "archived": false,
+    "pushed": "2026-04-07T18:44:56Z",
+    "stars": 7522
+  },
+  "microsoft/FLAML": {
+    "archived": false,
+    "pushed": "2026-04-07T04:22:02Z",
+    "stars": 4319
+  },
+  "shankarpandala/lazypredict": {
+    "archived": false,
+    "pushed": "2026-03-29T02:56:54Z",
+    "stars": 3308
+  },
+  "mljar/mljar-supervised": {
+    "archived": false,
+    "pushed": "2026-03-26T10:21:36Z",
+    "stars": 3251
+  },
+  "sb-ai-lab/LightAutoML": {
+    "archived": false,
+    "pushed": "2026-01-15T12:29:45Z",
+    "stars": 1458
+  },
+  "alteryx/evalml": {
+    "archived": false,
+    "pushed": "2026-01-14T22:09:13Z",
+    "stars": 846
+  },
+  "sapientml/sapientml": {
+    "archived": false,
+    "pushed": "2026-03-30T18:40:00Z",
+    "stars": 449
+  },
+  "automl/autoweka": {
+    "archived": false,
+    "pushed": "2022-03-06T22:24:52Z",
+    "stars": 336
+  },
+  "amore-labs/gama": {
+    "archived": false,
+    "pushed": "2024-09-04T08:31:07Z",
+    "stars": 103
+  },
+  "google-research/timesfm": {
+    "archived": false,
+    "pushed": "2026-04-03T00:26:33Z",
+    "stars": 15396
+  },
+  "PriorLabs/TabPFN": {
+    "archived": false,
+    "pushed": "2026-04-07T14:33:54Z",
+    "stars": 6011
+  },
+  "amazon-science/chronos-forecasting": {
+    "archived": false,
+    "pushed": "2026-03-18T11:34:29Z",
+    "stars": 5087
+  },
+  "SalesforceAIResearch/uni2ts": {
+    "archived": false,
+    "pushed": "2026-01-29T06:55:28Z",
+    "stars": 1462
+  },
+  "yandex-research/tabm": {
+    "archived": false,
+    "pushed": "2025-11-10T07:18:37Z",
+    "stars": 986
+  },
+  "LAMDA-Tabular/TALENT": {
+    "archived": false,
+    "pushed": "2026-03-20T18:25:45Z",
+    "stars": 834
+  },
+  "soda-inria/tabicl": {
+    "archived": false,
+    "pushed": "2026-03-25T23:26:10Z",
+    "stars": 716
+  },
+  "soda-inria/carte": {
+    "archived": false,
+    "pushed": "2025-08-11T09:20:00Z",
+    "stars": 168
+  },
+  "hiyouga/LlamaFactory": {
+    "archived": false,
+    "pushed": "2026-04-06T05:14:45Z",
+    "stars": 69691
+  },
+  "unslothai/unsloth": {
+    "archived": false,
+    "pushed": "2026-04-07T16:05:04Z",
+    "stars": 59946
+  },
+  "huggingface/peft": {
+    "archived": false,
+    "pushed": "2026-04-07T15:47:57Z",
+    "stars": 20899
+  },
+  "huggingface/trl": {
+    "archived": false,
+    "pushed": "2026-04-07T19:40:41Z",
+    "stars": 17961
+  },
+  "Lightning-AI/litgpt": {
+    "archived": false,
+    "pushed": "2026-04-06T21:28:29Z",
+    "stars": 13283
+  },
+  "axolotl-ai-cloud/axolotl": {
+    "archived": false,
+    "pushed": "2026-04-07T18:29:08Z",
+    "stars": 11603
+  },
+  "OptimalScale/LMFlow": {
+    "archived": false,
+    "pushed": "2026-03-23T02:30:02Z",
+    "stars": 8488
+  },
+  "meta-pytorch/torchtune": {
+    "archived": false,
+    "pushed": "2026-04-07T11:50:44Z",
+    "stars": 5724
+  },
+  "huggingface/autotrain-advanced": {
+    "archived": false,
+    "pushed": "2026-04-02T09:26:01Z",
+    "stars": 4568
+  },
+  "predibase/lorax": {
+    "archived": false,
+    "pushed": "2025-05-21T17:40:25Z",
+    "stars": 3744
+  },
+  "stanfordnlp/dspy": {
+    "archived": false,
+    "pushed": "2026-04-02T22:50:24Z",
+    "stars": 33510
+  },
+  "microsoft/PromptWizard": {
+    "archived": false,
+    "pushed": "2025-10-13T21:51:01Z",
+    "stars": 3830
+  },
+  "zou-group/textgrad": {
+    "archived": false,
+    "pushed": "2025-07-25T14:30:39Z",
+    "stars": 3474
+  },
+  "gepa-ai/gepa": {
+    "archived": false,
+    "pushed": "2026-04-07T03:22:55Z",
+    "stars": 3209
+  },
+  "Eladlev/AutoPrompt": {
+    "archived": false,
+    "pushed": "2025-12-02T17:23:20Z",
+    "stars": 2960
+  },
+  "Mirascope/mirascope": {
+    "archived": false,
+    "pushed": "2026-04-07T18:23:31Z",
+    "stars": 1453
+  },
+  "SalesforceAIResearch/promptomatix": {
+    "archived": false,
+    "pushed": "2025-08-01T19:10:41Z",
+    "stars": 938
+  },
+  "meta-llama/prompt-ops": {
+    "archived": false,
+    "pushed": "2026-01-26T23:58:47Z",
+    "stars": 794
+  },
+  "beeevita/EvoPrompt": {
+    "archived": false,
+    "pushed": "2025-09-22T11:43:23Z",
+    "stars": 224
+  },
+  "karpathy/autoresearch": {
+    "archived": false,
+    "pushed": "2026-03-26T00:07:37Z",
+    "stars": 68044
+  },
+  "microsoft/autogen": {
+    "archived": false,
+    "pushed": "2026-04-06T22:35:34Z",
+    "stars": 56794
+  },
+  "crewAIInc/crewAI": {
+    "archived": false,
+    "pushed": "2026-04-07T19:56:24Z",
+    "stars": 48270
+  },
+  "stanford-oval/storm": {
+    "archived": false,
+    "pushed": "2025-09-30T18:07:21Z",
+    "stars": 28060
+  },
+  "SakanaAI/AI-Scientist": {
+    "archived": false,
+    "pushed": "2025-12-19T07:46:21Z",
+    "stars": 13097
+  },
+  "Future-House/paper-qa": {
+    "archived": false,
+    "pushed": "2026-03-20T17:41:36Z",
+    "stars": 8347
+  },
+  "SakanaAI/AI-Scientist-v2": {
+    "archived": false,
+    "pushed": "2025-12-19T07:46:32Z",
+    "stars": 5205
+  },
+  "HKUDS/AI-Researcher": {
+    "archived": false,
+    "pushed": "2025-10-16T06:47:34Z",
+    "stars": 5067
+  },
+  "WecoAI/aideml": {
+    "archived": false,
+    "pushed": "2026-02-12T13:02:34Z",
+    "stars": 1211
+  },
+  "DeepAuto-AI/automl-agent": {
+    "archived": false,
+    "pushed": "2025-07-11T19:39:49Z",
+    "stars": 118
+  },
+  "OpenHands/OpenHands": {
+    "archived": false,
+    "pushed": "2026-04-07T20:00:22Z",
+    "stars": 70766
+  },
+  "Aider-AI/aider": {
+    "archived": false,
+    "pushed": "2026-03-17T01:21:34Z",
+    "stars": 42962
+  },
+  "SWE-agent/SWE-agent": {
+    "archived": false,
+    "pushed": "2026-04-06T22:15:28Z",
+    "stars": 18943
+  },
+  "SWE-agent/mini-swe-agent": {
+    "archived": false,
+    "pushed": "2026-04-06T22:15:18Z",
+    "stars": 3703
+  },
+  "AutoCodeRoverSG/auto-code-rover": {
+    "archived": false,
+    "pushed": "2025-04-24T07:58:24Z",
+    "stars": 3064
+  },
+  "promptfoo/promptfoo": {
+    "archived": false,
+    "pushed": "2026-04-07T18:35:57Z",
+    "stars": 19706
+  },
+  "confident-ai/deepeval": {
+    "archived": false,
+    "pushed": "2026-04-07T15:27:51Z",
+    "stars": 14570
+  },
+  "vibrantlabsai/ragas": {
+    "archived": false,
+    "pushed": "2026-02-24T07:47:19Z",
+    "stars": 13265
+  },
+  "EleutherAI/lm-evaluation-harness": {
+    "archived": false,
+    "pushed": "2026-04-01T11:53:45Z",
+    "stars": 12040
+  },
+  "open-compass/opencompass": {
+    "archived": false,
+    "pushed": "2026-04-07T09:22:04Z",
+    "stars": 6835
+  },
+  "Agenta-AI/agenta": {
+    "archived": false,
+    "pushed": "2026-04-07T17:28:21Z",
+    "stars": 4010
+  },
+  "truera/trulens": {
+    "archived": false,
+    "pushed": "2026-04-06T14:09:41Z",
+    "stars": 3232
+  },
+  "langwatch/langwatch": {
+    "archived": false,
+    "pushed": "2026-04-07T19:45:27Z",
+    "stars": 3187
+  },
+  "huggingface/lighteval": {
+    "archived": false,
+    "pushed": "2026-04-07T13:26:29Z",
+    "stars": 2369
+  },
+  "UKGovernmentBEIS/inspect_ai": {
+    "archived": false,
+    "pushed": "2026-04-07T13:00:57Z",
+    "stars": 1887
+  },
+  "BerriAI/litellm": {
+    "archived": false,
+    "pushed": "2026-04-07T20:01:33Z",
+    "stars": 42466
+  },
+  "Portkey-AI/gateway": {
+    "archived": false,
+    "pushed": "2026-03-25T09:33:55Z",
+    "stars": 11233
+  },
+  "lm-sys/RouteLLM": {
+    "archived": false,
+    "pushed": "2024-08-10T19:10:15Z",
+    "stars": 4767
+  },
+  "ulab-uiuc/LLMRouter": {
+    "archived": false,
+    "pushed": "2026-03-17T21:50:45Z",
+    "stars": 1607
+  },
+  "sktime/sktime": {
+    "archived": false,
+    "pushed": "2026-04-05T21:16:27Z",
+    "stars": 9712
+  },
+  "unit8co/darts": {
+    "archived": false,
+    "pushed": "2026-04-07T06:52:06Z",
+    "stars": 9310
+  },
+  "Nixtla/statsforecast": {
+    "archived": false,
+    "pushed": "2026-04-06T21:24:29Z",
+    "stars": 4746
+  },
+  "salesforce/Merlion": {
+    "archived": true,
+    "pushed": "2026-03-11T12:52:32Z",
+    "stars": 4470
+  },
+  "Nixtla/neuralforecast": {
+    "archived": false,
+    "pushed": "2026-04-07T19:55:59Z",
+    "stars": 4034
+  },
+  "WenjieDu/PyPOTS": {
+    "archived": false,
+    "pushed": "2026-04-07T19:58:15Z",
+    "stars": 1984
+  },
+  "time-series-foundation-models/lag-llama": {
+    "archived": false,
+    "pushed": "2025-06-06T12:23:52Z",
+    "stars": 1567
+  },
+  "skforecast/skforecast": {
+    "archived": false,
+    "pushed": "2026-04-07T19:49:40Z",
+    "stars": 1476
+  },
+  "winedarksea/AutoTS": {
+    "archived": false,
+    "pushed": "2026-04-07T12:34:13Z",
+    "stars": 1384
+  },
+  "aeon-toolkit/aeon": {
+    "archived": false,
+    "pushed": "2026-04-06T01:03:21Z",
+    "stars": 1366
+  },
+  "Nixtla/mlforecast": {
+    "archived": false,
+    "pushed": "2026-04-06T08:22:16Z",
+    "stars": 1204
+  },
+  "Time-MoE/Time-MoE": {
+    "archived": false,
+    "pushed": "2026-03-21T16:00:55Z",
+    "stars": 941
+  },
+  "ibm-granite/granite-tsfm": {
+    "archived": false,
+    "pushed": "2026-04-06T17:17:00Z",
+    "stars": 834
+  },
+  "microsoft/nni": {
+    "archived": true,
+    "pushed": "2024-07-03T10:55:10Z",
+    "stars": 14346
+  },
+  "google/automl": {
+    "archived": false,
+    "pushed": "2025-03-02T07:46:39Z",
+    "stars": 6463
+  },
+  "mit-han-lab/once-for-all": {
+    "archived": false,
+    "pushed": "2023-12-14T04:44:52Z",
+    "stars": 1947
+  },
+  "mit-han-lab/tinyengine": {
+    "archived": false,
+    "pushed": "2024-11-27T18:51:37Z",
+    "stars": 934
+  },
+  "huawei-noah/vega": {
+    "archived": false,
+    "pushed": "2023-02-15T09:36:59Z",
+    "stars": 851
+  },
+  "automl/NASLib": {
+    "archived": false,
+    "pushed": "2024-11-11T15:56:07Z",
+    "stars": 586
+  },
+  "microsoft/archai": {
+    "archived": false,
+    "pushed": "2025-11-24T03:14:04Z",
+    "stars": 483
+  },
+  "ray-project/ray": {
+    "archived": false,
+    "pushed": "2026-04-07T19:59:52Z",
+    "stars": 42000
+  },
+  "optuna/optuna": {
+    "archived": false,
+    "pushed": "2026-04-07T08:05:22Z",
+    "stars": 13866
+  },
+  "hyperopt/hyperopt": {
+    "archived": false,
+    "pushed": "2026-03-16T21:37:20Z",
+    "stars": 7615
+  },
+  "meta-pytorch/botorch": {
+    "archived": false,
+    "pushed": "2026-04-03T16:48:56Z",
+    "stars": 3497
+  },
+  "keras-team/keras-tuner": {
+    "archived": false,
+    "pushed": "2025-12-01T22:23:25Z",
+    "stars": 2923
+  },
+  "facebook/Ax": {
+    "archived": false,
+    "pushed": "2026-04-07T16:08:25Z",
+    "stars": 2733
+  },
+  "automl/SMAC3": {
+    "archived": false,
+    "pushed": "2026-04-07T10:42:59Z",
+    "stars": 1221
+  },
+  "dragonfly/dragonfly": {
+    "archived": false,
+    "pushed": "2023-06-19T20:23:17Z",
+    "stars": 893
+  },
+  "cleanlab/cleanlab": {
+    "archived": false,
+    "pushed": "2026-01-13T17:39:04Z",
+    "stars": 11411
+  },
+  "blue-yonder/tsfresh": {
+    "archived": false,
+    "pushed": "2025-11-15T15:14:13Z",
+    "stars": 9168
+  },
+  "alteryx/featuretools": {
+    "archived": false,
+    "pushed": "2026-02-03T18:19:45Z",
+    "stars": 7627
+  },
+  "4paradigm/OpenMLDB": {
+    "archived": false,
+    "pushed": "2026-04-03T02:42:32Z",
+    "stars": 1685
+  },
+  "scikit-learn-contrib/boruta_py": {
+    "archived": false,
+    "pushed": "2025-11-13T04:00:49Z",
+    "stars": 1624
+  },
+  "cod3licious/autofeat": {
+    "archived": false,
+    "pushed": "2026-01-06T22:56:18Z",
+    "stars": 536
+  },
+  "noahho/CAAFE": {
+    "archived": false,
+    "pushed": "2024-12-20T14:27:45Z",
+    "stars": 186
+  },
+  "feature-engine/feature_engine": {
+    "archived": false,
+    "pushed": "2026-03-28T14:24:33Z",
+    "stars": 2221
+  },
+  "Data-Centric-AI-Community/ydata-profiling": {
+    "archived": false,
+    "pushed": "2026-03-03T17:44:00Z",
+    "stars": 13489
+  },
+  "great-expectations/great_expectations": {
+    "archived": false,
+    "pushed": "2026-04-07T19:41:34Z",
+    "stars": 11366
+  },
+  "unionai-oss/pandera": {
+    "archived": false,
+    "pushed": "2026-04-04T17:51:33Z",
+    "stars": 4290
+  },
+  "fbdesignpro/sweetviz": {
+    "archived": false,
+    "pushed": "2026-04-05T02:16:07Z",
+    "stars": 3089
+  },
+  "sfu-db/dataprep": {
+    "archived": false,
+    "pushed": "2024-06-27T16:57:45Z",
+    "stars": 2237
+  },
+  "hi-primus/optimus": {
+    "archived": false,
+    "pushed": "2024-12-02T14:09:25Z",
+    "stars": 1537
+  },
+  "Renumics/spotlight": {
+    "archived": false,
+    "pushed": "2026-03-30T21:56:59Z",
+    "stars": 1255
+  },
+  "HumanSignal/label-studio": {
+    "archived": false,
+    "pushed": "2026-04-07T06:32:36Z",
+    "stars": 26946
+  },
+  "snorkel-team/snorkel": {
+    "archived": false,
+    "pushed": "2024-05-02T18:39:42Z",
+    "stars": 5947
+  },
+  "argilla-io/argilla": {
+    "archived": false,
+    "pushed": "2026-04-06T22:29:25Z",
+    "stars": 4925
+  },
+  "argilla-io/distilabel": {
+    "archived": false,
+    "pushed": "2026-04-06T22:29:56Z",
+    "stars": 3156
+  },
+  "autodistill/autodistill": {
+    "archived": false,
+    "pushed": "2025-05-14T07:53:55Z",
+    "stars": 2658
+  },
+  "refuel-ai/autolabel": {
+    "archived": false,
+    "pushed": "2025-03-05T01:15:43Z",
+    "stars": 2310
+  },
+  "sdv-dev/SDV": {
+    "archived": false,
+    "pushed": "2026-04-06T20:16:28Z",
+    "stars": 3461
+  },
+  "hitsz-ids/synthetic-data-generator": {
+    "archived": false,
+    "pushed": "2026-04-06T18:26:58Z",
+    "stars": 2416
+  },
+  "datadreamer-dev/DataDreamer": {
+    "archived": false,
+    "pushed": "2025-02-02T21:23:50Z",
+    "stars": 1108
+  },
+  "gretelai/gretel-synthetics": {
+    "archived": true,
+    "pushed": "2025-06-24T21:44:06Z",
+    "stars": 676
+  },
+  "mit-han-lab/llm-awq": {
+    "archived": false,
+    "pushed": "2025-07-17T19:44:51Z",
+    "stars": 3491
+  },
+  "VainF/Torch-Pruning": {
+    "archived": false,
+    "pushed": "2025-09-07T17:25:20Z",
+    "stars": 3282
+  },
+  "vllm-project/llm-compressor": {
+    "archived": false,
+    "pushed": "2026-04-07T19:44:05Z",
+    "stars": 2986
+  },
+  "intel/neural-compressor": {
+    "archived": false,
+    "pushed": "2026-04-07T08:52:04Z",
+    "stars": 2611
+  },
+  "NVIDIA/Model-Optimizer": {
+    "archived": false,
+    "pushed": "2026-04-07T20:06:50Z",
+    "stars": 2395
+  },
+  "ModelCloud/GPTQModel": {
+    "archived": false,
+    "pushed": "2026-04-07T19:57:51Z",
+    "stars": 1092
+  },
+  "ollama/ollama": {
+    "archived": false,
+    "pushed": "2026-04-07T16:18:40Z",
+    "stars": 168021
+  },
+  "ggml-org/llama.cpp": {
+    "archived": false,
+    "pushed": "2026-04-07T20:01:02Z",
+    "stars": 102325
+  },
+  "vllm-project/vllm": {
+    "archived": false,
+    "pushed": "2026-04-07T19:24:50Z",
+    "stars": 75591
+  },
+  "sgl-project/sglang": {
+    "archived": false,
+    "pushed": "2026-04-07T20:04:07Z",
+    "stars": 25524
+  },
+  "microsoft/onnxruntime": {
+    "archived": false,
+    "pushed": "2026-04-07T19:49:02Z",
+    "stars": 19784
+  },
+  "NVIDIA/TensorRT-LLM": {
+    "archived": false,
+    "pushed": "2026-04-07T18:17:33Z",
+    "stars": 13313
+  },
+  "triton-inference-server/server": {
+    "archived": false,
+    "pushed": "2026-04-07T17:48:38Z",
+    "stars": 10525
+  },
+  "openvinotoolkit/openvino": {
+    "archived": false,
+    "pushed": "2026-04-07T17:54:46Z",
+    "stars": 10024
+  },
+  "bentoml/BentoML": {
+    "archived": false,
+    "pushed": "2026-04-06T16:58:03Z",
+    "stars": 8560
+  },
+  "InternLM/lmdeploy": {
+    "archived": false,
+    "pushed": "2026-04-07T10:06:22Z",
+    "stars": 7757
+  },
+  "kserve/kserve": {
+    "archived": false,
+    "pushed": "2026-04-06T14:25:10Z",
+    "stars": 5300
+  },
+  "pytorch/executorch": {
+    "archived": false,
+    "pushed": "2026-04-07T19:34:36Z",
+    "stars": 4480
+  },
+  "Lightning-AI/LitServe": {
+    "archived": false,
+    "pushed": "2026-04-07T06:39:13Z",
+    "stars": 3859
+  },
+  "evidentlyai/evidently": {
+    "archived": false,
+    "pushed": "2026-03-30T12:37:28Z",
+    "stars": 7374
+  },
+  "Giskard-AI/giskard-oss": {
+    "archived": false,
+    "pushed": "2026-04-07T02:12:34Z",
+    "stars": 5224
+  },
+  "deepchecks/deepchecks": {
+    "archived": false,
+    "pushed": "2025-12-28T12:07:44Z",
+    "stars": 4002
+  },
+  "whylabs/whylogs": {
+    "archived": false,
+    "pushed": "2025-01-10T20:14:49Z",
+    "stars": 2811
+  },
+  "SeldonIO/alibi-detect": {
+    "archived": false,
+    "pushed": "2025-12-11T16:35:15Z",
+    "stars": 2509
+  },
+  "NannyML/nannyml": {
+    "archived": false,
+    "pushed": "2025-07-12T08:12:42Z",
+    "stars": 2136
+  },
+  "NVIDIA/garak": {
+    "archived": false,
+    "pushed": "2026-04-07T16:58:57Z",
+    "stars": 7486
+  },
+  "guardrails-ai/guardrails": {
+    "archived": false,
+    "pushed": "2026-04-03T19:59:16Z",
+    "stars": 6645
+  },
+  "katanemo/plano": {
+    "archived": false,
+    "pushed": "2026-04-04T16:59:12Z",
+    "stars": 6222
+  },
+  "NVIDIA-NeMo/Guardrails": {
+    "archived": false,
+    "pushed": "2026-04-07T17:35:41Z",
+    "stars": 5935
+  },
+  "confident-ai/deepteam": {
+    "archived": false,
+    "pushed": "2026-04-06T04:23:49Z",
+    "stars": 1483
+  },
+  "openai/mle-bench": {
+    "archived": false,
+    "pushed": "2026-03-20T09:39:39Z",
+    "stars": 1448
+  },
+  "google-research/nasbench": {
+    "archived": true,
+    "pushed": "2023-05-01T06:38:25Z",
+    "stars": 717
+  },
+  "D-X-Y/NAS-Bench-201": {
+    "archived": false,
+    "pushed": "2025-10-31T05:34:11Z",
+    "stars": 644
+  },
+  "openml/automlbenchmark": {
+    "archived": false,
+    "pushed": "2026-04-06T19:30:21Z",
+    "stars": 458
+  },
+  "autogluon/tabarena": {
+    "archived": false,
+    "pushed": "2026-04-07T17:42:10Z",
+    "stars": 207
+  },
+  "mlflow/mlflow": {
+    "archived": false,
+    "pushed": "2026-04-07T15:41:21Z",
+    "stars": 25181
+  },
+  "langfuse/langfuse": {
+    "archived": false,
+    "pushed": "2026-04-07T18:54:20Z",
+    "stars": 24476
+  },
+  "PrefectHQ/prefect": {
+    "archived": false,
+    "pushed": "2026-04-07T20:02:21Z",
+    "stars": 22087
+  },
+  "comet-ml/opik": {
+    "archived": false,
+    "pushed": "2026-04-07T20:00:59Z",
+    "stars": 18696
+  },
+  "kubeflow/kubeflow": {
+    "archived": false,
+    "pushed": "2026-01-05T13:47:10Z",
+    "stars": 15557
+  },
+  "treeverse/dvc": {
+    "archived": false,
+    "pushed": "2026-04-07T06:25:54Z",
+    "stars": 15510
+  },
+  "dagster-io/dagster": {
+    "archived": false,
+    "pushed": "2026-04-07T20:01:59Z",
+    "stars": 15245
+  },
+  "wandb/wandb": {
+    "archived": false,
+    "pushed": "2026-04-07T20:07:02Z",
+    "stars": 10972
+  },
+  "kedro-org/kedro": {
+    "archived": false,
+    "pushed": "2026-04-07T16:18:01Z",
+    "stars": 10811
+  },
+  "Netflix/metaflow": {
+    "archived": false,
+    "pushed": "2026-04-07T18:37:37Z",
+    "stars": 10016
+  },
+  "Arize-ai/phoenix": {
+    "archived": false,
+    "pushed": "2026-04-07T19:08:02Z",
+    "stars": 9195
+  },
+  "feast-dev/feast": {
+    "archived": false,
+    "pushed": "2026-04-07T17:43:59Z",
+    "stars": 6913
+  },
+  "clearml/clearml": {
+    "archived": false,
+    "pushed": "2026-04-03T08:09:56Z",
+    "stars": 6612
+  },
+  "aimhubio/aim": {
+    "archived": false,
+    "pushed": "2026-04-06T20:10:29Z",
+    "stars": 6075
+  },
+  "zenml-io/zenml": {
+    "archived": false,
+    "pushed": "2026-04-07T19:36:07Z",
+    "stars": 5319
+  },
+  "josephmisiti/awesome-machine-learning": {
+    "archived": false,
+    "pushed": "2026-03-15T15:16:19Z",
+    "stars": 72188
+  },
+  "ChristosChristofidis/awesome-deep-learning": {
+    "archived": false,
+    "pushed": "2025-05-26T12:28:00Z",
+    "stars": 27862
+  },
+  "Hannibal046/Awesome-LLM": {
+    "archived": false,
+    "pushed": "2025-07-31T02:38:24Z",
+    "stars": 26610
+  },
+  "EthicalML/awesome-production-machine-learning": {
+    "archived": false,
+    "pushed": "2026-04-07T04:53:54Z",
+    "stars": 20346
+  },
+  "visenger/awesome-mlops": {
+    "archived": false,
+    "pushed": "2024-11-21T14:45:11Z",
+    "stars": 13844
+  },
+  "steven2358/awesome-generative-ai": {
+    "archived": false,
+    "pushed": "2026-04-07T18:11:11Z",
+    "stars": 11775
+  }
+}

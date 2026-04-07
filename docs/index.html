@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awesome AutoML Explorer</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-card: #161b22;
+    --bg-hover: #1c2128;
+    --border: #30363d;
+    --border-muted: #21262d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    --accent-blue: #1f6feb;
+    --accent-blue-light: #388bfd;
+    --accent-green: #238636;
+    --accent-green-light: #2ea043;
+    --accent-orange: #d29922;
+    --accent-red: #da3633;
+    --accent-purple: #6e40c9;
+    --star-color: #e3b341;
+    --radius: 8px;
+    --radius-sm: 5px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+    --shadow-hover: 0 4px 12px rgba(0,0,0,0.5);
+    --transition: 0.15s ease;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  a { color: var(--accent-blue-light); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .site-header {
+    background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 24px 24px;
+    text-align: center;
+  }
+
+  .site-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .site-header .subtitle {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+
+  .header-links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .header-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: 13px;
+    transition: all var(--transition);
+  }
+
+  .header-link:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    border-color: var(--accent-blue);
+    text-decoration: none;
+  }
+
+  .controls {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .search-wrap {
+    flex: 1 1 260px;
+    position: relative;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+    font-size: 15px;
+  }
+
+  #search {
+    width: 100%;
+    padding: 8px 10px 8px 34px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 14px;
+    outline: none;
+    transition: border-color var(--transition);
+  }
+
+  #search:focus { border-color: var(--accent-blue); }
+  #search::placeholder { color: var(--text-muted); }
+
+  .filter-wrap { flex: 0 1 220px; }
+
+  #category-filter {
+    width: 100%;
+    padding: 8px 10px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color var(--transition);
+  }
+
+  #category-filter:focus { border-color: var(--accent-blue); }
+
+  .sort-group {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .sort-group label {
+    color: var(--text-muted);
+    font-size: 12px;
+    align-self: center;
+    margin-right: 4px;
+  }
+
+  .sort-btn {
+    padding: 7px 12px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+  }
+
+  .sort-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+  .sort-btn.active {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: #fff;
+  }
+
+  .toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .toggle-wrap input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--accent-blue);
+    cursor: pointer;
+  }
+
+  .stats-bar {
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-muted);
+  }
+
+  .stats-count strong { color: var(--text-primary); }
+  .stats-generated { font-size: 11px; color: var(--text-muted); }
+
+  .main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 24px 40px;
+  }
+
+  .category-section { margin-bottom: 28px; }
+
+  .category-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-muted);
+  }
+
+  .category-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .category-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    padding: 1px 7px;
+    border-radius: 10px;
+    border: 1px solid var(--border-muted);
+  }
+
+  .category-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-left: auto;
+    max-width: 480px;
+    text-align: right;
+    display: none;
+  }
+
+  @media (min-width: 900px) { .category-desc { display: block; } }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-blue);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-1px);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .card-name-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .card-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--accent-blue-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-name:hover { text-decoration: underline; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 1px 7px;
+    border-radius: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .badge-archived {
+    background: rgba(218,54,51,0.15);
+    color: #f85149;
+    border: 1px solid rgba(218,54,51,0.3);
+  }
+
+  .badge-unmaintained {
+    background: rgba(210,153,34,0.15);
+    color: #d29922;
+    border: 1px solid rgba(210,153,34,0.3);
+  }
+
+  .badge-note {
+    background: rgba(110,64,201,0.12);
+    color: #a371f7;
+    border: 1px solid rgba(110,64,201,0.25);
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .stars .star-icon { color: var(--star-color); }
+  .stars .star-count { font-weight: 500; }
+  .stars.zero { opacity: 0.35; }
+
+  .last-commit {
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .last-commit.recent { color: var(--accent-green-light); }
+  .last-commit.medium { color: var(--accent-orange); }
+  .last-commit.stale  { color: var(--accent-red); }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .cat-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(31,111,235,0.12);
+    color: var(--accent-blue-light);
+    border: 1px solid rgba(31,111,235,0.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+
+  .cat-badge:hover {
+    background: rgba(31,111,235,0.25);
+    border-color: var(--accent-blue);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    display: none;
+  }
+
+  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+  .empty-state p { font-size: 15px; }
+  .empty-state .hint { font-size: 13px; margin-top: 8px; }
+  .empty-state a { color: var(--accent-blue-light); cursor: pointer; }
+
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 24px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+  }
+
+  .site-footer a { color: var(--text-secondary); }
+
+  #loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    gap: 12px;
+    color: var(--text-muted);
+  }
+
+  .spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #error-msg {
+    display: none;
+    margin: 40px auto;
+    max-width: 520px;
+    padding: 20px;
+    background: rgba(218,54,51,0.1);
+    border: 1px solid rgba(218,54,51,0.3);
+    border-radius: var(--radius);
+    color: #f85149;
+    text-align: center;
+  }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg-primary); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+  @media (max-width: 640px) {
+    .site-header h1 { font-size: 22px; }
+    .controls { padding: 12px 16px; }
+    .main { padding: 16px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .stats-bar { flex-direction: column; align-items: flex-start; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>&#x1F916; Awesome AutoML Explorer</h1>
+  <p class="subtitle">250+ AI/ML automation tools &mdash; sort, filter, and search</p>
+  <div class="header-links">
+    <a class="header-link" href="https://github.com/jbogocz/awesome-automl" target="_blank" rel="noopener">
+      &#x2B50; GitHub Repo
+    </a>
+    <a class="header-link" href="https://github.com/jbogocz/awesome-automl/blob/main/contributing.md" target="_blank" rel="noopener">
+      &#x270F; Contribute
+    </a>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">&#x1F50D;</span>
+    <input id="search" type="search" placeholder="Search by name, description&#x2026;" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="filter-wrap">
+    <select id="category-filter">
+      <option value="">All categories</option>
+    </select>
+  </div>
+  <div class="sort-group">
+    <label>Sort:</label>
+    <button class="sort-btn active" data-sort="stars">&#x2B50; Stars</button>
+    <button class="sort-btn" data-sort="name">A&#x2013;Z</button>
+    <button class="sort-btn" data-sort="updated">Updated</button>
+  </div>
+  <label class="toggle-wrap" title="Hide archived and unmaintained projects">
+    <input type="checkbox" id="hide-archived"> Hide archived
+  </label>
+</div>
+
+<div class="stats-bar">
+  <div class="stats-count" id="stats-count">Loading&#x2026;</div>
+  <div class="stats-generated" id="stats-generated"></div>
+</div>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <span>Loading project data&#x2026;</span>
+</div>
+
+<div id="error-msg"></div>
+
+<main class="main" id="main" style="display:none"></main>
+
+<div class="empty-state" id="empty-state">
+  <div class="icon">&#x1F50E;</div>
+  <p>No projects match your filters.</p>
+  <p class="hint"><a id="clear-filters">Clear all filters</a> to see all projects.</p>
+</div>
+
+<footer class="site-footer">
+  Data auto-generated from
+  <a href="https://github.com/jbogocz/awesome-automl/blob/main/projects.yaml" target="_blank" rel="noopener">projects.yaml</a>.
+  Powered by <strong>AI Curator Engine</strong>.
+  &nbsp;&middot;&nbsp;
+  <a href="https://github.com/jbogocz/awesome-automl" target="_blank" rel="noopener">jbogocz/awesome-automl</a>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var allProjects = [];
+  var sortMode = "stars";
+  var searchQuery = "";
+  var categoryFilter = "";
+  var hideArchived = false;
+  var allCategoryMap = {};
+  var originalCategoryOrder = [];
+
+  function fmtStars(n) {
+    if (!n) return "\u2013";
+    if (n >= 1000) return (n / 1000).toFixed(n >= 10000 ? 0 : 1) + "k";
+    return String(n);
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return "";
+    var d = new Date(iso);
+    var now = new Date();
+    var days = Math.floor((now - d) / 86400000);
+    if (days < 1)  return "today";
+    if (days < 7)  return days + "d ago";
+    if (days < 30) return Math.floor(days / 7) + "w ago";
+    if (days < 365) return Math.floor(days / 30) + "mo ago";
+    var yrs = (days / 365).toFixed(1);
+    return yrs.endsWith(".0") ? yrs.slice(0, -2) + "y ago" : yrs + "y ago";
+  }
+
+  function commitClass(iso) {
+    if (!iso) return "";
+    var days = Math.floor((new Date() - new Date(iso)) / 86400000);
+    if (days < 90)  return "recent";
+    if (days < 365) return "medium";
+    return "stale";
+  }
+
+  function isUnmaintained(note) {
+    if (!note) return false;
+    var lower = note.toLowerCase();
+    return lower.indexOf("unmaintained") >= 0 || lower.indexOf("deprecated") >= 0 ||
+           lower.indexOf("archived") >= 0 || lower.indexOf("historical") >= 0 ||
+           lower.indexOf("maintenance mode") >= 0;
+  }
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function filterAndSort() {
+    var q = searchQuery.toLowerCase().trim();
+    var result = allProjects.filter(function (p) {
+      if (hideArchived && (p.archived || isUnmaintained(p.note))) return false;
+      if (categoryFilter && p.category !== categoryFilter) return false;
+      if (q) {
+        return p.name.toLowerCase().indexOf(q) >= 0 ||
+               p.description.toLowerCase().indexOf(q) >= 0 ||
+               p.category.toLowerCase().indexOf(q) >= 0 ||
+               (p.note && p.note.toLowerCase().indexOf(q) >= 0);
+      }
+      return true;
+    });
+
+    result.sort(function (a, b) {
+      if (sortMode === "stars") return (b.stars || 0) - (a.stars || 0);
+      if (sortMode === "name")  return a.name.localeCompare(b.name);
+      if (sortMode === "updated") {
+        if (!a.lastCommit && !b.lastCommit) return 0;
+        if (!a.lastCommit) return 1;
+        if (!b.lastCommit) return -1;
+        return new Date(b.lastCommit) - new Date(a.lastCommit);
+      }
+      return 0;
+    });
+
+    return result;
+  }
+
+  function renderCard(p) {
+    var archived = p.archived;
+    var unmaintained = isUnmaintained(p.note);
+    var starsClass = (!p.stars) ? " zero" : "";
+    var dc = commitClass(p.lastCommit);
+
+    var badges = "";
+    if (archived) {
+      badges += '<span class="badge badge-archived">Archived</span>';
+    } else if (unmaintained) {
+      var m = p.note.match(/unmaintained|deprecated|historical|maintenance/i);
+      var lbl = m ? m[0] : "Unmaintained";
+      badges += '<span class="badge badge-unmaintained">' + esc(lbl) + '</span>';
+    }
+
+    var noteHtml = "";
+    if (p.note && !unmaintained && !archived) {
+      var short = p.note.length > 40 ? p.note.slice(0, 38) + "\u2026" : p.note;
+      noteHtml = '<span class="badge badge-note" title="' + esc(p.note) + '">' + esc(short) + '</span>';
+    }
+
+    var dateHtml = "";
+    if (p.lastCommit) {
+      var dt = new Date(p.lastCommit).toLocaleDateString();
+      dateHtml = '<span class="last-commit ' + dc + '" title="' + esc(dt) + '">' + fmtDate(p.lastCommit) + '</span>';
+    }
+
+    var descHtml = "";
+    if (p.description) {
+      descHtml = '<p class="card-desc">' + esc(p.description) + '</p>';
+    }
+
+    return '<div class="card">' +
+      '<div class="card-top">' +
+        '<div class="card-name-wrap">' +
+          '<a class="card-name" href="' + esc(p.url) + '" target="_blank" rel="noopener" title="' + esc(p.name) + '">' + esc(p.name) + '</a>' +
+          badges + noteHtml +
+        '</div>' +
+        '<div class="card-meta">' +
+          '<span class="stars' + starsClass + '">' +
+            '<span class="star-icon">&#x2B50;</span>' +
+            '<span class="star-count">' + fmtStars(p.stars) + '</span>' +
+          '</span>' +
+          dateHtml +
+        '</div>' +
+      '</div>' +
+      descHtml +
+      '<div><span class="cat-badge" data-cat="' + esc(p.category) + '">' + esc(p.category) + '</span></div>' +
+    '</div>';
+  }
+
+  function renderSection(catName, catDesc, projects) {
+    var cards = projects.map(renderCard).join("");
+    var descHtml = catDesc ? '<span class="category-desc">' + esc(catDesc) + '</span>' : "";
+    return '<section class="category-section">' +
+      '<div class="category-header">' +
+        '<h2 class="category-name">' + esc(catName) + '</h2>' +
+        '<span class="category-count">' + projects.length + '</span>' +
+        descHtml +
+      '</div>' +
+      '<div class="cards-grid">' + cards + '</div>' +
+    '</section>';
+  }
+
+  function renderMain(projects) {
+    var main = document.getElementById("main");
+    var emptyState = document.getElementById("empty-state");
+    var statsEl = document.getElementById("stats-count");
+
+    statsEl.innerHTML = "Showing <strong>" + projects.length + "</strong> of <strong>" + allProjects.length + "</strong> projects";
+
+    if (projects.length === 0) {
+      main.style.display = "none";
+      emptyState.style.display = "block";
+      return;
+    }
+
+    emptyState.style.display = "none";
+    main.style.display = "block";
+
+    var html;
+    var useFlat = (categoryFilter || searchQuery);
+
+    if (useFlat) {
+      var catName = categoryFilter || "Search Results";
+      var catDesc = categoryFilter ? (allCategoryMap[categoryFilter] || "") : (projects.length + " matching projects");
+      html = renderSection(catName, catDesc, projects);
+    } else {
+      var sections = [];
+      for (var i = 0; i < originalCategoryOrder.length; i++) {
+        var cat = originalCategoryOrder[i];
+        var ps = projects.filter(function (p) { return p.category === cat; });
+        if (ps.length) sections.push(renderSection(cat, allCategoryMap[cat] || "", ps));
+      }
+      html = sections.join("");
+    }
+
+    main.innerHTML = html;
+
+    var badges = main.querySelectorAll(".cat-badge");
+    for (var j = 0; j < badges.length; j++) {
+      (function (el) {
+        el.addEventListener("click", function () {
+          var cat = el.getAttribute("data-cat");
+          var sel = document.getElementById("category-filter");
+          if (categoryFilter === cat) {
+            sel.value = "";
+            categoryFilter = "";
+          } else {
+            sel.value = cat;
+            categoryFilter = cat;
+          }
+          update();
+        });
+      })(badges[j]);
+    }
+  }
+
+  function update() {
+    renderMain(filterAndSort());
+  }
+
+  function init() {
+    var loadingEl = document.getElementById("loading");
+    var errorEl   = document.getElementById("error-msg");
+
+    fetch("./data.json")
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        for (var i = 0; i < data.categories.length; i++) {
+          var cat = data.categories[i];
+          allCategoryMap[cat.name] = cat.description || "";
+          originalCategoryOrder.push(cat.name);
+          for (var j = 0; j < cat.entries.length; j++) {
+            var e = cat.entries[j];
+            allProjects.push({
+              name: e.name, repo: e.repo, url: e.url,
+              description: e.description, note: e.note,
+              stars: e.stars, lastCommit: e.lastCommit,
+              archived: e.archived, category: cat.name
+            });
+          }
+        }
+
+        var sel = document.getElementById("category-filter");
+        for (var k = 0; k < data.categories.length; k++) {
+          var c = data.categories[k];
+          var opt = document.createElement("option");
+          opt.value = c.name;
+          opt.textContent = c.name + " (" + c.entries.length + ")";
+          sel.appendChild(opt);
+        }
+
+        if (data.generated) {
+          document.getElementById("stats-generated").textContent =
+            "Last updated: " + new Date(data.generated).toLocaleDateString("en-US", {year:"numeric",month:"short",day:"numeric"});
+        }
+
+        loadingEl.style.display = "none";
+        update();
+      })
+      .catch(function (err) {
+        loadingEl.style.display = "none";
+        errorEl.style.display = "block";
+        errorEl.textContent = "Failed to load data.json: " + String(err);
+      });
+  }
+
+  document.getElementById("search").addEventListener("input", function (e) {
+    searchQuery = e.target.value;
+    update();
+  });
+
+  document.getElementById("category-filter").addEventListener("change", function (e) {
+    categoryFilter = e.target.value;
+    update();
+  });
+
+  var sortBtns = document.querySelectorAll(".sort-btn");
+  for (var i = 0; i < sortBtns.length; i++) {
+    (function (btn) {
+      btn.addEventListener("click", function () {
+        for (var j = 0; j < sortBtns.length; j++) sortBtns[j].classList.remove("active");
+        btn.classList.add("active");
+        sortMode = btn.getAttribute("data-sort");
+        update();
+      });
+    })(sortBtns[i]);
+  }
+
+  document.getElementById("hide-archived").addEventListener("change", function (e) {
+    hideArchived = e.target.checked;
+    update();
+  });
+
+  document.getElementById("clear-filters").addEventListener("click", function () {
+    searchQuery = "";
+    categoryFilter = "";
+    hideArchived = false;
+    document.getElementById("search").value = "";
+    document.getElementById("category-filter").value = "";
+    document.getElementById("hide-archived").checked = false;
+    update();
+  });
+
+  init();
+})();
+</script>
+</body>
+</html>

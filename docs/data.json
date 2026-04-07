@@ -1,0 +1,2128 @@
+{
+  "generated": "2026-04-07T19:42:16.037Z",
+  "categories": [
+    {
+      "name": "General-Purpose AutoML",
+      "description": "End-to-end frameworks that automate model selection, hyperparameter tuning, and pipeline construction.",
+      "entries": [
+        {
+          "name": "Ludwig",
+          "repo": "ludwig-ai/ludwig",
+          "url": "https://github.com/ludwig-ai/ludwig",
+          "description": "Declarative deep learning framework supporting custom model building and LLM fine-tuning via YAML configs. Now under Linux Foundation AI & Data.",
+          "note": "",
+          "stars": 11665,
+          "lastCommit": "2026-04-07T17:30:10Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AutoGluon",
+          "repo": "autogluon/autogluon",
+          "url": "https://github.com/autogluon/autogluon",
+          "description": "Multi-layer stack ensembling for tabular, text, image, time-series, and multimodal data - won medals in 15/18 Kaggle tabular contests in 2024 (Amazon).",
+          "note": "",
+          "stars": 10206,
+          "lastCommit": "2026-04-06T15:59:21Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "TPOT",
+          "repo": "EpistasisLab/tpot",
+          "url": "https://github.com/EpistasisLab/tpot",
+          "description": "Genetic programming-based pipeline optimizer that designs and optimizes scikit-learn pipelines.",
+          "note": "",
+          "stars": 10047,
+          "lastCommit": "2025-09-11T21:32:19Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "PyCaret",
+          "repo": "pycaret/pycaret",
+          "url": "https://github.com/pycaret/pycaret",
+          "description": "Low-code machine learning library that automates model training, tuning, and deployment workflows in Python.",
+          "note": "",
+          "stars": 9737,
+          "lastCommit": "2025-04-21T01:09:12Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AutoKeras",
+          "repo": "keras-team/autokeras",
+          "url": "https://github.com/keras-team/autokeras",
+          "description": "Neural architecture search for deep learning models built on top of Keras.",
+          "note": "",
+          "stars": 9316,
+          "lastCommit": "2025-11-25T02:26:35Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "auto-sklearn",
+          "repo": "automl/auto-sklearn",
+          "url": "https://github.com/automl/auto-sklearn",
+          "description": "Historically important AutoML toolkit using Bayesian optimization, meta-learning, and ensemble construction.",
+          "note": "Unmaintained since Sep 2022; broken on Python 3.10+.",
+          "stars": 8079,
+          "lastCommit": "2026-01-20T14:03:29Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "H2O AutoML",
+          "repo": "h2oai/h2o-3",
+          "url": "https://github.com/h2oai/h2o-3",
+          "description": "Distributed machine learning platform with automatic training and tuning of many models within a user-specified time limit.",
+          "note": "",
+          "stars": 7522,
+          "lastCommit": "2026-04-07T14:06:24Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "FLAML",
+          "repo": "microsoft/FLAML",
+          "url": "https://github.com/microsoft/FLAML",
+          "description": "Fast and lightweight AutoML that finds good models with minimal resources - often the best choice for resource-constrained environments (Microsoft).",
+          "note": "",
+          "stars": 4319,
+          "lastCommit": "2026-04-07T04:22:02Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "LazyPredict",
+          "repo": "shankarpandala/lazypredict",
+          "url": "https://github.com/shankarpandala/lazypredict",
+          "description": "Build and evaluate dozens of scikit-learn models in a single line of code for rapid baseline comparison.",
+          "note": "Low activity since 2022.",
+          "stars": 3308,
+          "lastCommit": "2026-03-29T02:56:54Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "MLJAR Supervised",
+          "repo": "mljar/mljar-supervised",
+          "url": "https://github.com/mljar/mljar-supervised",
+          "description": "Automated ML with automatic explanations, visualizations, and Markdown reports for every trained model.",
+          "note": "",
+          "stars": 3251,
+          "lastCommit": "2026-03-26T10:21:36Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "LightAutoML",
+          "repo": "sb-ai-lab/LightAutoML",
+          "url": "https://github.com/sb-ai-lab/LightAutoML",
+          "description": "Fast and customizable AutoML framework with Kaggle-winning performance (Sber AI Lab).",
+          "note": "",
+          "stars": 1458,
+          "lastCommit": "2026-01-15T12:29:45Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "EvalML",
+          "repo": "alteryx/evalml",
+          "url": "https://github.com/alteryx/evalml",
+          "description": "AutoML library for building, optimizing, and evaluating ML pipelines with domain-specific objectives (Alteryx).",
+          "note": "",
+          "stars": 846,
+          "lastCommit": "2026-01-14T22:09:13Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "SapientML",
+          "repo": "sapientml/sapientml",
+          "url": "https://github.com/sapientml/sapientml",
+          "description": "Generative AutoML that synthesizes pipelines by learning from a corpus of existing ML solutions.",
+          "note": "",
+          "stars": 449,
+          "lastCommit": "2026-03-30T18:40:00Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Auto-WEKA",
+          "repo": "automl/autoweka",
+          "url": "https://github.com/automl/autoweka",
+          "description": "The original AutoML system (2013) combining algorithm selection and HPO in WEKA.",
+          "note": "Historical; Java-only, maintenance mode.",
+          "stars": 336,
+          "lastCommit": "2022-03-06T22:24:52Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "GAMA",
+          "repo": "amore-labs/gama",
+          "url": "https://github.com/amore-labs/gama",
+          "description": "AutoML tool that generates optimized ML pipelines using genetic programming and Bayesian optimization (OpenML).",
+          "note": "",
+          "stars": 103,
+          "lastCommit": "2024-09-04T08:31:07Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Foundation Models as AutoML",
+      "description": "Pretrained models that replace traditional pipeline-search AutoML with a single forward pass or zero-shot inference.",
+      "entries": [
+        {
+          "name": "TimesFM",
+          "repo": "google-research/timesfm",
+          "url": "https://github.com/google-research/timesfm",
+          "description": "Time-series foundation model for zero-shot forecasting across domains without task-specific training (Google).",
+          "note": "",
+          "stars": 15374,
+          "lastCommit": "2026-04-03T00:26:33Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "TabPFN",
+          "repo": "PriorLabs/TabPFN",
+          "url": "https://github.com/PriorLabs/TabPFN",
+          "description": "Tabular foundation model that matches tuned XGBoost in 2.8 seconds with a single forward pass - 100% win rate vs default XGBoost on datasets under 10K rows (Nature 2024, now v2.6 supporting up to 100K rows).",
+          "note": "",
+          "stars": 6011,
+          "lastCommit": "2026-04-07T14:33:54Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Chronos",
+          "repo": "amazon-science/chronos-forecasting",
+          "url": "https://github.com/amazon-science/chronos-forecasting",
+          "description": "Pretrained time-series foundation model for zero-shot probabilistic forecasting on unseen data (Amazon).",
+          "note": "",
+          "stars": 5087,
+          "lastCommit": "2026-03-18T11:34:29Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Moirai",
+          "repo": "SalesforceAIResearch/uni2ts",
+          "url": "https://github.com/SalesforceAIResearch/uni2ts",
+          "description": "Universal time-series forecasting transformer supporting multivariate forecasting unlike most competitors. Moirai-MoE released Oct 2024 (Salesforce).",
+          "note": "",
+          "stars": 1462,
+          "lastCommit": "2026-01-29T06:55:28Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "TabM",
+          "repo": "yandex-research/tabm",
+          "url": "https://github.com/yandex-research/tabm",
+          "description": "Parameter-efficient ensemble of MLPs based on BatchEnsemble, achieving top performance among tabular deep learning models without attention complexity (ICLR 2025, Yandex).",
+          "note": "",
+          "stars": 986,
+          "lastCommit": "2025-11-10T07:18:37Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "TALENT",
+          "repo": "LAMDA-Tabular/TALENT",
+          "url": "https://github.com/LAMDA-Tabular/TALENT",
+          "description": "Comprehensive toolkit and benchmark for tabular learning covering 35+ deep methods across 300 datasets.",
+          "note": "",
+          "stars": 834,
+          "lastCommit": "2026-03-20T18:25:45Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "TabICL",
+          "repo": "soda-inria/tabicl",
+          "url": "https://github.com/soda-inria/tabicl",
+          "description": "State-of-the-art tabular foundation model achieving 10x faster inference than TabPFN v2.5 (ICML 2025).",
+          "note": "",
+          "stars": 716,
+          "lastCommit": "2026-03-25T23:26:10Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "CARTE",
+          "repo": "soda-inria/carte",
+          "url": "https://github.com/soda-inria/carte",
+          "description": "Context-aware tabular representation using pretrained language models for data with heterogeneous columns.",
+          "note": "",
+          "stars": 168,
+          "lastCommit": "2025-08-11T09:20:00Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Automated Fine-Tuning",
+      "description": "Tools that automate the process of adapting large language models to specific tasks and domains.",
+      "entries": [
+        {
+          "name": "LLaMA-Factory",
+          "repo": "hiyouga/LlamaFactory",
+          "url": "https://github.com/hiyouga/LlamaFactory",
+          "description": "Unified fine-tuning framework for 100+ LLMs and VLMs with Full, LoRA, QLoRA, and DoRA methods plus web UI (ACL 2024).",
+          "note": "",
+          "stars": 69688,
+          "lastCommit": "2026-04-06T05:14:45Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Unsloth",
+          "repo": "unslothai/unsloth",
+          "url": "https://github.com/unslothai/unsloth",
+          "description": "Fine-tune LLMs 2-5x faster with 80% less memory on a single GPU through optimized kernels and custom autograd.",
+          "note": "",
+          "stars": 59926,
+          "lastCommit": "2026-04-07T16:05:04Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "PEFT",
+          "repo": "huggingface/peft",
+          "url": "https://github.com/huggingface/peft",
+          "description": "Standard library for parameter-efficient fine-tuning - LoRA, QLoRA, Spectrum, and more. Deeply integrated with the Hugging Face ecosystem.",
+          "note": "",
+          "stars": 20898,
+          "lastCommit": "2026-04-07T15:47:57Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "TRL",
+          "repo": "huggingface/trl",
+          "url": "https://github.com/huggingface/trl",
+          "description": "Transformer Reinforcement Learning with SFT, DPO, RLHF, and GRPO trainers for alignment and preference tuning (Hugging Face).",
+          "note": "",
+          "stars": 17959,
+          "lastCommit": "2026-04-07T17:34:34Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "LitGPT",
+          "repo": "Lightning-AI/litgpt",
+          "url": "https://github.com/Lightning-AI/litgpt",
+          "description": "Recipes for pretraining, fine-tuning, and deploying 20+ LLM architectures on your own data (Lightning AI).",
+          "note": "",
+          "stars": 13282,
+          "lastCommit": "2026-04-06T21:28:29Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Axolotl",
+          "repo": "axolotl-ai-cloud/axolotl",
+          "url": "https://github.com/axolotl-ai-cloud/axolotl",
+          "description": "Production-grade fine-tuning with multi-GPU support, sequence parallelism, and multimodal capabilities.",
+          "note": "",
+          "stars": 11602,
+          "lastCommit": "2026-04-07T15:35:36Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "LMFlow",
+          "repo": "OptimalScale/LMFlow",
+          "url": "https://github.com/OptimalScale/LMFlow",
+          "description": "Extensible toolkit for fine-tuning and inference of large foundation models, NAACL 2024 Best Demo Award.",
+          "note": "",
+          "stars": 8488,
+          "lastCommit": "2026-03-23T02:30:02Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "torchtune",
+          "repo": "meta-pytorch/torchtune",
+          "url": "https://github.com/meta-pytorch/torchtune",
+          "description": "Native PyTorch library for fine-tuning LLMs with composable building blocks and YAML configs (Meta).",
+          "note": "",
+          "stars": 5724,
+          "lastCommit": "2026-04-07T11:50:44Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Hugging Face AutoTrain",
+          "repo": "huggingface/autotrain-advanced",
+          "url": "https://github.com/huggingface/autotrain-advanced",
+          "description": "No-code training for LLMs, vision-language models, text classification, and tabular data (Hugging Face).",
+          "note": "",
+          "stars": 4568,
+          "lastCommit": "2026-04-02T09:26:01Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "LoRAX",
+          "repo": "predibase/lorax",
+          "url": "https://github.com/predibase/lorax",
+          "description": "Multi-LoRA inference server that scales to thousands of fine-tuned LLMs on a single GPU (Predibase).",
+          "note": "",
+          "stars": 3744,
+          "lastCommit": "2025-05-21T17:40:25Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Automated Prompt Optimization",
+      "description": "Systematic optimization of prompts, instructions, and demonstrations to improve LLM performance without manual tuning.",
+      "entries": [
+        {
+          "name": "DSPy",
+          "repo": "stanfordnlp/dspy",
+          "url": "https://github.com/stanfordnlp/dspy",
+          "description": "Declarative framework replacing hand-written prompts with automatic optimizers - GPT-3.5 with DSPy outperforms expert prompts by up to 46% (Stanford NLP).",
+          "note": "",
+          "stars": 33509,
+          "lastCommit": "2026-04-02T22:50:24Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "PromptWizard",
+          "repo": "microsoft/PromptWizard",
+          "url": "https://github.com/microsoft/PromptWizard",
+          "description": "Task-aware agent-driven prompt optimization using self-evolving critique and synthesis (Microsoft).",
+          "note": "",
+          "stars": 3830,
+          "lastCommit": "2025-10-13T21:51:01Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "TextGrad",
+          "repo": "zou-group/textgrad",
+          "url": "https://github.com/zou-group/textgrad",
+          "description": "Automatic differentiation via text feedback, enabling gradient-like optimization of compound AI systems (Nature 2024).",
+          "note": "",
+          "stars": 3474,
+          "lastCommit": "2025-07-25T14:30:39Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "GEPA",
+          "repo": "gepa-ai/gepa",
+          "url": "https://github.com/gepa-ai/gepa",
+          "description": "Reflective text evolution for prompt, code, and text optimization, integrated into MLflow (Cerebras).",
+          "note": "",
+          "stars": 3207,
+          "lastCommit": "2026-04-07T03:22:55Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AutoPrompt",
+          "repo": "Eladlev/AutoPrompt",
+          "url": "https://github.com/Eladlev/AutoPrompt",
+          "description": "Intent-based prompt calibration using synthetic data generation for iterative prompt refinement.",
+          "note": "",
+          "stars": 2960,
+          "lastCommit": "2025-12-02T17:23:20Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Mirascope",
+          "repo": "Mirascope/mirascope",
+          "url": "https://github.com/Mirascope/mirascope",
+          "description": "Pythonic toolkit for building LLM applications with integrated prompt versioning, tracing, and optimization.",
+          "note": "",
+          "stars": 1452,
+          "lastCommit": "2026-04-07T12:25:54Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Promptomatix",
+          "repo": "SalesforceAIResearch/promptomatix",
+          "url": "https://github.com/SalesforceAIResearch/promptomatix",
+          "description": "DSPy-powered automatic prompt optimization that transforms task descriptions into optimized prompts with cost-aware objectives (Salesforce).",
+          "note": "",
+          "stars": 938,
+          "lastCommit": "2025-08-01T19:10:41Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Prompt-Ops",
+          "repo": "meta-llama/prompt-ops",
+          "url": "https://github.com/meta-llama/prompt-ops",
+          "description": "Open-source command-line tool for building, optimizing, and managing prompts at scale (Meta).",
+          "note": "",
+          "stars": 794,
+          "lastCommit": "2026-01-26T23:58:47Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "EvoPrompt",
+          "repo": "beeevita/EvoPrompt",
+          "url": "https://github.com/beeevita/EvoPrompt",
+          "description": "Connects LLMs with evolutionary algorithms for discrete prompt optimization with up to 25% improvement over manual prompts.",
+          "note": "",
+          "stars": 224,
+          "lastCommit": "2025-09-22T11:43:23Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Automated AI Research",
+      "description": "Autonomous systems that design experiments, run them, and analyze results without human intervention.",
+      "entries": [
+        {
+          "name": "AutoResearch",
+          "repo": "karpathy/autoresearch",
+          "url": "https://github.com/karpathy/autoresearch",
+          "description": "Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026).",
+          "note": "",
+          "stars": 67974,
+          "lastCommit": "2026-03-26T00:07:37Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AutoGen",
+          "repo": "microsoft/autogen",
+          "url": "https://github.com/microsoft/autogen",
+          "description": "Multi-agent conversation framework for building AI agent systems. Now in maintenance mode as AG2 (Microsoft).",
+          "note": "",
+          "stars": 56793,
+          "lastCommit": "2026-04-06T22:35:34Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "CrewAI",
+          "repo": "crewAIInc/crewAI",
+          "url": "https://github.com/crewAIInc/crewAI",
+          "description": "Multi-agent framework orchestrating role-playing specialist agents for complex AI workflows.",
+          "note": "",
+          "stars": 48269,
+          "lastCommit": "2026-04-07T17:45:01Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "STORM",
+          "repo": "stanford-oval/storm",
+          "url": "https://github.com/stanford-oval/storm",
+          "description": "LLM-powered knowledge curation that researches topics and generates full articles with citations (Stanford).",
+          "note": "",
+          "stars": 28059,
+          "lastCommit": "2025-09-30T18:07:21Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AI-Scientist",
+          "repo": "SakanaAI/AI-Scientist",
+          "url": "https://github.com/SakanaAI/AI-Scientist",
+          "description": "Fully automated open-ended scientific discovery from idea generation to experiment execution to paper writing (Sakana AI).",
+          "note": "",
+          "stars": 13095,
+          "lastCommit": "2025-12-19T07:46:21Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "PaperQA",
+          "repo": "Future-House/paper-qa",
+          "url": "https://github.com/Future-House/paper-qa",
+          "description": "High-accuracy retrieval-augmented generation for answering questions from scientific literature.",
+          "note": "",
+          "stars": 8347,
+          "lastCommit": "2026-03-20T17:41:36Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AI-Scientist-v2",
+          "repo": "SakanaAI/AI-Scientist-v2",
+          "url": "https://github.com/SakanaAI/AI-Scientist-v2",
+          "description": "Second generation using agentic tree search, producing the first AI-generated paper accepted at a peer-reviewed workshop.",
+          "note": "",
+          "stars": 5198,
+          "lastCommit": "2025-12-19T07:46:32Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AI-Researcher",
+          "repo": "HKUDS/AI-Researcher",
+          "url": "https://github.com/HKUDS/AI-Researcher",
+          "description": "Autonomous agent automating the full research lifecycle from literature review to experimentation (NeurIPS 2025 Spotlight).",
+          "note": "",
+          "stars": 5067,
+          "lastCommit": "2025-10-16T06:47:34Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AIDE",
+          "repo": "WecoAI/aideml",
+          "url": "https://github.com/WecoAI/aideml",
+          "description": "ML engineering agent using tree search over solution space - exceeds 50% of human Kaggle competitors; top agents using AIDE achieve medals in 64%+ of MLE-Bench competitions (Weco AI).",
+          "note": "",
+          "stars": 1209,
+          "lastCommit": "2026-02-12T13:02:34Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AutoML-Agent",
+          "repo": "DeepAuto-AI/automl-agent",
+          "url": "https://github.com/DeepAuto-AI/automl-agent",
+          "description": "Multi-agent LLM framework for full-pipeline AutoML from data retrieval through model deployment (ICML 2025).",
+          "note": "",
+          "stars": 118,
+          "lastCommit": "2025-07-11T19:39:49Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "ML Engineering Agents",
+      "description": "AI agents that autonomously write, debug, and optimize code for software and ML engineering.",
+      "entries": [
+        {
+          "name": "OpenHands",
+          "repo": "OpenHands/OpenHands",
+          "url": "https://github.com/OpenHands/OpenHands",
+          "description": "AI software development platform achieving 53-72% resolve rate on SWE-Bench Verified.",
+          "note": "",
+          "stars": 70757,
+          "lastCommit": "2026-04-07T17:39:31Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Aider",
+          "repo": "Aider-AI/aider",
+          "url": "https://github.com/Aider-AI/aider",
+          "description": "AI pair programmer in the terminal that edits code directly in your local repository.",
+          "note": "",
+          "stars": 42959,
+          "lastCommit": "2026-03-17T01:21:34Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "SWE-agent",
+          "repo": "SWE-agent/SWE-agent",
+          "url": "https://github.com/SWE-agent/SWE-agent",
+          "description": "Autonomous agent that solves real GitHub issues by reading, editing, and testing code (NeurIPS 2024).",
+          "note": "",
+          "stars": 18943,
+          "lastCommit": "2026-04-06T22:15:28Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "mini-swe-agent",
+          "repo": "SWE-agent/mini-swe-agent",
+          "url": "https://github.com/SWE-agent/mini-swe-agent",
+          "description": "Minimalist 100-line coding agent achieving 74% on SWE-bench Verified as a learning reference.",
+          "note": "",
+          "stars": 3701,
+          "lastCommit": "2026-04-06T22:15:18Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AutoCodeRover",
+          "repo": "AutoCodeRoverSG/auto-code-rover",
+          "url": "https://github.com/AutoCodeRoverSG/auto-code-rover",
+          "description": "Structure-aware autonomous program repair combining code search with LLM-based patching.",
+          "note": "",
+          "stars": 3064,
+          "lastCommit": "2025-04-24T07:58:24Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "LLM Evaluation and Testing",
+      "description": "Frameworks for automated evaluation, testing, and benchmarking of language models and AI systems.",
+      "entries": [
+        {
+          "name": "Promptfoo",
+          "repo": "promptfoo/promptfoo",
+          "url": "https://github.com/promptfoo/promptfoo",
+          "description": "Test and red-team LLM applications with automated evaluations, CI/CD integration, and vulnerability scanning.",
+          "note": "",
+          "stars": 19696,
+          "lastCommit": "2026-04-07T17:41:59Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "DeepEval",
+          "repo": "confident-ai/deepeval",
+          "url": "https://github.com/confident-ai/deepeval",
+          "description": "Pytest-like framework with 14+ evaluation metrics for RAG, fine-tuning, and alignment assessment.",
+          "note": "",
+          "stars": 14566,
+          "lastCommit": "2026-04-07T15:27:51Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "RAGAS",
+          "repo": "vibrantlabsai/ragas",
+          "url": "https://github.com/vibrantlabsai/ragas",
+          "description": "Evaluation framework for RAG quality assessment measuring both retrieval and generation with LLM-based and traditional metrics.",
+          "note": "",
+          "stars": 13264,
+          "lastCommit": "2026-02-24T07:47:19Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "lm-evaluation-harness",
+          "repo": "EleutherAI/lm-evaluation-harness",
+          "url": "https://github.com/EleutherAI/lm-evaluation-harness",
+          "description": "Standard framework for few-shot evaluation of language models across hundreds of benchmarks (EleutherAI).",
+          "note": "",
+          "stars": 12040,
+          "lastCommit": "2026-04-01T11:53:45Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "OpenCompass",
+          "repo": "open-compass/opencompass",
+          "url": "https://github.com/open-compass/opencompass",
+          "description": "One-stop evaluation platform supporting 100+ models across academic and real-world benchmarks.",
+          "note": "",
+          "stars": 6835,
+          "lastCommit": "2026-04-07T09:22:04Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Agenta",
+          "repo": "Agenta-AI/agenta",
+          "url": "https://github.com/Agenta-AI/agenta",
+          "description": "Open-source LLMOps platform combining prompt playground, evaluation workflows, and production observability.",
+          "note": "",
+          "stars": 4009,
+          "lastCommit": "2026-04-07T17:28:21Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "TruLens",
+          "repo": "truera/trulens",
+          "url": "https://github.com/truera/trulens",
+          "description": "OpenTelemetry-based tracing and evaluation for RAG and agent workflows with built-in feedback functions (Snowflake/TruEra).",
+          "note": "",
+          "stars": 3232,
+          "lastCommit": "2026-04-06T14:09:41Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "LangWatch",
+          "repo": "langwatch/langwatch",
+          "url": "https://github.com/langwatch/langwatch",
+          "description": "Evaluation and testing platform for LLM applications and AI agents with automated quality guardrails.",
+          "note": "",
+          "stars": 3186,
+          "lastCommit": "2026-04-07T17:18:36Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "LightEval",
+          "repo": "huggingface/lighteval",
+          "url": "https://github.com/huggingface/lighteval",
+          "description": "All-in-one LLM evaluation toolkit powering the Open LLM Leaderboard, supporting 1000+ tasks across multiple backends (Hugging Face).",
+          "note": "",
+          "stars": 2369,
+          "lastCommit": "2026-04-07T13:26:29Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Inspect AI",
+          "repo": "UKGovernmentBEIS/inspect_ai",
+          "url": "https://github.com/UKGovernmentBEIS/inspect_ai",
+          "description": "Framework for reproducible LLM evals with sandboxed agent execution, 100+ prebuilt evaluations, and VS Code integration (UK AI Safety Institute).",
+          "note": "",
+          "stars": 1887,
+          "lastCommit": "2026-04-07T13:00:57Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "LLM Routing and Selection",
+      "description": "Intelligent routing of requests to the optimal model based on task complexity, cost, and performance.",
+      "entries": [
+        {
+          "name": "LiteLLM",
+          "repo": "BerriAI/litellm",
+          "url": "https://github.com/BerriAI/litellm",
+          "description": "Unified API gateway for 100+ LLMs with load balancing, cost tracking, and automatic fallback routing.",
+          "note": "",
+          "stars": 42465,
+          "lastCommit": "2026-04-07T17:39:08Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Portkey Gateway",
+          "repo": "Portkey-AI/gateway",
+          "url": "https://github.com/Portkey-AI/gateway",
+          "description": "AI gateway for intelligent routing, caching, load balancing, and fallbacks across 200+ LLMs.",
+          "note": "",
+          "stars": 11233,
+          "lastCommit": "2026-03-25T09:33:55Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "RouteLLM",
+          "repo": "lm-sys/RouteLLM",
+          "url": "https://github.com/lm-sys/RouteLLM",
+          "description": "Framework for training and serving LLM routers that reduce costs by up to 85% without quality loss (LMSYS).",
+          "note": "",
+          "stars": 4767,
+          "lastCommit": "2024-08-10T19:10:15Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "LLMRouter",
+          "repo": "ulab-uiuc/LLMRouter",
+          "url": "https://github.com/ulab-uiuc/LLMRouter",
+          "description": "Unified library with 16+ router implementations and standardized evaluation via command-line interface.",
+          "note": "",
+          "stars": 1606,
+          "lastCommit": "2026-03-17T21:50:45Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Time-Series AutoML",
+      "description": "Automated forecasting, classification, and anomaly detection for temporal data.",
+      "entries": [
+        {
+          "name": "sktime",
+          "repo": "sktime/sktime",
+          "url": "https://github.com/sktime/sktime",
+          "description": "Unified framework for time-series forecasting, classification, regression, and clustering with scikit-learn-compatible interfaces.",
+          "note": "",
+          "stars": 9712,
+          "lastCommit": "2026-04-05T21:16:27Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Darts",
+          "repo": "unit8co/darts",
+          "url": "https://github.com/unit8co/darts",
+          "description": "Unified API for 30+ forecasting models from ARIMA to transformers, with backtesting and ensembling built in.",
+          "note": "",
+          "stars": 9310,
+          "lastCommit": "2026-04-07T06:52:06Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Nixtla StatsForecast",
+          "repo": "Nixtla/statsforecast",
+          "url": "https://github.com/Nixtla/statsforecast",
+          "description": "Lightning-fast statistical models including AutoARIMA, AutoETS, and AutoCES for millions of time series.",
+          "note": "",
+          "stars": 4747,
+          "lastCommit": "2026-04-06T21:24:29Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Merlion",
+          "repo": "salesforce/Merlion",
+          "url": "https://github.com/salesforce/Merlion",
+          "description": "Time-series intelligence library with unified interfaces for forecasting, anomaly detection, and change-point detection (Salesforce).",
+          "note": "",
+          "stars": 4470,
+          "lastCommit": "2026-03-11T12:52:32Z",
+          "archived": true,
+          "language": ""
+        },
+        {
+          "name": "Nixtla NeuralForecast",
+          "repo": "Nixtla/neuralforecast",
+          "url": "https://github.com/Nixtla/neuralforecast",
+          "description": "Production-ready neural forecasting with 30+ state-of-the-art models including N-BEATS, TFT, and PatchTST.",
+          "note": "",
+          "stars": 4034,
+          "lastCommit": "2026-04-06T22:35:25Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "PyPOTS",
+          "repo": "WenjieDu/PyPOTS",
+          "url": "https://github.com/WenjieDu/PyPOTS",
+          "description": "Toolbox with 50+ deep learning models for partially-observed time-series imputation, classification, and clustering.",
+          "note": "",
+          "stars": 1984,
+          "lastCommit": "2026-03-27T08:50:00Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Lag-Llama",
+          "repo": "time-series-foundation-models/lag-llama",
+          "url": "https://github.com/time-series-foundation-models/lag-llama",
+          "description": "First open-source foundation model for univariate probabilistic time-series forecasting based on a decoder-only transformer (NeurIPS 2024).",
+          "note": "",
+          "stars": 1567,
+          "lastCommit": "2025-06-06T12:23:52Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "skforecast",
+          "repo": "skforecast/skforecast",
+          "url": "https://github.com/skforecast/skforecast",
+          "description": "Scikit-learn-compatible multi-step forecasting with XGBoost, LightGBM, CatBoost, and feature engineering utilities.",
+          "note": "",
+          "stars": 1476,
+          "lastCommit": "2026-04-07T13:10:35Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AutoTS",
+          "repo": "winedarksea/AutoTS",
+          "url": "https://github.com/winedarksea/AutoTS",
+          "description": "Genetic algorithm-based automated model selection, ensembling, and anomaly detection for time-series data.",
+          "note": "",
+          "stars": 1384,
+          "lastCommit": "2026-04-07T12:34:13Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "aeon",
+          "repo": "aeon-toolkit/aeon",
+          "url": "https://github.com/aeon-toolkit/aeon",
+          "description": "Next-generation time-series ML toolkit for classification, regression, clustering, and anomaly detection.",
+          "note": "",
+          "stars": 1366,
+          "lastCommit": "2026-04-06T01:03:21Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Nixtla MLForecast",
+          "repo": "Nixtla/mlforecast",
+          "url": "https://github.com/Nixtla/mlforecast",
+          "description": "Scalable ML-based forecasting with LightGBM, XGBoost, and distributed backends via Dask, Spark, and Ray.",
+          "note": "",
+          "stars": 1204,
+          "lastCommit": "2026-04-06T08:22:16Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Time-MoE",
+          "repo": "Time-MoE/Time-MoE",
+          "url": "https://github.com/Time-MoE/Time-MoE",
+          "description": "First billion-scale time-series foundation model using sparse mixture-of-experts, trained on 300B+ time points (ICLR 2025 Spotlight).",
+          "note": "",
+          "stars": 941,
+          "lastCommit": "2026-03-21T16:00:55Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Granite-TSFM",
+          "repo": "ibm-granite/granite-tsfm",
+          "url": "https://github.com/ibm-granite/granite-tsfm",
+          "description": "Compact pretrained Tiny Time Mixers that rival billion-parameter models for zero/few-shot multivariate forecasting (IBM, NeurIPS 2024).",
+          "note": "",
+          "stars": 834,
+          "lastCommit": "2026-04-06T17:17:00Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Neural Architecture Search",
+      "description": "Automated design and discovery of optimal neural network architectures.",
+      "entries": [
+        {
+          "name": "NNI",
+          "repo": "microsoft/nni",
+          "url": "https://github.com/microsoft/nni",
+          "description": "Comprehensive AutoML toolkit for NAS, hyperparameter tuning, feature engineering, and model compression.",
+          "note": "Archived by Microsoft in Sep 2024.",
+          "stars": 14346,
+          "lastCommit": "2024-07-03T10:55:10Z",
+          "archived": true,
+          "language": ""
+        },
+        {
+          "name": "Google AutoML",
+          "repo": "google/automl",
+          "url": "https://github.com/google/automl",
+          "description": "Research code for EfficientNet, EfficientDet, MnasNet, and other NAS-discovered architectures (Google Brain).",
+          "note": "",
+          "stars": 6463,
+          "lastCommit": "2025-03-02T07:46:39Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Once-For-All",
+          "repo": "mit-han-lab/once-for-all",
+          "url": "https://github.com/mit-han-lab/once-for-all",
+          "description": "Train one network and specialize sub-networks for diverse hardware without retraining (MIT HAN Lab, ICLR 2020).",
+          "note": "",
+          "stars": 1947,
+          "lastCommit": "2023-12-14T04:44:52Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "TinyEngine",
+          "repo": "mit-han-lab/tinyengine",
+          "url": "https://github.com/mit-han-lab/tinyengine",
+          "description": "Memory-efficient inference engine for NAS-optimized models on microcontrollers (MIT HAN Lab).",
+          "note": "",
+          "stars": 934,
+          "lastCommit": "2024-11-27T18:51:37Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Vega",
+          "repo": "huawei-noah/vega",
+          "url": "https://github.com/huawei-noah/vega",
+          "description": "AutoML pipeline covering NAS, hyperparameter optimization, auto-augmentation, and model compression (Huawei).",
+          "note": "",
+          "stars": 851,
+          "lastCommit": "2023-02-15T09:36:59Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "NASLib",
+          "repo": "automl/NASLib",
+          "url": "https://github.com/automl/NASLib",
+          "description": "NAS research library from AutoML Freiburg with interfaces to state-of-the-art search spaces and optimizers.",
+          "note": "",
+          "stars": 586,
+          "lastCommit": "2024-11-11T15:56:07Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Archai",
+          "repo": "microsoft/archai",
+          "url": "https://github.com/microsoft/archai",
+          "description": "Modular NAS framework for reproducible architecture search research (Microsoft).",
+          "note": "",
+          "stars": 483,
+          "lastCommit": "2025-11-24T03:14:04Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Hyperparameter Optimization",
+      "description": "Automated tuning of model hyperparameters using Bayesian, evolutionary, and other search strategies.",
+      "entries": [
+        {
+          "name": "Ray Tune",
+          "repo": "ray-project/ray",
+          "url": "https://docs.ray.io/en/latest/tune/",
+          "description": "Distributed hyperparameter tuning at scale with support for any ML framework and many search algorithms.",
+          "note": "",
+          "stars": 41997,
+          "lastCommit": "2026-04-07T17:11:29Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Optuna",
+          "repo": "optuna/optuna",
+          "url": "https://github.com/optuna/optuna",
+          "description": "Define-by-run API with pruning, distributed execution, and a dashboard - the most widely adopted HPO framework.",
+          "note": "",
+          "stars": 13865,
+          "lastCommit": "2026-04-07T08:05:22Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Hyperopt",
+          "repo": "hyperopt/hyperopt",
+          "url": "https://github.com/hyperopt/hyperopt",
+          "description": "Pioneered tree-structured Parzen estimators for HPO.",
+          "note": "Deprecated since Nov 2021 - use Optuna instead.",
+          "stars": 7615,
+          "lastCommit": "2026-03-16T21:37:20Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "BoTorch",
+          "repo": "meta-pytorch/botorch",
+          "url": "https://github.com/meta-pytorch/botorch",
+          "description": "Bayesian optimization library in PyTorch for high-dimensional, noisy, and multi-objective problems (Meta).",
+          "note": "",
+          "stars": 3498,
+          "lastCommit": "2026-04-03T16:48:56Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Keras Tuner",
+          "repo": "keras-team/keras-tuner",
+          "url": "https://github.com/keras-team/keras-tuner",
+          "description": "Hyperparameter search for Keras models with built-in Bayesian optimization and Hyperband.",
+          "note": "",
+          "stars": 2923,
+          "lastCommit": "2025-12-01T22:23:25Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Ax",
+          "repo": "facebook/Ax",
+          "url": "https://github.com/facebook/Ax",
+          "description": "Adaptive experimentation platform for multi-objective optimization with BoTorch integration (Meta).",
+          "note": "",
+          "stars": 2733,
+          "lastCommit": "2026-04-07T16:08:25Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "SMAC3",
+          "repo": "automl/SMAC3",
+          "url": "https://github.com/automl/SMAC3",
+          "description": "Sequential model-based algorithm configuration combining Bayesian optimization with racing mechanisms (AutoML Freiburg).",
+          "note": "",
+          "stars": 1221,
+          "lastCommit": "2026-04-07T10:42:59Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Dragonfly",
+          "repo": "dragonfly/dragonfly",
+          "url": "https://github.com/dragonfly/dragonfly",
+          "description": "Scalable Bayesian optimization library supporting multi-fidelity and multi-objective search.",
+          "note": "Low activity since 2020.",
+          "stars": 893,
+          "lastCommit": "2023-06-19T20:23:17Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Automated Feature Engineering",
+      "description": "Automated generation, transformation, and selection of features from raw data.",
+      "entries": [
+        {
+          "name": "Cleanlab",
+          "repo": "cleanlab/cleanlab",
+          "url": "https://github.com/cleanlab/cleanlab",
+          "description": "Data-centric AI toolkit for finding and fixing label errors, outliers, and data quality issues automatically.",
+          "note": "",
+          "stars": 11411,
+          "lastCommit": "2026-01-13T17:39:04Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "tsfresh",
+          "repo": "blue-yonder/tsfresh",
+          "url": "https://github.com/blue-yonder/tsfresh",
+          "description": "Automatic extraction of hundreds of time-series features with built-in statistical relevance filtering.",
+          "note": "",
+          "stars": 9168,
+          "lastCommit": "2025-11-15T15:14:13Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Featuretools",
+          "repo": "alteryx/featuretools",
+          "url": "https://github.com/alteryx/featuretools",
+          "description": "Deep feature synthesis for automatically creating meaningful features from relational and temporal data (Alteryx).",
+          "note": "",
+          "stars": 7627,
+          "lastCommit": "2026-02-03T18:19:45Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "OpenMLDB",
+          "repo": "4paradigm/OpenMLDB",
+          "url": "https://github.com/4paradigm/OpenMLDB",
+          "description": "Database for consistent feature computation between training and serving with SQL-based feature engineering (SIGMOD 2025).",
+          "note": "",
+          "stars": 1685,
+          "lastCommit": "2026-04-03T02:42:32Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Boruta",
+          "repo": "scikit-learn-contrib/boruta_py",
+          "url": "https://github.com/scikit-learn-contrib/boruta_py",
+          "description": "All-relevant feature selection wrapper using random forest shadow features to identify important predictors.",
+          "note": "",
+          "stars": 1624,
+          "lastCommit": "2025-11-13T04:00:49Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AutoFeat",
+          "repo": "cod3licious/autofeat",
+          "url": "https://github.com/cod3licious/autofeat",
+          "description": "Scikit-learn-compatible automated feature engineering and selection that generates non-linear features and selects robust subsets.",
+          "note": "",
+          "stars": 536,
+          "lastCommit": "2026-01-06T22:56:18Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "CAAFE",
+          "repo": "noahho/CAAFE",
+          "url": "https://github.com/noahho/CAAFE",
+          "description": "LLM-powered context-aware feature engineering that generates semantically meaningful features with explanations.",
+          "note": "",
+          "stars": 186,
+          "lastCommit": "2024-12-20T14:27:45Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Feature-engine",
+          "repo": "feature-engine/feature_engine",
+          "url": "https://github.com/feature-engine/feature_engine",
+          "description": "Scikit-learn-compatible transformers for feature creation, selection, encoding, and imputation.",
+          "note": "",
+          "stars": 2221,
+          "lastCommit": "2026-03-28T14:24:33Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Automated Data Preprocessing",
+      "description": "Automated data profiling, cleaning, validation, and quality assurance.",
+      "entries": [
+        {
+          "name": "ydata-profiling",
+          "repo": "Data-Centric-AI-Community/ydata-profiling",
+          "url": "https://github.com/Data-Centric-AI-Community/ydata-profiling",
+          "description": "One-line data quality profiling and exploratory analysis for Pandas and Spark DataFrames.",
+          "note": "",
+          "stars": 13489,
+          "lastCommit": "2026-03-03T17:44:00Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Great Expectations",
+          "repo": "great-expectations/great_expectations",
+          "url": "https://github.com/great-expectations/great_expectations",
+          "description": "Programmable data validation and documentation framework for maintaining pipeline quality.",
+          "note": "",
+          "stars": 11366,
+          "lastCommit": "2026-04-07T17:30:56Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Pandera",
+          "repo": "unionai-oss/pandera",
+          "url": "https://github.com/unionai-oss/pandera",
+          "description": "Statistical data testing and validation for dataframes with expressive schema definitions.",
+          "note": "",
+          "stars": 4290,
+          "lastCommit": "2026-04-04T17:51:33Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "SweetViz",
+          "repo": "fbdesignpro/sweetviz",
+          "url": "https://github.com/fbdesignpro/sweetviz",
+          "description": "High-density EDA visualizations and target analysis reports generated in two lines of code.",
+          "note": "",
+          "stars": 3089,
+          "lastCommit": "2026-04-05T02:16:07Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "DataPrep",
+          "repo": "sfu-db/dataprep",
+          "url": "https://github.com/sfu-db/dataprep",
+          "description": "Low-code library for data collection, cleaning, and EDA that is 10x faster than traditional profiling.",
+          "note": "",
+          "stars": 2237,
+          "lastCommit": "2024-06-27T16:57:45Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Optimus",
+          "repo": "hi-primus/optimus",
+          "url": "https://github.com/hi-primus/optimus",
+          "description": "Agile data preparation supporting Pandas, Dask, cuDF, and PySpark with a unified API.",
+          "note": "",
+          "stars": 1537,
+          "lastCommit": "2024-12-02T14:09:25Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Spotlight",
+          "repo": "Renumics/spotlight",
+          "url": "https://github.com/Renumics/spotlight",
+          "description": "Interactive visualization tool for auditing and understanding unstructured ML datasets covering images, audio, and text.",
+          "note": "",
+          "stars": 1255,
+          "lastCommit": "2026-03-30T21:56:59Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Automated Data Labeling",
+      "description": "Tools that automate or semi-automate the annotation process using AI-assisted labeling.",
+      "entries": [
+        {
+          "name": "Label Studio",
+          "repo": "HumanSignal/label-studio",
+          "url": "https://github.com/HumanSignal/label-studio",
+          "description": "Multi-type data labeling platform with ML-assisted annotation and LLM integration for text, images, audio, and video.",
+          "note": "",
+          "stars": 26945,
+          "lastCommit": "2026-04-07T06:32:36Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Snorkel",
+          "repo": "snorkel-team/snorkel",
+          "url": "https://github.com/snorkel-team/snorkel",
+          "description": "Programmatic labeling via weak supervision - write labeling functions instead of hand-labeling.",
+          "note": "",
+          "stars": 5947,
+          "lastCommit": "2024-05-02T18:39:42Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Argilla",
+          "repo": "argilla-io/argilla",
+          "url": "https://github.com/argilla-io/argilla",
+          "description": "Collaboration platform for collecting and managing human and AI feedback for NLP and LLM development.",
+          "note": "",
+          "stars": 4925,
+          "lastCommit": "2026-04-06T22:29:25Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Distilabel",
+          "repo": "argilla-io/distilabel",
+          "url": "https://github.com/argilla-io/distilabel",
+          "description": "Framework for synthetic data generation, AI feedback, and instruction tuning using Self-Instruct and EvolInstruct techniques.",
+          "note": "",
+          "stars": 3157,
+          "lastCommit": "2026-04-06T22:29:56Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Autodistill",
+          "repo": "autodistill/autodistill",
+          "url": "https://github.com/autodistill/autodistill",
+          "description": "Automated image labeling by distilling foundation model knowledge into smaller task-specific models (Roboflow).",
+          "note": "",
+          "stars": 2658,
+          "lastCommit": "2025-05-14T07:53:55Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Autolabel",
+          "repo": "refuel-ai/autolabel",
+          "url": "https://github.com/refuel-ai/autolabel",
+          "description": "LLM-powered labeling, cleaning, and enrichment for text classification, NER, and entity matching.",
+          "note": "",
+          "stars": 2310,
+          "lastCommit": "2025-03-05T01:15:43Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Synthetic Data Generation",
+      "description": "Automated creation of artificial training data that preserves statistical properties of real datasets.",
+      "entries": [
+        {
+          "name": "SDV",
+          "repo": "sdv-dev/SDV",
+          "url": "https://github.com/sdv-dev/SDV",
+          "description": "Synthetic Data Vault with multiple generative models (GaussianCopula, CTGAN, TVAE) for single-table, multi-table, and sequential data.",
+          "note": "",
+          "stars": 3460,
+          "lastCommit": "2026-04-06T20:16:28Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "SDG",
+          "repo": "hitsz-ids/synthetic-data-generator",
+          "url": "https://github.com/hitsz-ids/synthetic-data-generator",
+          "description": "Framework for generating high-quality synthetic tabular data preserving statistical distributions and correlations.",
+          "note": "",
+          "stars": 2416,
+          "lastCommit": "2026-04-06T18:26:58Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "DataDreamer",
+          "repo": "datadreamer-dev/DataDreamer",
+          "url": "https://github.com/datadreamer-dev/DataDreamer",
+          "description": "Reproducible LLM workflows for prompting, synthetic data generation, and model training in one pipeline.",
+          "note": "",
+          "stars": 1108,
+          "lastCommit": "2025-02-02T21:23:50Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Gretel Synthetics",
+          "repo": "gretelai/gretel-synthetics",
+          "url": "https://github.com/gretelai/gretel-synthetics",
+          "description": "Synthetic data generators for structured and unstructured text with differential privacy guarantees.",
+          "note": "",
+          "stars": 676,
+          "lastCommit": "2025-06-24T21:44:06Z",
+          "archived": true,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Automated Model Compression",
+      "description": "Automated quantization, pruning, and distillation for efficient model deployment.",
+      "entries": [
+        {
+          "name": "LLM-AWQ",
+          "repo": "mit-han-lab/llm-awq",
+          "url": "https://github.com/mit-han-lab/llm-awq",
+          "description": "Activation-aware weight quantization achieving lossless 4-bit compression for LLMs (MIT HAN Lab, MLSys 2024 Best Paper).",
+          "note": "",
+          "stars": 3491,
+          "lastCommit": "2025-07-17T19:44:51Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Torch-Pruning",
+          "repo": "VainF/Torch-Pruning",
+          "url": "https://github.com/VainF/Torch-Pruning",
+          "description": "Structural pruning framework for any PyTorch model including LLMs, YOLO, ViT, and diffusion models (CVPR 2023).",
+          "note": "",
+          "stars": 3282,
+          "lastCommit": "2025-09-07T17:25:20Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "LLM Compressor",
+          "repo": "vllm-project/llm-compressor",
+          "url": "https://github.com/vllm-project/llm-compressor",
+          "description": "Transformers-compatible compression library optimized for efficient vLLM inference.",
+          "note": "",
+          "stars": 2985,
+          "lastCommit": "2026-04-07T17:16:10Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Intel Neural Compressor",
+          "repo": "intel/neural-compressor",
+          "url": "https://github.com/intel/neural-compressor",
+          "description": "Unified quantization, sparsity, pruning, and distillation across PyTorch, TensorFlow, and ONNX (Intel).",
+          "note": "",
+          "stars": 2611,
+          "lastCommit": "2026-04-07T08:52:04Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "NVIDIA TensorRT Model Optimizer",
+          "repo": "NVIDIA/Model-Optimizer",
+          "url": "https://github.com/NVIDIA/Model-Optimizer",
+          "description": "Quantization, pruning, distillation, and speculative decoding optimized for TensorRT and vLLM deployment.",
+          "note": "",
+          "stars": 2391,
+          "lastCommit": "2026-04-07T17:44:11Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "GPTQModel",
+          "repo": "ModelCloud/GPTQModel",
+          "url": "https://github.com/ModelCloud/GPTQModel",
+          "description": "LLM quantization toolkit with support for NVIDIA CUDA, AMD ROCm, Intel, and Apple Silicon backends.",
+          "note": "",
+          "stars": 1091,
+          "lastCommit": "2026-04-07T11:28:42Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Automated Deployment and Serving",
+      "description": "Automated model serving, optimization, and inference infrastructure.",
+      "entries": [
+        {
+          "name": "Ollama",
+          "repo": "ollama/ollama",
+          "url": "https://github.com/ollama/ollama",
+          "description": "Docker-like local LLM runner for getting models up and running quickly for prototyping.",
+          "note": "",
+          "stars": 168012,
+          "lastCommit": "2026-04-07T16:18:40Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "llama.cpp",
+          "repo": "ggml-org/llama.cpp",
+          "url": "https://github.com/ggml-org/llama.cpp",
+          "description": "LLM inference in C/C++ with broad hardware support - the foundation for most local LLM applications.",
+          "note": "",
+          "stars": 102313,
+          "lastCommit": "2026-04-07T17:35:37Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "vLLM",
+          "repo": "vllm-project/vllm",
+          "url": "https://github.com/vllm-project/vllm",
+          "description": "High-throughput LLM serving engine with PagedAttention, powering most open-source LLM deployments in production.",
+          "note": "",
+          "stars": 75585,
+          "lastCommit": "2026-04-07T17:36:22Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "SGLang",
+          "repo": "sgl-project/sglang",
+          "url": "https://github.com/sgl-project/sglang",
+          "description": "High-performance LLM serving framework powering 400K+ GPUs with best-in-class structured and constrained decoding.",
+          "note": "",
+          "stars": 25521,
+          "lastCommit": "2026-04-07T17:34:59Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "ONNX Runtime",
+          "repo": "microsoft/onnxruntime",
+          "url": "https://github.com/microsoft/onnxruntime",
+          "description": "Cross-platform inference accelerator supporting PyTorch, TensorFlow, scikit-learn, and XGBoost via the ONNX format (Microsoft).",
+          "note": "",
+          "stars": 19784,
+          "lastCommit": "2026-04-07T17:32:33Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "TensorRT-LLM",
+          "repo": "NVIDIA/TensorRT-LLM",
+          "url": "https://github.com/NVIDIA/TensorRT-LLM",
+          "description": "High-performance LLM inference library with custom attention kernels, speculative decoding, and MoE support (NVIDIA).",
+          "note": "",
+          "stars": 13312,
+          "lastCommit": "2026-04-07T15:57:08Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Triton Inference Server",
+          "repo": "triton-inference-server/server",
+          "url": "https://github.com/triton-inference-server/server",
+          "description": "Multi-framework inference serving for TensorRT, PyTorch, ONNX, and custom backends (NVIDIA).",
+          "note": "",
+          "stars": 10525,
+          "lastCommit": "2026-04-07T16:58:58Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "OpenVINO",
+          "repo": "openvinotoolkit/openvino",
+          "url": "https://github.com/openvinotoolkit/openvino",
+          "description": "Inference optimization and deployment toolkit for CPUs, GPUs, and edge accelerators (Intel).",
+          "note": "",
+          "stars": 10024,
+          "lastCommit": "2026-04-07T16:25:43Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "BentoML",
+          "repo": "bentoml/BentoML",
+          "url": "https://github.com/bentoml/BentoML",
+          "description": "Build production-ready inference APIs, batch jobs, and multi-model pipelines with unified Python framework.",
+          "note": "",
+          "stars": 8559,
+          "lastCommit": "2026-04-06T16:58:03Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "LMDeploy",
+          "repo": "InternLM/lmdeploy",
+          "url": "https://github.com/InternLM/lmdeploy",
+          "description": "Toolkit for compressing, deploying, and serving large language and vision-language models.",
+          "note": "",
+          "stars": 7756,
+          "lastCommit": "2026-04-07T10:06:22Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "KServe",
+          "repo": "kserve/kserve",
+          "url": "https://github.com/kserve/kserve",
+          "description": "Kubernetes-native standardized model serving with canary rollouts, autoscaling, and multi-framework support (CNCF Incubating).",
+          "note": "",
+          "stars": 5298,
+          "lastCommit": "2026-04-06T14:25:10Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "ExecuTorch",
+          "repo": "pytorch/executorch",
+          "url": "https://github.com/pytorch/executorch",
+          "description": "On-device AI inference for mobile, embedded, and edge platforms with a 50KB base runtime footprint (Meta).",
+          "note": "",
+          "stars": 4478,
+          "lastCommit": "2026-04-07T17:43:52Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "LitServe",
+          "repo": "Lightning-AI/LitServe",
+          "url": "https://github.com/Lightning-AI/LitServe",
+          "description": "Minimal, high-performance Python framework for AI model serving (Lightning AI).",
+          "note": "",
+          "stars": 3859,
+          "lastCommit": "2026-04-07T06:39:13Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Automated Monitoring and Observability",
+      "description": "Automated drift detection, performance monitoring, and quality assurance for deployed models.",
+      "entries": [
+        {
+          "name": "Evidently",
+          "repo": "evidentlyai/evidently",
+          "url": "https://github.com/evidentlyai/evidently",
+          "description": "ML and LLM observability with 100+ metrics for evaluating, testing, and monitoring any AI system in production.",
+          "note": "",
+          "stars": 7374,
+          "lastCommit": "2026-03-30T12:37:28Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Giskard",
+          "repo": "Giskard-AI/giskard-oss",
+          "url": "https://github.com/Giskard-AI/giskard-oss",
+          "description": "Testing and evaluation for ML and LLM models covering bias, performance regression, and security vulnerabilities.",
+          "note": "",
+          "stars": 5224,
+          "lastCommit": "2026-04-07T02:12:34Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Deepchecks",
+          "repo": "deepchecks/deepchecks",
+          "url": "https://github.com/deepchecks/deepchecks",
+          "description": "Holistic ML validation covering data integrity, drift detection, and model evaluation in a single suite.",
+          "note": "",
+          "stars": 4002,
+          "lastCommit": "2025-12-28T12:07:44Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "WhyLogs",
+          "repo": "whylabs/whylogs",
+          "url": "https://github.com/whylabs/whylogs",
+          "description": "Lightweight data logging library that profiles datasets for drift detection without storing raw data.",
+          "note": "",
+          "stars": 2812,
+          "lastCommit": "2025-01-10T20:14:49Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Alibi Detect",
+          "repo": "SeldonIO/alibi-detect",
+          "url": "https://github.com/SeldonIO/alibi-detect",
+          "description": "Outlier, adversarial, and drift detection algorithms for tabular, text, image, and time-series data (Seldon).",
+          "note": "",
+          "stars": 2509,
+          "lastCommit": "2025-12-11T16:35:15Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "NannyML",
+          "repo": "NannyML/nannyml",
+          "url": "https://github.com/NannyML/nannyml",
+          "description": "Estimate model performance without ground truth labels and link data drift directly to accuracy degradation.",
+          "note": "",
+          "stars": 2136,
+          "lastCommit": "2025-07-12T08:12:42Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Automated AI Safety",
+      "description": "Automated testing, red-teaming, and guardrails for ensuring AI system safety and reliability.",
+      "entries": [
+        {
+          "name": "Garak",
+          "repo": "NVIDIA/garak",
+          "url": "https://github.com/NVIDIA/garak",
+          "description": "LLM vulnerability scanner with 100+ attack modules covering prompt injection, data leakage, and jailbreaking.",
+          "note": "",
+          "stars": 7485,
+          "lastCommit": "2026-04-07T16:58:57Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Guardrails AI",
+          "repo": "guardrails-ai/guardrails",
+          "url": "https://github.com/guardrails-ai/guardrails",
+          "description": "Framework for adding structural and semantic validation guardrails to LLM outputs.",
+          "note": "",
+          "stars": 6644,
+          "lastCommit": "2026-04-03T19:59:16Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Plano",
+          "repo": "katanemo/plano",
+          "url": "https://github.com/katanemo/plano",
+          "description": "AI-native proxy with built-in orchestration, safety controls, and observability for agentic applications.",
+          "note": "",
+          "stars": 6216,
+          "lastCommit": "2026-04-04T16:59:12Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "NeMo Guardrails",
+          "repo": "NVIDIA-NeMo/Guardrails",
+          "url": "https://github.com/NVIDIA-NeMo/Guardrails",
+          "description": "Programmable safety rails for LLM-based conversational systems with topical and safety controls (NVIDIA).",
+          "note": "",
+          "stars": 5934,
+          "lastCommit": "2026-04-07T17:35:41Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "DeepTeam",
+          "repo": "confident-ai/deepteam",
+          "url": "https://github.com/confident-ai/deepteam",
+          "description": "Red-teaming framework for systematically testing LLM vulnerabilities across multiple attack vectors.",
+          "note": "",
+          "stars": 1479,
+          "lastCommit": "2026-04-06T04:23:49Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "AutoML Benchmarks",
+      "description": "Standardized frameworks and datasets for evaluating and comparing AutoML systems.",
+      "entries": [
+        {
+          "name": "MLE-Bench",
+          "repo": "openai/mle-bench",
+          "url": "https://github.com/openai/mle-bench",
+          "description": "Benchmark using 75 Kaggle competitions to evaluate ML engineering agents (OpenAI).",
+          "note": "",
+          "stars": 1448,
+          "lastCommit": "2026-03-20T09:39:39Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "NAS-Bench-101",
+          "repo": "google-research/nasbench",
+          "url": "https://github.com/google-research/nasbench",
+          "description": "Benchmark dataset with 423,624 evaluated neural architectures for efficient NAS research (Google).",
+          "note": "",
+          "stars": 717,
+          "lastCommit": "2023-05-01T06:38:25Z",
+          "archived": true,
+          "language": ""
+        },
+        {
+          "name": "NAS-Bench-201",
+          "repo": "D-X-Y/NAS-Bench-201",
+          "url": "https://github.com/D-X-Y/NAS-Bench-201",
+          "description": "Reproducible benchmark with 15,625 evaluated architectures across three datasets for fair NAS comparison.",
+          "note": "",
+          "stars": 644,
+          "lastCommit": "2025-10-31T05:34:11Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "AMLB",
+          "repo": "openml/automlbenchmark",
+          "url": "https://github.com/openml/automlbenchmark",
+          "description": "Standard AutoML benchmark comparing frameworks across 104 classification and regression tasks (OpenML).",
+          "note": "",
+          "stars": 458,
+          "lastCommit": "2026-04-06T19:30:21Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "TabArena",
+          "repo": "autogluon/tabarena",
+          "url": "https://github.com/autogluon/tabarena",
+          "description": "Living benchmark for tabular ML with continuously maintained leaderboard and best-practice evaluation (NeurIPS 2025 Spotlight).",
+          "note": "",
+          "stars": 207,
+          "lastCommit": "2026-04-07T17:42:10Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "MLOps and Experiment Tracking",
+      "description": "Platforms for managing the ML lifecycle, tracking experiments, and orchestrating pipelines.",
+      "entries": [
+        {
+          "name": "Ray",
+          "repo": "ray-project/ray",
+          "url": "https://github.com/ray-project/ray",
+          "description": "Unified AI compute engine for distributed training, tuning, and model serving with Ray Train, Ray Tune, and Ray Serve.",
+          "note": "",
+          "stars": 41997,
+          "lastCommit": "2026-04-07T17:11:29Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "MLflow",
+          "repo": "mlflow/mlflow",
+          "url": "https://github.com/mlflow/mlflow",
+          "description": "End-to-end ML lifecycle platform with experiment tracking, model registry, and integrated prompt optimization.",
+          "note": "",
+          "stars": 25179,
+          "lastCommit": "2026-04-07T15:41:21Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Langfuse",
+          "repo": "langfuse/langfuse",
+          "url": "https://github.com/langfuse/langfuse",
+          "description": "Open-source LLM engineering platform with tracing, evaluations, prompt management, and cost analytics.",
+          "note": "",
+          "stars": 24476,
+          "lastCommit": "2026-04-07T17:22:00Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Prefect",
+          "repo": "PrefectHQ/prefect",
+          "url": "https://github.com/PrefectHQ/prefect",
+          "description": "Modern data workflow automation with retries, caching, and real-time logging.",
+          "note": "",
+          "stars": 22088,
+          "lastCommit": "2026-04-07T17:14:49Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Opik",
+          "repo": "comet-ml/opik",
+          "url": "https://github.com/comet-ml/opik",
+          "description": "LLM debugging, evaluation, and monitoring platform with detailed tracing and quality dashboards (Comet).",
+          "note": "",
+          "stars": 18694,
+          "lastCommit": "2026-04-07T17:41:04Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Kubeflow",
+          "repo": "kubeflow/kubeflow",
+          "url": "https://github.com/kubeflow/kubeflow",
+          "description": "ML toolkit on Kubernetes for building portable, scalable ML pipelines and training workflows.",
+          "note": "",
+          "stars": 15557,
+          "lastCommit": "2026-01-05T13:47:10Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "DVC",
+          "repo": "treeverse/dvc",
+          "url": "https://github.com/treeverse/dvc",
+          "description": "Version control for data and models with built-in experiment tracking and pipeline management.",
+          "note": "",
+          "stars": 15509,
+          "lastCommit": "2026-04-07T06:25:54Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Dagster",
+          "repo": "dagster-io/dagster",
+          "url": "https://github.com/dagster-io/dagster",
+          "description": "Asset-centric orchestration built for ML pipelines with data lineage tracking and observability.",
+          "note": "",
+          "stars": 15244,
+          "lastCommit": "2026-04-07T17:34:28Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "W&B",
+          "repo": "wandb/wandb",
+          "url": "https://github.com/wandb/wandb",
+          "description": "Experiment tracking, visualization, and collaboration platform for ML teams (Weights and Biases).",
+          "note": "",
+          "stars": 10972,
+          "lastCommit": "2026-04-07T17:24:08Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Kedro",
+          "repo": "kedro-org/kedro",
+          "url": "https://github.com/kedro-org/kedro",
+          "description": "Framework for reproducible, maintainable ML pipelines with clean coding patterns.",
+          "note": "",
+          "stars": 10811,
+          "lastCommit": "2026-04-07T16:18:01Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Metaflow",
+          "repo": "Netflix/metaflow",
+          "url": "https://github.com/Netflix/metaflow",
+          "description": "Human-centric framework for managing real-life data science and ML projects at scale (Netflix).",
+          "note": "",
+          "stars": 10016,
+          "lastCommit": "2026-04-03T20:30:17Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Phoenix",
+          "repo": "Arize-ai/phoenix",
+          "url": "https://github.com/Arize-ai/phoenix",
+          "description": "AI observability platform with OpenTelemetry-native tracing and LLM evaluation dashboards (Arize).",
+          "note": "",
+          "stars": 9195,
+          "lastCommit": "2026-04-07T17:40:40Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Feast",
+          "repo": "feast-dev/feast",
+          "url": "https://github.com/feast-dev/feast",
+          "description": "Open-source feature store for managing and serving ML features in real-time and batch inference.",
+          "note": "",
+          "stars": 6912,
+          "lastCommit": "2026-04-07T17:43:59Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "ClearML",
+          "repo": "clearml/clearml",
+          "url": "https://github.com/clearml/clearml",
+          "description": "Unified experiment manager, pipeline orchestrator, and data/model management platform.",
+          "note": "",
+          "stars": 6612,
+          "lastCommit": "2026-04-03T08:09:56Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "Aim",
+          "repo": "aimhubio/aim",
+          "url": "https://github.com/aimhubio/aim",
+          "description": "Self-hosted experiment tracker with a high-performance UI that handles 10,000+ training runs.",
+          "note": "",
+          "stars": 6075,
+          "lastCommit": "2026-04-06T20:10:29Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "ZenML",
+          "repo": "zenml-io/zenml",
+          "url": "https://github.com/zenml-io/zenml",
+          "description": "Framework for building portable, production-ready ML pipelines that run on any infrastructure.",
+          "note": "",
+          "stars": 5319,
+          "lastCommit": "2026-04-07T17:40:28Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    },
+    {
+      "name": "Related Awesome Lists",
+      "description": "",
+      "entries": [
+        {
+          "name": "awesome-machine-learning",
+          "repo": "josephmisiti/awesome-machine-learning",
+          "url": "https://github.com/josephmisiti/awesome-machine-learning",
+          "description": "Curated list of ML frameworks, libraries, and software organized by language.",
+          "note": "",
+          "stars": 72186,
+          "lastCommit": "2026-03-15T15:16:19Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "awesome-deep-learning",
+          "repo": "ChristosChristofidis/awesome-deep-learning",
+          "url": "https://github.com/ChristosChristofidis/awesome-deep-learning",
+          "description": "Curated list of deep learning tutorials, projects, and communities.",
+          "note": "",
+          "stars": 27860,
+          "lastCommit": "2025-05-26T12:28:00Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "awesome-llm",
+          "repo": "Hannibal046/Awesome-LLM",
+          "url": "https://github.com/Hannibal046/Awesome-LLM",
+          "description": "Curated list of large language model resources covering papers, tools, and applications.",
+          "note": "",
+          "stars": 26609,
+          "lastCommit": "2025-07-31T02:38:24Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "awesome-production-machine-learning",
+          "repo": "EthicalML/awesome-production-machine-learning",
+          "url": "https://github.com/EthicalML/awesome-production-machine-learning",
+          "description": "Curated list of tools for deploying, monitoring, and scaling ML in production.",
+          "note": "",
+          "stars": 20346,
+          "lastCommit": "2026-04-07T04:53:54Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "awesome-mlops",
+          "repo": "visenger/awesome-mlops",
+          "url": "https://github.com/visenger/awesome-mlops",
+          "description": "Curated list of MLOps tools and best practices for production ML.",
+          "note": "",
+          "stars": 13844,
+          "lastCommit": "2024-11-21T14:45:11Z",
+          "archived": false,
+          "language": ""
+        },
+        {
+          "name": "awesome-generative-ai",
+          "repo": "steven2358/awesome-generative-ai",
+          "url": "https://github.com/steven2358/awesome-generative-ai",
+          "description": "Curated list of modern generative AI projects and services.",
+          "note": "",
+          "stars": 11774,
+          "lastCommit": "2026-04-07T15:45:04Z",
+          "archived": false,
+          "language": ""
+        }
+      ]
+    }
+  ]
+}

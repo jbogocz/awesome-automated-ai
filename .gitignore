@@ -1,0 +1,17 @@
+.claude/
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+node_modules/
+dist/
+.env
+.env.local
+*.tsbuildinfo
+.turbo/
+data/
+*.db
+*.db-wal
+*.db-shm
