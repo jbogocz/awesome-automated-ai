@@ -14,7 +14,7 @@
 
 <div align="center">
 
-### **[Explore interactively →](https://jbogocz.github.io/awesome-automl)**
+### **[> Explore interactively <](https://jbogocz.github.io/awesome-automl)**
 
 250+ tools and papers across 25 categories
 
