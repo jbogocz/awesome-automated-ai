@@ -2,13 +2,13 @@
 
 # Awesome AutoML [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-A curated list of 250+ tools for automated machine learning - from hyperparameter optimization to autonomous AI agents.
+A curated list of ~200 tools for automated machine learning - from hyperparameter optimization to autonomous AI agents.
 
 [![Views](https://hits.sh/github.com/jbogocz/awesome-automl.svg?style=flat-square&label=views)](https://hits.sh/github.com/jbogocz/awesome-automl/)
 [![GitHub stars](https://img.shields.io/github/stars/jbogocz/awesome-automl?style=flat-square)](https://github.com/jbogocz/awesome-automl/stargazers)
 [![Last commit](https://img.shields.io/github/last-commit/jbogocz/awesome-automl?style=flat-square)](https://github.com/jbogocz/awesome-automl/commits)
 [![License: CC0 + MIT](https://img.shields.io/badge/license-CC0_+_MIT-green?style=flat-square)](LICENSE)
-[![Tools](https://img.shields.io/badge/tools-250+-blue?style=flat-square)](#contents)
+[![Tools](https://img.shields.io/badge/tools-~200-blue?style=flat-square)](#contents)
 
 </div>
 
@@ -16,7 +16,7 @@ A curated list of 250+ tools for automated machine learning - from hyperparamete
 
 ### **[> Explore interactively <](https://jbogocz.github.io/awesome-automl)**
 
-250+ tools and papers across 25 categories
+~200 tools across 25 categories
 
 </div>
 
