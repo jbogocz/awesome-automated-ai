@@ -80,8 +80,8 @@
 
 | Symbol | Meaning |
 |:-------|:--------|
-| ![](https://img.shields.io/badge/stars-5.2k-blue?style=flat-square) | GitHub stars - auto-updates on every page view |
-| ![](https://img.shields.io/badge/updated-3_days_ago-green?style=flat-square) | Last commit - auto-updates on every page view |
+| 5,200 | GitHub stars (updates on each `generate` run) |
+| 2026-03 | Last commit date as YYYY-MM |
 | **Unmaintained** | No meaningful commits for 12+ months |
 | **Archived** | Repository archived by maintainer |
 | **Deprecated** | Superseded; named replacement provided |

@@ -27,16 +27,13 @@ interface Category {
   entries?: Entry[];
 }
 
-const SHIELDS = "https://img.shields.io";
-const BADGE_STYLE = "flat-square";
-
 export function generateReadme(opts: GenerateOptions): string {
   const { yamlContent, header, footer, apiData } = opts;
   const doc = parseYaml(yamlContent) as { categories: Category[] };
   const categories = doc.categories;
 
   const parts: string[] = [];
-  parts.push(header.trimEnd(), "");
+  parts.push(replaceHeaderBadges(header, apiData).trimEnd(), "");
 
   for (const cat of categories) {
     parts.push(`## ${cat.name}`, "");
@@ -76,11 +73,9 @@ function buildTable(entries: Entry[], apiData: ApiData): string[] {
     if (rd.archived && !note.includes("Archived")) note = `Archived. ${note}`.trim();
     else if (!note && isUnmaintained(rd.pushed)) note = "Unmaintained \u2014 no commits for 12+ months.";
     const fullDesc = note ? `${desc} **${note}**` : desc;
-    const starsBadge = repo ? `![](${SHIELDS}/github/stars/${repo}?style=${BADGE_STYLE}&label=&color=blue)` : "\u2014";
-    const commitBadge = repo
-      ? `![](${SHIELDS}/github/last-commit/${repo}?style=${BADGE_STYLE}&label=&color=green)`
-      : "\u2014";
-    rows.push([rd.stars, `| [${entry.name}](${url}) | ${starsBadge} | ${commitBadge} | ${fullDesc} |`]);
+    const starsText = repo ? formatStars(rd.stars) : "-";
+    const commitText = repo ? formatDate(rd.pushed) : "-";
+    rows.push([rd.stars, `| [${entry.name}](${url}) | ${starsText} | ${commitText} | ${fullDesc} |`]);
   }
   rows.sort((a, b) => b[0] - a[0]);
   return rows.map((r) => r[1]);
@@ -92,6 +87,34 @@ function isUnmaintained(pushed: string, months = 12): boolean {
     return Date.now() - new Date(pushed).getTime() > months * 30 * 24 * 60 * 60 * 1000;
   } catch {
     return false;
+  }
+}
+
+function replaceHeaderBadges(header: string, apiData: ApiData): string {
+  return header
+    .replace(/!\[\]\(https:\/\/img\.shields\.io\/github\/stars\/([^?]+)\?[^)]+\)/g, (_match, repo) => {
+      const rd = apiData[repo];
+      return rd ? formatStars(rd.stars) : "-";
+    })
+    .replace(/!\[\]\(https:\/\/img\.shields\.io\/github\/last-commit\/([^?]+)\?[^)]+\)/g, (_match, repo) => {
+      const rd = apiData[repo];
+      return rd ? formatDate(rd.pushed) : "-";
+    });
+}
+
+function formatStars(n: number): string {
+  return n.toLocaleString("en-US");
+}
+
+function formatDate(pushed: string): string {
+  if (!pushed) return "-";
+  try {
+    const d = new Date(pushed);
+    const y = d.getUTCFullYear();
+    const m = String(d.getUTCMonth() + 1).padStart(2, "0");
+    return `${y}-${m}`;
+  } catch {
+    return "-";
   }
 }
 
