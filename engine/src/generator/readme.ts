@@ -24,6 +24,7 @@ interface Entry {
   repo?: string;
   url?: string;
   description?: string;
+  tagline?: string;
   note?: string;
   tags?: string[];
 }
@@ -151,7 +152,7 @@ function buildOneCard(s: ScoredEntry, medals: Map<ScoredEntry, string>): string[
       : "";
   const licenseBadge = rd.license ? ` <code>${rd.license}</code>` : "";
 
-  const tagline = generateTagline(entry.description ?? "");
+  const tagline = entry.tagline || generateTagline(entry.description ?? "");
   const taglinePart = tagline ? ` ${tagline}` : "";
 
   const summary = `<details><summary>${dot} <b>${score}</b>${medal} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${taglinePart}</summary>`;
@@ -176,7 +177,8 @@ function buildOneCard(s: ScoredEntry, medals: Map<ScoredEntry, string>): string[
   else if (isHistorical) actSuffix = " - historical";
   else if (isDead) actSuffix = " - unmaintained 12+ months";
 
-  const tags = entry.tags && entry.tags.length > 0 ? entry.tags : rd.topics ?? [];
+  const allTags = entry.tags && entry.tags.length > 0 ? entry.tags : rd.topics ?? [];
+  const tags = allTags.slice(0, 5);
   const tagsLine = tags.length > 0 ? `\n  Tags      ${tags.join(" \u00B7 ")}` : "";
 
   const dashboard = [
