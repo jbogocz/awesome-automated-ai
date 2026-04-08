@@ -69,13 +69,40 @@ function fetchOneRepo(repo: string): RawApiResult {
       { timeout: 15_000, encoding: "utf-8" },
     );
     const parsed = JSON.parse(result);
+    const pushed = fetchLastActivity(repo) || parsed.pushed || "";
     return {
       stars: parsed.stars ?? 0,
-      pushed: parsed.pushed ?? "",
+      pushed,
       archived: parsed.archived ?? false,
       license: parsed.license ?? null,
     };
   } catch {
     return { stars: 0, pushed: "", archived: false, license: null };
   }
+}
+
+function fetchLastActivity(repo: string): string {
+  // Try latest release date first
+  try {
+    const release = execFileSync(
+      "gh",
+      ["api", `repos/${repo}/releases/latest`, "--jq", ".published_at"],
+      { timeout: 10_000, encoding: "utf-8" },
+    ).trim();
+    if (release) return release;
+  } catch {
+    // No releases - fall through
+  }
+  // Fallback: last commit on default branch
+  try {
+    const commit = execFileSync(
+      "gh",
+      ["api", `repos/${repo}/commits?per_page=1`, "--jq", ".[0].commit.committer.date"],
+      { timeout: 10_000, encoding: "utf-8" },
+    ).trim();
+    if (commit) return commit;
+  } catch {
+    // Fall through
+  }
+  return "";
 }
