@@ -1,4 +1,5 @@
 import { parse as parseYaml } from "yaml";
+import { activityDot, formatDateMonth, formatStarsShort, generateTagline, progressBar } from "./formatters.js";
 
 export interface ApiRepoData {
   stars: number;
@@ -7,6 +8,7 @@ export interface ApiRepoData {
   license: string | null;
   trend: number | null;
   score: number;
+  topics: string[];
 }
 export type ApiData = Record<string, ApiRepoData>;
 
@@ -23,6 +25,7 @@ interface Entry {
   url?: string;
   description?: string;
   note?: string;
+  tags?: string[];
 }
 interface Category {
   name: string;
@@ -31,10 +34,6 @@ interface Category {
 }
 
 const MEDAL = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];
-const SLEEPING = "\u{1F4A4}";
-const HISTORICAL = "\u{1F5C4}\uFE0F";
-const LEGEND =
-  "> \u{1F947}\u{1F948}\u{1F949} quality score (top 3) | \u2197\uFE0F stars/30d | \u2194\uFE0F stable | \u{1F4A4} unmaintained | \u{1F5C4}\uFE0F historical";
 
 export function generateReadme(opts: GenerateOptions): string {
   const { yamlContent, header, footer, apiData } = opts;
@@ -42,16 +41,14 @@ export function generateReadme(opts: GenerateOptions): string {
   const categories = doc.categories;
 
   const parts: string[] = [];
-  parts.push(replaceHeaderBadges(header, apiData).trimEnd(), "");
+  parts.push(header.trimEnd(), "");
 
   for (const cat of categories) {
     parts.push(`## ${cat.name}`, "");
     if (cat.description) parts.push(`*${cat.description}*`, "");
     const entries = cat.entries ?? [];
     if (entries.length > 0) {
-      parts.push("| Project | Stars | Updated | License | Description |");
-      parts.push("|:--------|------:|:--------|:--------|:------------|");
-      for (const row of buildTable(entries, apiData)) parts.push(row);
+      for (const line of buildCards(entries, apiData)) parts.push(line);
     }
     parts.push("", "**[\u2b06 Back to Contents](#contents)**", "");
   }
@@ -85,7 +82,7 @@ interface ScoredEntry {
   isHistorical: boolean;
 }
 
-function buildTable(entries: Entry[], apiData: ApiData): string[] {
+function buildCards(entries: Entry[], apiData: ApiData): string[] {
   const scored: ScoredEntry[] = entries.map((entry) => {
     const repo = entry.repo ?? "";
     const rd = apiData[repo] ?? {
@@ -95,6 +92,7 @@ function buildTable(entries: Entry[], apiData: ApiData): string[] {
       license: null,
       trend: null,
       score: 0,
+      topics: [],
     };
     let note = entry.note ?? "";
     if (rd.archived && !note.includes("Archived"))
@@ -108,35 +106,89 @@ function buildTable(entries: Entry[], apiData: ApiData): string[] {
   });
 
   const medals = assignMedals(scored);
-
   scored.sort((a, b) => b.rd.score - a.rd.score);
 
-  return scored.map((s) => {
-    const { entry, rd, note, isDead, isHistorical } = s;
-    const repo = entry.repo ?? "";
-    const url = entry.url ?? `https://github.com/${repo}`;
-    const desc = entry.description ?? "";
-    const fullDesc = note ? `${desc} **${note}**` : desc;
+  const active = scored.filter((s) => !s.isDead);
+  const dead = scored.filter((s) => s.isDead);
 
-    let badge = "";
-    if (isDead && isHistorical) badge = ` ${HISTORICAL}`;
-    else if (isDead) badge = ` ${SLEEPING}`;
-    else if (medals.has(s)) badge = ` ${medals.get(s)}`;
-
-    const trendText = !isDead ? formatTrend(rd.trend) : "";
-    const projectCol = isDead
-      ? `*[${entry.name}](${url})*${badge}`
-      : `[${entry.name}](${url})${badge}${trendText}`;
-
-    const starsText = repo ? formatStars(rd.stars) : "-";
-    const commitText = repo ? formatDate(rd.pushed) : "-";
-    const licenseText = rd.license ? `\`${rd.license}\`` : "-";
-
-    if (isDead) {
-      return `| ${projectCol} | *${starsText}* | *${commitText}* | ${licenseText} | *${fullDesc}* |`;
+  const lines: string[] = [];
+  for (const s of active) {
+    lines.push(...buildOneCard(s, medals));
+    lines.push("");
+  }
+  if (dead.length > 0) {
+    lines.push("---", "");
+    for (const s of dead) {
+      lines.push(...buildOneCard(s, medals));
+      lines.push("");
     }
-    return `| ${projectCol} | ${starsText} | ${commitText} | ${licenseText} | ${fullDesc} |`;
-  });
+  }
+  return lines;
+}
+
+function buildOneCard(s: ScoredEntry, medals: Map<ScoredEntry, string>): string[] {
+  const { entry, rd, note, isDead, isHistorical } = s;
+  const repo = entry.repo ?? "";
+  const url = entry.url ?? `https://github.com/${repo}`;
+  const dot = activityDot(rd.pushed, rd.archived);
+  const score = rd.score;
+
+  const medal = medals.has(s) ? ` ${medals.get(s)}` : "";
+
+  let nameHtml: string;
+  if (isDead && isHistorical) {
+    nameHtml = `\u{1F5C4}\uFE0F <i><a href="${url}">${entry.name}</a></i>`;
+  } else if (isDead) {
+    nameHtml = `\u{1F4A4} <i><a href="${url}">${entry.name}</a></i>`;
+  } else {
+    nameHtml = `<b><a href="${url}">${entry.name}</a></b>`;
+  }
+
+  const starsBadge = `<code>\u2B50 ${formatStarsShort(rd.stars)}</code>`;
+  const trendBadge =
+    !isDead && rd.trend !== null && Math.abs(rd.trend) >= 10
+      ? ` &nbsp; <code>${rd.trend > 0 ? "\u2197\uFE0F" : "\u2198\uFE0F"} ${rd.trend > 0 ? "+" : ""}${rd.trend}</code>`
+      : "";
+  const licenseBadge = rd.license ? ` &nbsp; <code>${rd.license}</code>` : "";
+
+  const tagline = generateTagline(entry.description ?? "");
+  const taglinePart = tagline ? ` &nbsp; - &nbsp; ${tagline}` : "";
+
+  const summary = `<details><summary>${dot} <b>${score}</b> &nbsp;${medal} ${nameHtml} &nbsp; ${starsBadge}${trendBadge}${licenseBadge}${taglinePart}</summary>`;
+
+  // Details content
+  const desc = entry.description ?? "";
+  const fullDesc = note ? `${desc} **${note}**` : desc;
+  const displayDesc = isDead ? `*${fullDesc}*` : fullDesc;
+
+  // Dashboard
+  const bar = progressBar(score);
+  const starsExact = rd.stars.toLocaleString("en-US");
+  const trendDetail = isDead
+    ? "(n/a)"
+    : rd.trend !== null
+      ? `(${rd.trend >= 0 ? "+" : ""}${rd.trend} last 30d)`
+      : "(n/a)";
+
+  const actDate = formatDateMonth(rd.pushed);
+  let actSuffix = "";
+  if (rd.archived) actSuffix = " - archived";
+  else if (isHistorical) actSuffix = " - historical";
+  else if (isDead) actSuffix = " - unmaintained 12+ months";
+
+  const tags = entry.tags && entry.tags.length > 0 ? entry.tags : rd.topics ?? [];
+  const tagsLine = tags.length > 0 ? `\n  Tags      ${tags.join(" \u00B7 ")}` : "";
+
+  const dashboard = [
+    "```",
+    `  Quality   ${bar}  ${score}/100`,
+    `  Stars     \u2B50 ${starsExact} ${trendDetail}`,
+    `  Activity  ${dot} ${actDate}${actSuffix}`,
+    `  License   ${rd.license ?? "-"}${tagsLine}`,
+    "```",
+  ];
+
+  return [summary, "", "<br>", "", displayDesc, "", ...dashboard, "", "</details>"];
 }
 
 function assignMedals(scored: ScoredEntry[]): Map<ScoredEntry, string> {
@@ -153,55 +205,12 @@ function assignMedals(scored: ScoredEntry[]): Map<ScoredEntry, string> {
   return medals;
 }
 
-function formatTrend(trend: number | null): string {
-  if (trend === null) return "";
-  if (trend >= 10) return ` <sup>\u2197\uFE0F ${trend}</sup>`;
-  if (trend <= -10) return ` <sup>\u2198\uFE0F ${Math.abs(trend)}</sup>`;
-  return ` <sup>\u2194\uFE0F</sup>`;
-}
-
 function isUnmaintained(pushed: string, months = 12): boolean {
   if (!pushed) return true;
   try {
-    return (
-      Date.now() - new Date(pushed).getTime() > months * 30 * 24 * 60 * 60 * 1000
-    );
+    return Date.now() - new Date(pushed).getTime() > months * 30 * 24 * 60 * 60 * 1000;
   } catch {
     return false;
-  }
-}
-
-function replaceHeaderBadges(header: string, apiData: ApiData): string {
-  return header
-    .replace(
-      /!\[\]\(https:\/\/img\.shields\.io\/github\/stars\/([^?]+)\?[^)]+\)/g,
-      (_match, repo) => {
-        const rd = apiData[repo];
-        return rd ? formatStars(rd.stars) : "-";
-      },
-    )
-    .replace(
-      /!\[\]\(https:\/\/img\.shields\.io\/github\/last-commit\/([^?]+)\?[^)]+\)/g,
-      (_match, repo) => {
-        const rd = apiData[repo];
-        return rd ? formatDate(rd.pushed) : "-";
-      },
-    );
-}
-
-function formatStars(n: number): string {
-  return n.toLocaleString("en-US");
-}
-
-function formatDate(pushed: string): string {
-  if (!pushed) return "-";
-  try {
-    const d = new Date(pushed);
-    const y = d.getUTCFullYear();
-    const m = String(d.getUTCMonth() + 1).padStart(2, "0");
-    return `${y}-${m}`;
-  } catch {
-    return "-";
   }
 }
 

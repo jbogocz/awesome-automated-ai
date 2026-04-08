@@ -10,6 +10,7 @@ interface RawApiResult {
   pushed: string;
   archived: boolean;
   license: string | null;
+  topics: string[];
 }
 
 export function fetchRepoData(yamlContent: string): ApiData {
@@ -49,6 +50,7 @@ export function fetchRepoData(yamlContent: string): ApiData {
       license: raw.license,
       trend,
       score,
+      topics: raw.topics,
     };
   }
 
@@ -64,7 +66,7 @@ function fetchOneRepo(repo: string): RawApiResult {
         "api",
         `repos/${repo}`,
         "--jq",
-        "{stars: .stargazers_count, pushed: .pushed_at, archived: .archived, license: .license.spdx_id}",
+        "{stars: .stargazers_count, pushed: .pushed_at, archived: .archived, license: .license.spdx_id, topics: .topics}",
       ],
       { timeout: 15_000, encoding: "utf-8" },
     );
@@ -75,9 +77,10 @@ function fetchOneRepo(repo: string): RawApiResult {
       pushed,
       archived: parsed.archived ?? false,
       license: parsed.license ?? null,
+      topics: parsed.topics ?? [],
     };
   } catch {
-    return { stars: 0, pushed: "", archived: false, license: null };
+    return { stars: 0, pushed: "", archived: false, license: null, topics: [] };
   }
 }
 

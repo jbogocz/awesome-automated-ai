@@ -80,26 +80,14 @@ A curated list of 200+ tools for automated machine learning - from hyperparamete
 
 | Symbol | Meaning |
 |:-------|:--------|
-| 12,100 | GitHub stars (updates on each `generate` run) |
-| 2026-04 | Last commit date as YYYY-MM |
-| `MIT` | SPDX license identifier |
-| :1st_place_medal: :2nd_place_medal: :3rd_place_medal: | Quality score - top 3 per category |
-| :arrow_upper_right: 340 | Stars gained in last 30 days |
-| :left_right_arrow: | Stable (fewer than 10 stars gained/lost) |
-| :zzz: | Unmaintained - no commits for 12+ months |
+| :green_circle: :yellow_circle: :red_circle: | Project health: active (< 6 months) / stale (6-12 months) / unmaintained (> 12 months) |
+| **88** | Quality score (0-100) based on stars, trend, freshness, license, and archived status |
+| :1st_place_medal: :2nd_place_medal: :3rd_place_medal: | Top 3 quality score per category |
+| :star: 11.7K | GitHub stars |
+| :arrow_upper_right: +340 | Stars gained in last 30 days (shown when >= 10) |
+| :zzz: | Unmaintained - no activity for 12+ months |
 | :file_cabinet: | Historical - included for foundational influence |
-| **Archived** | Repository archived by maintainer |
+| `Apache-2.0` | SPDX license identifier |
 
-### Quick Comparison: General-Purpose AutoML
-
-| Framework | Stars | Updated | Best For | Modalities |
-|:----------|:------|:--------|:---------|:-----------|
-| [Ludwig](https://github.com/ludwig-ai/ludwig) | ![](https://img.shields.io/github/stars/ludwig-ai/ludwig?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/ludwig-ai/ludwig?style=flat-square&label=&color=green) | Declarative deep learning | Tabular, text, image |
-| [AutoGluon](https://github.com/autogluon/autogluon) | ![](https://img.shields.io/github/stars/autogluon/autogluon?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/autogluon/autogluon?style=flat-square&label=&color=green) | Overall accuracy | Tabular, text, image, TS |
-| [TPOT](https://github.com/EpistasisLab/tpot) | ![](https://img.shields.io/github/stars/EpistasisLab/tpot?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/EpistasisLab/tpot?style=flat-square&label=&color=green) | Pipeline discovery | Tabular (sklearn) |
-| [PyCaret](https://github.com/pycaret/pycaret) | ![](https://img.shields.io/github/stars/pycaret/pycaret?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/pycaret/pycaret?style=flat-square&label=&color=green) | Quick prototyping | Tabular |
-| [AutoKeras](https://github.com/keras-team/autokeras) | ![](https://img.shields.io/github/stars/keras-team/autokeras?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/keras-team/autokeras?style=flat-square&label=&color=green) | Deep learning | Image, text, tabular |
-| [H2O AutoML](https://github.com/h2oai/h2o-3) | ![](https://img.shields.io/github/stars/h2oai/h2o-3?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/h2oai/h2o-3?style=flat-square&label=&color=green) | Enterprise / distributed | Tabular |
-| [FLAML](https://github.com/microsoft/FLAML) | ![](https://img.shields.io/github/stars/microsoft/FLAML?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/microsoft/FLAML?style=flat-square&label=&color=green) | Resource-constrained | Tabular |
-| [MLJAR](https://github.com/mljar/mljar-supervised) | ![](https://img.shields.io/github/stars/mljar/mljar-supervised?style=flat-square&label=&color=blue) | ![](https://img.shields.io/github/last-commit/mljar/mljar-supervised?style=flat-square&label=&color=green) | Explainability | Tabular |
+> Click any project to expand its full dashboard with quality bar, exact stats, and tags.
 
