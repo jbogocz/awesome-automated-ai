@@ -108,7 +108,7 @@ describe("generateTagline", () => {
     const long = "A".repeat(90);
     const result = generateTagline(long);
     expect(result.endsWith("...")).toBe(true);
-    expect(result.length).toBe(83); // 80 chars + "..."
+    expect(result.length).toBe(80); // 77 chars + "..."
   });
 
   it("escapes ampersand", () => {

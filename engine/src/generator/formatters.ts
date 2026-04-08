@@ -64,7 +64,7 @@ export function generateTagline(description: string, maxLen = 80): string {
   const match = description.match(/^(.+?)[.,]\s/);
   let text = match ? match[1] : description;
   if (text.length > maxLen) {
-    text = text.slice(0, maxLen) + "...";
+    text = text.slice(0, maxLen - 3) + "...";
   }
   return text.replace(/&/g, "&amp;");
 }
@@ -73,16 +73,14 @@ export function generateTagline(description: string, maxLen = 80): string {
  * Format an ISO date string as "Mon YYYY" (e.g. "Apr 2026").
  * Returns "-" for empty string or parse error.
  */
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 export function formatDateMonth(pushed: string): string {
   if (!pushed) return "-";
   try {
-    const date = new Date(pushed);
-    if (isNaN(date.getTime())) return "-";
-    return date.toLocaleDateString("en-US", {
-      month: "short",
-      year: "numeric",
-      timeZone: "UTC",
-    });
+    const d = new Date(pushed);
+    if (isNaN(d.getTime())) return "-";
+    return `${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
   } catch {
     return "-";
   }
