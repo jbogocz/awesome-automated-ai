@@ -190,7 +190,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
 
   const dashboard = [
     "```",
-    `  Quality   ${score}/100`,
+    `  Score     ${score}/100`,
     `  Stars     \u2B50 ${starsExact} ${trendDetail}`,
     `  Activity  ${dot} ${actDate}${actSuffix}`,
     `  License   ${rd.license ?? "-"}${tagsLine}`,
