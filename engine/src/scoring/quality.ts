@@ -14,7 +14,8 @@ export function computeQualityScore(input: QualityInput): number {
     trendScore = 50;
   } else {
     const delta = input.stars - input.starsPrevious;
-    trendScore = clamp((delta / 500) * 100, 0, 100);
+    const sign = delta >= 0 ? 1 : -1;
+    trendScore = 50 + sign * Math.min(Math.log10(1 + Math.abs(delta)) / 3 * 50, 50);
   }
 
   const freshnessScore = scoreFreshness(input.pushedAt);
