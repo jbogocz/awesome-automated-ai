@@ -38,6 +38,24 @@ export class DB {
       CREATE INDEX IF NOT EXISTS idx_projects_status ON projects(status);
       CREATE INDEX IF NOT EXISTS idx_projects_repo ON projects(repo);
 
+      -- Add tagline column if missing (idempotent)
+      CREATE TABLE IF NOT EXISTS _migrations (name TEXT PRIMARY KEY);
+      INSERT OR IGNORE INTO _migrations (name) VALUES ('add_tagline');
+    `);
+
+    const needsTagline = this.sqlite
+      .prepare("SELECT 1 FROM _migrations WHERE name = 'add_tagline'")
+      .get();
+    if (needsTagline) {
+      try {
+        this.sqlite.exec("ALTER TABLE projects ADD COLUMN tagline TEXT");
+      } catch {
+        // Column already exists
+      }
+    }
+
+    this.sqlite.exec(`
+
       CREATE TABLE IF NOT EXISTS snapshots (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
@@ -208,6 +226,19 @@ export class DB {
       )
       .run(repo, name);
     return Number(info.lastInsertRowid);
+  }
+
+  getTagline(projectId: number): string | null {
+    const row = this.sqlite
+      .prepare("SELECT tagline FROM projects WHERE id = ? AND tagline IS NOT NULL")
+      .get(projectId) as { tagline: string } | undefined;
+    return row?.tagline ?? null;
+  }
+
+  setTagline(projectId: number, tagline: string): void {
+    this.sqlite
+      .prepare("UPDATE projects SET tagline = ? WHERE id = ?")
+      .run(tagline, projectId);
   }
 
   insertSnapshot(projectId: number, stars: number, score: number): void {

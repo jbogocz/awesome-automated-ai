@@ -9,6 +9,7 @@ export interface ApiRepoData {
   trend: number | null;
   score: number;
   topics: string[];
+  tagline: string | null;
 }
 export type ApiData = Record<string, ApiRepoData>;
 
@@ -94,6 +95,7 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
       trend: null,
       score: 0,
       topics: [],
+      tagline: null,
     };
     let note = entry.note ?? "";
     if (rd.archived && !note.includes("Archived"))
@@ -152,7 +154,7 @@ function buildOneCard(s: ScoredEntry, medals: Map<ScoredEntry, string>): string[
       : "";
   const licenseBadge = rd.license ? ` <code>${rd.license}</code>` : "";
 
-  const tagline = entry.tagline || generateTagline(entry.description ?? "");
+  const tagline = rd.tagline || entry.tagline || generateTagline(entry.description ?? "");
   const taglinePart = tagline ? ` ${tagline}` : "";
 
   const summary = `<details><summary>${dot} <b>${score}</b>${medal} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${taglinePart}</summary>`;

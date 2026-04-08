@@ -15,12 +15,12 @@ interface RawApiResult {
 
 export function fetchRepoData(yamlContent: string): ApiData {
   const doc = parseYaml(yamlContent) as {
-    categories: { entries?: { repo?: string; name?: string }[] }[];
+    categories: { entries?: { repo?: string; name?: string; tagline?: string }[] }[];
   };
-  const repos: { repo: string; name: string }[] = [];
+  const repos: { repo: string; name: string; tagline?: string }[] = [];
   for (const cat of doc.categories) {
     for (const entry of cat.entries ?? []) {
-      if (entry.repo) repos.push({ repo: entry.repo, name: entry.name ?? entry.repo });
+      if (entry.repo) repos.push({ repo: entry.repo, name: entry.name ?? entry.repo, tagline: entry.tagline });
     }
   }
   console.log(`Fetching data for ${repos.length} repos...`);
@@ -30,7 +30,7 @@ export function fetchRepoData(yamlContent: string): ApiData {
   db.migrate();
 
   const data: ApiData = {};
-  for (const { repo, name } of repos) {
+  for (const { repo, name, tagline: yamlTagline } of repos) {
     const raw = fetchOneRepo(repo);
     const projectId = db.upsertProject(repo, name);
     const starsPrevious = db.getPreviousStars(projectId);
@@ -43,6 +43,14 @@ export function fetchRepoData(yamlContent: string): ApiData {
       archived: raw.archived,
     });
     db.insertSnapshot(projectId, raw.stars, score);
+
+    // Tagline: DB first, seed from YAML if DB empty
+    let tagline = db.getTagline(projectId);
+    if (!tagline && yamlTagline) {
+      db.setTagline(projectId, yamlTagline);
+      tagline = yamlTagline;
+    }
+
     data[repo] = {
       stars: raw.stars,
       pushed: raw.pushed,
@@ -51,6 +59,7 @@ export function fetchRepoData(yamlContent: string): ApiData {
       trend,
       score,
       topics: raw.topics,
+      tagline,
     };
   }
 
