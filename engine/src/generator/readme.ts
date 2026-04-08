@@ -7,6 +7,7 @@ export interface ApiRepoData {
   license: string | null;
   trend: number | null;
   score: number;
+  topics: string[];
 }
 export type ApiData = Record<string, ApiRepoData>;
 
