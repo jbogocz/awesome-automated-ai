@@ -107,11 +107,11 @@ function buildTable(entries: Entry[], apiData: ApiData): string[] {
     return { entry, rd, note, isDead, isHistorical };
   });
 
-  scored.sort((a, b) => b.rd.score - a.rd.score);
-
   const medals = assignMedals(scored);
 
-  return scored.map((s, i) => {
+  scored.sort((a, b) => b.rd.stars - a.rd.stars);
+
+  return scored.map((s) => {
     const { entry, rd, note, isDead, isHistorical } = s;
     const repo = entry.repo ?? "";
     const url = entry.url ?? `https://github.com/${repo}`;
@@ -121,7 +121,7 @@ function buildTable(entries: Entry[], apiData: ApiData): string[] {
     let badge = "";
     if (isDead && isHistorical) badge = ` ${HISTORICAL}`;
     else if (isDead) badge = ` ${SLEEPING}`;
-    else if (medals.has(i)) badge = ` ${medals.get(i)}`;
+    else if (medals.has(s)) badge = ` ${medals.get(s)}`;
 
     const trendText = !isDead ? formatTrend(rd.trend) : "";
     const projectCol = isDead
@@ -139,12 +139,14 @@ function buildTable(entries: Entry[], apiData: ApiData): string[] {
   });
 }
 
-function assignMedals(scored: ScoredEntry[]): Map<number, string> {
-  const medals = new Map<number, string>();
+function assignMedals(scored: ScoredEntry[]): Map<ScoredEntry, string> {
+  const byScore = [...scored].sort((a, b) => b.rd.score - a.rd.score);
+  const medals = new Map<ScoredEntry, string>();
   let medalIdx = 0;
-  for (let i = 0; i < scored.length && medalIdx < 3; i++) {
-    if (!scored[i].isDead && scored[i].rd.score >= 40) {
-      medals.set(i, MEDAL[medalIdx]);
+  for (const s of byScore) {
+    if (medalIdx >= 3) break;
+    if (!s.isDead && s.rd.score >= 40) {
+      medals.set(s, MEDAL[medalIdx]);
       medalIdx++;
     }
   }

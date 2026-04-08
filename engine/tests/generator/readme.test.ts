@@ -35,7 +35,7 @@ describe("generateReadme", () => {
     expect(result).toContain("| Project | Stars | Updated | License | Description |");
   });
 
-  it("sorts by quality score descending (highest score first)", () => {
+  it("sorts by stars descending", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
     const autogluonIdx = result.indexOf("AutoGluon");
     const pycaretIdx = result.indexOf("PyCaret");
