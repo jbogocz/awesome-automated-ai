@@ -13,8 +13,8 @@ export function computeQualityScore(input: QualityInput): number {
   if (input.starsPrevious === null) {
     trendScore = 50;
   } else {
-    const prev = Math.max(input.starsPrevious, 1);
-    trendScore = clamp(((input.stars - prev) / prev) * 1000, 0, 100);
+    const delta = input.stars - input.starsPrevious;
+    trendScore = clamp((delta / 500) * 100, 0, 100);
   }
 
   const freshnessScore = scoreFreshness(input.pushedAt);
@@ -23,10 +23,10 @@ export function computeQualityScore(input: QualityInput): number {
 
   const raw =
     starsScore * 0.4 +
-    trendScore * 0.3 +
-    freshnessScore * 0.2 +
-    licenseScore * 0.05 +
-    archivedScore * 0.05;
+    trendScore * 0.25 +
+    freshnessScore * 0.15 +
+    licenseScore * 0.1 +
+    archivedScore * 0.1;
 
   return clamp(Math.round(raw), 0, 100);
 }

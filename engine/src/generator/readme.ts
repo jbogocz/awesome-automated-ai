@@ -109,7 +109,7 @@ function buildTable(entries: Entry[], apiData: ApiData): string[] {
 
   const medals = assignMedals(scored);
 
-  scored.sort((a, b) => b.rd.stars - a.rd.stars);
+  scored.sort((a, b) => b.rd.score - a.rd.score);
 
   return scored.map((s) => {
     const { entry, rd, note, isDead, isHistorical } = s;

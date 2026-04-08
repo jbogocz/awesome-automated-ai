@@ -24,7 +24,7 @@ describe("computeQualityScore", () => {
       archived: false,
     };
     const score = computeQualityScore(input);
-    expect(score).toBeLessThan(30);
+    expect(score).toBeLessThan(40);
   });
 
   it("gives neutral trend when no previous data", () => {
