@@ -35,8 +35,6 @@ interface Category {
   entries?: Entry[];
 }
 
-const MEDAL = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];
-
 export function generateReadme(opts: GenerateOptions): string {
   const { yamlContent, header, footer, apiData } = opts;
   const doc = parseYaml(yamlContent) as { categories: Category[] };
@@ -108,35 +106,43 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
     return { entry, rd, note, isDead, isHistorical };
   });
 
-  const medals = assignMedals(scored);
   scored.sort((a, b) => b.rd.score - a.rd.score);
 
   const active = scored.filter((s) => !s.isDead);
   const dead = scored.filter((s) => s.isDead);
 
   const lines: string[] = [];
-  for (const s of active) {
-    lines.push(...buildOneCard(s, medals));
+  for (let i = 0; i < active.length; i++) {
+    lines.push(...buildOneCard(active[i], i + 1));
     lines.push("");
   }
   if (dead.length > 0) {
     lines.push("---", "");
     for (const s of dead) {
-      lines.push(...buildOneCard(s, medals));
+      lines.push(...buildOneCard(s, null));
       lines.push("");
     }
   }
   return lines;
 }
 
-function buildOneCard(s: ScoredEntry, medals: Map<ScoredEntry, string>): string[] {
+const MEDAL = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];
+
+function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   const { entry, rd, note, isDead, isHistorical } = s;
   const repo = entry.repo ?? "";
   const url = entry.url ?? `https://github.com/${repo}`;
   const dot = activityDot(rd.pushed, rd.archived);
   const score = rd.score;
 
-  const medal = medals.has(s) ? ` ${medals.get(s)}` : "";
+  let rankLabel: string;
+  if (rank === null) {
+    rankLabel = "";
+  } else if (rank <= 3) {
+    rankLabel = ` ${MEDAL[rank - 1]}`;
+  } else {
+    rankLabel = ` <b>${rank}</b>`;
+  }
 
   let nameHtml: string;
   if (isDead && isHistorical) {
@@ -157,7 +163,7 @@ function buildOneCard(s: ScoredEntry, medals: Map<ScoredEntry, string>): string[
   const tagline = rd.tagline || entry.tagline || generateTagline(entry.description ?? "");
   const taglinePart = tagline ? ` ${tagline}` : "";
 
-  const summary = `<details><summary>${dot} <b>${score}</b>${medal} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${taglinePart}</summary>`;
+  const summary = `<details><summary>${dot}${rankLabel} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${taglinePart}</summary>`;
 
   // Details content
   const desc = entry.description ?? "";
@@ -192,20 +198,6 @@ function buildOneCard(s: ScoredEntry, medals: Map<ScoredEntry, string>): string[
   ];
 
   return [summary, "", "<br>", "", displayDesc, "", ...dashboard, "", "</details>"];
-}
-
-function assignMedals(scored: ScoredEntry[]): Map<ScoredEntry, string> {
-  const byScore = [...scored].sort((a, b) => b.rd.score - a.rd.score);
-  const medals = new Map<ScoredEntry, string>();
-  let medalIdx = 0;
-  for (const s of byScore) {
-    if (medalIdx >= 3) break;
-    if (!s.isDead && s.rd.score >= 40) {
-      medals.set(s, MEDAL[medalIdx]);
-      medalIdx++;
-    }
-  }
-  return medals;
 }
 
 function isUnmaintained(pushed: string, months = 12): boolean {

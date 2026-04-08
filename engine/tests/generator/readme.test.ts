@@ -38,9 +38,10 @@ describe("generateReadme", () => {
     expect(result).not.toContain("| Project |");
   });
 
-  it("shows activity dot and score before project name", () => {
+  it("shows activity dot and rank before project name", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
-    expect(result).toContain("\uD83D\uDFE2 <b>88</b>");
+    // Rank 1 gets medal emoji
+    expect(result).toContain("\uD83D\uDFE2 \uD83E\uDD47");
   });
 
   it("shows stars in short K format in summary", () => {
@@ -83,9 +84,9 @@ describe("generateReadme", () => {
     expect(pycaretCard).toContain("automl \u00B7 low-code");
   });
 
-  it("renders dead projects with red dot and italic name", () => {
+  it("renders dead projects with red dot and italic name, no rank", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
-    expect(result).toContain("\uD83D\uDD34 <b>10</b>");
+    expect(result).toContain("\uD83D\uDD34 \uD83D\uDDC4");
     expect(result).toContain("<i><a href=");
   });
 
@@ -95,9 +96,11 @@ describe("generateReadme", () => {
     expect(catSection).toContain("\n---\n");
   });
 
-  it("assigns medal after score for top entries", () => {
+  it("assigns medal for rank 1, number for rank 2", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
     expect(result).toContain("\uD83E\uDD47");
+    // PyCaret is rank 2 (score 75) - gets silver medal
+    expect(result).toContain("\uD83E\uDD48");
   });
 
   it("shows n/a trend for dead projects in dashboard", () => {
