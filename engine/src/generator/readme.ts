@@ -188,8 +188,14 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   const tags = allTags.slice(0, 5);
   const tagsLine = tags.length > 0 ? `\n  Tags      ${tags.join(" \u00B7 ")}` : "";
 
+  const descLine = isDead && note
+    ? `  ${desc} ${note}`
+    : `  ${desc}`;
+
   const dashboard = [
     "```",
+    descLine,
+    "",
     `  Quality   ${score}/100`,
     `  Stars     \u2B50 ${starsExact} ${trendDetail}`,
     `  Activity  ${dot} ${actDate}${actSuffix}`,
@@ -197,7 +203,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
     "```",
   ];
 
-  return [summary, "", "<br>", "", displayDesc, "", ...dashboard, "", "</details>"];
+  return [summary, "", "<br>", "", ...dashboard, "", "</details>"];
 }
 
 function isUnmaintained(pushed: string, months = 12): boolean {
