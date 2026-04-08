@@ -22,11 +22,11 @@ export function computeQualityScore(input: QualityInput): number {
   const archivedScore = input.archived ? 0 : 100;
 
   const raw =
-    starsScore * 0.25 +
-    trendScore * 0.25 +
-    freshnessScore * 0.3 +
-    licenseScore * 0.1 +
-    archivedScore * 0.1;
+    starsScore * 0.4 +
+    trendScore * 0.3 +
+    freshnessScore * 0.2 +
+    licenseScore * 0.05 +
+    archivedScore * 0.05;
 
   return clamp(Math.round(raw), 0, 100);
 }
