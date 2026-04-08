@@ -92,31 +92,28 @@ describe("activityDot", () => {
 });
 
 describe("generateTagline", () => {
-  it("truncates at period followed by space", () => {
-    expect(generateTagline("Fast ML framework. Supports all tasks.")).toBe(
-      "Fast ML framework"
+  it("takes first 7 words", () => {
+    expect(generateTagline("Declarative deep learning framework supporting custom model building and LLM fine-tuning")).toBe(
+      "Declarative deep learning framework supporting custom model"
     );
   });
 
-  it("truncates at comma followed by space", () => {
-    expect(generateTagline("Fast ML framework, easy to use and fast.")).toBe(
-      "Fast ML framework"
+  it("strips trailing punctuation", () => {
+    expect(generateTagline("Fast ML framework, easy to use.")).toBe(
+      "Fast ML framework, easy to use"
     );
-  });
-
-  it("truncates with ellipsis when text exceeds maxLen", () => {
-    const long = "A".repeat(90);
-    const result = generateTagline(long);
-    expect(result.endsWith("...")).toBe(true);
-    expect(result.length).toBe(80); // 77 chars + "..."
   });
 
   it("escapes ampersand", () => {
-    expect(generateTagline("ML & DL toolkit.")).toBe("ML &amp; DL toolkit.");
+    expect(generateTagline("Training & tuning toolkit for ML")).toBe("Training &amp; tuning toolkit for ML");
   });
 
-  it("passes through short text with no sentence break", () => {
+  it("passes through short text", () => {
     expect(generateTagline("Short text")).toBe("Short text");
+  });
+
+  it("respects custom maxWords", () => {
+    expect(generateTagline("one two three four five six seven eight", 3)).toBe("one two three");
   });
 });
 

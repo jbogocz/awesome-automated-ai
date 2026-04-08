@@ -54,18 +54,13 @@ export function activityDot(pushed: string, archived: boolean): string {
 }
 
 /**
- * Generate a short tagline from a description.
- * - Takes text up to first "." or "," followed by a space
- * - If no match, uses full description
- * - Caps at maxLen chars, truncates with "..." if over
+ * Generate a short tagline from a description (max 7 words).
+ * - Takes first 7 words of the description
  * - Replaces "&" with "&amp;"
  */
-export function generateTagline(description: string, maxLen = 80): string {
-  const match = description.match(/^(.+?)[.,]\s/);
-  let text = match ? match[1] : description;
-  if (text.length > maxLen) {
-    text = text.slice(0, maxLen - 3) + "...";
-  }
+export function generateTagline(description: string, maxWords = 7): string {
+  const words = description.split(/\s+/).slice(0, maxWords);
+  const text = words.join(" ").replace(/[.,;:!?]+$/, "");
   return text.replace(/&/g, "&amp;");
 }
 

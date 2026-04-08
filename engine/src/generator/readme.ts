@@ -147,14 +147,14 @@ function buildOneCard(s: ScoredEntry, medals: Map<ScoredEntry, string>): string[
   const starsBadge = `<code>\u2B50 ${formatStarsShort(rd.stars)}</code>`;
   const trendBadge =
     !isDead && rd.trend !== null && Math.abs(rd.trend) >= 10
-      ? ` &nbsp; <code>${rd.trend > 0 ? "\u2197\uFE0F" : "\u2198\uFE0F"} ${rd.trend > 0 ? "+" : ""}${rd.trend}</code>`
+      ? ` <code>${rd.trend > 0 ? "\u2197\uFE0F" : "\u2198\uFE0F"} ${rd.trend > 0 ? "+" : ""}${rd.trend}</code>`
       : "";
-  const licenseBadge = rd.license ? ` &nbsp; <code>${rd.license}</code>` : "";
+  const licenseBadge = rd.license ? ` <code>${rd.license}</code>` : "";
 
   const tagline = generateTagline(entry.description ?? "");
-  const taglinePart = tagline ? ` &nbsp; - &nbsp; ${tagline}` : "";
+  const taglinePart = tagline ? ` ${tagline}` : "";
 
-  const summary = `<details><summary>${dot} <b>${score}</b> &nbsp;${medal} ${nameHtml} &nbsp; ${starsBadge}${trendBadge}${licenseBadge}${taglinePart}</summary>`;
+  const summary = `<details><summary>${dot} <b>${score}</b>${medal} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${taglinePart}</summary>`;
 
   // Details content
   const desc = entry.description ?? "";

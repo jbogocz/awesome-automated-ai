@@ -95,7 +95,7 @@ A curated list of 200+ tools for automated machine learning - from hyperparamete
 
 *End-to-end frameworks that automate model selection, hyperparameter tuning, and pipeline construction.*
 
-<details><summary>🟢 <b>68</b> &nbsp; 🥇 <b><a href="https://github.com/ludwig-ai/ludwig">Ludwig</a></b> &nbsp; <code>⭐ 11.7K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Declarative deep learning framework supporting custom model building and LLM ...</summary>
+<details><summary>🟢 <b>68</b> 🥇 <b><a href="https://github.com/ludwig-ai/ludwig">Ludwig</a></b> <code>⭐ 11.7K</code> <code>Apache-2.0</code> Declarative deep learning framework supporting custom model</summary>
 
 <br>
 
@@ -111,7 +111,7 @@ Declarative deep learning framework supporting custom model building and LLM fin
 
 </details>
 
-<details><summary>🟢 <b>66</b> &nbsp; 🥈 <b><a href="https://github.com/h2oai/h2o-3">H2O AutoML</a></b> &nbsp; <code>⭐ 7.5K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Distributed machine learning platform with automatic training and tuning of m...</summary>
+<details><summary>🟢 <b>66</b> 🥈 <b><a href="https://github.com/h2oai/h2o-3">H2O AutoML</a></b> <code>⭐ 7.5K</code> <code>Apache-2.0</code> Distributed machine learning platform with automatic training</summary>
 
 <br>
 
@@ -127,7 +127,7 @@ Distributed machine learning platform with automatic training and tuning of many
 
 </details>
 
-<details><summary>🟢 <b>63</b> &nbsp; 🥉 <b><a href="https://github.com/shankarpandala/lazypredict">LazyPredict</a></b> &nbsp; <code>⭐ 3.3K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Build and evaluate dozens of scikit-learn models in a single line of code for...</summary>
+<details><summary>🟢 <b>63</b> 🥉 <b><a href="https://github.com/shankarpandala/lazypredict">LazyPredict</a></b> <code>⭐ 3.3K</code> <code>MIT</code> Build and evaluate dozens of scikit-learn models</summary>
 
 <br>
 
@@ -143,7 +143,7 @@ Build and evaluate dozens of scikit-learn models in a single line of code for ra
 
 </details>
 
-<details><summary>🟢 <b>63</b> &nbsp; <b><a href="https://github.com/mljar/mljar-supervised">MLJAR Supervised</a></b> &nbsp; <code>⭐ 3.3K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Automated ML with automatic explanations</summary>
+<details><summary>🟢 <b>63</b> <b><a href="https://github.com/mljar/mljar-supervised">MLJAR Supervised</a></b> <code>⭐ 3.3K</code> <code>MIT</code> Automated ML with automatic explanations, visualizations, and</summary>
 
 <br>
 
@@ -159,7 +159,7 @@ Automated ML with automatic explanations, visualizations, and Markdown reports f
 
 </details>
 
-<details><summary>🟢 <b>61</b> &nbsp; <b><a href="https://github.com/autogluon/autogluon">AutoGluon</a></b> &nbsp; <code>⭐ 10.2K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Multi-layer stack ensembling for tabular</summary>
+<details><summary>🟢 <b>61</b> <b><a href="https://github.com/autogluon/autogluon">AutoGluon</a></b> <code>⭐ 10.2K</code> <code>Apache-2.0</code> Multi-layer stack ensembling for tabular, text, image</summary>
 
 <br>
 
@@ -175,7 +175,7 @@ Multi-layer stack ensembling for tabular, text, image, time-series, and multimod
 
 </details>
 
-<details><summary>🟢 <b>61</b> &nbsp; <b><a href="https://github.com/keras-team/autokeras">AutoKeras</a></b> &nbsp; <code>⭐ 9.3K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Neural architecture search for deep learning models built on top of Keras.</summary>
+<details><summary>🟢 <b>61</b> <b><a href="https://github.com/keras-team/autokeras">AutoKeras</a></b> <code>⭐ 9.3K</code> <code>Apache-2.0</code> Neural architecture search for deep learning models</summary>
 
 <br>
 
@@ -191,7 +191,7 @@ Neural architecture search for deep learning models built on top of Keras.
 
 </details>
 
-<details><summary>🟢 <b>61</b> &nbsp; <b><a href="https://github.com/microsoft/FLAML">FLAML</a></b> &nbsp; <code>⭐ 4.3K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Fast and lightweight AutoML that finds good models with minimal resources - o...</summary>
+<details><summary>🟢 <b>61</b> <b><a href="https://github.com/microsoft/FLAML">FLAML</a></b> <code>⭐ 4.3K</code> <code>MIT</code> Fast and lightweight AutoML that finds good</summary>
 
 <br>
 
@@ -207,7 +207,7 @@ Fast and lightweight AutoML that finds good models with minimal resources - ofte
 
 </details>
 
-<details><summary>🟡 <b>57</b> &nbsp; <b><a href="https://github.com/EpistasisLab/tpot">TPOT</a></b> &nbsp; <code>⭐ 10.0K</code> &nbsp; <code>LGPL-3.0</code> &nbsp; - &nbsp; Genetic programming-based pipeline optimizer that designs and optimizes sciki...</summary>
+<details><summary>🟡 <b>57</b> <b><a href="https://github.com/EpistasisLab/tpot">TPOT</a></b> <code>⭐ 10.0K</code> <code>LGPL-3.0</code> Genetic programming-based pipeline optimizer that designs and</summary>
 
 <br>
 
@@ -223,7 +223,7 @@ Genetic programming-based pipeline optimizer that designs and optimizes scikit-l
 
 </details>
 
-<details><summary>🟢 <b>56</b> &nbsp; <b><a href="https://github.com/sapientml/sapientml">SapientML</a></b> &nbsp; <code>⭐ 449</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Generative AutoML that synthesizes pipelines by learning from a corpus of exi...</summary>
+<details><summary>🟢 <b>56</b> <b><a href="https://github.com/sapientml/sapientml">SapientML</a></b> <code>⭐ 449</code> <code>Apache-2.0</code> Generative AutoML that synthesizes pipelines by learning</summary>
 
 <br>
 
@@ -239,7 +239,7 @@ Generative AutoML that synthesizes pipelines by learning from a corpus of existi
 
 </details>
 
-<details><summary>🟢 <b>54</b> &nbsp; <b><a href="https://github.com/sb-ai-lab/LightAutoML">LightAutoML</a></b> &nbsp; <code>⭐ 1.5K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Fast and customizable AutoML framework with Kaggle-winning performance (Sber ...</summary>
+<details><summary>🟢 <b>54</b> <b><a href="https://github.com/sb-ai-lab/LightAutoML">LightAutoML</a></b> <code>⭐ 1.5K</code> <code>Apache-2.0</code> Fast and customizable AutoML framework with Kaggle-winning</summary>
 
 <br>
 
@@ -257,7 +257,7 @@ Fast and customizable AutoML framework with Kaggle-winning performance (Sber AI 
 
 ---
 
-<details><summary>🔴 <b>52</b> &nbsp; 💤 <i><a href="https://github.com/pycaret/pycaret">PyCaret</a></i> &nbsp; <code>⭐ 9.7K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Low-code machine learning library that automates model training</summary>
+<details><summary>🔴 <b>52</b> 💤 <i><a href="https://github.com/pycaret/pycaret">PyCaret</a></i> <code>⭐ 9.7K</code> <code>MIT</code> Low-code machine learning library that automates model</summary>
 
 <br>
 
@@ -273,7 +273,7 @@ Fast and customizable AutoML framework with Kaggle-winning performance (Sber AI 
 
 </details>
 
-<details><summary>🔴 <b>51</b> &nbsp; 💤 <i><a href="https://github.com/automl/auto-sklearn">auto-sklearn</a></i> &nbsp; <code>⭐ 8.1K</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; Historically important AutoML toolkit using Bayesian optimization</summary>
+<details><summary>🔴 <b>51</b> 💤 <i><a href="https://github.com/automl/auto-sklearn">auto-sklearn</a></i> <code>⭐ 8.1K</code> <code>BSD-3-Clause</code> Historically important AutoML toolkit using Bayesian optimization</summary>
 
 <br>
 
@@ -289,7 +289,7 @@ Fast and customizable AutoML framework with Kaggle-winning performance (Sber AI 
 
 </details>
 
-<details><summary>🔴 <b>43</b> &nbsp; 💤 <i><a href="https://github.com/alteryx/evalml">EvalML</a></i> &nbsp; <code>⭐ 846</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; AutoML library for building</summary>
+<details><summary>🔴 <b>43</b> 💤 <i><a href="https://github.com/alteryx/evalml">EvalML</a></i> <code>⭐ 846</code> <code>BSD-3-Clause</code> AutoML library for building, optimizing, and evaluating</summary>
 
 <br>
 
@@ -305,7 +305,7 @@ Fast and customizable AutoML framework with Kaggle-winning performance (Sber AI 
 
 </details>
 
-<details><summary>🔴 <b>36</b> &nbsp; 💤 <i><a href="https://github.com/amore-labs/gama">GAMA</a></i> &nbsp; <code>⭐ 103</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; AutoML tool that generates optimized ML pipelines using genetic programming a...</summary>
+<details><summary>🔴 <b>36</b> 💤 <i><a href="https://github.com/amore-labs/gama">GAMA</a></i> <code>⭐ 103</code> <code>Apache-2.0</code> AutoML tool that generates optimized ML pipelines</summary>
 
 <br>
 
@@ -321,7 +321,7 @@ Fast and customizable AutoML framework with Kaggle-winning performance (Sber AI 
 
 </details>
 
-<details><summary>🔴 <b>30</b> &nbsp; 🗄️ <i><a href="https://github.com/automl/autoweka">Auto-WEKA</a></i> &nbsp; <code>⭐ 336</code> &nbsp; - &nbsp; The original AutoML system (2013) combining algorithm selection and HPO in WEKA.</summary>
+<details><summary>🔴 <b>30</b> 🗄️ <i><a href="https://github.com/automl/autoweka">Auto-WEKA</a></i> <code>⭐ 336</code> The original AutoML system (2013) combining algorithm</summary>
 
 <br>
 
@@ -343,7 +343,7 @@ Fast and customizable AutoML framework with Kaggle-winning performance (Sber AI 
 
 *Pretrained models that replace traditional pipeline-search AutoML with a single forward pass or zero-shot inference.*
 
-<details><summary>🟢 <b>65</b> &nbsp; 🥇 <b><a href="https://github.com/PriorLabs/TabPFN">TabPFN</a></b> &nbsp; <code>⭐ 6.0K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Tabular foundation model that matches tuned XGBoost in 2.8 seconds with a sin...</summary>
+<details><summary>🟢 <b>65</b> 🥇 <b><a href="https://github.com/PriorLabs/TabPFN">TabPFN</a></b> <code>⭐ 6.0K</code> <code>NOASSERTION</code> Tabular foundation model that matches tuned XGBoost</summary>
 
 <br>
 
@@ -359,7 +359,7 @@ Tabular foundation model that matches tuned XGBoost in 2.8 seconds with a single
 
 </details>
 
-<details><summary>🟢 <b>59</b> &nbsp; 🥈 <b><a href="https://github.com/amazon-science/chronos-forecasting">Chronos</a></b> &nbsp; <code>⭐ 5.1K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Pretrained time-series foundation model for zero-shot probabilistic forecasti...</summary>
+<details><summary>🟢 <b>59</b> 🥈 <b><a href="https://github.com/amazon-science/chronos-forecasting">Chronos</a></b> <code>⭐ 5.1K</code> <code>Apache-2.0</code> Pretrained time-series foundation model for zero-shot probabilistic</summary>
 
 <br>
 
@@ -375,7 +375,7 @@ Pretrained time-series foundation model for zero-shot probabilistic forecasting 
 
 </details>
 
-<details><summary>🟢 <b>58</b> &nbsp; 🥉 <b><a href="https://github.com/LAMDA-Tabular/TALENT">TALENT</a></b> &nbsp; <code>⭐ 835</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Comprehensive toolkit and benchmark for tabular learning covering 35+ deep me...</summary>
+<details><summary>🟢 <b>58</b> 🥉 <b><a href="https://github.com/LAMDA-Tabular/TALENT">TALENT</a></b> <code>⭐ 835</code> <code>MIT</code> Comprehensive toolkit and benchmark for tabular learning</summary>
 
 <br>
 
@@ -391,7 +391,7 @@ Comprehensive toolkit and benchmark for tabular learning covering 35+ deep metho
 
 </details>
 
-<details><summary>🟢 <b>55</b> &nbsp; <b><a href="https://github.com/soda-inria/tabicl">TabICL</a></b> &nbsp; <code>⭐ 717</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; State-of-the-art tabular foundation model achieving 10x faster inference than...</summary>
+<details><summary>🟢 <b>55</b> <b><a href="https://github.com/soda-inria/tabicl">TabICL</a></b> <code>⭐ 717</code> <code>NOASSERTION</code> State-of-the-art tabular foundation model achieving 10x faster</summary>
 
 <br>
 
@@ -407,7 +407,7 @@ State-of-the-art tabular foundation model achieving 10x faster inference than Ta
 
 </details>
 
-<details><summary>🟢 <b>54</b> &nbsp; <b><a href="https://github.com/SalesforceAIResearch/uni2ts">Moirai</a></b> &nbsp; <code>⭐ 1.5K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Universal time-series forecasting transformer supporting multivariate forecas...</summary>
+<details><summary>🟢 <b>54</b> <b><a href="https://github.com/SalesforceAIResearch/uni2ts">Moirai</a></b> <code>⭐ 1.5K</code> <code>Apache-2.0</code> Universal time-series forecasting transformer supporting multivariate forecasting</summary>
 
 <br>
 
@@ -423,7 +423,7 @@ Universal time-series forecasting transformer supporting multivariate forecastin
 
 </details>
 
-<details><summary>🟡 <b>49</b> &nbsp; <b><a href="https://github.com/yandex-research/tabm">TabM</a></b> &nbsp; <code>⭐ 987</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Parameter-efficient ensemble of MLPs based on BatchEnsemble</summary>
+<details><summary>🟡 <b>49</b> <b><a href="https://github.com/yandex-research/tabm">TabM</a></b> <code>⭐ 987</code> <code>Apache-2.0</code> Parameter-efficient ensemble of MLPs based on BatchEnsemble</summary>
 
 <br>
 
@@ -438,7 +438,7 @@ Parameter-efficient ensemble of MLPs based on BatchEnsemble, achieving top perfo
 
 </details>
 
-<details><summary>🟡 <b>42</b> &nbsp; <b><a href="https://github.com/soda-inria/carte">CARTE</a></b> &nbsp; <code>⭐ 169</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; Context-aware tabular representation using pretrained language models for dat...</summary>
+<details><summary>🟡 <b>42</b> <b><a href="https://github.com/soda-inria/carte">CARTE</a></b> <code>⭐ 169</code> <code>BSD-3-Clause</code> Context-aware tabular representation using pretrained language models</summary>
 
 <br>
 
@@ -456,7 +456,7 @@ Context-aware tabular representation using pretrained language models for data w
 
 ---
 
-<details><summary>🔴 <b>58</b> &nbsp; 💤 <i><a href="https://github.com/google-research/timesfm">TimesFM</a></i> &nbsp; <code>⭐ 15.5K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Time-series foundation model for zero-shot forecasting across domains without...</summary>
+<details><summary>🔴 <b>58</b> 💤 <i><a href="https://github.com/google-research/timesfm">TimesFM</a></i> <code>⭐ 15.5K</code> <code>Apache-2.0</code> Time-series foundation model for zero-shot forecasting across</summary>
 
 <br>
 
@@ -478,7 +478,7 @@ Context-aware tabular representation using pretrained language models for data w
 
 *Tools that automate the process of adapting large language models to specific tasks and domains.*
 
-<details><summary>🟢 <b>78</b> &nbsp; 🥇 <b><a href="https://github.com/unslothai/unsloth">Unsloth</a></b> &nbsp; <code>⭐ 60.1K</code> &nbsp; <code>↗️ +97</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Fine-tune LLMs 2-5x faster with 80% less memory on a single GPU through optim...</summary>
+<details><summary>🟢 <b>78</b> 🥇 <b><a href="https://github.com/unslothai/unsloth">Unsloth</a></b> <code>⭐ 60.1K</code> <code>↗️ +97</code> <code>Apache-2.0</code> Fine-tune LLMs 2-5x faster with 80% less</summary>
 
 <br>
 
@@ -494,7 +494,7 @@ Fine-tune LLMs 2-5x faster with 80% less memory on a single GPU through optimize
 
 </details>
 
-<details><summary>🟢 <b>69</b> &nbsp; 🥈 <b><a href="https://github.com/hiyouga/LlamaFactory">LLaMA-Factory</a></b> &nbsp; <code>⭐ 69.7K</code> &nbsp; <code>↗️ +29</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Unified fine-tuning framework for 100+ LLMs and VLMs with Full</summary>
+<details><summary>🟢 <b>69</b> 🥈 <b><a href="https://github.com/hiyouga/LlamaFactory">LLaMA-Factory</a></b> <code>⭐ 69.7K</code> <code>↗️ +29</code> <code>Apache-2.0</code> Unified fine-tuning framework for 100+ LLMs and</summary>
 
 <br>
 
@@ -510,7 +510,7 @@ Unified fine-tuning framework for 100+ LLMs and VLMs with Full, LoRA, QLoRA, and
 
 </details>
 
-<details><summary>🟢 <b>69</b> &nbsp; 🥉 <b><a href="https://github.com/huggingface/trl">TRL</a></b> &nbsp; <code>⭐ 18.0K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Transformer Reinforcement Learning with SFT</summary>
+<details><summary>🟢 <b>69</b> 🥉 <b><a href="https://github.com/huggingface/trl">TRL</a></b> <code>⭐ 18.0K</code> <code>Apache-2.0</code> Transformer Reinforcement Learning with SFT, DPO, RLHF</summary>
 
 <br>
 
@@ -525,7 +525,7 @@ Transformer Reinforcement Learning with SFT, DPO, RLHF, and GRPO trainers for al
 
 </details>
 
-<details><summary>🟢 <b>68</b> &nbsp; <b><a href="https://github.com/axolotl-ai-cloud/axolotl">Axolotl</a></b> &nbsp; <code>⭐ 11.6K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Production-grade fine-tuning with multi-GPU support</summary>
+<details><summary>🟢 <b>68</b> <b><a href="https://github.com/axolotl-ai-cloud/axolotl">Axolotl</a></b> <code>⭐ 11.6K</code> <code>Apache-2.0</code> Production-grade fine-tuning with multi-GPU support, sequence parallelism</summary>
 
 <br>
 
@@ -541,7 +541,7 @@ Production-grade fine-tuning with multi-GPU support, sequence parallelism, and m
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; <b><a href="https://github.com/huggingface/peft">PEFT</a></b> &nbsp; <code>⭐ 20.9K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Standard library for parameter-efficient fine-tuning - LoRA</summary>
+<details><summary>🟢 <b>67</b> <b><a href="https://github.com/huggingface/peft">PEFT</a></b> <code>⭐ 20.9K</code> <code>Apache-2.0</code> Standard library for parameter-efficient fine-tuning - LoRA</summary>
 
 <br>
 
@@ -557,7 +557,7 @@ Standard library for parameter-efficient fine-tuning - LoRA, QLoRA, Spectrum, an
 
 </details>
 
-<details><summary>🟢 <b>65</b> &nbsp; <b><a href="https://github.com/h2oai/h2o-llmstudio">H2O LLM Studio</a></b> &nbsp; <code>⭐ 4.9K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; No-code GUI for fine-tuning LLMs with SFT</summary>
+<details><summary>🟢 <b>65</b> <b><a href="https://github.com/h2oai/h2o-llmstudio">H2O LLM Studio</a></b> <code>⭐ 4.9K</code> <code>Apache-2.0</code> No-code GUI for fine-tuning LLMs with SFT</summary>
 
 <br>
 
@@ -573,7 +573,7 @@ No-code GUI for fine-tuning LLMs with SFT, DPO, and RLHF, plus experiment tracki
 
 </details>
 
-<details><summary>🟢 <b>62</b> &nbsp; <b><a href="https://github.com/Lightning-AI/litgpt">LitGPT</a></b> &nbsp; <code>⭐ 13.3K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Recipes for pretraining</summary>
+<details><summary>🟢 <b>62</b> <b><a href="https://github.com/Lightning-AI/litgpt">LitGPT</a></b> <code>⭐ 13.3K</code> <code>Apache-2.0</code> Recipes for pretraining, fine-tuning, and deploying 20+</summary>
 
 <br>
 
@@ -589,7 +589,7 @@ Recipes for pretraining, fine-tuning, and deploying 20+ LLM architectures on you
 
 </details>
 
-<details><summary>🟢 <b>61</b> &nbsp; <b><a href="https://github.com/huggingface/autotrain-advanced">Hugging Face AutoTrain</a></b> &nbsp; <code>⭐ 4.6K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; No-code training for LLMs</summary>
+<details><summary>🟢 <b>61</b> <b><a href="https://github.com/huggingface/autotrain-advanced">Hugging Face AutoTrain</a></b> <code>⭐ 4.6K</code> <code>Apache-2.0</code> No-code training for LLMs, vision-language models, text</summary>
 
 <br>
 
@@ -605,7 +605,7 @@ No-code training for LLMs, vision-language models, text classification, and tabu
 
 </details>
 
-<details><summary>🟡 <b>56</b> &nbsp; <b><a href="https://github.com/OptimalScale/LMFlow">LMFlow</a></b> &nbsp; <code>⭐ 8.5K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Extensible toolkit for fine-tuning and inference of large foundation models</summary>
+<details><summary>🟡 <b>56</b> <b><a href="https://github.com/OptimalScale/LMFlow">LMFlow</a></b> <code>⭐ 8.5K</code> <code>Apache-2.0</code> Extensible toolkit for fine-tuning and inference of</summary>
 
 <br>
 
@@ -621,7 +621,7 @@ Extensible toolkit for fine-tuning and inference of large foundation models, NAA
 
 </details>
 
-<details><summary>🟡 <b>54</b> &nbsp; <b><a href="https://github.com/mosaicml/llm-foundry">LLM Foundry</a></b> &nbsp; <code>⭐ 4.4K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Composable building blocks for pretraining</summary>
+<details><summary>🟡 <b>54</b> <b><a href="https://github.com/mosaicml/llm-foundry">LLM Foundry</a></b> <code>⭐ 4.4K</code> <code>Apache-2.0</code> Composable building blocks for pretraining, fine-tuning, and</summary>
 
 <br>
 
@@ -639,7 +639,7 @@ Composable building blocks for pretraining, fine-tuning, and evaluating foundati
 
 ---
 
-<details><summary>🔴 <b>50</b> &nbsp; 💤 <i><a href="https://github.com/meta-pytorch/torchtune">torchtune</a></i> &nbsp; <code>⭐ 5.7K</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; Native PyTorch library for fine-tuning LLMs with composable building blocks a...</summary>
+<details><summary>🔴 <b>50</b> 💤 <i><a href="https://github.com/meta-pytorch/torchtune">torchtune</a></i> <code>⭐ 5.7K</code> <code>BSD-3-Clause</code> Native PyTorch library for fine-tuning LLMs with</summary>
 
 <br>
 
@@ -654,7 +654,7 @@ Composable building blocks for pretraining, fine-tuning, and evaluating foundati
 
 </details>
 
-<details><summary>🔴 <b>49</b> &nbsp; 💤 <i><a href="https://github.com/predibase/lorax">LoRAX</a></i> &nbsp; <code>⭐ 3.7K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Multi-LoRA inference server that scales to thousands of fine-tuned LLMs on a ...</summary>
+<details><summary>🔴 <b>49</b> 💤 <i><a href="https://github.com/predibase/lorax">LoRAX</a></i> <code>⭐ 3.7K</code> <code>Apache-2.0</code> Multi-LoRA inference server that scales to thousands</summary>
 
 <br>
 
@@ -677,7 +677,7 @@ Composable building blocks for pretraining, fine-tuning, and evaluating foundati
 
 *Systematic optimization of prompts, instructions, and demonstrations to improve LLM performance without manual tuning.*
 
-<details><summary>🟢 <b>69</b> &nbsp; 🥇 <b><a href="https://github.com/stanfordnlp/dspy">DSPy</a></b> &nbsp; <code>⭐ 33.5K</code> &nbsp; <code>↗️ +13</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Declarative framework replacing hand-written prompts with automatic optimizer...</summary>
+<details><summary>🟢 <b>69</b> 🥇 <b><a href="https://github.com/stanfordnlp/dspy">DSPy</a></b> <code>⭐ 33.5K</code> <code>↗️ +13</code> <code>MIT</code> Declarative framework replacing hand-written prompts with automatic</summary>
 
 <br>
 
@@ -692,7 +692,7 @@ Declarative framework replacing hand-written prompts with automatic optimizers -
 
 </details>
 
-<details><summary>🟢 <b>64</b> &nbsp; 🥈 <b><a href="https://github.com/gepa-ai/gepa">GEPA</a></b> &nbsp; <code>⭐ 3.2K</code> &nbsp; <code>↗️ +14</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Reflective text evolution for prompt</summary>
+<details><summary>🟢 <b>64</b> 🥈 <b><a href="https://github.com/gepa-ai/gepa">GEPA</a></b> <code>⭐ 3.2K</code> <code>↗️ +14</code> <code>MIT</code> Reflective text evolution for prompt, code, and</summary>
 
 <br>
 
@@ -707,7 +707,7 @@ Reflective text evolution for prompt, code, and text optimization, integrated in
 
 </details>
 
-<details><summary>🟢 <b>57</b> &nbsp; 🥉 <b><a href="https://github.com/Mirascope/mirascope">Mirascope</a></b> &nbsp; <code>⭐ 1.5K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Pythonic toolkit for building LLM applications with integrated prompt versioning</summary>
+<details><summary>🟢 <b>57</b> 🥉 <b><a href="https://github.com/Mirascope/mirascope">Mirascope</a></b> <code>⭐ 1.5K</code> <code>MIT</code> Pythonic toolkit for building LLM applications with</summary>
 
 <br>
 
@@ -723,7 +723,7 @@ Pythonic toolkit for building LLM applications with integrated prompt versioning
 
 </details>
 
-<details><summary>🟡 <b>53</b> &nbsp; <b><a href="https://github.com/microsoft/PromptWizard">PromptWizard</a></b> &nbsp; <code>⭐ 3.8K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Task-aware agent-driven prompt optimization using self-evolving critique and ...</summary>
+<details><summary>🟡 <b>53</b> <b><a href="https://github.com/microsoft/PromptWizard">PromptWizard</a></b> <code>⭐ 3.8K</code> <code>MIT</code> Task-aware agent-driven prompt optimization using self-evolving critique</summary>
 
 <br>
 
@@ -738,7 +738,7 @@ Task-aware agent-driven prompt optimization using self-evolving critique and syn
 
 </details>
 
-<details><summary>🟢 <b>52</b> &nbsp; <b><a href="https://github.com/meta-llama/prompt-ops">Prompt-Ops</a></b> &nbsp; <code>⭐ 795</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Open-source command-line tool for building</summary>
+<details><summary>🟢 <b>52</b> <b><a href="https://github.com/meta-llama/prompt-ops">Prompt-Ops</a></b> <code>⭐ 795</code> <code>MIT</code> Open-source command-line tool for building, optimizing, and</summary>
 
 <br>
 
@@ -753,7 +753,7 @@ Open-source command-line tool for building, optimizing, and managing prompts at 
 
 </details>
 
-<details><summary>🟡 <b>48</b> &nbsp; <b><a href="https://github.com/SalesforceAIResearch/promptomatix">Promptomatix</a></b> &nbsp; <code>⭐ 938</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; DSPy-powered automatic prompt optimization that transforms task descriptions ...</summary>
+<details><summary>🟡 <b>48</b> <b><a href="https://github.com/SalesforceAIResearch/promptomatix">Promptomatix</a></b> <code>⭐ 938</code> <code>Apache-2.0</code> DSPy-powered automatic prompt optimization that transforms task</summary>
 
 <br>
 
@@ -768,7 +768,7 @@ DSPy-powered automatic prompt optimization that transforms task descriptions int
 
 </details>
 
-<details><summary>🟡 <b>43</b> &nbsp; <b><a href="https://github.com/beeevita/EvoPrompt">EvoPrompt</a></b> &nbsp; <code>⭐ 224</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Connects LLMs with evolutionary algorithms for discrete prompt optimization w...</summary>
+<details><summary>🟡 <b>43</b> <b><a href="https://github.com/beeevita/EvoPrompt">EvoPrompt</a></b> <code>⭐ 224</code> <code>MIT</code> Connects LLMs with evolutionary algorithms for discrete</summary>
 
 <br>
 
@@ -785,7 +785,7 @@ Connects LLMs with evolutionary algorithms for discrete prompt optimization with
 
 ---
 
-<details><summary>🔴 <b>48</b> &nbsp; 💤 <i><a href="https://github.com/zou-group/textgrad">TextGrad</a></i> &nbsp; <code>⭐ 3.5K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Automatic differentiation via text feedback</summary>
+<details><summary>🔴 <b>48</b> 💤 <i><a href="https://github.com/zou-group/textgrad">TextGrad</a></i> <code>⭐ 3.5K</code> <code>MIT</code> Automatic differentiation via text feedback, enabling gradient-like</summary>
 
 <br>
 
@@ -801,7 +801,7 @@ Connects LLMs with evolutionary algorithms for discrete prompt optimization with
 
 </details>
 
-<details><summary>🔴 <b>48</b> &nbsp; 💤 <i><a href="https://github.com/Eladlev/AutoPrompt">AutoPrompt</a></i> &nbsp; <code>⭐ 3.0K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Intent-based prompt calibration using synthetic data generation for iterative...</summary>
+<details><summary>🔴 <b>48</b> 💤 <i><a href="https://github.com/Eladlev/AutoPrompt">AutoPrompt</a></i> <code>⭐ 3.0K</code> <code>Apache-2.0</code> Intent-based prompt calibration using synthetic data generation</summary>
 
 <br>
 
@@ -824,7 +824,7 @@ Connects LLMs with evolutionary algorithms for discrete prompt optimization with
 
 *Autonomous systems that design experiments, run them, and analyze results without human intervention.*
 
-<details><summary>🟢 <b>78</b> &nbsp; 🥇 <b><a href="https://github.com/karpathy/autoresearch">AutoResearch</a></b> &nbsp; <code>⭐ 68.4K</code> &nbsp; <code>↗️ +280</code> &nbsp; - &nbsp; Minimal script enabling AI agents to autonomously run ~100 ML experiments ove...</summary>
+<details><summary>🟢 <b>78</b> 🥇 <b><a href="https://github.com/karpathy/autoresearch">AutoResearch</a></b> <code>⭐ 68.4K</code> <code>↗️ +280</code> Minimal script enabling AI agents to autonomously</summary>
 
 <br>
 
@@ -839,7 +839,7 @@ Minimal script enabling AI agents to autonomously run ~100 ML experiments overni
 
 </details>
 
-<details><summary>🟢 <b>74</b> &nbsp; 🥈 <b><a href="https://github.com/crewAIInc/crewAI">CrewAI</a></b> &nbsp; <code>⭐ 48.3K</code> &nbsp; <code>↗️ +36</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Multi-agent framework orchestrating role-playing specialist agents for comple...</summary>
+<details><summary>🟢 <b>74</b> 🥈 <b><a href="https://github.com/crewAIInc/crewAI">CrewAI</a></b> <code>⭐ 48.3K</code> <code>↗️ +36</code> <code>MIT</code> Multi-agent framework orchestrating role-playing specialist agents for</summary>
 
 <br>
 
@@ -855,7 +855,7 @@ Multi-agent framework orchestrating role-playing specialist agents for complex A
 
 </details>
 
-<details><summary>🟢 <b>66</b> &nbsp; 🥉 <b><a href="https://github.com/Future-House/paper-qa">PaperQA</a></b> &nbsp; <code>⭐ 8.3K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; High-accuracy retrieval-augmented generation for answering questions from sci...</summary>
+<details><summary>🟢 <b>66</b> 🥉 <b><a href="https://github.com/Future-House/paper-qa">PaperQA</a></b> <code>⭐ 8.3K</code> <code>Apache-2.0</code> High-accuracy retrieval-augmented generation for answering questions from</summary>
 
 <br>
 
@@ -871,7 +871,7 @@ High-accuracy retrieval-augmented generation for answering questions from scient
 
 </details>
 
-<details><summary>🟡 <b>63</b> &nbsp; <b><a href="https://github.com/microsoft/autogen">AutoGen</a></b> &nbsp; <code>⭐ 56.8K</code> &nbsp; <code>↗️ +14</code> &nbsp; <code>CC-BY-4.0</code> &nbsp; - &nbsp; Multi-agent conversation framework for building AI agent systems</summary>
+<details><summary>🟡 <b>63</b> <b><a href="https://github.com/microsoft/autogen">AutoGen</a></b> <code>⭐ 56.8K</code> <code>↗️ +14</code> <code>CC-BY-4.0</code> Multi-agent conversation framework for building AI agent</summary>
 
 <br>
 
@@ -887,7 +887,7 @@ Multi-agent conversation framework for building AI agent systems. Now in mainten
 
 </details>
 
-<details><summary>🟢 <b>63</b> &nbsp; <b><a href="https://github.com/SakanaAI/AI-Scientist">AI-Scientist</a></b> &nbsp; <code>⭐ 13.1K</code> &nbsp; <code>↗️ +16</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Fully automated open-ended scientific discovery from idea generation to exper...</summary>
+<details><summary>🟢 <b>63</b> <b><a href="https://github.com/SakanaAI/AI-Scientist">AI-Scientist</a></b> <code>⭐ 13.1K</code> <code>↗️ +16</code> <code>NOASSERTION</code> Fully automated open-ended scientific discovery from idea</summary>
 
 <br>
 
@@ -902,7 +902,7 @@ Fully automated open-ended scientific discovery from idea generation to experime
 
 </details>
 
-<details><summary>🟢 <b>61</b> &nbsp; <b><a href="https://github.com/SakanaAI/AI-Scientist-v2">AI-Scientist-v2</a></b> &nbsp; <code>⭐ 5.3K</code> &nbsp; <code>↗️ +43</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Second generation using agentic tree search</summary>
+<details><summary>🟢 <b>61</b> <b><a href="https://github.com/SakanaAI/AI-Scientist-v2">AI-Scientist-v2</a></b> <code>⭐ 5.3K</code> <code>↗️ +43</code> <code>NOASSERTION</code> Second generation using agentic tree search, producing</summary>
 
 <br>
 
@@ -917,7 +917,7 @@ Second generation using agentic tree search, producing the first AI-generated pa
 
 </details>
 
-<details><summary>🟢 <b>54</b> &nbsp; <b><a href="https://github.com/WecoAI/aideml">AIDE</a></b> &nbsp; <code>⭐ 1.2K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; ML engineering agent using tree search over solution space - exceeds 50% of h...</summary>
+<details><summary>🟢 <b>54</b> <b><a href="https://github.com/WecoAI/aideml">AIDE</a></b> <code>⭐ 1.2K</code> <code>MIT</code> ML engineering agent using tree search over</summary>
 
 <br>
 
@@ -933,7 +933,7 @@ ML engineering agent using tree search over solution space - exceeds 50% of huma
 
 </details>
 
-<details><summary>🟢 <b>49</b> &nbsp; <b><a href="https://github.com/HKUDS/AI-Researcher">AI-Researcher</a></b> &nbsp; <code>⭐ 5.1K</code> &nbsp; - &nbsp; Autonomous agent automating the full research lifecycle from literature revie...</summary>
+<details><summary>🟢 <b>49</b> <b><a href="https://github.com/HKUDS/AI-Researcher">AI-Researcher</a></b> <code>⭐ 5.1K</code> Autonomous agent automating the full research lifecycle</summary>
 
 <br>
 
@@ -949,7 +949,7 @@ Autonomous agent automating the full research lifecycle from literature review t
 
 </details>
 
-<details><summary>🟡 <b>31</b> &nbsp; <b><a href="https://github.com/DeepAuto-AI/automl-agent">AutoML-Agent</a></b> &nbsp; <code>⭐ 118</code> &nbsp; - &nbsp; Multi-agent LLM framework for full-pipeline AutoML from data retrieval throug...</summary>
+<details><summary>🟡 <b>31</b> <b><a href="https://github.com/DeepAuto-AI/automl-agent">AutoML-Agent</a></b> <code>⭐ 118</code> Multi-agent LLM framework for full-pipeline AutoML from</summary>
 
 <br>
 
@@ -967,7 +967,7 @@ Multi-agent LLM framework for full-pipeline AutoML from data retrieval through m
 
 ---
 
-<details><summary>🔴 <b>56</b> &nbsp; 💤 <i><a href="https://github.com/stanford-oval/storm">STORM</a></i> &nbsp; <code>⭐ 28.1K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; LLM-powered knowledge curation that researches topics and generates full arti...</summary>
+<details><summary>🔴 <b>56</b> 💤 <i><a href="https://github.com/stanford-oval/storm">STORM</a></i> <code>⭐ 28.1K</code> <code>MIT</code> LLM-powered knowledge curation that researches topics and</summary>
 
 <br>
 
@@ -990,7 +990,7 @@ Multi-agent LLM framework for full-pipeline AutoML from data retrieval through m
 
 *AI agents that autonomously write, debug, and optimize code for software and ML engineering.*
 
-<details><summary>🟢 <b>75</b> &nbsp; 🥇 <b><a href="https://github.com/OpenHands/OpenHands">OpenHands</a></b> &nbsp; <code>⭐ 70.8K</code> &nbsp; <code>↗️ +28</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; AI software development platform achieving 53-72% resolve rate on SWE-Bench V...</summary>
+<details><summary>🟢 <b>75</b> 🥇 <b><a href="https://github.com/OpenHands/OpenHands">OpenHands</a></b> <code>⭐ 70.8K</code> <code>↗️ +28</code> <code>NOASSERTION</code> AI software development platform achieving 53-72% resolve</summary>
 
 <br>
 
@@ -1006,7 +1006,7 @@ AI software development platform achieving 53-72% resolve rate on SWE-Bench Veri
 
 </details>
 
-<details><summary>🟢 <b>64</b> &nbsp; 🥈 <b><a href="https://github.com/SWE-agent/mini-swe-agent">mini-swe-agent</a></b> &nbsp; <code>⭐ 3.7K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Minimalist 100-line coding agent achieving 74% on SWE-bench Verified as a lea...</summary>
+<details><summary>🟢 <b>64</b> 🥈 <b><a href="https://github.com/SWE-agent/mini-swe-agent">mini-swe-agent</a></b> <code>⭐ 3.7K</code> <code>MIT</code> Minimalist 100-line coding agent achieving 74% on</summary>
 
 <br>
 
@@ -1022,7 +1022,7 @@ Minimalist 100-line coding agent achieving 74% on SWE-bench Verified as a learni
 
 </details>
 
-<details><summary>🟢 <b>64</b> &nbsp; 🥉 <b><a href="https://github.com/Marker-Inc-Korea/AutoRAG">AutoRAG</a></b> &nbsp; <code>⭐ 4.7K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; AutoML-style framework for RAG optimization that automatically finds the best...</summary>
+<details><summary>🟢 <b>64</b> 🥉 <b><a href="https://github.com/Marker-Inc-Korea/AutoRAG">AutoRAG</a></b> <code>⭐ 4.7K</code> <code>Apache-2.0</code> AutoML-style framework for RAG optimization that automatically</summary>
 
 <br>
 
@@ -1038,7 +1038,7 @@ AutoML-style framework for RAG optimization that automatically finds the best re
 
 </details>
 
-<details><summary>🟡 <b>62</b> &nbsp; <b><a href="https://github.com/Aider-AI/aider">Aider</a></b> &nbsp; <code>⭐ 43.0K</code> &nbsp; <code>↗️ +16</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; AI pair programmer in the terminal that edits code directly in your local rep...</summary>
+<details><summary>🟡 <b>62</b> <b><a href="https://github.com/Aider-AI/aider">Aider</a></b> <code>⭐ 43.0K</code> <code>↗️ +16</code> <code>Apache-2.0</code> AI pair programmer in the terminal that</summary>
 
 <br>
 
@@ -1054,7 +1054,7 @@ AI pair programmer in the terminal that edits code directly in your local reposi
 
 </details>
 
-<details><summary>🟡 <b>59</b> &nbsp; <b><a href="https://github.com/SWE-agent/SWE-agent">SWE-agent</a></b> &nbsp; <code>⭐ 18.9K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Autonomous agent that solves real GitHub issues by reading</summary>
+<details><summary>🟡 <b>59</b> <b><a href="https://github.com/SWE-agent/SWE-agent">SWE-agent</a></b> <code>⭐ 18.9K</code> <code>MIT</code> Autonomous agent that solves real GitHub issues</summary>
 
 <br>
 
@@ -1072,7 +1072,7 @@ Autonomous agent that solves real GitHub issues by reading, editing, and testing
 
 ---
 
-<details><summary>🔴 <b>48</b> &nbsp; 💤 <i><a href="https://github.com/AutoCodeRoverSG/auto-code-rover">AutoCodeRover</a></i> &nbsp; <code>⭐ 3.1K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Structure-aware autonomous program repair combining code search with LLM-base...</summary>
+<details><summary>🔴 <b>48</b> 💤 <i><a href="https://github.com/AutoCodeRoverSG/auto-code-rover">AutoCodeRover</a></i> <code>⭐ 3.1K</code> <code>NOASSERTION</code> Structure-aware autonomous program repair combining code search</summary>
 
 <br>
 
@@ -1094,7 +1094,7 @@ Autonomous agent that solves real GitHub issues by reading, editing, and testing
 
 *Frameworks for automated evaluation, testing, and benchmarking of language models and AI systems.*
 
-<details><summary>🟢 <b>71</b> &nbsp; 🥇 <b><a href="https://github.com/promptfoo/promptfoo">Promptfoo</a></b> &nbsp; <code>⭐ 19.7K</code> &nbsp; <code>↗️ +24</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Test and red-team LLM applications with automated evaluations</summary>
+<details><summary>🟢 <b>71</b> 🥇 <b><a href="https://github.com/promptfoo/promptfoo">Promptfoo</a></b> <code>⭐ 19.7K</code> <code>↗️ +24</code> <code>MIT</code> Test and red-team LLM applications with automated</summary>
 
 <br>
 
@@ -1110,7 +1110,7 @@ Test and red-team LLM applications with automated evaluations, CI/CD integration
 
 </details>
 
-<details><summary>🟢 <b>65</b> &nbsp; 🥈 <b><a href="https://github.com/vibrantlabsai/ragas">RAGAS</a></b> &nbsp; <code>⭐ 13.3K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Evaluation framework for RAG quality assessment measuring both retrieval and ...</summary>
+<details><summary>🟢 <b>65</b> 🥈 <b><a href="https://github.com/vibrantlabsai/ragas">RAGAS</a></b> <code>⭐ 13.3K</code> <code>Apache-2.0</code> Evaluation framework for RAG quality assessment measuring</summary>
 
 <br>
 
@@ -1126,7 +1126,7 @@ Evaluation framework for RAG quality assessment measuring both retrieval and gen
 
 </details>
 
-<details><summary>🟢 <b>65</b> &nbsp; 🥉 <b><a href="https://github.com/EleutherAI/lm-evaluation-harness">lm-evaluation-harness</a></b> &nbsp; <code>⭐ 12.0K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Standard framework for few-shot evaluation of language models across hundreds...</summary>
+<details><summary>🟢 <b>65</b> 🥉 <b><a href="https://github.com/EleutherAI/lm-evaluation-harness">lm-evaluation-harness</a></b> <code>⭐ 12.0K</code> <code>MIT</code> Standard framework for few-shot evaluation of language</summary>
 
 <br>
 
@@ -1142,7 +1142,7 @@ Standard framework for few-shot evaluation of language models across hundreds of
 
 </details>
 
-<details><summary>🟢 <b>64</b> &nbsp; <b><a href="https://github.com/Agenta-AI/agenta">Agenta</a></b> &nbsp; <code>⭐ 4.0K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Open-source LLMOps platform combining prompt playground</summary>
+<details><summary>🟢 <b>64</b> <b><a href="https://github.com/Agenta-AI/agenta">Agenta</a></b> <code>⭐ 4.0K</code> <code>NOASSERTION</code> Open-source LLMOps platform combining prompt playground, evaluation</summary>
 
 <br>
 
@@ -1158,7 +1158,7 @@ Open-source LLMOps platform combining prompt playground, evaluation workflows, a
 
 </details>
 
-<details><summary>🟢 <b>63</b> &nbsp; <b><a href="https://github.com/confident-ai/deepeval">DeepEval</a></b> &nbsp; <code>⭐ 14.6K</code> &nbsp; <code>↗️ +17</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Pytest-like framework with 14+ evaluation metrics for RAG</summary>
+<details><summary>🟢 <b>63</b> <b><a href="https://github.com/confident-ai/deepeval">DeepEval</a></b> <code>⭐ 14.6K</code> <code>↗️ +17</code> <code>Apache-2.0</code> Pytest-like framework with 14+ evaluation metrics for</summary>
 
 <br>
 
@@ -1174,7 +1174,7 @@ Pytest-like framework with 14+ evaluation metrics for RAG, fine-tuning, and alig
 
 </details>
 
-<details><summary>🟢 <b>63</b> &nbsp; <b><a href="https://github.com/open-compass/opencompass">OpenCompass</a></b> &nbsp; <code>⭐ 6.8K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; One-stop evaluation platform supporting 100+ models across academic and real-...</summary>
+<details><summary>🟢 <b>63</b> <b><a href="https://github.com/open-compass/opencompass">OpenCompass</a></b> <code>⭐ 6.8K</code> <code>Apache-2.0</code> One-stop evaluation platform supporting 100+ models across</summary>
 
 <br>
 
@@ -1190,7 +1190,7 @@ One-stop evaluation platform supporting 100+ models across academic and real-wor
 
 </details>
 
-<details><summary>🟢 <b>63</b> &nbsp; <b><a href="https://github.com/truera/trulens">TruLens</a></b> &nbsp; <code>⭐ 3.2K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; OpenTelemetry-based tracing and evaluation for RAG and agent workflows with b...</summary>
+<details><summary>🟢 <b>63</b> <b><a href="https://github.com/truera/trulens">TruLens</a></b> <code>⭐ 3.2K</code> <code>MIT</code> OpenTelemetry-based tracing and evaluation for RAG and</summary>
 
 <br>
 
@@ -1206,7 +1206,7 @@ OpenTelemetry-based tracing and evaluation for RAG and agent workflows with buil
 
 </details>
 
-<details><summary>🟢 <b>63</b> &nbsp; <b><a href="https://github.com/langwatch/langwatch">LangWatch</a></b> &nbsp; <code>⭐ 3.2K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Evaluation and testing platform for LLM applications and AI agents with autom...</summary>
+<details><summary>🟢 <b>63</b> <b><a href="https://github.com/langwatch/langwatch">LangWatch</a></b> <code>⭐ 3.2K</code> <code>NOASSERTION</code> Evaluation and testing platform for LLM applications</summary>
 
 <br>
 
@@ -1222,7 +1222,7 @@ Evaluation and testing platform for LLM applications and AI agents with automate
 
 </details>
 
-<details><summary>🟢 <b>61</b> &nbsp; <b><a href="https://github.com/UKGovernmentBEIS/inspect_ai">Inspect AI</a></b> &nbsp; <code>⭐ 1.9K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Framework for reproducible LLM evals with sandboxed agent execution</summary>
+<details><summary>🟢 <b>61</b> <b><a href="https://github.com/UKGovernmentBEIS/inspect_ai">Inspect AI</a></b> <code>⭐ 1.9K</code> <code>MIT</code> Framework for reproducible LLM evals with sandboxed</summary>
 
 <br>
 
@@ -1237,7 +1237,7 @@ Framework for reproducible LLM evals with sandboxed agent execution, 100+ prebui
 
 </details>
 
-<details><summary>🟢 <b>56</b> &nbsp; <b><a href="https://github.com/huggingface/lighteval">LightEval</a></b> &nbsp; <code>⭐ 2.4K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; All-in-one LLM evaluation toolkit powering the Open LLM Leaderboard</summary>
+<details><summary>🟢 <b>56</b> <b><a href="https://github.com/huggingface/lighteval">LightEval</a></b> <code>⭐ 2.4K</code> <code>MIT</code> All-in-one LLM evaluation toolkit powering the Open</summary>
 
 <br>
 
@@ -1260,7 +1260,7 @@ All-in-one LLM evaluation toolkit powering the Open LLM Leaderboard, supporting 
 
 *Intelligent routing of requests to the optimal model based on task complexity, cost, and performance.*
 
-<details><summary>🟢 <b>74</b> &nbsp; 🥇 <b><a href="https://github.com/BerriAI/litellm">LiteLLM</a></b> &nbsp; <code>⭐ 42.5K</code> &nbsp; <code>↗️ +47</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Unified API gateway for 100+ LLMs with load balancing</summary>
+<details><summary>🟢 <b>74</b> 🥇 <b><a href="https://github.com/BerriAI/litellm">LiteLLM</a></b> <code>⭐ 42.5K</code> <code>↗️ +47</code> <code>NOASSERTION</code> Unified API gateway for 100+ LLMs with</summary>
 
 <br>
 
@@ -1276,7 +1276,7 @@ Unified API gateway for 100+ LLMs with load balancing, cost tracking, and automa
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; 🥈 <b><a href="https://github.com/tensorzero/tensorzero">TensorZero</a></b> &nbsp; <code>⭐ 11.2K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Open-source LLMOps platform unifying an LLM gateway</summary>
+<details><summary>🟢 <b>67</b> 🥈 <b><a href="https://github.com/tensorzero/tensorzero">TensorZero</a></b> <code>⭐ 11.2K</code> <code>Apache-2.0</code> Open-source LLMOps platform unifying an LLM gateway</summary>
 
 <br>
 
@@ -1292,7 +1292,7 @@ Open-source LLMOps platform unifying an LLM gateway, observability, evaluation, 
 
 </details>
 
-<details><summary>🟢 <b>65</b> &nbsp; 🥉 <b><a href="https://github.com/Portkey-AI/gateway">Portkey Gateway</a></b> &nbsp; <code>⭐ 11.2K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; AI gateway for intelligent routing</summary>
+<details><summary>🟢 <b>65</b> 🥉 <b><a href="https://github.com/Portkey-AI/gateway">Portkey Gateway</a></b> <code>⭐ 11.2K</code> <code>MIT</code> AI gateway for intelligent routing, caching, load</summary>
 
 <br>
 
@@ -1308,7 +1308,7 @@ AI gateway for intelligent routing, caching, load balancing, and fallbacks acros
 
 </details>
 
-<details><summary>🟢 <b>61</b> &nbsp; <b><a href="https://github.com/ulab-uiuc/LLMRouter">LLMRouter</a></b> &nbsp; <code>⭐ 1.6K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Unified library with 16+ router implementations and standardized evaluation v...</summary>
+<details><summary>🟢 <b>61</b> <b><a href="https://github.com/ulab-uiuc/LLMRouter">LLMRouter</a></b> <code>⭐ 1.6K</code> <code>MIT</code> Unified library with 16+ router implementations and</summary>
 
 <br>
 
@@ -1325,7 +1325,7 @@ Unified library with 16+ router implementations and standardized evaluation via 
 
 ---
 
-<details><summary>🔴 <b>49</b> &nbsp; 💤 <i><a href="https://github.com/lm-sys/RouteLLM">RouteLLM</a></i> &nbsp; <code>⭐ 4.8K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Framework for training and serving LLM routers that reduce costs by up to 85%...</summary>
+<details><summary>🔴 <b>49</b> 💤 <i><a href="https://github.com/lm-sys/RouteLLM">RouteLLM</a></i> <code>⭐ 4.8K</code> <code>Apache-2.0</code> Framework for training and serving LLM routers</summary>
 
 <br>
 
@@ -1347,7 +1347,7 @@ Unified library with 16+ router implementations and standardized evaluation via 
 
 *Automated forecasting, classification, and anomaly detection for temporal data.*
 
-<details><summary>🟢 <b>67</b> &nbsp; 🥇 <b><a href="https://github.com/unit8co/darts">Darts</a></b> &nbsp; <code>⭐ 9.3K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Unified API for 30+ forecasting models from ARIMA to transformers</summary>
+<details><summary>🟢 <b>67</b> 🥇 <b><a href="https://github.com/unit8co/darts">Darts</a></b> <code>⭐ 9.3K</code> <code>Apache-2.0</code> Unified API for 30+ forecasting models from</summary>
 
 <br>
 
@@ -1363,7 +1363,7 @@ Unified API for 30+ forecasting models from ARIMA to transformers, with backtest
 
 </details>
 
-<details><summary>🟢 <b>64</b> &nbsp; 🥈 <b><a href="https://github.com/Nixtla/neuralforecast">Nixtla NeuralForecast</a></b> &nbsp; <code>⭐ 4.0K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Production-ready neural forecasting with 30+ state-of-the-art models includin...</summary>
+<details><summary>🟢 <b>64</b> 🥈 <b><a href="https://github.com/Nixtla/neuralforecast">Nixtla NeuralForecast</a></b> <code>⭐ 4.0K</code> <code>Apache-2.0</code> Production-ready neural forecasting with 30+ state-of-the-art models</summary>
 
 <br>
 
@@ -1379,7 +1379,7 @@ Production-ready neural forecasting with 30+ state-of-the-art models including N
 
 </details>
 
-<details><summary>🟢 <b>61</b> &nbsp; 🥉 <b><a href="https://github.com/sktime/sktime">sktime</a></b> &nbsp; <code>⭐ 9.7K</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; Unified framework for time-series forecasting</summary>
+<details><summary>🟢 <b>61</b> 🥉 <b><a href="https://github.com/sktime/sktime">sktime</a></b> <code>⭐ 9.7K</code> <code>BSD-3-Clause</code> Unified framework for time-series forecasting, classification, regression</summary>
 
 <br>
 
@@ -1395,7 +1395,7 @@ Unified framework for time-series forecasting, classification, regression, and c
 
 </details>
 
-<details><summary>🟢 <b>61</b> &nbsp; <b><a href="https://github.com/WenjieDu/PyPOTS">PyPOTS</a></b> &nbsp; <code>⭐ 2.0K</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; Toolbox with 50+ deep learning models for partially-observed time-series impu...</summary>
+<details><summary>🟢 <b>61</b> <b><a href="https://github.com/WenjieDu/PyPOTS">PyPOTS</a></b> <code>⭐ 2.0K</code> <code>BSD-3-Clause</code> Toolbox with 50+ deep learning models for</summary>
 
 <br>
 
@@ -1411,7 +1411,7 @@ Toolbox with 50+ deep learning models for partially-observed time-series imputat
 
 </details>
 
-<details><summary>🟢 <b>60</b> &nbsp; <b><a href="https://github.com/skforecast/skforecast">skforecast</a></b> &nbsp; <code>⭐ 1.5K</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; Scikit-learn-compatible multi-step forecasting with XGBoost</summary>
+<details><summary>🟢 <b>60</b> <b><a href="https://github.com/skforecast/skforecast">skforecast</a></b> <code>⭐ 1.5K</code> <code>BSD-3-Clause</code> Scikit-learn-compatible multi-step forecasting with XGBoost, LightGBM, CatBoost</summary>
 
 <br>
 
@@ -1427,7 +1427,7 @@ Scikit-learn-compatible multi-step forecasting with XGBoost, LightGBM, CatBoost,
 
 </details>
 
-<details><summary>🟢 <b>60</b> &nbsp; <b><a href="https://github.com/winedarksea/AutoTS">AutoTS</a></b> &nbsp; <code>⭐ 1.4K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Genetic algorithm-based automated model selection</summary>
+<details><summary>🟢 <b>60</b> <b><a href="https://github.com/winedarksea/AutoTS">AutoTS</a></b> <code>⭐ 1.4K</code> <code>MIT</code> Genetic algorithm-based automated model selection, ensembling, and</summary>
 
 <br>
 
@@ -1443,7 +1443,7 @@ Genetic algorithm-based automated model selection, ensembling, and anomaly detec
 
 </details>
 
-<details><summary>🟢 <b>60</b> &nbsp; <b><a href="https://github.com/aeon-toolkit/aeon">aeon</a></b> &nbsp; <code>⭐ 1.4K</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; Next-generation time-series ML toolkit for classification</summary>
+<details><summary>🟢 <b>60</b> <b><a href="https://github.com/aeon-toolkit/aeon">aeon</a></b> <code>⭐ 1.4K</code> <code>BSD-3-Clause</code> Next-generation time-series ML toolkit for classification, regression</summary>
 
 <br>
 
@@ -1459,7 +1459,7 @@ Next-generation time-series ML toolkit for classification, regression, clusterin
 
 </details>
 
-<details><summary>🟢 <b>60</b> &nbsp; <b><a href="https://github.com/Nixtla/mlforecast">Nixtla MLForecast</a></b> &nbsp; <code>⭐ 1.2K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Scalable ML-based forecasting with LightGBM</summary>
+<details><summary>🟢 <b>60</b> <b><a href="https://github.com/Nixtla/mlforecast">Nixtla MLForecast</a></b> <code>⭐ 1.2K</code> <code>Apache-2.0</code> Scalable ML-based forecasting with LightGBM, XGBoost, and</summary>
 
 <br>
 
@@ -1475,7 +1475,7 @@ Scalable ML-based forecasting with LightGBM, XGBoost, and distributed backends v
 
 </details>
 
-<details><summary>🟢 <b>59</b> &nbsp; <b><a href="https://github.com/Time-MoE/Time-MoE">Time-MoE</a></b> &nbsp; <code>⭐ 943</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; First billion-scale time-series foundation model using sparse mixture-of-experts</summary>
+<details><summary>🟢 <b>59</b> <b><a href="https://github.com/Time-MoE/Time-MoE">Time-MoE</a></b> <code>⭐ 943</code> <code>Apache-2.0</code> First billion-scale time-series foundation model using sparse</summary>
 
 <br>
 
@@ -1491,7 +1491,7 @@ First billion-scale time-series foundation model using sparse mixture-of-experts
 
 </details>
 
-<details><summary>🟢 <b>58</b> &nbsp; <b><a href="https://github.com/Nixtla/statsforecast">Nixtla StatsForecast</a></b> &nbsp; <code>⭐ 4.7K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Lightning-fast statistical models including AutoARIMA</summary>
+<details><summary>🟢 <b>58</b> <b><a href="https://github.com/Nixtla/statsforecast">Nixtla StatsForecast</a></b> <code>⭐ 4.7K</code> <code>Apache-2.0</code> Lightning-fast statistical models including AutoARIMA, AutoETS, and</summary>
 
 <br>
 
@@ -1507,7 +1507,7 @@ Lightning-fast statistical models including AutoARIMA, AutoETS, and AutoCES for 
 
 </details>
 
-<details><summary>🟢 <b>55</b> &nbsp; <b><a href="https://github.com/ibm-granite/granite-tsfm">Granite-TSFM</a></b> &nbsp; <code>⭐ 834</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Compact pretrained Tiny Time Mixers that rival billion-parameter models for z...</summary>
+<details><summary>🟢 <b>55</b> <b><a href="https://github.com/ibm-granite/granite-tsfm">Granite-TSFM</a></b> <code>⭐ 834</code> <code>Apache-2.0</code> Compact pretrained Tiny Time Mixers that rival</summary>
 
 <br>
 
@@ -1522,7 +1522,7 @@ Compact pretrained Tiny Time Mixers that rival billion-parameter models for zero
 
 </details>
 
-<details><summary>🟡 <b>50</b> &nbsp; <b><a href="https://github.com/time-series-foundation-models/lag-llama">Lag-Llama</a></b> &nbsp; <code>⭐ 1.6K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; First open-source foundation model for univariate probabilistic time-series f...</summary>
+<details><summary>🟡 <b>50</b> <b><a href="https://github.com/time-series-foundation-models/lag-llama">Lag-Llama</a></b> <code>⭐ 1.6K</code> <code>Apache-2.0</code> First open-source foundation model for univariate probabilistic</summary>
 
 <br>
 
@@ -1540,7 +1540,7 @@ First open-source foundation model for univariate probabilistic time-series fore
 
 ---
 
-<details><summary>🔴 <b>39</b> &nbsp; 💤 <i><a href="https://github.com/salesforce/Merlion">Merlion</a></i> &nbsp; <code>⭐ 4.5K</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; Time-series intelligence library with unified interfaces for forecasting</summary>
+<details><summary>🔴 <b>39</b> 💤 <i><a href="https://github.com/salesforce/Merlion">Merlion</a></i> <code>⭐ 4.5K</code> <code>BSD-3-Clause</code> Time-series intelligence library with unified interfaces for</summary>
 
 <br>
 
@@ -1565,7 +1565,7 @@ First open-source foundation model for univariate probabilistic time-series fore
 
 ---
 
-<details><summary>🔴 <b>50</b> &nbsp; 💤 <i><a href="https://github.com/google/automl">Google AutoML</a></i> &nbsp; <code>⭐ 6.5K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Research code for EfficientNet</summary>
+<details><summary>🔴 <b>50</b> 💤 <i><a href="https://github.com/google/automl">Google AutoML</a></i> <code>⭐ 6.5K</code> <code>Apache-2.0</code> Research code for EfficientNet, EfficientDet, MnasNet, and</summary>
 
 <br>
 
@@ -1581,7 +1581,7 @@ First open-source foundation model for univariate probabilistic time-series fore
 
 </details>
 
-<details><summary>🔴 <b>46</b> &nbsp; 💤 <i><a href="https://github.com/mit-han-lab/once-for-all">Once-For-All</a></i> &nbsp; <code>⭐ 1.9K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Train one network and specialize sub-networks for diverse hardware without re...</summary>
+<details><summary>🔴 <b>46</b> 💤 <i><a href="https://github.com/mit-han-lab/once-for-all">Once-For-All</a></i> <code>⭐ 1.9K</code> <code>MIT</code> Train one network and specialize sub-networks for</summary>
 
 <br>
 
@@ -1597,7 +1597,7 @@ First open-source foundation model for univariate probabilistic time-series fore
 
 </details>
 
-<details><summary>🔴 <b>44</b> &nbsp; 💤 <i><a href="https://github.com/mit-han-lab/tinyengine">TinyEngine</a></i> &nbsp; <code>⭐ 934</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Memory-efficient inference engine for NAS-optimized models on microcontroller...</summary>
+<details><summary>🔴 <b>44</b> 💤 <i><a href="https://github.com/mit-han-lab/tinyengine">TinyEngine</a></i> <code>⭐ 934</code> <code>MIT</code> Memory-efficient inference engine for NAS-optimized models on</summary>
 
 <br>
 
@@ -1613,7 +1613,7 @@ First open-source foundation model for univariate probabilistic time-series fore
 
 </details>
 
-<details><summary>🔴 <b>43</b> &nbsp; 💤 <i><a href="https://github.com/microsoft/nni">NNI</a></i> &nbsp; <code>⭐ 14.3K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Comprehensive AutoML toolkit for NAS</summary>
+<details><summary>🔴 <b>43</b> 💤 <i><a href="https://github.com/microsoft/nni">NNI</a></i> <code>⭐ 14.3K</code> <code>MIT</code> Comprehensive AutoML toolkit for NAS, hyperparameter tuning</summary>
 
 <br>
 
@@ -1629,7 +1629,7 @@ First open-source foundation model for univariate probabilistic time-series fore
 
 </details>
 
-<details><summary>🔴 <b>43</b> &nbsp; 💤 <i><a href="https://github.com/huawei-noah/vega">Vega</a></i> &nbsp; <code>⭐ 851</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; AutoML pipeline covering NAS</summary>
+<details><summary>🔴 <b>43</b> 💤 <i><a href="https://github.com/huawei-noah/vega">Vega</a></i> <code>⭐ 851</code> <code>NOASSERTION</code> AutoML pipeline covering NAS, hyperparameter optimization, auto-augmentation</summary>
 
 <br>
 
@@ -1644,7 +1644,7 @@ First open-source foundation model for univariate probabilistic time-series fore
 
 </details>
 
-<details><summary>🔴 <b>42</b> &nbsp; 💤 <i><a href="https://github.com/automl/NASLib">NASLib</a></i> &nbsp; <code>⭐ 586</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; NAS research library from AutoML Freiburg with interfaces to state-of-the-art...</summary>
+<details><summary>🔴 <b>42</b> 💤 <i><a href="https://github.com/automl/NASLib">NASLib</a></i> <code>⭐ 586</code> <code>Apache-2.0</code> NAS research library from AutoML Freiburg with</summary>
 
 <br>
 
@@ -1660,7 +1660,7 @@ First open-source foundation model for univariate probabilistic time-series fore
 
 </details>
 
-<details><summary>🔴 <b>41</b> &nbsp; 💤 <i><a href="https://github.com/microsoft/archai">Archai</a></i> &nbsp; <code>⭐ 483</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Modular NAS framework for reproducible architecture search research (Microsoft).</summary>
+<details><summary>🔴 <b>41</b> 💤 <i><a href="https://github.com/microsoft/archai">Archai</a></i> <code>⭐ 483</code> <code>MIT</code> Modular NAS framework for reproducible architecture search</summary>
 
 <br>
 
@@ -1683,7 +1683,7 @@ First open-source foundation model for univariate probabilistic time-series fore
 
 *Automated tuning of model hyperparameters using Bayesian, evolutionary, and other search strategies.*
 
-<details><summary>🟢 <b>73</b> &nbsp; 🥇 <b><a href="https://docs.ray.io/en/latest/tune/">Ray Tune</a></b> &nbsp; <code>⭐ 42.0K</code> &nbsp; <code>↗️ +12</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Distributed hyperparameter tuning at scale with support for any ML framework ...</summary>
+<details><summary>🟢 <b>73</b> 🥇 <b><a href="https://docs.ray.io/en/latest/tune/">Ray Tune</a></b> <code>⭐ 42.0K</code> <code>↗️ +12</code> <code>Apache-2.0</code> Distributed hyperparameter tuning at scale with support</summary>
 
 <br>
 
@@ -1699,7 +1699,7 @@ Distributed hyperparameter tuning at scale with support for any ML framework and
 
 </details>
 
-<details><summary>🟢 <b>68</b> &nbsp; 🥈 <b><a href="https://github.com/optuna/optuna">Optuna</a></b> &nbsp; <code>⭐ 13.9K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Define-by-run API with pruning</summary>
+<details><summary>🟢 <b>68</b> 🥈 <b><a href="https://github.com/optuna/optuna">Optuna</a></b> <code>⭐ 13.9K</code> <code>MIT</code> Define-by-run API with pruning, distributed execution, and</summary>
 
 <br>
 
@@ -1715,7 +1715,7 @@ Define-by-run API with pruning, distributed execution, and a dashboard - the mos
 
 </details>
 
-<details><summary>🟢 <b>60</b> &nbsp; 🥉 <b><a href="https://github.com/meta-pytorch/botorch">BoTorch</a></b> &nbsp; <code>⭐ 3.5K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Bayesian optimization library in PyTorch for high-dimensional</summary>
+<details><summary>🟢 <b>60</b> 🥉 <b><a href="https://github.com/meta-pytorch/botorch">BoTorch</a></b> <code>⭐ 3.5K</code> <code>MIT</code> Bayesian optimization library in PyTorch for high-dimensional</summary>
 
 <br>
 
@@ -1730,7 +1730,7 @@ Bayesian optimization library in PyTorch for high-dimensional, noisy, and multi-
 
 </details>
 
-<details><summary>🟢 <b>59</b> &nbsp; <b><a href="https://github.com/facebook/Ax">Ax</a></b> &nbsp; <code>⭐ 2.7K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Adaptive experimentation platform for multi-objective optimization with BoTor...</summary>
+<details><summary>🟢 <b>59</b> <b><a href="https://github.com/facebook/Ax">Ax</a></b> <code>⭐ 2.7K</code> <code>MIT</code> Adaptive experimentation platform for multi-objective optimization with</summary>
 
 <br>
 
@@ -1745,7 +1745,7 @@ Adaptive experimentation platform for multi-objective optimization with BoTorch 
 
 </details>
 
-<details><summary>🟢 <b>57</b> &nbsp; <b><a href="https://github.com/keras-team/keras-tuner">Keras Tuner</a></b> &nbsp; <code>⭐ 2.9K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Hyperparameter search for Keras models with built-in Bayesian optimization an...</summary>
+<details><summary>🟢 <b>57</b> <b><a href="https://github.com/keras-team/keras-tuner">Keras Tuner</a></b> <code>⭐ 2.9K</code> <code>Apache-2.0</code> Hyperparameter search for Keras models with built-in</summary>
 
 <br>
 
@@ -1763,7 +1763,7 @@ Hyperparameter search for Keras models with built-in Bayesian optimization and H
 
 ---
 
-<details><summary>🟢 <b>63</b> &nbsp; 💤 <i><a href="https://github.com/hyperopt/hyperopt">Hyperopt</a></i> &nbsp; <code>⭐ 7.6K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Pioneered tree-structured Parzen estimators for HPO.</summary>
+<details><summary>🟢 <b>63</b> 💤 <i><a href="https://github.com/hyperopt/hyperopt">Hyperopt</a></i> <code>⭐ 7.6K</code> <code>NOASSERTION</code> Pioneered tree-structured Parzen estimators for HPO</summary>
 
 <br>
 
@@ -1779,7 +1779,7 @@ Hyperparameter search for Keras models with built-in Bayesian optimization and H
 
 </details>
 
-<details><summary>🔴 <b>46</b> &nbsp; 💤 <i><a href="https://github.com/google/vizier">Google Vizier</a></i> &nbsp; <code>⭐ 1.6K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Research interface for blackbox and hyperparameter optimization with Bayesian</summary>
+<details><summary>🔴 <b>46</b> 💤 <i><a href="https://github.com/google/vizier">Google Vizier</a></i> <code>⭐ 1.6K</code> <code>Apache-2.0</code> Research interface for blackbox and hyperparameter optimization</summary>
 
 <br>
 
@@ -1795,7 +1795,7 @@ Hyperparameter search for Keras models with built-in Bayesian optimization and H
 
 </details>
 
-<details><summary>🔴 <b>45</b> &nbsp; 💤 <i><a href="https://github.com/automl/SMAC3">SMAC3</a></i> &nbsp; <code>⭐ 1.2K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Sequential model-based algorithm configuration combining Bayesian optimizatio...</summary>
+<details><summary>🔴 <b>45</b> 💤 <i><a href="https://github.com/automl/SMAC3">SMAC3</a></i> <code>⭐ 1.2K</code> <code>NOASSERTION</code> Sequential model-based algorithm configuration combining Bayesian optimization</summary>
 
 <br>
 
@@ -1811,7 +1811,7 @@ Hyperparameter search for Keras models with built-in Bayesian optimization and H
 
 </details>
 
-<details><summary>🔴 <b>44</b> &nbsp; 💤 <i><a href="https://github.com/dragonfly/dragonfly">Dragonfly</a></i> &nbsp; <code>⭐ 893</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Scalable Bayesian optimization library supporting multi-fidelity and multi-ob...</summary>
+<details><summary>🔴 <b>44</b> 💤 <i><a href="https://github.com/dragonfly/dragonfly">Dragonfly</a></i> <code>⭐ 893</code> <code>MIT</code> Scalable Bayesian optimization library supporting multi-fidelity and</summary>
 
 <br>
 
@@ -1833,7 +1833,7 @@ Hyperparameter search for Keras models with built-in Bayesian optimization and H
 
 *Automated generation, transformation, and selection of features from raw data.*
 
-<details><summary>🟢 <b>64</b> &nbsp; 🥇 <b><a href="https://github.com/cleanlab/cleanlab">Cleanlab</a></b> &nbsp; <code>⭐ 11.4K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Data-centric AI toolkit for finding and fixing label errors</summary>
+<details><summary>🟢 <b>64</b> 🥇 <b><a href="https://github.com/cleanlab/cleanlab">Cleanlab</a></b> <code>⭐ 11.4K</code> <code>Apache-2.0</code> Data-centric AI toolkit for finding and fixing</summary>
 
 <br>
 
@@ -1849,7 +1849,7 @@ Data-centric AI toolkit for finding and fixing label errors, outliers, and data 
 
 </details>
 
-<details><summary>🟡 <b>56</b> &nbsp; 🥈 <b><a href="https://github.com/blue-yonder/tsfresh">tsfresh</a></b> &nbsp; <code>⭐ 9.2K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Automatic extraction of hundreds of time-series features with built-in statis...</summary>
+<details><summary>🟡 <b>56</b> 🥈 <b><a href="https://github.com/blue-yonder/tsfresh">tsfresh</a></b> <code>⭐ 9.2K</code> <code>MIT</code> Automatic extraction of hundreds of time-series features</summary>
 
 <br>
 
@@ -1865,7 +1865,7 @@ Automatic extraction of hundreds of time-series features with built-in statistic
 
 </details>
 
-<details><summary>🟢 <b>51</b> &nbsp; 🥉 <b><a href="https://github.com/cod3licious/autofeat">AutoFeat</a></b> &nbsp; <code>⭐ 536</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Scikit-learn-compatible automated feature engineering and selection that gene...</summary>
+<details><summary>🟢 <b>51</b> 🥉 <b><a href="https://github.com/cod3licious/autofeat">AutoFeat</a></b> <code>⭐ 536</code> <code>MIT</code> Scikit-learn-compatible automated feature engineering and selection that</summary>
 
 <br>
 
@@ -1883,7 +1883,7 @@ Scikit-learn-compatible automated feature engineering and selection that generat
 
 ---
 
-<details><summary>🔴 <b>51</b> &nbsp; 💤 <i><a href="https://github.com/alteryx/featuretools">Featuretools</a></i> &nbsp; <code>⭐ 7.6K</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; Deep feature synthesis for automatically creating meaningful features from re...</summary>
+<details><summary>🔴 <b>51</b> 💤 <i><a href="https://github.com/alteryx/featuretools">Featuretools</a></i> <code>⭐ 7.6K</code> <code>BSD-3-Clause</code> Deep feature synthesis for automatically creating meaningful</summary>
 
 <br>
 
@@ -1899,7 +1899,7 @@ Scikit-learn-compatible automated feature engineering and selection that generat
 
 </details>
 
-<details><summary>🔴 <b>47</b> &nbsp; 💤 <i><a href="https://github.com/feature-engine/feature_engine">Feature-engine</a></i> &nbsp; <code>⭐ 2.2K</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; Scikit-learn-compatible transformers for feature creation</summary>
+<details><summary>🔴 <b>47</b> 💤 <i><a href="https://github.com/feature-engine/feature_engine">Feature-engine</a></i> <code>⭐ 2.2K</code> <code>BSD-3-Clause</code> Scikit-learn-compatible transformers for feature creation, selection, encoding</summary>
 
 <br>
 
@@ -1915,7 +1915,7 @@ Scikit-learn-compatible automated feature engineering and selection that generat
 
 </details>
 
-<details><summary>🔴 <b>46</b> &nbsp; 💤 <i><a href="https://github.com/4paradigm/OpenMLDB">OpenMLDB</a></i> &nbsp; <code>⭐ 1.7K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Database for consistent feature computation between training and serving with...</summary>
+<details><summary>🔴 <b>46</b> 💤 <i><a href="https://github.com/4paradigm/OpenMLDB">OpenMLDB</a></i> <code>⭐ 1.7K</code> <code>Apache-2.0</code> Database for consistent feature computation between training</summary>
 
 <br>
 
@@ -1931,7 +1931,7 @@ Scikit-learn-compatible automated feature engineering and selection that generat
 
 </details>
 
-<details><summary>🔴 <b>46</b> &nbsp; 💤 <i><a href="https://github.com/scikit-learn-contrib/boruta_py">Boruta</a></i> &nbsp; <code>⭐ 1.6K</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; All-relevant feature selection wrapper using random forest shadow features to...</summary>
+<details><summary>🔴 <b>46</b> 💤 <i><a href="https://github.com/scikit-learn-contrib/boruta_py">Boruta</a></i> <code>⭐ 1.6K</code> <code>BSD-3-Clause</code> All-relevant feature selection wrapper using random forest</summary>
 
 <br>
 
@@ -1946,7 +1946,7 @@ Scikit-learn-compatible automated feature engineering and selection that generat
 
 </details>
 
-<details><summary>🔴 <b>44</b> &nbsp; 💤 <i><a href="https://github.com/NVIDIA-Merlin/NVTabular">NVTabular</a></i> &nbsp; <code>⭐ 1.1K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; GPU-accelerated feature engineering and preprocessing for terabyte-scale tabu...</summary>
+<details><summary>🔴 <b>44</b> 💤 <i><a href="https://github.com/NVIDIA-Merlin/NVTabular">NVTabular</a></i> <code>⭐ 1.1K</code> <code>Apache-2.0</code> GPU-accelerated feature engineering and preprocessing for terabyte-scale</summary>
 
 <br>
 
@@ -1962,7 +1962,7 @@ Scikit-learn-compatible automated feature engineering and selection that generat
 
 </details>
 
-<details><summary>🔴 <b>38</b> &nbsp; 💤 <i><a href="https://github.com/noahho/CAAFE">CAAFE</a></i> &nbsp; <code>⭐ 186</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; LLM-powered context-aware feature engineering that generates semantically mea...</summary>
+<details><summary>🔴 <b>38</b> 💤 <i><a href="https://github.com/noahho/CAAFE">CAAFE</a></i> <code>⭐ 186</code> <code>NOASSERTION</code> LLM-powered context-aware feature engineering that generates semantically</summary>
 
 <br>
 
@@ -1985,7 +1985,7 @@ Scikit-learn-compatible automated feature engineering and selection that generat
 
 *Automated data profiling, cleaning, validation, and quality assurance.*
 
-<details><summary>🟢 <b>68</b> &nbsp; 🥇 <b><a href="https://github.com/great-expectations/great_expectations">Great Expectations</a></b> &nbsp; <code>⭐ 11.4K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Programmable data validation and documentation framework for maintaining pipe...</summary>
+<details><summary>🟢 <b>68</b> 🥇 <b><a href="https://github.com/great-expectations/great_expectations">Great Expectations</a></b> <code>⭐ 11.4K</code> <code>Apache-2.0</code> Programmable data validation and documentation framework for</summary>
 
 <br>
 
@@ -2001,7 +2001,7 @@ Programmable data validation and documentation framework for maintaining pipelin
 
 </details>
 
-<details><summary>🟢 <b>65</b> &nbsp; 🥈 <b><a href="https://github.com/Data-Centric-AI-Community/ydata-profiling">ydata-profiling</a></b> &nbsp; <code>⭐ 13.5K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; One-line data quality profiling and exploratory analysis for Pandas and Spark...</summary>
+<details><summary>🟢 <b>65</b> 🥈 <b><a href="https://github.com/Data-Centric-AI-Community/ydata-profiling">ydata-profiling</a></b> <code>⭐ 13.5K</code> <code>MIT</code> One-line data quality profiling and exploratory analysis</summary>
 
 <br>
 
@@ -2017,7 +2017,7 @@ One-line data quality profiling and exploratory analysis for Pandas and Spark Da
 
 </details>
 
-<details><summary>🟢 <b>64</b> &nbsp; 🥉 <b><a href="https://github.com/unionai-oss/pandera">Pandera</a></b> &nbsp; <code>⭐ 4.3K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Statistical data testing and validation for dataframes with expressive schema...</summary>
+<details><summary>🟢 <b>64</b> 🥉 <b><a href="https://github.com/unionai-oss/pandera">Pandera</a></b> <code>⭐ 4.3K</code> <code>MIT</code> Statistical data testing and validation for dataframes</summary>
 
 <br>
 
@@ -2033,7 +2033,7 @@ Statistical data testing and validation for dataframes with expressive schema de
 
 </details>
 
-<details><summary>🟢 <b>63</b> &nbsp; <b><a href="https://github.com/fbdesignpro/sweetviz">SweetViz</a></b> &nbsp; <code>⭐ 3.1K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; High-density EDA visualizations and target analysis reports generated in two ...</summary>
+<details><summary>🟢 <b>63</b> <b><a href="https://github.com/fbdesignpro/sweetviz">SweetViz</a></b> <code>⭐ 3.1K</code> <code>MIT</code> High-density EDA visualizations and target analysis reports</summary>
 
 <br>
 
@@ -2049,7 +2049,7 @@ High-density EDA visualizations and target analysis reports generated in two lin
 
 </details>
 
-<details><summary>🟢 <b>60</b> &nbsp; <b><a href="https://github.com/Renumics/spotlight">Spotlight</a></b> &nbsp; <code>⭐ 1.3K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Interactive visualization tool for auditing and understanding unstructured ML...</summary>
+<details><summary>🟢 <b>60</b> <b><a href="https://github.com/Renumics/spotlight">Spotlight</a></b> <code>⭐ 1.3K</code> <code>MIT</code> Interactive visualization tool for auditing and understanding</summary>
 
 <br>
 
@@ -2065,7 +2065,7 @@ Interactive visualization tool for auditing and understanding unstructured ML da
 
 </details>
 
-<details><summary>🟢 <b>60</b> &nbsp; <b><a href="https://github.com/pyjanitor-devs/pyjanitor">pyjanitor</a></b> &nbsp; <code>⭐ 1.5K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Clean APIs for data cleaning with a fluent method-chaining interface for pand...</summary>
+<details><summary>🟢 <b>60</b> <b><a href="https://github.com/pyjanitor-devs/pyjanitor">pyjanitor</a></b> <code>⭐ 1.5K</code> <code>MIT</code> Clean APIs for data cleaning with a</summary>
 
 <br>
 
@@ -2083,7 +2083,7 @@ Clean APIs for data cleaning with a fluent method-chaining interface for pandas 
 
 ---
 
-<details><summary>🔴 <b>47</b> &nbsp; 💤 <i><a href="https://github.com/sfu-db/dataprep">DataPrep</a></i> &nbsp; <code>⭐ 2.2K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Low-code library for data collection</summary>
+<details><summary>🔴 <b>47</b> 💤 <i><a href="https://github.com/sfu-db/dataprep">DataPrep</a></i> <code>⭐ 2.2K</code> <code>MIT</code> Low-code library for data collection, cleaning, and</summary>
 
 <br>
 
@@ -2099,7 +2099,7 @@ Clean APIs for data cleaning with a fluent method-chaining interface for pandas 
 
 </details>
 
-<details><summary>🔴 <b>45</b> &nbsp; 💤 <i><a href="https://github.com/hi-primus/optimus">Optimus</a></i> &nbsp; <code>⭐ 1.5K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Agile data preparation supporting Pandas</summary>
+<details><summary>🔴 <b>45</b> 💤 <i><a href="https://github.com/hi-primus/optimus">Optimus</a></i> <code>⭐ 1.5K</code> <code>Apache-2.0</code> Agile data preparation supporting Pandas, Dask, cuDF</summary>
 
 <br>
 
@@ -2122,7 +2122,7 @@ Clean APIs for data cleaning with a fluent method-chaining interface for pandas 
 
 *Tools that automate or semi-automate the annotation process using AI-assisted labeling.*
 
-<details><summary>🟢 <b>71</b> &nbsp; 🥇 <b><a href="https://github.com/HumanSignal/label-studio">Label Studio</a></b> &nbsp; <code>⭐ 27.0K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Multi-type data labeling platform with ML-assisted annotation and LLM integra...</summary>
+<details><summary>🟢 <b>71</b> 🥇 <b><a href="https://github.com/HumanSignal/label-studio">Label Studio</a></b> <code>⭐ 27.0K</code> <code>Apache-2.0</code> Multi-type data labeling platform with ML-assisted annotation</summary>
 
 <br>
 
@@ -2138,7 +2138,7 @@ Multi-type data labeling platform with ML-assisted annotation and LLM integratio
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; 🥈 <b><a href="https://github.com/CVHub520/X-AnyLabeling">X-AnyLabeling</a></b> &nbsp; <code>⭐ 8.7K</code> &nbsp; <code>GPL-3.0</code> &nbsp; - &nbsp; AI-assisted annotation with Segment Anything and other foundation models for ...</summary>
+<details><summary>🟢 <b>67</b> 🥈 <b><a href="https://github.com/CVHub520/X-AnyLabeling">X-AnyLabeling</a></b> <code>⭐ 8.7K</code> <code>GPL-3.0</code> AI-assisted annotation with Segment Anything and other</summary>
 
 <br>
 
@@ -2154,7 +2154,7 @@ AI-assisted annotation with Segment Anything and other foundation models for aut
 
 </details>
 
-<details><summary>🟡 <b>50</b> &nbsp; 🥉 <b><a href="https://github.com/opendatalab/labelU">LabelU</a></b> &nbsp; <code>⭐ 1.5K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Multi-modal annotation toolbox supporting image</summary>
+<details><summary>🟡 <b>50</b> 🥉 <b><a href="https://github.com/opendatalab/labelU">LabelU</a></b> <code>⭐ 1.5K</code> <code>Apache-2.0</code> Multi-modal annotation toolbox supporting image, audio, and</summary>
 
 <br>
 
@@ -2171,7 +2171,7 @@ Multi-modal annotation toolbox supporting image, audio, and video with configura
 
 ---
 
-<details><summary>🔴 <b>50</b> &nbsp; 💤 <i><a href="https://github.com/snorkel-team/snorkel">Snorkel</a></i> &nbsp; <code>⭐ 5.9K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Programmatic labeling via weak supervision - write labeling functions instead...</summary>
+<details><summary>🔴 <b>50</b> 💤 <i><a href="https://github.com/snorkel-team/snorkel">Snorkel</a></i> <code>⭐ 5.9K</code> <code>Apache-2.0</code> Programmatic labeling via weak supervision - write</summary>
 
 <br>
 
@@ -2187,7 +2187,7 @@ Multi-modal annotation toolbox supporting image, audio, and video with configura
 
 </details>
 
-<details><summary>🔴 <b>50</b> &nbsp; 💤 <i><a href="https://github.com/argilla-io/argilla">Argilla</a></i> &nbsp; <code>⭐ 4.9K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Collaboration platform for collecting and managing human and AI feedback for ...</summary>
+<details><summary>🔴 <b>50</b> 💤 <i><a href="https://github.com/argilla-io/argilla">Argilla</a></i> <code>⭐ 4.9K</code> <code>Apache-2.0</code> Collaboration platform for collecting and managing human</summary>
 
 <br>
 
@@ -2203,7 +2203,7 @@ Multi-modal annotation toolbox supporting image, audio, and video with configura
 
 </details>
 
-<details><summary>🔴 <b>48</b> &nbsp; 💤 <i><a href="https://github.com/argilla-io/distilabel">Distilabel</a></i> &nbsp; <code>⭐ 3.2K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Framework for synthetic data generation</summary>
+<details><summary>🔴 <b>48</b> 💤 <i><a href="https://github.com/argilla-io/distilabel">Distilabel</a></i> <code>⭐ 3.2K</code> <code>Apache-2.0</code> Framework for synthetic data generation, AI feedback</summary>
 
 <br>
 
@@ -2219,7 +2219,7 @@ Multi-modal annotation toolbox supporting image, audio, and video with configura
 
 </details>
 
-<details><summary>🔴 <b>47</b> &nbsp; 💤 <i><a href="https://github.com/autodistill/autodistill">Autodistill</a></i> &nbsp; <code>⭐ 2.7K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Automated image labeling by distilling foundation model knowledge into smalle...</summary>
+<details><summary>🔴 <b>47</b> 💤 <i><a href="https://github.com/autodistill/autodistill">Autodistill</a></i> <code>⭐ 2.7K</code> <code>Apache-2.0</code> Automated image labeling by distilling foundation model</summary>
 
 <br>
 
@@ -2235,7 +2235,7 @@ Multi-modal annotation toolbox supporting image, audio, and video with configura
 
 </details>
 
-<details><summary>🔴 <b>47</b> &nbsp; 💤 <i><a href="https://github.com/refuel-ai/autolabel">Autolabel</a></i> &nbsp; <code>⭐ 2.3K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; LLM-powered labeling</summary>
+<details><summary>🔴 <b>47</b> 💤 <i><a href="https://github.com/refuel-ai/autolabel">Autolabel</a></i> <code>⭐ 2.3K</code> <code>MIT</code> LLM-powered labeling, cleaning, and enrichment for text</summary>
 
 <br>
 
@@ -2251,7 +2251,7 @@ Multi-modal annotation toolbox supporting image, audio, and video with configura
 
 </details>
 
-<details><summary>🔴 <b>45</b> &nbsp; 💤 <i><a href="https://github.com/HumanSignal/Adala">Adala</a></i> &nbsp; <code>⭐ 1.4K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Autonomous data labeling agent that uses LLMs to label data</summary>
+<details><summary>🔴 <b>45</b> 💤 <i><a href="https://github.com/HumanSignal/Adala">Adala</a></i> <code>⭐ 1.4K</code> <code>Apache-2.0</code> Autonomous data labeling agent that uses LLMs</summary>
 
 <br>
 
@@ -2274,7 +2274,7 @@ Multi-modal annotation toolbox supporting image, audio, and video with configura
 
 *Automated creation of artificial training data that preserves statistical properties of real datasets.*
 
-<details><summary>🟢 <b>63</b> &nbsp; 🥇 <b><a href="https://github.com/sdv-dev/SDV">SDV</a></b> &nbsp; <code>⭐ 3.5K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Synthetic Data Vault with multiple generative models (GaussianCopula</summary>
+<details><summary>🟢 <b>63</b> 🥇 <b><a href="https://github.com/sdv-dev/SDV">SDV</a></b> <code>⭐ 3.5K</code> <code>NOASSERTION</code> Synthetic Data Vault with multiple generative models</summary>
 
 <br>
 
@@ -2290,7 +2290,7 @@ Synthetic Data Vault with multiple generative models (GaussianCopula, CTGAN, TVA
 
 </details>
 
-<details><summary>🟢 <b>62</b> &nbsp; 🥈 <b><a href="https://github.com/NVIDIA-NeMo/DataDesigner">NeMo Data Designer</a></b> &nbsp; <code>⭐ 1.5K</code> &nbsp; <code>↗️ +27</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Generates high-quality synthetic data from scratch or seed data with built-in...</summary>
+<details><summary>🟢 <b>62</b> 🥈 <b><a href="https://github.com/NVIDIA-NeMo/DataDesigner">NeMo Data Designer</a></b> <code>⭐ 1.5K</code> <code>↗️ +27</code> <code>Apache-2.0</code> Generates high-quality synthetic data from scratch or</summary>
 
 <br>
 
@@ -2306,7 +2306,7 @@ Generates high-quality synthetic data from scratch or seed data with built-in ev
 
 </details>
 
-<details><summary>🟢 <b>61</b> &nbsp; 🥉 <b><a href="https://github.com/bespokelabsai/curator">Curator</a></b> &nbsp; <code>⭐ 1.7K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Pipeline-oriented synthetic data curation for post-training and structured da...</summary>
+<details><summary>🟢 <b>61</b> 🥉 <b><a href="https://github.com/bespokelabsai/curator">Curator</a></b> <code>⭐ 1.7K</code> <code>Apache-2.0</code> Pipeline-oriented synthetic data curation for post-training and</summary>
 
 <br>
 
@@ -2322,7 +2322,7 @@ Pipeline-oriented synthetic data curation for post-training and structured data 
 
 </details>
 
-<details><summary>🟢 <b>55</b> &nbsp; <b><a href="https://github.com/meta-llama/synthetic-data-kit">Synthetic Data Kit</a></b> &nbsp; <code>⭐ 1.6K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Toolkit for generating high-quality synthetic datasets to fine-tune models wi...</summary>
+<details><summary>🟢 <b>55</b> <b><a href="https://github.com/meta-llama/synthetic-data-kit">Synthetic Data Kit</a></b> <code>⭐ 1.6K</code> <code>MIT</code> Toolkit for generating high-quality synthetic datasets to</summary>
 
 <br>
 
@@ -2340,7 +2340,7 @@ Toolkit for generating high-quality synthetic datasets to fine-tune models with 
 
 ---
 
-<details><summary>🔴 <b>47</b> &nbsp; 💤 <i><a href="https://github.com/hitsz-ids/synthetic-data-generator">SDG</a></i> &nbsp; <code>⭐ 2.4K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Framework for generating high-quality synthetic tabular data preserving stati...</summary>
+<details><summary>🔴 <b>47</b> 💤 <i><a href="https://github.com/hitsz-ids/synthetic-data-generator">SDG</a></i> <code>⭐ 2.4K</code> <code>Apache-2.0</code> Framework for generating high-quality synthetic tabular data</summary>
 
 <br>
 
@@ -2356,7 +2356,7 @@ Toolkit for generating high-quality synthetic datasets to fine-tune models with 
 
 </details>
 
-<details><summary>🔴 <b>44</b> &nbsp; 💤 <i><a href="https://github.com/datadreamer-dev/DataDreamer">DataDreamer</a></i> &nbsp; <code>⭐ 1.1K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Reproducible LLM workflows for prompting</summary>
+<details><summary>🔴 <b>44</b> 💤 <i><a href="https://github.com/datadreamer-dev/DataDreamer">DataDreamer</a></i> <code>⭐ 1.1K</code> <code>MIT</code> Reproducible LLM workflows for prompting, synthetic data</summary>
 
 <br>
 
@@ -2372,7 +2372,7 @@ Toolkit for generating high-quality synthetic datasets to fine-tune models with 
 
 </details>
 
-<details><summary>🔴 <b>37</b> &nbsp; 💤 <i><a href="https://github.com/gretelai/gretel-synthetics">Gretel Synthetics</a></i> &nbsp; <code>⭐ 676</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Synthetic data generators for structured and unstructured text with different...</summary>
+<details><summary>🔴 <b>37</b> 💤 <i><a href="https://github.com/gretelai/gretel-synthetics">Gretel Synthetics</a></i> <code>⭐ 676</code> <code>NOASSERTION</code> Synthetic data generators for structured and unstructured</summary>
 
 <br>
 
@@ -2395,7 +2395,7 @@ Toolkit for generating high-quality synthetic datasets to fine-tune models with 
 
 *Automated quantization, pruning, and distillation for efficient model deployment.*
 
-<details><summary>🟢 <b>63</b> &nbsp; 🥇 <b><a href="https://github.com/vllm-project/llm-compressor">LLM Compressor</a></b> &nbsp; <code>⭐ 3.0K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Transformers-compatible compression library optimized for efficient vLLM infe...</summary>
+<details><summary>🟢 <b>63</b> 🥇 <b><a href="https://github.com/vllm-project/llm-compressor">LLM Compressor</a></b> <code>⭐ 3.0K</code> <code>Apache-2.0</code> Transformers-compatible compression library optimized for efficient vLLM</summary>
 
 <br>
 
@@ -2411,7 +2411,7 @@ Transformers-compatible compression library optimized for efficient vLLM inferen
 
 </details>
 
-<details><summary>🟢 <b>63</b> &nbsp; 🥈 <b><a href="https://github.com/bitsandbytes-foundation/bitsandbytes">bitsandbytes</a></b> &nbsp; <code>⭐ 8.1K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; De facto standard for k-bit quantization of LLMs in PyTorch - enables 4-bit a...</summary>
+<details><summary>🟢 <b>63</b> 🥈 <b><a href="https://github.com/bitsandbytes-foundation/bitsandbytes">bitsandbytes</a></b> <code>⭐ 8.1K</code> <code>MIT</code> De facto standard for k-bit quantization of</summary>
 
 <br>
 
@@ -2427,7 +2427,7 @@ De facto standard for k-bit quantization of LLMs in PyTorch - enables 4-bit and 
 
 </details>
 
-<details><summary>🟢 <b>62</b> &nbsp; 🥉 <b><a href="https://github.com/NVIDIA/Model-Optimizer">NVIDIA TensorRT Model Optimizer</a></b> &nbsp; <code>⭐ 2.4K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Quantization</summary>
+<details><summary>🟢 <b>62</b> 🥉 <b><a href="https://github.com/NVIDIA/Model-Optimizer">NVIDIA TensorRT Model Optimizer</a></b> <code>⭐ 2.4K</code> <code>Apache-2.0</code> Quantization, pruning, distillation, and speculative decoding optimized</summary>
 
 <br>
 
@@ -2442,7 +2442,7 @@ Quantization, pruning, distillation, and speculative decoding optimized for Tens
 
 </details>
 
-<details><summary>🟢 <b>59</b> &nbsp; <b><a href="https://github.com/ModelCloud/GPTQModel">GPTQModel</a></b> &nbsp; <code>⭐ 1.1K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; LLM quantization toolkit with support for NVIDIA CUDA</summary>
+<details><summary>🟢 <b>59</b> <b><a href="https://github.com/ModelCloud/GPTQModel">GPTQModel</a></b> <code>⭐ 1.1K</code> <code>NOASSERTION</code> LLM quantization toolkit with support for NVIDIA</summary>
 
 <br>
 
@@ -2458,7 +2458,7 @@ LLM quantization toolkit with support for NVIDIA CUDA, AMD ROCm, Intel, and Appl
 
 </details>
 
-<details><summary>🟢 <b>59</b> &nbsp; <b><a href="https://github.com/microsoft/Olive">Olive</a></b> &nbsp; <code>⭐ 2.3K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; End-to-end model optimization automating fine-tuning</summary>
+<details><summary>🟢 <b>59</b> <b><a href="https://github.com/microsoft/Olive">Olive</a></b> <code>⭐ 2.3K</code> <code>MIT</code> End-to-end model optimization automating fine-tuning, conversion, quantization</summary>
 
 <br>
 
@@ -2473,7 +2473,7 @@ End-to-end model optimization automating fine-tuning, conversion, quantization, 
 
 </details>
 
-<details><summary>🟢 <b>57</b> &nbsp; <b><a href="https://github.com/huggingface/optimum">Optimum</a></b> &nbsp; <code>⭐ 3.4K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Toolkit for accelerating Transformers inference with hardware-optimized quant...</summary>
+<details><summary>🟢 <b>57</b> <b><a href="https://github.com/huggingface/optimum">Optimum</a></b> <code>⭐ 3.4K</code> <code>Apache-2.0</code> Toolkit for accelerating Transformers inference with hardware-optimized</summary>
 
 <br>
 
@@ -2489,7 +2489,7 @@ Toolkit for accelerating Transformers inference with hardware-optimized quantiza
 
 </details>
 
-<details><summary>🟢 <b>56</b> &nbsp; <b><a href="https://github.com/intel/neural-compressor">Intel Neural Compressor</a></b> &nbsp; <code>⭐ 2.6K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Unified quantization</summary>
+<details><summary>🟢 <b>56</b> <b><a href="https://github.com/intel/neural-compressor">Intel Neural Compressor</a></b> <code>⭐ 2.6K</code> <code>Apache-2.0</code> Unified quantization, sparsity, pruning, and distillation across</summary>
 
 <br>
 
@@ -2505,7 +2505,7 @@ Unified quantization, sparsity, pruning, and distillation across PyTorch, Tensor
 
 </details>
 
-<details><summary>🟡 <b>53</b> &nbsp; <b><a href="https://github.com/mit-han-lab/llm-awq">LLM-AWQ</a></b> &nbsp; <code>⭐ 3.5K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Activation-aware weight quantization achieving lossless 4-bit compression for...</summary>
+<details><summary>🟡 <b>53</b> <b><a href="https://github.com/mit-han-lab/llm-awq">LLM-AWQ</a></b> <code>⭐ 3.5K</code> <code>MIT</code> Activation-aware weight quantization achieving lossless 4-bit compression</summary>
 
 <br>
 
@@ -2520,7 +2520,7 @@ Activation-aware weight quantization achieving lossless 4-bit compression for LL
 
 </details>
 
-<details><summary>🟡 <b>53</b> &nbsp; <b><a href="https://github.com/VainF/Torch-Pruning">Torch-Pruning</a></b> &nbsp; <code>⭐ 3.3K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Structural pruning framework for any PyTorch model including LLMs</summary>
+<details><summary>🟡 <b>53</b> <b><a href="https://github.com/VainF/Torch-Pruning">Torch-Pruning</a></b> <code>⭐ 3.3K</code> <code>MIT</code> Structural pruning framework for any PyTorch model</summary>
 
 <br>
 
@@ -2543,7 +2543,7 @@ Structural pruning framework for any PyTorch model including LLMs, YOLO, ViT, an
 
 *Automated model serving, optimization, and inference infrastructure.*
 
-<details><summary>🟢 <b>79</b> &nbsp; 🥇 <b><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a></b> &nbsp; <code>⭐ 102.4K</code> &nbsp; <code>↗️ +73</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; LLM inference in C/C++ with broad hardware support - the foundation for most ...</summary>
+<details><summary>🟢 <b>79</b> 🥇 <b><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a></b> <code>⭐ 102.4K</code> <code>↗️ +73</code> <code>MIT</code> LLM inference in C/C++ with broad hardware</summary>
 
 <br>
 
@@ -2559,7 +2559,7 @@ LLM inference in C/C++ with broad hardware support - the foundation for most loc
 
 </details>
 
-<details><summary>🟢 <b>78</b> &nbsp; 🥈 <b><a href="https://github.com/ollama/ollama">Ollama</a></b> &nbsp; <code>⭐ 168.1K</code> &nbsp; <code>↗️ +58</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Docker-like local LLM runner for getting models up and running quickly for pr...</summary>
+<details><summary>🟢 <b>78</b> 🥈 <b><a href="https://github.com/ollama/ollama">Ollama</a></b> <code>⭐ 168.1K</code> <code>↗️ +58</code> <code>MIT</code> Docker-like local LLM runner for getting models</summary>
 
 <br>
 
@@ -2575,7 +2575,7 @@ Docker-like local LLM runner for getting models up and running quickly for proto
 
 </details>
 
-<details><summary>🟢 <b>77</b> &nbsp; 🥉 <b><a href="https://github.com/vllm-project/vllm">vLLM</a></b> &nbsp; <code>⭐ 75.7K</code> &nbsp; <code>↗️ +56</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; High-throughput LLM serving engine with PagedAttention</summary>
+<details><summary>🟢 <b>77</b> 🥉 <b><a href="https://github.com/vllm-project/vllm">vLLM</a></b> <code>⭐ 75.7K</code> <code>↗️ +56</code> <code>Apache-2.0</code> High-throughput LLM serving engine with PagedAttention, powering</summary>
 
 <br>
 
@@ -2591,7 +2591,7 @@ High-throughput LLM serving engine with PagedAttention, powering most open-sourc
 
 </details>
 
-<details><summary>🟢 <b>71</b> &nbsp; <b><a href="https://github.com/sgl-project/sglang">SGLang</a></b> &nbsp; <code>⭐ 25.5K</code> &nbsp; <code>↗️ +20</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; High-performance LLM serving framework powering 400K+ GPUs with best-in-class...</summary>
+<details><summary>🟢 <b>71</b> <b><a href="https://github.com/sgl-project/sglang">SGLang</a></b> <code>⭐ 25.5K</code> <code>↗️ +20</code> <code>Apache-2.0</code> High-performance LLM serving framework powering 400K+ GPUs</summary>
 
 <br>
 
@@ -2607,7 +2607,7 @@ High-performance LLM serving framework powering 400K+ GPUs with best-in-class st
 
 </details>
 
-<details><summary>🟢 <b>70</b> &nbsp; <b><a href="https://github.com/microsoft/onnxruntime">ONNX Runtime</a></b> &nbsp; <code>⭐ 19.8K</code> &nbsp; <code>↗️ +10</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Cross-platform inference accelerator supporting PyTorch</summary>
+<details><summary>🟢 <b>70</b> <b><a href="https://github.com/microsoft/onnxruntime">ONNX Runtime</a></b> <code>⭐ 19.8K</code> <code>↗️ +10</code> <code>MIT</code> Cross-platform inference accelerator supporting PyTorch, TensorFlow, scikit-learn</summary>
 
 <br>
 
@@ -2623,7 +2623,7 @@ Cross-platform inference accelerator supporting PyTorch, TensorFlow, scikit-lear
 
 </details>
 
-<details><summary>🟢 <b>68</b> &nbsp; <b><a href="https://github.com/NVIDIA/TensorRT-LLM">TensorRT-LLM</a></b> &nbsp; <code>⭐ 13.3K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; High-performance LLM inference library with custom attention kernels</summary>
+<details><summary>🟢 <b>68</b> <b><a href="https://github.com/NVIDIA/TensorRT-LLM">TensorRT-LLM</a></b> <code>⭐ 13.3K</code> <code>NOASSERTION</code> High-performance LLM inference library with custom attention</summary>
 
 <br>
 
@@ -2639,7 +2639,7 @@ High-performance LLM inference library with custom attention kernels, speculativ
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; <b><a href="https://github.com/triton-inference-server/server">Triton Inference Server</a></b> &nbsp; <code>⭐ 10.5K</code> &nbsp; <code>BSD-3-Clause</code> &nbsp; - &nbsp; Multi-framework inference serving for TensorRT</summary>
+<details><summary>🟢 <b>67</b> <b><a href="https://github.com/triton-inference-server/server">Triton Inference Server</a></b> <code>⭐ 10.5K</code> <code>BSD-3-Clause</code> Multi-framework inference serving for TensorRT, PyTorch, ONNX</summary>
 
 <br>
 
@@ -2655,7 +2655,7 @@ Multi-framework inference serving for TensorRT, PyTorch, ONNX, and custom backen
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; <b><a href="https://github.com/openvinotoolkit/openvino">OpenVINO</a></b> &nbsp; <code>⭐ 10.0K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Inference optimization and deployment toolkit for CPUs</summary>
+<details><summary>🟢 <b>67</b> <b><a href="https://github.com/openvinotoolkit/openvino">OpenVINO</a></b> <code>⭐ 10.0K</code> <code>Apache-2.0</code> Inference optimization and deployment toolkit for CPUs</summary>
 
 <br>
 
@@ -2671,7 +2671,7 @@ Inference optimization and deployment toolkit for CPUs, GPUs, and edge accelerat
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; <b><a href="https://github.com/bentoml/BentoML">BentoML</a></b> &nbsp; <code>⭐ 8.6K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Build production-ready inference APIs</summary>
+<details><summary>🟢 <b>67</b> <b><a href="https://github.com/bentoml/BentoML">BentoML</a></b> <code>⭐ 8.6K</code> <code>Apache-2.0</code> Build production-ready inference APIs, batch jobs, and</summary>
 
 <br>
 
@@ -2687,7 +2687,7 @@ Build production-ready inference APIs, batch jobs, and multi-model pipelines wit
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; <b><a href="https://github.com/replicate/cog">Cog</a></b> &nbsp; <code>⭐ 9.4K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Package ML models as standard Docker containers with auto-generated HTTP APIs...</summary>
+<details><summary>🟢 <b>67</b> <b><a href="https://github.com/replicate/cog">Cog</a></b> <code>⭐ 9.4K</code> <code>Apache-2.0</code> Package ML models as standard Docker containers</summary>
 
 <br>
 
@@ -2703,7 +2703,7 @@ Package ML models as standard Docker containers with auto-generated HTTP APIs an
 
 </details>
 
-<details><summary>🟢 <b>66</b> &nbsp; <b><a href="https://github.com/InternLM/lmdeploy">LMDeploy</a></b> &nbsp; <code>⭐ 7.8K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Toolkit for compressing</summary>
+<details><summary>🟢 <b>66</b> <b><a href="https://github.com/InternLM/lmdeploy">LMDeploy</a></b> <code>⭐ 7.8K</code> <code>Apache-2.0</code> Toolkit for compressing, deploying, and serving large</summary>
 
 <br>
 
@@ -2719,7 +2719,7 @@ Toolkit for compressing, deploying, and serving large language and vision-langua
 
 </details>
 
-<details><summary>🟢 <b>65</b> &nbsp; <b><a href="https://github.com/kserve/kserve">KServe</a></b> &nbsp; <code>⭐ 5.3K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Kubernetes-native standardized model serving with canary rollouts</summary>
+<details><summary>🟢 <b>65</b> <b><a href="https://github.com/kserve/kserve">KServe</a></b> <code>⭐ 5.3K</code> <code>Apache-2.0</code> Kubernetes-native standardized model serving with canary rollouts</summary>
 
 <br>
 
@@ -2735,7 +2735,7 @@ Kubernetes-native standardized model serving with canary rollouts, autoscaling, 
 
 </details>
 
-<details><summary>🟢 <b>64</b> &nbsp; <b><a href="https://github.com/pytorch/executorch">ExecuTorch</a></b> &nbsp; <code>⭐ 4.5K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; On-device AI inference for mobile</summary>
+<details><summary>🟢 <b>64</b> <b><a href="https://github.com/pytorch/executorch">ExecuTorch</a></b> <code>⭐ 4.5K</code> <code>NOASSERTION</code> On-device AI inference for mobile, embedded, and</summary>
 
 <br>
 
@@ -2751,7 +2751,7 @@ On-device AI inference for mobile, embedded, and edge platforms with a 50KB base
 
 </details>
 
-<details><summary>🟢 <b>59</b> &nbsp; <b><a href="https://github.com/tensorflow/tfx">TFX</a></b> &nbsp; <code>⭐ 2.2K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; End-to-end platform for deploying production ML pipelines with data validation</summary>
+<details><summary>🟢 <b>59</b> <b><a href="https://github.com/tensorflow/tfx">TFX</a></b> <code>⭐ 2.2K</code> <code>Apache-2.0</code> End-to-end platform for deploying production ML pipelines</summary>
 
 <br>
 
@@ -2767,7 +2767,7 @@ End-to-end platform for deploying production ML pipelines with data validation, 
 
 </details>
 
-<details><summary>🟢 <b>58</b> &nbsp; <b><a href="https://github.com/Lightning-AI/LitServe">LitServe</a></b> &nbsp; <code>⭐ 3.9K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Minimal</summary>
+<details><summary>🟢 <b>58</b> <b><a href="https://github.com/Lightning-AI/LitServe">LitServe</a></b> <code>⭐ 3.9K</code> <code>Apache-2.0</code> Minimal, high-performance Python framework for AI model</summary>
 
 <br>
 
@@ -2783,7 +2783,7 @@ Minimal, high-performance Python framework for AI model serving (Lightning AI).
 
 </details>
 
-<details><summary>🟡 <b>53</b> &nbsp; <b><a href="https://github.com/ModelTC/LightLLM">LightLLM</a></b> &nbsp; <code>⭐ 4.0K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Lightweight LLM inference and serving framework with continuous batching</summary>
+<details><summary>🟡 <b>53</b> <b><a href="https://github.com/ModelTC/LightLLM">LightLLM</a></b> <code>⭐ 4.0K</code> <code>Apache-2.0</code> Lightweight LLM inference and serving framework with</summary>
 
 <br>
 
@@ -2806,7 +2806,7 @@ Lightweight LLM inference and serving framework with continuous batching, tensor
 
 *Automated drift detection, performance monitoring, and quality assurance for deployed models.*
 
-<details><summary>🟢 <b>66</b> &nbsp; 🥇 <b><a href="https://github.com/evidentlyai/evidently">Evidently</a></b> &nbsp; <code>⭐ 7.4K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; ML and LLM observability with 100+ metrics for evaluating</summary>
+<details><summary>🟢 <b>66</b> 🥇 <b><a href="https://github.com/evidentlyai/evidently">Evidently</a></b> <code>⭐ 7.4K</code> <code>Apache-2.0</code> ML and LLM observability with 100+ metrics</summary>
 
 <br>
 
@@ -2822,7 +2822,7 @@ ML and LLM observability with 100+ metrics for evaluating, testing, and monitori
 
 </details>
 
-<details><summary>🟢 <b>66</b> &nbsp; 🥈 <b><a href="https://github.com/traceloop/openllmetry">OpenLLMetry</a></b> &nbsp; <code>⭐ 7.0K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; OpenTelemetry-based observability for LLM applications with automatic instrum...</summary>
+<details><summary>🟢 <b>66</b> 🥈 <b><a href="https://github.com/traceloop/openllmetry">OpenLLMetry</a></b> <code>⭐ 7.0K</code> <code>Apache-2.0</code> OpenTelemetry-based observability for LLM applications with automatic</summary>
 
 <br>
 
@@ -2838,7 +2838,7 @@ OpenTelemetry-based observability for LLM applications with automatic instrument
 
 </details>
 
-<details><summary>🟢 <b>65</b> &nbsp; 🥉 <b><a href="https://github.com/Giskard-AI/giskard-oss">Giskard</a></b> &nbsp; <code>⭐ 5.2K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Testing and evaluation for ML and LLM models covering bias</summary>
+<details><summary>🟢 <b>65</b> 🥉 <b><a href="https://github.com/Giskard-AI/giskard-oss">Giskard</a></b> <code>⭐ 5.2K</code> <code>Apache-2.0</code> Testing and evaluation for ML and LLM</summary>
 
 <br>
 
@@ -2854,7 +2854,7 @@ Testing and evaluation for ML and LLM models covering bias, performance regressi
 
 </details>
 
-<details><summary>🟢 <b>56</b> &nbsp; <b><a href="https://github.com/SeldonIO/alibi-detect">Alibi Detect</a></b> &nbsp; <code>⭐ 2.5K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Outlier</summary>
+<details><summary>🟢 <b>56</b> <b><a href="https://github.com/SeldonIO/alibi-detect">Alibi Detect</a></b> <code>⭐ 2.5K</code> <code>NOASSERTION</code> Outlier, adversarial, and drift detection algorithms for</summary>
 
 <br>
 
@@ -2870,7 +2870,7 @@ Outlier, adversarial, and drift detection algorithms for tabular, text, image, a
 
 </details>
 
-<details><summary>🟡 <b>54</b> &nbsp; <b><a href="https://github.com/Helicone/helicone">Helicone</a></b> &nbsp; <code>⭐ 5.5K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; LLM observability platform with one-line integration for cost tracking</summary>
+<details><summary>🟡 <b>54</b> <b><a href="https://github.com/Helicone/helicone">Helicone</a></b> <code>⭐ 5.5K</code> <code>Apache-2.0</code> LLM observability platform with one-line integration for</summary>
 
 <br>
 
@@ -2886,7 +2886,7 @@ LLM observability platform with one-line integration for cost tracking, latency 
 
 </details>
 
-<details><summary>🟡 <b>51</b> &nbsp; <b><a href="https://github.com/NannyML/nannyml">NannyML</a></b> &nbsp; <code>⭐ 2.1K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Estimate model performance without ground truth labels and link data drift di...</summary>
+<details><summary>🟡 <b>51</b> <b><a href="https://github.com/NannyML/nannyml">NannyML</a></b> <code>⭐ 2.1K</code> <code>Apache-2.0</code> Estimate model performance without ground truth labels</summary>
 
 <br>
 
@@ -2904,7 +2904,7 @@ Estimate model performance without ground truth labels and link data drift direc
 
 ---
 
-<details><summary>🔴 <b>49</b> &nbsp; 💤 <i><a href="https://github.com/deepchecks/deepchecks">Deepchecks</a></i> &nbsp; <code>⭐ 4.0K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Holistic ML validation covering data integrity</summary>
+<details><summary>🔴 <b>49</b> 💤 <i><a href="https://github.com/deepchecks/deepchecks">Deepchecks</a></i> <code>⭐ 4.0K</code> <code>NOASSERTION</code> Holistic ML validation covering data integrity, drift</summary>
 
 <br>
 
@@ -2920,7 +2920,7 @@ Estimate model performance without ground truth labels and link data drift direc
 
 </details>
 
-<details><summary>🔴 <b>48</b> &nbsp; 💤 <i><a href="https://github.com/whylabs/whylogs">WhyLogs</a></i> &nbsp; <code>⭐ 2.8K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Lightweight data logging library that profiles datasets for drift detection w...</summary>
+<details><summary>🔴 <b>48</b> 💤 <i><a href="https://github.com/whylabs/whylogs">WhyLogs</a></i> <code>⭐ 2.8K</code> <code>Apache-2.0</code> Lightweight data logging library that profiles datasets</summary>
 
 <br>
 
@@ -2943,7 +2943,7 @@ Estimate model performance without ground truth labels and link data drift direc
 
 *Automated testing, red-teaming, and guardrails for ensuring AI system safety and reliability.*
 
-<details><summary>🟢 <b>66</b> &nbsp; 🥇 <b><a href="https://github.com/NVIDIA/garak">Garak</a></b> &nbsp; <code>⭐ 7.5K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; LLM vulnerability scanner with 100+ attack modules covering prompt injection</summary>
+<details><summary>🟢 <b>66</b> 🥇 <b><a href="https://github.com/NVIDIA/garak">Garak</a></b> <code>⭐ 7.5K</code> <code>Apache-2.0</code> LLM vulnerability scanner with 100+ attack modules</summary>
 
 <br>
 
@@ -2959,7 +2959,7 @@ LLM vulnerability scanner with 100+ attack modules covering prompt injection, da
 
 </details>
 
-<details><summary>🟢 <b>66</b> &nbsp; 🥈 <b><a href="https://github.com/guardrails-ai/guardrails">Guardrails AI</a></b> &nbsp; <code>⭐ 6.6K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Framework for adding structural and semantic validation guardrails to LLM out...</summary>
+<details><summary>🟢 <b>66</b> 🥈 <b><a href="https://github.com/guardrails-ai/guardrails">Guardrails AI</a></b> <code>⭐ 6.6K</code> <code>Apache-2.0</code> Framework for adding structural and semantic validation</summary>
 
 <br>
 
@@ -2975,7 +2975,7 @@ Framework for adding structural and semantic validation guardrails to LLM output
 
 </details>
 
-<details><summary>🟢 <b>66</b> &nbsp; 🥉 <b><a href="https://github.com/katanemo/plano">Plano</a></b> &nbsp; <code>⭐ 6.2K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; AI-native proxy with built-in orchestration</summary>
+<details><summary>🟢 <b>66</b> 🥉 <b><a href="https://github.com/katanemo/plano">Plano</a></b> <code>⭐ 6.2K</code> <code>Apache-2.0</code> AI-native proxy with built-in orchestration, safety controls</summary>
 
 <br>
 
@@ -2991,7 +2991,7 @@ AI-native proxy with built-in orchestration, safety controls, and observability 
 
 </details>
 
-<details><summary>🟢 <b>65</b> &nbsp; <b><a href="https://github.com/NVIDIA-NeMo/Guardrails">NeMo Guardrails</a></b> &nbsp; <code>⭐ 5.9K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Programmable safety rails for LLM-based conversational systems with topical a...</summary>
+<details><summary>🟢 <b>65</b> <b><a href="https://github.com/NVIDIA-NeMo/Guardrails">NeMo Guardrails</a></b> <code>⭐ 5.9K</code> <code>NOASSERTION</code> Programmable safety rails for LLM-based conversational systems</summary>
 
 <br>
 
@@ -3007,7 +3007,7 @@ Programmable safety rails for LLM-based conversational systems with topical and 
 
 </details>
 
-<details><summary>🟢 <b>55</b> &nbsp; <b><a href="https://github.com/confident-ai/deepteam">DeepTeam</a></b> &nbsp; <code>⭐ 1.5K</code> &nbsp; <code>↗️ +14</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Red-teaming framework for systematically testing LLM vulnerabilities across m...</summary>
+<details><summary>🟢 <b>55</b> <b><a href="https://github.com/confident-ai/deepteam">DeepTeam</a></b> <code>⭐ 1.5K</code> <code>↗️ +14</code> <code>Apache-2.0</code> Red-teaming framework for systematically testing LLM vulnerabilities</summary>
 
 <br>
 
@@ -3023,7 +3023,7 @@ Red-teaming framework for systematically testing LLM vulnerabilities across mult
 
 </details>
 
-<details><summary>🟡 <b>52</b> &nbsp; <b><a href="https://github.com/protectai/llm-guard">LLM Guard</a></b> &nbsp; <code>⭐ 2.8K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Security toolkit with input/output scanners for prompt injection</summary>
+<details><summary>🟡 <b>52</b> <b><a href="https://github.com/protectai/llm-guard">LLM Guard</a></b> <code>⭐ 2.8K</code> <code>MIT</code> Security toolkit with input/output scanners for prompt</summary>
 
 <br>
 
@@ -3046,7 +3046,7 @@ Security toolkit with input/output scanners for prompt injection, data leakage, 
 
 *Standardized frameworks and datasets for evaluating and comparing AutoML systems.*
 
-<details><summary>🟢 <b>60</b> &nbsp; 🥇 <b><a href="https://github.com/openai/mle-bench">MLE-Bench</a></b> &nbsp; <code>⭐ 1.4K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Benchmark using 75 Kaggle competitions to evaluate ML engineering agents (Ope...</summary>
+<details><summary>🟢 <b>60</b> 🥇 <b><a href="https://github.com/openai/mle-bench">MLE-Bench</a></b> <code>⭐ 1.4K</code> <code>NOASSERTION</code> Benchmark using 75 Kaggle competitions to evaluate</summary>
 
 <br>
 
@@ -3061,7 +3061,7 @@ Benchmark using 75 Kaggle competitions to evaluate ML engineering agents (OpenAI
 
 </details>
 
-<details><summary>🟢 <b>54</b> &nbsp; 🥈 <b><a href="https://github.com/autogluon/tabarena">TabArena</a></b> &nbsp; <code>⭐ 207</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Living benchmark for tabular ML with continuously maintained leaderboard and ...</summary>
+<details><summary>🟢 <b>54</b> 🥈 <b><a href="https://github.com/autogluon/tabarena">TabArena</a></b> <code>⭐ 207</code> <code>Apache-2.0</code> Living benchmark for tabular ML with continuously</summary>
 
 <br>
 
@@ -3076,7 +3076,7 @@ Living benchmark for tabular ML with continuously maintained leaderboard and bes
 
 </details>
 
-<details><summary>🟢 <b>51</b> &nbsp; 🥉 <b><a href="https://github.com/D-X-Y/NAS-Bench-201">NAS-Bench-201</a></b> &nbsp; <code>⭐ 644</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Reproducible benchmark with 15,625 evaluated architectures across three datas...</summary>
+<details><summary>🟢 <b>51</b> 🥉 <b><a href="https://github.com/D-X-Y/NAS-Bench-201">NAS-Bench-201</a></b> <code>⭐ 644</code> <code>MIT</code> Reproducible benchmark with 15,625 evaluated architectures across</summary>
 
 <br>
 
@@ -3094,7 +3094,7 @@ Reproducible benchmark with 15,625 evaluated architectures across three datasets
 
 ---
 
-<details><summary>🔴 <b>41</b> &nbsp; 💤 <i><a href="https://github.com/openml/automlbenchmark">AMLB</a></i> &nbsp; <code>⭐ 459</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Standard AutoML benchmark comparing frameworks across 104 classification and ...</summary>
+<details><summary>🔴 <b>41</b> 💤 <i><a href="https://github.com/openml/automlbenchmark">AMLB</a></i> <code>⭐ 459</code> <code>MIT</code> Standard AutoML benchmark comparing frameworks across 104</summary>
 
 <br>
 
@@ -3110,7 +3110,7 @@ Reproducible benchmark with 15,625 evaluated architectures across three datasets
 
 </details>
 
-<details><summary>🔴 <b>33</b> &nbsp; 💤 <i><a href="https://github.com/google-research/nasbench">NAS-Bench-101</a></i> &nbsp; <code>⭐ 717</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Benchmark dataset with 423,624 evaluated neural architectures for efficient N...</summary>
+<details><summary>🔴 <b>33</b> 💤 <i><a href="https://github.com/google-research/nasbench">NAS-Bench-101</a></i> <code>⭐ 717</code> <code>Apache-2.0</code> Benchmark dataset with 423,624 evaluated neural architectures</summary>
 
 <br>
 
@@ -3132,7 +3132,7 @@ Reproducible benchmark with 15,625 evaluated architectures across three datasets
 
 *Platforms for managing the ML lifecycle, tracking experiments, and orchestrating pipelines.*
 
-<details><summary>🟢 <b>73</b> &nbsp; 🥇 <b><a href="https://github.com/ray-project/ray">Ray</a></b> &nbsp; <code>⭐ 42.0K</code> &nbsp; <code>↗️ +12</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Unified AI compute engine for distributed training</summary>
+<details><summary>🟢 <b>73</b> 🥇 <b><a href="https://github.com/ray-project/ray">Ray</a></b> <code>⭐ 42.0K</code> <code>↗️ +12</code> <code>Apache-2.0</code> Unified AI compute engine for distributed training</summary>
 
 <br>
 
@@ -3148,7 +3148,7 @@ Unified AI compute engine for distributed training, tuning, and model serving wi
 
 </details>
 
-<details><summary>🟢 <b>72</b> &nbsp; 🥈 <b><a href="https://github.com/langfuse/langfuse">Langfuse</a></b> &nbsp; <code>⭐ 24.5K</code> &nbsp; <code>↗️ +41</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Open-source LLM engineering platform with tracing</summary>
+<details><summary>🟢 <b>72</b> 🥈 <b><a href="https://github.com/langfuse/langfuse">Langfuse</a></b> <code>⭐ 24.5K</code> <code>↗️ +41</code> <code>NOASSERTION</code> Open-source LLM engineering platform with tracing, evaluations</summary>
 
 <br>
 
@@ -3164,7 +3164,7 @@ Open-source LLM engineering platform with tracing, evaluations, prompt managemen
 
 </details>
 
-<details><summary>🟢 <b>71</b> &nbsp; 🥉 <b><a href="https://github.com/mlflow/mlflow">MLflow</a></b> &nbsp; <code>⭐ 25.2K</code> &nbsp; <code>↗️ +18</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; End-to-end ML lifecycle platform with experiment tracking</summary>
+<details><summary>🟢 <b>71</b> 🥉 <b><a href="https://github.com/mlflow/mlflow">MLflow</a></b> <code>⭐ 25.2K</code> <code>↗️ +18</code> <code>Apache-2.0</code> End-to-end ML lifecycle platform with experiment tracking</summary>
 
 <br>
 
@@ -3180,7 +3180,7 @@ End-to-end ML lifecycle platform with experiment tracking, model registry, and i
 
 </details>
 
-<details><summary>🟢 <b>70</b> &nbsp; <b><a href="https://github.com/PrefectHQ/prefect">Prefect</a></b> &nbsp; <code>⭐ 22.1K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Modern data workflow automation with retries</summary>
+<details><summary>🟢 <b>70</b> <b><a href="https://github.com/PrefectHQ/prefect">Prefect</a></b> <code>⭐ 22.1K</code> <code>Apache-2.0</code> Modern data workflow automation with retries, caching</summary>
 
 <br>
 
@@ -3196,7 +3196,7 @@ Modern data workflow automation with retries, caching, and real-time logging.
 
 </details>
 
-<details><summary>🟢 <b>69</b> &nbsp; <b><a href="https://github.com/comet-ml/opik">Opik</a></b> &nbsp; <code>⭐ 18.7K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; LLM debugging</summary>
+<details><summary>🟢 <b>69</b> <b><a href="https://github.com/comet-ml/opik">Opik</a></b> <code>⭐ 18.7K</code> <code>Apache-2.0</code> LLM debugging, evaluation, and monitoring platform with</summary>
 
 <br>
 
@@ -3212,7 +3212,7 @@ LLM debugging, evaluation, and monitoring platform with detailed tracing and qua
 
 </details>
 
-<details><summary>🟢 <b>69</b> &nbsp; <b><a href="https://github.com/treeverse/dvc">DVC</a></b> &nbsp; <code>⭐ 15.5K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Version control for data and models with built-in experiment tracking and pip...</summary>
+<details><summary>🟢 <b>69</b> <b><a href="https://github.com/treeverse/dvc">DVC</a></b> <code>⭐ 15.5K</code> <code>Apache-2.0</code> Version control for data and models with</summary>
 
 <br>
 
@@ -3228,7 +3228,7 @@ Version control for data and models with built-in experiment tracking and pipeli
 
 </details>
 
-<details><summary>🟢 <b>69</b> &nbsp; <b><a href="https://github.com/dagster-io/dagster">Dagster</a></b> &nbsp; <code>⭐ 15.2K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Asset-centric orchestration built for ML pipelines with data lineage tracking...</summary>
+<details><summary>🟢 <b>69</b> <b><a href="https://github.com/dagster-io/dagster">Dagster</a></b> <code>⭐ 15.2K</code> <code>Apache-2.0</code> Asset-centric orchestration built for ML pipelines with</summary>
 
 <br>
 
@@ -3244,7 +3244,7 @@ Asset-centric orchestration built for ML pipelines with data lineage tracking an
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; <b><a href="https://github.com/wandb/wandb">W&B</a></b> &nbsp; <code>⭐ 11.0K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Experiment tracking</summary>
+<details><summary>🟢 <b>67</b> <b><a href="https://github.com/wandb/wandb">W&B</a></b> <code>⭐ 11.0K</code> <code>MIT</code> Experiment tracking, visualization, and collaboration platform for</summary>
 
 <br>
 
@@ -3260,7 +3260,7 @@ Experiment tracking, visualization, and collaboration platform for ML teams (Wei
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; <b><a href="https://github.com/kedro-org/kedro">Kedro</a></b> &nbsp; <code>⭐ 10.8K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Framework for reproducible</summary>
+<details><summary>🟢 <b>67</b> <b><a href="https://github.com/kedro-org/kedro">Kedro</a></b> <code>⭐ 10.8K</code> <code>Apache-2.0</code> Framework for reproducible, maintainable ML pipelines with</summary>
 
 <br>
 
@@ -3276,7 +3276,7 @@ Framework for reproducible, maintainable ML pipelines with clean coding patterns
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; <b><a href="https://github.com/Netflix/metaflow">Metaflow</a></b> &nbsp; <code>⭐ 10.0K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Human-centric framework for managing real-life data science and ML projects a...</summary>
+<details><summary>🟢 <b>67</b> <b><a href="https://github.com/Netflix/metaflow">Metaflow</a></b> <code>⭐ 10.0K</code> <code>Apache-2.0</code> Human-centric framework for managing real-life data science</summary>
 
 <br>
 
@@ -3292,7 +3292,7 @@ Human-centric framework for managing real-life data science and ML projects at s
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; <b><a href="https://github.com/Arize-ai/phoenix">Phoenix</a></b> &nbsp; <code>⭐ 9.2K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; AI observability platform with OpenTelemetry-native tracing and LLM evaluatio...</summary>
+<details><summary>🟢 <b>67</b> <b><a href="https://github.com/Arize-ai/phoenix">Phoenix</a></b> <code>⭐ 9.2K</code> <code>NOASSERTION</code> AI observability platform with OpenTelemetry-native tracing and</summary>
 
 <br>
 
@@ -3308,7 +3308,7 @@ AI observability platform with OpenTelemetry-native tracing and LLM evaluation d
 
 </details>
 
-<details><summary>🟢 <b>66</b> &nbsp; <b><a href="https://github.com/feast-dev/feast">Feast</a></b> &nbsp; <code>⭐ 6.9K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Open-source feature store for managing and serving ML features in real-time a...</summary>
+<details><summary>🟢 <b>66</b> <b><a href="https://github.com/feast-dev/feast">Feast</a></b> <code>⭐ 6.9K</code> <code>Apache-2.0</code> Open-source feature store for managing and serving</summary>
 
 <br>
 
@@ -3324,7 +3324,7 @@ Open-source feature store for managing and serving ML features in real-time and 
 
 </details>
 
-<details><summary>🟢 <b>66</b> &nbsp; <b><a href="https://github.com/clearml/clearml">ClearML</a></b> &nbsp; <code>⭐ 6.6K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Unified experiment manager</summary>
+<details><summary>🟢 <b>66</b> <b><a href="https://github.com/clearml/clearml">ClearML</a></b> <code>⭐ 6.6K</code> <code>Apache-2.0</code> Unified experiment manager, pipeline orchestrator, and data/model</summary>
 
 <br>
 
@@ -3340,7 +3340,7 @@ Unified experiment manager, pipeline orchestrator, and data/model management pla
 
 </details>
 
-<details><summary>🟢 <b>65</b> &nbsp; <b><a href="https://github.com/zenml-io/zenml">ZenML</a></b> &nbsp; <code>⭐ 5.3K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Framework for building portable</summary>
+<details><summary>🟢 <b>65</b> <b><a href="https://github.com/zenml-io/zenml">ZenML</a></b> <code>⭐ 5.3K</code> <code>Apache-2.0</code> Framework for building portable, production-ready ML pipelines</summary>
 
 <br>
 
@@ -3356,7 +3356,7 @@ Framework for building portable, production-ready ML pipelines that run on any i
 
 </details>
 
-<details><summary>🟡 <b>55</b> &nbsp; <b><a href="https://github.com/aimhubio/aim">Aim</a></b> &nbsp; <code>⭐ 6.1K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; Self-hosted experiment tracker with a high-performance UI that handles 10,000...</summary>
+<details><summary>🟡 <b>55</b> <b><a href="https://github.com/aimhubio/aim">Aim</a></b> <code>⭐ 6.1K</code> <code>Apache-2.0</code> Self-hosted experiment tracker with a high-performance UI</summary>
 
 <br>
 
@@ -3374,7 +3374,7 @@ Self-hosted experiment tracker with a high-performance UI that handles 10,000+ t
 
 ---
 
-<details><summary>🔴 <b>54</b> &nbsp; 💤 <i><a href="https://github.com/kubeflow/kubeflow">Kubeflow</a></i> &nbsp; <code>⭐ 15.6K</code> &nbsp; <code>Apache-2.0</code> &nbsp; - &nbsp; ML toolkit on Kubernetes for building portable</summary>
+<details><summary>🔴 <b>54</b> 💤 <i><a href="https://github.com/kubeflow/kubeflow">Kubeflow</a></i> <code>⭐ 15.6K</code> <code>Apache-2.0</code> ML toolkit on Kubernetes for building portable</summary>
 
 <br>
 
@@ -3395,7 +3395,7 @@ Self-hosted experiment tracker with a high-performance UI that handles 10,000+ t
 
 ## Related Awesome Lists
 
-<details><summary>🟢 <b>74</b> &nbsp; 🥇 <b><a href="https://github.com/josephmisiti/awesome-machine-learning">awesome-machine-learning</a></b> &nbsp; <code>⭐ 72.2K</code> &nbsp; <code>NOASSERTION</code> &nbsp; - &nbsp; Curated list of ML frameworks</summary>
+<details><summary>🟢 <b>74</b> 🥇 <b><a href="https://github.com/josephmisiti/awesome-machine-learning">awesome-machine-learning</a></b> <code>⭐ 72.2K</code> <code>NOASSERTION</code> Curated list of ML frameworks, libraries, and</summary>
 
 <br>
 
@@ -3410,7 +3410,7 @@ Curated list of ML frameworks, libraries, and software organized by language.
 
 </details>
 
-<details><summary>🟢 <b>68</b> &nbsp; 🥈 <b><a href="https://github.com/steven2358/awesome-generative-ai">awesome-generative-ai</a></b> &nbsp; <code>⭐ 11.8K</code> &nbsp; <code>CC0-1.0</code> &nbsp; - &nbsp; Curated list of modern generative AI projects and services.</summary>
+<details><summary>🟢 <b>68</b> 🥈 <b><a href="https://github.com/steven2358/awesome-generative-ai">awesome-generative-ai</a></b> <code>⭐ 11.8K</code> <code>CC0-1.0</code> Curated list of modern generative AI projects</summary>
 
 <br>
 
@@ -3426,7 +3426,7 @@ Curated list of modern generative AI projects and services.
 
 </details>
 
-<details><summary>🟢 <b>67</b> &nbsp; 🥉 <b><a href="https://github.com/EthicalML/awesome-production-machine-learning">awesome-production-machine-learning</a></b> &nbsp; <code>⭐ 20.3K</code> &nbsp; <code>MIT</code> &nbsp; - &nbsp; Curated list of tools for deploying</summary>
+<details><summary>🟢 <b>67</b> 🥉 <b><a href="https://github.com/EthicalML/awesome-production-machine-learning">awesome-production-machine-learning</a></b> <code>⭐ 20.3K</code> <code>MIT</code> Curated list of tools for deploying, monitoring</summary>
 
 <br>
 
@@ -3442,7 +3442,7 @@ Curated list of tools for deploying, monitoring, and scaling ML in production.
 
 </details>
 
-<details><summary>🟡 <b>60</b> &nbsp; <b><a href="https://github.com/Hannibal046/Awesome-LLM">awesome-llm</a></b> &nbsp; <code>⭐ 26.6K</code> &nbsp; <code>CC0-1.0</code> &nbsp; - &nbsp; Curated list of large language model resources covering papers</summary>
+<details><summary>🟡 <b>60</b> <b><a href="https://github.com/Hannibal046/Awesome-LLM">awesome-llm</a></b> <code>⭐ 26.6K</code> <code>CC0-1.0</code> Curated list of large language model resources</summary>
 
 <br>
 
@@ -3457,7 +3457,7 @@ Curated list of large language model resources covering papers, tools, and appli
 
 </details>
 
-<details><summary>🟡 <b>50</b> &nbsp; <b><a href="https://github.com/ChristosChristofidis/awesome-deep-learning">awesome-deep-learning</a></b> &nbsp; <code>⭐ 27.9K</code> &nbsp; - &nbsp; Curated list of deep learning tutorials</summary>
+<details><summary>🟡 <b>50</b> <b><a href="https://github.com/ChristosChristofidis/awesome-deep-learning">awesome-deep-learning</a></b> <code>⭐ 27.9K</code> Curated list of deep learning tutorials, projects</summary>
 
 <br>
 
@@ -3475,7 +3475,7 @@ Curated list of deep learning tutorials, projects, and communities.
 
 ---
 
-<details><summary>🔴 <b>43</b> &nbsp; 💤 <i><a href="https://github.com/visenger/awesome-mlops">awesome-mlops</a></i> &nbsp; <code>⭐ 13.8K</code> &nbsp; - &nbsp; Curated list of MLOps tools and best practices for production ML.</summary>
+<details><summary>🔴 <b>43</b> 💤 <i><a href="https://github.com/visenger/awesome-mlops">awesome-mlops</a></i> <code>⭐ 13.8K</code> Curated list of MLOps tools and best</summary>
 
 <br>
 
