@@ -175,7 +175,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   const trendDetail = isDead
     ? "(n/a)"
     : rd.trend !== null
-      ? `(${rd.trend >= 0 ? "+" : ""}${rd.trend} last 30d)`
+      ? `(${rd.trend > 0 ? "+" : ""}${rd.trend} last 30d)`
       : "(n/a)";
 
   const actDate = formatDateMonth(rd.pushed);

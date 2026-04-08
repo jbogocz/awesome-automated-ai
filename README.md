@@ -103,7 +103,7 @@ Declarative deep learning framework supporting custom model building and LLM fin
 
 ```
   Quality   80/100
-  Stars     ⭐ 11,665 (+0 last 30d)
+  Stars     ⭐ 11,665 (0 last 30d)
   Activity  🟢 Apr 2026
   License   Apache-2.0
   Tags      computer-vision · data-centric · data-science · deep · deep-learning
@@ -119,7 +119,7 @@ Distributed machine learning platform with automatic training and tuning of many
 
 ```
   Quality   79/100
-  Stars     ⭐ 7,522 (+0 last 30d)
+  Stars     ⭐ 7,522 (0 last 30d)
   Activity  🟢 Mar 2026
   License   Apache-2.0
   Tags      automl · big-data · data-science · deep-learning · distributed
@@ -167,7 +167,7 @@ Automated ML with automatic explanations, visualizations, and Markdown reports f
 
 ```
   Quality   76/100
-  Stars     ⭐ 3,251 (+0 last 30d)
+  Stars     ⭐ 3,251 (0 last 30d)
   Activity  🟢 Mar 2026
   License   MIT
   Tags      automated-machine-learning · automl · automl-api · automl-python · catboost
@@ -215,7 +215,7 @@ Genetic programming-based pipeline optimizer that designs and optimizes scikit-l
 
 ```
   Quality   69/100
-  Stars     ⭐ 10,047 (+0 last 30d)
+  Stars     ⭐ 10,047 (0 last 30d)
   Activity  🟡 Jul 2025
   License   LGPL-3.0
   Tags      adsp · ag066833 · aiml · alzheimer · alzheimers
@@ -231,7 +231,7 @@ Generative AutoML that synthesizes pipelines by learning from a corpus of existi
 
 ```
   Quality   69/100
-  Stars     ⭐ 449 (+0 last 30d)
+  Stars     ⭐ 449 (0 last 30d)
   Activity  🟢 Mar 2026
   License   Apache-2.0
   Tags      automated-machine-learning · automl · automl-products · automl-python · machine-learning
@@ -247,7 +247,7 @@ Fast and customizable AutoML framework with Kaggle-winning performance (Sber AI 
 
 ```
   Quality   67/100
-  Stars     ⭐ 1,458 (+0 last 30d)
+  Stars     ⭐ 1,458 (0 last 30d)
   Activity  🟢 Dec 2025
   License   Apache-2.0
   Tags      automated-machine-learning · automatic-machine-learning · automl · automl-algorithms · binary-classification
@@ -415,7 +415,7 @@ Universal time-series forecasting transformer supporting multivariate forecastin
 
 ```
   Quality   67/100
-  Stars     ⭐ 1,463 (+0 last 30d)
+  Stars     ⭐ 1,463 (0 last 30d)
   Activity  🟢 Nov 2025
   License   Apache-2.0
   Tags      deep-learning · forecasting · machine-learning · pre-trained-models · pre-training
@@ -629,7 +629,7 @@ Composable building blocks for pretraining, fine-tuning, and evaluating foundati
 
 ```
   Quality   66/100
-  Stars     ⭐ 4,397 (+0 last 30d)
+  Stars     ⭐ 4,397 (0 last 30d)
   Activity  🟡 Jul 2025
   License   Apache-2.0
   Tags      deep-learning · llm · neural-networks · nlp · pytorch
@@ -761,7 +761,7 @@ DSPy-powered automatic prompt optimization that transforms task descriptions int
 
 ```
   Quality   61/100
-  Stars     ⭐ 938 (+0 last 30d)
+  Stars     ⭐ 938 (0 last 30d)
   Activity  🟡 Jul 2025
   License   Apache-2.0
 ```
@@ -776,7 +776,7 @@ Connects LLMs with evolutionary algorithms for discrete prompt optimization with
 
 ```
   Quality   56/100
-  Stars     ⭐ 224 (+0 last 30d)
+  Stars     ⭐ 224 (0 last 30d)
   Activity  🟡 Sep 2025
   License   MIT
 ```
@@ -925,7 +925,7 @@ ML engineering agent using tree search over solution space - exceeds 50% of huma
 
 ```
   Quality   66/100
-  Stars     ⭐ 1,212 (+0 last 30d)
+  Stars     ⭐ 1,212 (0 last 30d)
   Activity  🟢 Nov 2025
   License   MIT
   Tags      ai · ai-agents · automated-machine-learning · autonomous-agents · autoresearch
@@ -957,7 +957,7 @@ Multi-agent LLM framework for full-pipeline AutoML from data retrieval through m
 
 ```
   Quality   44/100
-  Stars     ⭐ 118 (+0 last 30d)
+  Stars     ⭐ 118 (0 last 30d)
   Activity  🟡 Jul 2025
   License   -
   Tags      automl · llm-agents · multi-agent-systems
@@ -1046,7 +1046,7 @@ AutoML-style framework for RAG optimization that automatically finds the best re
 
 ```
   Quality   77/100
-  Stars     ⭐ 4,687 (+0 last 30d)
+  Stars     ⭐ 4,687 (0 last 30d)
   Activity  🟢 Apr 2026
   License   Apache-2.0
   Tags      analysis · automl · benchmarking · document-parser · embeddings
@@ -1214,7 +1214,7 @@ Evaluation and testing platform for LLM applications and AI agents with automate
 
 ```
   Quality   76/100
-  Stars     ⭐ 3,187 (+0 last 30d)
+  Stars     ⭐ 3,187 (0 last 30d)
   Activity  🟢 Apr 2026
   License   NOASSERTION
   Tags      ai · analytics · datasets · dspy · evaluation
@@ -1245,7 +1245,7 @@ All-in-one LLM evaluation toolkit powering the Open LLM Leaderboard, supporting 
 
 ```
   Quality   68/100
-  Stars     ⭐ 2,369 (+0 last 30d)
+  Stars     ⭐ 2,369 (0 last 30d)
   Activity  🟢 Nov 2025
   License   MIT
   Tags      evaluation · evaluation-framework · evaluation-metrics · huggingface
@@ -1355,7 +1355,7 @@ Unified API for 30+ forecasting models from ARIMA to transformers, with backtest
 
 ```
   Quality   79/100
-  Stars     ⭐ 9,310 (+0 last 30d)
+  Stars     ⭐ 9,310 (0 last 30d)
   Activity  🟢 Mar 2026
   License   Apache-2.0
   Tags      anomaly-detection · data-science · deep-learning · forecasting · machine-learning
@@ -1371,7 +1371,7 @@ Production-ready neural forecasting with 30+ state-of-the-art models including N
 
 ```
   Quality   76/100
-  Stars     ⭐ 4,034 (+0 last 30d)
+  Stars     ⭐ 4,034 (0 last 30d)
   Activity  🟢 Mar 2026
   License   Apache-2.0
   Tags      baselines · baselines-zoo · deep-learning · deep-neural-networks · deepar
@@ -1403,7 +1403,7 @@ Toolbox with 50+ deep learning models for partially-observed time-series imputat
 
 ```
   Quality   74/100
-  Stars     ⭐ 1,984 (+0 last 30d)
+  Stars     ⭐ 1,984 (0 last 30d)
   Activity  🟢 Mar 2026
   License   BSD-3-Clause
   Tags      anomaly-detection · classification · clustering · data-analysis · data-mining
@@ -1483,7 +1483,7 @@ Scalable ML-based forecasting with LightGBM, XGBoost, and distributed backends v
 
 ```
   Quality   72/100
-  Stars     ⭐ 1,204 (+0 last 30d)
+  Stars     ⭐ 1,204 (0 last 30d)
   Activity  🟢 Mar 2026
   License   Apache-2.0
   Tags      dask · forecast · forecasting · lightgbm · machine-learning
@@ -1515,7 +1515,7 @@ Compact pretrained Tiny Time Mixers that rival billion-parameter models for zero
 
 ```
   Quality   68/100
-  Stars     ⭐ 834 (+0 last 30d)
+  Stars     ⭐ 834 (0 last 30d)
   Activity  🟢 Mar 2026
   License   Apache-2.0
 ```
@@ -1530,7 +1530,7 @@ First open-source foundation model for univariate probabilistic time-series fore
 
 ```
   Quality   63/100
-  Stars     ⭐ 1,568 (+0 last 30d)
+  Stars     ⭐ 1,568 (0 last 30d)
   Activity  🟡 Jun 2025
   License   Apache-2.0
   Tags      forecasting · foundation-models · lag-llama · llama · time-series
@@ -1753,7 +1753,7 @@ Hyperparameter search for Keras models with built-in Bayesian optimization and H
 
 ```
   Quality   69/100
-  Stars     ⭐ 2,923 (+0 last 30d)
+  Stars     ⭐ 2,923 (0 last 30d)
   Activity  🟢 Nov 2025
   License   Apache-2.0
   Tags      automl · deep-learning · hyperparameter-optimization · keras · machine-learning
@@ -1841,7 +1841,7 @@ Data-centric AI toolkit for finding and fixing label errors, outliers, and data 
 
 ```
   Quality   77/100
-  Stars     ⭐ 11,411 (+0 last 30d)
+  Stars     ⭐ 11,411 (0 last 30d)
   Activity  🟢 Jan 2026
   License   Apache-2.0
   Tags      active-learning · annotation · anomaly-detection · data-annotation · data-centric-ai
@@ -1873,7 +1873,7 @@ Scikit-learn-compatible automated feature engineering and selection that generat
 
 ```
   Quality   63/100
-  Stars     ⭐ 536 (+0 last 30d)
+  Stars     ⭐ 536 (0 last 30d)
   Activity  🟢 Jan 2026
   License   MIT
   Tags      automated-data-science · automated-feature-engineering · automated-machine-learning · automl · feature-engineering
@@ -2025,7 +2025,7 @@ Statistical data testing and validation for dataframes with expressive schema de
 
 ```
   Quality   77/100
-  Stars     ⭐ 4,290 (+0 last 30d)
+  Stars     ⭐ 4,290 (0 last 30d)
   Activity  🟢 Mar 2026
   License   MIT
   Tags      assertions · data-assertions · data-check · data-cleaning · data-processing
@@ -2041,7 +2041,7 @@ High-density EDA visualizations and target analysis reports generated in two lin
 
 ```
   Quality   75/100
-  Stars     ⭐ 3,089 (+0 last 30d)
+  Stars     ⭐ 3,089 (0 last 30d)
   Activity  🟢 Apr 2026
   License   MIT
   Tags      data-analysis · data-exploration · data-profiling · data-science · data-visualization
@@ -2057,7 +2057,7 @@ Clean APIs for data cleaning with a fluent method-chaining interface for pandas 
 
 ```
   Quality   73/100
-  Stars     ⭐ 1,486 (+0 last 30d)
+  Stars     ⭐ 1,486 (0 last 30d)
   Activity  🟢 Apr 2026
   License   MIT
   Tags      cleaning-data · data · data-engineering · dataframe · hacktoberfest
@@ -2073,7 +2073,7 @@ Interactive visualization tool for auditing and understanding unstructured ML da
 
 ```
   Quality   72/100
-  Stars     ⭐ 1,255 (+0 last 30d)
+  Stars     ⭐ 1,255 (0 last 30d)
   Activity  🟢 Mar 2026
   License   MIT
   Tags      audio · computer-vision · data-centric-ai · data-curation · data-visualization
@@ -2162,7 +2162,7 @@ Multi-modal annotation toolbox supporting image, audio, and video with configura
 
 ```
   Quality   62/100
-  Stars     ⭐ 1,538 (+0 last 30d)
+  Stars     ⭐ 1,538 (0 last 30d)
   Activity  🟡 Oct 2025
   License   Apache-2.0
 ```
@@ -2330,7 +2330,7 @@ Toolkit for generating high-quality synthetic datasets to fine-tune models with 
 
 ```
   Quality   67/100
-  Stars     ⭐ 1,560 (+0 last 30d)
+  Stars     ⭐ 1,560 (0 last 30d)
   Activity  🟢 Oct 2025
   License   MIT
   Tags      data · generation · llm · python · synthetic
@@ -2482,7 +2482,7 @@ End-to-end model optimization automating fine-tuning, conversion, quantization, 
 
 ```
   Quality   71/100
-  Stars     ⭐ 2,288 (+0 last 30d)
+  Stars     ⭐ 2,288 (0 last 30d)
   Activity  🟢 Jan 2026
   License   MIT
 ```
@@ -2759,7 +2759,7 @@ End-to-end platform for deploying production ML pipelines with data validation, 
 
 ```
   Quality   71/100
-  Stars     ⭐ 2,178 (+0 last 30d)
+  Stars     ⭐ 2,178 (0 last 30d)
   Activity  🟢 Mar 2026
   License   Apache-2.0
   Tags      apache-beam · machine-learning · tensorflow
@@ -2791,7 +2791,7 @@ Lightweight LLM inference and serving framework with continuous batching, tensor
 
 ```
   Quality   66/100
-  Stars     ⭐ 3,996 (+0 last 30d)
+  Stars     ⭐ 3,996 (0 last 30d)
   Activity  🟡 Sep 2025
   License   Apache-2.0
   Tags      deep-learning · gpt · llama · llm · model-serving
@@ -2862,7 +2862,7 @@ Outlier, adversarial, and drift detection algorithms for tabular, text, image, a
 
 ```
   Quality   69/100
-  Stars     ⭐ 2,509 (+0 last 30d)
+  Stars     ⭐ 2,509 (0 last 30d)
   Activity  🟢 Dec 2025
   License   NOASSERTION
   Tags      adversarial · anomaly · concept-drift · data-drift · detection
@@ -2894,7 +2894,7 @@ Estimate model performance without ground truth labels and link data drift direc
 
 ```
   Quality   64/100
-  Stars     ⭐ 2,136 (+0 last 30d)
+  Stars     ⭐ 2,136 (0 last 30d)
   Activity  🟡 Jul 2025
   License   Apache-2.0
   Tags      data-analysis · data-drift · data-science · deep-learning · jupyter-notebook
@@ -3031,7 +3031,7 @@ Security toolkit with input/output scanners for prompt injection, data leakage, 
 
 ```
   Quality   65/100
-  Stars     ⭐ 2,788 (+0 last 30d)
+  Stars     ⭐ 2,788 (0 last 30d)
   Activity  🟡 Sep 2025
   License   MIT
   Tags      adversarial-machine-learning · chatgpt · large-language-models · llm · llm-security
@@ -3054,7 +3054,7 @@ Benchmark using 75 Kaggle competitions to evaluate ML engineering agents (OpenAI
 
 ```
   Quality   73/100
-  Stars     ⭐ 1,448 (+0 last 30d)
+  Stars     ⭐ 1,448 (0 last 30d)
   Activity  🟢 Mar 2026
   License   NOASSERTION
 ```
@@ -3084,7 +3084,7 @@ Reproducible benchmark with 15,625 evaluated architectures across three datasets
 
 ```
   Quality   64/100
-  Stars     ⭐ 644 (+0 last 30d)
+  Stars     ⭐ 644 (0 last 30d)
   Activity  🟢 Oct 2025
   License   MIT
   Tags      automl · dataset · nas · nas-bench-201 · pytorch
@@ -3348,7 +3348,7 @@ Open-source feature store for managing and serving ML features in real-time and 
 
 ```
   Quality   78/100
-  Stars     ⭐ 6,913 (+0 last 30d)
+  Stars     ⭐ 6,913 (0 last 30d)
   Activity  🟢 Mar 2026
   License   Apache-2.0
   Tags      big-data · data-engineering · data-quality · data-science · feature-store
