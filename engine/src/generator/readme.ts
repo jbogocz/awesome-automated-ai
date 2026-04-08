@@ -163,7 +163,6 @@ function buildOneCard(s: ScoredEntry, medals: Map<ScoredEntry, string>): string[
   const displayDesc = isDead ? `*${fullDesc}*` : fullDesc;
 
   // Dashboard
-  const bar = progressBar(score);
   const starsExact = rd.stars.toLocaleString("en-US");
   const trendDetail = isDead
     ? "(n/a)"
@@ -183,7 +182,7 @@ function buildOneCard(s: ScoredEntry, medals: Map<ScoredEntry, string>): string[
 
   const dashboard = [
     "```",
-    `  Quality   ${bar}  ${score}/100`,
+    `  Quality   ${score}/100`,
     `  Stars     \u2B50 ${starsExact} ${trendDetail}`,
     `  Activity  ${dot} ${actDate}${actSuffix}`,
     `  License   ${rd.license ?? "-"}${tagsLine}`,

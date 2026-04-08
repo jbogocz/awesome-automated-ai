@@ -62,9 +62,8 @@ describe("generateReadme", () => {
     expect(result).toContain("Multi-layer stack ensembling for tabular");
   });
 
-  it("renders progress bar in details dashboard", () => {
+  it("renders quality score in details dashboard", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
-    expect(result).toContain("\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593\u2591");
     expect(result).toContain("88/100");
   });
 
