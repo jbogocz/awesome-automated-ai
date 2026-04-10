@@ -43,9 +43,7 @@ export class DB {
       INSERT OR IGNORE INTO _migrations (name) VALUES ('add_tagline');
     `);
 
-    const needsTagline = this.sqlite
-      .prepare("SELECT 1 FROM _migrations WHERE name = 'add_tagline'")
-      .get();
+    const needsTagline = this.sqlite.prepare("SELECT 1 FROM _migrations WHERE name = 'add_tagline'").get();
     if (needsTagline) {
       try {
         this.sqlite.exec("ALTER TABLE projects ADD COLUMN tagline TEXT");
@@ -216,14 +214,12 @@ export class DB {
   }
 
   upsertProject(repo: string, name: string): number {
-    const existing = this.sqlite
-      .prepare("SELECT id FROM projects WHERE repo = ?")
-      .get(repo) as { id: number } | undefined;
+    const existing = this.sqlite.prepare("SELECT id FROM projects WHERE repo = ?").get(repo) as
+      | { id: number }
+      | undefined;
     if (existing) return existing.id;
     const info = this.sqlite
-      .prepare(
-        "INSERT INTO projects (repo, name, status, discovered_via) VALUES (?, ?, 'listed', 'github')",
-      )
+      .prepare("INSERT INTO projects (repo, name, status, discovered_via) VALUES (?, ?, 'listed', 'github')")
       .run(repo, name);
     return Number(info.lastInsertRowid);
   }
@@ -236,9 +232,7 @@ export class DB {
   }
 
   setTagline(projectId: number, tagline: string): void {
-    this.sqlite
-      .prepare("UPDATE projects SET tagline = ? WHERE id = ?")
-      .run(tagline, projectId);
+    this.sqlite.prepare("UPDATE projects SET tagline = ? WHERE id = ?").run(tagline, projectId);
   }
 
   insertSnapshot(projectId: number, stars: number, score: number): void {

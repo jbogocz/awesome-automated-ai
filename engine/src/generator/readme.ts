@@ -1,5 +1,5 @@
 import { parse as parseYaml } from "yaml";
-import { activityDot, formatDateMonth, formatStarsShort, generateTagline, progressBar } from "./formatters.js";
+import { activityDot, formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
 
 export interface ApiRepoData {
   stars: number;
@@ -59,15 +59,9 @@ export function generateReadme(opts: GenerateOptions): string {
   for (const cat of categories) {
     const count = (cat.entries ?? []).length;
     const name = cat.name;
-    const anchor = name
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/\//g, "")
-      .replace(/&/g, "and");
+    const anchor = name.toLowerCase().replace(/ /g, "-").replace(/\//g, "").replace(/&/g, "and");
     readme = readme.replace(
-      new RegExp(
-        `(\\[${escapeRegex(name)}\\]\\(#${escapeRegex(anchor)}\\)) \\(\\d+\\)`,
-      ),
+      new RegExp(`(\\[${escapeRegex(name)}\\]\\(#${escapeRegex(anchor)}\\)) \\(\\d+\\)`),
       `$1 (${count})`,
     );
   }
@@ -96,13 +90,10 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
       tagline: null,
     };
     let note = entry.note ?? "";
-    if (rd.archived && !note.includes("Archived"))
-      note = `Archived. ${note}`.trim();
-    else if (!note && isUnmaintained(rd.pushed))
-      note = "Unmaintained - no commits for 12+ months.";
+    if (rd.archived && !note.includes("Archived")) note = `Archived. ${note}`.trim();
+    else if (!note && isUnmaintained(rd.pushed)) note = "Unmaintained - no commits for 12+ months.";
     const isHistorical = /historical/i.test(note);
-    const isDead =
-      rd.archived || isUnmaintained(rd.pushed) || /unmaintained|deprecated/i.test(note);
+    const isDead = rd.archived || isUnmaintained(rd.pushed) || /unmaintained|deprecated/i.test(note);
     return { entry, rd, note, isDead, isHistorical };
   });
 
@@ -184,7 +175,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   else if (isHistorical) actSuffix = " - historical";
   else if (isDead) actSuffix = " - unmaintained 12+ months";
 
-  const allTags = entry.tags && entry.tags.length > 0 ? entry.tags : rd.topics ?? [];
+  const allTags = entry.tags && entry.tags.length > 0 ? entry.tags : (rd.topics ?? []);
   const tags = allTags.slice(0, 5);
   const tagsLine = tags.length > 0 ? `\n  Tags      ${tags.join(" \u00B7 ")}` : "";
 

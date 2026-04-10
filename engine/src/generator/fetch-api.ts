@@ -96,11 +96,10 @@ function fetchOneRepo(repo: string): RawApiResult {
 function fetchLastActivity(repo: string): string {
   // Try latest release date first
   try {
-    const release = execFileSync(
-      "gh",
-      ["api", `repos/${repo}/releases/latest`, "--jq", ".published_at"],
-      { timeout: 10_000, encoding: "utf-8" },
-    ).trim();
+    const release = execFileSync("gh", ["api", `repos/${repo}/releases/latest`, "--jq", ".published_at"], {
+      timeout: 10_000,
+      encoding: "utf-8",
+    }).trim();
     if (release) return release;
   } catch {
     // No releases - fall through

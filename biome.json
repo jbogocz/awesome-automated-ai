@@ -40,11 +40,12 @@
   "files": {
     "includes": [
       "**",
-      "!node_modules",
-      "!dist",
+      "!**/node_modules",
+      "!**/dist",
       "!pnpm-lock.yaml",
       "!.github/api_cache.json",
-      "!data"
+      "!data",
+      "!**/coverage"
     ]
   }
 }

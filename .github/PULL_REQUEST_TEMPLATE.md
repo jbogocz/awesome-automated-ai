@@ -8,7 +8,7 @@
 
 ## Checklist
 
-- [ ] Entry follows the format: `- [Name](URL) - Description.`
+- [ ] Entry added to `projects.yaml` with `name`, `repo`, `description`, and `tagline` fields.
 - [ ] Description starts with a capital letter and ends with a period.
 - [ ] Description does not start with the name of the tool.
 - [ ] The project is open source or has a significant open-source component.

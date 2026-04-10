@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 import { runDiscovery } from "./agents/discovery.js";
 import { loadConfig } from "./config.js";
 import { fetchRepoData } from "./generator/fetch-api.js";
-import { generateReadme } from "./generator/readme.js";
+import { type ApiData, generateReadme } from "./generator/readme.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
@@ -31,7 +31,7 @@ async function main() {
     const footer = readFileSync(FOOTER_MD, "utf-8");
 
     const noFetch = process.argv.includes("--no-fetch");
-    let apiData: Record<string, { stars: number; pushed: string; archived: boolean; license?: string | null; trend?: number | null; score?: number; topics?: string[]; tagline?: string | null }>;
+    let apiData: ApiData;
 
     if (noFetch) {
       apiData = JSON.parse(readFileSync(CACHE_FILE, "utf-8"));

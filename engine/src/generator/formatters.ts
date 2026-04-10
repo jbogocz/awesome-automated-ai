@@ -74,7 +74,7 @@ export function formatDateMonth(pushed: string): string {
   if (!pushed) return "-";
   try {
     const d = new Date(pushed);
-    if (isNaN(d.getTime())) return "-";
+    if (Number.isNaN(d.getTime())) return "-";
     return `${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
   } catch {
     return "-";

@@ -15,19 +15,14 @@ export function computeQualityScore(input: QualityInput): number {
   } else {
     const delta = input.stars - input.starsPrevious;
     const sign = delta >= 0 ? 1 : -1;
-    trendScore = 50 + sign * Math.min(Math.log10(1 + Math.abs(delta)) / 3 * 50, 50);
+    trendScore = 50 + sign * Math.min((Math.log10(1 + Math.abs(delta)) / 3) * 50, 50);
   }
 
   const freshnessScore = scoreFreshness(input.pushedAt);
   const licenseScore = input.license ? 100 : 0;
   const archivedScore = input.archived ? 0 : 100;
 
-  const raw =
-    starsScore * 0.4 +
-    trendScore * 0.25 +
-    freshnessScore * 0.15 +
-    licenseScore * 0.1 +
-    archivedScore * 0.1;
+  const raw = starsScore * 0.4 + trendScore * 0.25 + freshnessScore * 0.15 + licenseScore * 0.1 + archivedScore * 0.1;
 
   return clamp(Math.round(raw), 0, 100);
 }

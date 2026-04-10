@@ -22,9 +22,36 @@ const now = new Date().toISOString();
 const stale = "2022-01-01T00:00:00Z";
 
 const SAMPLE_API: ApiData = {
-  "autogluon/autogluon": { stars: 12000, pushed: now, archived: false, license: "Apache-2.0", trend: 340, score: 88, topics: ["automl", "machine-learning"], tagline: "Multi-modal ensembling, Kaggle champion" },
-  "pycaret/pycaret": { stars: 9500, pushed: now, archived: false, license: "MIT", trend: 5, score: 75, topics: ["automl", "low-code"], tagline: null },
-  "old/tool": { stars: 500, pushed: stale, archived: false, license: null, trend: null, score: 10, topics: [], tagline: null },
+  "autogluon/autogluon": {
+    stars: 12000,
+    pushed: now,
+    archived: false,
+    license: "Apache-2.0",
+    trend: 340,
+    score: 88,
+    topics: ["automl", "machine-learning"],
+    tagline: "Multi-modal ensembling, Kaggle champion",
+  },
+  "pycaret/pycaret": {
+    stars: 9500,
+    pushed: now,
+    archived: false,
+    license: "MIT",
+    trend: 5,
+    score: 75,
+    topics: ["automl", "low-code"],
+    tagline: null,
+  },
+  "old/tool": {
+    stars: 500,
+    pushed: stale,
+    archived: false,
+    license: null,
+    trend: null,
+    score: 10,
+    topics: [],
+    tagline: null,
+  },
 };
 
 const HEADER = "# Awesome AutoML\n\n## Contents\n";

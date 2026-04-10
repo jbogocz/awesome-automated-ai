@@ -1,10 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
-  formatStarsShort,
-  progressBar,
   activityDot,
-  generateTagline,
   formatDateMonth,
+  formatStarsShort,
+  generateTagline,
+  progressBar,
 } from "../../src/generator/formatters.js";
 
 // Helper to build a date string N days ago from now
@@ -93,15 +93,13 @@ describe("activityDot", () => {
 
 describe("generateTagline", () => {
   it("takes first 7 words", () => {
-    expect(generateTagline("Declarative deep learning framework supporting custom model building and LLM fine-tuning")).toBe(
-      "Declarative deep learning framework supporting custom model"
-    );
+    expect(
+      generateTagline("Declarative deep learning framework supporting custom model building and LLM fine-tuning"),
+    ).toBe("Declarative deep learning framework supporting custom model");
   });
 
   it("strips trailing punctuation", () => {
-    expect(generateTagline("Fast ML framework, easy to use.")).toBe(
-      "Fast ML framework, easy to use"
-    );
+    expect(generateTagline("Fast ML framework, easy to use.")).toBe("Fast ML framework, easy to use");
   });
 
   it("escapes ampersand", () => {

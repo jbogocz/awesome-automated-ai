@@ -14,27 +14,34 @@ Please read this guide before submitting a pull request.
 
 1. Fork and clone this repository.
 2. Create a new branch: `git checkout -b add-tool-name`.
-3. Add your entry to the correct category in `README.md`.
+3. Add your entry to the correct category in `projects.yaml` (the README is auto-generated).
 4. Ensure your entry follows the format below.
 5. Commit and push your changes.
 6. Open a pull request and fill out the template (including "Why is this awesome?").
 
 ### Entry Format
 
-Use exactly this format:
+Add entries to `projects.yaml` under the appropriate category. Use exactly this format:
 
-```
-- [Name](URL) - Description ending with a period.
+```yaml
+  - name: ToolName
+    repo: owner/repo
+    description: Description ending with a period.
+    tagline: Short tagline (max 7 words)
 ```
 
 **Good examples:**
-- `- [AutoGluon](https://github.com/autogluon/autogluon) - Multi-layer stack ensembling for tabular, text, image, time-series, and multimodal data - won medals in 15/18 Kaggle tabular contests in 2024 (Amazon).`
-- `- [Optuna](https://github.com/optuna/optuna) - Define-by-run API with pruning, distributed execution, and a dashboard - the most widely adopted HPO framework.`
+```yaml
+  - name: AutoGluon
+    repo: autogluon/autogluon
+    description: Multi-layer stack ensembling for tabular, text, image, time-series, and multimodal data - won medals in 15/18 Kaggle tabular contests in 2024 (Amazon).
+    tagline: Multi-modal stack ensembling, Kaggle champion
+```
 
 **Bad examples:**
-- `- [ToolName](url) - A tool for doing things.` - too vague, says nothing specific
-- `- [ToolName](url) - ToolName is a framework...` - do not start with the tool's name
-- `- [ToolName](url) - Best ML tool ever!!!` - no unsubstantiated claims
+- `description: A tool for doing things.` - too vague, says nothing specific
+- `description: ToolName is a framework...` - do not start with the tool's name
+- `description: Best ML tool ever!!!` - no unsubstantiated claims
 
 ### Formatting Rules
 
