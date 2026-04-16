@@ -1,0 +1,54 @@
+name: Weekly Regenerate
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-regenerate
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Regenerate README with fresh API data
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm --filter @awesome-automl/engine run generate
+
+      - name: Regenerate dashboard data
+        run: pnpm --filter @awesome-automl/engine run site-data
+
+      - name: Commit and push changes
+        env:
+          BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          BOT_NAME: github-actions[bot]
+        run: |
+          git config user.name "$BOT_NAME"
+          git config user.email "$BOT_EMAIL"
+          git add README.md docs/data.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: weekly regeneration [skip ci]"
+          git push
