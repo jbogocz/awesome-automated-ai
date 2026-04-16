@@ -44,6 +44,7 @@
       "!**/dist",
       "!pnpm-lock.yaml",
       "!.github/api_cache.json",
+      "!docs/data.json",
       "!data",
       "!**/coverage"
     ]
