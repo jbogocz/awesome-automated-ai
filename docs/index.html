@@ -3,7 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Awesome AutoML Explorer</title>
+<title>Awesome AutoML Explorer - 200+ AI/ML Automation Tools</title>
+
+<meta name="description" content="Curated explorer of 200+ AI/ML automation tools across 22 categories: AutoML, NAS, hyperparameter optimization, fine-tuning, prompt optimization, AI research agents, MLOps, and more.">
+<meta name="keywords" content="awesome, automl, machine learning, automated machine learning, neural architecture search, hyperparameter optimization, fine-tuning, prompt optimization, LLM, MLOps, AI agents">
+<meta name="theme-color" content="#0d1117">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://jbogocz.github.io/awesome-automl/">
+
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Awesome AutoML Explorer">
+<meta property="og:description" content="Interactive explorer of 200+ AI/ML automation tools - from hyperparameter optimization to autonomous AI agents. Sort, filter, and search across 22 categories.">
+<meta property="og:url" content="https://jbogocz.github.io/awesome-automl/">
+<meta property="og:image" content="https://opengraph.githubassets.com/1/jbogocz/awesome-automl">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:site_name" content="Awesome AutoML">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Awesome AutoML Explorer">
+<meta name="twitter:description" content="Interactive explorer of 200+ AI/ML automation tools across 22 categories - sort, filter, and search.">
+<meta name="twitter:image" content="https://opengraph.githubassets.com/1/jbogocz/awesome-automl">
 <style>
   :root {
     --bg-primary: #0d1117;
@@ -402,6 +424,90 @@
     border-color: var(--accent-blue);
   }
 
+  .activity-dot {
+    font-size: 10px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .score-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 10px;
+    min-width: 28px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .score-badge.good   { background: rgba(46,160,67,0.15); color: #3fb950; border: 1px solid rgba(46,160,67,0.35); }
+  .score-badge.medium { background: rgba(210,153,34,0.15); color: #d29922; border: 1px solid rgba(210,153,34,0.3); }
+  .score-badge.low    { background: rgba(218,54,51,0.12); color: #f85149; border: 1px solid rgba(218,54,51,0.25); }
+
+  .license-badge {
+    display: inline-flex;
+    align-items: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: rgba(139,148,158,0.12);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .trend-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .trend-badge.up   { color: #3fb950; }
+  .trend-badge.down { color: #f85149; }
+
+  .card-tagline {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--accent-blue-light);
+    line-height: 1.4;
+    opacity: 0.95;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tag-chip {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10.5px;
+    padding: 1px 7px;
+    border-radius: 10px;
+    background: rgba(139,148,158,0.08);
+    color: var(--text-muted);
+    border: 1px solid var(--border-muted);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+
+  .tag-chip:hover {
+    background: rgba(110,64,201,0.18);
+    color: #a371f7;
+    border-color: rgba(110,64,201,0.35);
+  }
+
   .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -476,7 +582,7 @@
 
 <header class="site-header">
   <h1>&#x1F916; Awesome AutoML Explorer</h1>
-  <p class="subtitle">250+ AI/ML automation tools &mdash; sort, filter, and search</p>
+  <p class="subtitle" id="subtitle">AI/ML automation tools &mdash; sort, filter, and search</p>
   <div class="header-links">
     <a class="header-link" href="https://github.com/jbogocz/awesome-automl" target="_blank" rel="noopener">
       &#x2B50; GitHub Repo
@@ -499,9 +605,11 @@
   </div>
   <div class="sort-group">
     <label>Sort:</label>
-    <button class="sort-btn active" data-sort="stars">&#x2B50; Stars</button>
-    <button class="sort-btn" data-sort="name">A&#x2013;Z</button>
-    <button class="sort-btn" data-sort="updated">Updated</button>
+    <button type="button" class="sort-btn active" data-sort="stars">&#x2B50; Stars</button>
+    <button type="button" class="sort-btn" data-sort="score">Score</button>
+    <button type="button" class="sort-btn" data-sort="trend">Trend</button>
+    <button type="button" class="sort-btn" data-sort="name">A&#x2013;Z</button>
+    <button type="button" class="sort-btn" data-sort="updated">Updated</button>
   </div>
   <label class="toggle-wrap" title="Hide archived and unmaintained projects">
     <input type="checkbox" id="hide-archived"> Hide archived
@@ -540,44 +648,91 @@
 (function () {
   "use strict";
 
-  var allProjects = [];
-  var sortMode = "stars";
-  var searchQuery = "";
-  var categoryFilter = "";
-  var hideArchived = false;
-  var allCategoryMap = {};
-  var originalCategoryOrder = [];
+  const allProjects = [];
+  const allCategoryMap = {};
+  const originalCategoryOrder = [];
+  const SORT_MODES = ["stars", "score", "trend", "name", "updated"];
+  let sortMode = "stars";
+  let searchQuery = "";
+  let categoryFilter = "";
+  let hideArchived = false;
+
+  function readURL() {
+    const params = new URLSearchParams(location.search);
+    const sort = params.get("sort");
+    sortMode = sort && SORT_MODES.includes(sort) ? sort : "stars";
+    categoryFilter = params.get("cat") || "";
+    searchQuery = params.get("q") || "";
+    hideArchived = params.get("archived") === "hide";
+  }
+
+  function syncURL() {
+    const params = new URLSearchParams();
+    if (sortMode !== "stars") params.set("sort", sortMode);
+    if (categoryFilter) params.set("cat", categoryFilter);
+    if (searchQuery) params.set("q", searchQuery);
+    if (hideArchived) params.set("archived", "hide");
+    const qs = params.toString();
+    const target = qs ? `${location.pathname}?${qs}` : location.pathname;
+    if (target !== `${location.pathname}${location.search}`) {
+      history.replaceState(null, "", target);
+    }
+  }
+
+  function applyUIState() {
+    document.getElementById("search").value = searchQuery;
+    const catSel = document.getElementById("category-filter");
+    if (catSel) catSel.value = categoryFilter;
+    document.getElementById("hide-archived").checked = hideArchived;
+    for (const btn of document.querySelectorAll(".sort-btn")) {
+      btn.classList.toggle("active", btn.getAttribute("data-sort") === sortMode);
+    }
+  }
+
+  readURL();
 
   function fmtStars(n) {
     if (!n) return "\u2013";
-    if (n >= 1000) return (n / 1000).toFixed(n >= 10000 ? 0 : 1) + "k";
+    if (n >= 1000) return `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}k`;
     return String(n);
   }
 
   function fmtDate(iso) {
     if (!iso) return "";
-    var d = new Date(iso);
-    var now = new Date();
-    var days = Math.floor((now - d) / 86400000);
+    const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
     if (days < 1)  return "today";
-    if (days < 7)  return days + "d ago";
-    if (days < 30) return Math.floor(days / 7) + "w ago";
-    if (days < 365) return Math.floor(days / 30) + "mo ago";
-    var yrs = (days / 365).toFixed(1);
-    return yrs.endsWith(".0") ? yrs.slice(0, -2) + "y ago" : yrs + "y ago";
+    if (days < 7)  return `${days}d ago`;
+    if (days < 30) return `${Math.floor(days / 7)}w ago`;
+    if (days < 365) return `${Math.floor(days / 30)}mo ago`;
+    const yrs = (days / 365).toFixed(1);
+    return yrs.endsWith(".0") ? `${yrs.slice(0, -2)}y ago` : `${yrs}y ago`;
   }
 
   function commitClass(iso) {
     if (!iso) return "";
-    var days = Math.floor((new Date() - new Date(iso)) / 86400000);
-    if (days < 90)  return "recent";
+    const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+    if (days < 180) return "recent";
     if (days < 365) return "medium";
     return "stale";
   }
 
+  function activityDot(iso, archived) {
+    if (archived || !iso) return "\uD83D\uDD34";
+    const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+    if (days < 180) return "\uD83D\uDFE2";
+    if (days < 365) return "\uD83D\uDFE1";
+    return "\uD83D\uDD34";
+  }
+
+  function scoreClass(n) {
+    if (n >= 70) return "good";
+    if (n >= 40) return "medium";
+    return "low";
+  }
+
   function isUnmaintained(note) {
     if (!note) return false;
-    var lower = note.toLowerCase();
+    const lower = note.toLowerCase();
     return lower.indexOf("unmaintained") >= 0 || lower.indexOf("deprecated") >= 0 ||
            lower.indexOf("archived") >= 0 || lower.indexOf("historical") >= 0 ||
            lower.indexOf("maintenance mode") >= 0;
@@ -593,27 +748,31 @@
   }
 
   function filterAndSort() {
-    var q = searchQuery.toLowerCase().trim();
-    var result = allProjects.filter(function (p) {
+    const q = searchQuery.toLowerCase().trim();
+    const result = allProjects.filter((p) => {
       if (hideArchived && (p.archived || isUnmaintained(p.note))) return false;
       if (categoryFilter && p.category !== categoryFilter) return false;
       if (q) {
         return p.name.toLowerCase().indexOf(q) >= 0 ||
                p.description.toLowerCase().indexOf(q) >= 0 ||
+               (p.tagline && p.tagline.toLowerCase().indexOf(q) >= 0) ||
                p.category.toLowerCase().indexOf(q) >= 0 ||
-               (p.note && p.note.toLowerCase().indexOf(q) >= 0);
+               (p.note && p.note.toLowerCase().indexOf(q) >= 0) ||
+               (p.tags?.some((t) => t.toLowerCase().indexOf(q) >= 0));
       }
       return true;
     });
 
-    result.sort(function (a, b) {
+    result.sort((a, b) => {
       if (sortMode === "stars") return (b.stars || 0) - (a.stars || 0);
+      if (sortMode === "score") return (b.score || 0) - (a.score || 0);
+      if (sortMode === "trend") return (b.trend || 0) - (a.trend || 0);
       if (sortMode === "name")  return a.name.localeCompare(b.name);
       if (sortMode === "updated") {
         if (!a.lastCommit && !b.lastCommit) return 0;
         if (!a.lastCommit) return 1;
         if (!b.lastCommit) return -1;
-        return new Date(b.lastCommit) - new Date(a.lastCommit);
+        return new Date(b.lastCommit).getTime() - new Date(a.lastCommit).getTime();
       }
       return 0;
     });
@@ -622,59 +781,86 @@
   }
 
   function renderCard(p) {
-    var archived = p.archived;
-    var unmaintained = isUnmaintained(p.note);
-    var starsClass = (!p.stars) ? " zero" : "";
-    var dc = commitClass(p.lastCommit);
+    const archived = p.archived;
+    const unmaintained = isUnmaintained(p.note);
+    const isDead = archived || unmaintained;
+    const starsClass = p.stars ? "" : " zero";
+    const dc = commitClass(p.lastCommit);
+    const dot = activityDot(p.lastCommit, archived);
 
-    var badges = "";
+    let statusBadges = "";
     if (archived) {
-      badges += '<span class="badge badge-archived">Archived</span>';
+      statusBadges += '<span class="badge badge-archived">Archived</span>';
     } else if (unmaintained) {
-      var m = p.note.match(/unmaintained|deprecated|historical|maintenance/i);
-      var lbl = m ? m[0] : "Unmaintained";
-      badges += '<span class="badge badge-unmaintained">' + esc(lbl) + '</span>';
+      const m = p.note.match(/unmaintained|deprecated|historical|maintenance/i);
+      const lbl = m ? m[0] : "Unmaintained";
+      statusBadges += `<span class="badge badge-unmaintained">${esc(lbl)}</span>`;
     }
 
-    var noteHtml = "";
-    if (p.note && !unmaintained && !archived) {
-      var short = p.note.length > 40 ? p.note.slice(0, 38) + "\u2026" : p.note;
-      noteHtml = '<span class="badge badge-note" title="' + esc(p.note) + '">' + esc(short) + '</span>';
+    let noteHtml = "";
+    if (p.note && !isDead) {
+      const short = p.note.length > 40 ? `${p.note.slice(0, 38)}\u2026` : p.note;
+      noteHtml = `<span class="badge badge-note" title="${esc(p.note)}">${esc(short)}</span>`;
     }
 
-    var dateHtml = "";
+    let scoreHtml = "";
+    if (typeof p.score === "number" && p.score > 0) {
+      scoreHtml = `<span class="score-badge ${scoreClass(p.score)}" title="Quality score ${p.score}/100">${p.score}</span>`;
+    }
+
+    let licenseHtml = "";
+    if (p.license) {
+      licenseHtml = `<span class="license-badge" title="${esc(p.license)} license">${esc(p.license)}</span>`;
+    }
+
+    let trendHtml = "";
+    if (!isDead && typeof p.trend === "number" && Math.abs(p.trend) >= 10) {
+      const dir = p.trend > 0 ? "up" : "down";
+      const arrow = p.trend > 0 ? "\u2197" : "\u2198";
+      const sign = p.trend > 0 ? "+" : "";
+      trendHtml = `<span class="trend-badge ${dir}" title="Stars last 30 days">${arrow} ${sign}${p.trend}</span>`;
+    }
+
+    let dateHtml = "";
     if (p.lastCommit) {
-      var dt = new Date(p.lastCommit).toLocaleDateString();
-      dateHtml = '<span class="last-commit ' + dc + '" title="' + esc(dt) + '">' + fmtDate(p.lastCommit) + '</span>';
+      const dt = new Date(p.lastCommit).toLocaleDateString();
+      dateHtml = `<span class="last-commit ${dc}" title="${esc(dt)}">${fmtDate(p.lastCommit)}</span>`;
     }
 
-    var descHtml = "";
-    if (p.description) {
-      descHtml = '<p class="card-desc">' + esc(p.description) + '</p>';
+    const taglineHtml = p.tagline && !isDead ? `<p class="card-tagline">${esc(p.tagline)}</p>` : "";
+    const descHtml = p.description ? `<p class="card-desc">${esc(p.description)}</p>` : "";
+
+    let tagsHtml = "";
+    if (p.tags && p.tags.length > 0) {
+      const chips = p.tags.map((t) => `<span class="tag-chip" data-tag="${esc(t)}">${esc(t)}</span>`).join("");
+      tagsHtml = `<div class="card-tags">${chips}</div>`;
     }
 
-    return '<div class="card">' +
-      '<div class="card-top">' +
-        '<div class="card-name-wrap">' +
-          '<a class="card-name" href="' + esc(p.url) + '" target="_blank" rel="noopener" title="' + esc(p.name) + '">' + esc(p.name) + '</a>' +
-          badges + noteHtml +
-        '</div>' +
-        '<div class="card-meta">' +
-          '<span class="stars' + starsClass + '">' +
-            '<span class="star-icon">&#x2B50;</span>' +
-            '<span class="star-count">' + fmtStars(p.stars) + '</span>' +
-          '</span>' +
-          dateHtml +
-        '</div>' +
-      '</div>' +
+    return `<div class="card">` +
+      `<div class="card-top">` +
+        `<div class="card-name-wrap">` +
+          `<span class="activity-dot" title="Activity">${dot}</span>` +
+          `<a class="card-name" href="${esc(p.url)}" target="_blank" rel="noopener" title="${esc(p.name)}">${esc(p.name)}</a>` +
+          scoreHtml + licenseHtml + statusBadges + noteHtml +
+        `</div>` +
+        `<div class="card-meta">` +
+          `<span class="stars${starsClass}">` +
+            `<span class="star-icon">&#x2B50;</span>` +
+            `<span class="star-count">${fmtStars(p.stars)}</span>` +
+          `</span>` +
+          trendHtml + dateHtml +
+        `</div>` +
+      `</div>` +
+      taglineHtml +
       descHtml +
-      '<div><span class="cat-badge" data-cat="' + esc(p.category) + '">' + esc(p.category) + '</span></div>' +
-    '</div>';
+      tagsHtml +
+      `<div><span class="cat-badge" data-cat="${esc(p.category)}">${esc(p.category)}</span></div>` +
+    `</div>`;
   }
 
   function renderSection(catName, catDesc, projects) {
-    var cards = projects.map(renderCard).join("");
-    var descHtml = catDesc ? '<span class="category-desc">' + esc(catDesc) + '</span>' : "";
+    const cards = projects.map(renderCard).join("");
+    const descHtml = catDesc ? `<span class="category-desc">${esc(catDesc)}</span>` : "";
     return '<section class="category-section">' +
       '<div class="category-header">' +
         '<h2 class="category-name">' + esc(catName) + '</h2>' +
@@ -686,11 +872,12 @@
   }
 
   function renderMain(projects) {
-    var main = document.getElementById("main");
-    var emptyState = document.getElementById("empty-state");
-    var statsEl = document.getElementById("stats-count");
+    const main = document.getElementById("main");
+    const emptyState = document.getElementById("empty-state");
+    const statsEl = document.getElementById("stats-count");
 
-    statsEl.innerHTML = "Showing <strong>" + projects.length + "</strong> of <strong>" + allProjects.length + "</strong> projects";
+    statsEl.textContent = "";
+    statsEl.appendChild(makeStats(projects.length, allProjects.length));
 
     if (projects.length === 0) {
       main.style.display = "none";
@@ -701,18 +888,17 @@
     emptyState.style.display = "none";
     main.style.display = "block";
 
-    var html;
-    var useFlat = (categoryFilter || searchQuery);
+    const useFlat = categoryFilter || searchQuery;
+    let html;
 
     if (useFlat) {
-      var catName = categoryFilter || "Search Results";
-      var catDesc = categoryFilter ? (allCategoryMap[categoryFilter] || "") : (projects.length + " matching projects");
+      const catName = categoryFilter || "Search Results";
+      const catDesc = categoryFilter ? (allCategoryMap[categoryFilter] || "") : `${projects.length} matching projects`;
       html = renderSection(catName, catDesc, projects);
     } else {
-      var sections = [];
-      for (var i = 0; i < originalCategoryOrder.length; i++) {
-        var cat = originalCategoryOrder[i];
-        var ps = projects.filter(function (p) { return p.category === cat; });
+      const sections = [];
+      for (const cat of originalCategoryOrder) {
+        const ps = projects.filter((p) => p.category === cat);
         if (ps.length) sections.push(renderSection(cat, allCategoryMap[cat] || "", ps));
       }
       html = sections.join("");
@@ -720,112 +906,143 @@
 
     main.innerHTML = html;
 
-    var badges = main.querySelectorAll(".cat-badge");
-    for (var j = 0; j < badges.length; j++) {
-      (function (el) {
-        el.addEventListener("click", function () {
-          var cat = el.getAttribute("data-cat");
-          var sel = document.getElementById("category-filter");
-          if (categoryFilter === cat) {
-            sel.value = "";
-            categoryFilter = "";
-          } else {
-            sel.value = cat;
-            categoryFilter = cat;
-          }
-          update();
-        });
-      })(badges[j]);
+    for (const el of main.querySelectorAll(".cat-badge")) {
+      el.addEventListener("click", () => {
+        const cat = el.getAttribute("data-cat");
+        const sel = document.getElementById("category-filter");
+        if (categoryFilter === cat) {
+          sel.value = "";
+          categoryFilter = "";
+        } else {
+          sel.value = cat;
+          categoryFilter = cat;
+        }
+        update();
+      });
     }
+
+    for (const el of main.querySelectorAll(".tag-chip")) {
+      el.addEventListener("click", () => {
+        const tag = el.getAttribute("data-tag") || "";
+        const searchEl = document.getElementById("search");
+        searchQuery = tag;
+        searchEl.value = tag;
+        update();
+      });
+    }
+  }
+
+  function makeStats(shown, total) {
+    const frag = document.createDocumentFragment();
+    frag.appendChild(document.createTextNode("Showing "));
+    const s1 = document.createElement("strong");
+    s1.textContent = shown;
+    frag.appendChild(s1);
+    frag.appendChild(document.createTextNode(" of "));
+    const s2 = document.createElement("strong");
+    s2.textContent = total;
+    frag.appendChild(s2);
+    frag.appendChild(document.createTextNode(" projects"));
+    return frag;
   }
 
   function update() {
     renderMain(filterAndSort());
+    syncURL();
   }
 
   function init() {
-    var loadingEl = document.getElementById("loading");
-    var errorEl   = document.getElementById("error-msg");
+    const loadingEl = document.getElementById("loading");
+    const errorEl = document.getElementById("error-msg");
 
     fetch("./data.json")
-      .then(function (res) {
-        if (!res.ok) throw new Error("HTTP " + res.status);
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       })
-      .then(function (data) {
-        for (var i = 0; i < data.categories.length; i++) {
-          var cat = data.categories[i];
+      .then((data) => {
+        for (const cat of data.categories) {
           allCategoryMap[cat.name] = cat.description || "";
           originalCategoryOrder.push(cat.name);
-          for (var j = 0; j < cat.entries.length; j++) {
-            var e = cat.entries[j];
+          for (const e of cat.entries) {
             allProjects.push({
               name: e.name, repo: e.repo, url: e.url,
-              description: e.description, note: e.note,
-              stars: e.stars, lastCommit: e.lastCommit,
-              archived: e.archived, category: cat.name
+              description: e.description, tagline: e.tagline || "",
+              note: e.note,
+              stars: e.stars, trend: typeof e.trend === "number" ? e.trend : null,
+              score: typeof e.score === "number" ? e.score : 0,
+              license: e.license || "",
+              lastCommit: e.lastCommit, archived: e.archived,
+              tags: Array.isArray(e.tags) ? e.tags : [],
+              category: cat.name,
             });
           }
         }
 
-        var sel = document.getElementById("category-filter");
-        for (var k = 0; k < data.categories.length; k++) {
-          var c = data.categories[k];
-          var opt = document.createElement("option");
+        const sel = document.getElementById("category-filter");
+        for (const c of data.categories) {
+          const opt = document.createElement("option");
           opt.value = c.name;
-          opt.textContent = c.name + " (" + c.entries.length + ")";
+          opt.textContent = `${c.name} (${c.entries.length})`;
           sel.appendChild(opt);
         }
 
+        document.getElementById("subtitle").textContent =
+          `${allProjects.length} AI/ML automation tools across ${data.categories.length} categories \u2014 sort, filter, and search`;
+
         if (data.generated) {
           document.getElementById("stats-generated").textContent =
-            "Last updated: " + new Date(data.generated).toLocaleDateString("en-US", {year:"numeric",month:"short",day:"numeric"});
+            `Last updated: ${new Date(data.generated).toLocaleDateString("en-US", {year:"numeric",month:"short",day:"numeric"})}`;
         }
 
+        applyUIState();
         loadingEl.style.display = "none";
         update();
       })
-      .catch(function (err) {
+      .catch((err) => {
         loadingEl.style.display = "none";
         errorEl.style.display = "block";
-        errorEl.textContent = "Failed to load data.json: " + String(err);
+        errorEl.textContent = `Failed to load data.json: ${String(err)}`;
       });
   }
 
-  document.getElementById("search").addEventListener("input", function (e) {
+  document.getElementById("search").addEventListener("input", (e) => {
     searchQuery = e.target.value;
     update();
   });
 
-  document.getElementById("category-filter").addEventListener("change", function (e) {
+  document.getElementById("category-filter").addEventListener("change", (e) => {
     categoryFilter = e.target.value;
     update();
   });
 
-  var sortBtns = document.querySelectorAll(".sort-btn");
-  for (var i = 0; i < sortBtns.length; i++) {
-    (function (btn) {
-      btn.addEventListener("click", function () {
-        for (var j = 0; j < sortBtns.length; j++) sortBtns[j].classList.remove("active");
-        btn.classList.add("active");
-        sortMode = btn.getAttribute("data-sort");
-        update();
-      });
-    })(sortBtns[i]);
+  const sortBtns = document.querySelectorAll(".sort-btn");
+  for (const btn of sortBtns) {
+    btn.addEventListener("click", () => {
+      for (const other of sortBtns) other.classList.remove("active");
+      btn.classList.add("active");
+      sortMode = btn.getAttribute("data-sort");
+      update();
+    });
   }
 
-  document.getElementById("hide-archived").addEventListener("change", function (e) {
+  document.getElementById("hide-archived").addEventListener("change", (e) => {
     hideArchived = e.target.checked;
     update();
   });
 
-  document.getElementById("clear-filters").addEventListener("click", function () {
+  document.getElementById("clear-filters").addEventListener("click", () => {
     searchQuery = "";
     categoryFilter = "";
     hideArchived = false;
-    document.getElementById("search").value = "";
-    document.getElementById("category-filter").value = "";
-    document.getElementById("hide-archived").checked = false;
+    sortMode = "stars";
+    applyUIState();
+    update();
+  });
+
+  window.addEventListener("popstate", () => {
+    readURL();
+    applyUIState();
     update();
   });
 
