@@ -16,7 +16,7 @@ A curated list of 200+ tools for automated machine learning - from hyperparamete
 
 ### **[> Explore interactively <](https://jbogocz.github.io/awesome-automl)**
 
-202 tools across 22 categories
+207 tools across 22 categories
 
 </div>
 

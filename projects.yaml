@@ -301,14 +301,14 @@ categories:
     repo: AutoCodeRoverSG/auto-code-rover
     description: Structure-aware autonomous program repair combining code search with LLM-based patching.
     tagline: Structure-aware autonomous code repair and patching
+- name: LLM Evaluation and Testing
+  description: Frameworks for automated evaluation, testing, and benchmarking of language models and AI systems.
+  entries:
   - name: AutoRAG
     repo: Marker-Inc-Korea/AutoRAG
     description: AutoML-style framework for RAG optimization that automatically finds the best retrieval, generation, and prompt pipeline configuration.
     tagline: AutoML-style search for optimal RAG pipelines
     tags: [analysis, automl, benchmarking, document-parser, embeddings, evaluation, llm, llm-evaluation, llm-ops, open-source, ops, optimization, pipeline, python, qa, rag, rag-evaluation, retrieval-augmented-generation]
-- name: LLM Evaluation and Testing
-  description: Frameworks for automated evaluation, testing, and benchmarking of language models and AI systems.
-  entries:
   - name: Promptfoo
     repo: promptfoo/promptfoo
     description: Test and red-team LLM applications with automated evaluations, CI/CD integration, and vulnerability scanning.
@@ -358,6 +358,11 @@ categories:
     repo: UKGovernmentBEIS/inspect_ai
     description: Framework for reproducible LLM evals with sandboxed agent execution, 100+ prebuilt evaluations, and VS Code integration (UK AI Safety Institute).
     tagline: Reproducible sandboxed LLM evals, 100+ prebuilt
+  - name: OpenAI Evals
+    repo: openai/evals
+    description: Reference framework and open registry of LLM benchmarks from OpenAI - the original eval harness many downstream frameworks build on.
+    tagline: OpenAI's reference LLM eval framework and benchmark registry
+    tags: [benchmark, evaluation, gpt, llm, llm-evaluation, openai]
 - name: LLM Routing and Selection
   description: Intelligent routing of requests to the optimal model based on task complexity, cost, and performance.
   entries:
@@ -479,6 +484,7 @@ categories:
     repo: huawei-noah/vega
     description: AutoML pipeline covering NAS, hyperparameter optimization, auto-augmentation, and model compression (Huawei).
     tagline: Full AutoML pipeline with NAS and compression
+    note: Unmaintained since Feb 2023.
   - name: NASLib
     repo: automl/NASLib
     description: NAS research library from AutoML Freiburg with interfaces to state-of-the-art search spaces and optimizers.
@@ -489,6 +495,11 @@ categories:
     description: Modular NAS framework for reproducible architecture search research (Microsoft).
     tagline: Modular NAS framework for reproducible research
     tags: [automated-machine-learning, automl, darts, deep-learning, hyperparameter-optimization, machine-learning, model-compression, nas, neural-architecture-search, petridish, python, pytorch]
+  - name: AutoPyTorch
+    repo: automl/Auto-PyTorch
+    description: Joint NAS and HPO for PyTorch from the AutoML Freiburg group behind auto-sklearn, combining BOHB with meta-learning and portfolio selection.
+    tagline: Joint NAS and HPO for PyTorch from Auto-sklearn team
+    tags: [automated-machine-learning, automl, deep-learning, hyperparameter-optimization, neural-architecture-search, pytorch]
 - name: Hyperparameter Optimization
   description: Automated tuning of model hyperparameters using Bayesian, evolutionary, and other search strategies.
   entries:
@@ -531,20 +542,25 @@ categories:
     repo: dragonfly/dragonfly
     description: Scalable Bayesian optimization library supporting multi-fidelity and multi-objective search.
     tagline: Scalable Bayesian optimization with multi-fidelity search
-    note: Low activity since 2020.
+    note: Low activity since Jun 2023.
   - name: Google Vizier
     repo: google/vizier
     description: Research interface for blackbox and hyperparameter optimization with Bayesian, evolutionary, and multi-objective algorithms based on Google's internal Vizier Service.
     tagline: Open-source interface to Google's internal HPO service
     tags: [algorithm, bayesian-optimization, blackbox-optimization, deep-learning, distributed-computing, distributed-systems, evolutionary-algorithms, google, grpc, hyperparameter-optimization, hyperparameter-tuning, machine-learning, open-source, optimization, tuning, tuning-parameters, vizier]
+  - name: Nevergrad
+    repo: facebookresearch/nevergrad
+    description: Gradient-free optimization toolbox with CMA-ES, differential evolution, and particle swarm - Meta's canonical library for black-box and evolutionary optimization.
+    tagline: Gradient-free optimization with CMA-ES and evolution
+    tags: [bayesian-optimization, blackbox-optimization, evolutionary-algorithms, gradient-free-optimization, hyperparameter-optimization]
+  - name: Katib
+    repo: kubeflow/katib
+    description: Kubernetes-native hyperparameter tuning and NAS with pluggable algorithms and parallel trials - the HPO layer of Kubeflow.
+    tagline: Kubernetes-native HPO and NAS for Kubeflow
+    tags: [hyperparameter-optimization, katib, kubeflow, kubernetes, machine-learning, neural-architecture-search]
 - name: Automated Feature Engineering
   description: Automated generation, transformation, and selection of features from raw data.
   entries:
-  - name: Cleanlab
-    repo: cleanlab/cleanlab
-    description: Data-centric AI toolkit for finding and fixing label errors, outliers, and data quality issues automatically.
-    tagline: Automatically find and fix label errors in datasets
-    tags: [active-learning, annotation, anomaly-detection, data-annotation, data-centric-ai, data-cleaning, data-curation, data-labeling, data-profiling, data-quality, data-science, data-validation, datasets, exploratory-data-analysis, labeling, machine-learning, noisy-labels, out-of-distribution-detection, outlier-detection, weak-supervision]
   - name: tsfresh
     repo: blue-yonder/tsfresh
     description: Automatic extraction of hundreds of time-series features with built-in statistical relevance filtering.
@@ -611,11 +627,13 @@ categories:
     repo: sfu-db/dataprep
     description: Low-code library for data collection, cleaning, and EDA that is 10x faster than traditional profiling.
     tagline: Low-code data cleaning and EDA, 10x faster
+    note: Unmaintained since Jun 2024.
     tags: [apis, apiwrapper, cleaning, connector, data-exploration, data-science, datacleaning, dataconnector, dataprep, datapreparation, eda, exploratory-data-analysis, webconnector]
   - name: Optimus
     repo: hi-primus/optimus
     description: Agile data preparation supporting Pandas, Dask, cuDF, and PySpark with a unified API.
     tagline: Unified data prep API across Pandas, Spark, and GPU
+    note: Unmaintained since Dec 2024.
     tags: [big-data-cleaning, bigdata, cudf, dask, dask-cudf, data-analysis, data-cleaner, data-cleaning, data-cleansing, data-exploration, data-extraction, data-preparation, data-profiling, data-science, data-transformation, data-wrangling, machine-learning, pyspark, spark]
   - name: Spotlight
     repo: Renumics/spotlight
@@ -630,6 +648,11 @@ categories:
 - name: Automated Data Labeling
   description: Tools that automate or semi-automate the annotation process using AI-assisted labeling.
   entries:
+  - name: Cleanlab
+    repo: cleanlab/cleanlab
+    description: Data-centric AI toolkit for finding and fixing label errors, outliers, and data quality issues automatically.
+    tagline: Automatically find and fix label errors in datasets
+    tags: [active-learning, annotation, anomaly-detection, data-annotation, data-centric-ai, data-cleaning, data-curation, data-labeling, data-profiling, data-quality, data-science, data-validation, datasets, exploratory-data-analysis, labeling, machine-learning, noisy-labels, out-of-distribution-detection, outlier-detection, weak-supervision]
   - name: Label Studio
     repo: HumanSignal/label-studio
     description: Multi-type data labeling platform with ML-assisted annotation and LLM integration for text, images, audio, and video.
