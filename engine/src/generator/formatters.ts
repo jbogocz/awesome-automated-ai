@@ -19,19 +19,6 @@ export function formatStarsShort(n: number): string {
 }
 
 /**
- * Render a 10-character Unicode progress bar for a score 0-100.
- * - filled chars:  Math.floor(score / 10)  using U+2588 (FULL BLOCK)
- * - partial char:  (score % 10 >= 5) ? 1 : 0  using U+2593 (DARK SHADE)
- * - empty chars:   remainder  using U+2591 (LIGHT SHADE)
- */
-export function progressBar(score: number): string {
-  const filled = Math.floor(score / 10);
-  const partial = score % 10 >= 5 ? 1 : 0;
-  const empty = 10 - filled - partial;
-  return "\u2588".repeat(filled) + "\u2593".repeat(partial) + "\u2591".repeat(empty);
-}
-
-/**
  * Return a coloured circle dot indicating repository activity.
  * - archived or empty pushed -> red
  * - pushed < 180 days ago    -> green

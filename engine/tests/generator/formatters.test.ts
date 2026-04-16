@@ -1,11 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  activityDot,
-  formatDateMonth,
-  formatStarsShort,
-  generateTagline,
-  progressBar,
-} from "../../src/generator/formatters.js";
+import { activityDot, formatDateMonth, formatStarsShort, generateTagline } from "../../src/generator/formatters.js";
 
 // Helper to build a date string N days ago from now
 function daysAgo(n: number): string {
@@ -36,36 +30,6 @@ describe("formatStarsShort", () => {
 
   it("returns one-decimal M for millions", () => {
     expect(formatStarsShort(1200000)).toBe("1.2M");
-  });
-});
-
-describe("progressBar", () => {
-  it("returns all empty for 0", () => {
-    expect(progressBar(0)).toBe("░░░░░░░░░░");
-  });
-
-  it("returns partial at threshold 5", () => {
-    expect(progressBar(5)).toBe("▓░░░░░░░░░");
-  });
-
-  it("handles score 22 - 2 filled, no partial", () => {
-    expect(progressBar(22)).toBe("██░░░░░░░░");
-  });
-
-  it("handles score 55 - 5 filled plus partial", () => {
-    expect(progressBar(55)).toBe("█████▓░░░░");
-  });
-
-  it("handles score 60 - 6 filled no partial", () => {
-    expect(progressBar(60)).toBe("██████░░░░");
-  });
-
-  it("handles score 88 - 8 filled plus partial", () => {
-    expect(progressBar(88)).toBe("████████▓░");
-  });
-
-  it("returns all filled for 100", () => {
-    expect(progressBar(100)).toBe("██████████");
   });
 });
 
