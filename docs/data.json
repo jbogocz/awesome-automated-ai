@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-07T19:42:16.037Z",
+  "generated": "2026-04-16T19:26:16.450Z",
   "categories": [
     {
       "name": "General-Purpose AutoML",
@@ -10,165 +10,306 @@
           "repo": "ludwig-ai/ludwig",
           "url": "https://github.com/ludwig-ai/ludwig",
           "description": "Declarative deep learning framework supporting custom model building and LLM fine-tuning via YAML configs. Now under Linux Foundation AI & Data.",
+          "tagline": "Declarative deep learning via YAML configs",
           "note": "",
           "stars": 11665,
-          "lastCommit": "2026-04-07T17:30:10Z",
+          "trend": 0,
+          "score": 80,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-04T04:01:25Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "computer-vision",
+            "data-centric",
+            "data-science",
+            "deep",
+            "deep-learning"
+          ]
         },
         {
           "name": "AutoGluon",
           "repo": "autogluon/autogluon",
           "url": "https://github.com/autogluon/autogluon",
           "description": "Multi-layer stack ensembling for tabular, text, image, time-series, and multimodal data - won medals in 15/18 Kaggle tabular contests in 2024 (Amazon).",
+          "tagline": "Multi-modal stack ensembling, Kaggle champion",
           "note": "",
-          "stars": 10206,
-          "lastCommit": "2026-04-06T15:59:21Z",
+          "stars": 10209,
+          "trend": 3,
+          "score": 76,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-12-19T19:55:33Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "autogluon",
+            "automated-machine-learning",
+            "automl",
+            "computer-vision",
+            "data-science"
+          ]
         },
         {
           "name": "TPOT",
           "repo": "EpistasisLab/tpot",
           "url": "https://github.com/EpistasisLab/tpot",
           "description": "Genetic programming-based pipeline optimizer that designs and optimizes scikit-learn pipelines.",
+          "tagline": "Genetic programming pipeline optimizer for sklearn",
           "note": "",
           "stars": 10047,
-          "lastCommit": "2025-09-11T21:32:19Z",
+          "trend": 0,
+          "score": 69,
+          "license": "LGPL-3.0",
+          "lastCommit": "2025-07-03T21:13:56Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "adsp",
+            "ag066833",
+            "aiml",
+            "alzheimer",
+            "alzheimers"
+          ]
         },
         {
           "name": "PyCaret",
           "repo": "pycaret/pycaret",
           "url": "https://github.com/pycaret/pycaret",
           "description": "Low-code machine learning library that automates model training, tuning, and deployment workflows in Python.",
+          "tagline": "Low-code AutoML from training to deployment",
           "note": "",
-          "stars": 9737,
-          "lastCommit": "2025-04-21T01:09:12Z",
+          "stars": 9738,
+          "trend": 0,
+          "score": 64,
+          "license": "MIT",
+          "lastCommit": "2024-04-28T18:46:27Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "anomaly-detection",
+            "citizen-data-scientists",
+            "classification",
+            "clustering",
+            "data-science"
+          ]
         },
         {
           "name": "AutoKeras",
           "repo": "keras-team/autokeras",
           "url": "https://github.com/keras-team/autokeras",
           "description": "Neural architecture search for deep learning models built on top of Keras.",
+          "tagline": "Neural architecture search built on Keras",
           "note": "",
-          "stars": 9316,
-          "lastCommit": "2025-11-25T02:26:35Z",
+          "stars": 9315,
+          "trend": -1,
+          "score": 72,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-11-12T02:53:04Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "autodl",
+            "automated-machine-learning",
+            "automl",
+            "deep-learning",
+            "keras"
+          ]
         },
         {
           "name": "auto-sklearn",
           "repo": "automl/auto-sklearn",
           "url": "https://github.com/automl/auto-sklearn",
           "description": "Historically important AutoML toolkit using Bayesian optimization, meta-learning, and ensemble construction.",
+          "tagline": "Bayesian optimization and meta-learning AutoML",
           "note": "Unmaintained since Sep 2022; broken on Python 3.10+.",
           "stars": 8079,
-          "lastCommit": "2026-01-20T14:03:29Z",
+          "trend": 0,
+          "score": 64,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2023-02-13T12:35:21Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automated-machine-learning",
+            "automl",
+            "bayesian-optimization",
+            "hyperparameter-optimization",
+            "hyperparameter-search"
+          ]
         },
         {
           "name": "H2O AutoML",
           "repo": "h2oai/h2o-3",
           "url": "https://github.com/h2oai/h2o-3",
           "description": "Distributed machine learning platform with automatic training and tuning of many models within a user-specified time limit.",
+          "tagline": "Enterprise distributed AutoML with time limits",
           "note": "",
           "stars": 7522,
-          "lastCommit": "2026-04-07T14:06:24Z",
+          "trend": 0,
+          "score": 79,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-25T18:09:14Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "big-data",
+            "data-science",
+            "deep-learning",
+            "distributed"
+          ]
         },
         {
           "name": "FLAML",
           "repo": "microsoft/FLAML",
           "url": "https://github.com/microsoft/FLAML",
           "description": "Fast and lightweight AutoML that finds good models with minimal resources - often the best choice for resource-constrained environments (Microsoft).",
+          "tagline": "Fast AutoML with minimal compute resources",
           "note": "",
-          "stars": 4319,
-          "lastCommit": "2026-04-07T04:22:02Z",
+          "stars": 4320,
+          "trend": 1,
+          "score": 75,
+          "license": "MIT",
+          "lastCommit": "2026-01-21T08:49:04Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automated-machine-learning",
+            "automl",
+            "classification",
+            "data-science",
+            "deep-learning"
+          ]
         },
         {
           "name": "LazyPredict",
           "repo": "shankarpandala/lazypredict",
           "url": "https://github.com/shankarpandala/lazypredict",
           "description": "Build and evaluate dozens of scikit-learn models in a single line of code for rapid baseline comparison.",
+          "tagline": "Dozens of sklearn models in one line",
           "note": "Low activity since 2022.",
-          "stars": 3308,
-          "lastCommit": "2026-03-29T02:56:54Z",
+          "stars": 3309,
+          "trend": 1,
+          "score": 77,
+          "license": "MIT",
+          "lastCommit": "2026-03-15T17:58:52Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "classification",
+            "machine-learning",
+            "regression"
+          ]
         },
         {
           "name": "MLJAR Supervised",
           "repo": "mljar/mljar-supervised",
           "url": "https://github.com/mljar/mljar-supervised",
           "description": "Automated ML with automatic explanations, visualizations, and Markdown reports for every trained model.",
+          "tagline": "AutoML with per-model reports and explanations",
           "note": "",
           "stars": 3251,
+          "trend": 0,
+          "score": 76,
+          "license": "MIT",
           "lastCommit": "2026-03-26T10:21:36Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automated-machine-learning",
+            "automl",
+            "automl-api",
+            "automl-python",
+            "catboost"
+          ]
         },
         {
           "name": "LightAutoML",
           "repo": "sb-ai-lab/LightAutoML",
           "url": "https://github.com/sb-ai-lab/LightAutoML",
           "description": "Fast and customizable AutoML framework with Kaggle-winning performance (Sber AI Lab).",
+          "tagline": "Fast customizable AutoML with Kaggle wins",
           "note": "",
           "stars": 1458,
-          "lastCommit": "2026-01-15T12:29:45Z",
+          "trend": 0,
+          "score": 67,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-12-04T21:35:51Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automated-machine-learning",
+            "automatic-machine-learning",
+            "automl",
+            "automl-algorithms",
+            "binary-classification"
+          ]
         },
         {
           "name": "EvalML",
           "repo": "alteryx/evalml",
           "url": "https://github.com/alteryx/evalml",
           "description": "AutoML library for building, optimizing, and evaluating ML pipelines with domain-specific objectives (Alteryx).",
+          "tagline": "AutoML pipelines with domain-specific objectives",
           "note": "",
           "stars": 846,
-          "lastCommit": "2026-01-14T22:09:13Z",
+          "trend": 0,
+          "score": 56,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2024-06-06T17:43:50Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "data-science",
+            "feature-engineering",
+            "feature-selection",
+            "hyperparameter-tuning"
+          ]
         },
         {
           "name": "SapientML",
           "repo": "sapientml/sapientml",
           "url": "https://github.com/sapientml/sapientml",
           "description": "Generative AutoML that synthesizes pipelines by learning from a corpus of existing ML solutions.",
+          "tagline": "Generative AutoML from corpus of ML solutions",
           "note": "",
           "stars": 449,
-          "lastCommit": "2026-03-30T18:40:00Z",
+          "trend": 0,
+          "score": 69,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-23T08:58:20Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automated-machine-learning",
+            "automl",
+            "automl-products",
+            "automl-python",
+            "machine-learning"
+          ]
         },
         {
           "name": "Auto-WEKA",
           "repo": "automl/autoweka",
           "url": "https://github.com/automl/autoweka",
           "description": "The original AutoML system (2013) combining algorithm selection and HPO in WEKA.",
+          "tagline": "Original AutoML combining algorithm selection and HPO",
           "note": "Historical; Java-only, maintenance mode.",
           "stars": 336,
-          "lastCommit": "2022-03-06T22:24:52Z",
+          "trend": 0,
+          "score": 43,
+          "license": null,
+          "lastCommit": "2022-03-06T21:15:37Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "GAMA",
           "repo": "amore-labs/gama",
           "url": "https://github.com/amore-labs/gama",
           "description": "AutoML tool that generates optimized ML pipelines using genetic programming and Bayesian optimization (OpenML).",
+          "tagline": "Genetic programming and Bayesian pipeline optimization",
           "note": "",
           "stars": 103,
-          "lastCommit": "2024-09-04T08:31:07Z",
+          "trend": 0,
+          "score": 49,
+          "license": "Apache-2.0",
+          "lastCommit": "2024-06-14T11:39:56Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "hyperparameter-optimization",
+            "research-tool"
+          ]
         }
       ]
     },
@@ -181,88 +322,156 @@
           "repo": "google-research/timesfm",
           "url": "https://github.com/google-research/timesfm",
           "description": "Time-series foundation model for zero-shot forecasting across domains without task-specific training (Google).",
+          "tagline": "Zero-shot time-series forecasting foundation model",
           "note": "",
-          "stars": 15374,
-          "lastCommit": "2026-04-03T00:26:33Z",
+          "stars": 15527,
+          "trend": 117,
+          "score": 75,
+          "license": "Apache-2.0",
+          "lastCommit": "2024-12-31T19:07:28Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "TabPFN",
           "repo": "PriorLabs/TabPFN",
           "url": "https://github.com/PriorLabs/TabPFN",
           "description": "Tabular foundation model that matches tuned XGBoost in 2.8 seconds with a single forward pass - 100% win rate vs default XGBoost on datasets under 10K rows (Nature 2024, now v2.6 supporting up to 100K rows).",
+          "tagline": "Beats tuned XGBoost in 2.8 seconds flat",
           "note": "",
-          "stars": 6011,
-          "lastCommit": "2026-04-07T14:33:54Z",
+          "stars": 6015,
+          "trend": 4,
+          "score": 81,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-04-02T10:00:54Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "data-science",
+            "foundation-models",
+            "machine-learning",
+            "tabpfn",
+            "tabular-data"
+          ]
         },
         {
           "name": "Chronos",
           "repo": "amazon-science/chronos-forecasting",
           "url": "https://github.com/amazon-science/chronos-forecasting",
           "description": "Pretrained time-series foundation model for zero-shot probabilistic forecasting on unseen data (Amazon).",
+          "tagline": "Pretrained probabilistic forecasting on unseen time-series",
           "note": "",
-          "stars": 5087,
-          "lastCommit": "2026-03-18T11:34:29Z",
+          "stars": 5091,
+          "trend": 3,
+          "score": 74,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-12-17T18:13:25Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "artificial-intelligence",
+            "forecasting",
+            "foundation-models",
+            "huggingface",
+            "huggingface-transformers"
+          ]
         },
         {
           "name": "Moirai",
           "repo": "SalesforceAIResearch/uni2ts",
           "url": "https://github.com/SalesforceAIResearch/uni2ts",
           "description": "Universal time-series forecasting transformer supporting multivariate forecasting unlike most competitors. Moirai-MoE released Oct 2024 (Salesforce).",
+          "tagline": "Universal multivariate time-series forecasting transformer",
           "note": "",
-          "stars": 1462,
-          "lastCommit": "2026-01-29T06:55:28Z",
+          "stars": 1463,
+          "trend": 0,
+          "score": 67,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-11-04T04:26:35Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "deep-learning",
+            "forecasting",
+            "machine-learning",
+            "pre-trained-models",
+            "pre-training"
+          ]
         },
         {
           "name": "TabM",
           "repo": "yandex-research/tabm",
           "url": "https://github.com/yandex-research/tabm",
           "description": "Parameter-efficient ensemble of MLPs based on BatchEnsemble, achieving top performance among tabular deep learning models without attention complexity (ICLR 2025, Yandex).",
+          "tagline": "Efficient MLP ensemble for top tabular performance",
           "note": "",
-          "stars": 986,
-          "lastCommit": "2025-11-10T07:18:37Z",
+          "stars": 988,
+          "trend": 2,
+          "score": 63,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-08-14T16:25:02Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "TALENT",
           "repo": "LAMDA-Tabular/TALENT",
           "url": "https://github.com/LAMDA-Tabular/TALENT",
           "description": "Comprehensive toolkit and benchmark for tabular learning covering 35+ deep methods across 300 datasets.",
+          "tagline": "Benchmark toolkit for 35+ tabular deep methods",
           "note": "",
-          "stars": 834,
-          "lastCommit": "2026-03-20T18:25:45Z",
+          "stars": 835,
+          "trend": 1,
+          "score": 72,
+          "license": "MIT",
+          "lastCommit": "2026-03-20T18:25:37Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "tabular",
+            "tabular-data",
+            "tabular-data-benchmark",
+            "tabular-data-deep-learning",
+            "tabular-data-machine-learning"
+          ]
         },
         {
           "name": "TabICL",
           "repo": "soda-inria/tabicl",
           "url": "https://github.com/soda-inria/tabicl",
           "description": "State-of-the-art tabular foundation model achieving 10x faster inference than TabPFN v2.5 (ICML 2025).",
+          "tagline": "Tabular foundation model 10x faster than TabPFN",
           "note": "",
-          "stars": 716,
-          "lastCommit": "2026-03-25T23:26:10Z",
+          "stars": 717,
+          "trend": 1,
+          "score": 69,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-03-02T20:53:04Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "deep-learning",
+            "foundation-models",
+            "machine-learning",
+            "tabular-data",
+            "tabular-methods"
+          ]
         },
         {
           "name": "CARTE",
           "repo": "soda-inria/carte",
           "url": "https://github.com/soda-inria/carte",
           "description": "Context-aware tabular representation using pretrained language models for data with heterogeneous columns.",
+          "tagline": "LLM-powered representation for heterogeneous tabular data",
           "note": "",
-          "stars": 168,
+          "stars": 169,
+          "trend": 1,
+          "score": 56,
+          "license": "BSD-3-Clause",
           "lastCommit": "2025-08-11T09:20:00Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "classification",
+            "data-science",
+            "graph-transformer",
+            "machine-learning",
+            "regression"
+          ]
         }
       ]
     },
@@ -275,110 +484,237 @@
           "repo": "hiyouga/LlamaFactory",
           "url": "https://github.com/hiyouga/LlamaFactory",
           "description": "Unified fine-tuning framework for 100+ LLMs and VLMs with Full, LoRA, QLoRA, and DoRA methods plus web UI (ACL 2024).",
+          "tagline": "Unified fine-tuning for 100+ LLMs with web UI",
           "note": "",
-          "stars": 69688,
-          "lastCommit": "2026-04-06T05:14:45Z",
+          "stars": 69737,
+          "trend": 45,
+          "score": 87,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-12-31T15:00:14Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agent",
+            "ai",
+            "deepseek",
+            "fine-tuning",
+            "gemma"
+          ]
         },
         {
           "name": "Unsloth",
           "repo": "unslothai/unsloth",
           "url": "https://github.com/unslothai/unsloth",
           "description": "Fine-tune LLMs 2-5x faster with 80% less memory on a single GPU through optimized kernels and custom autograd.",
+          "tagline": "Fine-tune LLMs 2-5x faster, 80% less memory",
           "note": "",
-          "stars": 59926,
-          "lastCommit": "2026-04-07T16:05:04Z",
+          "stars": 60102,
+          "trend": 132,
+          "score": 95,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-02T20:02:41Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agent",
+            "deepseek",
+            "fine-tuning",
+            "gemma",
+            "gemma3"
+          ]
         },
         {
           "name": "PEFT",
           "repo": "huggingface/peft",
           "url": "https://github.com/huggingface/peft",
           "description": "Standard library for parameter-efficient fine-tuning - LoRA, QLoRA, Spectrum, and more. Deeply integrated with the Hugging Face ecosystem.",
+          "tagline": "Standard LoRA and parameter-efficient fine-tuning library",
           "note": "",
-          "stars": 20898,
-          "lastCommit": "2026-04-07T15:47:57Z",
+          "stars": 20901,
+          "trend": 2,
+          "score": 81,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-01-09T13:17:22Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "adapter",
+            "diffusion",
+            "fine-tuning",
+            "llm",
+            "lora"
+          ]
         },
         {
           "name": "TRL",
           "repo": "huggingface/trl",
           "url": "https://github.com/huggingface/trl",
           "description": "Transformer Reinforcement Learning with SFT, DPO, RLHF, and GRPO trainers for alignment and preference tuning (Hugging Face).",
+          "tagline": "RLHF, DPO, and GRPO trainers for LLM alignment",
           "note": "",
-          "stars": 17959,
-          "lastCommit": "2026-04-07T17:34:34Z",
+          "stars": 17968,
+          "trend": 7,
+          "score": 85,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-31T14:15:06Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "LitGPT",
           "repo": "Lightning-AI/litgpt",
           "url": "https://github.com/Lightning-AI/litgpt",
           "description": "Recipes for pretraining, fine-tuning, and deploying 20+ LLM architectures on your own data (Lightning AI).",
+          "tagline": "Pretrain, fine-tune, and deploy 20+ LLM architectures",
           "note": "",
-          "stars": 13282,
-          "lastCommit": "2026-04-06T21:28:29Z",
+          "stars": 13284,
+          "trend": 1,
+          "score": 76,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-12-18T15:51:48Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "artificial-intelligence",
+            "deep-learning",
+            "large-language-models",
+            "llm"
+          ]
         },
         {
           "name": "Axolotl",
           "repo": "axolotl-ai-cloud/axolotl",
           "url": "https://github.com/axolotl-ai-cloud/axolotl",
           "description": "Production-grade fine-tuning with multi-GPU support, sequence parallelism, and multimodal capabilities.",
+          "tagline": "Production-grade multi-GPU fine-tuning framework",
           "note": "",
-          "stars": 11602,
-          "lastCommit": "2026-04-07T15:35:36Z",
+          "stars": 11608,
+          "trend": 5,
+          "score": 83,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-02T21:47:32Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "fine-tuning",
+            "llm"
+          ]
         },
         {
           "name": "LMFlow",
           "repo": "OptimalScale/LMFlow",
           "url": "https://github.com/OptimalScale/LMFlow",
           "description": "Extensible toolkit for fine-tuning and inference of large foundation models, NAACL 2024 Best Demo Award.",
+          "tagline": "Extensible fine-tuning toolkit, NAACL 2024 award",
           "note": "",
-          "stars": 8488,
-          "lastCommit": "2026-03-23T02:30:02Z",
+          "stars": 8489,
+          "trend": 1,
+          "score": 70,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-07-11T02:03:22Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "chatgpt",
+            "deep-learning",
+            "instruction-following",
+            "language-model",
+            "pretrained-models"
+          ]
         },
         {
           "name": "torchtune",
           "repo": "meta-pytorch/torchtune",
           "url": "https://github.com/meta-pytorch/torchtune",
           "description": "Native PyTorch library for fine-tuning LLMs with composable building blocks and YAML configs (Meta).",
+          "tagline": "Native PyTorch LLM fine-tuning with YAML configs",
           "note": "",
-          "stars": 5724,
-          "lastCommit": "2026-04-07T11:50:44Z",
+          "stars": 5725,
+          "trend": 1,
+          "score": 64,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2025-04-07T19:01:38Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "Hugging Face AutoTrain",
           "repo": "huggingface/autotrain-advanced",
           "url": "https://github.com/huggingface/autotrain-advanced",
           "description": "No-code training for LLMs, vision-language models, text classification, and tabular data (Hugging Face).",
+          "tagline": "No-code LLM and vision-language model training",
           "note": "",
-          "stars": 4568,
-          "lastCommit": "2026-04-02T09:26:01Z",
+          "stars": 4569,
+          "trend": 1,
+          "score": 75,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-01-26T10:45:52Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "autotrain",
+            "deep-learning",
+            "huggingface",
+            "machine-learning",
+            "natural-language-processing"
+          ]
         },
         {
           "name": "LoRAX",
           "repo": "predibase/lorax",
           "url": "https://github.com/predibase/lorax",
           "description": "Multi-LoRA inference server that scales to thousands of fine-tuned LLMs on a single GPU (Predibase).",
+          "tagline": "Thousands of LoRA adapters on a single GPU",
           "note": "",
           "stars": 3744,
-          "lastCommit": "2025-05-21T17:40:25Z",
+          "trend": 0,
+          "score": 61,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-01-13T23:12:10Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "fine-tuning",
+            "gpt",
+            "llama",
+            "llm",
+            "llm-inference"
+          ]
+        },
+        {
+          "name": "H2O LLM Studio",
+          "repo": "h2oai/h2o-llmstudio",
+          "url": "https://github.com/h2oai/h2o-llmstudio",
+          "description": "No-code GUI for fine-tuning LLMs with SFT, DPO, and RLHF, plus experiment tracking and one-click Hugging Face Hub export (H2O.ai).",
+          "tagline": "No-code GUI for LLM fine-tuning and RLHF",
+          "note": "",
+          "stars": 4907,
+          "trend": 1,
+          "score": 78,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-07T11:00:00Z",
+          "archived": false,
+          "tags": [
+            "ai",
+            "chatbot",
+            "chatgpt",
+            "fedramp",
+            "fine-tuning"
+          ]
+        },
+        {
+          "name": "LLM Foundry",
+          "repo": "mosaicml/llm-foundry",
+          "url": "https://github.com/mosaicml/llm-foundry",
+          "description": "Composable building blocks for pretraining, fine-tuning, and evaluating foundation models with efficient distributed training (Databricks).",
+          "tagline": "Composable pretraining and fine-tuning for foundation models",
+          "note": "",
+          "stars": 4397,
+          "trend": 0,
+          "score": 66,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-07-29T00:40:29Z",
+          "archived": false,
+          "tags": [
+            "deep-learning",
+            "llm",
+            "neural-networks",
+            "nlp",
+            "pytorch"
+          ]
         }
       ]
     },
@@ -391,99 +727,151 @@
           "repo": "stanfordnlp/dspy",
           "url": "https://github.com/stanfordnlp/dspy",
           "description": "Declarative framework replacing hand-written prompts with automatic optimizers - GPT-3.5 with DSPy outperforms expert prompts by up to 46% (Stanford NLP).",
+          "tagline": "Automatic prompt optimizers replacing hand-written prompts",
           "note": "",
-          "stars": 33509,
-          "lastCommit": "2026-04-02T22:50:24Z",
+          "stars": 33530,
+          "trend": 17,
+          "score": 86,
+          "license": "MIT",
+          "lastCommit": "2026-02-05T16:18:52Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "PromptWizard",
           "repo": "microsoft/PromptWizard",
           "url": "https://github.com/microsoft/PromptWizard",
           "description": "Task-aware agent-driven prompt optimization using self-evolving critique and synthesis (Microsoft).",
+          "tagline": "Agent-driven self-evolving prompt optimization",
           "note": "",
-          "stars": 3830,
-          "lastCommit": "2025-10-13T21:51:01Z",
+          "stars": 3831,
+          "trend": 1,
+          "score": 67,
+          "license": "MIT",
+          "lastCommit": "2025-08-04T08:53:19Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "TextGrad",
           "repo": "zou-group/textgrad",
           "url": "https://github.com/zou-group/textgrad",
           "description": "Automatic differentiation via text feedback, enabling gradient-like optimization of compound AI systems (Nature 2024).",
+          "tagline": "Gradient-like optimization of AI via text feedback",
           "note": "",
           "stars": 3474,
-          "lastCommit": "2025-07-25T14:30:39Z",
+          "trend": 0,
+          "score": 61,
+          "license": "MIT",
+          "lastCommit": "2024-12-15T14:06:27Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai-optimization",
+            "compound-systems",
+            "large-language-models",
+            "prompt-optimization",
+            "textual-gradients"
+          ]
         },
         {
           "name": "GEPA",
           "repo": "gepa-ai/gepa",
           "url": "https://github.com/gepa-ai/gepa",
           "description": "Reflective text evolution for prompt, code, and text optimization, integrated into MLflow (Cerebras).",
+          "tagline": "Reflective text evolution for prompt optimization",
           "note": "",
-          "stars": 3207,
-          "lastCommit": "2026-04-07T03:22:55Z",
+          "stars": 3236,
+          "trend": 22,
+          "score": 81,
+          "license": "MIT",
+          "lastCommit": "2026-03-16T10:15:05Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "AutoPrompt",
           "repo": "Eladlev/AutoPrompt",
           "url": "https://github.com/Eladlev/AutoPrompt",
           "description": "Intent-based prompt calibration using synthetic data generation for iterative prompt refinement.",
+          "tagline": "Intent-based iterative prompt calibration with synthetic data",
           "note": "",
           "stars": 2960,
-          "lastCommit": "2025-12-02T17:23:20Z",
+          "trend": 0,
+          "score": 60,
+          "license": "Apache-2.0",
+          "lastCommit": "2024-03-06T15:10:37Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "prompt-engineering",
+            "prompt-tuning",
+            "synthetic-dataset-generation"
+          ]
         },
         {
           "name": "Mirascope",
           "repo": "Mirascope/mirascope",
           "url": "https://github.com/Mirascope/mirascope",
           "description": "Pythonic toolkit for building LLM applications with integrated prompt versioning, tracing, and optimization.",
+          "tagline": "Pythonic LLM toolkit with prompt versioning and tracing",
           "note": "",
-          "stars": 1452,
-          "lastCommit": "2026-04-07T12:25:54Z",
+          "stars": 1454,
+          "trend": 1,
+          "score": 71,
+          "license": "MIT",
+          "lastCommit": "2026-03-08T03:59:23Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "artificial-intelligence",
+            "developer-tools",
+            "llm",
+            "llm-agent",
+            "llm-tools"
+          ]
         },
         {
           "name": "Promptomatix",
           "repo": "SalesforceAIResearch/promptomatix",
           "url": "https://github.com/SalesforceAIResearch/promptomatix",
           "description": "DSPy-powered automatic prompt optimization that transforms task descriptions into optimized prompts with cost-aware objectives (Salesforce).",
+          "tagline": "Task descriptions to optimized prompts automatically",
           "note": "",
           "stars": 938,
-          "lastCommit": "2025-08-01T19:10:41Z",
+          "trend": 0,
+          "score": 61,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-07-29T21:49:27Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "Prompt-Ops",
           "repo": "meta-llama/prompt-ops",
           "url": "https://github.com/meta-llama/prompt-ops",
           "description": "Open-source command-line tool for building, optimizing, and managing prompts at scale (Meta).",
+          "tagline": "CLI for building and managing prompts at scale",
           "note": "",
-          "stars": 794,
-          "lastCommit": "2026-01-26T23:58:47Z",
+          "stars": 795,
+          "trend": 1,
+          "score": 66,
+          "license": "MIT",
+          "lastCommit": "2025-12-30T16:00:35Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "EvoPrompt",
           "repo": "beeevita/EvoPrompt",
           "url": "https://github.com/beeevita/EvoPrompt",
           "description": "Connects LLMs with evolutionary algorithms for discrete prompt optimization with up to 25% improvement over manual prompts.",
+          "tagline": "Evolutionary algorithms for discrete prompt optimization",
           "note": "",
           "stars": 224,
-          "lastCommit": "2025-09-22T11:43:23Z",
+          "trend": 0,
+          "score": 56,
+          "license": "MIT",
+          "lastCommit": "2025-09-22T11:43:22Z",
           "archived": false,
-          "language": ""
+          "tags": []
         }
       ]
     },
@@ -496,110 +884,185 @@
           "repo": "karpathy/autoresearch",
           "url": "https://github.com/karpathy/autoresearch",
           "description": "Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026).",
+          "tagline": "Agents run 100 ML experiments overnight autonomously",
           "note": "",
-          "stars": 67974,
+          "stars": 68505,
+          "trend": 422,
+          "score": 87,
+          "license": null,
           "lastCommit": "2026-03-26T00:07:37Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "AutoGen",
           "repo": "microsoft/autogen",
           "url": "https://github.com/microsoft/autogen",
           "description": "Multi-agent conversation framework for building AI agent systems. Now in maintenance mode as AG2 (Microsoft).",
+          "tagline": "Multi-agent conversation framework for AI systems",
           "note": "",
-          "stars": 56793,
-          "lastCommit": "2026-04-06T22:35:34Z",
+          "stars": 56811,
+          "trend": 17,
+          "score": 80,
+          "license": "CC-BY-4.0",
+          "lastCommit": "2025-09-30T06:18:26Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agentic",
+            "agentic-agi",
+            "agents",
+            "ai",
+            "autogen"
+          ]
         },
         {
           "name": "CrewAI",
           "repo": "crewAIInc/crewAI",
           "url": "https://github.com/crewAIInc/crewAI",
           "description": "Multi-agent framework orchestrating role-playing specialist agents for complex AI workflows.",
+          "tagline": "Role-playing specialist agents for complex workflows",
           "note": "",
-          "stars": 48269,
-          "lastCommit": "2026-04-07T17:45:01Z",
+          "stars": 48327,
+          "trend": 54,
+          "score": 92,
+          "license": "MIT",
+          "lastCommit": "2026-04-07T17:47:49Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agents",
+            "ai",
+            "ai-agents",
+            "aiagentframework",
+            "llms"
+          ]
         },
         {
           "name": "STORM",
           "repo": "stanford-oval/storm",
           "url": "https://github.com/stanford-oval/storm",
           "description": "LLM-powered knowledge curation that researches topics and generates full articles with citations (Stanford).",
+          "tagline": "LLM researches topics and writes full articles",
           "note": "",
-          "stars": 28059,
-          "lastCommit": "2025-09-30T18:07:21Z",
+          "stars": 28061,
+          "trend": 0,
+          "score": 68,
+          "license": "MIT",
+          "lastCommit": "2025-01-23T07:21:44Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agentic-rag",
+            "deep-research",
+            "emnlp2024",
+            "knowledge-curation",
+            "large-language-models"
+          ]
         },
         {
           "name": "AI-Scientist",
           "repo": "SakanaAI/AI-Scientist",
           "url": "https://github.com/SakanaAI/AI-Scientist",
           "description": "Fully automated open-ended scientific discovery from idea generation to experiment execution to paper writing (Sakana AI).",
+          "tagline": "Fully automated discovery from idea to paper",
           "note": "",
-          "stars": 13095,
+          "stars": 13118,
+          "trend": 19,
+          "score": 80,
+          "license": "NOASSERTION",
           "lastCommit": "2025-12-19T07:46:21Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "PaperQA",
           "repo": "Future-House/paper-qa",
           "url": "https://github.com/Future-House/paper-qa",
           "description": "High-accuracy retrieval-augmented generation for answering questions from scientific literature.",
+          "tagline": "High-accuracy RAG over scientific literature",
           "note": "",
-          "stars": 8347,
-          "lastCommit": "2026-03-20T17:41:36Z",
+          "stars": 8349,
+          "trend": 2,
+          "score": 81,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-18T18:49:57Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "rag",
+            "science",
+            "search"
+          ]
         },
         {
           "name": "AI-Scientist-v2",
           "repo": "SakanaAI/AI-Scientist-v2",
           "url": "https://github.com/SakanaAI/AI-Scientist-v2",
           "description": "Second generation using agentic tree search, producing the first AI-generated paper accepted at a peer-reviewed workshop.",
+          "tagline": "First AI paper accepted at peer-reviewed workshop",
           "note": "",
-          "stars": 5198,
-          "lastCommit": "2025-12-19T07:46:32Z",
+          "stars": 5265,
+          "trend": 58,
+          "score": 79,
+          "license": "NOASSERTION",
+          "lastCommit": "2025-12-19T07:46:31Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "AI-Researcher",
           "repo": "HKUDS/AI-Researcher",
           "url": "https://github.com/HKUDS/AI-Researcher",
           "description": "Autonomous agent automating the full research lifecycle from literature review to experimentation (NeurIPS 2025 Spotlight).",
+          "tagline": "Full research lifecycle from literature to experiments",
           "note": "",
-          "stars": 5067,
+          "stars": 5072,
+          "trend": 5,
+          "score": 64,
+          "license": null,
           "lastCommit": "2025-10-16T06:47:34Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai-researcher"
+          ]
         },
         {
           "name": "AIDE",
           "repo": "WecoAI/aideml",
           "url": "https://github.com/WecoAI/aideml",
           "description": "ML engineering agent using tree search over solution space - exceeds 50% of human Kaggle competitors; top agents using AIDE achieve medals in 64%+ of MLE-Bench competitions (Weco AI).",
+          "tagline": "ML agent beating 50% of human Kaggle competitors",
           "note": "",
-          "stars": 1209,
-          "lastCommit": "2026-02-12T13:02:34Z",
+          "stars": 1212,
+          "trend": 0,
+          "score": 66,
+          "license": "MIT",
+          "lastCommit": "2025-11-05T11:11:13Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "ai-agents",
+            "automated-machine-learning",
+            "autonomous-agents",
+            "autoresearch"
+          ]
         },
         {
           "name": "AutoML-Agent",
           "repo": "DeepAuto-AI/automl-agent",
           "url": "https://github.com/DeepAuto-AI/automl-agent",
           "description": "Multi-agent LLM framework for full-pipeline AutoML from data retrieval through model deployment (ICML 2025).",
+          "tagline": "LLM agents for end-to-end AutoML pipelines",
           "note": "",
           "stars": 118,
+          "trend": 0,
+          "score": 44,
+          "license": null,
           "lastCommit": "2025-07-11T19:39:49Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "llm-agents",
+            "multi-agent-systems"
+          ]
         }
       ]
     },
@@ -612,55 +1075,120 @@
           "repo": "OpenHands/OpenHands",
           "url": "https://github.com/OpenHands/OpenHands",
           "description": "AI software development platform achieving 53-72% resolve rate on SWE-Bench Verified.",
+          "tagline": "AI dev platform, 53-72% SWE-Bench resolve rate",
           "note": "",
-          "stars": 70757,
-          "lastCommit": "2026-04-07T17:39:31Z",
+          "stars": 70804,
+          "trend": 36,
+          "score": 93,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-03-30T16:01:39Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agent",
+            "artificial-intelligence",
+            "chatgpt",
+            "claude-ai",
+            "cli"
+          ]
         },
         {
           "name": "Aider",
           "repo": "Aider-AI/aider",
           "url": "https://github.com/Aider-AI/aider",
           "description": "AI pair programmer in the terminal that edits code directly in your local repository.",
+          "tagline": "AI pair programmer editing your local repository",
           "note": "",
-          "stars": 42959,
-          "lastCommit": "2026-03-17T01:21:34Z",
+          "stars": 42993,
+          "trend": 28,
+          "score": 80,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-08-09T17:42:19Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "anthropic",
+            "chatgpt",
+            "claude-3",
+            "cli",
+            "command-line"
+          ]
         },
         {
           "name": "SWE-agent",
           "repo": "SWE-agent/SWE-agent",
           "url": "https://github.com/SWE-agent/SWE-agent",
           "description": "Autonomous agent that solves real GitHub issues by reading, editing, and testing code (NeurIPS 2024).",
+          "tagline": "Autonomous agent solving real GitHub issues",
           "note": "",
-          "stars": 18943,
-          "lastCommit": "2026-04-06T22:15:28Z",
+          "stars": 18950,
+          "trend": 6,
+          "score": 75,
+          "license": "MIT",
+          "lastCommit": "2025-05-22T16:11:39Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agent",
+            "agent-based-model",
+            "ai",
+            "cybersecurity",
+            "developer-tools"
+          ]
         },
         {
           "name": "mini-swe-agent",
           "repo": "SWE-agent/mini-swe-agent",
           "url": "https://github.com/SWE-agent/mini-swe-agent",
           "description": "Minimalist 100-line coding agent achieving 74% on SWE-bench Verified as a learning reference.",
+          "tagline": "100-line agent with 74% SWE-bench score",
           "note": "",
-          "stars": 3701,
-          "lastCommit": "2026-04-06T22:15:18Z",
+          "stars": 3716,
+          "trend": 13,
+          "score": 81,
+          "license": "MIT",
+          "lastCommit": "2026-03-24T16:52:22Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agent",
+            "agentic-ai",
+            "agentic-ai-cli",
+            "ai",
+            "ai-agent"
+          ]
         },
         {
           "name": "AutoCodeRover",
           "repo": "AutoCodeRoverSG/auto-code-rover",
           "url": "https://github.com/AutoCodeRoverSG/auto-code-rover",
           "description": "Structure-aware autonomous program repair combining code search with LLM-based patching.",
+          "tagline": "Structure-aware autonomous code repair and patching",
           "note": "",
           "stars": 3064,
-          "lastCommit": "2025-04-24T07:58:24Z",
+          "trend": 0,
+          "score": 60,
+          "license": "NOASSERTION",
+          "lastCommit": "2024-09-10T05:13:18Z",
           "archived": false,
-          "language": ""
+          "tags": []
+        },
+        {
+          "name": "AutoRAG",
+          "repo": "Marker-Inc-Korea/AutoRAG",
+          "url": "https://github.com/Marker-Inc-Korea/AutoRAG",
+          "description": "AutoML-style framework for RAG optimization that automatically finds the best retrieval, generation, and prompt pipeline configuration.",
+          "tagline": "AutoML-style search for optimal RAG pipelines",
+          "note": "",
+          "stars": 4687,
+          "trend": 0,
+          "score": 77,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-03T15:50:54Z",
+          "archived": false,
+          "tags": [
+            "analysis",
+            "automl",
+            "benchmarking",
+            "document-parser",
+            "embeddings"
+          ]
         }
       ]
     },
@@ -673,110 +1201,199 @@
           "repo": "promptfoo/promptfoo",
           "url": "https://github.com/promptfoo/promptfoo",
           "description": "Test and red-team LLM applications with automated evaluations, CI/CD integration, and vulnerability scanning.",
+          "tagline": "Test and red-team LLMs with CI/CD integration",
           "note": "",
-          "stars": 19696,
-          "lastCommit": "2026-04-07T17:41:59Z",
+          "stars": 19745,
+          "trend": 36,
+          "score": 88,
+          "license": "MIT",
+          "lastCommit": "2026-03-24T22:52:54Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ci",
+            "ci-cd",
+            "cicd",
+            "evaluation",
+            "evaluation-framework"
+          ]
         },
         {
           "name": "DeepEval",
           "repo": "confident-ai/deepeval",
           "url": "https://github.com/confident-ai/deepeval",
           "description": "Pytest-like framework with 14+ evaluation metrics for RAG, fine-tuning, and alignment assessment.",
+          "tagline": "Pytest-style LLM evaluation with 14+ metrics",
           "note": "",
-          "stars": 14566,
-          "lastCommit": "2026-04-07T15:27:51Z",
+          "stars": 14607,
+          "trend": 31,
+          "score": 81,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-12-01T10:52:54Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "evaluation-framework",
+            "evaluation-metrics",
+            "llm-evaluation",
+            "llm-evaluation-framework",
+            "llm-evaluation-metrics"
+          ]
         },
         {
           "name": "RAGAS",
           "repo": "vibrantlabsai/ragas",
           "url": "https://github.com/vibrantlabsai/ragas",
           "description": "Evaluation framework for RAG quality assessment measuring both retrieval and generation with LLM-based and traditional metrics.",
+          "tagline": "Evaluate RAG retrieval and generation quality",
           "note": "",
-          "stars": 13264,
-          "lastCommit": "2026-02-24T07:47:19Z",
+          "stars": 13281,
+          "trend": 14,
+          "score": 82,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-01-13T17:47:29Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "evaluation",
+            "llm",
+            "llmops"
+          ]
         },
         {
           "name": "lm-evaluation-harness",
           "repo": "EleutherAI/lm-evaluation-harness",
           "url": "https://github.com/EleutherAI/lm-evaluation-harness",
           "description": "Standard framework for few-shot evaluation of language models across hundreds of benchmarks (EleutherAI).",
+          "tagline": "Standard few-shot LLM evaluation across hundreds of benchmarks",
           "note": "",
-          "stars": 12040,
-          "lastCommit": "2026-04-01T11:53:45Z",
+          "stars": 12052,
+          "trend": 12,
+          "score": 82,
+          "license": "MIT",
+          "lastCommit": "2026-02-13T20:21:47Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "evaluation-framework",
+            "language-model",
+            "transformer"
+          ]
         },
         {
           "name": "OpenCompass",
           "repo": "open-compass/opencompass",
           "url": "https://github.com/open-compass/opencompass",
           "description": "One-stop evaluation platform supporting 100+ models across academic and real-world benchmarks.",
+          "tagline": "One-stop evaluation for 100+ LLMs and benchmarks",
           "note": "",
-          "stars": 6835,
-          "lastCommit": "2026-04-07T09:22:04Z",
+          "stars": 6837,
+          "trend": 2,
+          "score": 77,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-02-14T03:46:30Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "benchmark",
+            "chatgpt",
+            "evaluation",
+            "large-language-model",
+            "llama2"
+          ]
         },
         {
           "name": "Agenta",
           "repo": "Agenta-AI/agenta",
           "url": "https://github.com/Agenta-AI/agenta",
           "description": "Open-source LLMOps platform combining prompt playground, evaluation workflows, and production observability.",
+          "tagline": "LLMOps platform with playground and evaluation",
           "note": "",
-          "stars": 4009,
-          "lastCommit": "2026-04-07T17:28:21Z",
+          "stars": 4013,
+          "trend": 1,
+          "score": 78,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-04-08T10:30:05Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agents",
+            "evaluation",
+            "llm-as-a-judge",
+            "llm-evaluation",
+            "llm-framework"
+          ]
         },
         {
           "name": "TruLens",
           "repo": "truera/trulens",
           "url": "https://github.com/truera/trulens",
           "description": "OpenTelemetry-based tracing and evaluation for RAG and agent workflows with built-in feedback functions (Snowflake/TruEra).",
+          "tagline": "OpenTelemetry tracing and evaluation for RAG agents",
           "note": "",
-          "stars": 3232,
-          "lastCommit": "2026-04-06T14:09:41Z",
+          "stars": 3234,
+          "trend": 1,
+          "score": 77,
+          "license": "MIT",
+          "lastCommit": "2026-03-10T19:15:51Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agent-evaluation",
+            "agentops",
+            "ai-agents",
+            "ai-monitoring",
+            "ai-observability"
+          ]
         },
         {
           "name": "LangWatch",
           "repo": "langwatch/langwatch",
           "url": "https://github.com/langwatch/langwatch",
           "description": "Evaluation and testing platform for LLM applications and AI agents with automated quality guardrails.",
+          "tagline": "LLM evaluation platform with automated quality guardrails",
           "note": "",
-          "stars": 3186,
-          "lastCommit": "2026-04-07T17:18:36Z",
+          "stars": 3187,
+          "trend": 0,
+          "score": 76,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-04-07T08:36:51Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "analytics",
+            "datasets",
+            "dspy",
+            "evaluation"
+          ]
         },
         {
           "name": "LightEval",
           "repo": "huggingface/lighteval",
           "url": "https://github.com/huggingface/lighteval",
           "description": "All-in-one LLM evaluation toolkit powering the Open LLM Leaderboard, supporting 1000+ tasks across multiple backends (Hugging Face).",
+          "tagline": "Powers the Open LLM Leaderboard, 1000+ tasks",
           "note": "",
           "stars": 2369,
-          "lastCommit": "2026-04-07T13:26:29Z",
+          "trend": 0,
+          "score": 68,
+          "license": "MIT",
+          "lastCommit": "2025-11-24T15:57:33Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "evaluation",
+            "evaluation-framework",
+            "evaluation-metrics",
+            "huggingface"
+          ]
         },
         {
           "name": "Inspect AI",
           "repo": "UKGovernmentBEIS/inspect_ai",
           "url": "https://github.com/UKGovernmentBEIS/inspect_ai",
           "description": "Framework for reproducible LLM evals with sandboxed agent execution, 100+ prebuilt evaluations, and VS Code integration (UK AI Safety Institute).",
+          "tagline": "Reproducible sandboxed LLM evals, 100+ prebuilt",
           "note": "",
-          "stars": 1887,
-          "lastCommit": "2026-04-07T13:00:57Z",
+          "stars": 1889,
+          "trend": 2,
+          "score": 76,
+          "license": "MIT",
+          "lastCommit": "2026-04-07T13:00:52Z",
           "archived": false,
-          "language": ""
+          "tags": []
         }
       ]
     },
@@ -789,44 +1406,93 @@
           "repo": "BerriAI/litellm",
           "url": "https://github.com/BerriAI/litellm",
           "description": "Unified API gateway for 100+ LLMs with load balancing, cost tracking, and automatic fallback routing.",
+          "tagline": "Unified API gateway for 100+ LLMs",
           "note": "",
-          "stars": 42465,
-          "lastCommit": "2026-04-07T17:39:08Z",
+          "stars": 42541,
+          "trend": 71,
+          "score": 92,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-04-08T04:31:27Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai-gateway",
+            "anthropic",
+            "azure-openai",
+            "bedrock",
+            "gateway"
+          ]
         },
         {
           "name": "Portkey Gateway",
           "repo": "Portkey-AI/gateway",
           "url": "https://github.com/Portkey-AI/gateway",
           "description": "AI gateway for intelligent routing, caching, load balancing, and fallbacks across 200+ LLMs.",
+          "tagline": "AI gateway routing and caching across 200+ LLMs",
           "note": "",
-          "stars": 11233,
-          "lastCommit": "2026-03-25T09:33:55Z",
+          "stars": 11238,
+          "trend": 4,
+          "score": 80,
+          "license": "MIT",
+          "lastCommit": "2026-01-12T08:46:07Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai-gateway",
+            "gateway",
+            "generative-ai",
+            "hacktoberfest",
+            "langchain"
+          ]
         },
         {
           "name": "RouteLLM",
           "repo": "lm-sys/RouteLLM",
           "url": "https://github.com/lm-sys/RouteLLM",
           "description": "Framework for training and serving LLM routers that reduce costs by up to 85% without quality loss (LMSYS).",
+          "tagline": "LLM routers cutting costs 85% without quality loss",
           "note": "",
-          "stars": 4767,
+          "stars": 4768,
+          "trend": 0,
+          "score": 62,
+          "license": "Apache-2.0",
           "lastCommit": "2024-08-10T19:10:15Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "LLMRouter",
           "repo": "ulab-uiuc/LLMRouter",
           "url": "https://github.com/ulab-uiuc/LLMRouter",
           "description": "Unified library with 16+ router implementations and standardized evaluation via command-line interface.",
+          "tagline": "16+ LLM router implementations with unified evaluation",
           "note": "",
-          "stars": 1606,
+          "stars": 1610,
+          "trend": 3,
+          "score": 76,
+          "license": "MIT",
           "lastCommit": "2026-03-17T21:50:45Z",
           "archived": false,
-          "language": ""
+          "tags": []
+        },
+        {
+          "name": "TensorZero",
+          "repo": "tensorzero/tensorzero",
+          "url": "https://github.com/tensorzero/tensorzero",
+          "description": "Open-source LLMOps platform unifying an LLM gateway, observability, evaluation, optimization, and experimentation with A/B testing across models.",
+          "tagline": "LLMOps platform with gateway, evals, and A/B testing",
+          "note": "",
+          "stars": 11191,
+          "trend": 1,
+          "score": 81,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-02T17:00:15Z",
+          "archived": false,
+          "tags": [
+            "ai",
+            "ai-engineering",
+            "anthropic",
+            "artificial-intelligence",
+            "deep-learning"
+          ]
         }
       ]
     },
@@ -839,143 +1505,267 @@
           "repo": "sktime/sktime",
           "url": "https://github.com/sktime/sktime",
           "description": "Unified framework for time-series forecasting, classification, regression, and clustering with scikit-learn-compatible interfaces.",
+          "tagline": "Unified sklearn-compatible time-series ML toolkit",
           "note": "",
-          "stars": 9712,
-          "lastCommit": "2026-04-05T21:16:27Z",
+          "stars": 9714,
+          "trend": 2,
+          "score": 75,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2025-11-25T00:02:03Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "anomaly-detection",
+            "changepoint-detection",
+            "data-mining",
+            "data-science"
+          ]
         },
         {
           "name": "Darts",
           "repo": "unit8co/darts",
           "url": "https://github.com/unit8co/darts",
           "description": "Unified API for 30+ forecasting models from ARIMA to transformers, with backtesting and ensembling built in.",
+          "tagline": "Unified API for 30+ forecasting models with backtesting",
           "note": "",
           "stars": 9310,
-          "lastCommit": "2026-04-07T06:52:06Z",
+          "trend": 0,
+          "score": 79,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-23T09:20:09Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "anomaly-detection",
+            "data-science",
+            "deep-learning",
+            "forecasting",
+            "machine-learning"
+          ]
         },
         {
           "name": "Nixtla StatsForecast",
           "repo": "Nixtla/statsforecast",
           "url": "https://github.com/Nixtla/statsforecast",
           "description": "Lightning-fast statistical models including AutoARIMA, AutoETS, and AutoCES for millions of time series.",
+          "tagline": "Lightning-fast AutoARIMA and AutoETS at scale",
           "note": "",
           "stars": 4747,
-          "lastCommit": "2026-04-06T21:24:29Z",
+          "trend": 1,
+          "score": 72,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-10-29T17:45:59Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "arima",
+            "automl",
+            "baselines",
+            "data-science",
+            "econometrics"
+          ]
         },
         {
           "name": "Merlion",
           "repo": "salesforce/Merlion",
           "url": "https://github.com/salesforce/Merlion",
           "description": "Time-series intelligence library with unified interfaces for forecasting, anomaly detection, and change-point detection (Salesforce).",
+          "tagline": "Unified forecasting, anomaly, and change-point detection",
           "note": "",
-          "stars": 4470,
-          "lastCommit": "2026-03-11T12:52:32Z",
+          "stars": 4471,
+          "trend": 0,
+          "score": 52,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2023-02-15T17:00:00Z",
           "archived": true,
-          "language": ""
+          "tags": [
+            "anomaly-detection",
+            "automl",
+            "benchmarking",
+            "ensemble-learning",
+            "forecasting"
+          ]
         },
         {
           "name": "Nixtla NeuralForecast",
           "repo": "Nixtla/neuralforecast",
           "url": "https://github.com/Nixtla/neuralforecast",
           "description": "Production-ready neural forecasting with 30+ state-of-the-art models including N-BEATS, TFT, and PatchTST.",
+          "tagline": "Production neural forecasting with 30+ models",
           "note": "",
           "stars": 4034,
-          "lastCommit": "2026-04-06T22:35:25Z",
+          "trend": 0,
+          "score": 76,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-27T17:30:46Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "baselines",
+            "baselines-zoo",
+            "deep-learning",
+            "deep-neural-networks",
+            "deepar"
+          ]
         },
         {
           "name": "PyPOTS",
           "repo": "WenjieDu/PyPOTS",
           "url": "https://github.com/WenjieDu/PyPOTS",
           "description": "Toolbox with 50+ deep learning models for partially-observed time-series imputation, classification, and clustering.",
+          "tagline": "50+ models for missing-value time-series analysis",
           "note": "",
           "stars": 1984,
-          "lastCommit": "2026-03-27T08:50:00Z",
+          "trend": 0,
+          "score": 74,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2026-03-26T04:22:46Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "anomaly-detection",
+            "classification",
+            "clustering",
+            "data-analysis",
+            "data-mining"
+          ]
         },
         {
           "name": "Lag-Llama",
           "repo": "time-series-foundation-models/lag-llama",
           "url": "https://github.com/time-series-foundation-models/lag-llama",
           "description": "First open-source foundation model for univariate probabilistic time-series forecasting based on a decoder-only transformer (NeurIPS 2024).",
+          "tagline": "First open-source probabilistic time-series foundation model",
           "note": "",
-          "stars": 1567,
+          "stars": 1568,
+          "trend": 0,
+          "score": 63,
+          "license": "Apache-2.0",
           "lastCommit": "2025-06-06T12:23:52Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "forecasting",
+            "foundation-models",
+            "lag-llama",
+            "llama",
+            "time-series"
+          ]
         },
         {
           "name": "skforecast",
           "repo": "skforecast/skforecast",
           "url": "https://github.com/skforecast/skforecast",
           "description": "Scikit-learn-compatible multi-step forecasting with XGBoost, LightGBM, CatBoost, and feature engineering utilities.",
+          "tagline": "Sklearn-compatible multi-step forecasting with gradient boosting",
           "note": "",
-          "stars": 1476,
-          "lastCommit": "2026-04-07T13:10:35Z",
+          "stars": 1473,
+          "trend": -3,
+          "score": 70,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2026-03-13T09:34:48Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "arima",
+            "autoregressive-forecasting",
+            "backtesting-forecasters",
+            "data-science",
+            "direct-forecasting"
+          ]
         },
         {
           "name": "AutoTS",
           "repo": "winedarksea/AutoTS",
           "url": "https://github.com/winedarksea/AutoTS",
           "description": "Genetic algorithm-based automated model selection, ensembling, and anomaly detection for time-series data.",
+          "tagline": "Genetic algorithm AutoML for time-series forecasting",
           "note": "",
-          "stars": 1384,
-          "lastCommit": "2026-04-07T12:34:13Z",
+          "stars": 1385,
+          "trend": 1,
+          "score": 74,
+          "license": "MIT",
+          "lastCommit": "2026-03-30T05:20:28Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "autots",
+            "deep-learning",
+            "feature-engineering",
+            "forecasting"
+          ]
         },
         {
           "name": "aeon",
           "repo": "aeon-toolkit/aeon",
           "url": "https://github.com/aeon-toolkit/aeon",
           "description": "Next-generation time-series ML toolkit for classification, regression, clustering, and anomaly detection.",
+          "tagline": "Next-generation time-series ML for all task types",
           "note": "",
-          "stars": 1366,
-          "lastCommit": "2026-04-06T01:03:21Z",
+          "stars": 1367,
+          "trend": 1,
+          "score": 74,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2026-03-23T21:35:44Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "aeon",
+            "ai",
+            "artificial-intelligence",
+            "data-mining",
+            "data-science"
+          ]
         },
         {
           "name": "Nixtla MLForecast",
           "repo": "Nixtla/mlforecast",
           "url": "https://github.com/Nixtla/mlforecast",
           "description": "Scalable ML-based forecasting with LightGBM, XGBoost, and distributed backends via Dask, Spark, and Ray.",
+          "tagline": "Scalable LightGBM and XGBoost time-series forecasting",
           "note": "",
           "stars": 1204,
-          "lastCommit": "2026-04-06T08:22:16Z",
+          "trend": 0,
+          "score": 72,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-10T19:05:42Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "dask",
+            "forecast",
+            "forecasting",
+            "lightgbm",
+            "machine-learning"
+          ]
         },
         {
           "name": "Time-MoE",
           "repo": "Time-MoE/Time-MoE",
           "url": "https://github.com/Time-MoE/Time-MoE",
           "description": "First billion-scale time-series foundation model using sparse mixture-of-experts, trained on 300B+ time points (ICLR 2025 Spotlight).",
+          "tagline": "Billion-scale sparse MoE time-series foundation model",
           "note": "",
-          "stars": 941,
+          "stars": 943,
+          "trend": 2,
+          "score": 73,
+          "license": "Apache-2.0",
           "lastCommit": "2026-03-21T16:00:55Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "deep-learning",
+            "large-model",
+            "machine-learning",
+            "time-series",
+            "time-series-forecasting"
+          ]
         },
         {
           "name": "Granite-TSFM",
           "repo": "ibm-granite/granite-tsfm",
           "url": "https://github.com/ibm-granite/granite-tsfm",
           "description": "Compact pretrained Tiny Time Mixers that rival billion-parameter models for zero/few-shot multivariate forecasting (IBM, NeurIPS 2024).",
+          "tagline": "Compact mixers rivaling billion-parameter forecasting models",
           "note": "",
           "stars": 834,
-          "lastCommit": "2026-04-06T17:17:00Z",
+          "trend": 0,
+          "score": 68,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-04T00:40:46Z",
           "archived": false,
-          "language": ""
+          "tags": []
         }
       ]
     },
@@ -988,77 +1778,139 @@
           "repo": "microsoft/nni",
           "url": "https://github.com/microsoft/nni",
           "description": "Comprehensive AutoML toolkit for NAS, hyperparameter tuning, feature engineering, and model compression.",
+          "tagline": "Comprehensive NAS, HPO, and model compression toolkit",
           "note": "Archived by Microsoft in Sep 2024.",
-          "stars": 14346,
-          "lastCommit": "2024-07-03T10:55:10Z",
+          "stars": 14347,
+          "trend": 1,
+          "score": 57,
+          "license": "MIT",
+          "lastCommit": "2023-09-14T12:12:06Z",
           "archived": true,
-          "language": ""
+          "tags": [
+            "automated-machine-learning",
+            "automl",
+            "bayesian-optimization",
+            "data-science",
+            "deep-learning"
+          ]
         },
         {
           "name": "Google AutoML",
           "repo": "google/automl",
           "url": "https://github.com/google/automl",
           "description": "Research code for EfficientNet, EfficientDet, MnasNet, and other NAS-discovered architectures (Google Brain).",
+          "tagline": "Research code behind EfficientNet and EfficientDet",
           "note": "",
           "stars": 6463,
-          "lastCommit": "2025-03-02T07:46:39Z",
+          "trend": 0,
+          "score": 63,
+          "license": "Apache-2.0",
+          "lastCommit": "2021-03-04T06:03:52Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "efficientdet",
+            "efficientnet",
+            "efficientnetv2",
+            "object-detection"
+          ]
         },
         {
           "name": "Once-For-All",
           "repo": "mit-han-lab/once-for-all",
           "url": "https://github.com/mit-han-lab/once-for-all",
           "description": "Train one network and specialize sub-networks for diverse hardware without retraining (MIT HAN Lab, ICLR 2020).",
+          "tagline": "Train once, deploy specialized sub-networks anywhere",
           "note": "",
           "stars": 1947,
-          "lastCommit": "2023-12-14T04:44:52Z",
+          "trend": 0,
+          "score": 59,
+          "license": "MIT",
+          "lastCommit": "2020-06-16T04:25:52Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "acceleration",
+            "automl",
+            "edge-ai",
+            "efficient-model",
+            "nas"
+          ]
         },
         {
           "name": "TinyEngine",
           "repo": "mit-han-lab/tinyengine",
           "url": "https://github.com/mit-han-lab/tinyengine",
           "description": "Memory-efficient inference engine for NAS-optimized models on microcontrollers (MIT HAN Lab).",
+          "tagline": "Inference engine for NAS models on microcontrollers",
           "note": "",
           "stars": 934,
+          "trend": 0,
+          "score": 56,
+          "license": "MIT",
           "lastCommit": "2024-11-27T18:51:37Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "c",
+            "codegenerator",
+            "cpp",
+            "deep-learning",
+            "edge-computing"
+          ]
         },
         {
           "name": "Vega",
           "repo": "huawei-noah/vega",
           "url": "https://github.com/huawei-noah/vega",
           "description": "AutoML pipeline covering NAS, hyperparameter optimization, auto-augmentation, and model compression (Huawei).",
+          "tagline": "Full AutoML pipeline with NAS and compression",
           "note": "",
           "stars": 851,
-          "lastCommit": "2023-02-15T09:36:59Z",
+          "trend": 0,
+          "score": 56,
+          "license": "NOASSERTION",
+          "lastCommit": "2022-09-29T02:52:12Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "NASLib",
           "repo": "automl/NASLib",
           "url": "https://github.com/automl/NASLib",
           "description": "NAS research library from AutoML Freiburg with interfaces to state-of-the-art search spaces and optimizers.",
+          "tagline": "NAS research library with standardized search spaces",
           "note": "",
           "stars": 586,
-          "lastCommit": "2024-11-11T15:56:07Z",
+          "trend": 0,
+          "score": 55,
+          "license": "Apache-2.0",
+          "lastCommit": "2024-07-03T08:12:04Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "nas",
+            "neural-architecture-search"
+          ]
         },
         {
           "name": "Archai",
           "repo": "microsoft/archai",
           "url": "https://github.com/microsoft/archai",
           "description": "Modular NAS framework for reproducible architecture search research (Microsoft).",
+          "tagline": "Modular NAS framework for reproducible research",
           "note": "",
           "stars": 483,
-          "lastCommit": "2025-11-24T03:14:04Z",
+          "trend": 0,
+          "score": 54,
+          "license": "MIT",
+          "lastCommit": "2023-09-15T18:08:17Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automated-machine-learning",
+            "automl",
+            "darts",
+            "deep-learning",
+            "hyperparameter-optimization"
+          ]
         }
       ]
     },
@@ -1071,88 +1923,167 @@
           "repo": "ray-project/ray",
           "url": "https://docs.ray.io/en/latest/tune/",
           "description": "Distributed hyperparameter tuning at scale with support for any ML framework and many search algorithms.",
+          "tagline": "Distributed HPO at scale for any ML framework",
           "note": "",
-          "stars": 41997,
-          "lastCommit": "2026-04-07T17:11:29Z",
+          "stars": 42023,
+          "trend": 20,
+          "score": 90,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-25T23:37:39Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "data-science",
+            "deep-learning",
+            "deployment",
+            "distributed",
+            "hyperparameter-optimization"
+          ]
         },
         {
           "name": "Optuna",
           "repo": "optuna/optuna",
           "url": "https://github.com/optuna/optuna",
           "description": "Define-by-run API with pruning, distributed execution, and a dashboard - the most widely adopted HPO framework.",
+          "tagline": "Most widely adopted HPO framework with pruning",
           "note": "",
-          "stars": 13865,
-          "lastCommit": "2026-04-07T08:05:22Z",
+          "stars": 13872,
+          "trend": 6,
+          "score": 84,
+          "license": "MIT",
+          "lastCommit": "2026-03-16T04:59:17Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "distributed",
+            "hyperparameter-optimization",
+            "machine-learning",
+            "parallel",
+            "python"
+          ]
         },
         {
           "name": "Hyperopt",
           "repo": "hyperopt/hyperopt",
           "url": "https://github.com/hyperopt/hyperopt",
           "description": "Pioneered tree-structured Parzen estimators for HPO.",
+          "tagline": "Pioneer of tree-structured Parzen estimators for HPO",
           "note": "Deprecated since Nov 2021 - use Optuna instead.",
-          "stars": 7615,
-          "lastCommit": "2026-03-16T21:37:20Z",
+          "stars": 7616,
+          "trend": 1,
+          "score": 77,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-02-08T16:50:09Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "hacktoberfest"
+          ]
         },
         {
           "name": "BoTorch",
           "repo": "meta-pytorch/botorch",
           "url": "https://github.com/meta-pytorch/botorch",
           "description": "Bayesian optimization library in PyTorch for high-dimensional, noisy, and multi-objective problems (Meta).",
+          "tagline": "PyTorch Bayesian optimization for multi-objective problems",
           "note": "",
           "stars": 3498,
-          "lastCommit": "2026-04-03T16:48:56Z",
+          "trend": 1,
+          "score": 74,
+          "license": "MIT",
+          "lastCommit": "2026-03-05T00:44:03Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "Keras Tuner",
           "repo": "keras-team/keras-tuner",
           "url": "https://github.com/keras-team/keras-tuner",
           "description": "Hyperparameter search for Keras models with built-in Bayesian optimization and Hyperband.",
+          "tagline": "Hyperparameter search for Keras with Bayesian and Hyperband",
           "note": "",
           "stars": 2923,
-          "lastCommit": "2025-12-01T22:23:25Z",
+          "trend": 0,
+          "score": 69,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-11-11T05:22:28Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "deep-learning",
+            "hyperparameter-optimization",
+            "keras",
+            "machine-learning"
+          ]
         },
         {
           "name": "Ax",
           "repo": "facebook/Ax",
           "url": "https://github.com/facebook/Ax",
           "description": "Adaptive experimentation platform for multi-objective optimization with BoTorch integration (Meta).",
+          "tagline": "Adaptive experimentation for multi-objective optimization",
           "note": "",
-          "stars": 2733,
-          "lastCommit": "2026-04-07T16:08:25Z",
+          "stars": 2732,
+          "trend": -1,
+          "score": 71,
+          "license": "MIT",
+          "lastCommit": "2026-03-05T01:36:12Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "SMAC3",
           "repo": "automl/SMAC3",
           "url": "https://github.com/automl/SMAC3",
           "description": "Sequential model-based algorithm configuration combining Bayesian optimization with racing mechanisms (AutoML Freiburg).",
+          "tagline": "Bayesian HPO with racing mechanisms for algorithm configuration",
           "note": "",
-          "stars": 1221,
-          "lastCommit": "2026-04-07T10:42:59Z",
+          "stars": 1218,
+          "trend": -3,
+          "score": 55,
+          "license": "NOASSERTION",
+          "lastCommit": "2025-01-23T12:13:15Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "algorithm-configuration",
+            "automated-machine-learning",
+            "automl",
+            "bayesian-optimisation",
+            "bayesian-optimization"
+          ]
         },
         {
           "name": "Dragonfly",
           "repo": "dragonfly/dragonfly",
           "url": "https://github.com/dragonfly/dragonfly",
           "description": "Scalable Bayesian optimization library supporting multi-fidelity and multi-objective search.",
+          "tagline": "Scalable Bayesian optimization with multi-fidelity search",
           "note": "Low activity since 2020.",
           "stars": 893,
-          "lastCommit": "2023-06-19T20:23:17Z",
+          "trend": 0,
+          "score": 56,
+          "license": "MIT",
+          "lastCommit": "2022-10-01T22:21:50Z",
           "archived": false,
-          "language": ""
+          "tags": []
+        },
+        {
+          "name": "Google Vizier",
+          "repo": "google/vizier",
+          "url": "https://github.com/google/vizier",
+          "description": "Research interface for blackbox and hyperparameter optimization with Bayesian, evolutionary, and multi-objective algorithms based on Google's internal Vizier Service.",
+          "tagline": "Open-source interface to Google's internal HPO service",
+          "note": "",
+          "stars": 1635,
+          "trend": 0,
+          "score": 58,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-02-01T16:38:21Z",
+          "archived": false,
+          "tags": [
+            "algorithm",
+            "bayesian-optimization",
+            "blackbox-optimization",
+            "deep-learning",
+            "distributed-computing"
+          ]
         }
       ]
     },
@@ -1165,88 +2096,181 @@
           "repo": "cleanlab/cleanlab",
           "url": "https://github.com/cleanlab/cleanlab",
           "description": "Data-centric AI toolkit for finding and fixing label errors, outliers, and data quality issues automatically.",
+          "tagline": "Automatically find and fix label errors in datasets",
           "note": "",
           "stars": 11411,
+          "trend": 0,
+          "score": 77,
+          "license": "Apache-2.0",
           "lastCommit": "2026-01-13T17:39:04Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "active-learning",
+            "annotation",
+            "anomaly-detection",
+            "data-annotation",
+            "data-centric-ai"
+          ]
         },
         {
           "name": "tsfresh",
           "repo": "blue-yonder/tsfresh",
           "url": "https://github.com/blue-yonder/tsfresh",
           "description": "Automatic extraction of hundreds of time-series features with built-in statistical relevance filtering.",
+          "tagline": "Auto-extract hundreds of time-series features with filtering",
           "note": "",
-          "stars": 9168,
-          "lastCommit": "2025-11-15T15:14:13Z",
+          "stars": 9169,
+          "trend": 1,
+          "score": 70,
+          "license": "MIT",
+          "lastCommit": "2025-08-30T18:56:34Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "data-science",
+            "feature-extraction",
+            "time-series"
+          ]
         },
         {
           "name": "Featuretools",
           "repo": "alteryx/featuretools",
           "url": "https://github.com/alteryx/featuretools",
           "description": "Deep feature synthesis for automatically creating meaningful features from relational and temporal data (Alteryx).",
+          "tagline": "Deep feature synthesis for relational and temporal data",
           "note": "",
-          "stars": 7627,
-          "lastCommit": "2026-02-03T18:19:45Z",
+          "stars": 7628,
+          "trend": 1,
+          "score": 65,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2024-05-14T18:59:20Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automated-feature-engineering",
+            "automated-machine-learning",
+            "automl",
+            "data-science",
+            "feature-engineering"
+          ]
         },
         {
           "name": "OpenMLDB",
           "repo": "4paradigm/OpenMLDB",
           "url": "https://github.com/4paradigm/OpenMLDB",
           "description": "Database for consistent feature computation between training and serving with SQL-based feature engineering (SIGMOD 2025).",
+          "tagline": "SQL-based feature engineering consistent across train and serve",
           "note": "",
           "stars": 1685,
-          "lastCommit": "2026-04-03T02:42:32Z",
+          "trend": 0,
+          "score": 58,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-02-21T06:58:05Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "database-for-ai",
+            "database-for-machine-learning",
+            "feature-engineering",
+            "feature-extraction",
+            "feature-store"
+          ]
         },
         {
           "name": "Boruta",
           "repo": "scikit-learn-contrib/boruta_py",
           "url": "https://github.com/scikit-learn-contrib/boruta_py",
           "description": "All-relevant feature selection wrapper using random forest shadow features to identify important predictors.",
+          "tagline": "All-relevant feature selection via random forest shadows",
           "note": "",
           "stars": 1624,
-          "lastCommit": "2025-11-13T04:00:49Z",
+          "trend": 0,
+          "score": 58,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2024-08-13T19:54:03Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "AutoFeat",
           "repo": "cod3licious/autofeat",
           "url": "https://github.com/cod3licious/autofeat",
           "description": "Scikit-learn-compatible automated feature engineering and selection that generates non-linear features and selects robust subsets.",
+          "tagline": "Sklearn-compatible non-linear feature generation and selection",
           "note": "",
           "stars": 536,
-          "lastCommit": "2026-01-06T22:56:18Z",
+          "trend": 0,
+          "score": 63,
+          "license": "MIT",
+          "lastCommit": "2026-01-06T22:55:52Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automated-data-science",
+            "automated-feature-engineering",
+            "automated-machine-learning",
+            "automl",
+            "feature-engineering"
+          ]
         },
         {
           "name": "CAAFE",
           "repo": "noahho/CAAFE",
           "url": "https://github.com/noahho/CAAFE",
           "description": "LLM-powered context-aware feature engineering that generates semantically meaningful features with explanations.",
+          "tagline": "LLM generates semantically meaningful features with explanations",
           "note": "",
           "stars": 186,
+          "trend": 0,
+          "score": 51,
+          "license": "NOASSERTION",
           "lastCommit": "2024-12-20T14:27:45Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "data-science",
+            "deep-learning",
+            "feature-engineering",
+            "machine-learning"
+          ]
         },
         {
           "name": "Feature-engine",
           "repo": "feature-engine/feature_engine",
           "url": "https://github.com/feature-engine/feature_engine",
           "description": "Scikit-learn-compatible transformers for feature creation, selection, encoding, and imputation.",
+          "tagline": "Sklearn transformers for feature creation and selection",
           "note": "",
           "stars": 2221,
-          "lastCommit": "2026-03-28T14:24:33Z",
+          "trend": 0,
+          "score": 59,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2022-01-04T17:09:47Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "data-science",
+            "feature-engineering",
+            "feature-extraction",
+            "feature-selection",
+            "machine-learning"
+          ]
+        },
+        {
+          "name": "NVTabular",
+          "repo": "NVIDIA-Merlin/NVTabular",
+          "url": "https://github.com/NVIDIA-Merlin/NVTabular",
+          "description": "GPU-accelerated feature engineering and preprocessing for terabyte-scale tabular data with automatic hashing, categorification, and normalization (NVIDIA).",
+          "tagline": "GPU-accelerated feature engineering for terabyte tabular data",
+          "note": "",
+          "stars": 1140,
+          "trend": 0,
+          "score": 57,
+          "license": "Apache-2.0",
+          "lastCommit": "2023-08-29T16:41:05Z",
+          "archived": false,
+          "tags": [
+            "deep-learning",
+            "feature-engineering",
+            "feature-selection",
+            "gpu",
+            "machine-learning"
+          ]
         }
       ]
     },
@@ -1259,77 +2283,168 @@
           "repo": "Data-Centric-AI-Community/ydata-profiling",
           "url": "https://github.com/Data-Centric-AI-Community/ydata-profiling",
           "description": "One-line data quality profiling and exploratory analysis for Pandas and Spark DataFrames.",
+          "tagline": "One-line EDA profiling for Pandas and Spark",
           "note": "",
-          "stars": 13489,
-          "lastCommit": "2026-03-03T17:44:00Z",
+          "stars": 13490,
+          "trend": 1,
+          "score": 79,
+          "license": "MIT",
+          "lastCommit": "2026-01-13T18:27:21Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "big-data-analytics",
+            "data-analysis",
+            "data-exploration",
+            "data-profiling",
+            "data-quality"
+          ]
         },
         {
           "name": "Great Expectations",
           "repo": "great-expectations/great_expectations",
           "url": "https://github.com/great-expectations/great_expectations",
           "description": "Programmable data validation and documentation framework for maintaining pipeline quality.",
+          "tagline": "Programmable data validation for pipeline quality",
           "note": "",
-          "stars": 11366,
-          "lastCommit": "2026-04-07T17:30:56Z",
+          "stars": 11370,
+          "trend": 4,
+          "score": 83,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-01T21:52:00Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "cleandata",
+            "data-engineering",
+            "data-profilers",
+            "data-profiling",
+            "data-quality"
+          ]
         },
         {
           "name": "Pandera",
           "repo": "unionai-oss/pandera",
           "url": "https://github.com/unionai-oss/pandera",
           "description": "Statistical data testing and validation for dataframes with expressive schema definitions.",
+          "tagline": "Statistical schema validation for dataframes",
           "note": "",
           "stars": 4290,
-          "lastCommit": "2026-04-04T17:51:33Z",
+          "trend": 0,
+          "score": 77,
+          "license": "MIT",
+          "lastCommit": "2026-03-18T00:42:20Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "assertions",
+            "data-assertions",
+            "data-check",
+            "data-cleaning",
+            "data-processing"
+          ]
         },
         {
           "name": "SweetViz",
           "repo": "fbdesignpro/sweetviz",
           "url": "https://github.com/fbdesignpro/sweetviz",
           "description": "High-density EDA visualizations and target analysis reports generated in two lines of code.",
+          "tagline": "High-density EDA visualizations in two lines of code",
           "note": "",
           "stars": 3089,
-          "lastCommit": "2026-04-05T02:16:07Z",
+          "trend": 0,
+          "score": 75,
+          "license": "MIT",
+          "lastCommit": "2026-04-05T00:02:19Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "data-analysis",
+            "data-exploration",
+            "data-profiling",
+            "data-science",
+            "data-visualization"
+          ]
         },
         {
           "name": "DataPrep",
           "repo": "sfu-db/dataprep",
           "url": "https://github.com/sfu-db/dataprep",
           "description": "Low-code library for data collection, cleaning, and EDA that is 10x faster than traditional profiling.",
+          "tagline": "Low-code data cleaning and EDA, 10x faster",
           "note": "",
           "stars": 2237,
-          "lastCommit": "2024-06-27T16:57:45Z",
+          "trend": 0,
+          "score": 59,
+          "license": "MIT",
+          "lastCommit": "2022-07-08T00:57:11Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "apis",
+            "apiwrapper",
+            "cleaning",
+            "connector",
+            "data-exploration"
+          ]
         },
         {
           "name": "Optimus",
           "repo": "hi-primus/optimus",
           "url": "https://github.com/hi-primus/optimus",
           "description": "Agile data preparation supporting Pandas, Dask, cuDF, and PySpark with a unified API.",
+          "tagline": "Unified data prep API across Pandas, Spark, and GPU",
           "note": "",
           "stars": 1537,
-          "lastCommit": "2024-12-02T14:09:25Z",
+          "trend": 0,
+          "score": 58,
+          "license": "Apache-2.0",
+          "lastCommit": "2020-07-19T03:05:40Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "big-data-cleaning",
+            "bigdata",
+            "cudf",
+            "dask",
+            "dask-cudf"
+          ]
         },
         {
           "name": "Spotlight",
           "repo": "Renumics/spotlight",
           "url": "https://github.com/Renumics/spotlight",
           "description": "Interactive visualization tool for auditing and understanding unstructured ML datasets covering images, audio, and text.",
+          "tagline": "Interactive auditing of unstructured ML datasets",
           "note": "",
           "stars": 1255,
-          "lastCommit": "2026-03-30T21:56:59Z",
+          "trend": 0,
+          "score": 72,
+          "license": "MIT",
+          "lastCommit": "2026-03-30T21:26:04Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "audio",
+            "computer-vision",
+            "data-centric-ai",
+            "data-curation",
+            "data-visualization"
+          ]
+        },
+        {
+          "name": "pyjanitor",
+          "repo": "pyjanitor-devs/pyjanitor",
+          "url": "https://github.com/pyjanitor-devs/pyjanitor",
+          "description": "Clean APIs for data cleaning with a fluent method-chaining interface for pandas DataFrames, inspired by the R Janitor package.",
+          "tagline": "Fluent method-chaining data cleaning for pandas",
+          "note": "",
+          "stars": 1486,
+          "trend": 0,
+          "score": 73,
+          "license": "MIT",
+          "lastCommit": "2026-04-07T13:53:32Z",
+          "archived": false,
+          "tags": [
+            "cleaning-data",
+            "data",
+            "data-engineering",
+            "dataframe",
+            "hacktoberfest"
+          ]
         }
       ]
     },
@@ -1342,66 +2457,183 @@
           "repo": "HumanSignal/label-studio",
           "url": "https://github.com/HumanSignal/label-studio",
           "description": "Multi-type data labeling platform with ML-assisted annotation and LLM integration for text, images, audio, and video.",
+          "tagline": "ML-assisted labeling for text, images, audio, video",
           "note": "",
-          "stars": 26945,
-          "lastCommit": "2026-04-07T06:32:36Z",
+          "stars": 26959,
+          "trend": 13,
+          "score": 88,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-13T08:15:04Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "annotation",
+            "annotation-tool",
+            "annotations",
+            "boundingbox",
+            "computer-vision"
+          ]
         },
         {
           "name": "Snorkel",
           "repo": "snorkel-team/snorkel",
           "url": "https://github.com/snorkel-team/snorkel",
           "description": "Programmatic labeling via weak supervision - write labeling functions instead of hand-labeling.",
+          "tagline": "Write labeling functions instead of hand-labeling data",
           "note": "",
           "stars": 5947,
-          "lastCommit": "2024-05-02T18:39:42Z",
+          "trend": 0,
+          "score": 63,
+          "license": "Apache-2.0",
+          "lastCommit": "2024-02-27T23:00:37Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "data-augmentation",
+            "data-science",
+            "data-slicing",
+            "labeling"
+          ]
         },
         {
           "name": "Argilla",
           "repo": "argilla-io/argilla",
           "url": "https://github.com/argilla-io/argilla",
           "description": "Collaboration platform for collecting and managing human and AI feedback for NLP and LLM development.",
+          "tagline": "Collaborative human and AI feedback for LLM development",
           "note": "",
-          "stars": 4925,
-          "lastCommit": "2026-04-06T22:29:25Z",
+          "stars": 4928,
+          "trend": 3,
+          "score": 65,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-03-11T08:58:41Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "active-learning",
+            "ai",
+            "annotation-tool",
+            "developer-tools",
+            "gpt-4"
+          ]
         },
         {
           "name": "Distilabel",
           "repo": "argilla-io/distilabel",
           "url": "https://github.com/argilla-io/distilabel",
           "description": "Framework for synthetic data generation, AI feedback, and instruction tuning using Self-Instruct and EvolInstruct techniques.",
+          "tagline": "Synthetic data generation with Self-Instruct and EvolInstruct",
           "note": "",
           "stars": 3157,
-          "lastCommit": "2026-04-06T22:29:56Z",
+          "trend": 1,
+          "score": 62,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-01-28T10:08:05Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "huggingface",
+            "llms",
+            "openai",
+            "python"
+          ]
         },
         {
           "name": "Autodistill",
           "repo": "autodistill/autodistill",
           "url": "https://github.com/autodistill/autodistill",
           "description": "Automated image labeling by distilling foundation model knowledge into smaller task-specific models (Roboflow).",
+          "tagline": "Distill foundation models into task-specific labelers",
           "note": "",
           "stars": 2658,
-          "lastCommit": "2025-05-14T07:53:55Z",
+          "trend": 0,
+          "score": 60,
+          "license": "Apache-2.0",
+          "lastCommit": "2024-02-13T19:53:33Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "auto-labeling",
+            "computer-vision",
+            "deep-learning",
+            "foundation-models",
+            "grounding-dino"
+          ]
         },
         {
           "name": "Autolabel",
           "repo": "refuel-ai/autolabel",
           "url": "https://github.com/refuel-ai/autolabel",
           "description": "LLM-powered labeling, cleaning, and enrichment for text classification, NER, and entity matching.",
+          "tagline": "LLM-powered labeling for classification, NER, and matching",
           "note": "",
           "stars": 2310,
-          "lastCommit": "2025-03-05T01:15:43Z",
+          "trend": 0,
+          "score": 59,
+          "license": "MIT",
+          "lastCommit": "2023-10-16T21:55:43Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "anthropic-claude",
+            "data-science",
+            "gpt-4",
+            "huggingface-transformers",
+            "langchain"
+          ]
+        },
+        {
+          "name": "X-AnyLabeling",
+          "repo": "CVHub520/X-AnyLabeling",
+          "url": "https://github.com/CVHub520/X-AnyLabeling",
+          "description": "AI-assisted annotation with Segment Anything and other foundation models for automatic segmentation, detection, and classification pre-labeling.",
+          "tagline": "SAM-powered annotation for auto-segmentation and detection",
+          "note": "",
+          "stars": 8668,
+          "trend": 8,
+          "score": 83,
+          "license": "GPL-3.0",
+          "lastCommit": "2026-03-26T17:13:53Z",
+          "archived": false,
+          "tags": [
+            "artificial-intelligence",
+            "clip",
+            "computer-vision",
+            "deep-learning",
+            "groundingdino"
+          ]
+        },
+        {
+          "name": "Adala",
+          "repo": "HumanSignal/Adala",
+          "url": "https://github.com/HumanSignal/Adala",
+          "description": "Autonomous data labeling agent that uses LLMs to label data, learn from ground truth, and iteratively improve labeling quality (Label Studio team).",
+          "tagline": "Autonomous LLM agent iteratively improving labeling quality",
+          "note": "",
+          "stars": 1419,
+          "trend": 0,
+          "score": 58,
+          "license": "Apache-2.0",
+          "lastCommit": "2023-11-30T17:41:21Z",
+          "archived": false,
+          "tags": [
+            "agent",
+            "agent-based-framework",
+            "agent-oriented-programming",
+            "autonomous-agents",
+            "gpt-4"
+          ]
+        },
+        {
+          "name": "LabelU",
+          "repo": "opendatalab/labelU",
+          "url": "https://github.com/opendatalab/labelU",
+          "description": "Multi-modal annotation toolbox supporting image, audio, and video with configurable templates and collaborative labeling workflows.",
+          "tagline": "Multi-modal annotation for image, audio, and video",
+          "note": "",
+          "stars": 1538,
+          "trend": 0,
+          "score": 62,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-10-01T06:03:48Z",
+          "archived": false,
+          "tags": []
         }
       ]
     },
@@ -1414,44 +2646,147 @@
           "repo": "sdv-dev/SDV",
           "url": "https://github.com/sdv-dev/SDV",
           "description": "Synthetic Data Vault with multiple generative models (GaussianCopula, CTGAN, TVAE) for single-table, multi-table, and sequential data.",
+          "tagline": "Synthetic tabular data vault with multiple generative models",
           "note": "",
-          "stars": 3460,
-          "lastCommit": "2026-04-06T20:16:28Z",
+          "stars": 3463,
+          "trend": 2,
+          "score": 78,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-03-27T20:55:46Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "data-generation",
+            "deep-learning",
+            "gan",
+            "gans",
+            "generative-adversarial-network"
+          ]
         },
         {
           "name": "SDG",
           "repo": "hitsz-ids/synthetic-data-generator",
           "url": "https://github.com/hitsz-ids/synthetic-data-generator",
           "description": "Framework for generating high-quality synthetic tabular data preserving statistical distributions and correlations.",
+          "tagline": "Synthetic tabular data preserving statistical distributions",
           "note": "",
-          "stars": 2416,
-          "lastCommit": "2026-04-06T18:26:58Z",
+          "stars": 2415,
+          "trend": -1,
+          "score": 58,
+          "license": "Apache-2.0",
+          "lastCommit": "2024-12-03T02:44:38Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agent",
+            "data-generator",
+            "deep-learning",
+            "gan",
+            "generative-ai"
+          ]
         },
         {
           "name": "DataDreamer",
           "repo": "datadreamer-dev/DataDreamer",
           "url": "https://github.com/datadreamer-dev/DataDreamer",
           "description": "Reproducible LLM workflows for prompting, synthetic data generation, and model training in one pipeline.",
+          "tagline": "Reproducible LLM pipelines for synthetic data and training",
           "note": "",
           "stars": 1108,
+          "trend": 0,
+          "score": 57,
+          "license": "MIT",
           "lastCommit": "2025-02-02T21:23:50Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "alignment",
+            "deep-learning",
+            "fine-tuning",
+            "gpt",
+            "instruction-tuning"
+          ]
         },
         {
           "name": "Gretel Synthetics",
           "repo": "gretelai/gretel-synthetics",
           "url": "https://github.com/gretelai/gretel-synthetics",
           "description": "Synthetic data generators for structured and unstructured text with differential privacy guarantees.",
+          "tagline": "Privacy-preserving synthetic data with differential privacy",
           "note": "",
           "stars": 676,
+          "trend": 0,
+          "score": 50,
+          "license": "NOASSERTION",
           "lastCommit": "2025-06-24T21:44:06Z",
           "archived": true,
-          "language": ""
+          "tags": [
+            "artificial-intelligence",
+            "differential-privacy",
+            "privacy",
+            "synthetic-data",
+            "tensorflow"
+          ]
+        },
+        {
+          "name": "Curator",
+          "repo": "bespokelabsai/curator",
+          "url": "https://github.com/bespokelabsai/curator",
+          "description": "Pipeline-oriented synthetic data curation for post-training and structured data extraction with built-in quality filtering from LLMs.",
+          "tagline": "Pipeline synthetic data curation with LLM quality filtering",
+          "note": "",
+          "stars": 1660,
+          "trend": 2,
+          "score": 75,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-15T17:57:15Z",
+          "archived": false,
+          "tags": [
+            "agents",
+            "deep-learning",
+            "fine-tuning",
+            "instruction-tuning",
+            "llm"
+          ]
+        },
+        {
+          "name": "Synthetic Data Kit",
+          "repo": "meta-llama/synthetic-data-kit",
+          "url": "https://github.com/meta-llama/synthetic-data-kit",
+          "description": "Toolkit for generating high-quality synthetic datasets to fine-tune models with LLM-generated training data at scale (Meta).",
+          "tagline": "LLM-generated training data at scale for fine-tuning",
+          "note": "",
+          "stars": 1560,
+          "trend": 0,
+          "score": 67,
+          "license": "MIT",
+          "lastCommit": "2025-10-25T13:31:44Z",
+          "archived": false,
+          "tags": [
+            "data",
+            "generation",
+            "llm",
+            "python",
+            "synthetic"
+          ]
+        },
+        {
+          "name": "NeMo Data Designer",
+          "repo": "NVIDIA-NeMo/DataDesigner",
+          "url": "https://github.com/NVIDIA-NeMo/DataDesigner",
+          "description": "Generates high-quality synthetic data from scratch or seed data with built-in evaluation and quality control for LLM training pipelines (NVIDIA).",
+          "tagline": "Generates and evaluates synthetic data for LLM pipelines",
+          "note": "",
+          "stars": 1530,
+          "trend": 35,
+          "score": 79,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-02T16:31:26Z",
+          "archived": false,
+          "tags": [
+            "agentic-ai",
+            "data-augmentation",
+            "data-generation",
+            "llm",
+            "mcp"
+          ]
         }
       ]
     },
@@ -1464,66 +2799,168 @@
           "repo": "mit-han-lab/llm-awq",
           "url": "https://github.com/mit-han-lab/llm-awq",
           "description": "Activation-aware weight quantization achieving lossless 4-bit compression for LLMs (MIT HAN Lab, MLSys 2024 Best Paper).",
+          "tagline": "Lossless 4-bit LLM quantization via activation awareness",
           "note": "",
-          "stars": 3491,
+          "stars": 3494,
+          "trend": 3,
+          "score": 68,
+          "license": "MIT",
           "lastCommit": "2025-07-17T19:44:51Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "Torch-Pruning",
           "repo": "VainF/Torch-Pruning",
           "url": "https://github.com/VainF/Torch-Pruning",
           "description": "Structural pruning framework for any PyTorch model including LLMs, YOLO, ViT, and diffusion models (CVPR 2023).",
+          "tagline": "Structural pruning for any PyTorch model",
           "note": "",
-          "stars": 3282,
+          "stars": 3283,
+          "trend": 1,
+          "score": 66,
+          "license": "MIT",
           "lastCommit": "2025-09-07T17:25:20Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "efficient-deep-learning",
+            "llm",
+            "model-compression",
+            "pruning",
+            "transformers"
+          ]
         },
         {
           "name": "LLM Compressor",
           "repo": "vllm-project/llm-compressor",
           "url": "https://github.com/vllm-project/llm-compressor",
           "description": "Transformers-compatible compression library optimized for efficient vLLM inference.",
+          "tagline": "Transformers-compatible compression optimized for vLLM",
           "note": "",
-          "stars": 2985,
-          "lastCommit": "2026-04-07T17:16:10Z",
+          "stars": 2987,
+          "trend": 1,
+          "score": 77,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-13T14:41:51Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "compression",
+            "quantization"
+          ]
         },
         {
           "name": "Intel Neural Compressor",
           "repo": "intel/neural-compressor",
           "url": "https://github.com/intel/neural-compressor",
           "description": "Unified quantization, sparsity, pruning, and distillation across PyTorch, TensorFlow, and ONNX (Intel).",
+          "tagline": "Unified quantization and pruning across PyTorch and ONNX",
           "note": "",
-          "stars": 2611,
-          "lastCommit": "2026-04-07T08:52:04Z",
+          "stars": 2612,
+          "trend": 1,
+          "score": 70,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-12-25T03:50:16Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "auto-tuning",
+            "awq",
+            "fp4",
+            "gptq",
+            "int4"
+          ]
         },
         {
           "name": "NVIDIA TensorRT Model Optimizer",
           "repo": "NVIDIA/Model-Optimizer",
           "url": "https://github.com/NVIDIA/Model-Optimizer",
           "description": "Quantization, pruning, distillation, and speculative decoding optimized for TensorRT and vLLM deployment.",
+          "tagline": "Quantization and pruning optimized for TensorRT and vLLM",
           "note": "",
-          "stars": 2391,
-          "lastCommit": "2026-04-07T17:44:11Z",
+          "stars": 2405,
+          "trend": 9,
+          "score": 79,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-09T20:31:45Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "GPTQModel",
           "repo": "ModelCloud/GPTQModel",
           "url": "https://github.com/ModelCloud/GPTQModel",
           "description": "LLM quantization toolkit with support for NVIDIA CUDA, AMD ROCm, Intel, and Apple Silicon backends.",
+          "tagline": "LLM quantization for CUDA, ROCm, and Apple Silicon",
           "note": "",
-          "stars": 1091,
-          "lastCommit": "2026-04-07T11:28:42Z",
+          "stars": 1093,
+          "trend": 1,
+          "score": 73,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-04-02T23:56:55Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "gptq",
+            "optimum",
+            "peft",
+            "quantization",
+            "sglang"
+          ]
+        },
+        {
+          "name": "bitsandbytes",
+          "repo": "bitsandbytes-foundation/bitsandbytes",
+          "url": "https://github.com/bitsandbytes-foundation/bitsandbytes",
+          "description": "De facto standard for k-bit quantization of LLMs in PyTorch - enables 4-bit and 8-bit inference and training, the backbone for QLoRA.",
+          "tagline": "De facto 4-bit and 8-bit LLM quantization for PyTorch",
+          "note": "",
+          "stars": 8104,
+          "trend": 4,
+          "score": 79,
+          "license": "MIT",
+          "lastCommit": "2026-02-16T21:29:22Z",
+          "archived": false,
+          "tags": [
+            "llm",
+            "machine-learning",
+            "pytorch",
+            "qlora",
+            "quantization"
+          ]
+        },
+        {
+          "name": "Optimum",
+          "repo": "huggingface/optimum",
+          "url": "https://github.com/huggingface/optimum",
+          "description": "Toolkit for accelerating Transformers inference with hardware-optimized quantization, pruning, and graph optimization for ONNX Runtime, OpenVINO, and more (Hugging Face).",
+          "tagline": "Hardware-optimized Transformers inference and quantization",
+          "note": "",
+          "stars": 3351,
+          "trend": 1,
+          "score": 71,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-12-19T10:50:51Z",
+          "archived": false,
+          "tags": [
+            "graphcore",
+            "habana",
+            "inference",
+            "intel",
+            "onnx"
+          ]
+        },
+        {
+          "name": "Olive",
+          "repo": "microsoft/Olive",
+          "url": "https://github.com/microsoft/Olive",
+          "description": "End-to-end model optimization automating fine-tuning, conversion, quantization, and graph optimization for CPUs, GPUs, and NPUs (Microsoft).",
+          "tagline": "End-to-end model optimization for CPU, GPU, and NPU",
+          "note": "",
+          "stars": 2288,
+          "trend": 0,
+          "score": 71,
+          "license": "MIT",
+          "lastCommit": "2026-01-29T23:00:29Z",
+          "archived": false,
+          "tags": []
         }
       ]
     },
@@ -1536,143 +2973,330 @@
           "repo": "ollama/ollama",
           "url": "https://github.com/ollama/ollama",
           "description": "Docker-like local LLM runner for getting models up and running quickly for prototyping.",
+          "tagline": "Docker-like local LLM runner for fast prototyping",
           "note": "",
-          "stars": 168012,
-          "lastCommit": "2026-04-07T16:18:40Z",
+          "stars": 168126,
+          "trend": 94,
+          "score": 96,
+          "license": "MIT",
+          "lastCommit": "2026-04-07T05:19:10Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "deepseek",
+            "gemma",
+            "gemma3",
+            "glm",
+            "go"
+          ]
         },
         {
           "name": "llama.cpp",
           "repo": "ggml-org/llama.cpp",
           "url": "https://github.com/ggml-org/llama.cpp",
           "description": "LLM inference in C/C++ with broad hardware support - the foundation for most local LLM applications.",
+          "tagline": "C/C++ LLM inference, foundation for local apps",
           "note": "",
-          "stars": 102313,
-          "lastCommit": "2026-04-07T17:35:37Z",
+          "stars": 102456,
+          "trend": 114,
+          "score": 96,
+          "license": "MIT",
+          "lastCommit": "2026-04-08T08:38:08Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ggml"
+          ]
         },
         {
           "name": "vLLM",
           "repo": "vllm-project/vllm",
           "url": "https://github.com/vllm-project/vllm",
           "description": "High-throughput LLM serving engine with PagedAttention, powering most open-source LLM deployments in production.",
+          "tagline": "High-throughput PagedAttention engine for production LLMs",
           "note": "",
-          "stars": 75585,
-          "lastCommit": "2026-04-07T17:36:22Z",
+          "stars": 75682,
+          "trend": 82,
+          "score": 95,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-03T02:19:12Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "amd",
+            "blackwell",
+            "cuda",
+            "deepseek",
+            "deepseek-v3"
+          ]
         },
         {
           "name": "SGLang",
           "repo": "sgl-project/sglang",
           "url": "https://github.com/sgl-project/sglang",
           "description": "High-performance LLM serving framework powering 400K+ GPUs with best-in-class structured and constrained decoding.",
+          "tagline": "High-performance LLM serving with constrained decoding",
           "note": "",
-          "stars": 25521,
-          "lastCommit": "2026-04-07T17:34:59Z",
+          "stars": 25557,
+          "trend": 31,
+          "score": 89,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-06T04:42:12Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "attention",
+            "blackwell",
+            "cuda",
+            "deepseek",
+            "diffusion"
+          ]
         },
         {
           "name": "ONNX Runtime",
           "repo": "microsoft/onnxruntime",
           "url": "https://github.com/microsoft/onnxruntime",
           "description": "Cross-platform inference accelerator supporting PyTorch, TensorFlow, scikit-learn, and XGBoost via the ONNX format (Microsoft).",
+          "tagline": "Cross-platform inference accelerator via ONNX format",
           "note": "",
-          "stars": 19784,
-          "lastCommit": "2026-04-07T17:32:33Z",
+          "stars": 19798,
+          "trend": 13,
+          "score": 87,
+          "license": "MIT",
+          "lastCommit": "2026-03-17T23:08:09Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai-framework",
+            "deep-learning",
+            "hardware-acceleration",
+            "machine-learning",
+            "neural-networks"
+          ]
         },
         {
           "name": "TensorRT-LLM",
           "repo": "NVIDIA/TensorRT-LLM",
           "url": "https://github.com/NVIDIA/TensorRT-LLM",
           "description": "High-performance LLM inference library with custom attention kernels, speculative decoding, and MoE support (NVIDIA).",
+          "tagline": "NVIDIA's high-performance LLM inference with custom kernels",
           "note": "",
-          "stars": 13312,
-          "lastCommit": "2026-04-07T15:57:08Z",
+          "stars": 13320,
+          "trend": 5,
+          "score": 84,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-03-12T19:43:07Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "blackwell",
+            "cuda",
+            "llm-serving",
+            "moe",
+            "pytorch"
+          ]
         },
         {
           "name": "Triton Inference Server",
           "repo": "triton-inference-server/server",
           "url": "https://github.com/triton-inference-server/server",
           "description": "Multi-framework inference serving for TensorRT, PyTorch, ONNX, and custom backends (NVIDIA).",
+          "tagline": "Multi-framework inference server for production deployment",
           "note": "",
-          "stars": 10525,
-          "lastCommit": "2026-04-07T16:58:58Z",
+          "stars": 10527,
+          "trend": 2,
+          "score": 82,
+          "license": "BSD-3-Clause",
+          "lastCommit": "2026-03-27T16:47:26Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "cloud",
+            "datacenter",
+            "deep-learning",
+            "edge",
+            "gpu"
+          ]
         },
         {
           "name": "OpenVINO",
           "repo": "openvinotoolkit/openvino",
           "url": "https://github.com/openvinotoolkit/openvino",
           "description": "Inference optimization and deployment toolkit for CPUs, GPUs, and edge accelerators (Intel).",
+          "tagline": "Intel inference optimization for CPU, GPU, and edge",
           "note": "",
-          "stars": 10024,
-          "lastCommit": "2026-04-07T16:25:43Z",
+          "stars": 10029,
+          "trend": 5,
+          "score": 83,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-07T16:13:02Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "computer-vision",
+            "deep-learning",
+            "deploy-ai",
+            "diffusion-models"
+          ]
         },
         {
           "name": "BentoML",
           "repo": "bentoml/BentoML",
           "url": "https://github.com/bentoml/BentoML",
           "description": "Build production-ready inference APIs, batch jobs, and multi-model pipelines with unified Python framework.",
+          "tagline": "Python framework for production inference APIs and pipelines",
           "note": "",
-          "stars": 8559,
-          "lastCommit": "2026-04-06T16:58:03Z",
+          "stars": 8564,
+          "trend": 2,
+          "score": 81,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-02T06:12:17Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai-inference",
+            "deep-learning",
+            "generative-ai",
+            "inference-platform",
+            "llm"
+          ]
         },
         {
           "name": "LMDeploy",
           "repo": "InternLM/lmdeploy",
           "url": "https://github.com/InternLM/lmdeploy",
           "description": "Toolkit for compressing, deploying, and serving large language and vision-language models.",
+          "tagline": "Compress, deploy, and serve LLMs and vision models",
           "note": "",
-          "stars": 7756,
-          "lastCommit": "2026-04-07T10:06:22Z",
+          "stars": 7760,
+          "trend": 3,
+          "score": 81,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-08T03:37:26Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "codellama",
+            "cuda-kernels",
+            "deepspeed",
+            "fastertransformer",
+            "internlm"
+          ]
         },
         {
           "name": "KServe",
           "repo": "kserve/kserve",
           "url": "https://github.com/kserve/kserve",
           "description": "Kubernetes-native standardized model serving with canary rollouts, autoscaling, and multi-framework support (CNCF Incubating).",
+          "tagline": "Kubernetes-native model serving with canary rollouts",
           "note": "",
-          "stars": 5298,
-          "lastCommit": "2026-04-06T14:25:10Z",
+          "stars": 5305,
+          "trend": 5,
+          "score": 81,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-13T23:12:37Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "artificial-intelligence",
+            "cncf",
+            "genai",
+            "hacktoberfest",
+            "istio"
+          ]
         },
         {
           "name": "ExecuTorch",
           "repo": "pytorch/executorch",
           "url": "https://github.com/pytorch/executorch",
           "description": "On-device AI inference for mobile, embedded, and edge platforms with a 50KB base runtime footprint (Meta).",
+          "tagline": "On-device AI inference with 50KB runtime footprint",
           "note": "",
-          "stars": 4478,
-          "lastCommit": "2026-04-07T17:43:52Z",
+          "stars": 4481,
+          "trend": 1,
+          "score": 78,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-04-01T21:27:40Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "deep-learning",
+            "embedded",
+            "gpu",
+            "machine-learning",
+            "mobile"
+          ]
         },
         {
           "name": "LitServe",
           "repo": "Lightning-AI/LitServe",
           "url": "https://github.com/Lightning-AI/LitServe",
           "description": "Minimal, high-performance Python framework for AI model serving (Lightning AI).",
+          "tagline": "Minimal high-performance Python AI serving framework",
           "note": "",
-          "stars": 3859,
-          "lastCommit": "2026-04-07T06:39:13Z",
+          "stars": 3858,
+          "trend": -1,
+          "score": 69,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-12-23T19:39:23Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "api",
+            "artificial-intelligence",
+            "deep-learning",
+            "developer-tools"
+          ]
+        },
+        {
+          "name": "Cog",
+          "repo": "replicate/cog",
+          "url": "https://github.com/replicate/cog",
+          "description": "Package ML models as standard Docker containers with auto-generated HTTP APIs and GPU setup for reproducible, portable deployment (Replicate).",
+          "tagline": "Package ML models as Docker containers with auto APIs",
+          "note": "",
+          "stars": 9374,
+          "trend": 1,
+          "score": 81,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-02T01:19:45Z",
+          "archived": false,
+          "tags": [
+            "ai",
+            "containers",
+            "cuda",
+            "docker",
+            "machine-learning"
+          ]
+        },
+        {
+          "name": "LightLLM",
+          "repo": "ModelTC/LightLLM",
+          "url": "https://github.com/ModelTC/LightLLM",
+          "description": "Lightweight LLM inference and serving framework with continuous batching, tensor parallelism, and efficient memory management.",
+          "tagline": "Lightweight LLM serving with continuous batching",
+          "note": "",
+          "stars": 3996,
+          "trend": 0,
+          "score": 66,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-09-03T07:54:11Z",
+          "archived": false,
+          "tags": [
+            "deep-learning",
+            "gpt",
+            "llama",
+            "llm",
+            "model-serving"
+          ]
+        },
+        {
+          "name": "TFX",
+          "repo": "tensorflow/tfx",
+          "url": "https://github.com/tensorflow/tfx",
+          "description": "End-to-end platform for deploying production ML pipelines with data validation, transformation, training, evaluation, and serving components (Google).",
+          "tagline": "End-to-end production ML pipeline platform from Google",
+          "note": "",
+          "stars": 2178,
+          "trend": 0,
+          "score": 71,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-03T20:51:09Z",
+          "archived": false,
+          "tags": [
+            "apache-beam",
+            "machine-learning",
+            "tensorflow"
+          ]
         }
       ]
     },
@@ -1685,66 +3309,168 @@
           "repo": "evidentlyai/evidently",
           "url": "https://github.com/evidentlyai/evidently",
           "description": "ML and LLM observability with 100+ metrics for evaluating, testing, and monitoring any AI system in production.",
+          "tagline": "ML and LLM observability with 100+ production metrics",
           "note": "",
-          "stars": 7374,
-          "lastCommit": "2026-03-30T12:37:28Z",
+          "stars": 7376,
+          "trend": 2,
+          "score": 80,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-10T14:15:55Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "data-drift",
+            "data-quality",
+            "data-science",
+            "data-validation",
+            "generative-ai"
+          ]
         },
         {
           "name": "Giskard",
           "repo": "Giskard-AI/giskard-oss",
           "url": "https://github.com/Giskard-AI/giskard-oss",
           "description": "Testing and evaluation for ML and LLM models covering bias, performance regression, and security vulnerabilities.",
+          "tagline": "ML and LLM testing for bias and security vulnerabilities",
           "note": "",
-          "stars": 5224,
-          "lastCommit": "2026-04-07T02:12:34Z",
+          "stars": 5225,
+          "trend": 1,
+          "score": 78,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-26T11:07:50Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agent-evaluation",
+            "ai-red-team",
+            "ai-security",
+            "ai-testing",
+            "fairness-ai"
+          ]
         },
         {
           "name": "Deepchecks",
           "repo": "deepchecks/deepchecks",
           "url": "https://github.com/deepchecks/deepchecks",
           "description": "Holistic ML validation covering data integrity, drift detection, and model evaluation in a single suite.",
+          "tagline": "Holistic ML validation suite for data and models",
           "note": "",
           "stars": 4002,
-          "lastCommit": "2025-12-28T12:07:44Z",
+          "trend": 0,
+          "score": 61,
+          "license": "NOASSERTION",
+          "lastCommit": "2024-12-15T15:25:39Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "data-drift",
+            "data-science",
+            "data-validation",
+            "deep-learning",
+            "html-report"
+          ]
         },
         {
           "name": "WhyLogs",
           "repo": "whylabs/whylogs",
           "url": "https://github.com/whylabs/whylogs",
           "description": "Lightweight data logging library that profiles datasets for drift detection without storing raw data.",
+          "tagline": "Lightweight drift detection without storing raw data",
           "note": "",
-          "stars": 2812,
-          "lastCommit": "2025-01-10T20:14:49Z",
+          "stars": 2811,
+          "trend": 0,
+          "score": 60,
+          "license": "Apache-2.0",
+          "lastCommit": "2024-12-03T23:53:13Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai-pipelines",
+            "analytics",
+            "approximate-statistics",
+            "calculate-statistics",
+            "constraints"
+          ]
         },
         {
           "name": "Alibi Detect",
           "repo": "SeldonIO/alibi-detect",
           "url": "https://github.com/SeldonIO/alibi-detect",
           "description": "Outlier, adversarial, and drift detection algorithms for tabular, text, image, and time-series data (Seldon).",
+          "tagline": "Outlier, adversarial, and drift detection across data types",
           "note": "",
           "stars": 2509,
-          "lastCommit": "2025-12-11T16:35:15Z",
+          "trend": 0,
+          "score": 69,
+          "license": "NOASSERTION",
+          "lastCommit": "2025-12-11T16:06:39Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "adversarial",
+            "anomaly",
+            "concept-drift",
+            "data-drift",
+            "detection"
+          ]
         },
         {
           "name": "NannyML",
           "repo": "NannyML/nannyml",
           "url": "https://github.com/NannyML/nannyml",
           "description": "Estimate model performance without ground truth labels and link data drift directly to accuracy degradation.",
+          "tagline": "Estimate model performance without ground truth labels",
           "note": "",
           "stars": 2136,
-          "lastCommit": "2025-07-12T08:12:42Z",
+          "trend": 0,
+          "score": 64,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-07-12T08:14:14Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "data-analysis",
+            "data-drift",
+            "data-science",
+            "deep-learning",
+            "jupyter-notebook"
+          ]
+        },
+        {
+          "name": "OpenLLMetry",
+          "repo": "traceloop/openllmetry",
+          "url": "https://github.com/traceloop/openllmetry",
+          "description": "OpenTelemetry-based observability for LLM applications with automatic instrumentation for LangChain, LlamaIndex, and OpenAI SDK.",
+          "tagline": "OpenTelemetry observability with auto-instrumentation for LLMs",
+          "note": "",
+          "stars": 6986,
+          "trend": 1,
+          "score": 80,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-30T15:56:40Z",
+          "archived": false,
+          "tags": [
+            "artifical-intelligence",
+            "datascience",
+            "generative-ai",
+            "good-first-issue",
+            "good-first-issues"
+          ]
+        },
+        {
+          "name": "Helicone",
+          "repo": "Helicone/helicone",
+          "url": "https://github.com/Helicone/helicone",
+          "description": "LLM observability platform with one-line integration for cost tracking, latency analysis, prompt versioning, and usage dashboards (YC W23).",
+          "tagline": "One-line LLM observability for cost and latency tracking",
+          "note": "",
+          "stars": 5463,
+          "trend": 3,
+          "score": 69,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-08-21T18:47:38Z",
+          "archived": false,
+          "tags": [
+            "agent-monitoring",
+            "analytics",
+            "evaluation",
+            "gpt",
+            "langchain"
+          ]
         }
       ]
     },
@@ -1757,55 +3483,126 @@
           "repo": "NVIDIA/garak",
           "url": "https://github.com/NVIDIA/garak",
           "description": "LLM vulnerability scanner with 100+ attack modules covering prompt injection, data leakage, and jailbreaking.",
+          "tagline": "LLM vulnerability scanner with 100+ attack modules",
           "note": "",
-          "stars": 7485,
-          "lastCommit": "2026-04-07T16:58:57Z",
+          "stars": 7493,
+          "trend": 6,
+          "score": 82,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-03T15:24:32Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "llm-evaluation",
+            "llm-security",
+            "security-scanners",
+            "vulnerability-assessment"
+          ]
         },
         {
           "name": "Guardrails AI",
           "repo": "guardrails-ai/guardrails",
           "url": "https://github.com/guardrails-ai/guardrails",
           "description": "Framework for adding structural and semantic validation guardrails to LLM outputs.",
+          "tagline": "Structural and semantic validation guardrails for LLM outputs",
           "note": "",
-          "stars": 6644,
-          "lastCommit": "2026-04-03T19:59:16Z",
+          "stars": 6647,
+          "trend": 1,
+          "score": 79,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-03T20:00:28Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "foundation-model",
+            "gpt-3",
+            "llm",
+            "openai"
+          ]
         },
         {
           "name": "Plano",
           "repo": "katanemo/plano",
           "url": "https://github.com/katanemo/plano",
           "description": "AI-native proxy with built-in orchestration, safety controls, and observability for agentic applications.",
+          "tagline": "AI-native proxy with safety controls for agentic apps",
           "note": "",
-          "stars": 6216,
-          "lastCommit": "2026-04-04T16:59:12Z",
+          "stars": 6228,
+          "trend": 6,
+          "score": 81,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-03T17:06:19Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai-gateway",
+            "ai-gateway-support",
+            "envoy",
+            "envoyproxy",
+            "gateway"
+          ]
         },
         {
           "name": "NeMo Guardrails",
           "repo": "NVIDIA-NeMo/Guardrails",
           "url": "https://github.com/NVIDIA-NeMo/Guardrails",
           "description": "Programmable safety rails for LLM-based conversational systems with topical and safety controls (NVIDIA).",
+          "tagline": "Programmable topical and safety rails for LLM conversations",
           "note": "",
-          "stars": 5934,
-          "lastCommit": "2026-04-07T17:35:41Z",
+          "stars": 5938,
+          "trend": 3,
+          "score": 80,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-03-12T13:22:49Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agents",
+            "generative-ai",
+            "guardrails",
+            "llm-safety",
+            "llm-security"
+          ]
         },
         {
           "name": "DeepTeam",
           "repo": "confident-ai/deepteam",
           "url": "https://github.com/confident-ai/deepteam",
           "description": "Red-teaming framework for systematically testing LLM vulnerabilities across multiple attack vectors.",
+          "tagline": "Systematic red-teaming for LLM vulnerabilities",
           "note": "",
-          "stars": 1479,
-          "lastCommit": "2026-04-06T04:23:49Z",
+          "stars": 1510,
+          "trend": 20,
+          "score": 72,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-11-12T14:18:25Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "hacktoberfest",
+            "llm-guardrails",
+            "llm-red-teaming",
+            "llm-safety",
+            "python"
+          ]
+        },
+        {
+          "name": "LLM Guard",
+          "repo": "protectai/llm-guard",
+          "url": "https://github.com/protectai/llm-guard",
+          "description": "Security toolkit with input/output scanners for prompt injection, data leakage, toxic content, and other safety risks in production LLM applications.",
+          "tagline": "Input/output scanners for prompt injection and leakage",
+          "note": "",
+          "stars": 2788,
+          "trend": 0,
+          "score": 65,
+          "license": "MIT",
+          "lastCommit": "2025-09-03T20:12:45Z",
+          "archived": false,
+          "tags": [
+            "adversarial-machine-learning",
+            "chatgpt",
+            "large-language-models",
+            "llm",
+            "llm-security"
+          ]
         }
       ]
     },
@@ -1818,55 +3615,85 @@
           "repo": "openai/mle-bench",
           "url": "https://github.com/openai/mle-bench",
           "description": "Benchmark using 75 Kaggle competitions to evaluate ML engineering agents (OpenAI).",
+          "tagline": "75 Kaggle competitions for evaluating ML agents",
           "note": "",
           "stars": 1448,
+          "trend": 0,
+          "score": 73,
+          "license": "NOASSERTION",
           "lastCommit": "2026-03-20T09:39:39Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "NAS-Bench-101",
           "repo": "google-research/nasbench",
           "url": "https://github.com/google-research/nasbench",
           "description": "Benchmark dataset with 423,624 evaluated neural architectures for efficient NAS research (Google).",
+          "tagline": "423,624 evaluated neural architectures for NAS research",
           "note": "",
           "stars": 717,
-          "lastCommit": "2023-05-01T06:38:25Z",
+          "trend": 0,
+          "score": 45,
+          "license": "Apache-2.0",
+          "lastCommit": "2019-11-17T21:28:16Z",
           "archived": true,
-          "language": ""
+          "tags": []
         },
         {
           "name": "NAS-Bench-201",
           "repo": "D-X-Y/NAS-Bench-201",
           "url": "https://github.com/D-X-Y/NAS-Bench-201",
           "description": "Reproducible benchmark with 15,625 evaluated architectures across three datasets for fair NAS comparison.",
+          "tagline": "15,625 architectures across three datasets for fair NAS",
           "note": "",
           "stars": 644,
+          "trend": 0,
+          "score": 64,
+          "license": "MIT",
           "lastCommit": "2025-10-31T05:34:11Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "dataset",
+            "nas",
+            "nas-bench-201",
+            "pytorch"
+          ]
         },
         {
           "name": "AMLB",
           "repo": "openml/automlbenchmark",
           "url": "https://github.com/openml/automlbenchmark",
           "description": "Standard AutoML benchmark comparing frameworks across 104 classification and regression tasks (OpenML).",
+          "tagline": "Standard benchmark comparing AutoML frameworks across 104 tasks",
           "note": "",
-          "stars": 458,
-          "lastCommit": "2026-04-06T19:30:21Z",
+          "stars": 459,
+          "trend": 1,
+          "score": 55,
+          "license": "MIT",
+          "lastCommit": "2023-09-01T12:31:25Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automl",
+            "benchmark",
+            "machine-learning"
+          ]
         },
         {
           "name": "TabArena",
           "repo": "autogluon/tabarena",
           "url": "https://github.com/autogluon/tabarena",
           "description": "Living benchmark for tabular ML with continuously maintained leaderboard and best-practice evaluation (NeurIPS 2025 Spotlight).",
+          "tagline": "Living leaderboard for tabular ML best practices",
           "note": "",
-          "stars": 207,
-          "lastCommit": "2026-04-07T17:42:10Z",
+          "stars": 208,
+          "trend": 1,
+          "score": 67,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-07T21:54:04Z",
           "archived": false,
-          "language": ""
+          "tags": []
         }
       ]
     },
@@ -1879,176 +3706,336 @@
           "repo": "ray-project/ray",
           "url": "https://github.com/ray-project/ray",
           "description": "Unified AI compute engine for distributed training, tuning, and model serving with Ray Train, Ray Tune, and Ray Serve.",
+          "tagline": "Distributed HPO at scale for any ML framework",
           "note": "",
-          "stars": 41997,
-          "lastCommit": "2026-04-07T17:11:29Z",
+          "stars": 42023,
+          "trend": 20,
+          "score": 90,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-25T23:37:39Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "data-science",
+            "deep-learning",
+            "deployment",
+            "distributed",
+            "hyperparameter-optimization"
+          ]
         },
         {
           "name": "MLflow",
           "repo": "mlflow/mlflow",
           "url": "https://github.com/mlflow/mlflow",
           "description": "End-to-end ML lifecycle platform with experiment tracking, model registry, and integrated prompt optimization.",
+          "tagline": "End-to-end ML lifecycle with experiment tracking and registry",
           "note": "",
-          "stars": 25179,
-          "lastCommit": "2026-04-07T15:41:21Z",
+          "stars": 25210,
+          "trend": 29,
+          "score": 89,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-08T05:29:25Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agentops",
+            "agents",
+            "ai",
+            "ai-governance",
+            "apache-spark"
+          ]
         },
         {
           "name": "Langfuse",
           "repo": "langfuse/langfuse",
           "url": "https://github.com/langfuse/langfuse",
           "description": "Open-source LLM engineering platform with tracing, evaluations, prompt management, and cost analytics.",
+          "tagline": "Open-source LLM tracing, evals, and prompt management",
           "note": "",
-          "stars": 24476,
-          "lastCommit": "2026-04-07T17:22:00Z",
+          "stars": 24542,
+          "trend": 63,
+          "score": 90,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-04-07T09:37:12Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "analytics",
+            "autogen",
+            "evaluation",
+            "langchain",
+            "large-language-models"
+          ]
         },
         {
           "name": "Prefect",
           "repo": "PrefectHQ/prefect",
           "url": "https://github.com/PrefectHQ/prefect",
           "description": "Modern data workflow automation with retries, caching, and real-time logging.",
+          "tagline": "Modern data workflow automation with retries and caching",
           "note": "",
-          "stars": 22088,
-          "lastCommit": "2026-04-07T17:14:49Z",
+          "stars": 22094,
+          "trend": 4,
+          "score": 85,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-03T17:50:49Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "automation",
+            "data",
+            "data-engineering",
+            "data-ops",
+            "data-science"
+          ]
         },
         {
           "name": "Opik",
           "repo": "comet-ml/opik",
           "url": "https://github.com/comet-ml/opik",
           "description": "LLM debugging, evaluation, and monitoring platform with detailed tracing and quality dashboards (Comet).",
+          "tagline": "LLM debugging, evaluation, and quality dashboards",
           "note": "",
-          "stars": 18694,
-          "lastCommit": "2026-04-07T17:41:04Z",
+          "stars": 18707,
+          "trend": 11,
+          "score": 86,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-07T16:16:40Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "evaluation",
+            "hacktoberfest",
+            "hacktoberfest2025",
+            "langchain",
+            "llama-index"
+          ]
         },
         {
           "name": "Kubeflow",
           "repo": "kubeflow/kubeflow",
           "url": "https://github.com/kubeflow/kubeflow",
           "description": "ML toolkit on Kubernetes for building portable, scalable ML pipelines and training workflows.",
+          "tagline": "Kubernetes ML toolkit for portable scalable pipelines",
           "note": "",
-          "stars": 15557,
-          "lastCommit": "2026-01-05T13:47:10Z",
+          "stars": 15558,
+          "trend": 2,
+          "score": 68,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-03-25T21:59:50Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "google-kubernetes-engine",
+            "jupyter",
+            "kubeflow",
+            "kubernetes",
+            "machine-learning"
+          ]
         },
         {
           "name": "DVC",
           "repo": "treeverse/dvc",
           "url": "https://github.com/treeverse/dvc",
           "description": "Version control for data and models with built-in experiment tracking and pipeline management.",
+          "tagline": "Git-like version control for data and ML models",
           "note": "",
-          "stars": 15509,
-          "lastCommit": "2026-04-07T06:25:54Z",
+          "stars": 15513,
+          "trend": 1,
+          "score": 82,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-31T05:06:44Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "data-science",
+            "data-version-control",
+            "developer-tools",
+            "machine-learning"
+          ]
         },
         {
           "name": "Dagster",
           "repo": "dagster-io/dagster",
           "url": "https://github.com/dagster-io/dagster",
           "description": "Asset-centric orchestration built for ML pipelines with data lineage tracking and observability.",
+          "tagline": "Asset-centric ML pipeline orchestration with lineage tracking",
           "note": "",
-          "stars": 15244,
-          "lastCommit": "2026-04-07T17:34:28Z",
+          "stars": 15246,
+          "trend": 1,
+          "score": 82,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-02T17:20:58Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "analytics",
+            "dagster",
+            "data-engineering",
+            "data-integration",
+            "data-orchestrator"
+          ]
         },
         {
           "name": "W&B",
           "repo": "wandb/wandb",
           "url": "https://github.com/wandb/wandb",
           "description": "Experiment tracking, visualization, and collaboration platform for ML teams (Weights and Biases).",
+          "tagline": "Experiment tracking and visualization for ML teams",
           "note": "",
-          "stars": 10972,
-          "lastCommit": "2026-04-07T17:24:08Z",
+          "stars": 10973,
+          "trend": 1,
+          "score": 81,
+          "license": "MIT",
+          "lastCommit": "2026-03-10T23:54:02Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "collaboration",
+            "data-science",
+            "data-versioning",
+            "deep-learning"
+          ]
         },
         {
           "name": "Kedro",
           "repo": "kedro-org/kedro",
           "url": "https://github.com/kedro-org/kedro",
           "description": "Framework for reproducible, maintainable ML pipelines with clean coding patterns.",
+          "tagline": "Reproducible, maintainable ML pipelines with clean patterns",
           "note": "",
-          "stars": 10811,
-          "lastCommit": "2026-04-07T16:18:01Z",
+          "stars": 10812,
+          "trend": 1,
+          "score": 81,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-07T12:54:59Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "experiment-tracking",
+            "hacktoberfest",
+            "kedro",
+            "machine-learning",
+            "machine-learning-engineering"
+          ]
         },
         {
           "name": "Metaflow",
           "repo": "Netflix/metaflow",
           "url": "https://github.com/Netflix/metaflow",
           "description": "Human-centric framework for managing real-life data science and ML projects at scale (Netflix).",
+          "tagline": "Human-centric framework for real-life ML projects at scale",
           "note": "",
-          "stars": 10016,
-          "lastCommit": "2026-04-03T20:30:17Z",
+          "stars": 10017,
+          "trend": 1,
+          "score": 81,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-20T21:38:19Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agents",
+            "ai",
+            "aws",
+            "azure",
+            "cost-optimization"
+          ]
         },
         {
           "name": "Phoenix",
           "repo": "Arize-ai/phoenix",
           "url": "https://github.com/Arize-ai/phoenix",
           "description": "AI observability platform with OpenTelemetry-native tracing and LLM evaluation dashboards (Arize).",
+          "tagline": "OpenTelemetry-native AI observability and LLM evaluation",
           "note": "",
-          "stars": 9195,
-          "lastCommit": "2026-04-07T17:40:40Z",
+          "stars": 9203,
+          "trend": 7,
+          "score": 83,
+          "license": "NOASSERTION",
+          "lastCommit": "2026-04-07T18:49:07Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agents",
+            "ai-monitoring",
+            "ai-observability",
+            "aiengineering",
+            "anthropic"
+          ]
         },
         {
           "name": "Feast",
           "repo": "feast-dev/feast",
           "url": "https://github.com/feast-dev/feast",
           "description": "Open-source feature store for managing and serving ML features in real-time and batch inference.",
+          "tagline": "Open-source feature store for real-time and batch ML",
           "note": "",
-          "stars": 6912,
-          "lastCommit": "2026-04-07T17:43:59Z",
+          "stars": 6913,
+          "trend": 0,
+          "score": 78,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-10T20:00:19Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "big-data",
+            "data-engineering",
+            "data-quality",
+            "data-science",
+            "feature-store"
+          ]
         },
         {
           "name": "ClearML",
           "repo": "clearml/clearml",
           "url": "https://github.com/clearml/clearml",
           "description": "Unified experiment manager, pipeline orchestrator, and data/model management platform.",
+          "tagline": "Unified experiment manager and pipeline orchestrator",
           "note": "",
-          "stars": 6612,
-          "lastCommit": "2026-04-03T08:09:56Z",
+          "stars": 6614,
+          "trend": 2,
+          "score": 80,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-24T15:13:10Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "clearml",
+            "control",
+            "deep-learning",
+            "deeplearning"
+          ]
         },
         {
           "name": "Aim",
           "repo": "aimhubio/aim",
           "url": "https://github.com/aimhubio/aim",
           "description": "Self-hosted experiment tracker with a high-performance UI that handles 10,000+ training runs.",
+          "tagline": "Self-hosted experiment tracker for 10,000+ training runs",
           "note": "",
-          "stars": 6075,
-          "lastCommit": "2026-04-06T20:10:29Z",
+          "stars": 6077,
+          "trend": 1,
+          "score": 69,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-05-08T10:24:23Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "data-science",
+            "data-visualization",
+            "experiment-tracking",
+            "machine-learning"
+          ]
         },
         {
           "name": "ZenML",
           "repo": "zenml-io/zenml",
           "url": "https://github.com/zenml-io/zenml",
           "description": "Framework for building portable, production-ready ML pipelines that run on any infrastructure.",
+          "tagline": "Portable production-ready ML pipelines on any infrastructure",
           "note": "",
-          "stars": 5319,
-          "lastCommit": "2026-04-07T17:40:28Z",
+          "stars": 5321,
+          "trend": 2,
+          "score": 79,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-03-19T17:11:55Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "agentops",
+            "agents",
+            "ai",
+            "automl",
+            "data-science"
+          ]
         }
       ]
     },
@@ -2061,66 +4048,114 @@
           "repo": "josephmisiti/awesome-machine-learning",
           "url": "https://github.com/josephmisiti/awesome-machine-learning",
           "description": "Curated list of ML frameworks, libraries, and software organized by language.",
+          "tagline": "ML frameworks and libraries organized by language",
           "note": "",
-          "stars": 72186,
+          "stars": 72192,
+          "trend": 4,
+          "score": 89,
+          "license": "NOASSERTION",
           "lastCommit": "2026-03-15T15:16:19Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "awesome-deep-learning",
           "repo": "ChristosChristofidis/awesome-deep-learning",
           "url": "https://github.com/ChristosChristofidis/awesome-deep-learning",
           "description": "Curated list of deep learning tutorials, projects, and communities.",
+          "tagline": "Deep learning tutorials, projects, and communities",
           "note": "",
-          "stars": 27860,
+          "stars": 27861,
+          "trend": -2,
+          "score": 61,
+          "license": null,
           "lastCommit": "2025-05-26T12:28:00Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "awesome",
+            "awesome-list",
+            "deep-learning",
+            "deep-learning-tutorial",
+            "deep-networks"
+          ]
         },
         {
           "name": "awesome-llm",
           "repo": "Hannibal046/Awesome-LLM",
           "url": "https://github.com/Hannibal046/Awesome-LLM",
           "description": "Curated list of large language model resources covering papers, tools, and applications.",
+          "tagline": "LLM resources covering papers, tools, and applications",
           "note": "",
-          "stars": 26609,
+          "stars": 26613,
+          "trend": 3,
+          "score": 75,
+          "license": "CC0-1.0",
           "lastCommit": "2025-07-31T02:38:24Z",
           "archived": false,
-          "language": ""
+          "tags": []
         },
         {
           "name": "awesome-production-machine-learning",
           "repo": "EthicalML/awesome-production-machine-learning",
           "url": "https://github.com/EthicalML/awesome-production-machine-learning",
           "description": "Curated list of tools for deploying, monitoring, and scaling ML in production.",
+          "tagline": "Tools for deploying and scaling ML in production",
           "note": "",
-          "stars": 20346,
-          "lastCommit": "2026-04-07T04:53:54Z",
+          "stars": 20348,
+          "trend": 2,
+          "score": 81,
+          "license": "MIT",
+          "lastCommit": "2026-03-01T02:46:18Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "awesome",
+            "awesome-list",
+            "data-mining",
+            "deep-learning",
+            "explainability"
+          ]
         },
         {
           "name": "awesome-mlops",
           "repo": "visenger/awesome-mlops",
           "url": "https://github.com/visenger/awesome-mlops",
           "description": "Curated list of MLOps tools and best practices for production ML.",
+          "tagline": "MLOps tools and best practices for production ML",
           "note": "",
-          "stars": 13844,
+          "stars": 13846,
+          "trend": 2,
+          "score": 58,
+          "license": null,
           "lastCommit": "2024-11-21T14:45:11Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "data-science",
+            "devops",
+            "engineering",
+            "federated-learning"
+          ]
         },
         {
           "name": "awesome-generative-ai",
           "repo": "steven2358/awesome-generative-ai",
           "url": "https://github.com/steven2358/awesome-generative-ai",
           "description": "Curated list of modern generative AI projects and services.",
+          "tagline": "Modern generative AI projects and services curated",
           "note": "",
-          "stars": 11774,
-          "lastCommit": "2026-04-07T15:45:04Z",
+          "stars": 11776,
+          "trend": 1,
+          "score": 81,
+          "license": "CC0-1.0",
+          "lastCommit": "2026-04-08T10:23:21Z",
           "archived": false,
-          "language": ""
+          "tags": [
+            "ai",
+            "artificial-intelligence",
+            "awesome",
+            "awesome-list",
+            "generative-ai"
+          ]
         }
       ]
     }
