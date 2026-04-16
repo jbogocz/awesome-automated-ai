@@ -2,10 +2,11 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
+import type { ApiData } from "./readme.js";
 
 const ROOT = resolve(import.meta.dirname, "../../..");
 const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
-const CACHE_FILE = resolve(ROOT, ".github/api_cache.json");
+const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 const OUTPUT = resolve(ROOT, "docs/data.json");
 
 interface Entry {
@@ -13,7 +14,9 @@ interface Entry {
   repo?: string;
   url?: string;
   description?: string;
+  tagline?: string;
   note?: string;
+  tags?: string[];
 }
 
 interface Category {
@@ -22,15 +25,26 @@ interface Category {
   entries?: Entry[];
 }
 
+const EMPTY_API = {
+  stars: 0,
+  pushed: "",
+  archived: false,
+  license: null,
+  trend: null,
+  score: 0,
+  topics: [],
+  tagline: null,
+} as const;
+
 function main() {
   const yamlContent = readFileSync(PROJECTS_YAML, "utf-8");
   const doc = parseYaml(yamlContent) as { categories: Category[] };
 
-  let apiData: Record<string, { stars: number; pushed: string; archived: boolean }> = {};
+  let apiData: ApiData = {};
   try {
-    apiData = JSON.parse(readFileSync(CACHE_FILE, "utf-8"));
+    apiData = JSON.parse(readFileSync(CACHE_FILE, "utf-8")) as ApiData;
   } catch {
-    console.log("No API cache found, using empty data");
+    console.log(`No API cache at ${CACHE_FILE}, using empty data`);
   }
 
   const output = {
@@ -39,17 +53,22 @@ function main() {
       name: cat.name,
       description: cat.description ?? "",
       entries: (cat.entries ?? []).map((entry) => {
-        const api = apiData[entry.repo ?? ""] ?? { stars: 0, pushed: "", archived: false };
+        const api = apiData[entry.repo ?? ""] ?? EMPTY_API;
+        const tags = entry.tags && entry.tags.length > 0 ? entry.tags : (api.topics ?? []);
         return {
           name: entry.name,
           repo: entry.repo ?? "",
           url: entry.url ?? (entry.repo ? `https://github.com/${entry.repo}` : ""),
           description: entry.description ?? "",
+          tagline: api.tagline ?? entry.tagline ?? "",
           note: entry.note ?? "",
           stars: api.stars,
+          trend: api.trend,
+          score: api.score,
+          license: api.license,
           lastCommit: api.pushed,
           archived: api.archived,
-          language: "",
+          tags: tags.slice(0, 5),
         };
       }),
     })),
