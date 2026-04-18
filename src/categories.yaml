@@ -1,0 +1,333 @@
+# Source of truth for awesome-automl categories.
+#
+# Purpose:
+# 1. Agent prompt (src/agents/analysis.ts) uses scope_in / scope_out / examples
+#    to classify new candidates consistently across runs.
+# 2. Renderer (src/generator/readme.ts, site-data.ts) reads `order` and `section`
+#    to group categories in the README and the interactive site.
+# 3. Human contributors look here before filing a PR under a given category.
+#
+# Each category maps 1:1 by `name` to a block in projects.yaml. Keep names in sync.
+
+sections:
+  - Build AutoML
+  - Build with LLMs
+  - Build Agents
+  - Evaluate & Monitor AI
+  - ML Lifecycle
+  - Deploy AI
+  - Research & Reference
+
+categories:
+  # --- Build AutoML ---------------------------------------------------------
+  - id: general-purpose-automl
+    name: General-Purpose AutoML
+    section: Build AutoML
+    description: End-to-end frameworks that automate model selection, hyperparameter tuning, and pipeline construction. Covers both open-source libraries and enterprise commercial platforms.
+    scope_in:
+      - Automates the full pipeline (data preparation, model training, evaluation, sometimes deployment).
+      - Enterprise commercial platforms (flag commercial:true) that package AutoML as a product.
+      - Multi-task toolkits spanning classification, regression, and forecasting.
+    scope_out:
+      - Specialised to a single stage (see Neural Architecture Search, Hyperparameter Optimization, Automated Feature Engineering).
+      - LLM-specific workflows (see Automated Fine-Tuning, Automated Prompt Optimization).
+      - Tabular foundation models that skip pipeline search via a single forward pass (see Tabular Foundation Models).
+    examples: [AutoGluon, PyCaret, FLAML, DataRobot, H2O AutoML]
+
+  - id: neural-architecture-search
+    name: Neural Architecture Search
+    section: Build AutoML
+    description: Automated search for optimal neural network architectures using reinforcement learning, evolution, gradient-based methods, or LLM-guided search.
+    scope_in:
+      - Searches over neural network topology or operators.
+      - Includes both classical NAS and LLM-driven architecture search.
+    scope_out:
+      - General AutoML that only tunes hyperparameters on fixed architectures (see Hyperparameter Optimization).
+      - Architecture design handled entirely by humans.
+    examples: [AutoKeras, AutoGL, Microsoft NNI]
+
+  - id: hyperparameter-optimization
+    name: Hyperparameter Optimization
+    section: Build AutoML
+    description: Libraries dedicated to finding optimal hyperparameters via Bayesian optimization, bandits, evolutionary search, or population-based training.
+    scope_in:
+      - Primary purpose is hyperparameter search or tuning.
+      - Includes AutoML-style HPO libraries with strong Bayesian/bandit foundations.
+    scope_out:
+      - Full pipeline AutoML (see General-Purpose AutoML).
+      - LLM prompt optimization (see Automated Prompt Optimization).
+    examples: [Optuna, Ray Tune, Hyperopt, SMAC3]
+
+  - id: automated-feature-engineering
+    name: Automated Feature Engineering
+    section: Build AutoML
+    description: Tools that generate, select, and transform features without manual hand-crafting, including LLM-driven feature synthesis for tabular data.
+    scope_in:
+      - Feature generation, selection, or transformation is the primary value.
+      - LLM-powered feature generation for tabular data.
+    scope_out:
+      - Data preprocessing broadly (see Automated Data Preprocessing).
+      - End-to-end AutoML systems where feature engineering is a side effect.
+    examples: [Featuretools, OpenFE, AutoFeat]
+
+  - id: tabular-foundation-models
+    name: Tabular Foundation Models
+    section: Build AutoML
+    description: Pretrained models that replace traditional tabular AutoML pipelines with a single forward pass or zero-shot inference on structured data.
+    scope_in:
+      - Pretrained transformer or MLP models for tabular classification / regression.
+      - In-context learning style inference on tabular data.
+    scope_out:
+      - Time-series forecasting foundation models (see Time-Series AutoML).
+      - LLMs for general text tasks.
+    examples: [TabPFN, TabM, TabICL, CARTE]
+
+  - id: automl-benchmarks
+    name: AutoML Benchmarks
+    section: Build AutoML
+    description: Standardised benchmarks and evaluation harnesses for comparing AutoML systems and ML agents across tasks and datasets.
+    scope_in:
+      - Benchmark suite with published tasks, datasets, and evaluation protocol.
+      - Open leaderboards ranking AutoML systems or ML agents.
+    scope_out:
+      - General evaluation frameworks for LLMs (see LLM Evaluation and Testing).
+      - Papers describing benchmarks (see Papers and Surveys).
+    examples: [AMLB, MLE-Bench, MLAgentBench]
+
+  # --- Build with LLMs ------------------------------------------------------
+  - id: automated-fine-tuning
+    name: Automated Fine-Tuning
+    section: Build with LLMs
+    description: Tools that automate adapting large language models to specific tasks and domains via SFT, LoRA, QLoRA, DPO, RLHF, and related methods.
+    scope_in:
+      - Primary purpose is fine-tuning LLMs or VLMs.
+      - Parameter-efficient fine-tuning libraries (LoRA, PEFT, Spectrum).
+      - Alignment trainers (RLHF, DPO, GRPO).
+    scope_out:
+      - Generic ML training frameworks (see MLOps and Experiment Tracking).
+      - Inference-only runtimes (see LLM Inference Runtimes).
+    examples: [LLaMA-Factory, Unsloth, PEFT, TRL, Axolotl]
+
+  - id: automated-prompt-optimization
+    name: Automated Prompt Optimization
+    section: Build with LLMs
+    description: Systematic optimization of prompts, instructions, and demonstrations to improve LLM performance without manual tuning.
+    scope_in:
+      - Automated search, differentiation, or evolution over prompt text.
+      - Compound AI system optimization using textual gradients or reflection.
+    scope_out:
+      - Agent frameworks where prompt design is one of many concerns (see Agent Frameworks).
+      - Evaluation harnesses (see LLM Evaluation and Testing).
+    examples: [DSPy, PromptWizard, TextGrad, GEPA]
+
+  # --- Build Agents ---------------------------------------------------------
+  - id: agent-frameworks
+    name: Agent Frameworks
+    section: Build Agents
+    description: Libraries and SDKs for building multi-agent systems, conversational agents, tool-using agents, and agentic workflows. Also includes agent infrastructure like memory, browser control, and sandboxes.
+    scope_in:
+      - You install it to build your own agent.
+      - Orchestration primitives (state, tool use, memory, sandboxing, browser control).
+    scope_out:
+      - Ready-to-use coding assistants (see Coding Agents).
+      - Ready-to-use ML research agents (see ML and Research Agents).
+      - Agent evaluation platforms (see LLM Evaluation and Testing).
+    examples: [AG2, CrewAI, LangGraph, Pydantic AI, smolagents]
+
+  - id: coding-agents
+    name: Coding Agents
+    section: Build Agents
+    description: Ready-to-use AI agents that autonomously write, debug, refactor, and review software code.
+    scope_in:
+      - Ships as an app or CLI you run against a repo or task.
+      - Primary benchmark is software engineering (SWE-bench, HumanEval).
+    scope_out:
+      - Agent frameworks you use to build your own coder (see Agent Frameworks).
+      - ML-specific research agents (see ML and Research Agents).
+    examples: [OpenHands, Aider, SWE-agent, AutoCodeRover]
+
+  - id: ml-and-research-agents
+    name: ML and Research Agents
+    section: Build Agents
+    description: Ready-to-use agents that autonomously run ML experiments, design studies, or conduct scientific research end-to-end.
+    scope_in:
+      - Ships as an app that executes ML or research tasks.
+      - Primary benchmark is ML engineering (MLE-bench, Kaggle) or research quality.
+    scope_out:
+      - Generic SWE agents (see Coding Agents).
+      - Agent frameworks (see Agent Frameworks).
+    examples: [AI-Scientist, AIDE, AutoML-Agent, GPT Researcher]
+
+  # --- Evaluate & Monitor AI ------------------------------------------------
+  - id: llm-evaluation-and-testing
+    name: LLM Evaluation and Testing
+    section: Evaluate & Monitor AI
+    description: Frameworks for automated evaluation, testing, benchmarking, and red-teaming of language models, RAG pipelines, and agentic systems.
+    scope_in:
+      - Reproducible evals over LLMs, RAG, or agents.
+      - Red-teaming and vulnerability scanning for LLM apps.
+    scope_out:
+      - Production monitoring and drift detection (see Automated Monitoring and Observability).
+      - Safety research papers (see Papers and Surveys).
+    examples: [DeepEval, Promptfoo, lm-evaluation-harness, RAGAS]
+
+  - id: llm-routing-and-selection
+    name: LLM Routing and Selection
+    section: Evaluate & Monitor AI
+    description: Intelligent routing of requests to the optimal model based on task complexity, cost, and quality.
+    scope_in:
+      - Gateway / router that picks a backend model per request.
+      - Trained routers that reduce cost without quality loss.
+    scope_out:
+      - General inference runtimes (see LLM Inference Runtimes).
+      - Evaluation frameworks (see LLM Evaluation and Testing).
+    examples: [LiteLLM, RouteLLM, Portkey Gateway]
+
+  - id: automated-monitoring-and-observability
+    name: Automated Monitoring and Observability
+    section: Evaluate & Monitor AI
+    description: Automated drift detection, performance monitoring, and quality observability for models deployed in production.
+    scope_in:
+      - Monitoring shipped models in production (data drift, concept drift, quality regressions).
+      - Observability layer (tracing, metrics) dedicated to ML or LLM systems.
+    scope_out:
+      - Pre-deployment eval (see LLM Evaluation and Testing).
+      - Experiment tracking during training (see MLOps and Experiment Tracking).
+    examples: [Evidently, Arize, WhyLabs]
+
+  - id: automated-ai-safety
+    name: Automated AI Safety
+    section: Evaluate & Monitor AI
+    description: Tools for automated safety testing, alignment evaluation, jailbreak detection, and guardrails on deployed AI systems.
+    scope_in:
+      - Runtime guardrails, jailbreak detection, content filtering.
+      - Alignment and safety eval suites.
+    scope_out:
+      - General LLM evaluation that happens to include a safety task (see LLM Evaluation and Testing).
+      - Policy / compliance tools without automated enforcement.
+    examples: [Guardrails AI, NeMo Guardrails, PyRIT]
+
+  # --- ML Lifecycle ---------------------------------------------------------
+  - id: time-series-automl
+    name: Time-Series AutoML
+    section: ML Lifecycle
+    description: Automated forecasting, classification, and anomaly detection for temporal data, including modern time-series foundation models.
+    scope_in:
+      - Time-series forecasting, classification, or anomaly detection libraries.
+      - Pretrained time-series foundation models (TimesFM, Chronos, Moirai).
+    scope_out:
+      - Tabular-only AutoML (see General-Purpose AutoML).
+      - Tabular foundation models (see Tabular Foundation Models).
+    examples: [sktime, Darts, Chronos, TimesFM, Nixtla StatsForecast]
+
+  - id: automated-data-preprocessing
+    name: Automated Data Preprocessing
+    section: ML Lifecycle
+    description: Automated cleaning, transformation, imputation, and quality assessment for raw data before training.
+    scope_in:
+      - Schema-aware cleaning or transformation.
+      - Missing-value imputation, outlier detection at scale.
+    scope_out:
+      - Feature generation beyond cleaning (see Automated Feature Engineering).
+      - Synthetic data fabrication (see Synthetic Data Generation).
+    examples: [Great Expectations, Pandas Profiling, Cleanlab]
+
+  - id: automated-data-labeling
+    name: Automated Data Labeling
+    section: ML Lifecycle
+    description: Programmatic and semi-automated tools for labeling training data, including weak supervision and active learning.
+    scope_in:
+      - Weak supervision, programmatic labeling, active learning.
+      - Assisted labeling UIs that leverage models.
+    scope_out:
+      - Synthetic data from scratch (see Synthetic Data Generation).
+      - Manual annotation platforms without ML assistance.
+    examples: [Snorkel, Label Studio, Prodigy]
+
+  - id: synthetic-data-generation
+    name: Synthetic Data Generation
+    section: ML Lifecycle
+    description: Automated creation of artificial training data that preserves statistical properties of real datasets, with optional privacy guarantees.
+    scope_in:
+      - Generates synthetic tabular, text, or image data from scratch or seed.
+      - Includes privacy-preserving (differential privacy) generators.
+    scope_out:
+      - Data augmentation during training only.
+      - Labeling tools (see Automated Data Labeling).
+    examples: [SDV, Gretel Synthetics, NeMo Data Designer]
+
+  - id: automated-model-compression
+    name: Automated Model Compression
+    section: ML Lifecycle
+    description: Automated quantization, pruning, distillation, and low-rank compression for efficient inference.
+    scope_in:
+      - Post-training quantization (INT4/INT8, FP8, GPTQ, AWQ).
+      - Structured/unstructured pruning, knowledge distillation pipelines.
+    scope_out:
+      - Inference runtimes that ship compressed models (see LLM Inference Runtimes).
+      - Training-time efficiency tricks (see Automated Fine-Tuning).
+    examples: [LLM-AWQ, bitsandbytes, Torch-Pruning, Intel Neural Compressor]
+
+  - id: mlops-and-experiment-tracking
+    name: MLOps and Experiment Tracking
+    section: ML Lifecycle
+    description: Platforms for managing the ML lifecycle - experiment tracking, model registry, pipeline orchestration, and feature stores.
+    scope_in:
+      - Experiment tracking, metadata, model registry.
+      - Pipeline orchestration and workflow engines for ML.
+      - Feature stores.
+    scope_out:
+      - Deployment-only serving (see Model Serving).
+      - Pure LLM observability (see Automated Monitoring and Observability).
+    examples: [MLflow, Weights & Biases, Kubeflow, DVC, Metaflow]
+
+  # --- Deploy AI ------------------------------------------------------------
+  - id: model-serving
+    name: Model Serving
+    section: Deploy AI
+    description: General-purpose model serving, packaging, and inference infrastructure for ML, DL, and multi-framework deployments.
+    scope_in:
+      - Framework-agnostic serving (PyTorch, TensorFlow, ONNX, XGBoost).
+      - Kubernetes-native or container-based inference platforms.
+      - On-device and edge inference runtimes.
+    scope_out:
+      - LLM-focused inference engines (see LLM Inference Runtimes).
+      - MLOps platforms where serving is a sub-feature (see MLOps and Experiment Tracking).
+    examples: [BentoML, KServe, Triton, ONNX Runtime, OpenVINO]
+
+  - id: llm-inference-runtimes
+    name: LLM Inference Runtimes
+    section: Deploy AI
+    description: High-performance inference engines optimised specifically for serving large language models.
+    scope_in:
+      - Primary target is LLM / VLM inference with techniques like PagedAttention, continuous batching, speculative decoding.
+      - Local LLM runners for prototyping and single-node use.
+    scope_out:
+      - General ML serving (see Model Serving).
+      - Model compression tools (see Automated Model Compression).
+    examples: [vLLM, Ollama, llama.cpp, SGLang, TensorRT-LLM]
+
+  # --- Research & Reference -------------------------------------------------
+  - id: papers-and-surveys
+    name: Papers and Surveys
+    section: Research & Reference
+    description: Foundational surveys and recent papers on AutoML methods, agentic ML, and benchmarking.
+    scope_in:
+      - Peer-reviewed or preprint papers with lasting reference value.
+      - Comprehensive surveys establishing taxonomies.
+    scope_out:
+      - Blog posts or tutorials.
+      - Software releases (those go in the matching tool category).
+    examples: ["AutoML: A Survey of the State-of-the-Art", "AMLB: an AutoML Benchmark"]
+
+  - id: related-awesome-lists
+    name: Related Awesome Lists
+    section: Research & Reference
+    description: Complementary awesome lists covering adjacent ML / AI topics.
+    scope_in:
+      - Curated awesome-* style lists that complement this one.
+      - Lists with active maintenance in the last 12 months.
+    scope_out:
+      - Dead or unmaintained awesome lists (we drop them).
+      - Generic link roundups that are not scoped and curated.
+    examples: [awesome-machine-learning, awesome-deep-learning]
