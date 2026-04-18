@@ -95,7 +95,7 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 | Symbol | Meaning |
 |:-------|:--------|
 | :green_circle: :yellow_circle: :red_circle: | Project health: active (< 6 months) / stale (6-12 months) / unmaintained (> 12 months) |
-| **88** | Quality score (0-100) based on stars, trend, freshness, license, and archived status |
+| **88** | Quality score (0-100): stars 50%, trend 25%, freshness 15%, license 10%; archived repos score 0 |
 | :1st_place_medal: :2nd_place_medal: :3rd_place_medal: | Top 3 quality score per category |
 | :star: 11.7K | GitHub stars |
 | :arrow_upper_right: +340 | Stars gained in last 30 days (shown when >= 10) |
