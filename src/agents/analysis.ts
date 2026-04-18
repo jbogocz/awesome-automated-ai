@@ -45,7 +45,10 @@ const TOOL_DEFINITION = {
       "is_novel",
     ],
     properties: {
-      relevant: { type: "boolean" as const, description: "Whether this project belongs in the awesome-automated-ai list." },
+      relevant: {
+        type: "boolean" as const,
+        description: "Whether this project belongs in the awesome-automated-ai list.",
+      },
       category: { type: "string" as const, description: "Which category this project belongs to." },
       description: {
         type: "string" as const,
