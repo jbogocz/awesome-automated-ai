@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "discover": "tsx src/cli.ts discover",
     "generate": "tsx src/cli.ts generate",
+    "refresh-tags": "tsx src/cli.ts refresh-tags",
     "site-data": "tsx src/generator/site-data.ts",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
