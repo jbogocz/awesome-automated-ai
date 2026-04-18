@@ -9,6 +9,7 @@ export interface GitHubCandidate {
   language: string | null;
   archived: boolean;
   license: string | null;
+  topics: string[];
   readme: string;
   source: "github";
 }
@@ -72,6 +73,7 @@ export async function searchGitHub(opts: SearchOptions): Promise<GitHubCandidate
         language: item.language,
         archived: item.archived ?? false,
         license: item.license?.spdx_id ?? null,
+        topics: item.topics ?? [],
         readme,
         source: "github",
       });

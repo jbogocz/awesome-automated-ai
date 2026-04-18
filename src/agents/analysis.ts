@@ -6,6 +6,8 @@ const AnalysisSchema = z.object({
   relevant: z.boolean(),
   category: z.string(),
   description: z.string(),
+  tagline: z.string(),
+  tags: z.array(z.string()),
   note: z.string().nullable(),
   relevance_score: z.number().int().min(0).max(100),
   reasoning: z.string(),
@@ -32,6 +34,8 @@ const TOOL_DEFINITION = {
       "relevant",
       "category",
       "description",
+      "tagline",
+      "tags",
       "note",
       "relevance_score",
       "reasoning",
@@ -44,6 +48,16 @@ const TOOL_DEFINITION = {
       description: {
         type: "string" as const,
         description: "1-2 sentence opinionated description with concrete facts.",
+      },
+      tagline: {
+        type: "string" as const,
+        description: "5-10 word punchy one-liner summarising what the tool does. No trailing period.",
+      },
+      tags: {
+        type: "array" as const,
+        items: { type: "string" as const },
+        description:
+          "5-15 kebab-case topic tags. Start from GitHub topics, filter duplicates, and add missing obvious tags from the README.",
       },
       note: { type: ["string", "null"] as const, description: "Status note or null." },
       relevance_score: {
@@ -80,6 +94,7 @@ Evaluate whether this project belongs in the awesome-automl list.
 - **Language:** ${candidate.language ?? "unknown"}
 - **Archived:** ${candidate.archived}
 - **License:** ${candidate.license ?? "none"}
+- **GitHub topics:** ${candidate.topics.length > 0 ? candidate.topics.join(", ") : "(none)"}
 
 ## README (first 5000 chars)
 ${candidate.readme || "(no README found)"}
@@ -90,6 +105,8 @@ ${existingCategories.map((c) => `- ${c}`).join("\n")}
 ## Instructions
 - The list covers: AutoML, NAS, HPO, feature engineering, fine-tuning, prompt optimization, AI research agents, ML engineering agents, LLM eval, model compression, deployment, monitoring, safety, MLOps.
 - Write descriptions with personality and concrete numbers. Max 2 sentences.
+- Tagline = 5-10 words, punchy, no period. Example: "Genetic programming pipeline optimizer for sklearn".
+- Tags: 5-15 kebab-case items. Prefer existing GitHub topics, dedupe near-synonyms, and add 1-3 obvious missing ones if README warrants.
 - Choose the best-fitting existing category. If none fit, suggest a new name.
 - Be honest about relevance. Not everything belongs.
 

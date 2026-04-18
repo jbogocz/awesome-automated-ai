@@ -130,6 +130,8 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
               name: candidate.name,
               repo: candidate.repo,
               description: analysis.description,
+              tagline: analysis.tagline,
+              tags: analysis.tags,
               note: analysis.note,
             },
             category: analysis.category,

@@ -5,6 +5,8 @@ interface PrEntryInput {
   name: string;
   repo: string;
   description: string;
+  tagline: string;
+  tags: string[];
   note: string | null;
 }
 
@@ -27,6 +29,12 @@ interface CreatePrOptions {
 
 export function buildYamlEntry(input: PrEntryInput): string {
   const lines = [`  - name: ${input.name}`, `    repo: ${input.repo}`, `    description: ${input.description}`];
+  if (input.tagline) {
+    lines.push(`    tagline: ${input.tagline}`);
+  }
+  if (input.tags.length > 0) {
+    lines.push(`    tags: [${input.tags.join(", ")}]`);
+  }
   if (input.note) {
     lines.push(`    note: ${input.note}`);
   }
