@@ -44,6 +44,8 @@ export function fetchRepoData(yamlContent: string): ApiData {
     const score = computeQualityScore({
       stars: raw.stars,
       starsPrevious,
+      trend7d,
+      trend30d,
       pushedAt: raw.pushed,
       license: raw.license,
       archived: raw.archived,
@@ -91,7 +93,11 @@ function fetchOneRepo(repo: string): RawApiResult {
     );
     const parsed = JSON.parse(result);
     const { lastRelease, lastCommit } = fetchReleaseAndCommit(repo);
-    const pushed = lastRelease || lastCommit || parsed.pushed || "";
+    const activityDates = [lastRelease, lastCommit, parsed.pushed].filter(
+      (d): d is string => typeof d === "string" && d.length > 0,
+    );
+    // ISO-8601 sorts lexicographically, so max string = newest timestamp.
+    const pushed = activityDates.length > 0 ? activityDates.reduce((a, b) => (a > b ? a : b)) : "";
     return {
       stars: parsed.stars ?? 0,
       pushed,
