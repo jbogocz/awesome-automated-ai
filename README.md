@@ -9,11 +9,11 @@
 
 A curated list of tools for Automated AI/ML - from hyperparameter optimization to autonomous AI agents.
 
-[![Views](https://hits.sh/github.com/jbogocz/awesome-automl.svg?style=flat-square&label=views)](https://hits.sh/github.com/jbogocz/awesome-automl/)
-[![GitHub stars](https://img.shields.io/github/stars/jbogocz/awesome-automl?style=flat-square)](https://github.com/jbogocz/awesome-automl/stargazers)
-[![Last commit](https://img.shields.io/github/last-commit/jbogocz/awesome-automl?style=flat-square)](https://github.com/jbogocz/awesome-automl/commits)
-[![License: CC0 + MIT](https://img.shields.io/badge/license-CC0_+_MIT-green?style=flat-square)](LICENSE)
-[![Tools](https://img.shields.io/badge/tools-250+-blue?style=flat-square)](#contents)
+[![Views](https://hits.sh/github.com/jbogocz/awesome-automl.svg?style=flat-square&label=views&color=2f6feb)](https://hits.sh/github.com/jbogocz/awesome-automl/)
+[![GitHub stars](https://img.shields.io/github/stars/jbogocz/awesome-automl?style=flat-square&color=2f6feb)](https://github.com/jbogocz/awesome-automl/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/jbogocz/awesome-automl?style=flat-square&color=2f6feb)](https://github.com/jbogocz/awesome-automl/commits)
+[![License: CC0 + MIT](https://img.shields.io/badge/license-CC0_+_MIT-2f6feb?style=flat-square)](LICENSE)
+[![Tools](https://img.shields.io/badge/tools-250+-2f6feb?style=flat-square)](#contents)
 
 </div>
 
