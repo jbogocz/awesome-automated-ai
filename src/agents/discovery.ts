@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { parse as parseYaml } from "yaml";
+import { loadManifest } from "../categories.js";
 import type { Config } from "../config.js";
 import { DB } from "../db/client.js";
 import { createPr } from "../github/pr.js";
@@ -52,11 +53,10 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
     const yamlContent = readFileSync(projectsYamlPath, "utf-8");
     const doc = parseYaml(yamlContent) as { categories: { name: string; entries?: { repo: string }[] }[] };
     const existingRepos = new Set<string>();
-    const existingCategories: string[] = [];
     for (const cat of doc.categories) {
-      existingCategories.push(cat.name);
       for (const entry of cat.entries ?? []) existingRepos.add(entry.repo);
     }
+    const manifest = loadManifest();
 
     const candidates = await searchGitHub({
       token: config.githubToken,
@@ -81,7 +81,7 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
       const analysis = await analyzeCandidate({
         apiKey: config.anthropicApiKey,
         candidate,
-        existingCategories,
+        categories: manifest.categories,
       });
       tokensUsed += analysis.tokensUsed;
 
