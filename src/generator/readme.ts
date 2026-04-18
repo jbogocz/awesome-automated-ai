@@ -124,6 +124,9 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
       lines.push("");
     }
   }
+  if (externalEntries.length > 0 && (active.length > 0 || dead.length > 0)) {
+    lines.push("---", "");
+  }
   for (const entry of externalEntries) {
     lines.push(...buildExternalCard(entry));
     lines.push("");
@@ -133,12 +136,11 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
 
 function buildExternalCard(entry: Entry): string[] {
   const url = entry.url ?? "#";
-  const icon = entry.authors ? "\u{1F4C4}" : entry.vendor ? "\u{1F4BC}" : "\u{1F517}";
+  const icon = entry.authors ? "\u{1F4C4}" : entry.vendor ? "\u{1F3E2}" : "\u{1F517}";
   const nameHtml = `<b><a href="${url}">${entry.name}</a></b>`;
   const tagline = entry.tagline || generateTagline(entry.description ?? "");
   const taglinePart = tagline ? ` ${tagline}` : "";
-  const enterpriseBadge = entry.commercial ? ` <code>\u{1F3E2} Enterprise</code>` : "";
-  const summary = `<details><summary>${icon} ${nameHtml}${enterpriseBadge}${taglinePart}</summary>`;
+  const summary = `<details><summary>${icon} ${nameHtml}${taglinePart}</summary>`;
 
   const desc = entry.description ?? "";
   const note = entry.note ?? "";

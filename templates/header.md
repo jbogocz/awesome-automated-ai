@@ -101,6 +101,7 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 | :arrow_upper_right: +340 | Stars gained in last 30 days (shown when >= 10) |
 | :zzz: | Unmaintained - no activity for 12+ months |
 | :file_cabinet: | Historical - included for foundational influence |
+| :office: | Commercial enterprise platform (vendor product) |
 | `Apache-2.0` | SPDX license identifier |
 
 > Click any project to expand its full dashboard with quality bar, exact stats, and tags.
