@@ -44,10 +44,6 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 - **Product builders** using foundation models to skip traditional ML entirely
 - **Anyone** who wants machines to do the machine learning
 
-### What's new
-
-> **2026-04-17** - Major expansion: 44 new entries across 15 modern agentic tools, 8 commercial products, and 22 foundational papers. See [CHANGELOG.md](CHANGELOG.md) for details.
-
 ## Contents
 
 **Core AutoML**
