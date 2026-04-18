@@ -11,6 +11,7 @@
     "discover": "tsx src/cli.ts discover",
     "generate": "tsx src/cli.ts generate",
     "refresh-tags": "tsx src/cli.ts refresh-tags",
+    "reclassify": "tsx src/cli.ts reclassify",
     "site-data": "tsx src/generator/site-data.ts",
     "bump-version": "node scripts/bump-version.mjs",
     "lint": "biome check .",

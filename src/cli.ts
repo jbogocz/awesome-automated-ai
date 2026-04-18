@@ -1,7 +1,9 @@
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { runDiscovery } from "./agents/discovery.js";
+import { reclassifyEntries, renderReport } from "./agents/reclassify.js";
 import { refreshTags } from "./agents/refresh-tags.js";
+import { loadManifest } from "./categories.js";
 import { loadConfig } from "./config.js";
 import { fetchRepoData } from "./generator/fetch-api.js";
 import { type ApiData, generateReadme } from "./generator/readme.js";
@@ -12,6 +14,7 @@ const HEADER_MD = resolve(ROOT, "templates/header.md");
 const FOOTER_MD = resolve(ROOT, "templates/footer.md");
 const README_MD = resolve(ROOT, "README.md");
 const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
+const RECLASSIFY_REPORT = resolve(ROOT, "data/reclassify-report.md");
 
 async function main() {
   const command = process.argv[2];
@@ -78,8 +81,35 @@ async function main() {
       console.log(`Dry run: would update ${result.refreshedCount} entries`);
     }
     console.log(`Failed: ${result.failedCount}. Tokens used: ${result.tokensUsed}`);
+  } else if (command === "reclassify") {
+    const apiKey = process.env.ANTHROPIC_API_KEY;
+    if (!apiKey) {
+      console.error("ANTHROPIC_API_KEY env var is required for reclassify");
+      process.exit(1);
+    }
+    const limitArg = process.argv.find((a) => a.startsWith("--limit="));
+    const limit = limitArg ? Number.parseInt(limitArg.split("=")[1], 10) : undefined;
+
+    const yamlContent = readFileSync(PROJECTS_YAML, "utf-8");
+    const manifest = loadManifest();
+
+    const result = await reclassifyEntries({
+      yamlContent,
+      manifest,
+      apiKey,
+      limit,
+      onProgress: (e) => {
+        const { verdict, target } = e.decision;
+        const suffix = verdict === "move_to" ? ` -> ${target}` : "";
+        console.log(`[${e.index}/${e.total}] ${e.candidate.repo}  ${verdict}${suffix}`);
+      },
+    });
+
+    mkdirSync(resolve(ROOT, "data"), { recursive: true });
+    writeFileSync(RECLASSIFY_REPORT, renderReport(result.records));
+    console.log(`Wrote ${RECLASSIFY_REPORT}. Tokens used: ${result.tokensUsed}`);
   } else {
-    console.error("Usage: tsx src/cli.ts <discover|generate|refresh-tags> [--dry-run] [--limit=N]");
+    console.error("Usage: tsx src/cli.ts <discover|generate|refresh-tags|reclassify> [--dry-run] [--limit=N]");
     process.exit(1);
   }
 }
