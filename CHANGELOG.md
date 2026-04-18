@@ -27,6 +27,11 @@ All notable additions, removals, and curation updates to this list are documente
 - Extended generator to render non-GitHub entries (`url:` only) with dedicated card styles for commercial products and research papers
 - Added `vendor`, `pricing`, `authors`, `venue`, `year` metadata fields in YAML schema
 
+### Brand
+- Added custom neural-network logo (3-4-2 MLP with highlighted activations) in `docs/assets/` with light/dark/mono/animated variants, favicons, avatar, and social preview
+- README header now uses `<picture>` tag for auto theme-switched logo (180x180)
+- GitHub Pages site uses the social-preview asset for OpenGraph and Twitter cards
+
 ## Earlier
 
 Previously the list was iterated weekly via the AI-driven regeneration pipeline. See git log prior to this changelog for history.

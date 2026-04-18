@@ -1,8 +1,13 @@
 <div align="center">
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-dark.svg">
+  <img alt="Awesome AutoML logo" src="docs/assets/logo.svg" width="180" height="180">
+</picture>
+
 # Awesome AutoML [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-A curated list of 200+ tools for automated machine learning - from hyperparameter optimization to autonomous AI agents.
+A curated list of 250+ tools for automated machine learning - from hyperparameter optimization to autonomous AI agents.
 
 [![Views](https://hits.sh/github.com/jbogocz/awesome-automl.svg?style=flat-square&label=views)](https://hits.sh/github.com/jbogocz/awesome-automl/)
 [![GitHub stars](https://img.shields.io/github/stars/jbogocz/awesome-automl?style=flat-square)](https://github.com/jbogocz/awesome-automl/stargazers)
