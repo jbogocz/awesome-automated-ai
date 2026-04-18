@@ -38,6 +38,9 @@ jobs:
       - name: Regenerate dashboard data
         run: pnpm run site-data
 
+      - name: Bump version to today's date
+        run: pnpm run bump-version
+
       - name: Commit and push changes
         env:
           BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
@@ -45,7 +48,7 @@ jobs:
         run: |
           git config user.name "$BOT_NAME"
           git config user.email "$BOT_EMAIL"
-          git add README.md docs/data.json
+          git add README.md docs/data.json package.json
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0

@@ -1,6 +1,6 @@
 {
   "name": "awesome-automl",
-  "version": "2026.4.10",
+  "version": "2026.4.18",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,6 +12,7 @@
     "generate": "tsx src/cli.ts generate",
     "refresh-tags": "tsx src/cli.ts refresh-tags",
     "site-data": "tsx src/generator/site-data.ts",
+    "bump-version": "node scripts/bump-version.mjs",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write ."
