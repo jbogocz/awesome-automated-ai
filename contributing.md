@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for contributing to Awesome AutoML! This list aims to be the most comprehensive and up-to-date resource for automating AI/ML.
+Thank you for contributing to Awesome Automated AI/ML! This list aims to be the most comprehensive and up-to-date resource for automating AI/ML.
 
 Please read this guide before submitting a pull request.
 
