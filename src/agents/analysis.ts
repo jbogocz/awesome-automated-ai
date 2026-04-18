@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import type { GitHubCandidate } from "../github/search.js";
+import { getModel, MAX_TOKENS_ANALYSIS } from "./llm.js";
 
 const AnalysisSchema = z.object({
   relevant: z.boolean(),
@@ -113,8 +114,8 @@ ${existingCategories.map((c) => `- ${c}`).join("\n")}
 Call the evaluate_project tool with your assessment.`;
 
   const response = await anthropic.messages.create({
-    model: "claude-sonnet-4-6",
-    max_tokens: 1024,
+    model: getModel(),
+    max_tokens: MAX_TOKENS_ANALYSIS,
     tools: [TOOL_DEFINITION],
     tool_choice: { type: "tool", name: "evaluate_project" },
     messages: [{ role: "user", content: prompt }],

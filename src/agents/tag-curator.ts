@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
+import { getModel, MAX_TOKENS_TAG_CURATION } from "./llm.js";
 
 const CuratedTagsSchema = z.object({
   tags: z.array(z.string()).min(3).max(20),
@@ -99,8 +100,8 @@ ${input.tagline ? `- Tagline: ${input.tagline}` : ""}
 Call the submit_tags tool with the curated list.`;
 
   const response = await anthropic.messages.create({
-    model: "claude-sonnet-4-6",
-    max_tokens: 512,
+    model: getModel(),
+    max_tokens: MAX_TOKENS_TAG_CURATION,
     tools: [TOOL_DEFINITION],
     tool_choice: { type: "tool", name: "submit_tags" },
     messages: [{ role: "user", content: prompt }],
