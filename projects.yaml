@@ -582,12 +582,10 @@ categories:
     tagline: Google's open-source agentic terminal for Gemini
     tags: [agent, cli, gemini, google, llm, terminal]
   - name: Claude Code
-    url: https://claude.com/claude-code
-    description: Terminal-native coding agent that hits ~80.8% on SWE-bench Verified with Opus 4.6 and ships as both CLI and IDE extension (Anthropic).
+    repo: anthropics/claude-code
+    description: Terminal-native coding agent that hits ~80.8% on SWE-bench Verified with Opus 4.6 and ships as CLI plus IDE extensions (Anthropic).
     tagline: Anthropic's 80.8% SWE-bench terminal coding agent
-    vendor: Anthropic
-    pricing: subscription
-    commercial: true
+    tags: [agent, agentic, ai, anthropic, claude, cli, coding-agent, llm, terminal]
   - name: Cursor
     url: https://cursor.com
     description: VS Code fork built around deeply integrated AI chat, autocomplete, and multi-file editing - the market-defining commercial IDE for agentic coding (Anysphere).
