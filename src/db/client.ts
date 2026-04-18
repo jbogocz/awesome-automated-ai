@@ -1,4 +1,3 @@
-// engine/src/db/client.ts
 import Database from "better-sqlite3";
 import type { AgentName, DecisionInsert, ProjectInsert, ProjectRow, RunStatus } from "./types.js";
 

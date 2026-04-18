@@ -33,10 +33,10 @@ jobs:
       - name: Regenerate README with fresh API data
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm --filter @awesome-automl/engine run generate
+        run: pnpm run generate
 
       - name: Regenerate dashboard data
-        run: pnpm --filter @awesome-automl/engine run site-data
+        run: pnpm run site-data
 
       - name: Commit and push changes
         env:

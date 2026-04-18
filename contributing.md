@@ -95,7 +95,7 @@ By contributing, you agree to abide by the [Code of Conduct](code-of-conduct.md)
 
 ## AI Curator Engine
 
-This list is partially maintained by an AI Curator Engine (`engine/`) that scans GitHub for new projects and proposes additions via pull requests. Human review is required for every AI-proposed change.
+This list is partially maintained by an AI Curator Engine (`src/`) that scans GitHub for new projects and proposes additions via pull requests. Human review is required for every AI-proposed change.
 
 If you want to contribute to the engine itself, the code is MIT-licensed. See [LICENSE](LICENSE) for details.
 

@@ -5,7 +5,7 @@ import { loadConfig } from "./config.js";
 import { fetchRepoData } from "./generator/fetch-api.js";
 import { type ApiData, generateReadme } from "./generator/readme.js";
 
-const ROOT = resolve(import.meta.dirname, "../..");
+const ROOT = resolve(import.meta.dirname, "..");
 const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
 const HEADER_MD = resolve(ROOT, "config/header.md");
 const FOOTER_MD = resolve(ROOT, "config/footer.md");

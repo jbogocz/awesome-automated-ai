@@ -30,8 +30,8 @@ jobs:
       - name: Lint (biome)
         run: pnpm run lint
 
-      - name: Typecheck (engine)
-        run: pnpm --filter @awesome-automl/engine run typecheck
+      - name: Typecheck
+        run: pnpm run typecheck
 
-      - name: Tests (engine)
-        run: pnpm --filter @awesome-automl/engine run test
+      - name: Tests
+        run: pnpm run test

@@ -25,7 +25,7 @@ export function fetchRepoData(yamlContent: string): ApiData {
   }
   console.log(`Fetching data for ${repos.length} repos...`);
 
-  const dbPath = resolve(import.meta.dirname, "../../../data/curator.db");
+  const dbPath = resolve(import.meta.dirname, "../../data/curator.db");
   const db = new DB(dbPath);
   db.migrate();
 

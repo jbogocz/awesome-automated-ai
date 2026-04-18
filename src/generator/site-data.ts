@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import type { ApiData } from "./readme.js";
 
-const ROOT = resolve(import.meta.dirname, "../../..");
+const ROOT = resolve(import.meta.dirname, "../..");
 const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
 const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 const OUTPUT = resolve(ROOT, "docs/data.json");
