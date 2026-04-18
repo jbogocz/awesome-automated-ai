@@ -98,7 +98,7 @@ async function classifyOne(
   catalog: string,
   allowedNames: Set<string>,
 ): Promise<{ result: ReclassifyDecision; tokensUsed: number }> {
-  const prompt = `You are auditing the awesome-automl list. One entry at a time, decide whether the entry still matches its current category under the new manifest.
+  const prompt = `You are auditing the awesome-automated-ai list. One entry at a time, decide whether the entry still matches its current category under the new manifest.
 
 ## Entry
 - Name: ${candidate.name}
