@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
+import { type CategoryInfo, renderCategoryCatalog } from "../categories.js";
 import type { GitHubCandidate } from "../github/search.js";
 import { getModel, MAX_TOKENS_ANALYSIS } from "./llm.js";
 
@@ -23,7 +24,7 @@ export type AnalysisResult = z.infer<typeof AnalysisSchema> & {
 interface AnalyzeOptions {
   apiKey: string;
   candidate: GitHubCandidate;
-  existingCategories: string[];
+  categories: CategoryInfo[];
 }
 
 const TOOL_DEFINITION = {
@@ -80,7 +81,7 @@ const TOOL_DEFINITION = {
 
 export async function analyzeCandidate(opts: AnalyzeOptions): Promise<AnalysisResult> {
   const anthropic = new Anthropic({ apiKey: opts.apiKey });
-  const { candidate, existingCategories } = opts;
+  const { candidate, categories } = opts;
 
   const prompt = `You are a senior ML engineer curating the definitive AutoML/AI automation list on GitHub.
 
@@ -100,15 +101,16 @@ Evaluate whether this project belongs in the awesome-automl list.
 ## README (first 5000 chars)
 ${candidate.readme || "(no README found)"}
 
-## Existing categories
-${existingCategories.map((c) => `- ${c}`).join("\n")}
+## Category catalog
+Every accepted category is defined with a short description, scope_in (what qualifies), scope_out (what does NOT), and existing examples. Pick the one whose scope_in matches AND whose scope_out does not apply. Never pick a category just because its name sounds close - the scope rules are the tiebreaker.
+
+${renderCategoryCatalog(categories)}
 
 ## Instructions
-- The list covers: AutoML, NAS, HPO, feature engineering, fine-tuning, prompt optimization, AI research agents, ML engineering agents, LLM eval, model compression, deployment, monitoring, safety, MLOps.
 - Write descriptions with personality and concrete numbers. Max 2 sentences.
 - Tagline = 5-10 words, punchy, no period. Example: "Genetic programming pipeline optimizer for sklearn".
 - Tags: 5-15 kebab-case items. Prefer existing GitHub topics, dedupe near-synonyms, and add 1-3 obvious missing ones if README warrants.
-- Choose the best-fitting existing category. If none fit, suggest a new name.
+- Category MUST match one of the names above exactly. If nothing fits, set relevant=false instead of inventing a category.
 - Be honest about relevance. Not everything belongs.
 
 Call the evaluate_project tool with your assessment.`;
