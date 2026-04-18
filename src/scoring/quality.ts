@@ -9,6 +9,8 @@ export interface QualityInput {
 }
 
 export function computeQualityScore(input: QualityInput): number {
+  if (input.archived) return 0;
+
   const starsScore = Math.min((Math.log10(Math.max(input.stars, 1)) / 5) * 100, 100);
 
   let trendScore: number;
@@ -22,9 +24,8 @@ export function computeQualityScore(input: QualityInput): number {
 
   const freshnessScore = scoreFreshness(input.pushedAt);
   const licenseScore = input.license ? 100 : 0;
-  const archivedScore = input.archived ? 0 : 100;
 
-  const raw = starsScore * 0.4 + trendScore * 0.25 + freshnessScore * 0.15 + licenseScore * 0.1 + archivedScore * 0.1;
+  const raw = starsScore * 0.5 + trendScore * 0.25 + freshnessScore * 0.15 + licenseScore * 0.1;
 
   return clamp(Math.round(raw), 0, 100);
 }
