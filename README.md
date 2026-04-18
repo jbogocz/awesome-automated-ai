@@ -101,6 +101,7 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 | :arrow_upper_right: +340 | Stars gained in last 30 days (shown when >= 10) |
 | :zzz: | Unmaintained - no activity for 12+ months |
 | :file_cabinet: | Historical - included for foundational influence |
+| :office: | Commercial enterprise platform (vendor product) |
 | `Apache-2.0` | SPDX license identifier |
 
 > Click any project to expand its full dashboard with quality bar, exact stats, and tags.
@@ -351,7 +352,9 @@ Fast and customizable AutoML framework with Kaggle-winning performance (Sber AI 
 
 </details>
 
-<details><summary>💼 <b><a href="https://cloud.google.com/vertex-ai">Vertex AI AutoML</a></b> <code>🏢 Enterprise</code> Managed AutoML across data types on Google Cloud</summary>
+---
+
+<details><summary>🏢 <b><a href="https://cloud.google.com/vertex-ai">Vertex AI AutoML</a></b> Managed AutoML across data types on Google Cloud</summary>
 
 <br>
 
@@ -364,7 +367,7 @@ Google Cloud's managed AutoML service for training tabular classification, regre
 
 </details>
 
-<details><summary>💼 <b><a href="https://azure.microsoft.com/en-us/solutions/automated-machine-learning">Azure Machine Learning AutoML</a></b> <code>🏢 Enterprise</code> Automated ML inside Azure Machine Learning workspaces</summary>
+<details><summary>🏢 <b><a href="https://azure.microsoft.com/en-us/solutions/automated-machine-learning">Azure Machine Learning AutoML</a></b> Automated ML inside Azure Machine Learning workspaces</summary>
 
 <br>
 
@@ -377,7 +380,7 @@ Microsoft's automated ML service inside Azure ML workspaces covering classificat
 
 </details>
 
-<details><summary>💼 <b><a href="https://aws.amazon.com/sagemaker/ai/autopilot/">Amazon SageMaker Autopilot</a></b> <code>🏢 Enterprise</code> AWS AutoML via SageMaker Canvas and API v2</summary>
+<details><summary>🏢 <b><a href="https://aws.amazon.com/sagemaker/ai/autopilot/">Amazon SageMaker Autopilot</a></b> AWS AutoML via SageMaker Canvas and API v2</summary>
 
 <br>
 
@@ -390,7 +393,7 @@ AWS AutoML service that runs feature engineering, algorithm selection, and tunin
 
 </details>
 
-<details><summary>💼 <b><a href="https://h2o.ai/platform/ai-cloud/make/h2o-driverless-ai/">H2O Driverless AI</a></b> <code>🏢 Enterprise</code> Commercial AutoML with feature engineering and interpretability</summary>
+<details><summary>🏢 <b><a href="https://h2o.ai/platform/ai-cloud/make/h2o-driverless-ai/">H2O Driverless AI</a></b> Commercial AutoML with feature engineering and interpretability</summary>
 
 <br>
 
@@ -403,7 +406,7 @@ H2O.ai's commercial AutoML platform that automates feature engineering, model tu
 
 </details>
 
-<details><summary>💼 <b><a href="https://www.datarobot.com/">DataRobot</a></b> <code>🏢 Enterprise</code> Enterprise platform for predictive, generative, and agentic AI</summary>
+<details><summary>🏢 <b><a href="https://www.datarobot.com/">DataRobot</a></b> Enterprise platform for predictive, generative, and agentic AI</summary>
 
 <br>
 
@@ -416,7 +419,7 @@ Enterprise AI platform for building, deploying, governing, and monitoring predic
 
 </details>
 
-<details><summary>💼 <b><a href="https://docs.databricks.com/aws/en/machine-learning/automl/">Databricks AutoML</a></b> <code>🏢 Enterprise</code> Lakehouse AutoML producing editable training notebooks</summary>
+<details><summary>🏢 <b><a href="https://docs.databricks.com/aws/en/machine-learning/automl/">Databricks AutoML</a></b> Lakehouse AutoML producing editable training notebooks</summary>
 
 <br>
 
@@ -429,7 +432,7 @@ AutoML capability in the Databricks Lakehouse for regression, classification, an
 
 </details>
 
-<details><summary>💼 <b><a href="https://www.dataiku.com/product/key-capabilities/machine-learning/automl/">Dataiku Visual ML</a></b> <code>🏢 Enterprise</code> Visual AutoML inside the Dataiku data platform</summary>
+<details><summary>🏢 <b><a href="https://www.dataiku.com/product/key-capabilities/machine-learning/automl/">Dataiku Visual ML</a></b> Visual AutoML inside the Dataiku data platform</summary>
 
 <br>
 
@@ -442,7 +445,7 @@ AutoML and visual ML inside the Dataiku data platform covering classification, r
 
 </details>
 
-<details><summary>💼 <b><a href="https://www.snowflake.com/en/product/features/cortex/">Snowflake Cortex ML Functions</a></b> <code>🏢 Enterprise</code> SQL-native ML and forecasting on Snowflake data</summary>
+<details><summary>🏢 <b><a href="https://www.snowflake.com/en/product/features/cortex/">Snowflake Cortex ML Functions</a></b> SQL-native ML and forecasting on Snowflake data</summary>
 
 <br>
 
