@@ -432,8 +432,8 @@ categories:
     tags: [ai-optimization, compound-systems, large-language-models, prompt-optimization, textual-gradients]
   - name: GEPA
     repo: gepa-ai/gepa
-    description: Reflective text evolution for prompt, code, and text optimization, integrated into MLflow (Cerebras).
-    tagline: Reflective text evolution for prompt optimization
+    description: Genetic-Pareto reflective prompt optimizer - outperforms RL methods like GRPO by up to 20% while using 35x fewer rollouts; available as dspy.GEPA (ICLR 2026 Oral).
+    tagline: Reflective Pareto prompt evolution, ICLR 2026 Oral
     tags: [evolutionary-algorithms, llm, optimization, prompt-optimization, python, reflection]
   - name: AutoPrompt
     repo: Eladlev/AutoPrompt
@@ -513,6 +513,21 @@ categories:
     description: Microsoft Research prototype for a human-centered web agent with co-planning, action previews, and transparent browser control built on AutoGen.
     tagline: Human-in-the-loop web agent prototype
     tags: [agents, ai, ai-ux, autogen, browser-use, computer-use-agent, cua, ui]
+  - name: Microsoft Agent Framework
+    repo: microsoft/agent-framework
+    description: Unified 1.0 SDK (April 2026) that merges Semantic Kernel and AutoGen into a single production-ready framework for agents and multi-agent workflows (Microsoft).
+    tagline: Unified Semantic Kernel plus AutoGen successor
+    tags: [agent, agent-framework, ai, autogen, dotnet, llm, multi-agent, python, semantic-kernel]
+  - name: OpenAI Agents SDK
+    repo: openai/openai-agents-python
+    description: Lightweight framework for multi-agent workflows with handoffs, guardrails, tracing, and voice-agent support across Python and JavaScript (OpenAI).
+    tagline: OpenAI's multi-agent and voice-agent SDK
+    tags: [agent, agents-sdk, ai-agents, llm, multi-agent, openai, python, voice-agents]
+  - name: Strands Agents
+    repo: strands-agents/sdk-python
+    description: Model-driven SDK that builds agents in a few lines of code - 14M+ downloads, Python and TypeScript builds, deploys to Bedrock AgentCore, Lambda, Fargate, or Kubernetes (AWS).
+    tagline: AWS model-driven agents SDK, 14M downloads
+    tags: [agent, agents-sdk, aws, bedrock, llm, multi-agent, python, typescript]
 - name: Coding Agents
   description: Ready-to-use AI agents that autonomously write, debug, refactor, and review software code.
   entries:
@@ -541,6 +556,59 @@ categories:
     description: Structure-aware autonomous program repair combining code search with LLM-based patching.
     tagline: Structure-aware autonomous code repair and patching
     tags: [agents, autonomous-agents, code-generation, llm, program-repair, python, software-engineering, swe-bench]
+  - name: Cline
+    repo: cline/cline
+    description: Autonomous VS Code extension with Plan and Act modes where every file edit, terminal command, and browser action requires explicit approval.
+    tagline: Approval-gated autonomous agent inside VS Code
+    tags: [agent, ai, autonomous-agents, coding-agent, developer-tools, llm, vscode-extension]
+  - name: Continue
+    repo: continuedev/continue
+    description: Open-source IDE assistant and CLI that supports source-controlled AI checks enforceable in CI, across VS Code, JetBrains, and terminal.
+    tagline: Open-source IDE assistant with CI-enforceable AI checks
+    tags: [ai, chatgpt, copilot, developer-tools, ide, jetbrains, llm, open-source, vscode]
+  - name: OpenCode
+    repo: sst/opencode
+    description: Terminal-native AI coding agent that is model-agnostic and scriptable for headless workflows, breakout 2026 OSS entry.
+    tagline: Terminal-native, model-agnostic coding agent
+    tags: [agent, ai, cli, coding-agent, llm, terminal]
+  - name: Goose
+    repo: block/goose
+    description: Local, extensible AI agent that handles complex engineering tasks end-to-end via the Model Context Protocol (Block, formerly Square).
+    tagline: Local MCP-based engineering agent from Block
+    tags: [agent, ai, mcp, mcp-client, model-context-protocol]
+  - name: Gemini CLI
+    repo: google-gemini/gemini-cli
+    description: Open-source agentic CLI bringing Gemini models and ReAct-style tool use directly to the terminal (Google).
+    tagline: Google's open-source agentic terminal for Gemini
+    tags: [agent, cli, gemini, google, llm, terminal]
+  - name: Claude Code
+    url: https://claude.com/claude-code
+    description: Terminal-native coding agent that hits ~80.8% on SWE-bench Verified with Opus 4.6 and ships as both CLI and IDE extension (Anthropic).
+    tagline: Anthropic's 80.8% SWE-bench terminal coding agent
+    vendor: Anthropic
+    pricing: subscription
+    commercial: true
+  - name: Cursor
+    url: https://cursor.com
+    description: VS Code fork built around deeply integrated AI chat, autocomplete, and multi-file editing - the market-defining commercial IDE for agentic coding (Anysphere).
+    tagline: Market-defining AI-native VS Code fork
+    vendor: Anysphere
+    pricing: freemium
+    commercial: true
+  - name: Windsurf
+    url: https://windsurf.com
+    description: Agentic IDE with proprietary SWE-1.5 model emphasising speed at ~950 tokens/sec while scoring 40.08% on SWE-Bench (Cognition).
+    tagline: Speed-optimized agentic IDE from Cognition
+    vendor: Cognition
+    pricing: freemium
+    commercial: true
+  - name: Devin
+    url: https://devin.ai
+    description: Autonomous software engineer that plans, codes, tests, and deploys end-to-end, running in a cloud sandbox with browser and shell access (Cognition).
+    tagline: End-to-end autonomous software engineer
+    vendor: Cognition
+    pricing: subscription
+    commercial: true
 - name: ML and Research Agents
   description: Ready-to-use agents that autonomously run ML experiments, design studies, or conduct scientific research end-to-end.
   entries:
