@@ -54,7 +54,7 @@ const SAMPLE_API: ApiData = {
   },
 };
 
-const HEADER = "# Awesome AutoML\n\n## Contents\n";
+const HEADER = "# Awesome Automated AI/ML\n\n## Contents\n";
 const FOOTER = "## Contributing\n\nContributions welcome!";
 
 describe("generateReadme", () => {

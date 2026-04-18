@@ -2,10 +2,10 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-dark.svg">
-  <img alt="Awesome AutoML logo" src="docs/assets/logo.svg" width="180" height="180">
+  <img alt="Awesome Automated AI/ML logo" src="docs/assets/logo.svg" width="180" height="180">
 </picture>
 
-# Awesome AutoML [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Automated AI/ML [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 A curated list of tools for Automated AI/ML - from hyperparameter optimization to autonomous AI agents.
 
