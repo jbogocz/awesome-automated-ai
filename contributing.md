@@ -14,7 +14,7 @@ Please read this guide before submitting a pull request.
 
 1. Fork and clone this repository.
 2. Create a new branch: `git checkout -b add-tool-name`.
-3. Add your entry to the correct category in `projects.yaml` (the README is auto-generated).
+3. Add your entry to the correct category in `projects.yaml` (the README is auto-generated). See [`src/categories.yaml`](src/categories.yaml) for each category's scope and examples.
 4. Ensure your entry follows the format below.
 5. Commit and push your changes.
 6. Open a pull request and fill out the template (including "Why is this awesome?").
@@ -74,7 +74,7 @@ Add entries to `projects.yaml` under the appropriate category. Use exactly this 
 
 ## Suggesting New Categories
 
-If a tool does not fit any existing category, open an issue to discuss adding a new one before submitting a pull request. New categories should have at least 3-4 potential entries.
+Category scope is defined in [`src/categories.yaml`](src/categories.yaml). If a tool does not fit any existing `scope_in`, open an issue to discuss adding a new category before submitting a pull request. New categories should have at least 3-4 potential entries and propose explicit `scope_in` / `scope_out` lines to keep classification stable.
 
 ## Updating Entries
 

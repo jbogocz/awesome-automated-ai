@@ -21,7 +21,7 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 
 ### **[> Explore interactively <](https://jbogocz.github.io/awesome-automl)**
 
-250+ entries across 24 categories
+250+ entries across 25 categories in 7 sections
 
 </div>
 
@@ -46,44 +46,49 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 
 ## Contents
 
-**Core AutoML**
-- [General-Purpose AutoML](#general-purpose-automl) (15)
-- [Neural Architecture Search](#neural-architecture-search) (7)
-- [Hyperparameter Optimization](#hyperparameter-optimization) (8)
-- [Automated Feature Engineering](#automated-feature-engineering) (8)
-- [AutoML Benchmarks](#automl-benchmarks) (5)
+**Build AutoML**
+- [General-Purpose AutoML](#general-purpose-automl) (0)
+- [Neural Architecture Search](#neural-architecture-search) (0)
+- [Hyperparameter Optimization](#hyperparameter-optimization) (0)
+- [Automated Feature Engineering](#automated-feature-engineering) (0)
+- [Tabular Foundation Models](#tabular-foundation-models) (0)
+- [AutoML Benchmarks](#automl-benchmarks) (0)
 
-**AI-Native AutoML**
-- [Foundation Models as AutoML](#foundation-models-as-automl) (8)
-- [Automated Fine-Tuning](#automated-fine-tuning) (10)
-- [Automated Prompt Optimization](#automated-prompt-optimization) (9)
-- [Automated AI Research](#automated-ai-research) (10)
-- [ML Engineering Agents](#ml-engineering-agents) (5)
+**Build with LLMs**
+- [Automated Fine-Tuning](#automated-fine-tuning) (0)
+- [Automated Prompt Optimization](#automated-prompt-optimization) (0)
 
-**LLM Operations**
-- [LLM Evaluation and Testing](#llm-evaluation-and-testing) (10)
-- [LLM Routing and Selection](#llm-routing-and-selection) (4)
+**Build Agents**
+- [Agent Frameworks](#agent-frameworks) (0)
+- [Coding Agents](#coding-agents) (0)
+- [ML and Research Agents](#ml-and-research-agents) (0)
 
-**ML Lifecycle Automation**
-- [Time-Series AutoML](#time-series-automl) (13)
-- [Automated Data Preprocessing](#automated-data-preprocessing) (7)
-- [Automated Data Labeling](#automated-data-labeling) (6)
-- [Synthetic Data Generation](#synthetic-data-generation) (4)
-- [Automated Model Compression](#automated-model-compression) (6)
-- [Automated Deployment and Serving](#automated-deployment-and-serving) (13)
-- [Automated Monitoring and Observability](#automated-monitoring-and-observability) (6)
-- [Automated AI Safety](#automated-ai-safety) (5)
-- [MLOps and Experiment Tracking](#mlops-and-experiment-tracking) (16)
+**Evaluate & Monitor AI**
+- [LLM Evaluation and Testing](#llm-evaluation-and-testing) (0)
+- [LLM Routing and Selection](#llm-routing-and-selection) (0)
+- [Automated Monitoring and Observability](#automated-monitoring-and-observability) (0)
+- [Automated AI Safety](#automated-ai-safety) (0)
 
-**Commercial & Research**
-- [Commercial Products](#commercial-products) (8)
-- [Papers and Surveys](#papers-and-surveys) (22)
+**ML Lifecycle**
+- [Time-Series AutoML](#time-series-automl) (0)
+- [Automated Data Preprocessing](#automated-data-preprocessing) (0)
+- [Automated Data Labeling](#automated-data-labeling) (0)
+- [Synthetic Data Generation](#synthetic-data-generation) (0)
+- [Automated Model Compression](#automated-model-compression) (0)
+- [MLOps and Experiment Tracking](#mlops-and-experiment-tracking) (0)
+
+**Deploy AI**
+- [Model Serving](#model-serving) (0)
+- [LLM Inference Runtimes](#llm-inference-runtimes) (0)
+
+**Research & Reference**
+- [Papers and Surveys](#papers-and-surveys) (0)
+- [Related Awesome Lists](#related-awesome-lists) (0)
 
 **Resources**
 - [Research Notes by Topic](#research-notes-by-topic)
 - [Books and Courses](#books-and-courses) (3)
 - [Conferences and Communities](#conferences-and-communities) (4)
-- [Related Awesome Lists](#related-awesome-lists) (6)
 
 ### Legend
 
