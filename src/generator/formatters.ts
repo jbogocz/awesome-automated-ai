@@ -1,6 +1,7 @@
 /**
  * Pure formatting helper functions for collapsible card generation.
  */
+import { MAINTAINED_DAYS, STALE_DAYS } from "../constants.js";
 
 /**
  * Format a star count as a short human-readable string.
@@ -32,8 +33,8 @@ export function activityDot(pushed: string, archived: boolean): string {
     const pushedDate = new Date(pushed);
     const now = new Date();
     const diffDays = (now.getTime() - pushedDate.getTime()) / (1000 * 60 * 60 * 24);
-    if (diffDays < 180) return "\uD83D\uDFE2"; // green
-    if (diffDays < 365) return "\uD83D\uDFE1"; // yellow
+    if (diffDays < MAINTAINED_DAYS) return "\uD83D\uDFE2"; // green
+    if (diffDays < STALE_DAYS) return "\uD83D\uDFE1"; // yellow
     return "\uD83D\uDD34"; // red
   } catch {
     return "\uD83D\uDD34"; // red

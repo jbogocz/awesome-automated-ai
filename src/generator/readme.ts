@@ -1,4 +1,5 @@
 import { parse as parseYaml } from "yaml";
+import { STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.js";
 import { activityDot, formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
 
 export interface ApiRepoData {
@@ -99,7 +100,7 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
     };
     let note = entry.note ?? "";
     if (rd.archived && !note.includes("Archived")) note = `Archived. ${note}`.trim();
-    else if (!note && isUnmaintained(rd.pushed)) note = "Unmaintained - no commits for 12+ months.";
+    else if (!note && isUnmaintained(rd.pushed)) note = `Unmaintained - no commits for ${STALE_MONTHS}+ months.`;
     const isHistorical = /historical/i.test(note);
     const isDead = rd.archived || isUnmaintained(rd.pushed) || /unmaintained|deprecated/i.test(note);
     return { entry, rd, note, isDead, isHistorical };
@@ -185,7 +186,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
 
   const starsBadge = `<code>\u2B50 ${formatStarsShort(rd.stars)}</code>`;
   const trendBadge =
-    !isDead && rd.trend !== null && Math.abs(rd.trend) >= 10
+    !isDead && rd.trend !== null && Math.abs(rd.trend) >= TREND_DISPLAY_MIN
       ? ` <code>${rd.trend > 0 ? "\u2197\uFE0F" : "\u2198\uFE0F"} ${rd.trend > 0 ? "+" : ""}${rd.trend}</code>`
       : "";
   const licenseBadge = rd.license ? ` <code>${rd.license}</code>` : "";
@@ -212,7 +213,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   let actSuffix = "";
   if (rd.archived) actSuffix = " - archived";
   else if (isHistorical) actSuffix = " - historical";
-  else if (isDead) actSuffix = " - unmaintained 12+ months";
+  else if (isDead) actSuffix = ` - unmaintained ${STALE_MONTHS}+ months`;
 
   const allTags = entry.tags && entry.tags.length > 0 ? entry.tags : (rd.topics ?? []);
   const tags = allTags.slice(0, 5);
@@ -230,7 +231,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   return [summary, "", "<br>", "", displayDesc, "", ...dashboard, "", "</details>"];
 }
 
-function isUnmaintained(pushed: string, months = 12): boolean {
+function isUnmaintained(pushed: string, months = STALE_MONTHS): boolean {
   if (!pushed) return true;
   try {
     return Date.now() - new Date(pushed).getTime() > months * 30 * 24 * 60 * 60 * 1000;
