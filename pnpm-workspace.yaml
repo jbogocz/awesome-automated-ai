@@ -1,6 +1,5 @@
 packages:
   - "engine"
-  - "dashboard"
 
 onlyBuiltDependencies:
   - better-sqlite3

@@ -38,15 +38,6 @@
     }
   },
   "files": {
-    "includes": [
-      "**",
-      "!**/node_modules",
-      "!**/dist",
-      "!pnpm-lock.yaml",
-      "!.github/api_cache.json",
-      "!docs/data.json",
-      "!data",
-      "!**/coverage"
-    ]
+    "includes": ["**", "!**/node_modules", "!**/dist", "!pnpm-lock.yaml", "!docs/data.json", "!data", "!**/coverage"]
   }
 }
