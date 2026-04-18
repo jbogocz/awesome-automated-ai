@@ -7,8 +7,8 @@ import { type ApiData, generateReadme } from "./generator/readme.js";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
-const HEADER_MD = resolve(ROOT, "config/header.md");
-const FOOTER_MD = resolve(ROOT, "config/footer.md");
+const HEADER_MD = resolve(ROOT, "templates/header.md");
+const FOOTER_MD = resolve(ROOT, "templates/footer.md");
 const README_MD = resolve(ROOT, "README.md");
 const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 

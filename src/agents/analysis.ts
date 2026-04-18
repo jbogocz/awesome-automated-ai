@@ -1,6 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
-import type { GitHubCandidate } from "../sources/github.js";
+import type { GitHubCandidate } from "../github/search.js";
 
 const AnalysisSchema = z.object({
   relevant: z.boolean(),

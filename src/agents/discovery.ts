@@ -2,9 +2,9 @@ import { readFileSync } from "node:fs";
 import { parse as parseYaml } from "yaml";
 import type { Config } from "../config.js";
 import { DB } from "../db/client.js";
-import { createPr } from "../pr/create-pr.js";
+import { createPr } from "../github/pr.js";
+import { type GitHubCandidate, getDefaultTopics, searchGitHub } from "../github/search.js";
 import { computeScore } from "../scoring/composite.js";
-import { type GitHubCandidate, getDefaultTopics, searchGitHub } from "../sources/github.js";
 import { analyzeCandidate } from "./analysis.js";
 
 export type CandidateDecision = "auto" | "queue" | "discard";
