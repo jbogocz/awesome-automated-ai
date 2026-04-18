@@ -1,3 +1,5 @@
+import { clamp } from "./utils.js";
+
 export interface QualityInput {
   stars: number;
   starsPrevious: number | null;
@@ -39,8 +41,4 @@ function scoreFreshness(pushedAt: string): number {
   } catch {
     return 0;
   }
-}
-
-function clamp(val: number, min: number, max: number): number {
-  return Math.max(min, Math.min(max, val));
 }

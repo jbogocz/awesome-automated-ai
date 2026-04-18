@@ -1,4 +1,4 @@
-import { isMap, isScalar, isSeq, parseDocument, type Scalar, type YAMLSeq } from "yaml";
+import { type Document, isMap, isScalar, isSeq, parseDocument, type YAMLMap, type YAMLSeq } from "yaml";
 import type { ApiData } from "../generator/readme.js";
 import { curateTags } from "./tag-curator.js";
 
@@ -43,7 +43,7 @@ export async function refreshTags(opts: RefreshTagsOptions): Promise<RefreshTags
     tagline?: string;
     currentTags: string[];
     githubTopics: string[];
-    entryNode: ReturnType<typeof parseDocument>["contents"];
+    entryNode: YAMLMap;
   }> = [];
 
   for (const catItem of categoriesNode.items) {
@@ -70,7 +70,7 @@ export async function refreshTags(opts: RefreshTagsOptions): Promise<RefreshTags
         tagline,
         currentTags,
         githubTopics,
-        entryNode: entryItem as never,
+        entryNode: entryItem,
       });
     }
   }
@@ -97,7 +97,7 @@ export async function refreshTags(opts: RefreshTagsOptions): Promise<RefreshTags
       tokensUsed += result.tokensUsed;
 
       if (!opts.dryRun) {
-        setFlowTags(t.entryNode as never, doc as never, result.tags);
+        setFlowTags(doc, t.entryNode, result.tags);
       }
       refreshedCount++;
       opts.onProgress?.({
@@ -132,27 +132,19 @@ export async function refreshTags(opts: RefreshTagsOptions): Promise<RefreshTags
 
 function stringFrom(node: unknown): string | undefined {
   if (typeof node === "string") return node;
-  if (node && typeof node === "object" && isScalar(node as Scalar)) {
-    const v = (node as Scalar).value;
-    return typeof v === "string" ? v : undefined;
-  }
+  if (isScalar(node) && typeof node.value === "string") return node.value;
   return undefined;
 }
 
 function arrayFrom(node: unknown): string[] {
-  if (!node) return [];
-  if (isSeq(node as YAMLSeq)) {
-    return (node as YAMLSeq).items
-      .map((it) => (isScalar(it as Scalar) ? (it as Scalar).value : it))
-      .filter((v): v is string => typeof v === "string");
-  }
-  return [];
+  if (!isSeq(node)) return [];
+  return node.items
+    .map((it) => (isScalar(it) ? it.value : undefined))
+    .filter((v): v is string => typeof v === "string");
 }
 
-function setFlowTags(entryNode: never, doc: never, tags: string[]): void {
-  const d = doc as ReturnType<typeof parseDocument>;
-  const e = entryNode as { set: (k: string, v: unknown) => void };
-  const seq = d.createNode(tags) as YAMLSeq;
+function setFlowTags(doc: Document, entryNode: YAMLMap, tags: string[]): void {
+  const seq = doc.createNode(tags) as YAMLSeq;
   seq.flow = true;
-  e.set("tags", seq);
+  entryNode.set("tags", seq);
 }

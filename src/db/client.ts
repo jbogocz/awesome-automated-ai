@@ -10,7 +10,6 @@ export class DB {
     this.sqlite.pragma("foreign_keys = ON");
   }
 
-  /** Initialize tables if they don't exist */
   migrate(): void {
     this.sqlite.exec(`
       CREATE TABLE IF NOT EXISTS projects (

@@ -1,3 +1,5 @@
+import { clamp } from "./utils.js";
+
 export interface ScoreInput {
   stars: number;
   starsLastMonth: number;
@@ -83,8 +85,4 @@ function scoreDocumentation(hasReadme: boolean, hasLicense: boolean): number {
   if (hasReadme) score += 60;
   if (hasLicense) score += 40;
   return score;
-}
-
-function clamp(val: number, min: number, max: number): number {
-  return Math.max(min, Math.min(max, val));
 }

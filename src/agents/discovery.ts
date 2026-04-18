@@ -85,6 +85,9 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
       });
       tokensUsed += analysis.tokensUsed;
 
+      // Placeholder signals: commit/issue/contributor counts and monthly stars delta
+      // require extra GitHub API calls we don't yet make. Treated as neutral so
+      // relevance_score + documentation still drive the classification.
       const scoreResult = computeScore({
         stars: candidate.stars,
         starsLastMonth: Math.round(candidate.stars * 0.05),

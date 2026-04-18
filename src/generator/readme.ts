@@ -196,12 +196,10 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
 
   const summary = `<details><summary>${dot}${rankLabel} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${taglinePart}</summary>`;
 
-  // Details content
   const desc = entry.description ?? "";
   const fullDesc = note ? `${desc} **${note}**` : desc;
   const displayDesc = isDead ? `*${fullDesc}*` : fullDesc;
 
-  // Dashboard
   const starsExact = rd.stars.toLocaleString("en-US");
   const trendDetail = isDead
     ? "(n/a)"
