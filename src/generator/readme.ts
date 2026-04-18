@@ -8,6 +8,10 @@ export interface ApiRepoData {
   archived: boolean;
   license: string | null;
   trend: number | null;
+  trend7d?: number | null;
+  trend30d?: number | null;
+  lastRelease?: string | null;
+  lastCommit?: string | null;
   score: number;
   topics: string[];
   tagline: string | null;
@@ -205,11 +209,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   const displayDesc = isDead ? `*${fullDesc}*` : fullDesc;
 
   const starsExact = rd.stars.toLocaleString("en-US");
-  const trendDetail = isDead
-    ? "(n/a)"
-    : rd.trend !== null
-      ? `(${rd.trend > 0 ? "+" : ""}${rd.trend} last 30d)`
-      : "(n/a)";
+  const trendDetail = buildTrendDetail(rd, isDead);
 
   const actDate = formatDateMonth(rd.pushed);
   let actSuffix = "";
@@ -221,16 +221,30 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   const tags = allTags.slice(0, 5);
   const tagsLine = tags.length > 0 ? `\n  Tags      ${tags.join(" \u00B7 ")}` : "";
 
-  const dashboard = [
+  const dashboard: string[] = [
     "```",
     `  Score     ${score}/100`,
     `  Stars     \u2B50 ${starsExact} ${trendDetail}`,
     `  Activity  ${dot} ${actDate}${actSuffix}`,
-    `  License   ${rd.license ?? "-"}${tagsLine}`,
-    "```",
   ];
+  if (rd.lastRelease) {
+    dashboard.push(`  Release   \u{1F4E6} ${formatDateMonth(rd.lastRelease)}`);
+  }
+  dashboard.push(`  License   ${rd.license ?? "-"}${tagsLine}`);
+  dashboard.push("```");
 
   return [summary, "", "<br>", "", displayDesc, "", ...dashboard, "", "</details>"];
+}
+
+function buildTrendDetail(rd: ApiRepoData, isDead: boolean): string {
+  if (isDead) return "(n/a)";
+  const parts: string[] = [];
+  const t30 = rd.trend30d ?? rd.trend;
+  if (t30 !== null && t30 !== undefined) parts.push(`${t30 > 0 ? "+" : ""}${t30} last 30d`);
+  if (rd.trend7d !== null && rd.trend7d !== undefined) {
+    parts.push(`${rd.trend7d > 0 ? "+" : ""}${rd.trend7d} last 7d`);
+  }
+  return parts.length > 0 ? `(${parts.join(", ")})` : "(n/a)";
 }
 
 function isUnmaintained(pushed: string, months = STALE_MONTHS): boolean {

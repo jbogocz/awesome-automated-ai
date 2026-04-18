@@ -11,6 +11,8 @@ interface RawApiResult {
   archived: boolean;
   license: string | null;
   topics: string[];
+  lastRelease: string | null;
+  lastCommit: string | null;
 }
 
 export function fetchRepoData(yamlContent: string): ApiData {
@@ -34,7 +36,11 @@ export function fetchRepoData(yamlContent: string): ApiData {
     const raw = fetchOneRepo(repo);
     const projectId = db.upsertProject(repo, name);
     const starsPrevious = db.getPreviousStars(projectId);
-    const trend = starsPrevious !== null ? raw.stars - starsPrevious : null;
+    const stars7dAgo = db.getStarsNDaysAgo(projectId, 7);
+    const stars30dAgo = db.getStarsNDaysAgo(projectId, 30);
+    const trend7d = stars7dAgo !== null ? raw.stars - stars7dAgo : null;
+    const trend30d = stars30dAgo !== null ? raw.stars - stars30dAgo : null;
+    const trend = trend30d ?? (starsPrevious !== null ? raw.stars - starsPrevious : null);
     const score = computeQualityScore({
       stars: raw.stars,
       starsPrevious,
@@ -57,6 +63,10 @@ export function fetchRepoData(yamlContent: string): ApiData {
       archived: raw.archived,
       license: raw.license,
       trend,
+      trend7d,
+      trend30d,
+      lastRelease: raw.lastRelease,
+      lastCommit: raw.lastCommit,
       score,
       topics: raw.topics,
       tagline,
@@ -80,40 +90,50 @@ function fetchOneRepo(repo: string): RawApiResult {
       { timeout: 15_000, encoding: "utf-8" },
     );
     const parsed = JSON.parse(result);
-    const pushed = fetchLastActivity(repo) || parsed.pushed || "";
+    const { lastRelease, lastCommit } = fetchReleaseAndCommit(repo);
+    const pushed = lastRelease || lastCommit || parsed.pushed || "";
     return {
       stars: parsed.stars ?? 0,
       pushed,
       archived: parsed.archived ?? false,
       license: parsed.license ?? null,
       topics: parsed.topics ?? [],
+      lastRelease,
+      lastCommit,
     };
   } catch {
-    return { stars: 0, pushed: "", archived: false, license: null, topics: [] };
+    return {
+      stars: 0,
+      pushed: "",
+      archived: false,
+      license: null,
+      topics: [],
+      lastRelease: null,
+      lastCommit: null,
+    };
   }
 }
 
-function fetchLastActivity(repo: string): string {
-  // Try latest release date first
+function fetchReleaseAndCommit(repo: string): { lastRelease: string | null; lastCommit: string | null } {
+  let lastRelease: string | null = null;
   try {
-    const release = execFileSync("gh", ["api", `repos/${repo}/releases/latest`, "--jq", ".published_at"], {
+    const out = execFileSync("gh", ["api", `repos/${repo}/releases/latest`, "--jq", ".published_at"], {
       timeout: 10_000,
       encoding: "utf-8",
     }).trim();
-    if (release) return release;
+    if (out) lastRelease = out;
   } catch {
-    // No releases - fall through
+    // No releases - leave null
   }
-  // Fallback: last commit on default branch
+  let lastCommit: string | null = null;
   try {
-    const commit = execFileSync(
-      "gh",
-      ["api", `repos/${repo}/commits?per_page=1`, "--jq", ".[0].commit.committer.date"],
-      { timeout: 10_000, encoding: "utf-8" },
-    ).trim();
-    if (commit) return commit;
+    const out = execFileSync("gh", ["api", `repos/${repo}/commits?per_page=1`, "--jq", ".[0].commit.committer.date"], {
+      timeout: 10_000,
+      encoding: "utf-8",
+    }).trim();
+    if (out) lastCommit = out;
   } catch {
-    // Fall through
+    // Leave null
   }
-  return "";
+  return { lastRelease, lastCommit };
 }

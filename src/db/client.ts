@@ -255,6 +255,20 @@ export class DB {
     return row?.stars ?? null;
   }
 
+  getStarsNDaysAgo(projectId: number, days: number): number | null {
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - days);
+    const cutoffStr = cutoff.toISOString().split("T")[0];
+    const row = this.sqlite
+      .prepare(
+        `SELECT stars FROM snapshots
+         WHERE project_id = ? AND snapshot_date <= ?
+         ORDER BY snapshot_date DESC LIMIT 1`,
+      )
+      .get(projectId, cutoffStr) as { stars: number } | undefined;
+    return row?.stars ?? null;
+  }
+
   close(): void {
     this.sqlite.close();
   }
