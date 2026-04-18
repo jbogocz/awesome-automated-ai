@@ -28,6 +28,11 @@ interface Entry {
   tagline?: string;
   note?: string;
   tags?: string[];
+  vendor?: string;
+  pricing?: string;
+  authors?: string;
+  venue?: string;
+  year?: number | string;
 }
 interface Category {
   name: string;
@@ -77,7 +82,10 @@ interface ScoredEntry {
 }
 
 function buildCards(entries: Entry[], apiData: ApiData): string[] {
-  const scored: ScoredEntry[] = entries.map((entry) => {
+  const githubEntries = entries.filter((e) => e.repo);
+  const externalEntries = entries.filter((e) => !e.repo);
+
+  const scored: ScoredEntry[] = githubEntries.map((entry) => {
     const repo = entry.repo ?? "";
     const rd = apiData[repo] ?? {
       stars: 0,
@@ -114,7 +122,38 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
       lines.push("");
     }
   }
+  for (const entry of externalEntries) {
+    lines.push(...buildExternalCard(entry));
+    lines.push("");
+  }
   return lines;
+}
+
+function buildExternalCard(entry: Entry): string[] {
+  const url = entry.url ?? "#";
+  const icon = entry.authors ? "\u{1F4C4}" : entry.vendor ? "\u{1F4BC}" : "\u{1F517}";
+  const nameHtml = `<b><a href="${url}">${entry.name}</a></b>`;
+  const tagline = entry.tagline || generateTagline(entry.description ?? "");
+  const taglinePart = tagline ? ` ${tagline}` : "";
+  const summary = `<details><summary>${icon} ${nameHtml}${taglinePart}</summary>`;
+
+  const desc = entry.description ?? "";
+  const note = entry.note ?? "";
+  const fullDesc = note ? `${desc} **${note}**` : desc;
+
+  const metaLines: string[] = [];
+  if (entry.vendor) metaLines.push(`  Vendor    ${entry.vendor}`);
+  if (entry.pricing) metaLines.push(`  Pricing   ${entry.pricing}`);
+  if (entry.authors) metaLines.push(`  Authors   ${entry.authors}`);
+  if (entry.venue) metaLines.push(`  Venue     ${entry.venue}`);
+  if (entry.year !== undefined) metaLines.push(`  Year      ${entry.year}`);
+  if (entry.tags && entry.tags.length > 0) {
+    const tags = entry.tags.slice(0, 5);
+    metaLines.push(`  Tags      ${tags.join(" \u00B7 ")}`);
+  }
+  const dashboard = metaLines.length > 0 ? ["```", ...metaLines, "```"] : [];
+
+  return [summary, "", "<br>", "", fullDesc, "", ...dashboard, "", "</details>"];
 }
 
 const MEDAL = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];

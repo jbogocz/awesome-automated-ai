@@ -8,7 +8,7 @@ A curated list of 200+ tools for automated machine learning - from hyperparamete
 [![GitHub stars](https://img.shields.io/github/stars/jbogocz/awesome-automl?style=flat-square)](https://github.com/jbogocz/awesome-automl/stargazers)
 [![Last commit](https://img.shields.io/github/last-commit/jbogocz/awesome-automl?style=flat-square)](https://github.com/jbogocz/awesome-automl/commits)
 [![License: CC0 + MIT](https://img.shields.io/badge/license-CC0_+_MIT-green?style=flat-square)](LICENSE)
-[![Tools](https://img.shields.io/badge/tools-200+-blue?style=flat-square)](#contents)
+[![Tools](https://img.shields.io/badge/tools-250+-blue?style=flat-square)](#contents)
 
 </div>
 
@@ -16,7 +16,7 @@ A curated list of 200+ tools for automated machine learning - from hyperparamete
 
 ### **[> Explore interactively <](https://jbogocz.github.io/awesome-automl)**
 
-207 tools across 22 categories
+250+ entries across 24 categories
 
 </div>
 
@@ -38,6 +38,10 @@ A curated list of 200+ tools for automated machine learning - from hyperparamete
 - **AI researchers** tracking automated experimentation, NAS, and agentic ML
 - **Product builders** using foundation models to skip traditional ML entirely
 - **Anyone** who wants machines to do the machine learning
+
+### What's new
+
+> **2026-04-17** - Major expansion: 44 new entries across 15 modern agentic tools, 8 commercial products, and 22 foundational papers. See [CHANGELOG.md](CHANGELOG.md) for details.
 
 ## Contents
 
@@ -70,8 +74,12 @@ A curated list of 200+ tools for automated machine learning - from hyperparamete
 - [Automated AI Safety](#automated-ai-safety) (5)
 - [MLOps and Experiment Tracking](#mlops-and-experiment-tracking) (16)
 
+**Commercial & Research**
+- [Commercial Products](#commercial-products) (8)
+- [Papers and Surveys](#papers-and-surveys) (22)
+
 **Resources**
-- [Papers and Research](#papers-and-research)
+- [Research Notes by Topic](#research-notes-by-topic)
 - [Books and Courses](#books-and-courses) (3)
 - [Conferences and Communities](#conferences-and-communities) (4)
 - [Related Awesome Lists](#related-awesome-lists) (6)

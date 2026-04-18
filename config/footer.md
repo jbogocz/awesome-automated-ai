@@ -1,4 +1,4 @@
-## Papers and Research
+## Research Notes by Topic
 
 <details>
 <summary><b>Surveys</b></summary>

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-16T20:05:59.182Z",
+  "generated": "2026-04-17T21:16:34.961Z",
   "categories": [
     {
       "name": "General-Purpose AutoML",
@@ -12,9 +12,9 @@
           "description": "Declarative deep learning framework supporting custom model building and LLM fine-tuning via YAML configs. Now under Linux Foundation AI & Data.",
           "tagline": "Declarative deep learning via YAML configs",
           "note": "",
-          "stars": 11671,
-          "trend": 6,
-          "score": 84,
+          "stars": 11672,
+          "trend": 1,
+          "score": 81,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-15T17:39:52Z",
           "archived": false,
@@ -24,7 +24,8 @@
             "data-science",
             "deep",
             "deep-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "AutoGluon",
@@ -33,9 +34,9 @@
           "description": "Multi-layer stack ensembling for tabular, text, image, time-series, and multimodal data - won medals in 15/18 Kaggle tabular contests in 2024 (Amazon).",
           "tagline": "Multi-modal stack ensembling, Kaggle champion",
           "note": "",
-          "stars": 10225,
-          "trend": 16,
-          "score": 79,
+          "stars": 10231,
+          "trend": 6,
+          "score": 77,
           "license": "Apache-2.0",
           "lastCommit": "2025-12-19T19:55:33Z",
           "archived": false,
@@ -45,7 +46,8 @@
             "automl",
             "computer-vision",
             "data-science"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "TPOT",
@@ -55,8 +57,8 @@
           "tagline": "Genetic programming pipeline optimizer for sklearn",
           "note": "",
           "stars": 10042,
-          "trend": -5,
-          "score": 66,
+          "trend": 0,
+          "score": 69,
           "license": "LGPL-3.0",
           "lastCommit": "2025-07-03T21:13:56Z",
           "archived": false,
@@ -66,7 +68,8 @@
             "aiml",
             "alzheimer",
             "alzheimers"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "PyCaret",
@@ -75,9 +78,9 @@
           "description": "Low-code machine learning library that automates model training, tuning, and deployment workflows in Python.",
           "tagline": "Low-code AutoML from training to deployment",
           "note": "",
-          "stars": 9745,
-          "trend": 7,
-          "score": 68,
+          "stars": 9744,
+          "trend": -1,
+          "score": 63,
           "license": "MIT",
           "lastCommit": "2024-04-28T18:46:27Z",
           "archived": false,
@@ -87,7 +90,8 @@
             "classification",
             "clustering",
             "data-science"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "AutoKeras",
@@ -108,7 +112,8 @@
             "automl",
             "deep-learning",
             "keras"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "auto-sklearn",
@@ -116,10 +121,10 @@
           "url": "https://github.com/automl/auto-sklearn",
           "description": "Historically important AutoML toolkit using Bayesian optimization, meta-learning, and ensemble construction.",
           "tagline": "Bayesian optimization and meta-learning AutoML",
-          "note": "Unmaintained since Sep 2022; broken on Python 3.10+.",
+          "note": "Low activity; no major releases since 2022.",
           "stars": 8081,
-          "trend": 2,
-          "score": 66,
+          "trend": 0,
+          "score": 64,
           "license": "BSD-3-Clause",
           "lastCommit": "2023-02-13T12:35:21Z",
           "archived": false,
@@ -129,7 +134,8 @@
             "bayesian-optimization",
             "hyperparameter-optimization",
             "hyperparameter-search"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "H2O AutoML",
@@ -138,9 +144,9 @@
           "description": "Distributed machine learning platform with automatic training and tuning of many models within a user-specified time limit.",
           "tagline": "Enterprise distributed AutoML with time limits",
           "note": "",
-          "stars": 7493,
-          "trend": -29,
-          "score": 72,
+          "stars": 7495,
+          "trend": 2,
+          "score": 80,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-15T16:18:53Z",
           "archived": false,
@@ -150,7 +156,8 @@
             "data-science",
             "deep-learning",
             "distributed"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "FLAML",
@@ -159,9 +166,9 @@
           "description": "Fast and lightweight AutoML that finds good models with minimal resources - often the best choice for resource-constrained environments (Microsoft).",
           "tagline": "Fast AutoML with minimal compute resources",
           "note": "",
-          "stars": 4330,
-          "trend": 10,
-          "score": 78,
+          "stars": 4332,
+          "trend": 2,
+          "score": 76,
           "license": "MIT",
           "lastCommit": "2026-01-21T08:49:04Z",
           "archived": false,
@@ -171,7 +178,8 @@
             "classification",
             "data-science",
             "deep-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LazyPredict",
@@ -179,10 +187,10 @@
           "url": "https://github.com/shankarpandala/lazypredict",
           "description": "Build and evaluate dozens of scikit-learn models in a single line of code for rapid baseline comparison.",
           "tagline": "Dozens of sklearn models in one line",
-          "note": "Low activity since 2022.",
+          "note": "",
           "stars": 3312,
-          "trend": 3,
-          "score": 75,
+          "trend": 0,
+          "score": 73,
           "license": "MIT",
           "lastCommit": "2026-03-15T17:58:52Z",
           "archived": false,
@@ -191,7 +199,8 @@
             "classification",
             "machine-learning",
             "regression"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "MLJAR Supervised",
@@ -201,8 +210,8 @@
           "tagline": "AutoML with per-model reports and explanations",
           "note": "",
           "stars": 3250,
-          "trend": -1,
-          "score": 74,
+          "trend": 0,
+          "score": 76,
           "license": "MIT",
           "lastCommit": "2026-03-26T10:21:36Z",
           "archived": false,
@@ -212,7 +221,8 @@
             "automl-api",
             "automl-python",
             "catboost"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LightAutoML",
@@ -233,7 +243,8 @@
             "automl",
             "automl-algorithms",
             "binary-classification"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "EvalML",
@@ -243,8 +254,8 @@
           "tagline": "AutoML pipelines with domain-specific objectives",
           "note": "",
           "stars": 847,
-          "trend": 1,
-          "score": 57,
+          "trend": 0,
+          "score": 56,
           "license": "BSD-3-Clause",
           "lastCommit": "2024-06-06T17:43:50Z",
           "archived": false,
@@ -254,7 +265,8 @@
             "feature-engineering",
             "feature-selection",
             "hyperparameter-tuning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "SapientML",
@@ -275,7 +287,8 @@
             "automl-products",
             "automl-python",
             "machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Auto-WEKA",
@@ -283,14 +296,21 @@
           "url": "https://github.com/automl/autoweka",
           "description": "The original AutoML system (2013) combining algorithm selection and HPO in WEKA.",
           "tagline": "Original AutoML combining algorithm selection and HPO",
-          "note": "Historical; Java-only, maintenance mode.",
+          "note": "Historical; Java-only, no commits since 2022.",
           "stars": 336,
           "trend": 0,
           "score": 43,
           "license": null,
           "lastCommit": "2022-03-06T21:15:37Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "automl",
+            "bayesian-optimization",
+            "hyperparameter-optimization",
+            "java",
+            "machine-learning"
+          ],
+          "external": false
         },
         {
           "name": "GAMA",
@@ -309,7 +329,8 @@
             "automl",
             "hyperparameter-optimization",
             "research-tool"
-          ]
+          ],
+          "external": false
         }
       ]
     },
@@ -324,13 +345,20 @@
           "description": "Time-series foundation model for zero-shot forecasting across domains without task-specific training (Google).",
           "tagline": "Zero-shot time-series forecasting foundation model",
           "note": "",
-          "stars": 17898,
-          "trend": 2371,
-          "score": 79,
+          "stars": 18021,
+          "trend": 123,
+          "score": 75,
           "license": "Apache-2.0",
           "lastCommit": "2024-12-31T19:07:28Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "deep-learning",
+            "foundation-models",
+            "forecasting",
+            "google",
+            "pretrained-models"
+          ],
+          "external": false
         },
         {
           "name": "TabPFN",
@@ -339,9 +367,9 @@
           "description": "Tabular foundation model that matches tuned XGBoost in 2.8 seconds with a single forward pass - 100% win rate vs default XGBoost on datasets under 10K rows (Nature 2024, now v2.6 supporting up to 100K rows).",
           "tagline": "Beats tuned XGBoost in 2.8 seconds flat",
           "note": "",
-          "stars": 6087,
-          "trend": 72,
-          "score": 86,
+          "stars": 6101,
+          "trend": 14,
+          "score": 83,
           "license": "NOASSERTION",
           "lastCommit": "2026-04-09T12:05:58Z",
           "archived": false,
@@ -351,7 +379,8 @@
             "machine-learning",
             "tabpfn",
             "tabular-data"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Chronos",
@@ -360,9 +389,9 @@
           "description": "Pretrained time-series foundation model for zero-shot probabilistic forecasting on unseen data (Amazon).",
           "tagline": "Pretrained probabilistic forecasting on unseen time-series",
           "note": "",
-          "stars": 5151,
-          "trend": 60,
-          "score": 79,
+          "stars": 5157,
+          "trend": 6,
+          "score": 75,
           "license": "Apache-2.0",
           "lastCommit": "2025-12-17T18:13:25Z",
           "archived": false,
@@ -372,7 +401,8 @@
             "foundation-models",
             "huggingface",
             "huggingface-transformers"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Moirai",
@@ -382,8 +412,8 @@
           "tagline": "Universal multivariate time-series forecasting transformer",
           "note": "",
           "stars": 1467,
-          "trend": 4,
-          "score": 70,
+          "trend": 0,
+          "score": 67,
           "license": "Apache-2.0",
           "lastCommit": "2025-11-04T04:26:35Z",
           "archived": false,
@@ -393,7 +423,8 @@
             "machine-learning",
             "pre-trained-models",
             "pre-training"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "TabM",
@@ -402,13 +433,20 @@
           "description": "Parameter-efficient ensemble of MLPs based on BatchEnsemble, achieving top performance among tabular deep learning models without attention complexity (ICLR 2025, Yandex).",
           "tagline": "Efficient MLP ensemble for top tabular performance",
           "note": "",
-          "stars": 993,
-          "trend": 5,
+          "stars": 997,
+          "trend": 4,
           "score": 64,
           "license": "Apache-2.0",
           "lastCommit": "2025-08-14T16:25:02Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "deep-learning",
+            "ensembling",
+            "machine-learning",
+            "neural-networks",
+            "python"
+          ],
+          "external": false
         },
         {
           "name": "TALENT",
@@ -418,8 +456,8 @@
           "tagline": "Benchmark toolkit for 35+ tabular deep methods",
           "note": "",
           "stars": 840,
-          "trend": 5,
-          "score": 74,
+          "trend": 0,
+          "score": 71,
           "license": "MIT",
           "lastCommit": "2026-04-10T05:21:06Z",
           "archived": false,
@@ -429,7 +467,8 @@
             "tabular-data-benchmark",
             "tabular-data-deep-learning",
             "tabular-data-machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "TabICL",
@@ -438,9 +477,9 @@
           "description": "State-of-the-art tabular foundation model achieving 10x faster inference than TabPFN v2.5 (ICML 2025).",
           "tagline": "Tabular foundation model 10x faster than TabPFN",
           "note": "",
-          "stars": 754,
-          "trend": 37,
-          "score": 74,
+          "stars": 763,
+          "trend": 9,
+          "score": 72,
           "license": "NOASSERTION",
           "lastCommit": "2026-03-02T20:53:04Z",
           "archived": false,
@@ -450,7 +489,8 @@
             "machine-learning",
             "tabular-data",
             "tabular-methods"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "CARTE",
@@ -460,8 +500,8 @@
           "tagline": "LLM-powered representation for heterogeneous tabular data",
           "note": "",
           "stars": 170,
-          "trend": 1,
-          "score": 56,
+          "trend": 0,
+          "score": 55,
           "license": "BSD-3-Clause",
           "lastCommit": "2025-08-11T09:20:00Z",
           "archived": false,
@@ -471,7 +511,8 @@
             "graph-transformer",
             "machine-learning",
             "regression"
-          ]
+          ],
+          "external": false
         }
       ]
     },
@@ -486,9 +527,9 @@
           "description": "Unified fine-tuning framework for 100+ LLMs and VLMs with Full, LoRA, QLoRA, and DoRA methods plus web UI (ACL 2024).",
           "tagline": "Unified fine-tuning for 100+ LLMs with web UI",
           "note": "",
-          "stars": 70191,
-          "trend": 454,
-          "score": 91,
+          "stars": 70231,
+          "trend": 40,
+          "score": 87,
           "license": "Apache-2.0",
           "lastCommit": "2025-12-31T15:00:14Z",
           "archived": false,
@@ -498,7 +539,8 @@
             "deepseek",
             "fine-tuning",
             "gemma"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Unsloth",
@@ -507,9 +549,9 @@
           "description": "Fine-tune LLMs 2-5x faster with 80% less memory on a single GPU through optimized kernels and custom autograd.",
           "tagline": "Fine-tune LLMs 2-5x faster, 80% less memory",
           "note": "",
-          "stars": 61765,
-          "trend": 1663,
-          "score": 98,
+          "stars": 61992,
+          "trend": 227,
+          "score": 96,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-08T13:18:40Z",
           "archived": false,
@@ -519,7 +561,8 @@
             "fine-tuning",
             "gemma",
             "gemma3"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "PEFT",
@@ -528,9 +571,9 @@
           "description": "Standard library for parameter-efficient fine-tuning - LoRA, QLoRA, Spectrum, and more. Deeply integrated with the Hugging Face ecosystem.",
           "tagline": "Standard LoRA and parameter-efficient fine-tuning library",
           "note": "",
-          "stars": 20949,
-          "trend": 48,
-          "score": 89,
+          "stars": 20959,
+          "trend": 10,
+          "score": 86,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-16T15:50:38Z",
           "archived": false,
@@ -540,7 +583,8 @@
             "fine-tuning",
             "llm",
             "lora"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "TRL",
@@ -549,13 +593,20 @@
           "description": "Transformer Reinforcement Learning with SFT, DPO, RLHF, and GRPO trainers for alignment and preference tuning (Hugging Face).",
           "tagline": "RLHF, DPO, and GRPO trainers for LLM alignment",
           "note": "",
-          "stars": 18072,
-          "trend": 104,
-          "score": 90,
+          "stars": 18081,
+          "trend": 9,
+          "score": 86,
           "license": "Apache-2.0",
-          "lastCommit": "2026-04-12T02:15:56Z",
+          "lastCommit": "2026-04-17T01:13:05Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "deep-learning",
+            "fine-tuning",
+            "huggingface",
+            "llm",
+            "python"
+          ],
+          "external": false
         },
         {
           "name": "LitGPT",
@@ -564,9 +615,9 @@
           "description": "Recipes for pretraining, fine-tuning, and deploying 20+ LLM architectures on your own data (Lightning AI).",
           "tagline": "Pretrain, fine-tune, and deploy 20+ LLM architectures",
           "note": "",
-          "stars": 13304,
-          "trend": 20,
-          "score": 80,
+          "stars": 13306,
+          "trend": 2,
+          "score": 76,
           "license": "Apache-2.0",
           "lastCommit": "2025-12-18T15:51:48Z",
           "archived": false,
@@ -576,7 +627,8 @@
             "deep-learning",
             "large-language-models",
             "llm"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Axolotl",
@@ -585,16 +637,17 @@
           "description": "Production-grade fine-tuning with multi-GPU support, sequence parallelism, and multimodal capabilities.",
           "tagline": "Production-grade multi-GPU fine-tuning framework",
           "note": "",
-          "stars": 11704,
-          "trend": 96,
-          "score": 88,
+          "stars": 11713,
+          "trend": 9,
+          "score": 84,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-02T21:47:32Z",
           "archived": false,
           "tags": [
             "fine-tuning",
             "llm"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LMFlow",
@@ -604,8 +657,8 @@
           "tagline": "Extensible fine-tuning toolkit, NAACL 2024 award",
           "note": "",
           "stars": 8484,
-          "trend": -5,
-          "score": 65,
+          "trend": 0,
+          "score": 68,
           "license": "Apache-2.0",
           "lastCommit": "2025-07-11T02:03:22Z",
           "archived": false,
@@ -615,7 +668,8 @@
             "instruction-following",
             "language-model",
             "pretrained-models"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "torchtune",
@@ -624,13 +678,20 @@
           "description": "Native PyTorch library for fine-tuning LLMs with composable building blocks and YAML configs (Meta).",
           "tagline": "Native PyTorch LLM fine-tuning with YAML configs",
           "note": "",
-          "stars": 5731,
-          "trend": 6,
-          "score": 66,
+          "stars": 5732,
+          "trend": 1,
+          "score": 64,
           "license": "BSD-3-Clause",
           "lastCommit": "2025-04-07T19:01:38Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "deep-learning",
+            "fine-tuning",
+            "llm",
+            "meta",
+            "post-training"
+          ],
+          "external": false
         },
         {
           "name": "Hugging Face AutoTrain",
@@ -640,8 +701,8 @@
           "tagline": "No-code LLM and vision-language model training",
           "note": "",
           "stars": 4570,
-          "trend": 1,
-          "score": 78,
+          "trend": 0,
+          "score": 77,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-15T10:15:58Z",
           "archived": false,
@@ -651,7 +712,8 @@
             "huggingface",
             "machine-learning",
             "natural-language-processing"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LoRAX",
@@ -660,9 +722,9 @@
           "description": "Multi-LoRA inference server that scales to thousands of fine-tuned LLMs on a single GPU (Predibase).",
           "tagline": "Thousands of LoRA adapters on a single GPU",
           "note": "",
-          "stars": 3752,
-          "trend": 8,
-          "score": 65,
+          "stars": 3753,
+          "trend": 1,
+          "score": 62,
           "license": "Apache-2.0",
           "lastCommit": "2025-01-13T23:12:10Z",
           "archived": false,
@@ -672,7 +734,8 @@
             "llama",
             "llm",
             "llm-inference"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "H2O LLM Studio",
@@ -681,9 +744,9 @@
           "description": "No-code GUI for fine-tuning LLMs with SFT, DPO, and RLHF, plus experiment tracking and one-click Hugging Face Hub export (H2O.ai).",
           "tagline": "No-code GUI for LLM fine-tuning and RLHF",
           "note": "",
-          "stars": 4907,
-          "trend": 0,
-          "score": 77,
+          "stars": 4909,
+          "trend": 2,
+          "score": 79,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-07T11:00:00Z",
           "archived": false,
@@ -693,7 +756,8 @@
             "chatgpt",
             "fedramp",
             "fine-tuning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LLM Foundry",
@@ -703,8 +767,8 @@
           "tagline": "Composable pretraining and fine-tuning for foundation models",
           "note": "",
           "stars": 4398,
-          "trend": 1,
-          "score": 67,
+          "trend": 0,
+          "score": 66,
           "license": "Apache-2.0",
           "lastCommit": "2025-07-29T00:40:29Z",
           "archived": false,
@@ -714,7 +778,29 @@
             "neural-networks",
             "nlp",
             "pytorch"
-          ]
+          ],
+          "external": false
+        },
+        {
+          "name": "LeRobot",
+          "repo": "huggingface/lerobot",
+          "url": "https://github.com/huggingface/lerobot",
+          "description": "Hugging Face's end-to-end library for robotics learning with pretrained policies, datasets, and simulation environments for imitation and RL.",
+          "tagline": "End-to-end learning for robotics",
+          "note": "",
+          "stars": 23319,
+          "trend": null,
+          "score": 82,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-07T14:57:52Z",
+          "archived": false,
+          "tags": [
+            "imitation-learning",
+            "pytorch",
+            "reinforcement-learning",
+            "robotics"
+          ],
+          "external": false
         }
       ]
     },
@@ -729,13 +815,20 @@
           "description": "Declarative framework replacing hand-written prompts with automatic optimizers - GPT-3.5 with DSPy outperforms expert prompts by up to 46% (Stanford NLP).",
           "tagline": "Automatic prompt optimizers replacing hand-written prompts",
           "note": "",
-          "stars": 33751,
-          "trend": 221,
-          "score": 91,
+          "stars": 33769,
+          "trend": 18,
+          "score": 86,
           "license": "MIT",
           "lastCommit": "2026-02-05T16:18:52Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "dspy",
+            "llm",
+            "nlp",
+            "prompt-optimization",
+            "prompting"
+          ],
+          "external": false
         },
         {
           "name": "PromptWizard",
@@ -744,13 +837,20 @@
           "description": "Task-aware agent-driven prompt optimization using self-evolving critique and synthesis (Microsoft).",
           "tagline": "Agent-driven self-evolving prompt optimization",
           "note": "",
-          "stars": 3831,
-          "trend": 0,
-          "score": 66,
+          "stars": 3832,
+          "trend": 1,
+          "score": 67,
           "license": "MIT",
           "lastCommit": "2025-08-04T08:53:19Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "automl",
+            "llm",
+            "microsoft",
+            "prompt-engineering",
+            "prompt-optimization"
+          ],
+          "external": false
         },
         {
           "name": "TextGrad",
@@ -759,9 +859,9 @@
           "description": "Automatic differentiation via text feedback, enabling gradient-like optimization of compound AI systems (Nature 2024).",
           "tagline": "Gradient-like optimization of AI via text feedback",
           "note": "",
-          "stars": 3493,
-          "trend": 19,
-          "score": 66,
+          "stars": 3497,
+          "trend": 4,
+          "score": 64,
           "license": "MIT",
           "lastCommit": "2024-12-15T14:06:27Z",
           "archived": false,
@@ -771,7 +871,8 @@
             "large-language-models",
             "prompt-optimization",
             "textual-gradients"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "GEPA",
@@ -780,13 +881,20 @@
           "description": "Reflective text evolution for prompt, code, and text optimization, integrated into MLflow (Cerebras).",
           "tagline": "Reflective text evolution for prompt optimization",
           "note": "",
-          "stars": 3558,
-          "trend": 322,
-          "score": 83,
+          "stars": 3579,
+          "trend": 21,
+          "score": 79,
           "license": "MIT",
           "lastCommit": "2026-03-16T10:15:05Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "evolutionary-algorithms",
+            "llm",
+            "optimization",
+            "prompt-optimization",
+            "python"
+          ],
+          "external": false
         },
         {
           "name": "AutoPrompt",
@@ -805,7 +913,8 @@
             "prompt-engineering",
             "prompt-tuning",
             "synthetic-dataset-generation"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Mirascope",
@@ -815,8 +924,8 @@
           "tagline": "Pythonic LLM toolkit with prompt versioning and tracing",
           "note": "",
           "stars": 1459,
-          "trend": 5,
-          "score": 73,
+          "trend": 0,
+          "score": 70,
           "license": "MIT",
           "lastCommit": "2026-03-08T03:59:23Z",
           "archived": false,
@@ -826,7 +935,8 @@
             "llm",
             "llm-agent",
             "llm-tools"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Promptomatix",
@@ -835,13 +945,20 @@
           "description": "DSPy-powered automatic prompt optimization that transforms task descriptions into optimized prompts with cost-aware objectives (Salesforce).",
           "tagline": "Task descriptions to optimized prompts automatically",
           "note": "",
-          "stars": 946,
-          "trend": 8,
-          "score": 65,
+          "stars": 948,
+          "trend": 2,
+          "score": 63,
           "license": "Apache-2.0",
           "lastCommit": "2025-07-29T21:49:27Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "automl",
+            "llm",
+            "nlp",
+            "prompt-optimization",
+            "python"
+          ],
+          "external": false
         },
         {
           "name": "Prompt-Ops",
@@ -851,12 +968,19 @@
           "tagline": "CLI for building and managing prompts at scale",
           "note": "",
           "stars": 800,
-          "trend": 5,
-          "score": 68,
+          "trend": 0,
+          "score": 65,
           "license": "MIT",
           "lastCommit": "2025-12-30T16:00:35Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "llama",
+            "llm",
+            "meta",
+            "prompt-engineering",
+            "prompt-optimization"
+          ],
+          "external": false
         },
         {
           "name": "EvoPrompt",
@@ -866,12 +990,19 @@
           "tagline": "Evolutionary algorithms for discrete prompt optimization",
           "note": "",
           "stars": 228,
-          "trend": 4,
-          "score": 59,
+          "trend": 0,
+          "score": 56,
           "license": "MIT",
           "lastCommit": "2025-09-22T11:43:22Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "evolutionary-algorithms",
+            "genetic-algorithms",
+            "llm",
+            "prompt-optimization",
+            "python"
+          ],
+          "external": false
         }
       ]
     },
@@ -886,13 +1017,20 @@
           "description": "Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026).",
           "tagline": "Agents run 100 ML experiments overnight autonomously",
           "note": "",
-          "stars": 73326,
-          "trend": 4821,
-          "score": 89,
+          "stars": 73825,
+          "trend": 499,
+          "score": 88,
           "license": null,
           "lastCommit": "2026-03-26T00:07:37Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "agents",
+            "automated-research",
+            "autonomous-agents",
+            "llm",
+            "machine-learning"
+          ],
+          "external": false
         },
         {
           "name": "AutoGen",
@@ -901,9 +1039,9 @@
           "description": "Multi-agent conversation framework for building AI agent systems. Now in maintenance mode as AG2 (Microsoft).",
           "tagline": "Multi-agent conversation framework for AI systems",
           "note": "",
-          "stars": 57148,
-          "trend": 337,
-          "score": 86,
+          "stars": 57173,
+          "trend": 25,
+          "score": 81,
           "license": "CC-BY-4.0",
           "lastCommit": "2025-09-30T06:18:26Z",
           "archived": false,
@@ -913,7 +1051,8 @@
             "agents",
             "ai",
             "autogen"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "CrewAI",
@@ -922,11 +1061,11 @@
           "description": "Multi-agent framework orchestrating role-playing specialist agents for complex AI workflows.",
           "tagline": "Role-playing specialist agents for complex workflows",
           "note": "",
-          "stars": 49031,
-          "trend": 704,
-          "score": 97,
+          "stars": 49121,
+          "trend": 90,
+          "score": 93,
           "license": "MIT",
-          "lastCommit": "2026-04-08T17:57:03Z",
+          "lastCommit": "2026-04-17T14:08:42Z",
           "archived": false,
           "tags": [
             "agents",
@@ -934,7 +1073,8 @@
             "ai-agents",
             "aiagentframework",
             "llms"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "STORM",
@@ -943,9 +1083,9 @@
           "description": "LLM-powered knowledge curation that researches topics and generates full articles with citations (Stanford).",
           "tagline": "LLM researches topics and writes full articles",
           "note": "",
-          "stars": 28094,
-          "trend": 33,
-          "score": 74,
+          "stars": 28098,
+          "trend": 4,
+          "score": 71,
           "license": "MIT",
           "lastCommit": "2025-01-23T07:21:44Z",
           "archived": false,
@@ -955,7 +1095,8 @@
             "emnlp2024",
             "knowledge-curation",
             "large-language-models"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "AI-Scientist",
@@ -964,13 +1105,20 @@
           "description": "Fully automated open-ended scientific discovery from idea generation to experiment execution to paper writing (Sakana AI).",
           "tagline": "Fully automated discovery from idea to paper",
           "note": "",
-          "stars": 13273,
-          "trend": 155,
-          "score": 84,
+          "stars": 13286,
+          "trend": 13,
+          "score": 79,
           "license": "NOASSERTION",
           "lastCommit": "2025-12-19T07:46:21Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "agents",
+            "automated-research",
+            "autonomous-agents",
+            "llm",
+            "python"
+          ],
+          "external": false
         },
         {
           "name": "PaperQA",
@@ -979,9 +1127,9 @@
           "description": "High-accuracy retrieval-augmented generation for answering questions from scientific literature.",
           "tagline": "High-accuracy RAG over scientific literature",
           "note": "",
-          "stars": 8383,
-          "trend": 34,
-          "score": 85,
+          "stars": 8387,
+          "trend": 4,
+          "score": 79,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-18T18:49:57Z",
           "archived": false,
@@ -990,7 +1138,8 @@
             "rag",
             "science",
             "search"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "AI-Scientist-v2",
@@ -999,13 +1148,20 @@
           "description": "Second generation using agentic tree search, producing the first AI-generated paper accepted at a peer-reviewed workshop.",
           "tagline": "First AI paper accepted at peer-reviewed workshop",
           "note": "",
-          "stars": 5567,
-          "trend": 302,
-          "score": 82,
+          "stars": 5664,
+          "trend": 97,
+          "score": 80,
           "license": "NOASSERTION",
           "lastCommit": "2025-12-19T07:46:31Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "agentic-search",
+            "agents",
+            "automated-research",
+            "autonomous-agents",
+            "llm"
+          ],
+          "external": false
         },
         {
           "name": "AI-Researcher",
@@ -1014,15 +1170,16 @@
           "description": "Autonomous agent automating the full research lifecycle from literature review to experimentation (NeurIPS 2025 Spotlight).",
           "tagline": "Full research lifecycle from literature to experiments",
           "note": "",
-          "stars": 5143,
-          "trend": 71,
-          "score": 64,
+          "stars": 5153,
+          "trend": 10,
+          "score": 61,
           "license": null,
           "lastCommit": "2025-10-16T06:47:34Z",
           "archived": false,
           "tags": [
             "ai-researcher"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "AIDE",
@@ -1031,9 +1188,9 @@
           "description": "ML engineering agent using tree search over solution space - exceeds 50% of human Kaggle competitors; top agents using AIDE achieve medals in 64%+ of MLE-Bench competitions (Weco AI).",
           "tagline": "ML agent beating 50% of human Kaggle competitors",
           "note": "",
-          "stars": 1223,
-          "trend": 11,
-          "score": 71,
+          "stars": 1224,
+          "trend": 1,
+          "score": 67,
           "license": "MIT",
           "lastCommit": "2025-11-05T11:11:13Z",
           "archived": false,
@@ -1043,7 +1200,8 @@
             "automated-machine-learning",
             "autonomous-agents",
             "autoresearch"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "AutoML-Agent",
@@ -1053,8 +1211,8 @@
           "tagline": "LLM agents for end-to-end AutoML pipelines",
           "note": "",
           "stars": 121,
-          "trend": 3,
-          "score": 46,
+          "trend": 0,
+          "score": 44,
           "license": null,
           "lastCommit": "2025-07-11T19:39:49Z",
           "archived": false,
@@ -1062,7 +1220,30 @@
             "automl",
             "llm-agents",
             "multi-agent-systems"
-          ]
+          ],
+          "external": false
+        },
+        {
+          "name": "GPT Researcher",
+          "repo": "assafelovic/gpt-researcher",
+          "url": "https://github.com/assafelovic/gpt-researcher",
+          "description": "Autonomous research agent that plans queries, scrapes sources, and writes cited multi-page reports using any LLM with optional MCP server mode.",
+          "tagline": "Autonomous deep-research report agent",
+          "note": "",
+          "stars": 26511,
+          "trend": null,
+          "score": 83,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-16T17:40:28Z",
+          "archived": false,
+          "tags": [
+            "agent",
+            "ai",
+            "automation",
+            "deepresearch",
+            "llms"
+          ],
+          "external": false
         }
       ]
     },
@@ -1077,9 +1258,9 @@
           "description": "AI software development platform achieving 53-72% resolve rate on SWE-Bench Verified.",
           "tagline": "AI dev platform, 53-72% SWE-Bench resolve rate",
           "note": "",
-          "stars": 71328,
-          "trend": 524,
-          "score": 98,
+          "stars": 71409,
+          "trend": 81,
+          "score": 94,
           "license": "NOASSERTION",
           "lastCommit": "2026-03-30T16:01:39Z",
           "archived": false,
@@ -1089,7 +1270,8 @@
             "chatgpt",
             "claude-ai",
             "cli"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Aider",
@@ -1098,9 +1280,9 @@
           "description": "AI pair programmer in the terminal that edits code directly in your local repository.",
           "tagline": "AI pair programmer editing your local repository",
           "note": "",
-          "stars": 43435,
-          "trend": 442,
-          "score": 85,
+          "stars": 43502,
+          "trend": 67,
+          "score": 82,
           "license": "Apache-2.0",
           "lastCommit": "2025-08-09T17:42:19Z",
           "archived": false,
@@ -1110,7 +1292,8 @@
             "claude-3",
             "cli",
             "command-line"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "SWE-agent",
@@ -1119,9 +1302,9 @@
           "description": "Autonomous agent that solves real GitHub issues by reading, editing, and testing code (NeurIPS 2024).",
           "tagline": "Autonomous agent solving real GitHub issues",
           "note": "",
-          "stars": 18995,
-          "trend": 45,
-          "score": 78,
+          "stars": 19001,
+          "trend": 6,
+          "score": 75,
           "license": "MIT",
           "lastCommit": "2025-05-22T16:11:39Z",
           "archived": false,
@@ -1131,7 +1314,8 @@
             "ai",
             "cybersecurity",
             "developer-tools"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "mini-swe-agent",
@@ -1140,9 +1324,9 @@
           "description": "Minimalist 100-line coding agent achieving 74% on SWE-bench Verified as a learning reference.",
           "tagline": "100-line agent with 74% SWE-bench score",
           "note": "",
-          "stars": 3869,
-          "trend": 153,
-          "score": 85,
+          "stars": 3888,
+          "trend": 19,
+          "score": 82,
           "license": "MIT",
           "lastCommit": "2026-03-24T16:52:22Z",
           "archived": false,
@@ -1152,7 +1336,8 @@
             "agentic-ai-cli",
             "ai",
             "ai-agent"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "AutoCodeRover",
@@ -1162,12 +1347,217 @@
           "tagline": "Structure-aware autonomous code repair and patching",
           "note": "",
           "stars": 3065,
-          "trend": 1,
-          "score": 62,
+          "trend": 0,
+          "score": 60,
           "license": "NOASSERTION",
           "lastCommit": "2024-09-10T05:13:18Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "agents",
+            "autonomous-agents",
+            "code-generation",
+            "llm",
+            "program-repair"
+          ],
+          "external": false
+        },
+        {
+          "name": "AG2",
+          "repo": "ag2ai/ag2",
+          "url": "https://github.com/ag2ai/ag2",
+          "description": "Open-source AgentOS (formerly AutoGen) for building multi-agent systems with conversation patterns, tool use, and code execution across LLM providers.",
+          "tagline": "Multi-agent AgentOS from AutoGen lineage",
+          "note": "",
+          "stars": 4412,
+          "trend": null,
+          "score": 77,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-04T23:58:58Z",
+          "archived": false,
+          "tags": [
+            "a2a",
+            "ag2",
+            "agent-framework",
+            "agentic",
+            "agentic-ai"
+          ],
+          "external": false
+        },
+        {
+          "name": "LangGraph",
+          "repo": "langchain-ai/langgraph",
+          "url": "https://github.com/langchain-ai/langgraph",
+          "description": "LangChain's graph-based runtime for building stateful, resilient agents with checkpointing, human-in-the-loop, and controllable multi-actor workflows.",
+          "tagline": "Stateful graph runtime for agents",
+          "note": "",
+          "stars": 29528,
+          "trend": null,
+          "score": 83,
+          "license": "MIT",
+          "lastCommit": "2026-04-17T19:46:03Z",
+          "archived": false,
+          "tags": [
+            "agents",
+            "ai",
+            "ai-agents",
+            "chatgpt",
+            "deepagents"
+          ],
+          "external": false
+        },
+        {
+          "name": "Pydantic AI",
+          "repo": "pydantic/pydantic-ai",
+          "url": "https://github.com/pydantic/pydantic-ai",
+          "description": "Agent framework from the Pydantic team that brings typed validation, dependency injection, and structured outputs to LLM apps across providers.",
+          "tagline": "Typed agents the Pydantic way",
+          "note": "",
+          "stars": 16435,
+          "trend": null,
+          "score": 81,
+          "license": "MIT",
+          "lastCommit": "2026-04-17T00:19:40Z",
+          "archived": false,
+          "tags": [
+            "agent-framework",
+            "genai",
+            "llm",
+            "pydantic",
+            "python"
+          ],
+          "external": false
+        },
+        {
+          "name": "smolagents",
+          "repo": "huggingface/smolagents",
+          "url": "https://github.com/huggingface/smolagents",
+          "description": "Hugging Face's minimalist agent library where agents reason by writing and executing Python code rather than emitting JSON tool calls.",
+          "tagline": "Barebones code-writing agents library",
+          "note": "",
+          "stars": 26689,
+          "trend": null,
+          "score": 77,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-01-16T05:38:28Z",
+          "archived": false,
+          "tags": [
+            "agents",
+            "code-agents",
+            "huggingface",
+            "llm",
+            "python"
+          ],
+          "external": false
+        },
+        {
+          "name": "Google ADK for Python",
+          "repo": "google/adk-python",
+          "url": "https://github.com/google/adk-python",
+          "description": "Google's code-first Python toolkit for building, evaluating, and deploying production AI agents with the same stack powering Gemini and Agentspace.",
+          "tagline": "Google's production agent development kit",
+          "note": "",
+          "stars": 19057,
+          "trend": null,
+          "score": 82,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-17T00:58:00Z",
+          "archived": false,
+          "tags": [
+            "agent",
+            "agentic",
+            "agentic-ai",
+            "agents",
+            "agents-sdk"
+          ],
+          "external": false
+        },
+        {
+          "name": "Mem0",
+          "repo": "mem0ai/mem0",
+          "url": "https://github.com/mem0ai/mem0",
+          "description": "Universal memory layer that gives AI agents persistent, personalized long-term memory with extraction, retrieval, and graph-backed storage.",
+          "tagline": "Universal memory layer for agents",
+          "note": "",
+          "stars": 53347,
+          "trend": null,
+          "score": 85,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-16T11:52:37Z",
+          "archived": false,
+          "tags": [
+            "agents",
+            "ai",
+            "ai-agents",
+            "application",
+            "chatbots"
+          ],
+          "external": false
+        },
+        {
+          "name": "Browser Use",
+          "repo": "browser-use/browser-use",
+          "url": "https://github.com/browser-use/browser-use",
+          "description": "Playwright-powered agent harness that makes websites accessible to LLMs so they can navigate, fill forms, and automate tasks across real browsers.",
+          "tagline": "LLM-driven browser automation framework",
+          "note": "",
+          "stars": 88308,
+          "trend": null,
+          "score": 87,
+          "license": "MIT",
+          "lastCommit": "2026-04-02T07:54:28Z",
+          "archived": false,
+          "tags": [
+            "ai-agents",
+            "ai-tools",
+            "browser-automation",
+            "browser-use",
+            "llm"
+          ],
+          "external": false
+        },
+        {
+          "name": "E2B",
+          "repo": "e2b-dev/e2b",
+          "url": "https://github.com/e2b-dev/e2b",
+          "description": "Open-source secure cloud sandboxes that give AI agents isolated Linux VMs to run generated code, browsers, and real-world developer tools.",
+          "tagline": "Secure code sandboxes for agents",
+          "note": "",
+          "stars": 11764,
+          "trend": null,
+          "score": 80,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-04-02T19:20:41Z",
+          "archived": false,
+          "tags": [
+            "agent",
+            "ai",
+            "ai-agent",
+            "ai-agents",
+            "code-interpreter"
+          ],
+          "external": false
+        },
+        {
+          "name": "Magentic-UI",
+          "repo": "microsoft/magentic-ui",
+          "url": "https://github.com/microsoft/magentic-ui",
+          "description": "Microsoft Research prototype for a human-centered web agent with co-planning, action previews, and transparent browser control built on AutoGen.",
+          "tagline": "Human-in-the-loop web agent prototype",
+          "note": "",
+          "stars": 9773,
+          "trend": null,
+          "score": 73,
+          "license": "MIT",
+          "lastCommit": "2025-11-29T01:31:15Z",
+          "archived": false,
+          "tags": [
+            "agents",
+            "ai",
+            "ai-ux",
+            "autogen",
+            "browser-use"
+          ],
+          "external": false
         }
       ]
     },
@@ -1182,9 +1572,9 @@
           "description": "AutoML-style framework for RAG optimization that automatically finds the best retrieval, generation, and prompt pipeline configuration.",
           "tagline": "AutoML-style search for optimal RAG pipelines",
           "note": "",
-          "stars": 4708,
-          "trend": 21,
-          "score": 82,
+          "stars": 4709,
+          "trend": 1,
+          "score": 78,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-03T15:50:54Z",
           "archived": false,
@@ -1194,7 +1584,8 @@
             "benchmarking",
             "document-parser",
             "embeddings"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Promptfoo",
@@ -1203,9 +1594,9 @@
           "description": "Test and red-team LLM applications with automated evaluations, CI/CD integration, and vulnerability scanning.",
           "tagline": "Test and red-team LLMs with CI/CD integration",
           "note": "",
-          "stars": 20182,
-          "trend": 437,
-          "score": 93,
+          "stars": 20225,
+          "trend": 43,
+          "score": 89,
           "license": "MIT",
           "lastCommit": "2026-04-14T20:57:14Z",
           "archived": false,
@@ -1215,7 +1606,8 @@
             "cicd",
             "evaluation",
             "evaluation-framework"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "DeepEval",
@@ -1224,9 +1616,9 @@
           "description": "Pytest-like framework with 14+ evaluation metrics for RAG, fine-tuning, and alignment assessment.",
           "tagline": "Pytest-style LLM evaluation with 14+ metrics",
           "note": "",
-          "stars": 14814,
-          "trend": 207,
-          "score": 85,
+          "stars": 14849,
+          "trend": 35,
+          "score": 81,
           "license": "Apache-2.0",
           "lastCommit": "2025-12-01T10:52:54Z",
           "archived": false,
@@ -1236,7 +1628,8 @@
             "llm-evaluation",
             "llm-evaluation-framework",
             "llm-evaluation-metrics"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "RAGAS",
@@ -1245,9 +1638,9 @@
           "description": "Evaluation framework for RAG quality assessment measuring both retrieval and generation with LLM-based and traditional metrics.",
           "tagline": "Evaluate RAG retrieval and generation quality",
           "note": "",
-          "stars": 13421,
-          "trend": 140,
-          "score": 83,
+          "stars": 13438,
+          "trend": 17,
+          "score": 80,
           "license": "Apache-2.0",
           "lastCommit": "2026-01-13T17:47:29Z",
           "archived": false,
@@ -1255,7 +1648,8 @@
             "evaluation",
             "llm",
             "llmops"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "lm-evaluation-harness",
@@ -1264,9 +1658,9 @@
           "description": "Standard framework for few-shot evaluation of language models across hundreds of benchmarks (EleutherAI).",
           "tagline": "Standard few-shot LLM evaluation across hundreds of benchmarks",
           "note": "",
-          "stars": 12208,
-          "trend": 156,
-          "score": 86,
+          "stars": 12228,
+          "trend": 20,
+          "score": 83,
           "license": "MIT",
           "lastCommit": "2026-02-13T20:21:47Z",
           "archived": false,
@@ -1274,7 +1668,8 @@
             "evaluation-framework",
             "language-model",
             "transformer"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "OpenCompass",
@@ -1283,9 +1678,9 @@
           "description": "One-stop evaluation platform supporting 100+ models across academic and real-world benchmarks.",
           "tagline": "One-stop evaluation for 100+ LLMs and benchmarks",
           "note": "",
-          "stars": 6880,
-          "trend": 43,
-          "score": 82,
+          "stars": 6890,
+          "trend": 10,
+          "score": 80,
           "license": "Apache-2.0",
           "lastCommit": "2026-02-14T03:46:30Z",
           "archived": false,
@@ -1295,7 +1690,8 @@
             "evaluation",
             "large-language-model",
             "llama2"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Agenta",
@@ -1305,10 +1701,10 @@
           "tagline": "LLMOps platform with playground and evaluation",
           "note": "",
           "stars": 4033,
-          "trend": 20,
-          "score": 82,
+          "trend": 0,
+          "score": 76,
           "license": "NOASSERTION",
-          "lastCommit": "2026-04-16T14:00:58Z",
+          "lastCommit": "2026-04-17T10:35:51Z",
           "archived": false,
           "tags": [
             "agents",
@@ -1316,7 +1712,8 @@
             "llm-as-a-judge",
             "llm-evaluation",
             "llm-framework"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "TruLens",
@@ -1325,9 +1722,9 @@
           "description": "OpenTelemetry-based tracing and evaluation for RAG and agent workflows with built-in feedback functions (Snowflake/TruEra).",
           "tagline": "OpenTelemetry tracing and evaluation for RAG agents",
           "note": "",
-          "stars": 3251,
-          "trend": 17,
-          "score": 81,
+          "stars": 3253,
+          "trend": 2,
+          "score": 78,
           "license": "MIT",
           "lastCommit": "2026-04-09T19:02:04Z",
           "archived": false,
@@ -1337,7 +1734,8 @@
             "ai-agents",
             "ai-monitoring",
             "ai-observability"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LangWatch",
@@ -1346,11 +1744,11 @@
           "description": "Evaluation and testing platform for LLM applications and AI agents with automated quality guardrails.",
           "tagline": "LLM evaluation platform with automated quality guardrails",
           "note": "",
-          "stars": 3205,
-          "trend": 18,
-          "score": 81,
+          "stars": 3206,
+          "trend": 1,
+          "score": 77,
           "license": "NOASSERTION",
-          "lastCommit": "2026-04-08T15:58:11Z",
+          "lastCommit": "2026-04-17T12:57:42Z",
           "archived": false,
           "tags": [
             "ai",
@@ -1358,7 +1756,8 @@
             "datasets",
             "dspy",
             "evaluation"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LightEval",
@@ -1368,8 +1767,8 @@
           "tagline": "Powers the Open LLM Leaderboard, 1000+ tasks",
           "note": "",
           "stars": 2379,
-          "trend": 10,
-          "score": 73,
+          "trend": 0,
+          "score": 69,
           "license": "MIT",
           "lastCommit": "2025-11-24T15:57:33Z",
           "archived": false,
@@ -1378,7 +1777,8 @@
             "evaluation-framework",
             "evaluation-metrics",
             "huggingface"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Inspect AI",
@@ -1387,13 +1787,20 @@
           "description": "Framework for reproducible LLM evals with sandboxed agent execution, 100+ prebuilt evaluations, and VS Code integration (UK AI Safety Institute).",
           "tagline": "Reproducible sandboxed LLM evals, 100+ prebuilt",
           "note": "",
-          "stars": 1905,
-          "trend": 16,
-          "score": 79,
+          "stars": 1908,
+          "trend": 3,
+          "score": 76,
           "license": "MIT",
-          "lastCommit": "2026-04-16T11:15:55Z",
+          "lastCommit": "2026-04-17T19:54:36Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "ai-safety",
+            "benchmarking",
+            "evaluation",
+            "framework",
+            "llm"
+          ],
+          "external": false
         },
         {
           "name": "OpenAI Evals",
@@ -1402,9 +1809,9 @@
           "description": "Reference framework and open registry of LLM benchmarks from OpenAI - the original eval harness many downstream frameworks build on.",
           "tagline": "OpenAI's reference LLM eval framework and benchmark registry",
           "note": "",
-          "stars": 18215,
-          "trend": null,
-          "score": 82,
+          "stars": 18225,
+          "trend": 10,
+          "score": 86,
           "license": "NOASSERTION",
           "lastCommit": "2026-04-14T15:29:57Z",
           "archived": false,
@@ -1414,7 +1821,30 @@
             "gpt",
             "llm",
             "llm-evaluation"
-          ]
+          ],
+          "external": false
+        },
+        {
+          "name": "Gorilla",
+          "repo": "ShishirPatil/gorilla",
+          "url": "https://github.com/ShishirPatil/gorilla",
+          "description": "UC Berkeley project training and evaluating LLMs for function and tool calling, home of the Berkeley Function-Calling Leaderboard (BFCL).",
+          "tagline": "Function-calling models and BFCL leaderboard",
+          "note": "",
+          "stars": 12834,
+          "trend": null,
+          "score": 70,
+          "license": "Apache-2.0",
+          "lastCommit": "2025-07-17T21:10:14Z",
+          "archived": false,
+          "tags": [
+            "api",
+            "api-documentation",
+            "chatgpt",
+            "claude-api",
+            "function-calling"
+          ],
+          "external": false
         }
       ]
     },
@@ -1429,11 +1859,11 @@
           "description": "Unified API gateway for 100+ LLMs with load balancing, cost tracking, and automatic fallback routing.",
           "tagline": "Unified API gateway for 100+ LLMs",
           "note": "",
-          "stars": 43557,
-          "trend": 1016,
-          "score": 97,
+          "stars": 43704,
+          "trend": 147,
+          "score": 94,
           "license": "NOASSERTION",
-          "lastCommit": "2026-04-15T20:07:13Z",
+          "lastCommit": "2026-04-17T04:06:56Z",
           "archived": false,
           "tags": [
             "ai-gateway",
@@ -1441,7 +1871,8 @@
             "azure-openai",
             "bedrock",
             "gateway"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Portkey Gateway",
@@ -1450,9 +1881,9 @@
           "description": "AI gateway for intelligent routing, caching, load balancing, and fallbacks across 200+ LLMs.",
           "tagline": "AI gateway routing and caching across 200+ LLMs",
           "note": "",
-          "stars": 11340,
-          "trend": 102,
-          "score": 82,
+          "stars": 11354,
+          "trend": 14,
+          "score": 79,
           "license": "MIT",
           "lastCommit": "2026-01-12T08:46:07Z",
           "archived": false,
@@ -1462,7 +1893,8 @@
             "generative-ai",
             "hacktoberfest",
             "langchain"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "RouteLLM",
@@ -1471,13 +1903,20 @@
           "description": "Framework for training and serving LLM routers that reduce costs by up to 85% without quality loss (LMSYS).",
           "tagline": "LLM routers cutting costs 85% without quality loss",
           "note": "",
-          "stars": 4788,
-          "trend": 20,
-          "score": 67,
+          "stars": 4792,
+          "trend": 4,
+          "score": 65,
           "license": "Apache-2.0",
           "lastCommit": "2024-08-10T19:10:15Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "cost-optimization",
+            "inference",
+            "llm",
+            "llm-routing",
+            "python"
+          ],
+          "external": false
         },
         {
           "name": "LLMRouter",
@@ -1486,13 +1925,20 @@
           "description": "Unified library with 16+ router implementations and standardized evaluation via command-line interface.",
           "tagline": "16+ LLM router implementations with unified evaluation",
           "note": "",
-          "stars": 1675,
-          "trend": 65,
-          "score": 81,
+          "stars": 1681,
+          "trend": 6,
+          "score": 74,
           "license": "MIT",
           "lastCommit": "2026-03-17T21:50:45Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "inference",
+            "llm",
+            "llm-routing",
+            "model-selection",
+            "python"
+          ],
+          "external": false
         },
         {
           "name": "TensorZero",
@@ -1501,9 +1947,9 @@
           "description": "Open-source LLMOps platform unifying an LLM gateway, observability, evaluation, optimization, and experimentation with A/B testing across models.",
           "tagline": "LLMOps platform with gateway, evals, and A/B testing",
           "note": "",
-          "stars": 11224,
-          "trend": 33,
-          "score": 86,
+          "stars": 11239,
+          "trend": 15,
+          "score": 85,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-02T17:00:15Z",
           "archived": false,
@@ -1513,7 +1959,8 @@
             "anthropic",
             "artificial-intelligence",
             "deep-learning"
-          ]
+          ],
+          "external": false
         }
       ]
     },
@@ -1528,9 +1975,9 @@
           "description": "Unified framework for time-series forecasting, classification, regression, and clustering with scikit-learn-compatible interfaces.",
           "tagline": "Unified sklearn-compatible time-series ML toolkit",
           "note": "",
-          "stars": 9736,
-          "trend": 22,
-          "score": 79,
+          "stars": 9735,
+          "trend": -1,
+          "score": 72,
           "license": "BSD-3-Clause",
           "lastCommit": "2025-11-25T00:02:03Z",
           "archived": false,
@@ -1540,7 +1987,8 @@
             "changepoint-detection",
             "data-mining",
             "data-science"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Darts",
@@ -1549,9 +1997,9 @@
           "description": "Unified API for 30+ forecasting models from ARIMA to transformers, with backtesting and ensembling built in.",
           "tagline": "Unified API for 30+ forecasting models with backtesting",
           "note": "",
-          "stars": 9330,
-          "trend": 20,
-          "score": 85,
+          "stars": 9332,
+          "trend": 2,
+          "score": 81,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-23T09:20:09Z",
           "archived": false,
@@ -1561,7 +2009,8 @@
             "deep-learning",
             "forecasting",
             "machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Nixtla StatsForecast",
@@ -1571,8 +2020,8 @@
           "tagline": "Lightning-fast AutoARIMA and AutoETS at scale",
           "note": "",
           "stars": 4760,
-          "trend": 13,
-          "score": 76,
+          "trend": 0,
+          "score": 71,
           "license": "Apache-2.0",
           "lastCommit": "2025-10-29T17:45:59Z",
           "archived": false,
@@ -1582,7 +2031,8 @@
             "baselines",
             "data-science",
             "econometrics"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Merlion",
@@ -1590,10 +2040,10 @@
           "url": "https://github.com/salesforce/Merlion",
           "description": "Time-series intelligence library with unified interfaces for forecasting, anomaly detection, and change-point detection (Salesforce).",
           "tagline": "Unified forecasting, anomaly, and change-point detection",
-          "note": "",
+          "note": "Archived by Salesforce in 2026.",
           "stars": 4473,
-          "trend": 2,
-          "score": 54,
+          "trend": 0,
+          "score": 52,
           "license": "BSD-3-Clause",
           "lastCommit": "2023-02-15T17:00:00Z",
           "archived": true,
@@ -1603,7 +2053,8 @@
             "benchmarking",
             "ensemble-learning",
             "forecasting"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Nixtla NeuralForecast",
@@ -1613,8 +2064,8 @@
           "tagline": "Production neural forecasting with 30+ models",
           "note": "",
           "stars": 4051,
-          "trend": 17,
-          "score": 82,
+          "trend": 0,
+          "score": 76,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-10T17:22:57Z",
           "archived": false,
@@ -1624,7 +2075,8 @@
             "deep-learning",
             "deep-neural-networks",
             "deepar"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "PyPOTS",
@@ -1633,9 +2085,9 @@
           "description": "Toolbox with 50+ deep learning models for partially-observed time-series imputation, classification, and clustering.",
           "tagline": "50+ models for missing-value time-series analysis",
           "note": "",
-          "stars": 1997,
-          "trend": 13,
-          "score": 79,
+          "stars": 1998,
+          "trend": 1,
+          "score": 75,
           "license": "BSD-3-Clause",
           "lastCommit": "2026-03-26T04:22:46Z",
           "archived": false,
@@ -1645,7 +2097,8 @@
             "clustering",
             "data-analysis",
             "data-mining"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Lag-Llama",
@@ -1655,8 +2108,8 @@
           "tagline": "First open-source probabilistic time-series foundation model",
           "note": "",
           "stars": 1570,
-          "trend": 2,
-          "score": 65,
+          "trend": 0,
+          "score": 63,
           "license": "Apache-2.0",
           "lastCommit": "2025-06-06T12:23:52Z",
           "archived": false,
@@ -1666,7 +2119,8 @@
             "lag-llama",
             "llama",
             "time-series"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "skforecast",
@@ -1675,9 +2129,9 @@
           "description": "Scikit-learn-compatible multi-step forecasting with XGBoost, LightGBM, CatBoost, and feature engineering utilities.",
           "tagline": "Sklearn-compatible multi-step forecasting with gradient boosting",
           "note": "",
-          "stars": 1477,
-          "trend": 4,
-          "score": 73,
+          "stars": 1479,
+          "trend": 2,
+          "score": 72,
           "license": "BSD-3-Clause",
           "lastCommit": "2026-03-13T09:34:48Z",
           "archived": false,
@@ -1687,7 +2141,8 @@
             "backtesting-forecasters",
             "data-science",
             "direct-forecasting"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "AutoTS",
@@ -1697,8 +2152,8 @@
           "tagline": "Genetic algorithm AutoML for time-series forecasting",
           "note": "",
           "stars": 1387,
-          "trend": 2,
-          "score": 75,
+          "trend": 0,
+          "score": 73,
           "license": "MIT",
           "lastCommit": "2026-04-15T16:07:59Z",
           "archived": false,
@@ -1708,7 +2163,8 @@
             "deep-learning",
             "feature-engineering",
             "forecasting"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "aeon",
@@ -1718,8 +2174,8 @@
           "tagline": "Next-generation time-series ML for all task types",
           "note": "",
           "stars": 1369,
-          "trend": 2,
-          "score": 75,
+          "trend": 0,
+          "score": 73,
           "license": "BSD-3-Clause",
           "lastCommit": "2026-03-23T21:35:44Z",
           "archived": false,
@@ -1729,7 +2185,8 @@
             "artificial-intelligence",
             "data-mining",
             "data-science"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Nixtla MLForecast",
@@ -1738,9 +2195,9 @@
           "description": "Scalable ML-based forecasting with LightGBM, XGBoost, and distributed backends via Dask, Spark, and Ray.",
           "tagline": "Scalable LightGBM and XGBoost time-series forecasting",
           "note": "",
-          "stars": 1211,
-          "trend": 7,
-          "score": 73,
+          "stars": 1213,
+          "trend": 2,
+          "score": 71,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-10T19:05:42Z",
           "archived": false,
@@ -1750,7 +2207,8 @@
             "forecasting",
             "lightgbm",
             "machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Time-MoE",
@@ -1760,8 +2218,8 @@
           "tagline": "Billion-scale sparse MoE time-series foundation model",
           "note": "",
           "stars": 949,
-          "trend": 6,
-          "score": 75,
+          "trend": 0,
+          "score": 71,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-21T16:00:55Z",
           "archived": false,
@@ -1771,7 +2229,8 @@
             "machine-learning",
             "time-series",
             "time-series-forecasting"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Granite-TSFM",
@@ -1781,12 +2240,19 @@
           "tagline": "Compact mixers rivaling billion-parameter forecasting models",
           "note": "",
           "stars": 836,
-          "trend": 2,
-          "score": 70,
+          "trend": 0,
+          "score": 68,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-04T00:40:46Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "deep-learning",
+            "forecasting",
+            "foundation-models",
+            "ibm",
+            "python"
+          ],
+          "external": false
         }
       ]
     },
@@ -1802,8 +2268,8 @@
           "tagline": "Comprehensive NAS, HPO, and model compression toolkit",
           "note": "Archived by Microsoft in Sep 2024.",
           "stars": 14346,
-          "trend": -1,
-          "score": 54,
+          "trend": 0,
+          "score": 56,
           "license": "MIT",
           "lastCommit": "2023-09-14T12:12:06Z",
           "archived": true,
@@ -1813,7 +2279,8 @@
             "bayesian-optimization",
             "data-science",
             "deep-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Google AutoML",
@@ -1821,10 +2288,10 @@
           "url": "https://github.com/google/automl",
           "description": "Research code for EfficientNet, EfficientDet, MnasNet, and other NAS-discovered architectures (Google Brain).",
           "tagline": "Research code behind EfficientNet and EfficientDet",
-          "note": "",
+          "note": "Research code; sporadic updates.",
           "stars": 6466,
-          "trend": 3,
-          "score": 65,
+          "trend": 0,
+          "score": 63,
           "license": "Apache-2.0",
           "lastCommit": "2021-03-04T06:03:52Z",
           "archived": false,
@@ -1834,7 +2301,8 @@
             "efficientnet",
             "efficientnetv2",
             "object-detection"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Once-For-All",
@@ -1842,10 +2310,10 @@
           "url": "https://github.com/mit-han-lab/once-for-all",
           "description": "Train one network and specialize sub-networks for diverse hardware without retraining (MIT HAN Lab, ICLR 2020).",
           "tagline": "Train once, deploy specialized sub-networks anywhere",
-          "note": "",
+          "note": "Research code; no commits since Dec 2023.",
           "stars": 1948,
-          "trend": 1,
-          "score": 60,
+          "trend": 0,
+          "score": 59,
           "license": "MIT",
           "lastCommit": "2020-06-16T04:25:52Z",
           "archived": false,
@@ -1855,7 +2323,8 @@
             "edge-ai",
             "efficient-model",
             "nas"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "TinyEngine",
@@ -1865,8 +2334,8 @@
           "tagline": "Inference engine for NAS models on microcontrollers",
           "note": "",
           "stars": 938,
-          "trend": 4,
-          "score": 59,
+          "trend": 0,
+          "score": 56,
           "license": "MIT",
           "lastCommit": "2024-11-27T18:51:37Z",
           "archived": false,
@@ -1876,7 +2345,8 @@
             "cpp",
             "deep-learning",
             "edge-computing"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Vega",
@@ -1891,7 +2361,14 @@
           "license": "NOASSERTION",
           "lastCommit": "2022-09-29T02:52:12Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "automl",
+            "data-augmentation",
+            "huawei",
+            "hyperparameter-optimization",
+            "model-compression"
+          ],
+          "external": false
         },
         {
           "name": "NASLib",
@@ -1910,7 +2387,8 @@
             "automl",
             "nas",
             "neural-architecture-search"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Archai",
@@ -1920,8 +2398,8 @@
           "tagline": "Modular NAS framework for reproducible research",
           "note": "",
           "stars": 484,
-          "trend": 1,
-          "score": 55,
+          "trend": 0,
+          "score": 54,
           "license": "MIT",
           "lastCommit": "2023-09-15T18:08:17Z",
           "archived": false,
@@ -1931,7 +2409,8 @@
             "darts",
             "deep-learning",
             "hyperparameter-optimization"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "AutoPyTorch",
@@ -1939,9 +2418,9 @@
           "url": "https://github.com/automl/Auto-PyTorch",
           "description": "Joint NAS and HPO for PyTorch from the AutoML Freiburg group behind auto-sklearn, combining BOHB with meta-learning and portfolio selection.",
           "tagline": "Joint NAS and HPO for PyTorch from Auto-sklearn team",
-          "note": "",
+          "note": "Low activity since Apr 2024.",
           "stars": 2537,
-          "trend": null,
+          "trend": 0,
           "score": 60,
           "license": "Apache-2.0",
           "lastCommit": "2022-08-23T16:45:37Z",
@@ -1952,7 +2431,8 @@
             "deep-learning",
             "hyperparameter-optimization",
             "neural-architecture-search"
-          ]
+          ],
+          "external": false
         }
       ]
     },
@@ -1967,19 +2447,20 @@
           "description": "Distributed hyperparameter tuning at scale with support for any ML framework and many search algorithms.",
           "tagline": "Distributed HPO at scale for any ML framework",
           "note": "",
-          "stars": 42158,
-          "trend": 135,
-          "score": 93,
+          "stars": 42179,
+          "trend": 21,
+          "score": 90,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-15T20:34:27Z",
           "archived": false,
           "tags": [
-            "data-science",
-            "deep-learning",
-            "deployment",
             "distributed",
-            "hyperparameter-optimization"
-          ]
+            "hyperparameter-optimization",
+            "hyperparameter-search",
+            "machine-learning",
+            "optimization"
+          ],
+          "external": false
         },
         {
           "name": "Optuna",
@@ -1988,9 +2469,9 @@
           "description": "Define-by-run API with pruning, distributed execution, and a dashboard - the most widely adopted HPO framework.",
           "tagline": "Most widely adopted HPO framework with pruning",
           "note": "",
-          "stars": 13976,
-          "trend": 104,
-          "score": 86,
+          "stars": 13988,
+          "trend": 12,
+          "score": 82,
           "license": "MIT",
           "lastCommit": "2026-03-16T04:59:17Z",
           "archived": false,
@@ -2000,7 +2481,8 @@
             "machine-learning",
             "parallel",
             "python"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Hyperopt",
@@ -2008,16 +2490,17 @@
           "url": "https://github.com/hyperopt/hyperopt",
           "description": "Pioneered tree-structured Parzen estimators for HPO.",
           "tagline": "Pioneer of tree-structured Parzen estimators for HPO",
-          "note": "Deprecated since Nov 2021 - use Optuna instead.",
-          "stars": 7590,
-          "trend": -26,
-          "score": 70,
+          "note": "Maintenance-only since 2021 - Optuna is successor.",
+          "stars": 7591,
+          "trend": 1,
+          "score": 77,
           "license": "NOASSERTION",
           "lastCommit": "2026-02-08T16:50:09Z",
           "archived": false,
           "tags": [
             "hacktoberfest"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "BoTorch",
@@ -2026,13 +2509,20 @@
           "description": "Bayesian optimization library in PyTorch for high-dimensional, noisy, and multi-objective problems (Meta).",
           "tagline": "PyTorch Bayesian optimization for multi-objective problems",
           "note": "",
-          "stars": 3503,
-          "trend": 5,
-          "score": 76,
+          "stars": 3504,
+          "trend": 1,
+          "score": 74,
           "license": "MIT",
           "lastCommit": "2026-03-05T00:44:03Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "bayesian-optimization",
+            "deep-learning",
+            "gaussian-processes",
+            "hyperparameter-optimization",
+            "meta"
+          ],
+          "external": false
         },
         {
           "name": "Keras Tuner",
@@ -2042,8 +2532,8 @@
           "tagline": "Hyperparameter search for Keras with Bayesian and Hyperband",
           "note": "",
           "stars": 2925,
-          "trend": 2,
-          "score": 71,
+          "trend": 0,
+          "score": 69,
           "license": "Apache-2.0",
           "lastCommit": "2025-11-11T05:22:28Z",
           "archived": false,
@@ -2053,7 +2543,8 @@
             "hyperparameter-optimization",
             "keras",
             "machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Ax",
@@ -2062,13 +2553,20 @@
           "description": "Adaptive experimentation platform for multi-objective optimization with BoTorch integration (Meta).",
           "tagline": "Adaptive experimentation for multi-objective optimization",
           "note": "",
-          "stars": 2735,
-          "trend": 3,
-          "score": 75,
+          "stars": 2736,
+          "trend": 1,
+          "score": 73,
           "license": "MIT",
           "lastCommit": "2026-03-05T01:36:12Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "bayesian-optimization",
+            "experimentation",
+            "facebook",
+            "hyperparameter-optimization",
+            "machine-learning"
+          ],
+          "external": false
         },
         {
           "name": "SMAC3",
@@ -2078,8 +2576,8 @@
           "tagline": "Bayesian HPO with racing mechanisms for algorithm configuration",
           "note": "",
           "stars": 1219,
-          "trend": 1,
-          "score": 73,
+          "trend": 0,
+          "score": 72,
           "license": "NOASSERTION",
           "lastCommit": "2026-04-10T15:43:03Z",
           "archived": false,
@@ -2089,7 +2587,8 @@
             "automl",
             "bayesian-optimisation",
             "bayesian-optimization"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Dragonfly",
@@ -2097,14 +2596,21 @@
           "url": "https://github.com/dragonfly/dragonfly",
           "description": "Scalable Bayesian optimization library supporting multi-fidelity and multi-objective search.",
           "tagline": "Scalable Bayesian optimization with multi-fidelity search",
-          "note": "Low activity since Jun 2023.",
+          "note": "No commits since Jun 2023.",
           "stars": 893,
           "trend": 0,
           "score": 56,
           "license": "MIT",
           "lastCommit": "2022-10-01T22:21:50Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "bayesian-optimization",
+            "hyperparameter-optimization",
+            "machine-learning",
+            "optimization",
+            "python"
+          ],
+          "external": false
         },
         {
           "name": "Google Vizier",
@@ -2114,8 +2620,8 @@
           "tagline": "Open-source interface to Google's internal HPO service",
           "note": "",
           "stars": 1639,
-          "trend": 4,
-          "score": 61,
+          "trend": 0,
+          "score": 58,
           "license": "Apache-2.0",
           "lastCommit": "2025-02-01T16:38:21Z",
           "archived": false,
@@ -2125,7 +2631,8 @@
             "blackbox-optimization",
             "deep-learning",
             "distributed-computing"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Nevergrad",
@@ -2135,7 +2642,7 @@
           "tagline": "Gradient-free optimization with CMA-ES and evolution",
           "note": "",
           "stars": 4173,
-          "trend": null,
+          "trend": 0,
           "score": 66,
           "license": "MIT",
           "lastCommit": "2025-04-23T15:28:19Z",
@@ -2146,7 +2653,8 @@
             "evolutionary-algorithms",
             "gradient-free-optimization",
             "hyperparameter-optimization"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Katib",
@@ -2156,7 +2664,7 @@
           "tagline": "Kubernetes-native HPO and NAS for Kubeflow",
           "note": "",
           "stars": 1679,
-          "trend": null,
+          "trend": 0,
           "score": 67,
           "license": "Apache-2.0",
           "lastCommit": "2025-10-30T23:58:41Z",
@@ -2167,7 +2675,8 @@
             "kubeflow",
             "kubernetes",
             "machine-learning"
-          ]
+          ],
+          "external": false
         }
       ]
     },
@@ -2183,8 +2692,8 @@
           "tagline": "Auto-extract hundreds of time-series features with filtering",
           "note": "",
           "stars": 9174,
-          "trend": 5,
-          "score": 72,
+          "trend": 0,
+          "score": 69,
           "license": "MIT",
           "lastCommit": "2025-08-30T18:56:34Z",
           "archived": false,
@@ -2192,7 +2701,8 @@
             "data-science",
             "feature-extraction",
             "time-series"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Featuretools",
@@ -2201,9 +2711,9 @@
           "description": "Deep feature synthesis for automatically creating meaningful features from relational and temporal data (Alteryx).",
           "tagline": "Deep feature synthesis for relational and temporal data",
           "note": "",
-          "stars": 7629,
-          "trend": 1,
-          "score": 65,
+          "stars": 7628,
+          "trend": -1,
+          "score": 62,
           "license": "BSD-3-Clause",
           "lastCommit": "2024-05-14T18:59:20Z",
           "archived": false,
@@ -2213,7 +2723,8 @@
             "automl",
             "data-science",
             "feature-engineering"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "OpenMLDB",
@@ -2222,9 +2733,9 @@
           "description": "Database for consistent feature computation between training and serving with SQL-based feature engineering (SIGMOD 2025).",
           "tagline": "SQL-based feature engineering consistent across train and serve",
           "note": "",
-          "stars": 1681,
-          "trend": -4,
-          "score": 55,
+          "stars": 1682,
+          "trend": 1,
+          "score": 60,
           "license": "Apache-2.0",
           "lastCommit": "2025-02-21T06:58:05Z",
           "archived": false,
@@ -2234,7 +2745,8 @@
             "feature-engineering",
             "feature-extraction",
             "feature-store"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Boruta",
@@ -2244,12 +2756,19 @@
           "tagline": "All-relevant feature selection via random forest shadows",
           "note": "",
           "stars": 1622,
-          "trend": -2,
-          "score": 56,
+          "trend": 0,
+          "score": 58,
           "license": "BSD-3-Clause",
           "lastCommit": "2024-08-13T19:54:03Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "feature-engineering",
+            "feature-selection",
+            "machine-learning",
+            "python",
+            "random-forest"
+          ],
+          "external": false
         },
         {
           "name": "AutoFeat",
@@ -2258,9 +2777,9 @@
           "description": "Scikit-learn-compatible automated feature engineering and selection that generates non-linear features and selects robust subsets.",
           "tagline": "Sklearn-compatible non-linear feature generation and selection",
           "note": "",
-          "stars": 536,
-          "trend": 0,
-          "score": 63,
+          "stars": 537,
+          "trend": 1,
+          "score": 65,
           "license": "MIT",
           "lastCommit": "2026-01-06T22:55:52Z",
           "archived": false,
@@ -2270,7 +2789,8 @@
             "automated-machine-learning",
             "automl",
             "feature-engineering"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "CAAFE",
@@ -2280,8 +2800,8 @@
           "tagline": "LLM generates semantically meaningful features with explanations",
           "note": "",
           "stars": 187,
-          "trend": 1,
-          "score": 52,
+          "trend": 0,
+          "score": 51,
           "license": "NOASSERTION",
           "lastCommit": "2024-12-20T14:27:45Z",
           "archived": false,
@@ -2291,7 +2811,8 @@
             "deep-learning",
             "feature-engineering",
             "machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Feature-engine",
@@ -2301,8 +2822,8 @@
           "tagline": "Sklearn transformers for feature creation and selection",
           "note": "",
           "stars": 2227,
-          "trend": 6,
-          "score": 63,
+          "trend": 0,
+          "score": 59,
           "license": "BSD-3-Clause",
           "lastCommit": "2022-01-04T17:09:47Z",
           "archived": false,
@@ -2312,7 +2833,8 @@
             "feature-extraction",
             "feature-selection",
             "machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "NVTabular",
@@ -2322,8 +2844,8 @@
           "tagline": "GPU-accelerated feature engineering for terabyte tabular data",
           "note": "",
           "stars": 1143,
-          "trend": 3,
-          "score": 59,
+          "trend": 0,
+          "score": 57,
           "license": "Apache-2.0",
           "lastCommit": "2023-08-29T16:41:05Z",
           "archived": false,
@@ -2333,7 +2855,8 @@
             "feature-selection",
             "gpu",
             "machine-learning"
-          ]
+          ],
+          "external": false
         }
       ]
     },
@@ -2348,11 +2871,11 @@
           "description": "One-line data quality profiling and exploratory analysis for Pandas and Spark DataFrames.",
           "tagline": "One-line EDA profiling for Pandas and Spark",
           "note": "",
-          "stars": 13510,
-          "trend": 20,
-          "score": 80,
+          "stars": 13514,
+          "trend": 4,
+          "score": 83,
           "license": "MIT",
-          "lastCommit": "2026-01-13T18:27:21Z",
+          "lastCommit": "2026-04-17T00:10:43Z",
           "archived": false,
           "tags": [
             "big-data-analytics",
@@ -2360,7 +2883,8 @@
             "data-exploration",
             "data-profiling",
             "data-quality"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Great Expectations",
@@ -2369,9 +2893,9 @@
           "description": "Programmable data validation and documentation framework for maintaining pipeline quality.",
           "tagline": "Programmable data validation for pipeline quality",
           "note": "",
-          "stars": 11408,
-          "trend": 38,
-          "score": 87,
+          "stars": 11414,
+          "trend": 6,
+          "score": 83,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-15T19:24:37Z",
           "archived": false,
@@ -2381,7 +2905,8 @@
             "data-profilers",
             "data-profiling",
             "data-quality"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Pandera",
@@ -2391,8 +2916,8 @@
           "tagline": "Statistical schema validation for dataframes",
           "note": "",
           "stars": 4308,
-          "trend": 18,
-          "score": 82,
+          "trend": 0,
+          "score": 77,
           "license": "MIT",
           "lastCommit": "2026-04-15T03:18:06Z",
           "archived": false,
@@ -2402,7 +2927,8 @@
             "data-check",
             "data-cleaning",
             "data-processing"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "SweetViz",
@@ -2412,8 +2938,8 @@
           "tagline": "High-density EDA visualizations in two lines of code",
           "note": "",
           "stars": 3092,
-          "trend": 3,
-          "score": 78,
+          "trend": 0,
+          "score": 75,
           "license": "MIT",
           "lastCommit": "2026-04-11T19:21:12Z",
           "archived": false,
@@ -2423,7 +2949,8 @@
             "data-profiling",
             "data-science",
             "data-visualization"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "DataPrep",
@@ -2433,8 +2960,8 @@
           "tagline": "Low-code data cleaning and EDA, 10x faster",
           "note": "Unmaintained since Jun 2024.",
           "stars": 2238,
-          "trend": 1,
-          "score": 61,
+          "trend": 0,
+          "score": 59,
           "license": "MIT",
           "lastCommit": "2022-07-08T00:57:11Z",
           "archived": false,
@@ -2444,7 +2971,8 @@
             "cleaning",
             "connector",
             "data-exploration"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Optimus",
@@ -2454,8 +2982,8 @@
           "tagline": "Unified data prep API across Pandas, Spark, and GPU",
           "note": "Unmaintained since Dec 2024.",
           "stars": 1536,
-          "trend": -1,
-          "score": 57,
+          "trend": 0,
+          "score": 58,
           "license": "Apache-2.0",
           "lastCommit": "2020-07-19T03:05:40Z",
           "archived": false,
@@ -2465,7 +2993,8 @@
             "cudf",
             "dask",
             "dask-cudf"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Spotlight",
@@ -2475,8 +3004,8 @@
           "tagline": "Interactive auditing of unstructured ML datasets",
           "note": "",
           "stars": 1256,
-          "trend": 1,
-          "score": 74,
+          "trend": 0,
+          "score": 72,
           "license": "MIT",
           "lastCommit": "2026-03-30T21:26:04Z",
           "archived": false,
@@ -2486,7 +3015,8 @@
             "data-centric-ai",
             "data-curation",
             "data-visualization"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "pyjanitor",
@@ -2496,8 +3026,8 @@
           "tagline": "Fluent method-chaining data cleaning for pandas",
           "note": "",
           "stars": 1487,
-          "trend": 1,
-          "score": 74,
+          "trend": 0,
+          "score": 73,
           "license": "MIT",
           "lastCommit": "2026-04-07T13:53:32Z",
           "archived": false,
@@ -2507,7 +3037,73 @@
             "data-engineering",
             "dataframe",
             "hacktoberfest"
-          ]
+          ],
+          "external": false
+        },
+        {
+          "name": "Data Formulator",
+          "repo": "microsoft/data-formulator",
+          "url": "https://github.com/microsoft/data-formulator",
+          "description": "Microsoft Research tool that uses AI to iteratively transform, reshape, and visualize tabular data through a concept-driven chart authoring UI.",
+          "tagline": "AI-driven data transformation and charts",
+          "note": "",
+          "stars": 15224,
+          "trend": null,
+          "score": 78,
+          "license": "MIT",
+          "lastCommit": "2026-03-03T02:11:30Z",
+          "archived": false,
+          "tags": [
+            "ai",
+            "data-transformation",
+            "llm",
+            "visualization"
+          ],
+          "external": false
+        },
+        {
+          "name": "NeMo Curator",
+          "repo": "NVIDIA-NeMo/NeMo-Curator",
+          "url": "https://github.com/NVIDIA-NeMo/NeMo-Curator",
+          "description": "NVIDIA's GPU-accelerated toolkit for scalable LLM data curation with quality filtering, exact and semantic deduplication, and PII redaction.",
+          "tagline": "GPU-scale LLM data curation toolkit",
+          "note": "",
+          "stars": 1531,
+          "trend": null,
+          "score": 70,
+          "license": "Apache-2.0",
+          "lastCommit": "2026-02-23T22:04:05Z",
+          "archived": false,
+          "tags": [
+            "data",
+            "data-curation",
+            "data-prep",
+            "data-preparation",
+            "data-processing"
+          ],
+          "external": false
+        },
+        {
+          "name": "Presidio",
+          "repo": "microsoft/presidio",
+          "url": "https://github.com/microsoft/presidio",
+          "description": "Microsoft's PII detection and anonymization framework that redacts, masks, and de-identifies sensitive data across text, images, and structured records.",
+          "tagline": "PII detection and anonymization framework",
+          "note": "",
+          "stars": 7645,
+          "trend": null,
+          "score": 76,
+          "license": "MIT",
+          "lastCommit": "2026-03-18T05:32:57Z",
+          "archived": false,
+          "tags": [
+            "anonymization",
+            "data-anonymization",
+            "data-masking",
+            "data-obfuscation",
+            "data-privacy"
+          ],
+          "external": false
         }
       ]
     },
@@ -2522,9 +3118,9 @@
           "description": "Data-centric AI toolkit for finding and fixing label errors, outliers, and data quality issues automatically.",
           "tagline": "Automatically find and fix label errors in datasets",
           "note": "",
-          "stars": 11432,
-          "trend": 21,
-          "score": 80,
+          "stars": 11434,
+          "trend": 2,
+          "score": 76,
           "license": "Apache-2.0",
           "lastCommit": "2026-01-13T17:39:04Z",
           "archived": false,
@@ -2534,7 +3130,8 @@
             "anomaly-detection",
             "data-annotation",
             "data-centric-ai"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Label Studio",
@@ -2543,9 +3140,9 @@
           "description": "Multi-type data labeling platform with ML-assisted annotation and LLM integration for text, images, audio, and video.",
           "tagline": "ML-assisted labeling for text, images, audio, video",
           "note": "",
-          "stars": 27038,
-          "trend": 79,
-          "score": 88,
+          "stars": 27053,
+          "trend": 15,
+          "score": 85,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-13T08:15:04Z",
           "archived": false,
@@ -2555,7 +3152,8 @@
             "annotations",
             "boundingbox",
             "computer-vision"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Snorkel",
@@ -2564,9 +3162,9 @@
           "description": "Programmatic labeling via weak supervision - write labeling functions instead of hand-labeling.",
           "tagline": "Write labeling functions instead of hand-labeling data",
           "note": "",
-          "stars": 5952,
-          "trend": 5,
-          "score": 66,
+          "stars": 5953,
+          "trend": 1,
+          "score": 64,
           "license": "Apache-2.0",
           "lastCommit": "2024-02-27T23:00:37Z",
           "archived": false,
@@ -2576,7 +3174,8 @@
             "data-science",
             "data-slicing",
             "labeling"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Argilla",
@@ -2585,9 +3184,9 @@
           "description": "Collaboration platform for collecting and managing human and AI feedback for NLP and LLM development.",
           "tagline": "Collaborative human and AI feedback for LLM development",
           "note": "",
-          "stars": 4932,
-          "trend": 4,
-          "score": 65,
+          "stars": 4934,
+          "trend": 2,
+          "score": 64,
           "license": "Apache-2.0",
           "lastCommit": "2025-03-11T08:58:41Z",
           "archived": false,
@@ -2597,7 +3196,8 @@
             "annotation-tool",
             "developer-tools",
             "gpt-4"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Distilabel",
@@ -2606,9 +3206,9 @@
           "description": "Framework for synthetic data generation, AI feedback, and instruction tuning using Self-Instruct and EvolInstruct techniques.",
           "tagline": "Synthetic data generation with Self-Instruct and EvolInstruct",
           "note": "",
-          "stars": 3177,
-          "trend": 20,
-          "score": 66,
+          "stars": 3178,
+          "trend": 1,
+          "score": 62,
           "license": "Apache-2.0",
           "lastCommit": "2025-01-28T10:08:05Z",
           "archived": false,
@@ -2618,7 +3218,8 @@
             "llms",
             "openai",
             "python"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Autodistill",
@@ -2627,9 +3228,9 @@
           "description": "Automated image labeling by distilling foundation model knowledge into smaller task-specific models (Roboflow).",
           "tagline": "Distill foundation models into task-specific labelers",
           "note": "",
-          "stars": 2665,
-          "trend": 7,
-          "score": 64,
+          "stars": 2664,
+          "trend": -1,
+          "score": 59,
           "license": "Apache-2.0",
           "lastCommit": "2024-02-13T19:53:33Z",
           "archived": false,
@@ -2639,7 +3240,8 @@
             "deep-learning",
             "foundation-models",
             "grounding-dino"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Autolabel",
@@ -2647,8 +3249,8 @@
           "url": "https://github.com/refuel-ai/autolabel",
           "description": "LLM-powered labeling, cleaning, and enrichment for text classification, NER, and entity matching.",
           "tagline": "LLM-powered labeling for classification, NER, and matching",
-          "note": "",
-          "stars": 2311,
+          "note": "Low activity since Mar 2025.",
+          "stars": 2312,
           "trend": 1,
           "score": 61,
           "license": "MIT",
@@ -2660,7 +3262,8 @@
             "gpt-4",
             "huggingface-transformers",
             "langchain"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "X-AnyLabeling",
@@ -2669,9 +3272,9 @@
           "description": "AI-assisted annotation with Segment Anything and other foundation models for automatic segmentation, detection, and classification pre-labeling.",
           "tagline": "SAM-powered annotation for auto-segmentation and detection",
           "note": "",
-          "stars": 8779,
-          "trend": 111,
-          "score": 88,
+          "stars": 8794,
+          "trend": 15,
+          "score": 84,
           "license": "GPL-3.0",
           "lastCommit": "2026-03-26T17:13:53Z",
           "archived": false,
@@ -2681,7 +3284,8 @@
             "computer-vision",
             "deep-learning",
             "groundingdino"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Adala",
@@ -2691,8 +3295,8 @@
           "tagline": "Autonomous LLM agent iteratively improving labeling quality",
           "note": "",
           "stars": 1423,
-          "trend": 4,
-          "score": 61,
+          "trend": 0,
+          "score": 58,
           "license": "Apache-2.0",
           "lastCommit": "2023-11-30T17:41:21Z",
           "archived": false,
@@ -2702,7 +3306,8 @@
             "agent-oriented-programming",
             "autonomous-agents",
             "gpt-4"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LabelU",
@@ -2712,12 +3317,19 @@
           "tagline": "Multi-modal annotation for image, audio, and video",
           "note": "",
           "stars": 1544,
-          "trend": 6,
-          "score": 77,
+          "trend": 0,
+          "score": 73,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-16T10:08:37Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "annotation",
+            "audio",
+            "computer-vision",
+            "data-labeling",
+            "image"
+          ],
+          "external": false
         }
       ]
     },
@@ -2732,9 +3344,9 @@
           "description": "Synthetic Data Vault with multiple generative models (GaussianCopula, CTGAN, TVAE) for single-table, multi-table, and sequential data.",
           "tagline": "Synthetic tabular data vault with multiple generative models",
           "note": "",
-          "stars": 3470,
-          "trend": 7,
-          "score": 80,
+          "stars": 3471,
+          "trend": 1,
+          "score": 77,
           "license": "NOASSERTION",
           "lastCommit": "2026-04-10T23:56:51Z",
           "archived": false,
@@ -2744,7 +3356,8 @@
             "gan",
             "gans",
             "generative-adversarial-network"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "SDG",
@@ -2753,9 +3366,9 @@
           "description": "Framework for generating high-quality synthetic tabular data preserving statistical distributions and correlations.",
           "tagline": "Synthetic tabular data preserving statistical distributions",
           "note": "",
-          "stars": 2412,
-          "trend": -3,
-          "score": 57,
+          "stars": 2413,
+          "trend": 1,
+          "score": 61,
           "license": "Apache-2.0",
           "lastCommit": "2024-12-03T02:44:38Z",
           "archived": false,
@@ -2765,7 +3378,8 @@
             "deep-learning",
             "gan",
             "generative-ai"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "DataDreamer",
@@ -2775,8 +3389,8 @@
           "tagline": "Reproducible LLM pipelines for synthetic data and training",
           "note": "",
           "stars": 1109,
-          "trend": 1,
-          "score": 58,
+          "trend": 0,
+          "score": 57,
           "license": "MIT",
           "lastCommit": "2025-02-02T21:23:50Z",
           "archived": false,
@@ -2786,7 +3400,8 @@
             "fine-tuning",
             "gpt",
             "instruction-tuning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Gretel Synthetics",
@@ -2794,10 +3409,10 @@
           "url": "https://github.com/gretelai/gretel-synthetics",
           "description": "Synthetic data generators for structured and unstructured text with differential privacy guarantees.",
           "tagline": "Privacy-preserving synthetic data with differential privacy",
-          "note": "",
+          "note": "Archived by Gretel in 2025.",
           "stars": 675,
-          "trend": -1,
-          "score": 48,
+          "trend": 0,
+          "score": 50,
           "license": "NOASSERTION",
           "lastCommit": "2025-06-24T21:44:06Z",
           "archived": true,
@@ -2807,7 +3422,8 @@
             "privacy",
             "synthetic-data",
             "tensorflow"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Curator",
@@ -2817,8 +3433,8 @@
           "tagline": "Pipeline synthetic data curation with LLM quality filtering",
           "note": "",
           "stars": 1663,
-          "trend": 3,
-          "score": 73,
+          "trend": 0,
+          "score": 70,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-15T17:57:15Z",
           "archived": false,
@@ -2828,7 +3444,8 @@
             "fine-tuning",
             "instruction-tuning",
             "llm"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Synthetic Data Kit",
@@ -2837,9 +3454,9 @@
           "description": "Toolkit for generating high-quality synthetic datasets to fine-tune models with LLM-generated training data at scale (Meta).",
           "tagline": "LLM-generated training data at scale for fine-tuning",
           "note": "",
-          "stars": 1571,
-          "trend": 11,
-          "score": 72,
+          "stars": 1572,
+          "trend": 1,
+          "score": 68,
           "license": "MIT",
           "lastCommit": "2025-10-25T13:31:44Z",
           "archived": false,
@@ -2849,7 +3466,8 @@
             "llm",
             "python",
             "synthetic"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "NeMo Data Designer",
@@ -2858,9 +3476,9 @@
           "description": "Generates high-quality synthetic data from scratch or seed data with built-in evaluation and quality control for LLM training pipelines (NVIDIA).",
           "tagline": "Generates and evaluates synthetic data for LLM pipelines",
           "note": "",
-          "stars": 1634,
-          "trend": 104,
-          "score": 82,
+          "stars": 1637,
+          "trend": 3,
+          "score": 76,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-09T19:36:55Z",
           "archived": false,
@@ -2870,7 +3488,8 @@
             "data-generation",
             "llm",
             "mcp"
-          ]
+          ],
+          "external": false
         }
       ]
     },
@@ -2885,13 +3504,20 @@
           "description": "Activation-aware weight quantization achieving lossless 4-bit compression for LLMs (MIT HAN Lab, MLSys 2024 Best Paper).",
           "tagline": "Lossless 4-bit LLM quantization via activation awareness",
           "note": "",
-          "stars": 3500,
-          "trend": 6,
-          "score": 69,
+          "stars": 3502,
+          "trend": 2,
+          "score": 67,
           "license": "MIT",
           "lastCommit": "2025-07-17T19:44:51Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "awq",
+            "deep-learning",
+            "inference",
+            "llm",
+            "model-compression"
+          ],
+          "external": false
         },
         {
           "name": "Torch-Pruning",
@@ -2900,9 +3526,9 @@
           "description": "Structural pruning framework for any PyTorch model including LLMs, YOLO, ViT, and diffusion models (CVPR 2023).",
           "tagline": "Structural pruning for any PyTorch model",
           "note": "",
-          "stars": 3290,
-          "trend": 7,
-          "score": 69,
+          "stars": 3291,
+          "trend": 1,
+          "score": 66,
           "license": "MIT",
           "lastCommit": "2025-09-07T17:25:20Z",
           "archived": false,
@@ -2912,7 +3538,8 @@
             "model-compression",
             "pruning",
             "transformers"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LLM Compressor",
@@ -2921,16 +3548,17 @@
           "description": "Transformers-compatible compression library optimized for efficient vLLM inference.",
           "tagline": "Transformers-compatible compression optimized for vLLM",
           "note": "",
-          "stars": 3100,
-          "trend": 113,
-          "score": 81,
+          "stars": 3109,
+          "trend": 9,
+          "score": 77,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-13T14:41:51Z",
           "archived": false,
           "tags": [
             "compression",
             "quantization"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Intel Neural Compressor",
@@ -2939,8 +3567,8 @@
           "description": "Unified quantization, sparsity, pruning, and distillation across PyTorch, TensorFlow, and ONNX (Intel).",
           "tagline": "Unified quantization and pruning across PyTorch and ONNX",
           "note": "",
-          "stars": 2614,
-          "trend": 2,
+          "stars": 2617,
+          "trend": 3,
           "score": 71,
           "license": "Apache-2.0",
           "lastCommit": "2025-12-25T03:50:16Z",
@@ -2951,7 +3579,8 @@
             "fp4",
             "gptq",
             "int4"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "NVIDIA TensorRT Model Optimizer",
@@ -2960,13 +3589,20 @@
           "description": "Quantization, pruning, distillation, and speculative decoding optimized for TensorRT and vLLM deployment.",
           "tagline": "Quantization and pruning optimized for TensorRT and vLLM",
           "note": "",
-          "stars": 2496,
-          "trend": 91,
-          "score": 83,
+          "stars": 2509,
+          "trend": 13,
+          "score": 79,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-16T19:22:59Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "deep-learning",
+            "distillation",
+            "inference",
+            "model-compression",
+            "nvidia"
+          ],
+          "external": false
         },
         {
           "name": "GPTQModel",
@@ -2975,9 +3611,9 @@
           "description": "LLM quantization toolkit with support for NVIDIA CUDA, AMD ROCm, Intel, and Apple Silicon backends.",
           "tagline": "LLM quantization for CUDA, ROCm, and Apple Silicon",
           "note": "",
-          "stars": 1108,
-          "trend": 15,
-          "score": 77,
+          "stars": 1113,
+          "trend": 5,
+          "score": 75,
           "license": "NOASSERTION",
           "lastCommit": "2026-04-02T23:56:55Z",
           "archived": false,
@@ -2987,7 +3623,8 @@
             "peft",
             "quantization",
             "sglang"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "bitsandbytes",
@@ -2996,9 +3633,9 @@
           "description": "De facto standard for k-bit quantization of LLMs in PyTorch - enables 4-bit and 8-bit inference and training, the backbone for QLoRA.",
           "tagline": "De facto 4-bit and 8-bit LLM quantization for PyTorch",
           "note": "",
-          "stars": 8123,
-          "trend": 19,
-          "score": 81,
+          "stars": 8127,
+          "trend": 4,
+          "score": 79,
           "license": "MIT",
           "lastCommit": "2026-02-16T21:29:22Z",
           "archived": false,
@@ -3008,7 +3645,8 @@
             "pytorch",
             "qlora",
             "quantization"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Optimum",
@@ -3017,9 +3655,9 @@
           "description": "Toolkit for accelerating Transformers inference with hardware-optimized quantization, pruning, and graph optimization for ONNX Runtime, OpenVINO, and more (Hugging Face).",
           "tagline": "Hardware-optimized Transformers inference and quantization",
           "note": "",
-          "stars": 3356,
-          "trend": 5,
-          "score": 73,
+          "stars": 3357,
+          "trend": 1,
+          "score": 71,
           "license": "Apache-2.0",
           "lastCommit": "2025-12-19T10:50:51Z",
           "archived": false,
@@ -3029,7 +3667,8 @@
             "inference",
             "intel",
             "onnx"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Olive",
@@ -3038,13 +3677,20 @@
           "description": "End-to-end model optimization automating fine-tuning, conversion, quantization, and graph optimization for CPUs, GPUs, and NPUs (Microsoft).",
           "tagline": "End-to-end model optimization for CPU, GPU, and NPU",
           "note": "",
-          "stars": 2295,
-          "trend": 7,
-          "score": 75,
+          "stars": 2296,
+          "trend": 1,
+          "score": 76,
           "license": "MIT",
-          "lastCommit": "2026-01-29T23:00:29Z",
+          "lastCommit": "2026-04-17T17:47:54Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "deep-learning",
+            "fine-tuning",
+            "inference",
+            "microsoft",
+            "model-compression"
+          ],
+          "external": false
         }
       ]
     },
@@ -3059,11 +3705,11 @@
           "description": "Docker-like local LLM runner for getting models up and running quickly for prototyping.",
           "tagline": "Docker-like local LLM runner for fast prototyping",
           "note": "",
-          "stars": 169181,
-          "trend": 1055,
-          "score": 100,
+          "stars": 169269,
+          "trend": 88,
+          "score": 96,
           "license": "MIT",
-          "lastCommit": "2026-04-13T23:33:00Z",
+          "lastCommit": "2026-04-16T22:00:17Z",
           "archived": false,
           "tags": [
             "deepseek",
@@ -3071,7 +3717,8 @@
             "gemma3",
             "glm",
             "go"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "llama.cpp",
@@ -3080,15 +3727,16 @@
           "description": "LLM inference in C/C++ with broad hardware support - the foundation for most local LLM applications.",
           "tagline": "C/C++ LLM inference, foundation for local apps",
           "note": "",
-          "stars": 104074,
-          "trend": 1618,
-          "score": 100,
+          "stars": 104289,
+          "trend": 215,
+          "score": 97,
           "license": "MIT",
-          "lastCommit": "2026-04-16T18:48:35Z",
+          "lastCommit": "2026-04-17T18:35:59Z",
           "archived": false,
           "tags": [
             "ggml"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "vLLM",
@@ -3097,9 +3745,9 @@
           "description": "High-throughput LLM serving engine with PagedAttention, powering most open-source LLM deployments in production.",
           "tagline": "High-throughput PagedAttention engine for production LLMs",
           "note": "",
-          "stars": 76953,
-          "trend": 1271,
-          "score": 99,
+          "stars": 77103,
+          "trend": 150,
+          "score": 96,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-03T02:19:12Z",
           "archived": false,
@@ -3109,7 +3757,8 @@
             "cuda",
             "deepseek",
             "deepseek-v3"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "SGLang",
@@ -3118,9 +3767,9 @@
           "description": "High-performance LLM serving framework powering 400K+ GPUs with best-in-class structured and constrained decoding.",
           "tagline": "High-performance LLM serving with constrained decoding",
           "note": "",
-          "stars": 25924,
-          "trend": 367,
-          "score": 94,
+          "stars": 25995,
+          "trend": 71,
+          "score": 91,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-09T03:21:07Z",
           "archived": false,
@@ -3130,7 +3779,8 @@
             "cuda",
             "deepseek",
             "diffusion"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "ONNX Runtime",
@@ -3139,9 +3789,9 @@
           "description": "Cross-platform inference accelerator supporting PyTorch, TensorFlow, scikit-learn, and XGBoost via the ONNX format (Microsoft).",
           "tagline": "Cross-platform inference accelerator via ONNX format",
           "note": "",
-          "stars": 19877,
-          "trend": 79,
-          "score": 90,
+          "stars": 19890,
+          "trend": 13,
+          "score": 84,
           "license": "MIT",
           "lastCommit": "2026-03-17T23:08:09Z",
           "archived": false,
@@ -3151,7 +3801,8 @@
             "hardware-acceleration",
             "machine-learning",
             "neural-networks"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "TensorRT-LLM",
@@ -3160,9 +3811,9 @@
           "description": "High-performance LLM inference library with custom attention kernels, speculative decoding, and MoE support (NVIDIA).",
           "tagline": "NVIDIA's high-performance LLM inference with custom kernels",
           "note": "",
-          "stars": 13381,
-          "trend": 61,
-          "score": 85,
+          "stars": 13400,
+          "trend": 19,
+          "score": 83,
           "license": "NOASSERTION",
           "lastCommit": "2026-03-12T19:43:07Z",
           "archived": false,
@@ -3172,7 +3823,8 @@
             "llm-serving",
             "moe",
             "pytorch"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Triton Inference Server",
@@ -3181,9 +3833,9 @@
           "description": "Multi-framework inference serving for TensorRT, PyTorch, ONNX, and custom backends (NVIDIA).",
           "tagline": "Multi-framework inference server for production deployment",
           "note": "",
-          "stars": 10573,
-          "trend": 46,
-          "score": 87,
+          "stars": 10580,
+          "trend": 7,
+          "score": 83,
           "license": "BSD-3-Clause",
           "lastCommit": "2026-03-27T16:47:26Z",
           "archived": false,
@@ -3193,7 +3845,8 @@
             "deep-learning",
             "edge",
             "gpu"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "OpenVINO",
@@ -3202,9 +3855,9 @@
           "description": "Inference optimization and deployment toolkit for CPUs, GPUs, and edge accelerators (Intel).",
           "tagline": "Intel inference optimization for CPU, GPU, and edge",
           "note": "",
-          "stars": 10091,
-          "trend": 62,
-          "score": 87,
+          "stars": 10098,
+          "trend": 7,
+          "score": 83,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-07T16:13:02Z",
           "archived": false,
@@ -3214,7 +3867,8 @@
             "deep-learning",
             "deploy-ai",
             "diffusion-models"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "BentoML",
@@ -3223,9 +3877,9 @@
           "description": "Build production-ready inference APIs, batch jobs, and multi-model pipelines with unified Python framework.",
           "tagline": "Python framework for production inference APIs and pipelines",
           "note": "",
-          "stars": 8583,
-          "trend": 19,
-          "score": 84,
+          "stars": 8586,
+          "trend": 3,
+          "score": 81,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-02T06:12:17Z",
           "archived": false,
@@ -3235,7 +3889,8 @@
             "generative-ai",
             "inference-platform",
             "llm"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LMDeploy",
@@ -3244,9 +3899,9 @@
           "description": "Toolkit for compressing, deploying, and serving large language and vision-language models.",
           "tagline": "Compress, deploy, and serve LLMs and vision models",
           "note": "",
-          "stars": 7779,
-          "trend": 19,
-          "score": 84,
+          "stars": 7784,
+          "trend": 5,
+          "score": 82,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-08T03:37:26Z",
           "archived": false,
@@ -3256,7 +3911,8 @@
             "deepspeed",
             "fastertransformer",
             "internlm"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "KServe",
@@ -3265,9 +3921,9 @@
           "description": "Kubernetes-native standardized model serving with canary rollouts, autoscaling, and multi-framework support (CNCF Incubating).",
           "tagline": "Kubernetes-native model serving with canary rollouts",
           "note": "",
-          "stars": 5341,
-          "trend": 36,
-          "score": 81,
+          "stars": 5343,
+          "trend": 2,
+          "score": 76,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-13T23:12:37Z",
           "archived": false,
@@ -3277,7 +3933,8 @@
             "genai",
             "hacktoberfest",
             "istio"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "ExecuTorch",
@@ -3286,9 +3943,9 @@
           "description": "On-device AI inference for mobile, embedded, and edge platforms with a 50KB base runtime footprint (Meta).",
           "tagline": "On-device AI inference with 50KB runtime footprint",
           "note": "",
-          "stars": 4517,
-          "trend": 36,
-          "score": 83,
+          "stars": 4524,
+          "trend": 7,
+          "score": 81,
           "license": "NOASSERTION",
           "lastCommit": "2026-04-01T21:27:40Z",
           "archived": false,
@@ -3298,7 +3955,8 @@
             "gpu",
             "machine-learning",
             "mobile"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LitServe",
@@ -3307,9 +3965,9 @@
           "description": "Minimal, high-performance Python framework for AI model serving (Lightning AI).",
           "tagline": "Minimal high-performance Python AI serving framework",
           "note": "",
-          "stars": 3860,
-          "trend": 2,
-          "score": 72,
+          "stars": 3863,
+          "trend": 3,
+          "score": 73,
           "license": "Apache-2.0",
           "lastCommit": "2025-12-23T19:39:23Z",
           "archived": false,
@@ -3319,7 +3977,8 @@
             "artificial-intelligence",
             "deep-learning",
             "developer-tools"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Cog",
@@ -3328,9 +3987,9 @@
           "description": "Package ML models as standard Docker containers with auto-generated HTTP APIs and GPU setup for reproducible, portable deployment (Replicate).",
           "tagline": "Package ML models as Docker containers with auto APIs",
           "note": "",
-          "stars": 9387,
-          "trend": 13,
-          "score": 84,
+          "stars": 9392,
+          "trend": 5,
+          "score": 83,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-15T22:56:12Z",
           "archived": false,
@@ -3340,7 +3999,8 @@
             "cuda",
             "docker",
             "machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LightLLM",
@@ -3349,9 +4009,9 @@
           "description": "Lightweight LLM inference and serving framework with continuous batching, tensor parallelism, and efficient memory management.",
           "tagline": "Lightweight LLM serving with continuous batching",
           "note": "",
-          "stars": 4012,
-          "trend": 16,
-          "score": 71,
+          "stars": 4016,
+          "trend": 4,
+          "score": 69,
           "license": "Apache-2.0",
           "lastCommit": "2025-09-03T07:54:11Z",
           "archived": false,
@@ -3361,7 +4021,8 @@
             "llama",
             "llm",
             "model-serving"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "TFX",
@@ -3371,8 +4032,8 @@
           "tagline": "End-to-end production ML pipeline platform from Google",
           "note": "",
           "stars": 2181,
-          "trend": 3,
-          "score": 77,
+          "trend": 0,
+          "score": 74,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-10T21:29:50Z",
           "archived": false,
@@ -3380,7 +4041,8 @@
             "apache-beam",
             "machine-learning",
             "tensorflow"
-          ]
+          ],
+          "external": false
         }
       ]
     },
@@ -3395,9 +4057,9 @@
           "description": "ML and LLM observability with 100+ metrics for evaluating, testing, and monitoring any AI system in production.",
           "tagline": "ML and LLM observability with 100+ production metrics",
           "note": "",
-          "stars": 7393,
-          "trend": 17,
-          "score": 81,
+          "stars": 7397,
+          "trend": 4,
+          "score": 78,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-10T14:15:55Z",
           "archived": false,
@@ -3407,7 +4069,8 @@
             "data-science",
             "data-validation",
             "generative-ai"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Giskard",
@@ -3416,9 +4079,9 @@
           "description": "Testing and evaluation for ML and LLM models covering bias, performance regression, and security vulnerabilities.",
           "tagline": "ML and LLM testing for bias and security vulnerabilities",
           "note": "",
-          "stars": 5263,
-          "trend": 38,
-          "score": 84,
+          "stars": 5271,
+          "trend": 8,
+          "score": 81,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-10T09:21:20Z",
           "archived": false,
@@ -3428,7 +4091,8 @@
             "ai-security",
             "ai-testing",
             "fairness-ai"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Deepchecks",
@@ -3437,9 +4101,9 @@
           "description": "Holistic ML validation covering data integrity, drift detection, and model evaluation in a single suite.",
           "tagline": "Holistic ML validation suite for data and models",
           "note": "",
-          "stars": 4002,
-          "trend": 0,
-          "score": 61,
+          "stars": 4003,
+          "trend": 1,
+          "score": 63,
           "license": "NOASSERTION",
           "lastCommit": "2024-12-15T15:25:39Z",
           "archived": false,
@@ -3449,7 +4113,8 @@
             "data-validation",
             "deep-learning",
             "html-report"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "WhyLogs",
@@ -3458,7 +4123,7 @@
           "description": "Lightweight data logging library that profiles datasets for drift detection without storing raw data.",
           "tagline": "Lightweight drift detection without storing raw data",
           "note": "",
-          "stars": 2812,
+          "stars": 2813,
           "trend": 1,
           "score": 61,
           "license": "Apache-2.0",
@@ -3470,7 +4135,8 @@
             "approximate-statistics",
             "calculate-statistics",
             "constraints"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Alibi Detect",
@@ -3480,8 +4146,8 @@
           "tagline": "Outlier, adversarial, and drift detection across data types",
           "note": "",
           "stars": 2512,
-          "trend": 3,
-          "score": 71,
+          "trend": 0,
+          "score": 69,
           "license": "NOASSERTION",
           "lastCommit": "2025-12-11T16:06:39Z",
           "archived": false,
@@ -3491,7 +4157,8 @@
             "concept-drift",
             "data-drift",
             "detection"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "NannyML",
@@ -3501,8 +4168,8 @@
           "tagline": "Estimate model performance without ground truth labels",
           "note": "",
           "stars": 2134,
-          "trend": -2,
-          "score": 62,
+          "trend": 0,
+          "score": 64,
           "license": "Apache-2.0",
           "lastCommit": "2025-07-12T08:14:14Z",
           "archived": false,
@@ -3512,7 +4179,8 @@
             "data-science",
             "deep-learning",
             "jupyter-notebook"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "OpenLLMetry",
@@ -3521,9 +4189,9 @@
           "description": "OpenTelemetry-based observability for LLM applications with automatic instrumentation for LangChain, LlamaIndex, and OpenAI SDK.",
           "tagline": "OpenTelemetry observability with auto-instrumentation for LLMs",
           "note": "",
-          "stars": 7013,
-          "trend": 27,
-          "score": 84,
+          "stars": 7017,
+          "trend": 4,
+          "score": 81,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-16T08:34:44Z",
           "archived": false,
@@ -3533,7 +4201,8 @@
             "generative-ai",
             "good-first-issue",
             "good-first-issues"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Helicone",
@@ -3542,9 +4211,9 @@
           "description": "LLM observability platform with one-line integration for cost tracking, latency analysis, prompt versioning, and usage dashboards (YC W23).",
           "tagline": "One-line LLM observability for cost and latency tracking",
           "note": "",
-          "stars": 5499,
-          "trend": 36,
-          "score": 73,
+          "stars": 5504,
+          "trend": 5,
+          "score": 70,
           "license": "Apache-2.0",
           "lastCommit": "2025-08-21T18:47:38Z",
           "archived": false,
@@ -3554,7 +4223,8 @@
             "evaluation",
             "gpt",
             "langchain"
-          ]
+          ],
+          "external": false
         }
       ]
     },
@@ -3569,9 +4239,9 @@
           "description": "LLM vulnerability scanner with 100+ attack modules covering prompt injection, data leakage, and jailbreaking.",
           "tagline": "LLM vulnerability scanner with 100+ attack modules",
           "note": "",
-          "stars": 7549,
-          "trend": 56,
-          "score": 86,
+          "stars": 7557,
+          "trend": 8,
+          "score": 83,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-03T15:24:32Z",
           "archived": false,
@@ -3581,7 +4251,8 @@
             "llm-security",
             "security-scanners",
             "vulnerability-assessment"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Guardrails AI",
@@ -3590,9 +4261,9 @@
           "description": "Framework for adding structural and semantic validation guardrails to LLM outputs.",
           "tagline": "Structural and semantic validation guardrails for LLM outputs",
           "note": "",
-          "stars": 6683,
-          "trend": 36,
-          "score": 85,
+          "stars": 6690,
+          "trend": 7,
+          "score": 82,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-03T20:00:28Z",
           "archived": false,
@@ -3602,7 +4273,8 @@
             "gpt-3",
             "llm",
             "openai"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Plano",
@@ -3611,9 +4283,9 @@
           "description": "AI-native proxy with built-in orchestration, safety controls, and observability for agentic applications.",
           "tagline": "AI-native proxy with safety controls for agentic apps",
           "note": "",
-          "stars": 6339,
-          "trend": 111,
-          "score": 86,
+          "stars": 6343,
+          "trend": 4,
+          "score": 81,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-15T23:50:37Z",
           "archived": false,
@@ -3623,7 +4295,8 @@
             "envoy",
             "envoyproxy",
             "gateway"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "NeMo Guardrails",
@@ -3632,9 +4305,9 @@
           "description": "Programmable safety rails for LLM-based conversational systems with topical and safety controls (NVIDIA).",
           "tagline": "Programmable topical and safety rails for LLM conversations",
           "note": "",
-          "stars": 5988,
-          "trend": 50,
-          "score": 82,
+          "stars": 6000,
+          "trend": 12,
+          "score": 79,
           "license": "NOASSERTION",
           "lastCommit": "2026-03-12T13:22:49Z",
           "archived": false,
@@ -3644,7 +4317,8 @@
             "guardrails",
             "llm-safety",
             "llm-security"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "DeepTeam",
@@ -3653,9 +4327,9 @@
           "description": "Red-teaming framework for systematically testing LLM vulnerabilities across multiple attack vectors.",
           "tagline": "Systematic red-teaming for LLM vulnerabilities",
           "note": "",
-          "stars": 1550,
-          "trend": 40,
-          "score": 74,
+          "stars": 1553,
+          "trend": 3,
+          "score": 70,
           "license": "Apache-2.0",
           "lastCommit": "2025-11-12T14:18:25Z",
           "archived": false,
@@ -3665,7 +4339,8 @@
             "llm-red-teaming",
             "llm-safety",
             "python"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "LLM Guard",
@@ -3674,9 +4349,9 @@
           "description": "Security toolkit with input/output scanners for prompt injection, data leakage, toxic content, and other safety risks in production LLM applications.",
           "tagline": "Input/output scanners for prompt injection and leakage",
           "note": "",
-          "stars": 2831,
-          "trend": 43,
-          "score": 71,
+          "stars": 2836,
+          "trend": 5,
+          "score": 68,
           "license": "MIT",
           "lastCommit": "2025-09-03T20:12:45Z",
           "archived": false,
@@ -3686,7 +4361,8 @@
             "large-language-models",
             "llm",
             "llm-security"
-          ]
+          ],
+          "external": false
         }
       ]
     },
@@ -3701,13 +4377,20 @@
           "description": "Benchmark using 75 Kaggle competitions to evaluate ML engineering agents (OpenAI).",
           "tagline": "75 Kaggle competitions for evaluating ML agents",
           "note": "",
-          "stars": 1472,
-          "trend": 24,
-          "score": 79,
+          "stars": 1473,
+          "trend": 1,
+          "score": 74,
           "license": "NOASSERTION",
           "lastCommit": "2026-03-20T09:39:39Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "agents",
+            "automl-benchmark",
+            "benchmark",
+            "evaluation",
+            "kaggle"
+          ],
+          "external": false
         },
         {
           "name": "NAS-Bench-101",
@@ -3715,14 +4398,21 @@
           "url": "https://github.com/google-research/nasbench",
           "description": "Benchmark dataset with 423,624 evaluated neural architectures for efficient NAS research (Google).",
           "tagline": "423,624 evaluated neural architectures for NAS research",
-          "note": "",
+          "note": "Archived; reference benchmark, use NAS-Bench-201 for new work.",
           "stars": 714,
-          "trend": -3,
-          "score": 43,
+          "trend": 0,
+          "score": 45,
           "license": "Apache-2.0",
           "lastCommit": "2019-11-17T21:28:16Z",
           "archived": true,
-          "tags": []
+          "tags": [
+            "automl",
+            "benchmark",
+            "dataset",
+            "deep-learning",
+            "google"
+          ],
+          "external": false
         },
         {
           "name": "NAS-Bench-201",
@@ -3732,8 +4422,8 @@
           "tagline": "15,625 architectures across three datasets for fair NAS",
           "note": "",
           "stars": 643,
-          "trend": -1,
-          "score": 63,
+          "trend": 0,
+          "score": 64,
           "license": "MIT",
           "lastCommit": "2025-10-31T05:34:11Z",
           "archived": false,
@@ -3743,7 +4433,8 @@
             "nas",
             "nas-bench-201",
             "pytorch"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "AMLB",
@@ -3762,7 +4453,8 @@
             "automl",
             "benchmark",
             "machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "TabArena",
@@ -3772,12 +4464,19 @@
           "tagline": "Living leaderboard for tabular ML best practices",
           "note": "",
           "stars": 212,
-          "trend": 4,
-          "score": 69,
+          "trend": 0,
+          "score": 66,
           "license": "Apache-2.0",
-          "lastCommit": "2026-04-16T14:43:10Z",
+          "lastCommit": "2026-04-17T16:59:58Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "autogluon",
+            "automl",
+            "benchmark",
+            "machine-learning",
+            "python"
+          ],
+          "external": false
         }
       ]
     },
@@ -3792,9 +4491,9 @@
           "description": "Unified AI compute engine for distributed training, tuning, and model serving with Ray Train, Ray Tune, and Ray Serve.",
           "tagline": "Distributed HPO at scale for any ML framework",
           "note": "",
-          "stars": 42158,
-          "trend": 135,
-          "score": 93,
+          "stars": 42179,
+          "trend": 21,
+          "score": 90,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-15T20:34:27Z",
           "archived": false,
@@ -3804,7 +4503,8 @@
             "deployment",
             "distributed",
             "hyperparameter-optimization"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "MLflow",
@@ -3813,9 +4513,9 @@
           "description": "End-to-end ML lifecycle platform with experiment tracking, model registry, and integrated prompt optimization.",
           "tagline": "End-to-end ML lifecycle with experiment tracking and registry",
           "note": "",
-          "stars": 25405,
-          "trend": 195,
-          "score": 92,
+          "stars": 25423,
+          "trend": 18,
+          "score": 88,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-08T05:29:25Z",
           "archived": false,
@@ -3825,7 +4525,8 @@
             "ai",
             "ai-governance",
             "apache-spark"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Langfuse",
@@ -3834,11 +4535,11 @@
           "description": "Open-source LLM engineering platform with tracing, evaluations, prompt management, and cost analytics.",
           "tagline": "Open-source LLM tracing, evals, and prompt management",
           "note": "",
-          "stars": 25033,
-          "trend": 491,
-          "score": 94,
+          "stars": 25094,
+          "trend": 61,
+          "score": 90,
           "license": "NOASSERTION",
-          "lastCommit": "2026-04-10T17:33:53Z",
+          "lastCommit": "2026-04-17T12:43:58Z",
           "archived": false,
           "tags": [
             "analytics",
@@ -3846,7 +4547,8 @@
             "evaluation",
             "langchain",
             "large-language-models"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Prefect",
@@ -3855,9 +4557,9 @@
           "description": "Modern data workflow automation with retries, caching, and real-time logging.",
           "tagline": "Modern data workflow automation with retries and caching",
           "note": "",
-          "stars": 22188,
-          "trend": 94,
-          "score": 91,
+          "stars": 22195,
+          "trend": 7,
+          "score": 86,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-10T16:34:36Z",
           "archived": false,
@@ -3867,7 +4569,8 @@
             "data-engineering",
             "data-ops",
             "data-science"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Opik",
@@ -3876,11 +4579,11 @@
           "description": "LLM debugging, evaluation, and monitoring platform with detailed tracing and quality dashboards (Comet).",
           "tagline": "LLM debugging, evaluation, and quality dashboards",
           "note": "",
-          "stars": 18870,
-          "trend": 163,
-          "score": 91,
+          "stars": 18888,
+          "trend": 18,
+          "score": 87,
           "license": "Apache-2.0",
-          "lastCommit": "2026-04-16T15:43:51Z",
+          "lastCommit": "2026-04-17T08:19:52Z",
           "archived": false,
           "tags": [
             "evaluation",
@@ -3888,7 +4591,8 @@
             "hacktoberfest2025",
             "langchain",
             "llama-index"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Kubeflow",
@@ -3897,9 +4601,9 @@
           "description": "ML toolkit on Kubernetes for building portable, scalable ML pipelines and training workflows.",
           "tagline": "Kubernetes ML toolkit for portable scalable pipelines",
           "note": "",
-          "stars": 15579,
-          "trend": 21,
-          "score": 72,
+          "stars": 15581,
+          "trend": 2,
+          "score": 68,
           "license": "Apache-2.0",
           "lastCommit": "2025-03-25T21:59:50Z",
           "archived": false,
@@ -3909,7 +4613,8 @@
             "kubeflow",
             "kubernetes",
             "machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "DVC",
@@ -3918,9 +4623,9 @@
           "description": "Version control for data and models with built-in experiment tracking and pipeline management.",
           "tagline": "Git-like version control for data and ML models",
           "note": "",
-          "stars": 15545,
-          "trend": 32,
-          "score": 87,
+          "stars": 15549,
+          "trend": 4,
+          "score": 84,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-31T05:06:44Z",
           "archived": false,
@@ -3930,7 +4635,8 @@
             "data-version-control",
             "developer-tools",
             "machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Dagster",
@@ -3939,11 +4645,11 @@
           "description": "Asset-centric orchestration built for ML pipelines with data lineage tracking and observability.",
           "tagline": "Asset-centric ML pipeline orchestration with lineage tracking",
           "note": "",
-          "stars": 15334,
-          "trend": 88,
-          "score": 89,
+          "stars": 15341,
+          "trend": 7,
+          "score": 85,
           "license": "Apache-2.0",
-          "lastCommit": "2026-04-09T18:57:35Z",
+          "lastCommit": "2026-04-17T19:33:16Z",
           "archived": false,
           "tags": [
             "analytics",
@@ -3951,7 +4657,8 @@
             "data-engineering",
             "data-integration",
             "data-orchestrator"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "W&B",
@@ -3960,9 +4667,9 @@
           "description": "Experiment tracking, visualization, and collaboration platform for ML teams (Weights and Biases).",
           "tagline": "Experiment tracking and visualization for ML teams",
           "note": "",
-          "stars": 11008,
-          "trend": 35,
-          "score": 86,
+          "stars": 11009,
+          "trend": 1,
+          "score": 81,
           "license": "MIT",
           "lastCommit": "2026-04-13T19:45:29Z",
           "archived": false,
@@ -3972,7 +4679,8 @@
             "data-science",
             "data-versioning",
             "deep-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Kedro",
@@ -3981,9 +4689,9 @@
           "description": "Framework for reproducible, maintainable ML pipelines with clean coding patterns.",
           "tagline": "Reproducible, maintainable ML pipelines with clean patterns",
           "note": "",
-          "stars": 10830,
-          "trend": 18,
-          "score": 85,
+          "stars": 10833,
+          "trend": 3,
+          "score": 82,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-07T12:54:59Z",
           "archived": false,
@@ -3993,7 +4701,8 @@
             "kedro",
             "machine-learning",
             "machine-learning-engineering"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Metaflow",
@@ -4003,8 +4712,8 @@
           "tagline": "Human-centric framework for real-life ML projects at scale",
           "note": "",
           "stars": 10043,
-          "trend": 26,
-          "score": 85,
+          "trend": 0,
+          "score": 80,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-20T21:38:19Z",
           "archived": false,
@@ -4014,7 +4723,8 @@
             "aws",
             "azure",
             "cost-optimization"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Phoenix",
@@ -4023,11 +4733,11 @@
           "description": "AI observability platform with OpenTelemetry-native tracing and LLM evaluation dashboards (Arize).",
           "tagline": "OpenTelemetry-native AI observability and LLM evaluation",
           "note": "",
-          "stars": 9307,
-          "trend": 104,
-          "score": 88,
+          "stars": 9322,
+          "trend": 15,
+          "score": 84,
           "license": "NOASSERTION",
-          "lastCommit": "2026-04-16T18:54:43Z",
+          "lastCommit": "2026-04-16T20:57:09Z",
           "archived": false,
           "tags": [
             "agents",
@@ -4035,7 +4745,8 @@
             "ai-observability",
             "aiengineering",
             "anthropic"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Feast",
@@ -4044,9 +4755,9 @@
           "description": "Open-source feature store for managing and serving ML features in real-time and batch inference.",
           "tagline": "Open-source feature store for real-time and batch ML",
           "note": "",
-          "stars": 6967,
-          "trend": 54,
-          "score": 85,
+          "stars": 6971,
+          "trend": 4,
+          "score": 81,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-08T14:26:38Z",
           "archived": false,
@@ -4056,7 +4767,8 @@
             "data-quality",
             "data-science",
             "feature-store"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "ClearML",
@@ -4065,9 +4777,9 @@
           "description": "Unified experiment manager, pipeline orchestrator, and data/model management platform.",
           "tagline": "Unified experiment manager and pipeline orchestrator",
           "note": "",
-          "stars": 6632,
-          "trend": 18,
-          "score": 83,
+          "stars": 6635,
+          "trend": 3,
+          "score": 81,
           "license": "Apache-2.0",
           "lastCommit": "2026-03-24T15:13:10Z",
           "archived": false,
@@ -4077,7 +4789,8 @@
             "control",
             "deep-learning",
             "deeplearning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "Aim",
@@ -4086,9 +4799,9 @@
           "description": "Self-hosted experiment tracker with a high-performance UI that handles 10,000+ training runs.",
           "tagline": "Self-hosted experiment tracker for 10,000+ training runs",
           "note": "",
-          "stars": 6091,
-          "trend": 14,
-          "score": 72,
+          "stars": 6093,
+          "trend": 2,
+          "score": 69,
           "license": "Apache-2.0",
           "lastCommit": "2025-05-08T10:24:23Z",
           "archived": false,
@@ -4098,7 +4811,8 @@
             "data-visualization",
             "experiment-tracking",
             "machine-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "ZenML",
@@ -4107,9 +4821,9 @@
           "description": "Framework for building portable, production-ready ML pipelines that run on any infrastructure.",
           "tagline": "Portable production-ready ML pipelines on any infrastructure",
           "note": "",
-          "stars": 5338,
-          "trend": 17,
-          "score": 83,
+          "stars": 5342,
+          "trend": 4,
+          "score": 80,
           "license": "Apache-2.0",
           "lastCommit": "2026-04-08T15:00:24Z",
           "archived": false,
@@ -4119,7 +4833,582 @@
             "ai",
             "automl",
             "data-science"
-          ]
+          ],
+          "external": false
+        }
+      ]
+    },
+    {
+      "name": "Commercial Products",
+      "description": "Proprietary enterprise AutoML platforms from major cloud and ML vendors, verified active as of 2026-04.",
+      "entries": [
+        {
+          "name": "Vertex AI AutoML",
+          "repo": "",
+          "url": "https://cloud.google.com/vertex-ai",
+          "description": "Google Cloud's managed AutoML service for training tabular classification, regression, forecasting, image, and video models with one-click endpoint deployment.",
+          "tagline": "Managed AutoML across data types on Google Cloud",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "vendor": "Google",
+          "pricing": "pay-as-you-go"
+        },
+        {
+          "name": "Azure Machine Learning AutoML",
+          "repo": "",
+          "url": "https://azure.microsoft.com/en-us/solutions/automated-machine-learning",
+          "description": "Microsoft's automated ML service inside Azure ML workspaces covering classification, regression, forecasting, computer vision, and NLP, accessible via SDK v2, CLI v2, and the studio UI.",
+          "tagline": "Automated ML inside Azure Machine Learning workspaces",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "vendor": "Microsoft",
+          "pricing": "pay-as-you-go"
+        },
+        {
+          "name": "Amazon SageMaker Autopilot",
+          "repo": "",
+          "url": "https://aws.amazon.com/sagemaker/ai/autopilot/",
+          "description": "AWS AutoML service that runs feature engineering, algorithm selection, and tuning for tabular, text, image, and time-series tasks, now surfaced primarily through the SageMaker Canvas no-code UI and the AutoML v2 REST API.",
+          "tagline": "AWS AutoML via SageMaker Canvas and API v2",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "vendor": "Amazon Web Services",
+          "pricing": "pay-as-you-go"
+        },
+        {
+          "name": "H2O Driverless AI",
+          "repo": "",
+          "url": "https://h2o.ai/platform/ai-cloud/make/h2o-driverless-ai/",
+          "description": "H2O.ai's commercial AutoML platform that automates feature engineering, model tuning, interpretability, and deployment for tabular, time-series, image, and text data, deployable on-prem, in cloud, or hybrid.",
+          "tagline": "Commercial AutoML with feature engineering and interpretability",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "vendor": "H2O.ai",
+          "pricing": "enterprise"
+        },
+        {
+          "name": "DataRobot",
+          "repo": "",
+          "url": "https://www.datarobot.com/",
+          "description": "Enterprise AI platform for building, deploying, governing, and monitoring predictive, generative, and agentic models, with AutoML, MLOps, and compute orchestration expanded via the 2025 Agnostiq acquisition.",
+          "tagline": "Enterprise platform for predictive, generative, and agentic AI",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "vendor": "DataRobot",
+          "pricing": "enterprise"
+        },
+        {
+          "name": "Databricks AutoML",
+          "repo": "",
+          "url": "https://docs.databricks.com/aws/en/machine-learning/automl/",
+          "description": "AutoML capability in the Databricks Lakehouse for regression, classification, and forecasting that trains multiple models with scikit-learn, XGBoost, LightGBM, Prophet, and ARIMA and generates editable training notebooks.",
+          "tagline": "Lakehouse AutoML producing editable training notebooks",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "vendor": "Databricks",
+          "pricing": "enterprise"
+        },
+        {
+          "name": "Dataiku Visual ML",
+          "repo": "",
+          "url": "https://www.dataiku.com/product/key-capabilities/machine-learning/automl/",
+          "description": "AutoML and visual ML inside the Dataiku data platform covering classification, regression, forecasting, unsupervised learning, image classification, and object detection, with automated diagnostics, fairness analysis, and MLOps integration.",
+          "tagline": "Visual AutoML inside the Dataiku data platform",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "vendor": "Dataiku",
+          "pricing": "enterprise"
+        },
+        {
+          "name": "Snowflake Cortex ML Functions",
+          "repo": "",
+          "url": "https://www.snowflake.com/en/product/features/cortex/",
+          "description": "SQL-accessible ML functions in Snowflake Cortex that train and serve forecasting, classification, and anomaly-detection models directly on warehouse data without moving it, complemented by the Cortex Code agent for data-science workflows.",
+          "tagline": "SQL-native ML and forecasting on Snowflake data",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "vendor": "Snowflake",
+          "pricing": "pay-as-you-go"
+        }
+      ]
+    },
+    {
+      "name": "Papers and Surveys",
+      "description": "Foundational surveys and recent papers on AutoML methods, agentic ML, and benchmarking.",
+      "entries": [
+        {
+          "name": "AutoML: A Survey of the State-of-the-Art (2021)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/1908.00709",
+          "description": "Comprehensive survey covering the full AutoML pipeline including data preparation, feature engineering, HPO, and NAS with benchmark comparisons.",
+          "tagline": "Comprehensive survey of the full AutoML pipeline",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "He, X., Zhao, K., Chu, X.",
+          "venue": "Knowledge-Based Systems",
+          "year": 2021
+        },
+        {
+          "name": "Neural Architecture Search with Reinforcement Learning (2017)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/1611.01578",
+          "description": "Seminal paper introducing NAS using an RNN controller trained with reinforcement learning to generate competitive architectures on CIFAR-10.",
+          "tagline": "Seminal RL-based NAS paper that launched the field",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Zoph, B., Le, Q. V.",
+          "venue": "ICLR 2017",
+          "year": 2017
+        },
+        {
+          "name": "Neural Architecture Search: A Survey (2019)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/1808.05377",
+          "description": "Canonical NAS survey categorizing methods along three dimensions - search space, search strategy, and performance estimation strategy.",
+          "tagline": "Canonical NAS survey with three-dimension taxonomy",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Elsken, T., Metzen, J. H., Hutter, F.",
+          "venue": "JMLR",
+          "year": 2019
+        },
+        {
+          "name": "A Comprehensive Survey of Neural Architecture Search: Challenges and Solutions (2021)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2006.02903",
+          "description": "Survey reviewing NAS methods from earliest algorithms through modern gradient-based approaches with comparative analysis across datasets.",
+          "tagline": "NAS survey across early RL to modern gradient methods",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Ren, P., Xiao, Y., Chang, X. et al.",
+          "venue": "ACM Computing Surveys",
+          "year": 2021
+        },
+        {
+          "name": "Efficient Automation of Neural Network Design: A Survey on Differentiable NAS (2024)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2304.05405",
+          "description": "Survey of differentiable NAS methods building on DARTS, proposing a challenge-based taxonomy for classifying DNAS techniques.",
+          "tagline": "Differentiable NAS survey with challenge-based taxonomy",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Heuillet, A., Nasser, A., Arioui, H. et al.",
+          "venue": "ACM Computing Surveys",
+          "year": 2024
+        },
+        {
+          "name": "On Hyperparameter Optimization of Machine Learning Algorithms (2020)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2007.15745",
+          "description": "Survey of state-of-the-art HPO techniques, libraries, and benchmark experiments comparing Bayesian, evolutionary, and bandit-based methods.",
+          "tagline": "HPO survey covering theory, libraries, and benchmarks",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Yang, L., Shami, A.",
+          "venue": "Neurocomputing",
+          "year": 2020
+        },
+        {
+          "name": "Hyperparameter Optimization: Foundations, Algorithms, Best Practices (2023)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2107.05847",
+          "description": "In-depth review of HPO foundations including Bayesian optimization, Hyperband, racing, and practical guidance on integrating HPO with ML pipelines.",
+          "tagline": "HPO foundations, best practices, and open challenges",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Bischl, B., Binder, M., Lang, M. et al.",
+          "venue": "WIREs DMKD",
+          "year": 2023
+        },
+        {
+          "name": "Benchmark and Survey of Automated Machine Learning Frameworks (2021)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/1904.12054",
+          "description": "Combined survey and benchmark of AutoML techniques across the full ML pipeline evaluated on 137 datasets from established suites.",
+          "tagline": "Combined AutoML survey and benchmark on 137 datasets",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Zoller, M.-A., Huber, M. F.",
+          "venue": "JAIR",
+          "year": 2021
+        },
+        {
+          "name": "AMLB: an AutoML Benchmark (2024)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2207.12560",
+          "description": "Open benchmark comparing 9 AutoML frameworks across 104 classification and regression tasks with multi-faceted accuracy and runtime analysis.",
+          "tagline": "Open benchmark of 9 AutoML frameworks on 104 tasks",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Gijsbers, P., Bueno, M. L. P., Coors, S. et al.",
+          "venue": "JMLR",
+          "year": 2024
+        },
+        {
+          "name": "Meta-Learning in Neural Networks: A Survey (2021)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2004.05439",
+          "description": "Comprehensive meta-learning survey with a new taxonomy, relationships to transfer learning and HPO, and applications to few-shot learning.",
+          "tagline": "Meta-learning survey with taxonomy and applications",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Hospedales, T., Antoniou, A., Micaelli, P. et al.",
+          "venue": "IEEE TPAMI",
+          "year": 2021
+        },
+        {
+          "name": "Deep Neural Networks and Tabular Data: A Survey (2022)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2110.01889",
+          "description": "Survey of deep learning for tabular data categorizing data transformations, specialized architectures, and regularization approaches with empirical comparisons.",
+          "tagline": "Deep learning for tabular data survey and benchmarks",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Borisov, V., Leemann, T., Sesler, K. et al.",
+          "venue": "IEEE TNNLS",
+          "year": 2022
+        },
+        {
+          "name": "AutoGluon-Tabular: Robust and Accurate AutoML for Structured Data (2020)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2003.06505",
+          "description": "Technical paper introducing multi-layer stacking ensembles for tabular AutoML that outperformed TPOT, H2O, and AutoWEKA across 50 benchmarks.",
+          "tagline": "Multi-layer stacking ensembles for tabular AutoML",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Erickson, N., Mueller, J., Shirkov, A. et al.",
+          "venue": "AutoML Workshop ICML 2020",
+          "year": 2020
+        },
+        {
+          "name": "TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second (2023)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2207.01848",
+          "description": "In-context-learning transformer for tabular classification matching AutoML systems on small datasets with up to 5700x GPU speedups.",
+          "tagline": "In-context transformer for small tabular classification",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Hollmann, N., Muller, S., Eggensperger, K. et al.",
+          "venue": "ICLR 2023",
+          "year": 2023
+        },
+        {
+          "name": "AutoGluon-TimeSeries: AutoML for Probabilistic Time Series Forecasting (2023)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2308.05566",
+          "description": "Open-source AutoML library for probabilistic time-series forecasting combining statistical, ML, and deep learning models via ensembling on 29 benchmarks.",
+          "tagline": "AutoML for probabilistic time series forecasting",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Shchur, O., Turkmen, C., Erickson, N. et al.",
+          "venue": "AutoML Conference 2023",
+          "year": 2023
+        },
+        {
+          "name": "Chronos: Learning the Language of Time Series (2024)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2403.07815",
+          "description": "Pretrained probabilistic time-series foundation models tokenizing values for T5-based transformers achieving strong zero-shot forecasting across 42 datasets.",
+          "tagline": "Pretrained foundation models for time series",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Ansari, A. F., Stella, L., Turkmen, C. et al.",
+          "venue": "TMLR",
+          "year": 2024
+        },
+        {
+          "name": "On the Opportunities and Risks of Foundation Models (2021)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2108.07258",
+          "description": "Stanford CRFM report defining foundation models and analyzing their capabilities, technical principles, applications, and societal impact.",
+          "tagline": "Foundational report defining foundation models",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Bommasani, R., Hudson, D. A., Adeli, E. et al.",
+          "venue": "Stanford CRFM Report",
+          "year": 2021
+        },
+        {
+          "name": "Parameter-Efficient Fine-Tuning for Large Models: A Comprehensive Survey (2024)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2403.14608",
+          "description": "Survey of PEFT methods for LLMs and vision models covering algorithms, computational overhead, applications, and real-world system design.",
+          "tagline": "Comprehensive PEFT survey for large models",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Han, Z., Gao, C., Liu, J. et al.",
+          "venue": "arXiv preprint",
+          "year": 2024
+        },
+        {
+          "name": "The Rise and Potential of Large Language Model Based Agents: A Survey (2025)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2309.07864",
+          "description": "Comprehensive survey on LLM-based agents presenting a brain-perception-action framework with applications across single-agent, multi-agent, and agent societies.",
+          "tagline": "LLM agents survey with brain-perception-action framework",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Xi, Z., Chen, W., Guo, X. et al.",
+          "venue": "Science China Info Sciences",
+          "year": 2025
+        },
+        {
+          "name": "A Survey on Large Language Model based Autonomous Agents (2024)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2308.11432",
+          "description": "Unified framework survey on LLM-based autonomous agents across social science, natural science, and engineering with evaluation strategies.",
+          "tagline": "Unified framework survey on LLM autonomous agents",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Wang, L., Ma, C., Feng, X. et al.",
+          "venue": "Frontiers of Computer Science",
+          "year": 2024
+        },
+        {
+          "name": "AutoML-Agent: A Multi-Agent LLM Framework for Full-Pipeline AutoML (2025)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2410.02958",
+          "description": "Multi-agent LLM framework spanning data retrieval to deployment using retrieval-augmented planning, parallel specialized agents, and multi-stage verification.",
+          "tagline": "Multi-agent LLM framework for full-pipeline AutoML",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Trirat, P., Jeong, W., Hwang, S. J.",
+          "venue": "ICLR 2025",
+          "year": 2025
+        },
+        {
+          "name": "MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation (2024)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2310.03302",
+          "description": "Benchmark of 13 ML tasks evaluating LLM-driven agents across file I/O, code execution, and iterative ReAct-style experimentation.",
+          "tagline": "Benchmark of 13 ML tasks evaluating LLM agents",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Huang, Q., Vora, J., Liang, P. et al.",
+          "venue": "ICML 2024",
+          "year": 2024
+        },
+        {
+          "name": "Data-centric Artificial Intelligence: A Survey (2025)",
+          "repo": "",
+          "url": "https://arxiv.org/abs/2303.10158",
+          "description": "Survey of data-centric AI covering training data development, inference data development, and data maintenance with automation and collaboration views.",
+          "tagline": "Survey of data-centric AI across the data lifecycle",
+          "note": "",
+          "stars": 0,
+          "trend": null,
+          "score": 0,
+          "license": null,
+          "lastCommit": "",
+          "archived": false,
+          "tags": [],
+          "external": true,
+          "authors": "Zha, D., Bhat, Z. P., Lai, K.-H. et al.",
+          "venue": "ACM Computing Surveys",
+          "year": 2025
         }
       ]
     },
@@ -4134,13 +5423,20 @@
           "description": "Curated list of ML frameworks, libraries, and software organized by language.",
           "tagline": "ML frameworks and libraries organized by language",
           "note": "",
-          "stars": 72220,
-          "trend": 28,
+          "stars": 72237,
+          "trend": 17,
           "score": 92,
           "license": "NOASSERTION",
           "lastCommit": "2026-04-12T00:38:09Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "awesome",
+            "awesome-list",
+            "curated-list",
+            "deep-learning",
+            "frameworks"
+          ],
+          "external": false
         },
         {
           "name": "awesome-deep-learning",
@@ -4149,9 +5445,9 @@
           "description": "Curated list of deep learning tutorials, projects, and communities.",
           "tagline": "Deep learning tutorials, projects, and communities",
           "note": "",
-          "stars": 27907,
-          "trend": 46,
-          "score": 70,
+          "stars": 27919,
+          "trend": 12,
+          "score": 67,
           "license": null,
           "lastCommit": "2025-05-26T12:28:00Z",
           "archived": false,
@@ -4161,7 +5457,8 @@
             "deep-learning",
             "deep-learning-tutorial",
             "deep-networks"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "awesome-llm",
@@ -4170,13 +5467,20 @@
           "description": "Curated list of large language model resources covering papers, tools, and applications.",
           "tagline": "LLM resources covering papers, tools, and applications",
           "note": "",
-          "stars": 26650,
-          "trend": 37,
-          "score": 79,
+          "stars": 26655,
+          "trend": 5,
+          "score": 76,
           "license": "CC0-1.0",
           "lastCommit": "2025-07-31T02:38:24Z",
           "archived": false,
-          "tags": []
+          "tags": [
+            "awesome",
+            "awesome-list",
+            "curated-list",
+            "deep-learning",
+            "large-language-models"
+          ],
+          "external": false
         },
         {
           "name": "awesome-production-machine-learning",
@@ -4185,9 +5489,9 @@
           "description": "Curated list of tools for deploying, monitoring, and scaling ML in production.",
           "tagline": "Tools for deploying and scaling ML in production",
           "note": "",
-          "stars": 20400,
-          "trend": 52,
-          "score": 86,
+          "stars": 20410,
+          "trend": 10,
+          "score": 83,
           "license": "MIT",
           "lastCommit": "2026-03-01T02:46:18Z",
           "archived": false,
@@ -4197,7 +5501,8 @@
             "data-mining",
             "deep-learning",
             "explainability"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "awesome-mlops",
@@ -4206,9 +5511,9 @@
           "description": "Curated list of MLOps tools and best practices for production ML.",
           "tagline": "MLOps tools and best practices for production ML",
           "note": "",
-          "stars": 13854,
-          "trend": 8,
-          "score": 60,
+          "stars": 13855,
+          "trend": 1,
+          "score": 57,
           "license": null,
           "lastCommit": "2024-11-21T14:45:11Z",
           "archived": false,
@@ -4218,7 +5523,8 @@
             "devops",
             "engineering",
             "federated-learning"
-          ]
+          ],
+          "external": false
         },
         {
           "name": "awesome-generative-ai",
@@ -4227,9 +5533,9 @@
           "description": "Curated list of modern generative AI projects and services.",
           "tagline": "Modern generative AI projects and services curated",
           "note": "",
-          "stars": 11847,
-          "trend": 71,
-          "score": 88,
+          "stars": 11852,
+          "trend": 5,
+          "score": 83,
           "license": "CC0-1.0",
           "lastCommit": "2026-04-15T21:45:23Z",
           "archived": false,
@@ -4239,7 +5545,8 @@
             "awesome",
             "awesome-list",
             "generative-ai"
-          ]
+          ],
+          "external": false
         }
       ]
     }

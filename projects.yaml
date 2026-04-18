@@ -31,7 +31,7 @@ categories:
     repo: automl/auto-sklearn
     description: Historically important AutoML toolkit using Bayesian optimization, meta-learning, and ensemble construction.
     tagline: Bayesian optimization and meta-learning AutoML
-    note: Unmaintained since Sep 2022; broken on Python 3.10+.
+    note: Low activity; no major releases since 2022.
     tags: [automated-machine-learning, automl, bayesian-optimization, hyperparameter-optimization, hyperparameter-search, hyperparameter-tuning, meta-learning, metalearning, scikit-learn, smac]
   - name: H2O AutoML
     repo: h2oai/h2o-3
@@ -47,7 +47,6 @@ categories:
     repo: shankarpandala/lazypredict
     description: Build and evaluate dozens of scikit-learn models in a single line of code for rapid baseline comparison.
     tagline: Dozens of sklearn models in one line
-    note: Low activity since 2022.
     tags: [automl, classification, machine-learning, regression]
   - name: MLJAR Supervised
     repo: mljar/mljar-supervised
@@ -73,7 +72,8 @@ categories:
     repo: automl/autoweka
     description: The original AutoML system (2013) combining algorithm selection and HPO in WEKA.
     tagline: Original AutoML combining algorithm selection and HPO
-    note: Historical; Java-only, maintenance mode.
+    note: Historical; Java-only, no commits since 2022.
+    tags: [automl, bayesian-optimization, hyperparameter-optimization, java, machine-learning, model-selection, weka]
   - name: GAMA
     repo: amore-labs/gama
     description: AutoML tool that generates optimized ML pipelines using genetic programming and Bayesian optimization (OpenML).
@@ -86,10 +86,10 @@ categories:
     repo: google-research/timesfm
     description: Time-series foundation model for zero-shot forecasting across domains without task-specific training (Google).
     tagline: Zero-shot time-series forecasting foundation model
+    tags: [deep-learning, foundation-models, forecasting, google, pretrained-models, python, pytorch, time-series]
   - name: TabPFN
     repo: PriorLabs/TabPFN
-    description: Tabular foundation model that matches tuned XGBoost in 2.8 seconds with a single forward pass - 100% win rate vs default XGBoost on datasets under 10K rows (Nature 2024, now v2.6 supporting
-      up to 100K rows).
+    description: Tabular foundation model that matches tuned XGBoost in 2.8 seconds with a single forward pass - 100% win rate vs default XGBoost on datasets under 10K rows (Nature 2024, now v2.6 supporting up to 100K rows).
     tagline: Beats tuned XGBoost in 2.8 seconds flat
     tags: [data-science, foundation-models, machine-learning, tabpfn, tabular-data]
   - name: Chronos
@@ -106,6 +106,7 @@ categories:
     repo: yandex-research/tabm
     description: Parameter-efficient ensemble of MLPs based on BatchEnsemble, achieving top performance among tabular deep learning models without attention complexity (ICLR 2025, Yandex).
     tagline: Efficient MLP ensemble for top tabular performance
+    tags: [deep-learning, ensembling, machine-learning, neural-networks, python, pytorch, tabular-data]
   - name: TALENT
     repo: LAMDA-Tabular/TALENT
     description: Comprehensive toolkit and benchmark for tabular learning covering 35+ deep methods across 300 datasets.
@@ -143,6 +144,7 @@ categories:
     repo: huggingface/trl
     description: Transformer Reinforcement Learning with SFT, DPO, RLHF, and GRPO trainers for alignment and preference tuning (Hugging Face).
     tagline: RLHF, DPO, and GRPO trainers for LLM alignment
+    tags: [deep-learning, fine-tuning, huggingface, llm, python, pytorch, reinforcement-learning, rlhf, transformers]
   - name: LitGPT
     repo: Lightning-AI/litgpt
     description: Recipes for pretraining, fine-tuning, and deploying 20+ LLM architectures on your own data (Lightning AI).
@@ -162,6 +164,7 @@ categories:
     repo: meta-pytorch/torchtune
     description: Native PyTorch library for fine-tuning LLMs with composable building blocks and YAML configs (Meta).
     tagline: Native PyTorch LLM fine-tuning with YAML configs
+    tags: [deep-learning, fine-tuning, llm, meta, post-training, python, pytorch]
   - name: Hugging Face AutoTrain
     repo: huggingface/autotrain-advanced
     description: No-code training for LLMs, vision-language models, text classification, and tabular data (Hugging Face).
@@ -182,6 +185,11 @@ categories:
     description: Composable building blocks for pretraining, fine-tuning, and evaluating foundation models with efficient distributed training (Databricks).
     tagline: Composable pretraining and fine-tuning for foundation models
     tags: [deep-learning, llm, neural-networks, nlp, pytorch]
+  - name: LeRobot
+    repo: huggingface/lerobot
+    description: Hugging Face's end-to-end library for robotics learning with pretrained policies, datasets, and simulation environments for imitation and RL.
+    tagline: End-to-end learning for robotics
+    tags: [imitation-learning, pytorch, reinforcement-learning, robotics]
 - name: Automated Prompt Optimization
   description: Systematic optimization of prompts, instructions, and demonstrations to improve LLM performance without manual tuning.
   entries:
@@ -189,10 +197,12 @@ categories:
     repo: stanfordnlp/dspy
     description: Declarative framework replacing hand-written prompts with automatic optimizers - GPT-3.5 with DSPy outperforms expert prompts by up to 46% (Stanford NLP).
     tagline: Automatic prompt optimizers replacing hand-written prompts
+    tags: [dspy, llm, nlp, prompt-optimization, prompting, python]
   - name: PromptWizard
     repo: microsoft/PromptWizard
     description: Task-aware agent-driven prompt optimization using self-evolving critique and synthesis (Microsoft).
     tagline: Agent-driven self-evolving prompt optimization
+    tags: [automl, llm, microsoft, prompt-engineering, prompt-optimization, python]
   - name: TextGrad
     repo: zou-group/textgrad
     description: Automatic differentiation via text feedback, enabling gradient-like optimization of compound AI systems (Nature 2024).
@@ -202,6 +212,7 @@ categories:
     repo: gepa-ai/gepa
     description: Reflective text evolution for prompt, code, and text optimization, integrated into MLflow (Cerebras).
     tagline: Reflective text evolution for prompt optimization
+    tags: [evolutionary-algorithms, llm, optimization, prompt-optimization, python, reflection]
   - name: AutoPrompt
     repo: Eladlev/AutoPrompt
     description: Intent-based prompt calibration using synthetic data generation for iterative prompt refinement.
@@ -216,14 +227,17 @@ categories:
     repo: SalesforceAIResearch/promptomatix
     description: DSPy-powered automatic prompt optimization that transforms task descriptions into optimized prompts with cost-aware objectives (Salesforce).
     tagline: Task descriptions to optimized prompts automatically
+    tags: [automl, llm, nlp, prompt-optimization, python, salesforce]
   - name: Prompt-Ops
     repo: meta-llama/prompt-ops
     description: Open-source command-line tool for building, optimizing, and managing prompts at scale (Meta).
     tagline: CLI for building and managing prompts at scale
+    tags: [llama, llm, meta, prompt-engineering, prompt-optimization, python]
   - name: EvoPrompt
     repo: beeevita/EvoPrompt
     description: Connects LLMs with evolutionary algorithms for discrete prompt optimization with up to 25% improvement over manual prompts.
     tagline: Evolutionary algorithms for discrete prompt optimization
+    tags: [evolutionary-algorithms, genetic-algorithms, llm, prompt-optimization, python, research]
 - name: Automated AI Research
   description: Autonomous systems that design experiments, run them, and analyze results without human intervention.
   entries:
@@ -231,6 +245,7 @@ categories:
     repo: karpathy/autoresearch
     description: Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026).
     tagline: Agents run 100 ML experiments overnight autonomously
+    tags: [agents, automated-research, autonomous-agents, llm, machine-learning, python, research]
   - name: AutoGen
     repo: microsoft/autogen
     description: Multi-agent conversation framework for building AI agent systems. Now in maintenance mode as AG2 (Microsoft).
@@ -250,6 +265,7 @@ categories:
     repo: SakanaAI/AI-Scientist
     description: Fully automated open-ended scientific discovery from idea generation to experiment execution to paper writing (Sakana AI).
     tagline: Fully automated discovery from idea to paper
+    tags: [agents, automated-research, autonomous-agents, llm, python, research, scientific-discovery]
   - name: PaperQA
     repo: Future-House/paper-qa
     description: High-accuracy retrieval-augmented generation for answering questions from scientific literature.
@@ -259,6 +275,7 @@ categories:
     repo: SakanaAI/AI-Scientist-v2
     description: Second generation using agentic tree search, producing the first AI-generated paper accepted at a peer-reviewed workshop.
     tagline: First AI paper accepted at peer-reviewed workshop
+    tags: [agentic-search, agents, automated-research, autonomous-agents, llm, python, scientific-discovery, tree-search]
   - name: AI-Researcher
     repo: HKUDS/AI-Researcher
     description: Autonomous agent automating the full research lifecycle from literature review to experimentation (NeurIPS 2025 Spotlight).
@@ -274,6 +291,11 @@ categories:
     description: Multi-agent LLM framework for full-pipeline AutoML from data retrieval through model deployment (ICML 2025).
     tagline: LLM agents for end-to-end AutoML pipelines
     tags: [automl, llm-agents, multi-agent-systems]
+  - name: GPT Researcher
+    repo: assafelovic/gpt-researcher
+    description: Autonomous research agent that plans queries, scrapes sources, and writes cited multi-page reports using any LLM with optional MCP server mode.
+    tagline: Autonomous deep-research report agent
+    tags: [agent, ai, automation, deepresearch, llms, mcp, mcp-server, python, research, search, webscraping]
 - name: ML Engineering Agents
   description: AI agents that autonomously write, debug, and optimize code for software and ML engineering.
   entries:
@@ -301,6 +323,52 @@ categories:
     repo: AutoCodeRoverSG/auto-code-rover
     description: Structure-aware autonomous program repair combining code search with LLM-based patching.
     tagline: Structure-aware autonomous code repair and patching
+    tags: [agents, autonomous-agents, code-generation, llm, program-repair, python, software-engineering, swe-bench]
+  - name: AG2
+    repo: ag2ai/ag2
+    description: Open-source AgentOS (formerly AutoGen) for building multi-agent systems with conversation patterns, tool use, and code execution across LLM providers.
+    tagline: Multi-agent AgentOS from AutoGen lineage
+    tags: [a2a, ag2, agent-framework, agentic, agentic-ai, ai, ai-agents-framework, aiagents, genai, llm, llms, mcp, multi-agent, multi-agent-system, open-source, python]
+  - name: LangGraph
+    repo: langchain-ai/langgraph
+    description: LangChain's graph-based runtime for building stateful, resilient agents with checkpointing, human-in-the-loop, and controllable multi-actor workflows.
+    tagline: Stateful graph runtime for agents
+    tags: [agents, ai, ai-agents, chatgpt, deepagents, enterprise, framework, gemini, generative-ai, langchain, langgraph, llm, multiagent, open-source, openai, pydantic, python, rag]
+  - name: Pydantic AI
+    repo: pydantic/pydantic-ai
+    description: Agent framework from the Pydantic team that brings typed validation, dependency injection, and structured outputs to LLM apps across providers.
+    tagline: Typed agents the Pydantic way
+    tags: [agent-framework, genai, llm, pydantic, python]
+  - name: smolagents
+    repo: huggingface/smolagents
+    description: Hugging Face's minimalist agent library where agents reason by writing and executing Python code rather than emitting JSON tool calls.
+    tagline: Barebones code-writing agents library
+    tags: [agents, code-agents, huggingface, llm, python]
+  - name: Google ADK for Python
+    repo: google/adk-python
+    description: Google's code-first Python toolkit for building, evaluating, and deploying production AI agents with the same stack powering Gemini and Agentspace.
+    tagline: Google's production agent development kit
+    tags: [agent, agentic, agentic-ai, agents, agents-sdk, ai, ai-agents, aiagentframework, genai, genai-chatbot, llm, llms, multi-agent, multi-agent-systems, multi-agents, multi-agents-collaboration]
+  - name: Mem0
+    repo: mem0ai/mem0
+    description: Universal memory layer that gives AI agents persistent, personalized long-term memory with extraction, retrieval, and graph-backed storage.
+    tagline: Universal memory layer for agents
+    tags: [agents, ai, ai-agents, application, chatbots, chatgpt, genai, llm, long-term-memory, memory, memory-management, python, rag, state-management]
+  - name: Browser Use
+    repo: browser-use/browser-use
+    description: Playwright-powered agent harness that makes websites accessible to LLMs so they can navigate, fill forms, and automate tasks across real browsers.
+    tagline: LLM-driven browser automation framework
+    tags: [ai-agents, ai-tools, browser-automation, browser-use, llm, playwright, python]
+  - name: E2B
+    repo: e2b-dev/e2b
+    description: Open-source secure cloud sandboxes that give AI agents isolated Linux VMs to run generated code, browsers, and real-world developer tools.
+    tagline: Secure code sandboxes for agents
+    tags: [agent, ai, ai-agent, ai-agents, code-interpreter, copilot, development, devtools, gpt, gpt-4, javascript, llm, nextjs, openai, python, react, software, typescript]
+  - name: Magentic-UI
+    repo: microsoft/magentic-ui
+    description: Microsoft Research prototype for a human-centered web agent with co-planning, action previews, and transparent browser control built on AutoGen.
+    tagline: Human-in-the-loop web agent prototype
+    tags: [agents, ai, ai-ux, autogen, browser-use, computer-use-agent, cua, ui]
 - name: LLM Evaluation and Testing
   description: Frameworks for automated evaluation, testing, and benchmarking of language models and AI systems.
   entries:
@@ -358,11 +426,17 @@ categories:
     repo: UKGovernmentBEIS/inspect_ai
     description: Framework for reproducible LLM evals with sandboxed agent execution, 100+ prebuilt evaluations, and VS Code integration (UK AI Safety Institute).
     tagline: Reproducible sandboxed LLM evals, 100+ prebuilt
+    tags: [ai-safety, benchmarking, evaluation, framework, llm, llm-evaluation, python]
   - name: OpenAI Evals
     repo: openai/evals
     description: Reference framework and open registry of LLM benchmarks from OpenAI - the original eval harness many downstream frameworks build on.
     tagline: OpenAI's reference LLM eval framework and benchmark registry
     tags: [benchmark, evaluation, gpt, llm, llm-evaluation, openai]
+  - name: Gorilla
+    repo: ShishirPatil/gorilla
+    description: UC Berkeley project training and evaluating LLMs for function and tool calling, home of the Berkeley Function-Calling Leaderboard (BFCL).
+    tagline: Function-calling models and BFCL leaderboard
+    tags: [api, api-documentation, chatgpt, claude-api, function-calling, gpt-4-api, llm, openai-api, openai-functions]
 - name: LLM Routing and Selection
   description: Intelligent routing of requests to the optimal model based on task complexity, cost, and performance.
   entries:
@@ -380,10 +454,12 @@ categories:
     repo: lm-sys/RouteLLM
     description: Framework for training and serving LLM routers that reduce costs by up to 85% without quality loss (LMSYS).
     tagline: LLM routers cutting costs 85% without quality loss
+    tags: [cost-optimization, inference, llm, llm-routing, python, serving]
   - name: LLMRouter
     repo: ulab-uiuc/LLMRouter
     description: Unified library with 16+ router implementations and standardized evaluation via command-line interface.
     tagline: 16+ LLM router implementations with unified evaluation
+    tags: [inference, llm, llm-routing, model-selection, python, research]
   - name: TensorZero
     repo: tensorzero/tensorzero
     description: Open-source LLMOps platform unifying an LLM gateway, observability, evaluation, optimization, and experimentation with A/B testing across models.
@@ -411,6 +487,7 @@ categories:
     repo: salesforce/Merlion
     description: Time-series intelligence library with unified interfaces for forecasting, anomaly detection, and change-point detection (Salesforce).
     tagline: Unified forecasting, anomaly, and change-point detection
+    note: Archived by Salesforce in 2026.
     tags: [anomaly-detection, automl, benchmarking, ensemble-learning, forecasting, machine-learning, time-series]
   - name: Nixtla NeuralForecast
     repo: Nixtla/neuralforecast
@@ -456,6 +533,7 @@ categories:
     repo: ibm-granite/granite-tsfm
     description: Compact pretrained Tiny Time Mixers that rival billion-parameter models for zero/few-shot multivariate forecasting (IBM, NeurIPS 2024).
     tagline: Compact mixers rivaling billion-parameter forecasting models
+    tags: [deep-learning, forecasting, foundation-models, ibm, python, pytorch, time-series]
 - name: Neural Architecture Search
   description: Automated design and discovery of optimal neural network architectures.
   entries:
@@ -469,11 +547,13 @@ categories:
     repo: google/automl
     description: Research code for EfficientNet, EfficientDet, MnasNet, and other NAS-discovered architectures (Google Brain).
     tagline: Research code behind EfficientNet and EfficientDet
+    note: Research code; sporadic updates.
     tags: [automl, efficientdet, efficientnet, efficientnetv2, object-detection]
   - name: Once-For-All
     repo: mit-han-lab/once-for-all
     description: Train one network and specialize sub-networks for diverse hardware without retraining (MIT HAN Lab, ICLR 2020).
     tagline: Train once, deploy specialized sub-networks anywhere
+    note: Research code; no commits since Dec 2023.
     tags: [acceleration, automl, edge-ai, efficient-model, nas, tinyml]
   - name: TinyEngine
     repo: mit-han-lab/tinyengine
@@ -485,6 +565,7 @@ categories:
     description: AutoML pipeline covering NAS, hyperparameter optimization, auto-augmentation, and model compression (Huawei).
     tagline: Full AutoML pipeline with NAS and compression
     note: Unmaintained since Feb 2023.
+    tags: [automl, data-augmentation, huawei, hyperparameter-optimization, model-compression, neural-architecture-search, python, pytorch]
   - name: NASLib
     repo: automl/NASLib
     description: NAS research library from AutoML Freiburg with interfaces to state-of-the-art search spaces and optimizers.
@@ -499,6 +580,7 @@ categories:
     repo: automl/Auto-PyTorch
     description: Joint NAS and HPO for PyTorch from the AutoML Freiburg group behind auto-sklearn, combining BOHB with meta-learning and portfolio selection.
     tagline: Joint NAS and HPO for PyTorch from Auto-sklearn team
+    note: Low activity since Apr 2024.
     tags: [automated-machine-learning, automl, deep-learning, hyperparameter-optimization, neural-architecture-search, pytorch]
 - name: Hyperparameter Optimization
   description: Automated tuning of model hyperparameters using Bayesian, evolutionary, and other search strategies.
@@ -508,7 +590,7 @@ categories:
     url: https://docs.ray.io/en/latest/tune/
     description: Distributed hyperparameter tuning at scale with support for any ML framework and many search algorithms.
     tagline: Distributed HPO at scale for any ML framework
-    tags: [data-science, deep-learning, deployment, distributed, hyperparameter-optimization, hyperparameter-search, large-language-models, llm, llm-inference, llm-serving, machine-learning, optimization, parallel, python, pytorch, ray, reinforcement-learning, rllib, serving, tensorflow]
+    tags: [distributed, hyperparameter-optimization, hyperparameter-search, machine-learning, optimization, parallel, python, ray]
   - name: Optuna
     repo: optuna/optuna
     description: Define-by-run API with pruning, distributed execution, and a dashboard - the most widely adopted HPO framework.
@@ -518,12 +600,13 @@ categories:
     repo: hyperopt/hyperopt
     description: Pioneered tree-structured Parzen estimators for HPO.
     tagline: Pioneer of tree-structured Parzen estimators for HPO
-    note: Deprecated since Nov 2021 - use Optuna instead.
+    note: Maintenance-only since 2021 - Optuna is successor.
     tags: [hacktoberfest]
   - name: BoTorch
     repo: meta-pytorch/botorch
     description: Bayesian optimization library in PyTorch for high-dimensional, noisy, and multi-objective problems (Meta).
     tagline: PyTorch Bayesian optimization for multi-objective problems
+    tags: [bayesian-optimization, deep-learning, gaussian-processes, hyperparameter-optimization, meta, python, pytorch]
   - name: Keras Tuner
     repo: keras-team/keras-tuner
     description: Hyperparameter search for Keras models with built-in Bayesian optimization and Hyperband.
@@ -533,6 +616,7 @@ categories:
     repo: facebook/Ax
     description: Adaptive experimentation platform for multi-objective optimization with BoTorch integration (Meta).
     tagline: Adaptive experimentation for multi-objective optimization
+    tags: [bayesian-optimization, experimentation, facebook, hyperparameter-optimization, machine-learning, meta, python, pytorch]
   - name: SMAC3
     repo: automl/SMAC3
     description: Sequential model-based algorithm configuration combining Bayesian optimization with racing mechanisms (AutoML Freiburg).
@@ -542,7 +626,8 @@ categories:
     repo: dragonfly/dragonfly
     description: Scalable Bayesian optimization library supporting multi-fidelity and multi-objective search.
     tagline: Scalable Bayesian optimization with multi-fidelity search
-    note: Low activity since Jun 2023.
+    note: No commits since Jun 2023.
+    tags: [bayesian-optimization, hyperparameter-optimization, machine-learning, optimization, python, scalable]
   - name: Google Vizier
     repo: google/vizier
     description: Research interface for blackbox and hyperparameter optimization with Bayesian, evolutionary, and multi-objective algorithms based on Google's internal Vizier Service.
@@ -580,6 +665,7 @@ categories:
     repo: scikit-learn-contrib/boruta_py
     description: All-relevant feature selection wrapper using random forest shadow features to identify important predictors.
     tagline: All-relevant feature selection via random forest shadows
+    tags: [feature-engineering, feature-selection, machine-learning, python, random-forest, scikit-learn, tabular-data]
   - name: AutoFeat
     repo: cod3licious/autofeat
     description: Scikit-learn-compatible automated feature engineering and selection that generates non-linear features and selects robust subsets.
@@ -645,6 +731,21 @@ categories:
     description: Clean APIs for data cleaning with a fluent method-chaining interface for pandas DataFrames, inspired by the R Janitor package.
     tagline: Fluent method-chaining data cleaning for pandas
     tags: [cleaning-data, data, data-engineering, dataframe, hacktoberfest, pandas, pydata]
+  - name: Data Formulator
+    repo: microsoft/data-formulator
+    description: Microsoft Research tool that uses AI to iteratively transform, reshape, and visualize tabular data through a concept-driven chart authoring UI.
+    tagline: AI-driven data transformation and charts
+    tags: [ai, data-transformation, llm, visualization]
+  - name: NeMo Curator
+    repo: NVIDIA-NeMo/NeMo-Curator
+    description: NVIDIA's GPU-accelerated toolkit for scalable LLM data curation with quality filtering, exact and semantic deduplication, and PII redaction.
+    tagline: GPU-scale LLM data curation toolkit
+    tags: [data, data-curation, data-prep, data-preparation, data-processing, data-processing-pipelines, data-quality, datacuration, datarecipes, deduplication, fast-data-processing, fine-tuning, large-language-models, large-scale-data-processing, llm, llm-data-quality, llmapps, python, semantic-deduplication]
+  - name: Presidio
+    repo: microsoft/presidio
+    description: Microsoft's PII detection and anonymization framework that redacts, masks, and de-identifies sensitive data across text, images, and structured records.
+    tagline: PII detection and anonymization framework
+    tags: [anonymization, data-anonymization, data-masking, data-obfuscation, data-privacy, data-redaction, de-identification, guardrails, image-redactor, named-entity-recognition, nlp, personally-identifiable-information, phi, pii, pii-detection, privacy, python, sensitive-data, spacy, transformers]
 - name: Automated Data Labeling
   description: Tools that automate or semi-automate the annotation process using AI-assisted labeling.
   entries:
@@ -682,6 +783,7 @@ categories:
     repo: refuel-ai/autolabel
     description: LLM-powered labeling, cleaning, and enrichment for text classification, NER, and entity matching.
     tagline: LLM-powered labeling for classification, NER, and matching
+    note: Low activity since Mar 2025.
     tags: [anthropic-claude, data-science, gpt-4, huggingface-transformers, langchain, large-language-models, llm, llms, machine-learning, openai, python]
   - name: X-AnyLabeling
     repo: CVHub520/X-AnyLabeling
@@ -697,6 +799,7 @@ categories:
     repo: opendatalab/labelU
     description: Multi-modal annotation toolbox supporting image, audio, and video with configurable templates and collaborative labeling workflows.
     tagline: Multi-modal annotation for image, audio, and video
+    tags: [annotation, audio, computer-vision, data-labeling, image, labeling-tool, python, video]
 - name: Synthetic Data Generation
   description: Automated creation of artificial training data that preserves statistical properties of real datasets.
   entries:
@@ -719,6 +822,7 @@ categories:
     repo: gretelai/gretel-synthetics
     description: Synthetic data generators for structured and unstructured text with differential privacy guarantees.
     tagline: Privacy-preserving synthetic data with differential privacy
+    note: Archived by Gretel in 2025.
     tags: [artificial-intelligence, differential-privacy, privacy, synthetic-data, tensorflow]
   - name: Curator
     repo: bespokelabsai/curator
@@ -742,6 +846,7 @@ categories:
     repo: mit-han-lab/llm-awq
     description: Activation-aware weight quantization achieving lossless 4-bit compression for LLMs (MIT HAN Lab, MLSys 2024 Best Paper).
     tagline: Lossless 4-bit LLM quantization via activation awareness
+    tags: [awq, deep-learning, inference, llm, model-compression, python, pytorch, quantization]
   - name: Torch-Pruning
     repo: VainF/Torch-Pruning
     description: Structural pruning framework for any PyTorch model including LLMs, YOLO, ViT, and diffusion models (CVPR 2023).
@@ -761,6 +866,7 @@ categories:
     repo: NVIDIA/Model-Optimizer
     description: Quantization, pruning, distillation, and speculative decoding optimized for TensorRT and vLLM deployment.
     tagline: Quantization and pruning optimized for TensorRT and vLLM
+    tags: [deep-learning, distillation, inference, model-compression, nvidia, pruning, python, pytorch, quantization, speculative-decoding]
   - name: GPTQModel
     repo: ModelCloud/GPTQModel
     description: LLM quantization toolkit with support for NVIDIA CUDA, AMD ROCm, Intel, and Apple Silicon backends.
@@ -780,6 +886,7 @@ categories:
     repo: microsoft/Olive
     description: End-to-end model optimization automating fine-tuning, conversion, quantization, and graph optimization for CPUs, GPUs, and NPUs (Microsoft).
     tagline: End-to-end model optimization for CPU, GPU, and NPU
+    tags: [deep-learning, fine-tuning, inference, microsoft, model-compression, onnx, optimization, python, quantization]
 - name: Automated Deployment and Serving
   description: Automated model serving, optimization, and inference infrastructure.
   entries:
@@ -946,10 +1053,13 @@ categories:
     repo: openai/mle-bench
     description: Benchmark using 75 Kaggle competitions to evaluate ML engineering agents (OpenAI).
     tagline: 75 Kaggle competitions for evaluating ML agents
+    tags: [agents, automl-benchmark, benchmark, evaluation, kaggle, llm, machine-learning, ml-engineering, openai, python]
   - name: NAS-Bench-101
     repo: google-research/nasbench
     description: Benchmark dataset with 423,624 evaluated neural architectures for efficient NAS research (Google).
     tagline: 423,624 evaluated neural architectures for NAS research
+    note: Archived; reference benchmark, use NAS-Bench-201 for new work.
+    tags: [automl, benchmark, dataset, deep-learning, google, neural-architecture-search, python, tensorflow]
   - name: NAS-Bench-201
     repo: D-X-Y/NAS-Bench-201
     description: Reproducible benchmark with 15,625 evaluated architectures across three datasets for fair NAS comparison.
@@ -964,13 +1074,14 @@ categories:
     repo: autogluon/tabarena
     description: Living benchmark for tabular ML with continuously maintained leaderboard and best-practice evaluation (NeurIPS 2025 Spotlight).
     tagline: Living leaderboard for tabular ML best practices
+    tags: [autogluon, automl, benchmark, machine-learning, python, tabular-data]
 - name: MLOps and Experiment Tracking
   description: Platforms for managing the ML lifecycle, tracking experiments, and orchestrating pipelines.
   entries:
   - name: Ray
     repo: ray-project/ray
     description: Unified AI compute engine for distributed training, tuning, and model serving with Ray Train, Ray Tune, and Ray Serve.
-    tagline: Unified distributed AI compute for training and serving
+    tagline: Unified distributed AI compute; see Ray Tune for HPO
     tags: [data-science, deep-learning, deployment, distributed, hyperparameter-optimization, hyperparameter-search, large-language-models, llm, llm-inference, llm-serving, machine-learning, optimization, parallel, python, pytorch, ray, reinforcement-learning, rllib, serving, tensorflow]
   - name: MLflow
     repo: mlflow/mlflow
@@ -1047,6 +1158,214 @@ categories:
     description: Framework for building portable, production-ready ML pipelines that run on any infrastructure.
     tagline: Portable production-ready ML pipelines on any infrastructure
     tags: [agentops, agents, ai, automl, data-science, deep-learning, devops-tools, genai, llm, llmops, machine-learning, metadata-tracking, ml, mlops, pipelines, production-ready, pytorch, tensorflow, workflow, zenml]
+- name: Commercial Products
+  description: Proprietary enterprise AutoML platforms from major cloud and ML vendors, verified active as of 2026-04.
+  entries:
+  - name: Vertex AI AutoML
+    url: https://cloud.google.com/vertex-ai
+    description: Google Cloud's managed AutoML service for training tabular classification, regression, forecasting, image, and video models with one-click endpoint deployment.
+    tagline: Managed AutoML across data types on Google Cloud
+    vendor: Google
+    pricing: pay-as-you-go
+  - name: Azure Machine Learning AutoML
+    url: https://azure.microsoft.com/en-us/solutions/automated-machine-learning
+    description: Microsoft's automated ML service inside Azure ML workspaces covering classification, regression, forecasting, computer vision, and NLP, accessible via SDK v2, CLI v2, and the studio UI.
+    tagline: Automated ML inside Azure Machine Learning workspaces
+    vendor: Microsoft
+    pricing: pay-as-you-go
+  - name: Amazon SageMaker Autopilot
+    url: https://aws.amazon.com/sagemaker/ai/autopilot/
+    description: AWS AutoML service that runs feature engineering, algorithm selection, and tuning for tabular, text, image, and time-series tasks, now surfaced primarily through the SageMaker Canvas no-code UI and the AutoML v2 REST API.
+    tagline: AWS AutoML via SageMaker Canvas and API v2
+    vendor: Amazon Web Services
+    pricing: pay-as-you-go
+  - name: H2O Driverless AI
+    url: https://h2o.ai/platform/ai-cloud/make/h2o-driverless-ai/
+    description: H2O.ai's commercial AutoML platform that automates feature engineering, model tuning, interpretability, and deployment for tabular, time-series, image, and text data, deployable on-prem, in cloud, or hybrid.
+    tagline: Commercial AutoML with feature engineering and interpretability
+    vendor: H2O.ai
+    pricing: enterprise
+  - name: DataRobot
+    url: https://www.datarobot.com/
+    description: Enterprise AI platform for building, deploying, governing, and monitoring predictive, generative, and agentic models, with AutoML, MLOps, and compute orchestration expanded via the 2025 Agnostiq acquisition.
+    tagline: Enterprise platform for predictive, generative, and agentic AI
+    vendor: DataRobot
+    pricing: enterprise
+  - name: Databricks AutoML
+    url: https://docs.databricks.com/aws/en/machine-learning/automl/
+    description: AutoML capability in the Databricks Lakehouse for regression, classification, and forecasting that trains multiple models with scikit-learn, XGBoost, LightGBM, Prophet, and ARIMA and generates editable training notebooks.
+    tagline: Lakehouse AutoML producing editable training notebooks
+    vendor: Databricks
+    pricing: enterprise
+  - name: Dataiku Visual ML
+    url: https://www.dataiku.com/product/key-capabilities/machine-learning/automl/
+    description: AutoML and visual ML inside the Dataiku data platform covering classification, regression, forecasting, unsupervised learning, image classification, and object detection, with automated diagnostics, fairness analysis, and MLOps integration.
+    tagline: Visual AutoML inside the Dataiku data platform
+    vendor: Dataiku
+    pricing: enterprise
+  - name: Snowflake Cortex ML Functions
+    url: https://www.snowflake.com/en/product/features/cortex/
+    description: SQL-accessible ML functions in Snowflake Cortex that train and serve forecasting, classification, and anomaly-detection models directly on warehouse data without moving it, complemented by the Cortex Code agent for data-science workflows.
+    tagline: SQL-native ML and forecasting on Snowflake data
+    vendor: Snowflake
+    pricing: pay-as-you-go
+- name: Papers and Surveys
+  description: Foundational surveys and recent papers on AutoML methods, agentic ML, and benchmarking.
+  entries:
+  - name: "AutoML: A Survey of the State-of-the-Art (2021)"
+    url: https://arxiv.org/abs/1908.00709
+    description: Comprehensive survey covering the full AutoML pipeline including data preparation, feature engineering, HPO, and NAS with benchmark comparisons.
+    tagline: Comprehensive survey of the full AutoML pipeline
+    authors: "He, X., Zhao, K., Chu, X."
+    venue: Knowledge-Based Systems
+    year: 2021
+  - name: "Neural Architecture Search with Reinforcement Learning (2017)"
+    url: https://arxiv.org/abs/1611.01578
+    description: Seminal paper introducing NAS using an RNN controller trained with reinforcement learning to generate competitive architectures on CIFAR-10.
+    tagline: Seminal RL-based NAS paper that launched the field
+    authors: "Zoph, B., Le, Q. V."
+    venue: ICLR 2017
+    year: 2017
+  - name: "Neural Architecture Search: A Survey (2019)"
+    url: https://arxiv.org/abs/1808.05377
+    description: Canonical NAS survey categorizing methods along three dimensions - search space, search strategy, and performance estimation strategy.
+    tagline: Canonical NAS survey with three-dimension taxonomy
+    authors: "Elsken, T., Metzen, J. H., Hutter, F."
+    venue: JMLR
+    year: 2019
+  - name: "A Comprehensive Survey of Neural Architecture Search: Challenges and Solutions (2021)"
+    url: https://arxiv.org/abs/2006.02903
+    description: Survey reviewing NAS methods from earliest algorithms through modern gradient-based approaches with comparative analysis across datasets.
+    tagline: NAS survey across early RL to modern gradient methods
+    authors: "Ren, P., Xiao, Y., Chang, X. et al."
+    venue: ACM Computing Surveys
+    year: 2021
+  - name: "Efficient Automation of Neural Network Design: A Survey on Differentiable NAS (2024)"
+    url: https://arxiv.org/abs/2304.05405
+    description: Survey of differentiable NAS methods building on DARTS, proposing a challenge-based taxonomy for classifying DNAS techniques.
+    tagline: Differentiable NAS survey with challenge-based taxonomy
+    authors: "Heuillet, A., Nasser, A., Arioui, H. et al."
+    venue: ACM Computing Surveys
+    year: 2024
+  - name: "On Hyperparameter Optimization of Machine Learning Algorithms (2020)"
+    url: https://arxiv.org/abs/2007.15745
+    description: Survey of state-of-the-art HPO techniques, libraries, and benchmark experiments comparing Bayesian, evolutionary, and bandit-based methods.
+    tagline: HPO survey covering theory, libraries, and benchmarks
+    authors: "Yang, L., Shami, A."
+    venue: Neurocomputing
+    year: 2020
+  - name: "Hyperparameter Optimization: Foundations, Algorithms, Best Practices (2023)"
+    url: https://arxiv.org/abs/2107.05847
+    description: In-depth review of HPO foundations including Bayesian optimization, Hyperband, racing, and practical guidance on integrating HPO with ML pipelines.
+    tagline: HPO foundations, best practices, and open challenges
+    authors: "Bischl, B., Binder, M., Lang, M. et al."
+    venue: WIREs DMKD
+    year: 2023
+  - name: "Benchmark and Survey of Automated Machine Learning Frameworks (2021)"
+    url: https://arxiv.org/abs/1904.12054
+    description: Combined survey and benchmark of AutoML techniques across the full ML pipeline evaluated on 137 datasets from established suites.
+    tagline: Combined AutoML survey and benchmark on 137 datasets
+    authors: "Zoller, M.-A., Huber, M. F."
+    venue: JAIR
+    year: 2021
+  - name: "AMLB: an AutoML Benchmark (2024)"
+    url: https://arxiv.org/abs/2207.12560
+    description: Open benchmark comparing 9 AutoML frameworks across 104 classification and regression tasks with multi-faceted accuracy and runtime analysis.
+    tagline: Open benchmark of 9 AutoML frameworks on 104 tasks
+    authors: "Gijsbers, P., Bueno, M. L. P., Coors, S. et al."
+    venue: JMLR
+    year: 2024
+  - name: "Meta-Learning in Neural Networks: A Survey (2021)"
+    url: https://arxiv.org/abs/2004.05439
+    description: Comprehensive meta-learning survey with a new taxonomy, relationships to transfer learning and HPO, and applications to few-shot learning.
+    tagline: Meta-learning survey with taxonomy and applications
+    authors: "Hospedales, T., Antoniou, A., Micaelli, P. et al."
+    venue: IEEE TPAMI
+    year: 2021
+  - name: "Deep Neural Networks and Tabular Data: A Survey (2022)"
+    url: https://arxiv.org/abs/2110.01889
+    description: Survey of deep learning for tabular data categorizing data transformations, specialized architectures, and regularization approaches with empirical comparisons.
+    tagline: Deep learning for tabular data survey and benchmarks
+    authors: "Borisov, V., Leemann, T., Sesler, K. et al."
+    venue: IEEE TNNLS
+    year: 2022
+  - name: "AutoGluon-Tabular: Robust and Accurate AutoML for Structured Data (2020)"
+    url: https://arxiv.org/abs/2003.06505
+    description: Technical paper introducing multi-layer stacking ensembles for tabular AutoML that outperformed TPOT, H2O, and AutoWEKA across 50 benchmarks.
+    tagline: Multi-layer stacking ensembles for tabular AutoML
+    authors: "Erickson, N., Mueller, J., Shirkov, A. et al."
+    venue: AutoML Workshop ICML 2020
+    year: 2020
+  - name: "TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second (2023)"
+    url: https://arxiv.org/abs/2207.01848
+    description: In-context-learning transformer for tabular classification matching AutoML systems on small datasets with up to 5700x GPU speedups.
+    tagline: In-context transformer for small tabular classification
+    authors: "Hollmann, N., Muller, S., Eggensperger, K. et al."
+    venue: ICLR 2023
+    year: 2023
+  - name: "AutoGluon-TimeSeries: AutoML for Probabilistic Time Series Forecasting (2023)"
+    url: https://arxiv.org/abs/2308.05566
+    description: Open-source AutoML library for probabilistic time-series forecasting combining statistical, ML, and deep learning models via ensembling on 29 benchmarks.
+    tagline: AutoML for probabilistic time series forecasting
+    authors: "Shchur, O., Turkmen, C., Erickson, N. et al."
+    venue: AutoML Conference 2023
+    year: 2023
+  - name: "Chronos: Learning the Language of Time Series (2024)"
+    url: https://arxiv.org/abs/2403.07815
+    description: Pretrained probabilistic time-series foundation models tokenizing values for T5-based transformers achieving strong zero-shot forecasting across 42 datasets.
+    tagline: Pretrained foundation models for time series
+    authors: "Ansari, A. F., Stella, L., Turkmen, C. et al."
+    venue: TMLR
+    year: 2024
+  - name: "On the Opportunities and Risks of Foundation Models (2021)"
+    url: https://arxiv.org/abs/2108.07258
+    description: Stanford CRFM report defining foundation models and analyzing their capabilities, technical principles, applications, and societal impact.
+    tagline: Foundational report defining foundation models
+    authors: "Bommasani, R., Hudson, D. A., Adeli, E. et al."
+    venue: Stanford CRFM Report
+    year: 2021
+  - name: "Parameter-Efficient Fine-Tuning for Large Models: A Comprehensive Survey (2024)"
+    url: https://arxiv.org/abs/2403.14608
+    description: Survey of PEFT methods for LLMs and vision models covering algorithms, computational overhead, applications, and real-world system design.
+    tagline: Comprehensive PEFT survey for large models
+    authors: "Han, Z., Gao, C., Liu, J. et al."
+    venue: arXiv preprint
+    year: 2024
+  - name: "The Rise and Potential of Large Language Model Based Agents: A Survey (2025)"
+    url: https://arxiv.org/abs/2309.07864
+    description: Comprehensive survey on LLM-based agents presenting a brain-perception-action framework with applications across single-agent, multi-agent, and agent societies.
+    tagline: LLM agents survey with brain-perception-action framework
+    authors: "Xi, Z., Chen, W., Guo, X. et al."
+    venue: Science China Info Sciences
+    year: 2025
+  - name: "A Survey on Large Language Model based Autonomous Agents (2024)"
+    url: https://arxiv.org/abs/2308.11432
+    description: Unified framework survey on LLM-based autonomous agents across social science, natural science, and engineering with evaluation strategies.
+    tagline: Unified framework survey on LLM autonomous agents
+    authors: "Wang, L., Ma, C., Feng, X. et al."
+    venue: Frontiers of Computer Science
+    year: 2024
+  - name: "AutoML-Agent: A Multi-Agent LLM Framework for Full-Pipeline AutoML (2025)"
+    url: https://arxiv.org/abs/2410.02958
+    description: Multi-agent LLM framework spanning data retrieval to deployment using retrieval-augmented planning, parallel specialized agents, and multi-stage verification.
+    tagline: Multi-agent LLM framework for full-pipeline AutoML
+    authors: "Trirat, P., Jeong, W., Hwang, S. J."
+    venue: ICLR 2025
+    year: 2025
+  - name: "MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation (2024)"
+    url: https://arxiv.org/abs/2310.03302
+    description: Benchmark of 13 ML tasks evaluating LLM-driven agents across file I/O, code execution, and iterative ReAct-style experimentation.
+    tagline: Benchmark of 13 ML tasks evaluating LLM agents
+    authors: "Huang, Q., Vora, J., Liang, P. et al."
+    venue: ICML 2024
+    year: 2024
+  - name: "Data-centric Artificial Intelligence: A Survey (2025)"
+    url: https://arxiv.org/abs/2303.10158
+    description: Survey of data-centric AI covering training data development, inference data development, and data maintenance with automation and collaboration views.
+    tagline: Survey of data-centric AI across the data lifecycle
+    authors: "Zha, D., Bhat, Z. P., Lai, K.-H. et al."
+    venue: ACM Computing Surveys
+    year: 2025
 - name: Related Awesome Lists
   description: ''
   entries:
@@ -1054,6 +1373,7 @@ categories:
     repo: josephmisiti/awesome-machine-learning
     description: Curated list of ML frameworks, libraries, and software organized by language.
     tagline: ML frameworks and libraries organized by language
+    tags: [awesome, awesome-list, curated-list, deep-learning, frameworks, libraries, machine-learning]
   - name: awesome-deep-learning
     repo: ChristosChristofidis/awesome-deep-learning
     description: Curated list of deep learning tutorials, projects, and communities.
@@ -1063,6 +1383,7 @@ categories:
     repo: Hannibal046/Awesome-LLM
     description: Curated list of large language model resources covering papers, tools, and applications.
     tagline: LLM resources covering papers, tools, and applications
+    tags: [awesome, awesome-list, curated-list, deep-learning, large-language-models, llm, nlp]
   - name: awesome-production-machine-learning
     repo: EthicalML/awesome-production-machine-learning
     description: Curated list of tools for deploying, monitoring, and scaling ML in production.

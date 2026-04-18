@@ -17,6 +17,11 @@ interface Entry {
   tagline?: string;
   note?: string;
   tags?: string[];
+  vendor?: string;
+  pricing?: string;
+  authors?: string;
+  venue?: string;
+  year?: number | string;
 }
 
 interface Category {
@@ -55,6 +60,7 @@ function main() {
       entries: (cat.entries ?? []).map((entry) => {
         const api = apiData[entry.repo ?? ""] ?? EMPTY_API;
         const tags = entry.tags && entry.tags.length > 0 ? entry.tags : (api.topics ?? []);
+        const isExternal = !entry.repo;
         return {
           name: entry.name,
           repo: entry.repo ?? "",
@@ -69,6 +75,12 @@ function main() {
           lastCommit: api.pushed,
           archived: api.archived,
           tags: tags.slice(0, 5),
+          external: isExternal,
+          ...(entry.vendor ? { vendor: entry.vendor } : {}),
+          ...(entry.pricing ? { pricing: entry.pricing } : {}),
+          ...(entry.authors ? { authors: entry.authors } : {}),
+          ...(entry.venue ? { venue: entry.venue } : {}),
+          ...(entry.year !== undefined ? { year: entry.year } : {}),
         };
       }),
     })),
