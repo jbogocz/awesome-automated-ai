@@ -1,11 +1,12 @@
 // Generates docs/data.json from projects.yaml + API cache for the GitHub Pages site
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import type { ApiData } from "./readme.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
+const MANIFEST_YAML = resolve(ROOT, "src/categories.yaml");
 const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 const OUTPUT = resolve(ROOT, "docs/data.json");
 
@@ -22,6 +23,14 @@ interface Entry {
   authors?: string;
   venue?: string;
   year?: number | string;
+  commercial?: boolean;
+}
+
+interface ManifestCategory {
+  id: string;
+  name: string;
+  section: string;
+  description?: string;
 }
 
 interface Category {
@@ -45,6 +54,14 @@ function main() {
   const yamlContent = readFileSync(PROJECTS_YAML, "utf-8");
   const doc = parseYaml(yamlContent) as { categories: Category[] };
 
+  let sectionByCategory = new Map<string, string>();
+  if (existsSync(MANIFEST_YAML)) {
+    const manifest = parseYaml(readFileSync(MANIFEST_YAML, "utf-8")) as {
+      categories: ManifestCategory[];
+    };
+    sectionByCategory = new Map(manifest.categories.map((c) => [c.name, c.section]));
+  }
+
   let apiData: ApiData = {};
   try {
     apiData = JSON.parse(readFileSync(CACHE_FILE, "utf-8")) as ApiData;
@@ -56,6 +73,7 @@ function main() {
     generated: new Date().toISOString(),
     categories: doc.categories.map((cat) => ({
       name: cat.name,
+      section: sectionByCategory.get(cat.name) ?? "",
       description: cat.description ?? "",
       entries: (cat.entries ?? []).map((entry) => {
         const api = apiData[entry.repo ?? ""] ?? EMPTY_API;
@@ -76,6 +94,7 @@ function main() {
           archived: api.archived,
           tags: tags.slice(0, 5),
           external: isExternal,
+          ...(entry.commercial ? { commercial: true } : {}),
           ...(entry.vendor ? { vendor: entry.vendor } : {}),
           ...(entry.pricing ? { pricing: entry.pricing } : {}),
           ...(entry.authors ? { authors: entry.authors } : {}),
