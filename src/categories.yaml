@@ -1,4 +1,4 @@
-# Source of truth for awesome-automl categories.
+# Source of truth for awesome-automated-ai categories.
 #
 # Purpose:
 # 1. Agent prompt (src/agents/analysis.ts) uses scope_in / scope_out / examples

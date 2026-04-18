@@ -45,7 +45,7 @@ const TOOL_DEFINITION = {
       "is_novel",
     ],
     properties: {
-      relevant: { type: "boolean" as const, description: "Whether this project belongs in the awesome-automl list." },
+      relevant: { type: "boolean" as const, description: "Whether this project belongs in the awesome-automated-ai list." },
       category: { type: "string" as const, description: "Which category this project belongs to." },
       description: {
         type: "string" as const,
@@ -85,7 +85,7 @@ export async function analyzeCandidate(opts: AnalyzeOptions): Promise<AnalysisRe
 
   const prompt = `You are a senior ML engineer curating the definitive AutoML/AI automation list on GitHub.
 
-Evaluate whether this project belongs in the awesome-automl list.
+Evaluate whether this project belongs in the awesome-automated-ai list.
 
 ## Project
 - **Repo:** ${candidate.repo}

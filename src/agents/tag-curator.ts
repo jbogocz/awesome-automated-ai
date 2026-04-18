@@ -77,7 +77,7 @@ const VOCABULARY_HINTS = [
 export async function curateTags(input: TagCuratorInput): Promise<CuratedTags> {
   const anthropic = new Anthropic({ apiKey: input.apiKey });
 
-  const prompt = `You are curating tags for the awesome-automl list - a registry of AI/ML automation tools.
+  const prompt = `You are curating tags for the awesome-automated-ai list - a registry of AI/ML automation tools.
 
 ## Project
 - Name: ${input.name}
