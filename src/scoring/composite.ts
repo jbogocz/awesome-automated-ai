@@ -2,10 +2,10 @@ import { clamp } from "./utils.js";
 
 export interface ScoreInput {
   stars: number;
-  starsLastMonth: number;
-  commitCount30d: number;
-  issueResponseHours: number;
-  contributorCount: number;
+  starsLastMonth?: number;
+  commitCount30d?: number;
+  issueResponseHours?: number;
+  contributorCount?: number;
   llmRelevanceScore: number;
   hasReadme: boolean;
   hasLicense: boolean;
@@ -60,22 +60,25 @@ export function computeScore(input: ScoreInput): ScoreResult {
   };
 }
 
-function scoreStarsVelocity(stars: number, lastMonth: number): number {
+function scoreStarsVelocity(stars: number, lastMonth: number | undefined): number {
+  if (lastMonth === undefined) return 50;
   if (stars === 0) return 0;
   return clamp((lastMonth / stars) * 1000, 0, 100);
 }
 
-function scoreCommitFrequency(commits: number): number {
+function scoreCommitFrequency(commits: number | undefined): number {
+  if (commits === undefined) return 50;
   if (commits === 0) return 0;
   return clamp(Math.log2(commits + 1) * 20, 0, 100);
 }
 
-function scoreIssueResponse(hours: number): number {
-  if (hours === 0) return 50;
+function scoreIssueResponse(hours: number | undefined): number {
+  if (hours === undefined || hours === 0) return 50;
   return clamp(100 - Math.log2(hours + 1) * 15, 0, 100);
 }
 
-function scoreContributors(count: number): number {
+function scoreContributors(count: number | undefined): number {
+  if (count === undefined) return 50;
   if (count === 0) return 0;
   return clamp(Math.log2(count + 1) * 18, 0, 100);
 }

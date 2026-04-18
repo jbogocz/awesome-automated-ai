@@ -3,7 +3,7 @@ import { parse as parseYaml } from "yaml";
 import type { Config } from "../config.js";
 import { DB } from "../db/client.js";
 import { createPr } from "../github/pr.js";
-import { type GitHubCandidate, getDefaultTopics, searchGitHub } from "../github/search.js";
+import { fetchRepoSignals, type GitHubCandidate, getDefaultTopics, searchGitHub } from "../github/search.js";
 import { computeScore } from "../scoring/composite.js";
 import { analyzeCandidate } from "./analysis.js";
 
@@ -41,7 +41,7 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
   const dbPath = resolve(projectsYamlPath, "..", config.dbPath);
   const db = new DB(dbPath);
   db.migrate();
-  const runId = await db.startAgentRun("discovery");
+  const runId = db.startAgentRun("discovery");
 
   let tokensUsed = 0;
   let prsCreated = 0;
@@ -68,14 +68,14 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
     const newCandidates: GitHubCandidate[] = [];
     for (const c of candidates) {
       if (existingRepos.has(c.repo)) continue;
-      const existing = await db.findProjectByRepo(c.repo);
+      const existing = db.findProjectByRepo(c.repo);
       if (existing) continue;
       newCandidates.push(c);
     }
 
     console.log(`Discovery: ${candidates.length} found, ${newCandidates.length} new`);
 
-    const prsToday = await db.countPrsToday();
+    const prsToday = db.countPrsToday();
 
     for (const candidate of newCandidates) {
       const analysis = await analyzeCandidate({
@@ -85,21 +85,21 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
       });
       tokensUsed += analysis.tokensUsed;
 
-      // Placeholder signals: commit/issue/contributor counts and monthly stars delta
-      // require extra GitHub API calls we don't yet make. Treated as neutral so
-      // relevance_score + documentation still drive the classification.
+      const signals = await fetchRepoSignals(config.githubToken, candidate.repo);
+
+      // starsLastMonth and issueResponseHours left undefined: fetching either
+      // requires paginated stargazer-timeline / issue-comments walks per
+      // candidate. Scoring treats undefined as neutral (50).
       const scoreResult = computeScore({
         stars: candidate.stars,
-        starsLastMonth: Math.round(candidate.stars * 0.05),
-        commitCount30d: 10,
-        issueResponseHours: 0,
-        contributorCount: 5,
+        commitCount30d: signals.commitCount30d,
+        contributorCount: signals.contributorCount,
         llmRelevanceScore: analysis.relevance_score,
         hasReadme: candidate.readme.length > 0,
         hasLicense: candidate.license !== null,
       });
 
-      const project = await db.insertProject({
+      const project = db.insertProject({
         repo: candidate.repo,
         name: candidate.name,
         category: analysis.category,
@@ -148,7 +148,7 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
               source: "github",
             },
           });
-          await db.insertDecision({
+          db.insertDecision({
             project_id: project.id,
             decision: "add",
             proposed_by: "discovery",
@@ -159,7 +159,7 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
         }
         prsCreated++;
       } else if (decision === "queue") {
-        await db.insertDecision({
+        db.insertDecision({
           project_id: project.id,
           decision: "add",
           proposed_by: "discovery",
@@ -167,8 +167,8 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
         });
         queued++;
       } else {
-        await db.updateProject(project.id, { status: "rejected" });
-        await db.insertDecision({
+        db.updateProject(project.id, { status: "rejected" });
+        db.insertDecision({
           project_id: project.id,
           decision: "reject",
           proposed_by: "discovery",
@@ -178,7 +178,7 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
       }
     }
 
-    await db.finishAgentRun(runId, "completed", {
+    db.finishAgentRun(runId, "completed", {
       candidates_found: newCandidates.length,
       actions_taken: prsCreated,
       claude_tokens_used: tokensUsed,
@@ -186,7 +186,7 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
     db.close();
     return { candidatesFound: newCandidates.length, prsCreated, queued, discarded, tokensUsed };
   } catch (error) {
-    await db.finishAgentRun(runId, "failed", {
+    db.finishAgentRun(runId, "failed", {
       error_log: error instanceof Error ? error.message : String(error),
       claude_tokens_used: tokensUsed,
     });

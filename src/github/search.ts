@@ -100,3 +100,43 @@ function thirtyDaysAgo(): string {
   d.setDate(d.getDate() - 30);
   return d.toISOString().split("T")[0];
 }
+
+export interface RepoSignals {
+  commitCount30d: number;
+  contributorCount: number;
+}
+
+export async function fetchRepoSignals(token: string, repo: string): Promise<RepoSignals> {
+  const octokit = new Octokit({ auth: token });
+  const [owner, name] = repo.split("/");
+  const since = thirtyDaysAgo();
+
+  const [commitCount30d, contributorCount] = await Promise.all([
+    fetchCommitCount(octokit, owner, name, since),
+    fetchContributorCount(octokit, owner, name),
+  ]);
+  return { commitCount30d, contributorCount };
+}
+
+async function fetchCommitCount(octokit: Octokit, owner: string, repo: string, since: string): Promise<number> {
+  try {
+    const { data } = await octokit.repos.listCommits({ owner, repo, since, per_page: 100 });
+    return data.length;
+  } catch {
+    return 0;
+  }
+}
+
+async function fetchContributorCount(octokit: Octokit, owner: string, repo: string): Promise<number> {
+  try {
+    const { data, headers } = await octokit.repos.listContributors({ owner, repo, per_page: 1 });
+    const linkHeader = headers.link;
+    if (linkHeader) {
+      const match = linkHeader.match(/<[^>]*[?&]page=(\d+)[^>]*>;\s*rel="last"/);
+      if (match) return Number(match[1]);
+    }
+    return data.length;
+  } catch {
+    return 0;
+  }
+}

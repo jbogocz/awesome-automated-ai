@@ -49,6 +49,22 @@ describe("computeScore", () => {
     expect(result.total).toBeGreaterThanOrEqual(0);
   });
 
+  it("treats missing activity signals as neutral (50) instead of zero", () => {
+    const input: ScoreInput = {
+      stars: 1500,
+      // starsLastMonth, commitCount30d, issueResponseHours, contributorCount omitted
+      llmRelevanceScore: 75,
+      hasReadme: true,
+      hasLicense: true,
+    };
+    const result = computeScore(input);
+    expect(result.starsVelocity).toBe(50);
+    expect(result.commitFrequency).toBe(50);
+    expect(result.issueResponse).toBe(50);
+    expect(result.contributors).toBe(50);
+    expect(result.total).toBeGreaterThan(50);
+  });
+
   it("returns individual component scores", () => {
     const input: ScoreInput = {
       stars: 2000,

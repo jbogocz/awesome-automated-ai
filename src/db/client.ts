@@ -108,12 +108,12 @@ export class DB {
     `);
   }
 
-  async findProjectByRepo(repo: string): Promise<ProjectRow | null> {
+  findProjectByRepo(repo: string): ProjectRow | null {
     const row = this.sqlite.prepare("SELECT * FROM projects WHERE repo = ?").get(repo) as ProjectRow | undefined;
     return row ?? null;
   }
 
-  async insertProject(project: ProjectInsert): Promise<ProjectRow> {
+  insertProject(project: ProjectInsert): ProjectRow {
     const stmt = this.sqlite.prepare(`
       INSERT INTO projects (repo, name, category, description, note, status, relevance_score, quality_score, discovered_via, stars, last_commit, language, archived)
       VALUES (@repo, @name, @category, @description, @note, @status, @relevance_score, @quality_score, @discovered_via, @stars, @last_commit, @language, @archived)
@@ -136,7 +136,7 @@ export class DB {
     return this.sqlite.prepare("SELECT * FROM projects WHERE id = ?").get(info.lastInsertRowid) as ProjectRow;
   }
 
-  async updateProject(id: number, updates: Partial<ProjectInsert>): Promise<void> {
+  updateProject(id: number, updates: Partial<ProjectInsert>): void {
     const setClauses: string[] = [];
     const values: Record<string, unknown> = { id };
     for (const [key, value] of Object.entries(updates)) {
@@ -149,12 +149,12 @@ export class DB {
     this.sqlite.prepare(`UPDATE projects SET ${setClauses.join(", ")} WHERE id = @id`).run(values);
   }
 
-  async startAgentRun(agent: AgentName): Promise<number> {
+  startAgentRun(agent: AgentName): number {
     const info = this.sqlite.prepare("INSERT INTO agent_runs (agent, status) VALUES (?, 'running')").run(agent);
     return Number(info.lastInsertRowid);
   }
 
-  async finishAgentRun(
+  finishAgentRun(
     runId: number,
     status: RunStatus,
     stats: {
@@ -164,7 +164,7 @@ export class DB {
       cost_usd?: number;
       error_log?: string;
     },
-  ): Promise<void> {
+  ): void {
     this.sqlite
       .prepare(`
       UPDATE agent_runs SET status = ?, finished_at = datetime('now'),
@@ -186,7 +186,7 @@ export class DB {
       );
   }
 
-  async insertDecision(decision: DecisionInsert): Promise<void> {
+  insertDecision(decision: DecisionInsert): void {
     this.sqlite
       .prepare(`
       INSERT INTO decisions (project_id, decision, proposed_by, decided_by, pr_number, pr_status, reasoning)
@@ -203,7 +203,7 @@ export class DB {
       );
   }
 
-  async countPrsToday(): Promise<number> {
+  countPrsToday(): number {
     const today = new Date().toISOString().split("T")[0];
     const row = this.sqlite
       .prepare("SELECT COUNT(*) as count FROM decisions WHERE created_at >= ? AND pr_number IS NOT NULL")
