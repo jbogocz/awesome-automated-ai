@@ -34,6 +34,7 @@ interface Entry {
   authors?: string;
   venue?: string;
   year?: number | string;
+  commercial?: boolean;
 }
 interface Category {
   name: string;
@@ -136,7 +137,8 @@ function buildExternalCard(entry: Entry): string[] {
   const nameHtml = `<b><a href="${url}">${entry.name}</a></b>`;
   const tagline = entry.tagline || generateTagline(entry.description ?? "");
   const taglinePart = tagline ? ` ${tagline}` : "";
-  const summary = `<details><summary>${icon} ${nameHtml}${taglinePart}</summary>`;
+  const enterpriseBadge = entry.commercial ? ` <code>\u{1F3E2} Enterprise</code>` : "";
+  const summary = `<details><summary>${icon} ${nameHtml}${enterpriseBadge}${taglinePart}</summary>`;
 
   const desc = entry.description ?? "";
   const note = entry.note ?? "";
