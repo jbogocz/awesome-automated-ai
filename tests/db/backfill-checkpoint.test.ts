@@ -50,4 +50,17 @@ describe("backfill checkpoint tables", () => {
     db.migrate();
     db.close();
   });
+
+  it("finishBackfillRun records an aborted status when requested", () => {
+    const db = freshDB();
+    const p1 = db.upsertProject("a/b", "ab");
+    const runId = db.startBackfillRun([p1]);
+    db.finishBackfillRun(runId, { ok: 0, skipped: 1, pointsUsed: 3, notes: "interrupted", status: "aborted" });
+
+    const run = db.getBackfillRun(runId);
+    expect(run?.status).toBe("aborted");
+    // Aborted runs should not be picked up by resume
+    expect(db.getResumableBackfillRun()).toBeNull();
+    db.close();
+  });
 });

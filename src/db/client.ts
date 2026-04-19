@@ -1,5 +1,13 @@
 import Database from "better-sqlite3";
-import type { AgentName, DecisionInsert, ProjectInsert, ProjectRow, RunStatus } from "./types.js";
+import type {
+  AgentName,
+  BackfillRepoState,
+  BackfillRunRow,
+  DecisionInsert,
+  ProjectInsert,
+  ProjectRow,
+  RunStatus,
+} from "./types.js";
 
 export class DB {
   private sqlite: Database.Database;
@@ -305,6 +313,7 @@ export class DB {
     return runId;
   }
 
+  /** Returns project ids in 'pending' or 'in_progress' state — both still need processing on resume. */
   getBackfillPending(runId: number): number[] {
     const rows = this.sqlite
       .prepare(
@@ -314,22 +323,26 @@ export class DB {
     return rows.map((r) => r.project_id);
   }
 
-  setBackfillRepoState(
-    runId: number,
-    projectId: number,
-    state: "pending" | "in_progress" | "done" | "skipped",
-    reason: string | null = null,
-  ): void {
+  setBackfillRepoState(runId: number, projectId: number, state: BackfillRepoState, reason: string | null = null): void {
     this.sqlite
       .prepare("UPDATE backfill_repo_status SET state = ?, skip_reason = ? WHERE run_id = ? AND project_id = ?")
       .run(state, reason, runId, projectId);
   }
 
-  finishBackfillRun(runId: number, stats: { ok: number; skipped: number; pointsUsed: number; notes: string }): void {
+  finishBackfillRun(
+    runId: number,
+    stats: {
+      ok: number;
+      skipped: number;
+      pointsUsed: number;
+      notes: string;
+      status?: "completed" | "aborted" | "failed";
+    },
+  ): void {
     this.sqlite
       .prepare(
         `UPDATE backfill_runs
-           SET status = 'completed',
+           SET status = ?,
                finished_at = datetime('now'),
                completed_repos = ?,
                skipped_repos = ?,
@@ -337,12 +350,12 @@ export class DB {
                notes = ?
          WHERE id = ?`,
       )
-      .run(stats.ok, stats.skipped, stats.pointsUsed, stats.notes, runId);
+      .run(stats.status ?? "completed", stats.ok, stats.skipped, stats.pointsUsed, stats.notes, runId);
   }
 
-  getBackfillRun(runId: number): import("./types.js").BackfillRunRow | null {
+  getBackfillRun(runId: number): BackfillRunRow | null {
     const row = this.sqlite.prepare("SELECT * FROM backfill_runs WHERE id = ?").get(runId);
-    return (row ?? null) as import("./types.js").BackfillRunRow | null;
+    return (row ?? null) as BackfillRunRow | null;
   }
 
   getResumableBackfillRun(): number | null {
