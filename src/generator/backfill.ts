@@ -1,4 +1,7 @@
-import type { StargazerEntry } from "../github/types.js";
+import type { DB } from "../db/client.js";
+import { fetchRecentStargazersBatch } from "../github/stargazers-graphql.js";
+import { fetchRecentStargazersRest } from "../github/stargazers-rest.js";
+import type { BackfillInput, BackfillSummary, RepoStargazersPage, StargazerEntry } from "../github/types.js";
 
 export interface DailySnapshot {
   date: string; // YYYY-MM-DD
@@ -47,4 +50,91 @@ export function computeDailySnapshots(
     rows.push({ date: dateKey, stars: currentStars - starsAfter });
   }
   return rows;
+}
+
+export interface BackfillOptions {
+  today?: Date;
+  batchSize?: number;
+  resumeRunId?: number;
+  sinceDays?: number; // default 30
+}
+
+function bumpReason(reasons: Record<string, number>, key: string): void {
+  reasons[key] = (reasons[key] ?? 0) + 1;
+}
+
+function persistSnapshots(
+  db: DB,
+  projectId: number,
+  page: RepoStargazersPage,
+  currentStars: number,
+  today: Date,
+): void {
+  const rows = computeDailySnapshots(page.stargazers, currentStars, today);
+  const raw = db as unknown as {
+    sqlite: { prepare: (s: string) => { run: (...args: unknown[]) => void } };
+  };
+  const stmt = raw.sqlite.prepare(
+    "INSERT OR IGNORE INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, NULL)",
+  );
+  for (const row of rows) {
+    stmt.run(projectId, row.date, row.stars);
+  }
+}
+
+export async function backfillBatch(
+  inputs: BackfillInput[],
+  db: DB,
+  options: BackfillOptions = {},
+): Promise<BackfillSummary> {
+  const today = options.today ?? new Date();
+  const sinceDays = options.sinceDays ?? 30;
+  const since = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()));
+  since.setUTCDate(since.getUTCDate() - sinceDays);
+
+  const batchSize = options.batchSize ?? 20;
+  const reasons: Record<string, number> = {};
+  let ok = 0;
+  let skipped = 0;
+  let pointsUsed = 0;
+
+  let runId: number;
+  let toProcess: BackfillInput[];
+  if (options.resumeRunId) {
+    runId = options.resumeRunId;
+    const pendingIds = new Set(db.getBackfillPending(runId));
+    toProcess = inputs.filter((i) => pendingIds.has(i.projectId));
+  } else {
+    runId = db.startBackfillRun(inputs.map((i) => i.projectId));
+    toProcess = inputs;
+  }
+
+  for (let start = 0; start < toProcess.length; start += batchSize) {
+    const chunk = toProcess.slice(start, start + batchSize);
+    const repos = chunk.map((c) => c.repo);
+    const result = await fetchRecentStargazersBatch(repos, since);
+    pointsUsed += result.pointsUsed;
+
+    for (const input of chunk) {
+      let page = result.pages.get(input.repo);
+      if (!page || page.error) {
+        const rest = await fetchRecentStargazersRest(input.repo, since);
+        if (rest.error) {
+          db.setBackfillRepoState(runId, input.projectId, "skipped", rest.error);
+          bumpReason(reasons, rest.error);
+          skipped += 1;
+          continue;
+        }
+        page = rest;
+      }
+      persistSnapshots(db, input.projectId, page, input.currentStars, today);
+      db.setBackfillRepoState(runId, input.projectId, "done");
+      ok += 1;
+    }
+  }
+
+  const notes = `OK=${ok} skipped=${skipped} points=${pointsUsed} reasons=${JSON.stringify(reasons)}`;
+  db.finishBackfillRun(runId, { ok, skipped, pointsUsed, notes });
+
+  return { runId, ok, skipped, pointsUsed, reasons };
 }
