@@ -13,6 +13,22 @@ function endOfDayUtc(dateKey: string): Date {
   return new Date(`${dateKey}T23:59:59.999Z`);
 }
 
+/**
+ * Reconstructs historical star counts for each of the 30 days ending yesterday (UTC).
+ *
+ * Given the current star count and a list of stargazers within the last 30 days,
+ * subtracts stargazers added after the end of each day to infer that day's count.
+ *
+ * Semantics:
+ * - `today` is interpreted via its UTC components (`getUTCFullYear/Month/Date`).
+ *   Callers on non-UTC clocks passing `new Date()` may see a window shifted by ±1 day
+ *   near local midnight. Pass a UTC-midnight Date if calendar-aligned output is needed.
+ * - Output rows cover `today - 30 days` (inclusive) through `today - 1 day` (inclusive).
+ * - A stargazer with `starredAt` exactly equal to `endOfDay(D)` is treated as same-day
+ *   (strict `>` comparator): counted as present by end of D, not "after" D.
+ * - Output is sorted by `date` ascending.
+ * - Pure function: does not mutate inputs, performs no I/O.
+ */
 export function computeDailySnapshots(
   stargazers: StargazerEntry[],
   currentStars: number,

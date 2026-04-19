@@ -53,4 +53,20 @@ describe("computeDailySnapshots", () => {
       expect(rows[i].date > rows[i - 1].date).toBe(true);
     }
   });
+
+  it("treats a star at end-of-day boundary as same-day (strict > comparator)", () => {
+    const today = new Date(Date.UTC(2026, 3, 19));
+    const stargazers = [
+      { starredAt: "2026-04-15T23:59:59.999Z" }, // end-of-day 04-15 boundary
+      { starredAt: "2026-04-16T00:00:00.000Z" }, // first ms of 04-16
+    ];
+    const rows = computeDailySnapshots(stargazers, 100, today);
+    const byDate = new Map(rows.map((r) => [r.date, r.stars]));
+    // Before 04-15: both stars are "after" → 98
+    expect(byDate.get("2026-04-14")).toBe(98);
+    // End of 04-15: the 23:59:59.999 star is NOT strictly > endOfDay → only 04-16 star is after → 99
+    expect(byDate.get("2026-04-15")).toBe(99);
+    // End of 04-16: neither star is after → 100
+    expect(byDate.get("2026-04-16")).toBe(100);
+  });
 });
