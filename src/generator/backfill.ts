@@ -56,7 +56,6 @@ export interface BackfillOptions {
   today?: Date;
   batchSize?: number;
   resumeRunId?: number;
-  sinceDays?: number; // default 30
 }
 
 function bumpReason(reasons: Record<string, number>, key: string): void {
@@ -88,9 +87,8 @@ export async function backfillBatch(
   options: BackfillOptions = {},
 ): Promise<BackfillSummary> {
   const today = options.today ?? new Date();
-  const sinceDays = options.sinceDays ?? 30;
   const since = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()));
-  since.setUTCDate(since.getUTCDate() - sinceDays);
+  since.setUTCDate(since.getUTCDate() - 30);
 
   const batchSize = options.batchSize ?? 20;
   const reasons: Record<string, number> = {};
@@ -109,32 +107,58 @@ export async function backfillBatch(
     toProcess = inputs;
   }
 
-  for (let start = 0; start < toProcess.length; start += batchSize) {
-    const chunk = toProcess.slice(start, start + batchSize);
-    const repos = chunk.map((c) => c.repo);
-    const result = await fetchRecentStargazersBatch(repos, since);
-    pointsUsed += result.pointsUsed;
+  try {
+    for (let start = 0; start < toProcess.length; start += batchSize) {
+      const chunk = toProcess.slice(start, start + batchSize);
+      const repos = chunk.map((c) => c.repo);
+      const result = await fetchRecentStargazersBatch(repos, since);
+      pointsUsed += result.pointsUsed;
 
-    for (const input of chunk) {
-      let page = result.pages.get(input.repo);
-      if (!page || page.error) {
-        const rest = await fetchRecentStargazersRest(input.repo, since);
-        if (rest.error) {
-          db.setBackfillRepoState(runId, input.projectId, "skipped", rest.error);
-          bumpReason(reasons, rest.error);
-          skipped += 1;
-          continue;
+      if (result.rateLimit.remaining < 100) {
+        const resetMs = new Date(result.rateLimit.resetAt).getTime() - Date.now();
+        if (resetMs > 15 * 60 * 1000) {
+          const abortNotes = `aborted: rate limit ${result.rateLimit.remaining}/5000, reset ${Math.round(resetMs / 1000)}s away`;
+          db.finishBackfillRun(runId, {
+            ok,
+            skipped,
+            pointsUsed,
+            notes: abortNotes,
+            status: "aborted",
+          });
+          return { runId, ok, skipped, pointsUsed, reasons };
         }
-        page = rest;
+        await new Promise((r) => setTimeout(r, Math.max(0, resetMs) + 5000));
       }
-      persistSnapshots(db, input.projectId, page, input.currentStars, today);
-      db.setBackfillRepoState(runId, input.projectId, "done");
-      ok += 1;
-    }
-  }
 
-  const notes = `OK=${ok} skipped=${skipped} points=${pointsUsed} reasons=${JSON.stringify(reasons)}`;
-  db.finishBackfillRun(runId, { ok, skipped, pointsUsed, notes });
+      for (const input of chunk) {
+        let page = result.pages.get(input.repo);
+        if (!page || page.error) {
+          const originalError = page?.error ?? "missing_page";
+          const rest = await fetchRecentStargazersRest(input.repo, since);
+          if (rest.error) {
+            db.setBackfillRepoState(runId, input.projectId, "skipped", rest.error);
+            bumpReason(reasons, rest.error);
+            skipped += 1;
+            continue;
+          }
+          if (originalError !== "not_found") {
+            bumpReason(reasons, "graphql_recovered");
+          }
+          page = rest;
+        }
+        persistSnapshots(db, input.projectId, page, input.currentStars, today);
+        db.setBackfillRepoState(runId, input.projectId, "done");
+        ok += 1;
+      }
+    }
+
+    const notes = `OK=${ok} skipped=${skipped} points=${pointsUsed} reasons=${JSON.stringify(reasons)}`;
+    db.finishBackfillRun(runId, { ok, skipped, pointsUsed, notes });
+  } catch (err) {
+    const errNotes = `failed: ${err instanceof Error ? err.message : String(err)}`;
+    db.finishBackfillRun(runId, { ok, skipped, pointsUsed, notes: errNotes, status: "failed" });
+    throw err;
+  }
 
   return { runId, ok, skipped, pointsUsed, reasons };
 }

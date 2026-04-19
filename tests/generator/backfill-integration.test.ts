@@ -185,4 +185,49 @@ describe("backfillBatch", () => {
     expect(reposArg).toEqual(["c/d"]);
     db.close();
   });
+
+  it("aborts with status=aborted when rate limit is critically low with reset >15 min away", async () => {
+    graphqlMock.mockReset();
+    restMock.mockReset();
+
+    const db = setupDB();
+    const pid = db.upsertProject("a/b", "ab");
+
+    const farFuture = new Date(Date.now() + 30 * 60 * 1000).toISOString();
+    graphqlMock.mockResolvedValueOnce({
+      pages: new Map([["a/b", { stargazers: [], totalCount: 50, hasNextPage: false, endCursor: null }]]),
+      rateLimit: { remaining: 50, resetAt: farFuture, cost: 1 },
+      pointsUsed: 1,
+    });
+
+    const today = new Date(Date.UTC(2026, 3, 19));
+    const summary = await backfillBatch([{ repo: "a/b", projectId: pid, currentStars: 50 }], db, {
+      today,
+      batchSize: 20,
+    });
+
+    const run = db.getBackfillRun(summary.runId);
+    expect(run?.status).toBe("aborted");
+    expect(run?.notes).toContain("rate limit");
+    db.close();
+  });
+
+  it("marks run as failed when an exception propagates from within the batch loop", async () => {
+    graphqlMock.mockReset();
+    restMock.mockReset();
+
+    const db = setupDB();
+    const pid = db.upsertProject("a/b", "ab");
+    graphqlMock.mockRejectedValueOnce(new Error("simulated transport crash"));
+
+    const today = new Date(Date.UTC(2026, 3, 19));
+    await expect(
+      backfillBatch([{ repo: "a/b", projectId: pid, currentStars: 50 }], db, { today, batchSize: 20 }),
+    ).rejects.toThrow("simulated transport crash");
+
+    // The run should still be recorded, with status=failed
+    const rid = db.getResumableBackfillRun();
+    expect(rid).toBeNull(); // failed, not running → not resumable
+    db.close();
+  });
 });
