@@ -3,6 +3,11 @@ import type { RateLimitInfo, RepoStargazersPage } from "./types.js";
 
 const GH_TIMEOUT_MS = 30_000;
 
+// GraphQL cost is ceil(sum(connection first/last args) / 100). Base query with N aliases
+// shares one `first: 100` denominator each; continuations bill per-alias. Keeping
+// continuation chunks small (5) prevents multi-point follow-up queries.
+const CONTINUATION_CHUNK_SIZE = 5;
+
 interface EdgeResponse {
   starredAt: string;
 }
@@ -29,7 +34,7 @@ function aliasFor(i: number): string {
 }
 
 function sanitize(s: string): string {
-  return s.replace(/["\\]/g, "");
+  return s.replace(/[^A-Za-z0-9._-]/g, "");
 }
 
 export function buildBatchQuery(repos: string[], cursorByAlias: Record<string, string | null> = {}): string {
@@ -38,7 +43,7 @@ export function buildBatchQuery(repos: string[], cursorByAlias: Record<string, s
       const [owner, name] = repo.split("/");
       const alias = aliasFor(i);
       const cursor = cursorByAlias[alias];
-      const afterArg = cursor ? `, after: "${sanitize(cursor)}"` : "";
+      const afterArg = cursor ? `, after: "${cursor}"` : "";
       return `  ${alias}: repository(owner: "${sanitize(owner)}", name: "${sanitize(name)}") {
     stargazerCount
     stargazers(first: 100, orderBy: {field: STARRED_AT, direction: DESC}${afterArg}) {
@@ -134,7 +139,7 @@ export async function fetchRecentStargazersBatch(repos: string[], since: Date): 
 
   const pool = [...needMore];
   while (pool.length > 0) {
-    const chunk = pool.splice(0, 5);
+    const chunk = pool.splice(0, CONTINUATION_CHUNK_SIZE);
     const cursorByAlias: Record<string, string | null> = {};
     const chunkRepos = chunk.map((c) => c.repo);
     chunkRepos.forEach((_, i) => {

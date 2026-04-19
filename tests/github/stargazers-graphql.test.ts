@@ -23,6 +23,11 @@ describe("buildBatchQuery", () => {
     const q = buildBatchQuery(['evil"owner/repo']);
     expect(q).not.toMatch(/repository\(owner: "evil"/);
   });
+
+  it("preserves GitHub cursor characters (base64-style) in after: arg", () => {
+    const q = buildBatchQuery(["owner/repo"], { r0: "Y3Vyc29yOnYyOpK5MjAyNi0wNC0xOVQwMDowMDowMCswMDAwzgH=" });
+    expect(q).toContain('after: "Y3Vyc29yOnYyOpK5MjAyNi0wNC0xOVQwMDowMDowMCswMDAwzgH="');
+  });
 });
 
 describe("parseBatchResponse", () => {
