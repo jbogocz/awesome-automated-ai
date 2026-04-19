@@ -72,3 +72,17 @@ export interface DecisionInsert {
   pr_status?: string;
   reasoning?: string;
 }
+
+export interface BackfillRunRow {
+  id: number;
+  started_at: string;
+  finished_at: string | null;
+  status: "running" | "completed" | "aborted" | "failed";
+  total_repos: number;
+  completed_repos: number;
+  skipped_repos: number;
+  points_used: number;
+  notes: string | null;
+}
+
+export type BackfillRepoState = "pending" | "in_progress" | "done" | "skipped";

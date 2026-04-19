@@ -106,6 +106,29 @@ export class DB {
         updated_at TEXT NOT NULL DEFAULT (datetime('now'))
       );
     `);
+
+    this.sqlite.exec(`
+      CREATE TABLE IF NOT EXISTS backfill_runs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        started_at TEXT NOT NULL DEFAULT (datetime('now')),
+        finished_at TEXT,
+        status TEXT NOT NULL DEFAULT 'running' CHECK (status IN ('running', 'completed', 'aborted', 'failed')),
+        total_repos INTEGER NOT NULL,
+        completed_repos INTEGER NOT NULL DEFAULT 0,
+        skipped_repos INTEGER NOT NULL DEFAULT 0,
+        points_used INTEGER NOT NULL DEFAULT 0,
+        notes TEXT
+      );
+
+      CREATE TABLE IF NOT EXISTS backfill_repo_status (
+        run_id INTEGER NOT NULL REFERENCES backfill_runs(id) ON DELETE CASCADE,
+        project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+        state TEXT NOT NULL CHECK (state IN ('pending', 'in_progress', 'done', 'skipped')),
+        skip_reason TEXT,
+        PRIMARY KEY (run_id, project_id)
+      );
+      CREATE INDEX IF NOT EXISTS idx_backfill_repo_status_state ON backfill_repo_status(run_id, state);
+    `);
   }
 
   findProjectByRepo(repo: string): ProjectRow | null {
@@ -267,6 +290,66 @@ export class DB {
       )
       .get(projectId, cutoffStr) as { stars: number } | undefined;
     return row?.stars ?? null;
+  }
+
+  startBackfillRun(projectIds: number[]): number {
+    const info = this.sqlite.prepare("INSERT INTO backfill_runs (total_repos) VALUES (?)").run(projectIds.length);
+    const runId = Number(info.lastInsertRowid);
+    const stmt = this.sqlite.prepare(
+      "INSERT INTO backfill_repo_status (run_id, project_id, state) VALUES (?, ?, 'pending')",
+    );
+    const tx = this.sqlite.transaction((ids: number[]) => {
+      for (const id of ids) stmt.run(runId, id);
+    });
+    tx(projectIds);
+    return runId;
+  }
+
+  getBackfillPending(runId: number): number[] {
+    const rows = this.sqlite
+      .prepare(
+        "SELECT project_id FROM backfill_repo_status WHERE run_id = ? AND state IN ('pending', 'in_progress') ORDER BY project_id",
+      )
+      .all(runId) as { project_id: number }[];
+    return rows.map((r) => r.project_id);
+  }
+
+  setBackfillRepoState(
+    runId: number,
+    projectId: number,
+    state: "pending" | "in_progress" | "done" | "skipped",
+    reason: string | null = null,
+  ): void {
+    this.sqlite
+      .prepare("UPDATE backfill_repo_status SET state = ?, skip_reason = ? WHERE run_id = ? AND project_id = ?")
+      .run(state, reason, runId, projectId);
+  }
+
+  finishBackfillRun(runId: number, stats: { ok: number; skipped: number; pointsUsed: number; notes: string }): void {
+    this.sqlite
+      .prepare(
+        `UPDATE backfill_runs
+           SET status = 'completed',
+               finished_at = datetime('now'),
+               completed_repos = ?,
+               skipped_repos = ?,
+               points_used = ?,
+               notes = ?
+         WHERE id = ?`,
+      )
+      .run(stats.ok, stats.skipped, stats.pointsUsed, stats.notes, runId);
+  }
+
+  getBackfillRun(runId: number): import("./types.js").BackfillRunRow | null {
+    const row = this.sqlite.prepare("SELECT * FROM backfill_runs WHERE id = ?").get(runId);
+    return (row ?? null) as import("./types.js").BackfillRunRow | null;
+  }
+
+  getResumableBackfillRun(): number | null {
+    const row = this.sqlite
+      .prepare("SELECT id FROM backfill_runs WHERE status = 'running' ORDER BY id DESC LIMIT 1")
+      .get() as { id: number } | undefined;
+    return row?.id ?? null;
   }
 
   close(): void {
