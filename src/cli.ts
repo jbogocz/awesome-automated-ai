@@ -41,7 +41,7 @@ async function main() {
       apiData = JSON.parse(readFileSync(CACHE_FILE, "utf-8"));
       console.log("Using cached API data");
     } else {
-      apiData = fetchRepoData(yamlContent);
+      apiData = await fetchRepoData(yamlContent);
       writeFileSync(CACHE_FILE, JSON.stringify(apiData, null, 2));
       console.log("Cached API data");
     }
