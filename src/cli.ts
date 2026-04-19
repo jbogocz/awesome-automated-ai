@@ -20,6 +20,53 @@ const README_MD = resolve(ROOT, "README.md");
 const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 const RECLASSIFY_REPORT = resolve(ROOT, "data/reclassify-report.md");
 
+function sanitizeRepoComponent(s: string): string {
+  return s.replace(/[^A-Za-z0-9._-]/g, "");
+}
+
+function resolveCurrentStarsBatch(repos: { repo: string; name: string }[]): {
+  starsByRepo: Map<string, number>;
+  unresolvedRepos: Set<string>;
+} {
+  const starsByRepo = new Map<string, number>();
+  const unresolvedRepos = new Set<string>();
+  const CHUNK = 50;
+
+  for (let i = 0; i < repos.length; i += CHUNK) {
+    const chunk = repos.slice(i, i + CHUNK);
+    const aliases = chunk.map((r, idx) => {
+      const [owner, name] = r.repo.split("/");
+      return `  r${idx}: repository(owner: "${sanitizeRepoComponent(owner)}", name: "${sanitizeRepoComponent(name)}") { stargazerCount }`;
+    });
+    const query = `query {\n${aliases.join("\n")}\n}`;
+
+    try {
+      const out = execFileSync("gh", ["api", "graphql", "-f", `query=${query}`], {
+        timeout: 30_000,
+        encoding: "utf-8",
+        maxBuffer: 32 * 1024 * 1024,
+      });
+      const resp = JSON.parse(out) as {
+        data?: Record<string, { stargazerCount: number } | null>;
+      };
+      chunk.forEach((r, idx) => {
+        const entry = resp.data?.[`r${idx}`];
+        if (entry && typeof entry.stargazerCount === "number") {
+          starsByRepo.set(r.repo, entry.stargazerCount);
+        } else {
+          unresolvedRepos.add(r.repo);
+        }
+      });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.warn(`[backfill-trends] GraphQL batch ${i}-${i + chunk.length} failed: ${msg}`);
+      for (const r of chunk) unresolvedRepos.add(r.repo);
+    }
+  }
+
+  return { starsByRepo, unresolvedRepos };
+}
+
 async function main() {
   const command = process.argv[2];
 
@@ -142,23 +189,17 @@ async function main() {
       }
     }
 
-    // Resolve currentStars via gh CLI (same auth path as fetch-api).
-    const currentStarsByRepo = new Map<string, number>();
-    for (const { repo } of target) {
-      try {
-        const out = execFileSync("gh", ["api", `repos/${repo}`, "--jq", ".stargazers_count"], {
-          timeout: 15_000,
-          encoding: "utf-8",
-        }).trim();
-        currentStarsByRepo.set(repo, Number(out) || 0);
-      } catch {
-        currentStarsByRepo.set(repo, 0);
-      }
+    const { starsByRepo, unresolvedRepos } = resolveCurrentStarsBatch(target);
+    if (unresolvedRepos.size > 0) {
+      console.warn(
+        `[backfill-trends] Could not resolve currentStars for ${unresolvedRepos.size} repos, skipping them: ${[...unresolvedRepos].join(", ")}`,
+      );
     }
+    const resolvedTarget = target.filter((r) => !unresolvedRepos.has(r.repo));
 
-    const inputs = target.map(({ repo, name }) => {
+    const inputs = resolvedTarget.map(({ repo, name }) => {
       const projectId = db.upsertProject(repo, name);
-      return { repo, projectId, currentStars: currentStarsByRepo.get(repo) ?? 0 };
+      return { repo, projectId, currentStars: starsByRepo.get(repo) ?? 0 };
     });
 
     let filtered = inputs;
