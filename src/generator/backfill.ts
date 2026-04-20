@@ -96,15 +96,25 @@ export async function backfillBatch(
   let skipped = 0;
   let pointsUsed = 0;
 
+  // Deduplicate by projectId: projects.yaml may legitimately list the same repo
+  // in multiple categories (e.g. Ray Tune under HPO + Ray under MLOps), which
+  // maps to a single project row. The run tables have a unique (run_id, project_id).
+  const seenProjectIds = new Set<number>();
+  const dedupedInputs = inputs.filter((i) => {
+    if (seenProjectIds.has(i.projectId)) return false;
+    seenProjectIds.add(i.projectId);
+    return true;
+  });
+
   let runId: number;
   let toProcess: BackfillInput[];
   if (options.resumeRunId) {
     runId = options.resumeRunId;
     const pendingIds = new Set(db.getBackfillPending(runId));
-    toProcess = inputs.filter((i) => pendingIds.has(i.projectId));
+    toProcess = dedupedInputs.filter((i) => pendingIds.has(i.projectId));
   } else {
-    runId = db.startBackfillRun(inputs.map((i) => i.projectId));
-    toProcess = inputs;
+    runId = db.startBackfillRun(dedupedInputs.map((i) => i.projectId));
+    toProcess = dedupedInputs;
   }
 
   try {

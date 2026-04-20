@@ -230,4 +230,36 @@ describe("backfillBatch", () => {
     expect(rid).toBeNull(); // failed, not running → not resumable
     db.close();
   });
+
+  it("dedupes inputs by projectId so the same repo listed twice doesn't break the run", async () => {
+    graphqlMock.mockReset();
+    restMock.mockReset();
+
+    const db = setupDB();
+    const pid = db.upsertProject("ray-project/ray", "Ray");
+
+    graphqlMock.mockResolvedValueOnce({
+      pages: new Map([["ray-project/ray", { stargazers: [], totalCount: 30000, hasNextPage: false, endCursor: null }]]),
+      rateLimit: { remaining: 4999, resetAt: "z", cost: 1 },
+      pointsUsed: 1,
+    });
+
+    const today = new Date(Date.UTC(2026, 3, 20));
+    // Same projectId appears twice (different friendly names from two yaml entries).
+    const summary = await backfillBatch(
+      [
+        { repo: "ray-project/ray", projectId: pid, currentStars: 30000 },
+        { repo: "ray-project/ray", projectId: pid, currentStars: 30000 },
+      ],
+      db,
+      { today, batchSize: 20 },
+    );
+
+    expect(summary.ok).toBe(1);
+    expect(summary.skipped).toBe(0);
+    // GraphQL was called only once, with a single-repo list
+    expect(graphqlMock).toHaveBeenCalledOnce();
+    expect(graphqlMock.mock.calls[0]?.[0]).toEqual(["ray-project/ray"]);
+    db.close();
+  });
 });
