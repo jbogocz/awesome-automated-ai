@@ -1,3 +1,5 @@
+import { mkdirSync } from "node:fs";
+import { dirname } from "node:path";
 import Database from "better-sqlite3";
 import type {
   AgentName,
@@ -13,6 +15,9 @@ export class DB {
   private sqlite: Database.Database;
 
   constructor(dbPath: string) {
+    if (dbPath !== ":memory:") {
+      mkdirSync(dirname(dbPath), { recursive: true });
+    }
     this.sqlite = new Database(dbPath);
     this.sqlite.pragma("journal_mode = WAL");
     this.sqlite.pragma("foreign_keys = ON");
