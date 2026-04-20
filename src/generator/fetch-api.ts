@@ -14,6 +14,7 @@ interface RawApiResult {
   topics: string[];
   lastRelease: string | null;
   lastCommit: string | null;
+  language: string | null;
 }
 
 export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
@@ -77,7 +78,20 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
       license: raw.license,
       archived: raw.archived,
     });
-    db.insertSnapshot(projectId, raw.stars, score);
+    db.insertSnapshot(projectId, raw.stars, score, {
+      archived: raw.archived,
+      pushedAt: raw.pushed || null,
+      license: raw.license,
+      topics: raw.topics,
+      lastRelease: raw.lastRelease,
+      lastCommit: raw.lastCommit,
+    });
+    db.updateProjectMetadata(projectId, {
+      stars: raw.stars,
+      archived: raw.archived,
+      lastCommit: raw.lastCommit,
+      language: raw.language,
+    });
 
     // Tagline: DB first, seed from YAML if DB empty
     let tagline = db.getTagline(projectId);
@@ -106,6 +120,64 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
   return data;
 }
 
+/**
+ * Assemble ApiData from the SQLite database only — no GitHub API calls.
+ * Uses the latest snapshot per repo + projects.tagline. Trend values come from
+ * comparing latest snapshot.stars against snapshots from 7 and 30 days ago.
+ * Safe to call offline; requires that generate or backfill-trends has been
+ * run at least once to populate the DB.
+ */
+export function loadApiDataFromDB(yamlContent: string): ApiData {
+  const doc = parseYaml(yamlContent) as {
+    categories: { entries?: { repo?: string; name?: string; tagline?: string }[] }[];
+  };
+  const repos: { repo: string; name: string; tagline?: string }[] = [];
+  for (const cat of doc.categories) {
+    for (const entry of cat.entries ?? []) {
+      if (entry.repo) {
+        repos.push({ repo: entry.repo, name: entry.name ?? entry.repo, tagline: entry.tagline });
+      }
+    }
+  }
+
+  const dbPath = resolve(import.meta.dirname, "../../data/curator.db");
+  const db = new DB(dbPath);
+  db.migrate();
+
+  const data: ApiData = {};
+  for (const { repo, name, tagline: yamlTagline } of repos) {
+    const projectId = db.upsertProject(repo, name);
+    const latest = db.getLatestSnapshot(projectId);
+    if (!latest) continue; // No snapshot yet — skip; generate must be run first.
+
+    const stars7dAgo = db.getStarsNDaysAgo(projectId, 7);
+    const stars30dAgo = db.getStarsNDaysAgo(projectId, 30);
+    const starsPrevious = db.getPreviousStars(projectId);
+    const trend7d = stars7dAgo !== null ? latest.stars - stars7dAgo : null;
+    const trend30d = stars30dAgo !== null ? latest.stars - stars30dAgo : null;
+    const trend = trend30d ?? (starsPrevious !== null ? latest.stars - starsPrevious : null);
+
+    const tagline = db.getTagline(projectId) ?? yamlTagline ?? null;
+
+    data[repo] = {
+      stars: latest.stars,
+      pushed: latest.pushedAt ?? "",
+      archived: latest.archived ?? false,
+      license: latest.license,
+      trend,
+      trend7d,
+      trend30d,
+      lastRelease: latest.lastRelease,
+      lastCommit: latest.lastCommit,
+      score: latest.compositeScore ?? 0,
+      topics: latest.topics ?? [],
+      tagline,
+    };
+  }
+  db.close();
+  return data;
+}
+
 function fetchOneRepo(repo: string): RawApiResult {
   try {
     const result = execFileSync(
@@ -114,7 +186,7 @@ function fetchOneRepo(repo: string): RawApiResult {
         "api",
         `repos/${repo}`,
         "--jq",
-        "{stars: .stargazers_count, pushed: .pushed_at, archived: .archived, license: .license.spdx_id, topics: .topics}",
+        "{stars: .stargazers_count, pushed: .pushed_at, archived: .archived, license: .license.spdx_id, topics: .topics, language: .language}",
       ],
       { timeout: 15_000, encoding: "utf-8" },
     );
@@ -133,6 +205,7 @@ function fetchOneRepo(repo: string): RawApiResult {
       topics: parsed.topics ?? [],
       lastRelease,
       lastCommit,
+      language: parsed.language ?? null,
     };
   } catch {
     return {
@@ -143,6 +216,7 @@ function fetchOneRepo(repo: string): RawApiResult {
       topics: [],
       lastRelease: null,
       lastCommit: null,
+      language: null,
     };
   }
 }

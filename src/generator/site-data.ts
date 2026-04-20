@@ -1,7 +1,9 @@
-// Generates docs/data.json from projects.yaml + API cache for the GitHub Pages site
+// Generates docs/data.json from projects.yaml + the SQLite DB (source of truth).
+// Falls back to data/api_cache.json only if the DB is empty (fresh clone without generate run).
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
+import { loadApiDataFromDB } from "./fetch-api.js";
 import type { ApiData } from "./readme.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -64,9 +66,15 @@ function main() {
 
   let apiData: ApiData = {};
   try {
-    apiData = JSON.parse(readFileSync(CACHE_FILE, "utf-8")) as ApiData;
-  } catch {
-    console.log(`No API cache at ${CACHE_FILE}, using empty data`);
+    apiData = loadApiDataFromDB(yamlContent);
+    console.log(`Loaded ${Object.keys(apiData).length} repos from DB`);
+  } catch (err) {
+    console.warn(`DB read failed (${err instanceof Error ? err.message : String(err)}), falling back to cache`);
+    try {
+      apiData = JSON.parse(readFileSync(CACHE_FILE, "utf-8")) as ApiData;
+    } catch {
+      console.log(`No API cache at ${CACHE_FILE}, using empty data`);
+    }
   }
 
   const output = {

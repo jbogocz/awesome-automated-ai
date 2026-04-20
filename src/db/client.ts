@@ -49,18 +49,30 @@ export class DB {
       CREATE INDEX IF NOT EXISTS idx_projects_status ON projects(status);
       CREATE INDEX IF NOT EXISTS idx_projects_repo ON projects(repo);
 
-      -- Add tagline column if missing (idempotent)
+      -- Migration tracking + idempotent ALTERs for additive columns.
       CREATE TABLE IF NOT EXISTS _migrations (name TEXT PRIMARY KEY);
       INSERT OR IGNORE INTO _migrations (name) VALUES ('add_tagline');
+      INSERT OR IGNORE INTO _migrations (name) VALUES ('snapshot_metadata_v1');
     `);
 
-    const needsTagline = this.sqlite.prepare("SELECT 1 FROM _migrations WHERE name = 'add_tagline'").get();
-    if (needsTagline) {
+    const tryAlter = (sql: string): void => {
       try {
-        this.sqlite.exec("ALTER TABLE projects ADD COLUMN tagline TEXT");
+        this.sqlite.exec(sql);
       } catch {
         // Column already exists
       }
+    };
+
+    if (this.sqlite.prepare("SELECT 1 FROM _migrations WHERE name = 'add_tagline'").get()) {
+      tryAlter("ALTER TABLE projects ADD COLUMN tagline TEXT");
+    }
+    if (this.sqlite.prepare("SELECT 1 FROM _migrations WHERE name = 'snapshot_metadata_v1'").get()) {
+      tryAlter("ALTER TABLE snapshots ADD COLUMN archived INTEGER");
+      tryAlter("ALTER TABLE snapshots ADD COLUMN pushed_at TEXT");
+      tryAlter("ALTER TABLE snapshots ADD COLUMN license TEXT");
+      tryAlter("ALTER TABLE snapshots ADD COLUMN topics TEXT"); // JSON array
+      tryAlter("ALTER TABLE snapshots ADD COLUMN last_release TEXT");
+      tryAlter("ALTER TABLE snapshots ADD COLUMN last_commit TEXT");
     }
 
     this.sqlite.exec(`
@@ -269,14 +281,116 @@ export class DB {
     this.sqlite.prepare("UPDATE projects SET tagline = ? WHERE id = ?").run(tagline, projectId);
   }
 
-  insertSnapshot(projectId: number, stars: number, score: number): void {
+  insertSnapshot(
+    projectId: number,
+    stars: number,
+    score: number,
+    meta: {
+      archived?: boolean;
+      pushedAt?: string | null;
+      license?: string | null;
+      topics?: string[];
+      lastRelease?: string | null;
+      lastCommit?: string | null;
+    } = {},
+  ): void {
     const today = new Date().toISOString().split("T")[0];
     this.sqlite
       .prepare(
-        `INSERT OR REPLACE INTO snapshots (project_id, snapshot_date, stars, composite_score)
-         VALUES (?, ?, ?, ?)`,
+        `INSERT OR REPLACE INTO snapshots
+           (project_id, snapshot_date, stars, composite_score,
+            archived, pushed_at, license, topics, last_release, last_commit)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
-      .run(projectId, today, stars, score);
+      .run(
+        projectId,
+        today,
+        stars,
+        score,
+        meta.archived === undefined ? null : meta.archived ? 1 : 0,
+        meta.pushedAt ?? null,
+        meta.license ?? null,
+        meta.topics ? JSON.stringify(meta.topics) : null,
+        meta.lastRelease ?? null,
+        meta.lastCommit ?? null,
+      );
+  }
+
+  updateProjectMetadata(
+    projectId: number,
+    meta: {
+      stars?: number;
+      archived?: boolean;
+      lastCommit?: string | null;
+      language?: string | null;
+    },
+  ): void {
+    const sets: string[] = [];
+    const values: unknown[] = [];
+    if (meta.stars !== undefined) {
+      sets.push("stars = ?");
+      values.push(meta.stars);
+    }
+    if (meta.archived !== undefined) {
+      sets.push("archived = ?");
+      values.push(meta.archived ? 1 : 0);
+    }
+    if (meta.lastCommit !== undefined) {
+      sets.push("last_commit = ?");
+      values.push(meta.lastCommit);
+    }
+    if (meta.language !== undefined) {
+      sets.push("language = ?");
+      values.push(meta.language);
+    }
+    if (sets.length === 0) return;
+    sets.push("updated_at = datetime('now')");
+    this.sqlite.prepare(`UPDATE projects SET ${sets.join(", ")} WHERE id = ?`).run(...values, projectId);
+  }
+
+  getLatestSnapshot(projectId: number): {
+    snapshotDate: string;
+    stars: number;
+    compositeScore: number | null;
+    archived: boolean | null;
+    pushedAt: string | null;
+    license: string | null;
+    topics: string[] | null;
+    lastRelease: string | null;
+    lastCommit: string | null;
+  } | null {
+    const row = this.sqlite
+      .prepare(
+        `SELECT snapshot_date, stars, composite_score, archived, pushed_at, license, topics, last_release, last_commit
+           FROM snapshots
+          WHERE project_id = ?
+          ORDER BY snapshot_date DESC LIMIT 1`,
+      )
+      .get(projectId) as
+      | {
+          snapshot_date: string;
+          stars: number;
+          composite_score: number | null;
+          archived: number | null;
+          pushed_at: string | null;
+          license: string | null;
+          topics: string | null;
+          last_release: string | null;
+          last_commit: string | null;
+        }
+      | undefined;
+    if (!row) return null;
+    return {
+      snapshotDate: row.snapshot_date,
+      stars: row.stars,
+      compositeScore: row.composite_score,
+      archived: row.archived === null ? null : row.archived === 1,
+      pushedAt: row.pushed_at,
+      license: row.license,
+      topics: row.topics ? (JSON.parse(row.topics) as string[]) : null,
+      lastRelease: row.last_release,
+      lastCommit: row.last_commit,
+    };
   }
 
   getPreviousStars(projectId: number): number | null {

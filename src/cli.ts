@@ -9,7 +9,7 @@ import { loadManifest } from "./categories.js";
 import { loadConfig } from "./config.js";
 import { DB } from "./db/client.js";
 import { backfillBatch } from "./generator/backfill.js";
-import { fetchRepoData } from "./generator/fetch-api.js";
+import { fetchRepoData, loadApiDataFromDB } from "./generator/fetch-api.js";
 import { type ApiData, generateReadme } from "./generator/readme.js";
 
 const ROOT = resolve(import.meta.dirname, "..");
@@ -89,8 +89,8 @@ async function main() {
     let apiData: ApiData;
 
     if (noFetch) {
-      apiData = JSON.parse(readFileSync(CACHE_FILE, "utf-8"));
-      console.log("Using cached API data");
+      apiData = loadApiDataFromDB(yamlContent);
+      console.log(`Loaded ${Object.keys(apiData).length} repos from DB (--no-fetch)`);
     } else {
       apiData = await fetchRepoData(yamlContent);
       writeFileSync(CACHE_FILE, JSON.stringify(apiData, null, 2));
