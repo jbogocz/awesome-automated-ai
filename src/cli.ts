@@ -176,8 +176,11 @@ async function main() {
     db.migrate();
 
     const repoFlag = process.argv.find((a) => a.startsWith("--repo="));
-    const onlyMissing = process.argv.includes("--missing");
+    const doForce = process.argv.includes("--force");
     const doResume = process.argv.includes("--resume");
+    // Default: skip repos that already have a 30d-old snapshot (idempotent reruns are ~free).
+    // --force overrides to refetch everything. --missing is a legacy alias for the default.
+    const onlyMissing = !doForce;
 
     let target = allRepos;
     if (repoFlag) {
@@ -189,24 +192,37 @@ async function main() {
       }
     }
 
-    const { starsByRepo, unresolvedRepos } = resolveCurrentStarsBatch(target);
+    // Upsert first so we have projectIds, then (when --missing/default) filter out
+    // repos that already have a ≥30d snapshot BEFORE resolving currentStars — avoids
+    // wasted GraphQL calls on a fully-idempotent rerun.
+    const projectIdByRepo = new Map<string, number>();
+    for (const { repo, name } of target) {
+      projectIdByRepo.set(repo, db.upsertProject(repo, name));
+    }
+
+    let targetAfterMissing = target;
+    if (onlyMissing) {
+      targetAfterMissing = target.filter((r) => db.getStarsNDaysAgo(projectIdByRepo.get(r.repo) ?? -1, 30) === null);
+      console.log(`Skipping fully-backfilled: ${targetAfterMissing.length}/${target.length} repos need backfill`);
+    }
+
+    const { starsByRepo, unresolvedRepos } =
+      targetAfterMissing.length > 0
+        ? resolveCurrentStarsBatch(targetAfterMissing)
+        : { starsByRepo: new Map<string, number>(), unresolvedRepos: new Set<string>() };
     if (unresolvedRepos.size > 0) {
       console.warn(
         `[backfill-trends] Could not resolve currentStars for ${unresolvedRepos.size} repos, skipping them: ${[...unresolvedRepos].join(", ")}`,
       );
     }
-    const resolvedTarget = target.filter((r) => !unresolvedRepos.has(r.repo));
 
-    const inputs = resolvedTarget.map(({ repo, name }) => {
-      const projectId = db.upsertProject(repo, name);
-      return { repo, projectId, currentStars: starsByRepo.get(repo) ?? 0 };
-    });
-
-    let filtered = inputs;
-    if (onlyMissing) {
-      filtered = inputs.filter((i) => db.getStarsNDaysAgo(i.projectId, 30) === null);
-      console.log(`--missing: ${filtered.length}/${inputs.length} repos need backfill`);
-    }
+    const filtered = targetAfterMissing
+      .filter((r) => !unresolvedRepos.has(r.repo))
+      .map(({ repo }) => ({
+        repo,
+        projectId: projectIdByRepo.get(repo) ?? 0,
+        currentStars: starsByRepo.get(repo) ?? 0,
+      }));
 
     let resumeRunId: number | undefined;
     if (doResume) {
@@ -225,7 +241,7 @@ async function main() {
     db.close();
   } else {
     console.error(
-      "Usage: tsx src/cli.ts <discover|generate|refresh-tags|reclassify|backfill-trends> [--dry-run] [--limit=N] [--all] [--missing] [--repo=X/Y] [--resume]",
+      "Usage: tsx src/cli.ts <discover|generate|refresh-tags|reclassify|backfill-trends> [--dry-run] [--limit=N] [--force] [--repo=X/Y] [--resume]",
     );
     process.exit(1);
   }
