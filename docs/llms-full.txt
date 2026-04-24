@@ -57,7 +57,7 @@ LLM-specific automation.
 ### Evaluate & Monitor AI
 
 - **LLM Evaluation and Testing** — DeepEval, Ragas, Promptfoo, TruLens, LangSmith, Arize Phoenix, Giskard, OpenAI Evals, LightEval.
-- **LLM Routing and Selection** — RouteLLM, LiteLLM, Portkey, not-diamond.
+- **LLM Gateways and Routers** — LiteLLM (100+ LLM gateway), Portkey, RouteLLM (cost-optimizing router), Bifrost (enterprise gateway), TensorZero (LLMOps platform), Braintrust Proxy.
 - **Automated Monitoring and Observability** — Langfuse, Phoenix, Helicone, Evidently, WhyLogs, Lunary.
 - **Automated AI Safety** — PyRIT, Giskard, HarmBench, deepteam, garak.
 

@@ -740,8 +740,8 @@ categories:
     description: UC Berkeley project training and evaluating LLMs for function and tool calling, home of the Berkeley Function-Calling Leaderboard (BFCL).
     tagline: Function-calling models and BFCL leaderboard
     tags: [api, api-documentation, chatgpt, claude-api, function-calling, gpt-4-api, llm, openai-api, openai-functions]
-- name: LLM Routing and Selection
-  description: Intelligent routing of requests to the optimal model based on task complexity, cost, and quality.
+- name: LLM Gateways and Routers
+  description: Gateways and routers that proxy, load-balance, cache, and intelligently select between LLM providers - unifying model access, controlling cost, and improving reliability.
   entries:
   - name: LiteLLM
     repo: BerriAI/litellm
@@ -768,6 +768,16 @@ categories:
     description: Open-source LLMOps platform unifying an LLM gateway, observability, evaluation, optimization, and experimentation with A/B testing across models.
     tagline: LLMOps platform with gateway, evals, and A/B testing
     tags: [ai, ai-engineering, anthropic, artificial-intelligence, deep-learning, genai, generative-ai, gpt, large-language-models, llama, llm, llmops, llms, machine-learning, ml, ml-engineering, mlops, openai, python, rust]
+  - name: Bifrost
+    repo: maximhq/bifrost
+    description: High-performance enterprise AI gateway with adaptive load balancing, cluster mode, guardrails, and 1000+ model support; claims 50x lower latency than LiteLLM at under 100µs overhead at 5K RPS (Maxim AI).
+    tagline: Enterprise AI gateway with <100µs overhead at 5K RPS
+    tags: [ai-gateway, enterprise, gateway, guardrails, llm, llm-gateway, load-balancing, rust]
+  - name: Braintrust Proxy
+    repo: braintrustdata/braintrust-proxy
+    description: OpenAI-compatible proxy that normalizes requests across providers (OpenAI, Anthropic, Google, open models) with streaming, caching, and observability hooks.
+    tagline: OpenAI-compatible proxy normalizing across providers
+    tags: [gateway, llm, openai-compatible, proxy]
 - name: Automated Monitoring and Observability
   description: Automated drift detection, performance monitoring, and quality observability for models deployed in production.
   entries:

@@ -65,7 +65,7 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 
 **Evaluate & Monitor AI**
 - [LLM Evaluation and Testing](#llm-evaluation-and-testing) (13)
-- [LLM Routing and Selection](#llm-routing-and-selection) (5)
+- [LLM Gateways and Routers](#llm-gateways-and-routers) (7)
 - [Automated Monitoring and Observability](#automated-monitoring-and-observability) (8)
 - [Automated AI Safety](#automated-ai-safety) (6)
 
@@ -588,7 +588,7 @@ Modular NAS framework for reproducible architecture search research (Microsoft).
 
 *Libraries dedicated to finding optimal hyperparameters via Bayesian optimization, bandits, evolutionary search, or population-based training.*
 
-<details><summary>🟢 🥇 <b><a href="https://docs.ray.io/en/latest/tune/">Ray Tune</a></b> <code>⭐ 42.3K</code> <code>↗️ +555</code> <code>Apache-2.0</code> Distributed HPO at scale for any ML framework</summary>
+<details><summary>🟢 🥇 <b><a href="https://docs.ray.io/en/latest/tune/">Ray Tune</a></b> <code>⭐ 42.3K</code> <code>↗️ +554</code> <code>Apache-2.0</code> Distributed HPO at scale for any ML framework</summary>
 
 <br>
 
@@ -596,7 +596,7 @@ Distributed hyperparameter tuning at scale with support for any ML framework and
 
 ```
   Score     78/100
-  Stars     ⭐ 42,295 (+555 last 30d, +116 last 7d)
+  Stars     ⭐ 42,294 (+554 last 30d, +115 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   Apache-2.0
@@ -1522,7 +1522,7 @@ DSPy-powered automatic prompt optimization that transforms task descriptions int
 
 *Libraries and SDKs for building multi-agent systems, conversational agents, tool-using agents, and agentic workflows. Also includes agent infrastructure like memory, browser control, and sandboxes.*
 
-<details><summary>🟢 🥇 <b><a href="https://github.com/browser-use/browser-use">Browser Use</a></b> <code>⭐ 90.0K</code> <code>↗️ +5832</code> <code>MIT</code> LLM-driven browser automation framework</summary>
+<details><summary>🟢 🥇 <b><a href="https://github.com/browser-use/browser-use">Browser Use</a></b> <code>⭐ 90.0K</code> <code>↗️ +5833</code> <code>MIT</code> LLM-driven browser automation framework</summary>
 
 <br>
 
@@ -1530,7 +1530,7 @@ Playwright-powered agent harness that makes websites accessible to LLMs so they 
 
 ```
   Score     90/100
-  Stars     ⭐ 90,001 (+5832 last 30d, +1693 last 7d)
+  Stars     ⭐ 90,002 (+5833 last 30d, +1694 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   MIT
@@ -1556,7 +1556,7 @@ LangChain's graph-based runtime for building stateful, resilient agents with che
 
 </details>
 
-<details><summary>🟢 🥉 <b><a href="https://github.com/mem0ai/mem0">Mem0</a></b> <code>⭐ 54.0K</code> <code>↗️ +3131</code> <code>Apache-2.0</code> Universal memory layer for agents</summary>
+<details><summary>🟢 🥉 <b><a href="https://github.com/mem0ai/mem0">Mem0</a></b> <code>⭐ 54.0K</code> <code>↗️ +3130</code> <code>Apache-2.0</code> Universal memory layer for agents</summary>
 
 <br>
 
@@ -1564,7 +1564,7 @@ Universal memory layer that gives AI agents persistent, personalized long-term m
 
 ```
   Score     87/100
-  Stars     ⭐ 53,998 (+3131 last 30d, +651 last 7d)
+  Stars     ⭐ 53,997 (+3130 last 30d, +650 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   Apache-2.0
@@ -1573,7 +1573,7 @@ Universal memory layer that gives AI agents persistent, personalized long-term m
 
 </details>
 
-<details><summary>🟢 <b>4</b> <b><a href="https://github.com/openai/openai-agents-python">OpenAI Agents SDK</a></b> <code>⭐ 25.0K</code> <code>↗️ +4754</code> <code>MIT</code> OpenAI's multi-agent and voice-agent SDK</summary>
+<details><summary>🟢 <b>4</b> <b><a href="https://github.com/openai/openai-agents-python">OpenAI Agents SDK</a></b> <code>⭐ 25.0K</code> <code>↗️ +4756</code> <code>MIT</code> OpenAI's multi-agent and voice-agent SDK</summary>
 
 <br>
 
@@ -1581,7 +1581,7 @@ Lightweight framework for multi-agent workflows with handoffs, guardrails, traci
 
 ```
   Score     87/100
-  Stars     ⭐ 24,981 (+4754 last 30d, +3196 last 7d)
+  Stars     ⭐ 24,983 (+4756 last 30d, +3198 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   MIT
@@ -1590,7 +1590,7 @@ Lightweight framework for multi-agent workflows with handoffs, guardrails, traci
 
 </details>
 
-<details><summary>🟢 <b>5</b> <b><a href="https://github.com/crewAIInc/crewAI">CrewAI</a></b> <code>⭐ 49.8K</code> <code>↗️ +2772</code> <code>MIT</code> Role-playing specialist agents for complex workflows</summary>
+<details><summary>🟢 <b>5</b> <b><a href="https://github.com/crewAIInc/crewAI">CrewAI</a></b> <code>⭐ 49.8K</code> <code>↗️ +2777</code> <code>MIT</code> Role-playing specialist agents for complex workflows</summary>
 
 <br>
 
@@ -1598,7 +1598,7 @@ Multi-agent framework orchestrating role-playing specialist agents for complex A
 
 ```
   Score     86/100
-  Stars     ⭐ 49,800 (+2772 last 30d, +679 last 7d)
+  Stars     ⭐ 49,805 (+2777 last 30d, +684 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   MIT
@@ -1607,7 +1607,7 @@ Multi-agent framework orchestrating role-playing specialist agents for complex A
 
 </details>
 
-<details><summary>🟢 <b>6</b> <b><a href="https://github.com/microsoft/agent-framework">Microsoft Agent Framework</a></b> <code>⭐ 9.8K</code> <code>↗️ +1621</code> <code>MIT</code> Unified Semantic Kernel plus AutoGen successor</summary>
+<details><summary>🟢 <b>6</b> <b><a href="https://github.com/microsoft/agent-framework">Microsoft Agent Framework</a></b> <code>⭐ 9.8K</code> <code>↗️ +1622</code> <code>MIT</code> Unified Semantic Kernel plus AutoGen successor</summary>
 
 <br>
 
@@ -1615,7 +1615,7 @@ Unified 1.0 SDK (April 2026) that merges Semantic Kernel and AutoGen into a sing
 
 ```
   Score     83/100
-  Stars     ⭐ 9,783 (+1621 last 30d, +237 last 7d)
+  Stars     ⭐ 9,784 (+1622 last 30d, +238 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   MIT
@@ -1692,7 +1692,7 @@ Open-source secure cloud sandboxes that give AI agents isolated Linux VMs to run
 
 </details>
 
-<details><summary>🟢 <b>11</b> <b><a href="https://github.com/strands-agents/sdk-python">Strands Agents</a></b> <code>⭐ 5.7K</code> <code>↗️ +347</code> <code>Apache-2.0</code> AWS model-driven agents SDK, 14M downloads</summary>
+<details><summary>🟢 <b>11</b> <b><a href="https://github.com/strands-agents/sdk-python">Strands Agents</a></b> <code>⭐ 5.7K</code> <code>↗️ +348</code> <code>Apache-2.0</code> AWS model-driven agents SDK, 14M downloads</summary>
 
 <br>
 
@@ -1700,7 +1700,7 @@ Model-driven SDK that builds agents in a few lines of code - 14M+ downloads, Pyt
 
 ```
   Score     79/100
-  Stars     ⭐ 5,698 (+347 last 30d, +47 last 7d)
+  Stars     ⭐ 5,699 (+348 last 30d, +48 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   Apache-2.0
@@ -1750,7 +1750,7 @@ Microsoft Research prototype for a human-centered web agent with co-planning, ac
 
 *Ready-to-use AI agents that autonomously write, debug, refactor, and review software code.*
 
-<details><summary>🟢 🥇 <b><a href="https://github.com/sst/opencode">OpenCode</a></b> <code>⭐ 148.9K</code> <code>↗️ +19460</code> <code>MIT</code> Terminal-native, model-agnostic coding agent</summary>
+<details><summary>🟢 🥇 <b><a href="https://github.com/sst/opencode">OpenCode</a></b> <code>⭐ 149.0K</code> <code>↗️ +19467</code> <code>MIT</code> Terminal-native, model-agnostic coding agent</summary>
 
 <br>
 
@@ -1758,7 +1758,7 @@ Terminal-native AI coding agent that is model-agnostic and scriptable for headle
 
 ```
   Score     93/100
-  Stars     ⭐ 148,947 (+19460 last 30d, +3985 last 7d)
+  Stars     ⭐ 148,954 (+19467 last 30d, +3992 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   MIT
@@ -1801,7 +1801,7 @@ Open-source agentic CLI bringing Gemini models and ReAct-style tool use directly
 
 </details>
 
-<details><summary>🟢 <b>4</b> <b><a href="https://github.com/anthropics/claude-code">Claude Code</a></b> <code>⭐ 117.6K</code> <code>↗️ +35547</code> Anthropic's 80.8% SWE-bench terminal coding agent</summary>
+<details><summary>🟢 <b>4</b> <b><a href="https://github.com/anthropics/claude-code">Claude Code</a></b> <code>⭐ 117.6K</code> <code>↗️ +35550</code> Anthropic's 80.8% SWE-bench terminal coding agent</summary>
 
 <br>
 
@@ -1809,7 +1809,7 @@ Terminal-native coding agent that hits ~80.8% on SWE-bench Verified with Opus 4.
 
 ```
   Score     84/100
-  Stars     ⭐ 117,637 (+35547 last 30d, +2425 last 7d)
+  Stars     ⭐ 117,640 (+35550 last 30d, +2428 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   -
@@ -1852,7 +1852,7 @@ Autonomous VS Code extension with Plan and Act modes where every file edit, term
 
 </details>
 
-<details><summary>🟢 <b>7</b> <b><a href="https://github.com/OpenHands/OpenHands">OpenHands</a></b> <code>⭐ 72.0K</code> <code>↗️ +2463</code> <code>NOASSERTION</code> AI dev platform, 53-72% SWE-Bench resolve rate</summary>
+<details><summary>🟢 <b>7</b> <b><a href="https://github.com/OpenHands/OpenHands">OpenHands</a></b> <code>⭐ 72.0K</code> <code>↗️ +2464</code> <code>NOASSERTION</code> AI dev platform, 53-72% SWE-Bench resolve rate</summary>
 
 <br>
 
@@ -1860,7 +1860,7 @@ AI software development platform achieving 53-72% resolve rate on SWE-Bench Veri
 
 ```
   Score     80/100
-  Stars     ⭐ 72,004 (+2463 last 30d, +595 last 7d)
+  Stars     ⭐ 72,005 (+2464 last 30d, +596 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Mar 2026
   License   NOASSERTION
@@ -2004,7 +2004,7 @@ Multi-agent framework automating the full R&D loop for data-driven AI (hypothesi
 
 </details>
 
-<details><summary>🟢 🥈 <b><a href="https://github.com/karpathy/autoresearch">AutoResearch</a></b> <code>⭐ 76.3K</code> <code>↗️ +20671</code> Agents run 100 ML experiments overnight autonomously</summary>
+<details><summary>🟢 🥈 <b><a href="https://github.com/karpathy/autoresearch">AutoResearch</a></b> <code>⭐ 76.3K</code> <code>↗️ +20673</code> Agents run 100 ML experiments overnight autonomously</summary>
 
 <br>
 
@@ -2012,7 +2012,7 @@ Minimal script enabling AI agents to autonomously run ~100 ML experiments overni
 
 ```
   Score     80/100
-  Stars     ⭐ 76,310 (+20671 last 30d, +2485 last 7d)
+  Stars     ⭐ 76,312 (+20673 last 30d, +2487 last 7d)
   Activity  🟢 Mar 2026
   License   -
   Tags      agents · automated-research · autonomous-agents · llm · machine-learning
@@ -2037,7 +2037,7 @@ Autonomous research agent that plans queries, scrapes sources, and writes cited 
 
 </details>
 
-<details><summary>🟢 <b>4</b> <b><a href="https://github.com/SakanaAI/AI-Scientist">AI-Scientist</a></b> <code>⭐ 13.4K</code> <code>↗️ +869</code> <code>NOASSERTION</code> Fully automated discovery from idea to paper</summary>
+<details><summary>🟢 <b>4</b> <b><a href="https://github.com/SakanaAI/AI-Scientist">AI-Scientist</a></b> <code>⭐ 13.4K</code> <code>↗️ +870</code> <code>NOASSERTION</code> Fully automated discovery from idea to paper</summary>
 
 <br>
 
@@ -2045,7 +2045,7 @@ Fully automated open-ended scientific discovery from idea generation to experime
 
 ```
   Score     72/100
-  Stars     ⭐ 13,395 (+869 last 30d, +109 last 7d)
+  Stars     ⭐ 13,396 (+870 last 30d, +110 last 7d)
   Activity  🟢 Dec 2025
   License   NOASSERTION
   Tags      agents · automated-research · autonomous-agents · llm · python
@@ -2137,7 +2137,7 @@ LLM-powered knowledge curation that researches topics and generates full article
 
 </details>
 
-<details><summary>🟡 <b>10</b> <b><a href="https://github.com/HKUDS/AI-Researcher">AI-Researcher</a></b> <code>⭐ 5.2K</code> <code>↗️ +279</code> Full research lifecycle from literature to experiments</summary>
+<details><summary>🟡 <b>10</b> <b><a href="https://github.com/HKUDS/AI-Researcher">AI-Researcher</a></b> <code>⭐ 5.2K</code> <code>↗️ +278</code> Full research lifecycle from literature to experiments</summary>
 
 <br>
 
@@ -2145,7 +2145,7 @@ Autonomous agent automating the full research lifecycle from literature review t
 
 ```
   Score     60/100
-  Stars     ⭐ 5,213 (+279 last 30d, +60 last 7d)
+  Stars     ⭐ 5,212 (+278 last 30d, +59 last 7d)
   Activity  🟡 Oct 2025
   License   -
   Tags      ai-researcher
@@ -2225,7 +2225,7 @@ Test and red-team LLM applications with automated evaluations, CI/CD integration
 
 </details>
 
-<details><summary>🟢 🥈 <b><a href="https://github.com/confident-ai/deepeval">DeepEval</a></b> <code>⭐ 15.0K</code> <code>↗️ +725</code> <code>Apache-2.0</code> Pytest-style LLM evaluation with 14+ metrics</summary>
+<details><summary>🟢 🥈 <b><a href="https://github.com/confident-ai/deepeval">DeepEval</a></b> <code>⭐ 15.0K</code> <code>↗️ +726</code> <code>Apache-2.0</code> Pytest-style LLM evaluation with 14+ metrics</summary>
 
 <br>
 
@@ -2233,7 +2233,7 @@ Pytest-like framework with 14+ evaluation metrics for RAG, fine-tuning, and alig
 
 ```
   Score     81/100
-  Stars     ⭐ 14,973 (+725 last 30d, +124 last 7d)
+  Stars     ⭐ 14,974 (+726 last 30d, +125 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Dec 2025
   License   Apache-2.0
@@ -2430,11 +2430,11 @@ Evaluation and testing platform for LLM applications and AI agents with automate
 
 **[⬆ Back to Contents](#contents)**
 
-## LLM Routing and Selection
+## LLM Gateways and Routers
 
-*Intelligent routing of requests to the optimal model based on task complexity, cost, and quality.*
+*Gateways and routers that proxy, load-balance, cache, and intelligently select between LLM providers - unifying model access, controlling cost, and improving reliability.*
 
-<details><summary>🟢 🥇 <b><a href="https://github.com/BerriAI/litellm">LiteLLM</a></b> <code>⭐ 44.6K</code> <code>↗️ +4134</code> <code>NOASSERTION</code> Unified API gateway for 100+ LLMs</summary>
+<details><summary>🟢 🥇 <b><a href="https://github.com/BerriAI/litellm">LiteLLM</a></b> <code>⭐ 44.6K</code> <code>↗️ +4133</code> <code>NOASSERTION</code> Unified API gateway for 100+ LLMs</summary>
 
 <br>
 
@@ -2442,7 +2442,7 @@ Unified API gateway for 100+ LLMs with load balancing, cost tracking, and automa
 
 ```
   Score     85/100
-  Stars     ⭐ 44,608 (+4134 last 30d, +904 last 7d)
+  Stars     ⭐ 44,607 (+4133 last 30d, +903 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   NOASSERTION
@@ -2451,7 +2451,24 @@ Unified API gateway for 100+ LLMs with load balancing, cost tracking, and automa
 
 </details>
 
-<details><summary>🟢 🥈 <b><a href="https://github.com/Portkey-AI/gateway">Portkey Gateway</a></b> <code>⭐ 11.4K</code> <code>↗️ +434</code> <code>MIT</code> AI gateway routing and caching across 200+ LLMs</summary>
+<details><summary>🟢 🥈 <b><a href="https://github.com/maximhq/bifrost">Bifrost</a></b> <code>⭐ 4.3K</code> <code>↗️ +1086</code> <code>Apache-2.0</code> Enterprise AI gateway with <100µs overhead at 5K RPS</summary>
+
+<br>
+
+High-performance enterprise AI gateway with adaptive load balancing, cluster mode, guardrails, and 1000+ model support; claims 50x lower latency than LiteLLM at under 100µs overhead at 5K RPS (Maxim AI).
+
+```
+  Score     80/100
+  Stars     ⭐ 4,259 (+1086 last 30d, +380 last 7d)
+  Activity  🟢 Apr 2026
+  Release   📦 Apr 2026
+  License   Apache-2.0
+  Tags      ai-gateway · enterprise · gateway · guardrails · llm
+```
+
+</details>
+
+<details><summary>🟢 🥉 <b><a href="https://github.com/Portkey-AI/gateway">Portkey Gateway</a></b> <code>⭐ 11.4K</code> <code>↗️ +434</code> <code>MIT</code> AI gateway routing and caching across 200+ LLMs</summary>
 
 <br>
 
@@ -2468,7 +2485,7 @@ AI gateway for intelligent routing, caching, load balancing, and fallbacks acros
 
 </details>
 
-<details><summary>🟢 🥉 <b><a href="https://github.com/ulab-uiuc/LLMRouter">LLMRouter</a></b> <code>⭐ 1.7K</code> <code>↗️ +171</code> <code>MIT</code> 16+ LLM router implementations with unified evaluation</summary>
+<details><summary>🟢 <b>4</b> <b><a href="https://github.com/ulab-uiuc/LLMRouter">LLMRouter</a></b> <code>⭐ 1.7K</code> <code>↗️ +171</code> <code>MIT</code> 16+ LLM router implementations with unified evaluation</summary>
 
 <br>
 
@@ -2484,7 +2501,7 @@ Unified library with 16+ router implementations and standardized evaluation via 
 
 </details>
 
-<details><summary>🟢 <b>4</b> <b><a href="https://github.com/tensorzero/tensorzero">TensorZero</a></b> <code>⭐ 11.3K</code> <code>↗️ +149</code> <code>Apache-2.0</code> LLMOps platform with gateway, evals, and A/B testing</summary>
+<details><summary>🟢 <b>5</b> <b><a href="https://github.com/tensorzero/tensorzero">TensorZero</a></b> <code>⭐ 11.3K</code> <code>↗️ +149</code> <code>Apache-2.0</code> LLMOps platform with gateway, evals, and A/B testing</summary>
 
 <br>
 
@@ -2497,6 +2514,22 @@ Open-source LLMOps platform unifying an LLM gateway, observability, evaluation, 
   Release   📦 Apr 2026
   License   Apache-2.0
   Tags      ai · ai-engineering · anthropic · artificial-intelligence · deep-learning
+```
+
+</details>
+
+<details><summary>🟢 <b>6</b> <b><a href="https://github.com/braintrustdata/braintrust-proxy">Braintrust Proxy</a></b> <code>⭐ 392</code> <code>MIT</code> OpenAI-compatible proxy normalizing across providers</summary>
+
+<br>
+
+OpenAI-compatible proxy that normalizes requests across providers (OpenAI, Anthropic, Google, open models) with streaming, caching, and observability hooks.
+
+```
+  Score     61/100
+  Stars     ⭐ 392 (+4 last 30d, 0 last 7d)
+  Activity  🟢 Apr 2026
+  License   MIT
+  Tags      gateway · llm · openai-compatible · proxy
 ```
 
 </details>
@@ -3359,7 +3392,7 @@ Automated image labeling by distilling foundation model knowledge into smaller t
 
 *Automated creation of artificial training data that preserves statistical properties of real datasets, with optional privacy guarantees.*
 
-<details><summary>🟢 🥇 <b><a href="https://github.com/NVIDIA-NeMo/DataDesigner">NeMo Data Designer</a></b> <code>⭐ 1.7K</code> <code>↗️ +797</code> <code>Apache-2.0</code> Generates and evaluates synthetic data for LLM pipelines</summary>
+<details><summary>🟢 🥇 <b><a href="https://github.com/NVIDIA-NeMo/DataDesigner">NeMo Data Designer</a></b> <code>⭐ 1.7K</code> <code>↗️ +798</code> <code>Apache-2.0</code> Generates and evaluates synthetic data for LLM pipelines</summary>
 
 <br>
 
@@ -3367,7 +3400,7 @@ Generates high-quality synthetic data from scratch or seed data with built-in ev
 
 ```
   Score     77/100
-  Stars     ⭐ 1,692 (+797 last 30d, +55 last 7d)
+  Stars     ⭐ 1,693 (+798 last 30d, +56 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   Apache-2.0
@@ -3434,7 +3467,7 @@ Framework for generating high-quality synthetic tabular data preserving statisti
 Toolkit for generating high-quality synthetic datasets to fine-tune models with LLM-generated training data at scale (Meta).
 
 ```
-  Score     59/100
+  Score     58/100
   Stars     ⭐ 1,574 (+34 last 30d, +2 last 7d)
   Activity  🟢 Oct 2025
   License   MIT
@@ -3628,7 +3661,7 @@ Structural pruning framework for any PyTorch model including LLMs, YOLO, ViT, an
 
 *Platforms for managing the ML lifecycle - experiment tracking, model registry, pipeline orchestration, and feature stores.*
 
-<details><summary>🟢 🥇 <b><a href="https://github.com/langfuse/langfuse">Langfuse</a></b> <code>⭐ 26.0K</code> <code>↗️ +2335</code> <code>NOASSERTION</code> Open-source LLM tracing, evals, and prompt management</summary>
+<details><summary>🟢 🥇 <b><a href="https://github.com/langfuse/langfuse">Langfuse</a></b> <code>⭐ 26.0K</code> <code>↗️ +2337</code> <code>NOASSERTION</code> Open-source LLM tracing, evals, and prompt management</summary>
 
 <br>
 
@@ -3636,7 +3669,7 @@ Open-source LLM engineering platform with tracing, evaluations, prompt managemen
 
 ```
   Score     83/100
-  Stars     ⭐ 26,014 (+2335 last 30d, +920 last 7d)
+  Stars     ⭐ 26,016 (+2337 last 30d, +922 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   NOASSERTION
@@ -3679,7 +3712,7 @@ LLM debugging, evaluation, and monitoring platform with detailed tracing and qua
 
 </details>
 
-<details><summary>🟢 <b>4</b> <b><a href="https://github.com/ray-project/ray">Ray</a></b> <code>⭐ 42.3K</code> <code>↗️ +555</code> <code>Apache-2.0</code> Distributed HPO at scale for any ML framework</summary>
+<details><summary>🟢 <b>4</b> <b><a href="https://github.com/ray-project/ray">Ray</a></b> <code>⭐ 42.3K</code> <code>↗️ +554</code> <code>Apache-2.0</code> Distributed HPO at scale for any ML framework</summary>
 
 <br>
 
@@ -3687,7 +3720,7 @@ Unified AI compute engine for distributed training, tuning, and model serving wi
 
 ```
   Score     78/100
-  Stars     ⭐ 42,295 (+555 last 30d, +116 last 7d)
+  Stars     ⭐ 42,294 (+554 last 30d, +115 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   Apache-2.0
@@ -3713,7 +3746,7 @@ Modern data workflow automation with retries, caching, and real-time logging.
 
 </details>
 
-<details><summary>🟢 <b>6</b> <b><a href="https://github.com/dagster-io/dagster">Dagster</a></b> <code>⭐ 15.4K</code> <code>↗️ +247</code> <code>Apache-2.0</code> Asset-centric ML pipeline orchestration with lineage tracking</summary>
+<details><summary>🟢 <b>6</b> <b><a href="https://github.com/dagster-io/dagster">Dagster</a></b> <code>⭐ 15.4K</code> <code>↗️ +248</code> <code>Apache-2.0</code> Asset-centric ML pipeline orchestration with lineage tracking</summary>
 
 <br>
 
@@ -3721,7 +3754,7 @@ Asset-centric orchestration built for ML pipelines with data lineage tracking an
 
 ```
   Score     75/100
-  Stars     ⭐ 15,379 (+247 last 30d, +38 last 7d)
+  Stars     ⭐ 15,380 (+248 last 30d, +39 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   Apache-2.0
@@ -3907,7 +3940,7 @@ ML toolkit on Kubernetes for building portable, scalable ML pipelines and traini
 
 *General-purpose model serving, packaging, and inference infrastructure for ML, DL, and multi-framework deployments.*
 
-<details><summary>🟢 🥇 <b><a href="https://github.com/microsoft/onnxruntime">ONNX Runtime</a></b> <code>⭐ 20.3K</code> <code>↗️ +678</code> <code>MIT</code> Cross-platform inference accelerator via ONNX format</summary>
+<details><summary>🟢 🥇 <b><a href="https://github.com/microsoft/onnxruntime">ONNX Runtime</a></b> <code>⭐ 20.3K</code> <code>↗️ +679</code> <code>MIT</code> Cross-platform inference accelerator via ONNX format</summary>
 
 <br>
 
@@ -3915,7 +3948,7 @@ Cross-platform inference accelerator supporting PyTorch, TensorFlow, scikit-lear
 
 ```
   Score     79/100
-  Stars     ⭐ 20,305 (+678 last 30d, +415 last 7d)
+  Stars     ⭐ 20,306 (+679 last 30d, +416 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   MIT
@@ -4067,7 +4100,7 @@ End-to-end platform for deploying production ML pipelines with data validation, 
 
 *High-performance inference engines optimised specifically for serving large language models.*
 
-<details><summary>🟢 🥇 <b><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a></b> <code>⭐ 106.3K</code> <code>↗️ +7372</code> <code>MIT</code> C/C++ LLM inference, foundation for local apps</summary>
+<details><summary>🟢 🥇 <b><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a></b> <code>⭐ 106.3K</code> <code>↗️ +7377</code> <code>MIT</code> C/C++ LLM inference, foundation for local apps</summary>
 
 <br>
 
@@ -4075,7 +4108,7 @@ LLM inference in C/C++ with broad hardware support - the foundation for most loc
 
 ```
   Score     92/100
-  Stars     ⭐ 106,276 (+7372 last 30d, +1987 last 7d)
+  Stars     ⭐ 106,281 (+7377 last 30d, +1992 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   MIT
@@ -4084,7 +4117,7 @@ LLM inference in C/C++ with broad hardware support - the foundation for most loc
 
 </details>
 
-<details><summary>🟢 🥈 <b><a href="https://github.com/vllm-project/vllm">vLLM</a></b> <code>⭐ 78.0K</code> <code>↗️ +3921</code> <code>Apache-2.0</code> High-throughput PagedAttention engine for production LLMs</summary>
+<details><summary>🟢 🥈 <b><a href="https://github.com/vllm-project/vllm">vLLM</a></b> <code>⭐ 78.0K</code> <code>↗️ +3922</code> <code>Apache-2.0</code> High-throughput PagedAttention engine for production LLMs</summary>
 
 <br>
 
@@ -4092,7 +4125,7 @@ High-throughput LLM serving engine with PagedAttention, powering most open-sourc
 
 ```
   Score     87/100
-  Stars     ⭐ 78,026 (+3921 last 30d, +923 last 7d)
+  Stars     ⭐ 78,027 (+3922 last 30d, +924 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   Apache-2.0
@@ -4101,7 +4134,7 @@ High-throughput LLM serving engine with PagedAttention, powering most open-sourc
 
 </details>
 
-<details><summary>🟢 🥉 <b><a href="https://github.com/ollama/ollama">Ollama</a></b> <code>⭐ 169.9K</code> <code>↗️ +4358</code> <code>MIT</code> Docker-like local LLM runner for fast prototyping</summary>
+<details><summary>🟢 🥉 <b><a href="https://github.com/ollama/ollama">Ollama</a></b> <code>⭐ 169.9K</code> <code>↗️ +4361</code> <code>MIT</code> Docker-like local LLM runner for fast prototyping</summary>
 
 <br>
 
@@ -4109,7 +4142,7 @@ Docker-like local LLM runner for getting models up and running quickly for proto
 
 ```
   Score     86/100
-  Stars     ⭐ 169,902 (+4358 last 30d, +633 last 7d)
+  Stars     ⭐ 169,905 (+4361 last 30d, +636 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   MIT
@@ -4118,7 +4151,7 @@ Docker-like local LLM runner for getting models up and running quickly for proto
 
 </details>
 
-<details><summary>🟢 <b>4</b> <b><a href="https://github.com/sgl-project/sglang">SGLang</a></b> <code>⭐ 26.4K</code> <code>↗️ +1545</code> <code>Apache-2.0</code> High-performance LLM serving with constrained decoding</summary>
+<details><summary>🟢 <b>4</b> <b><a href="https://github.com/sgl-project/sglang">SGLang</a></b> <code>⭐ 26.4K</code> <code>↗️ +1547</code> <code>Apache-2.0</code> High-performance LLM serving with constrained decoding</summary>
 
 <br>
 
@@ -4126,7 +4159,7 @@ High-performance LLM serving framework powering 400K+ GPUs with best-in-class st
 
 ```
   Score     85/100
-  Stars     ⭐ 26,370 (+1545 last 30d, +375 last 7d)
+  Stars     ⭐ 26,372 (+1547 last 30d, +377 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   Apache-2.0
@@ -4135,7 +4168,7 @@ High-performance LLM serving framework powering 400K+ GPUs with best-in-class st
 
 </details>
 
-<details><summary>🟢 <b>5</b> <b><a href="https://github.com/NVIDIA/TensorRT-LLM">TensorRT-LLM</a></b> <code>⭐ 13.5K</code> <code>↗️ +304</code> <code>NOASSERTION</code> NVIDIA's high-performance LLM inference with custom kernels</summary>
+<details><summary>🟢 <b>5</b> <b><a href="https://github.com/NVIDIA/TensorRT-LLM">TensorRT-LLM</a></b> <code>⭐ 13.5K</code> <code>↗️ +305</code> <code>NOASSERTION</code> NVIDIA's high-performance LLM inference with custom kernels</summary>
 
 <br>
 
@@ -4143,7 +4176,7 @@ High-performance LLM inference library with custom attention kernels, speculativ
 
 ```
   Score     72/100
-  Stars     ⭐ 13,466 (+304 last 30d, +66 last 7d)
+  Stars     ⭐ 13,467 (+305 last 30d, +67 last 7d)
   Activity  🟢 Apr 2026
   Release   📦 Apr 2026
   License   NOASSERTION
@@ -4557,7 +4590,7 @@ Curated list of modern generative AI projects and services.
 
 </details>
 
-<details><summary>🟡 <b>4</b> <b><a href="https://github.com/Hannibal046/Awesome-LLM">awesome-llm</a></b> <code>⭐ 26.7K</code> <code>↗️ +208</code> <code>CC0-1.0</code> LLM resources covering papers, tools, and applications</summary>
+<details><summary>🟡 <b>4</b> <b><a href="https://github.com/Hannibal046/Awesome-LLM">awesome-llm</a></b> <code>⭐ 26.7K</code> <code>↗️ +209</code> <code>CC0-1.0</code> LLM resources covering papers, tools, and applications</summary>
 
 <br>
 
@@ -4565,7 +4598,7 @@ Curated list of large language model resources covering papers, tools, and appli
 
 ```
   Score     64/100
-  Stars     ⭐ 26,686 (+208 last 30d, +31 last 7d)
+  Stars     ⭐ 26,687 (+209 last 30d, +32 last 7d)
   Activity  🟡 Jul 2025
   License   CC0-1.0
   Tags      awesome · awesome-list · curated-list · deep-learning · large-language-models

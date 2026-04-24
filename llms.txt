@@ -27,7 +27,7 @@ The canonical human-readable view is the [README](https://github.com/jbogocz/awe
 ## Evaluate & Monitor AI
 
 - [LLM Evaluation and Testing](https://github.com/jbogocz/awesome-automated-ai#llm-evaluation-and-testing): Frameworks for evaluating LLM outputs via LLM-as-judge, regression tests, and red-teaming (DeepEval, Ragas, Promptfoo, TruLens, LangSmith).
-- [LLM Routing and Selection](https://github.com/jbogocz/awesome-automated-ai#llm-routing-and-selection): Route queries to the cheapest model that meets quality bar (RouteLLM, LiteLLM, Portkey).
+- [LLM Gateways and Routers](https://github.com/jbogocz/awesome-automated-ai#llm-gateways-and-routers): Proxy, load-balance, and route requests across LLM providers; unify access and control cost (LiteLLM, Portkey, RouteLLM, Bifrost, TensorZero).
 - [Automated Monitoring and Observability](https://github.com/jbogocz/awesome-automated-ai#automated-monitoring-and-observability): Production observability for LLM and ML systems (Langfuse, Phoenix, Helicone, Evidently).
 - [Automated AI Safety](https://github.com/jbogocz/awesome-automated-ai#automated-ai-safety): Automated red-teaming and safety evaluation (PyRIT, Giskard, HarmBench).
 

@@ -172,16 +172,18 @@ categories:
     examples: [DeepEval, Promptfoo, lm-evaluation-harness, RAGAS]
 
   - id: llm-routing-and-selection
-    name: LLM Routing and Selection
+    name: LLM Gateways and Routers
     section: Evaluate & Monitor AI
-    description: Intelligent routing of requests to the optimal model based on task complexity, cost, and quality.
+    description: Gateways and routers that proxy, load-balance, cache, and intelligently select between LLM providers - unifying model access, controlling cost, and improving reliability.
     scope_in:
-      - Gateway / router that picks a backend model per request.
-      - Trained routers that reduce cost without quality loss.
+      - API gateways that proxy multiple LLM providers behind a single endpoint.
+      - Load balancing, caching, rate limiting, and automatic fallback across models.
+      - Trained routers that pick the cheapest model meeting a quality bar.
     scope_out:
-      - General inference runtimes (see LLM Inference Runtimes).
+      - General inference runtimes that serve a single model (see LLM Inference Runtimes).
       - Evaluation frameworks (see LLM Evaluation and Testing).
-    examples: [LiteLLM, RouteLLM, Portkey Gateway]
+      - Pure observability with no proxying (see Automated Monitoring and Observability).
+    examples: [LiteLLM, RouteLLM, Portkey Gateway, Bifrost, TensorZero]
 
   - id: automated-monitoring-and-observability
     name: Automated Monitoring and Observability

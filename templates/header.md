@@ -65,7 +65,7 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 
 **Evaluate & Monitor AI**
 - [LLM Evaluation and Testing](#llm-evaluation-and-testing) (0)
-- [LLM Routing and Selection](#llm-routing-and-selection) (0)
+- [LLM Gateways and Routers](#llm-gateways-and-routers) (0)
 - [Automated Monitoring and Observability](#automated-monitoring-and-observability) (0)
 - [Automated AI Safety](#automated-ai-safety) (0)
 
