@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-24T07:50:14.645Z",
+  "generated": "2026-04-24T20:43:19.047Z",
   "categories": [
     {
       "name": "General-Purpose AutoML",
@@ -537,28 +537,6 @@
           "external": false
         },
         {
-          "name": "Once-For-All",
-          "repo": "mit-han-lab/once-for-all",
-          "url": "https://github.com/mit-han-lab/once-for-all",
-          "description": "Train one network and specialize sub-networks for diverse hardware without retraining (MIT HAN Lab, ICLR 2020).",
-          "tagline": "Train once, deploy specialized sub-networks anywhere",
-          "note": "Research code; no commits since Dec 2023.",
-          "stars": 1948,
-          "trend": 3,
-          "score": 50,
-          "license": "MIT",
-          "lastCommit": "2023-12-14T04:44:52Z",
-          "archived": false,
-          "tags": [
-            "acceleration",
-            "automl",
-            "edge-ai",
-            "efficient-model",
-            "nas"
-          ],
-          "external": false
-        },
-        {
           "name": "TinyEngine",
           "repo": "mit-han-lab/tinyengine",
           "url": "https://github.com/mit-han-lab/tinyengine",
@@ -577,28 +555,6 @@
             "cpp",
             "deep-learning",
             "edge-computing"
-          ],
-          "external": false
-        },
-        {
-          "name": "Vega",
-          "repo": "huawei-noah/vega",
-          "url": "https://github.com/huawei-noah/vega",
-          "description": "AutoML pipeline covering NAS, hyperparameter optimization, auto-augmentation, and model compression (Huawei).",
-          "tagline": "Full AutoML pipeline with NAS and compression",
-          "note": "Unmaintained since Feb 2023.",
-          "stars": 851,
-          "trend": 0,
-          "score": 43,
-          "license": "NOASSERTION",
-          "lastCommit": "2023-02-15T09:36:59Z",
-          "archived": false,
-          "tags": [
-            "automl",
-            "data-augmentation",
-            "huawei",
-            "hyperparameter-optimization",
-            "model-compression"
           ],
           "external": false
         },
@@ -820,28 +776,6 @@
             "automl",
             "bayesian-optimisation",
             "bayesian-optimization"
-          ],
-          "external": false
-        },
-        {
-          "name": "Dragonfly",
-          "repo": "dragonfly/dragonfly",
-          "url": "https://github.com/dragonfly/dragonfly",
-          "description": "Scalable Bayesian optimization library supporting multi-fidelity and multi-objective search.",
-          "tagline": "Scalable Bayesian optimization with multi-fidelity search",
-          "note": "No commits since Jun 2023.",
-          "stars": 894,
-          "trend": 1,
-          "score": 47,
-          "license": "MIT",
-          "lastCommit": "2023-06-19T20:23:17Z",
-          "archived": false,
-          "tags": [
-            "bayesian-optimization",
-            "hyperparameter-optimization",
-            "machine-learning",
-            "optimization",
-            "python"
           ],
           "external": false
         },
@@ -3480,28 +3414,6 @@
           "external": false
         },
         {
-          "name": "Merlion",
-          "repo": "salesforce/Merlion",
-          "url": "https://github.com/salesforce/Merlion",
-          "description": "Time-series intelligence library with unified interfaces for forecasting, anomaly detection, and change-point detection (Salesforce).",
-          "tagline": "Unified forecasting, anomaly, and change-point detection",
-          "note": "Archived by Salesforce in 2026.",
-          "stars": 4473,
-          "trend": 7,
-          "score": 0,
-          "license": "BSD-3-Clause",
-          "lastCommit": "2026-03-11T12:52:32Z",
-          "archived": true,
-          "tags": [
-            "anomaly-detection",
-            "automl",
-            "benchmarking",
-            "ensemble-learning",
-            "forecasting"
-          ],
-          "external": false
-        },
-        {
           "name": "Nixtla NeuralForecast",
           "repo": "Nixtla/neuralforecast",
           "url": "https://github.com/Nixtla/neuralforecast",
@@ -3795,50 +3707,6 @@
           "external": false
         },
         {
-          "name": "DataPrep",
-          "repo": "sfu-db/dataprep",
-          "url": "https://github.com/sfu-db/dataprep",
-          "description": "Low-code library for data collection, cleaning, and EDA that is 10x faster than traditional profiling.",
-          "tagline": "Low-code data cleaning and EDA, 10x faster",
-          "note": "Unmaintained since Jun 2024.",
-          "stars": 2240,
-          "trend": 4,
-          "score": 51,
-          "license": "MIT",
-          "lastCommit": "2024-06-27T16:57:45Z",
-          "archived": false,
-          "tags": [
-            "apis",
-            "apiwrapper",
-            "cleaning",
-            "connector",
-            "data-exploration"
-          ],
-          "external": false
-        },
-        {
-          "name": "Optimus",
-          "repo": "hi-primus/optimus",
-          "url": "https://github.com/hi-primus/optimus",
-          "description": "Agile data preparation supporting Pandas, Dask, cuDF, and PySpark with a unified API.",
-          "tagline": "Unified data prep API across Pandas, Spark, and GPU",
-          "note": "Unmaintained since Dec 2024.",
-          "stars": 1535,
-          "trend": -1,
-          "score": 50,
-          "license": "Apache-2.0",
-          "lastCommit": "2024-12-02T14:09:25Z",
-          "archived": false,
-          "tags": [
-            "big-data-cleaning",
-            "bigdata",
-            "cudf",
-            "dask",
-            "dask-cudf"
-          ],
-          "external": false
-        },
-        {
           "name": "Spotlight",
           "repo": "Renumics/spotlight",
           "url": "https://github.com/Renumics/spotlight",
@@ -4087,28 +3955,6 @@
           "external": false
         },
         {
-          "name": "Autolabel",
-          "repo": "refuel-ai/autolabel",
-          "url": "https://github.com/refuel-ai/autolabel",
-          "description": "LLM-powered labeling, cleaning, and enrichment for text classification, NER, and entity matching.",
-          "tagline": "LLM-powered labeling for classification, NER, and matching",
-          "note": "Low activity since Mar 2025.",
-          "stars": 2313,
-          "trend": 8,
-          "score": 53,
-          "license": "MIT",
-          "lastCommit": "2025-03-05T01:15:43Z",
-          "archived": false,
-          "tags": [
-            "anthropic-claude",
-            "data-science",
-            "gpt-4",
-            "huggingface-transformers",
-            "langchain"
-          ],
-          "external": false
-        },
-        {
           "name": "X-AnyLabeling",
           "repo": "CVHub520/X-AnyLabeling",
           "url": "https://github.com/CVHub520/X-AnyLabeling",
@@ -4244,28 +4090,6 @@
             "fine-tuning",
             "gpt",
             "instruction-tuning"
-          ],
-          "external": false
-        },
-        {
-          "name": "Gretel Synthetics",
-          "repo": "gretelai/gretel-synthetics",
-          "url": "https://github.com/gretelai/gretel-synthetics",
-          "description": "Synthetic data generators for structured and unstructured text with differential privacy guarantees.",
-          "tagline": "Privacy-preserving synthetic data with differential privacy",
-          "note": "Archived by Gretel in 2025.",
-          "stars": 677,
-          "trend": 2,
-          "score": 0,
-          "license": "NOASSERTION",
-          "lastCommit": "2025-06-24T21:44:06Z",
-          "archived": true,
-          "tags": [
-            "artificial-intelligence",
-            "differential-privacy",
-            "privacy",
-            "synthetic-data",
-            "tensorflow"
           ],
           "external": false
         },

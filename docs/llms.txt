@@ -1,0 +1,56 @@
+# Awesome Automated AI/ML
+
+> A curated, benchmark-driven list of 260+ tools for Automated AI/ML — bridging classical AutoML (HPO, NAS, AutoGluon, TPOT) with the new wave of LLM-driven automation (DSPy, agents, tabular foundation models, coding agents). Source of truth is a SQLite database regenerated weekly from live GitHub API data; every entry carries a 0–100 quality score (stars 50%, trend 25%, freshness 15%, license 10%) and an activity signal (active / stale / unmaintained).
+
+The canonical human-readable view is the [README](https://github.com/jbogocz/awesome-automated-ai/blob/main/README.md). For machine consumption, prefer [`docs/data.json`](https://jbogocz.github.io/awesome-automated-ai/data.json) — it contains all entries as structured JSON with scores, tags, license, and freshness metadata.
+
+## Build AutoML
+
+- [General-Purpose AutoML](https://github.com/jbogocz/awesome-automated-ai#general-purpose-automl): End-to-end frameworks that automate model selection, hyperparameter tuning, and pipeline construction. Covers open-source libraries (AutoGluon, FLAML, PyCaret, H2O, Ludwig) and enterprise platforms (DataRobot, Vertex AI, Azure ML, SageMaker Autopilot).
+- [Neural Architecture Search](https://github.com/jbogocz/awesome-automated-ai#neural-architecture-search): Automated search for neural network architectures via RL, evolution, gradient, or LLM-guided methods (AutoKeras, NASLib, Archai, AutoPyTorch).
+- [Hyperparameter Optimization](https://github.com/jbogocz/awesome-automated-ai#hyperparameter-optimization): Libraries for tuning model hyperparameters via Bayesian optimization, bandits, or evolutionary search (Optuna, Ray Tune, SMAC, BoTorch, Ax).
+- [Automated Feature Engineering](https://github.com/jbogocz/awesome-automated-ai#automated-feature-engineering): Generate or select features automatically (Featuretools, AutoFeat, OpenFE, CAAFE — LLM-driven feature engineering).
+- [Tabular Foundation Models](https://github.com/jbogocz/awesome-automated-ai#tabular-foundation-models): Prior-data-fitted transformers that solve tabular ML in one forward pass without training (TabPFN, Mitra, TabICL, Real-TabPFN). State-of-the-art on TabArena.
+- [AutoML Benchmarks](https://github.com/jbogocz/awesome-automated-ai#automl-benchmarks): Reproducible benchmarks for comparing AutoML systems.
+
+## Build with LLMs
+
+- [Automated Fine-Tuning](https://github.com/jbogocz/awesome-automated-ai#automated-fine-tuning): Tools that automate LoRA/QLoRA fine-tuning and RLHF pipelines (Axolotl, Unsloth, LLaMA-Factory, TRL).
+- [Automated Prompt Optimization](https://github.com/jbogocz/awesome-automated-ai#automated-prompt-optimization): Program-then-compile frameworks that replace manual prompt engineering (DSPy + MIPROv2, TextGrad, GEPA). Stanford DSPy reports 10–40% quality gains over hand-tuned prompts.
+
+## Build Agents
+
+- [Agent Frameworks](https://github.com/jbogocz/awesome-automated-ai#agent-frameworks): Orchestration libraries for multi-agent and stateful agent workflows (LangGraph, CrewAI, AutoGen, Semantic Kernel, Claude Agent SDK).
+- [Coding Agents](https://github.com/jbogocz/awesome-automated-ai#coding-agents): Autonomous software-engineering agents (Claude Code, Cursor, Aider, Devin, OpenHands, Goose).
+- [ML and Research Agents](https://github.com/jbogocz/awesome-automated-ai#ml-and-research-agents): Agents that autonomously design and run ML experiments (AIDE, R&D-Agent, MLE-STAR, PiEvolve). Evaluated on MLE-Bench — current SOTA ~63% medal rate.
+
+## Evaluate & Monitor AI
+
+- [LLM Evaluation and Testing](https://github.com/jbogocz/awesome-automated-ai#llm-evaluation-and-testing): Frameworks for evaluating LLM outputs via LLM-as-judge, regression tests, and red-teaming (DeepEval, Ragas, Promptfoo, TruLens, LangSmith).
+- [LLM Routing and Selection](https://github.com/jbogocz/awesome-automated-ai#llm-routing-and-selection): Route queries to the cheapest model that meets quality bar (RouteLLM, LiteLLM, Portkey).
+- [Automated Monitoring and Observability](https://github.com/jbogocz/awesome-automated-ai#automated-monitoring-and-observability): Production observability for LLM and ML systems (Langfuse, Phoenix, Helicone, Evidently).
+- [Automated AI Safety](https://github.com/jbogocz/awesome-automated-ai#automated-ai-safety): Automated red-teaming and safety evaluation (PyRIT, Giskard, HarmBench).
+
+## ML Lifecycle
+
+- [Time-Series AutoML](https://github.com/jbogocz/awesome-automated-ai#time-series-automl): Automated forecasting (AutoGluon-TS, Nixtla, Chronos, Moirai).
+- [Automated Data Preprocessing](https://github.com/jbogocz/awesome-automated-ai#automated-data-preprocessing): Tools that automate cleaning, imputation, encoding.
+- [Automated Data Labeling](https://github.com/jbogocz/awesome-automated-ai#automated-data-labeling): Active learning and weak supervision (Label Studio, Snorkel, Argilla).
+- [Synthetic Data Generation](https://github.com/jbogocz/awesome-automated-ai#synthetic-data-generation): Generate realistic training data (SDV, Distilabel).
+- [Automated Model Compression](https://github.com/jbogocz/awesome-automated-ai#automated-model-compression): Quantization, distillation, pruning automation.
+- [MLOps and Experiment Tracking](https://github.com/jbogocz/awesome-automated-ai#mlops-and-experiment-tracking): End-to-end MLOps platforms (MLflow, W&B, ClearML, ZenML, Metaflow).
+
+## Deploy AI
+
+- [Model Serving](https://github.com/jbogocz/awesome-automated-ai#model-serving): Production model servers (KServe, BentoML, Ray Serve, Triton).
+- [LLM Inference Runtimes](https://github.com/jbogocz/awesome-automated-ai#llm-inference-runtimes): High-throughput LLM serving (vLLM, SGLang, TensorRT-LLM, TGI).
+
+## Research & Reference
+
+- [Papers and Surveys](https://github.com/jbogocz/awesome-automated-ai#papers-and-surveys): Foundational and recent papers across AutoML, agents, and foundation models.
+- [Related Awesome Lists](https://github.com/jbogocz/awesome-automated-ai#related-awesome-lists): Complementary curated lists.
+
+## Optional
+
+- [Full machine-readable dataset (data.json)](https://jbogocz.github.io/awesome-automated-ai/data.json): All 260+ entries with structured metadata — name, repo, description, tagline, tags, quality score, stars, stars30d delta, last release date, license, commercial flag, activity status. Recommended for agents and downstream tooling.
+- [Source repository](https://github.com/jbogocz/awesome-automated-ai): Pipeline source, scoring logic, SQLite schema, weekly regeneration workflow.

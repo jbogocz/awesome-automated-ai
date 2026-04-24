@@ -48,8 +48,8 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 
 **Build AutoML**
 - [General-Purpose AutoML](#general-purpose-automl) (23)
-- [Neural Architecture Search](#neural-architecture-search) (8)
-- [Hyperparameter Optimization](#hyperparameter-optimization) (11)
+- [Neural Architecture Search](#neural-architecture-search) (6)
+- [Hyperparameter Optimization](#hyperparameter-optimization) (10)
 - [Automated Feature Engineering](#automated-feature-engineering) (8)
 - [Tabular Foundation Models](#tabular-foundation-models) (5)
 - [AutoML Benchmarks](#automl-benchmarks) (5)
@@ -70,10 +70,10 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 - [Automated AI Safety](#automated-ai-safety) (6)
 
 **ML Lifecycle**
-- [Time-Series AutoML](#time-series-automl) (16)
-- [Automated Data Preprocessing](#automated-data-preprocessing) (11)
-- [Automated Data Labeling](#automated-data-labeling) (10)
-- [Synthetic Data Generation](#synthetic-data-generation) (7)
+- [Time-Series AutoML](#time-series-automl) (15)
+- [Automated Data Preprocessing](#automated-data-preprocessing) (9)
+- [Automated Data Labeling](#automated-data-labeling) (9)
+- [Synthetic Data Generation](#synthetic-data-generation) (6)
 - [Automated Model Compression](#automated-model-compression) (9)
 - [MLOps and Experiment Tracking](#mlops-and-experiment-tracking) (16)
 
@@ -532,23 +532,6 @@ Modular NAS framework for reproducible architecture search research (Microsoft).
 
 </details>
 
-<details><summary>🔴 💤 <i><a href="https://github.com/mit-han-lab/once-for-all">Once-For-All</a></i> <code>⭐ 1.9K</code> <code>MIT</code> Train once, deploy specialized sub-networks anywhere</summary>
-
-<br>
-
-*Train one network and specialize sub-networks for diverse hardware without retraining (MIT HAN Lab, ICLR 2020). **Research code; no commits since Dec 2023.***
-
-```
-  Score     50/100
-  Stars     ⭐ 1,948 (n/a)
-  Activity  🔴 Dec 2023 - unmaintained 12+ months
-  Release   📦 Jun 2020
-  License   MIT
-  Tags      acceleration · automl · edge-ai · efficient-model · nas
-```
-
-</details>
-
 <details><summary>🔴 💤 <i><a href="https://github.com/mit-han-lab/tinyengine">TinyEngine</a></i> <code>⭐ 939</code> <code>MIT</code> Inference engine for NAS models on microcontrollers</summary>
 
 <br>
@@ -577,23 +560,6 @@ Modular NAS framework for reproducible architecture search research (Microsoft).
   Activity  🔴 Nov 2024 - unmaintained 12+ months
   License   Apache-2.0
   Tags      automl · nas · neural-architecture-search
-```
-
-</details>
-
-<details><summary>🔴 💤 <i><a href="https://github.com/huawei-noah/vega">Vega</a></i> <code>⭐ 851</code> <code>NOASSERTION</code> Full AutoML pipeline with NAS and compression</summary>
-
-<br>
-
-*AutoML pipeline covering NAS, hyperparameter optimization, auto-augmentation, and model compression (Huawei). **Unmaintained since Feb 2023.***
-
-```
-  Score     43/100
-  Stars     ⭐ 851 (n/a)
-  Activity  🔴 Feb 2023 - unmaintained 12+ months
-  Release   📦 Sep 2022
-  License   NOASSERTION
-  Tags      automl · data-augmentation · huawei · hyperparameter-optimization · model-compression
 ```
 
 </details>
@@ -787,24 +753,6 @@ Hyperparameter search for Keras models with built-in Bayesian optimization and H
   Release   📦 Nov 2025
   License   Apache-2.0
   Tags      automl · deep-learning · hyperparameter-optimization · keras · machine-learning
-```
-
-</details>
-
----
-
-<details><summary>🔴 💤 <i><a href="https://github.com/dragonfly/dragonfly">Dragonfly</a></i> <code>⭐ 894</code> <code>MIT</code> Scalable Bayesian optimization with multi-fidelity search</summary>
-
-<br>
-
-*Scalable Bayesian optimization library supporting multi-fidelity and multi-objective search. **No commits since Jun 2023.***
-
-```
-  Score     47/100
-  Stars     ⭐ 894 (n/a)
-  Activity  🔴 Jun 2023 - unmaintained 12+ months
-  License   MIT
-  Tags      bayesian-optimization · hyperparameter-optimization · machine-learning · optimization · python
 ```
 
 </details>
@@ -1923,7 +1871,7 @@ Autonomous agent that solves real GitHub issues by reading, editing, and testing
 
 ---
 
-<details><summary>🟡 💤 <i><a href="https://github.com/AutoCodeRoverSG/auto-code-rover">AutoCodeRover</a></i> <code>⭐ 3.1K</code> <code>NOASSERTION</code> Structure-aware autonomous code repair and patching</summary>
+<details><summary>🔴 💤 <i><a href="https://github.com/AutoCodeRoverSG/auto-code-rover">AutoCodeRover</a></i> <code>⭐ 3.1K</code> <code>NOASSERTION</code> Structure-aware autonomous code repair and patching</summary>
 
 <br>
 
@@ -1932,7 +1880,7 @@ Autonomous agent that solves real GitHub issues by reading, editing, and testing
 ```
   Score     50/100
   Stars     ⭐ 3,067 (n/a)
-  Activity  🟡 Apr 2025 - unmaintained 12+ months
+  Activity  🔴 Apr 2025 - unmaintained 12+ months
   Release   📦 Sep 2024
   License   NOASSERTION
   Tags      agents · autonomous-agents · code-generation · llm · program-repair
@@ -2967,25 +2915,6 @@ First open-source foundation model for univariate probabilistic time-series fore
 
 </details>
 
----
-
-<details><summary>🔴 💤 <i><a href="https://github.com/salesforce/Merlion">Merlion</a></i> <code>⭐ 4.5K</code> <code>BSD-3-Clause</code> Unified forecasting, anomaly, and change-point detection</summary>
-
-<br>
-
-*Time-series intelligence library with unified interfaces for forecasting, anomaly detection, and change-point detection (Salesforce). **Archived by Salesforce in 2026.***
-
-```
-  Score     0/100
-  Stars     ⭐ 4,473 (n/a)
-  Activity  🔴 Mar 2026 - archived
-  Release   📦 Feb 2023
-  License   BSD-3-Clause
-  Tags      anomaly-detection · automl · benchmarking · ensemble-learning · forecasting
-```
-
-</details>
-
 
 **[⬆ Back to Contents](#contents)**
 
@@ -3142,42 +3071,6 @@ Clean APIs for data cleaning with a fluent method-chaining interface for pandas 
   Release   📦 Apr 2026
   License   MIT
   Tags      cleaning-data · data · data-engineering · dataframe · hacktoberfest
-```
-
-</details>
-
----
-
-<details><summary>🔴 💤 <i><a href="https://github.com/sfu-db/dataprep">DataPrep</a></i> <code>⭐ 2.2K</code> <code>MIT</code> Low-code data cleaning and EDA, 10x faster</summary>
-
-<br>
-
-*Low-code library for data collection, cleaning, and EDA that is 10x faster than traditional profiling. **Unmaintained since Jun 2024.***
-
-```
-  Score     51/100
-  Stars     ⭐ 2,240 (n/a)
-  Activity  🔴 Jun 2024 - unmaintained 12+ months
-  Release   📦 Jul 2022
-  License   MIT
-  Tags      apis · apiwrapper · cleaning · connector · data-exploration
-```
-
-</details>
-
-<details><summary>🔴 💤 <i><a href="https://github.com/hi-primus/optimus">Optimus</a></i> <code>⭐ 1.5K</code> <code>Apache-2.0</code> Unified data prep API across Pandas, Spark, and GPU</summary>
-
-<br>
-
-*Agile data preparation supporting Pandas, Dask, cuDF, and PySpark with a unified API. **Unmaintained since Dec 2024.***
-
-```
-  Score     50/100
-  Stars     ⭐ 1,535 (n/a)
-  Activity  🔴 Dec 2024 - unmaintained 12+ months
-  Release   📦 Jul 2020
-  License   Apache-2.0
-  Tags      big-data-cleaning · bigdata · cudf · dask · dask-cudf
 ```
 
 </details>
@@ -3342,25 +3235,6 @@ Automated image labeling by distilling foundation model knowledge into smaller t
 
 </details>
 
----
-
-<details><summary>🔴 💤 <i><a href="https://github.com/refuel-ai/autolabel">Autolabel</a></i> <code>⭐ 2.3K</code> <code>MIT</code> LLM-powered labeling for classification, NER, and matching</summary>
-
-<br>
-
-*LLM-powered labeling, cleaning, and enrichment for text classification, NER, and entity matching. **Low activity since Mar 2025.***
-
-```
-  Score     53/100
-  Stars     ⭐ 2,313 (n/a)
-  Activity  🔴 Mar 2025 - unmaintained 12+ months
-  Release   📦 Oct 2023
-  License   MIT
-  Tags      anthropic-claude · data-science · gpt-4 · huggingface-transformers · langchain
-```
-
-</details>
-
 
 **[⬆ Back to Contents](#contents)**
 
@@ -3467,23 +3341,6 @@ Toolkit for generating high-quality synthetic datasets to fine-tune models with 
   Release   📦 Feb 2025
   License   MIT
   Tags      alignment · deep-learning · fine-tuning · gpt · instruction-tuning
-```
-
-</details>
-
-<details><summary>🔴 💤 <i><a href="https://github.com/gretelai/gretel-synthetics">Gretel Synthetics</a></i> <code>⭐ 677</code> <code>NOASSERTION</code> Privacy-preserving synthetic data with differential privacy</summary>
-
-<br>
-
-*Synthetic data generators for structured and unstructured text with differential privacy guarantees. **Archived by Gretel in 2025.***
-
-```
-  Score     0/100
-  Stars     ⭐ 677 (n/a)
-  Activity  🔴 Jun 2025 - archived
-  Release   📦 Jun 2025
-  License   NOASSERTION
-  Tags      artificial-intelligence · differential-privacy · privacy · synthetic-data · tensorflow
 ```
 
 </details>

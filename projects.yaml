@@ -150,23 +150,11 @@ categories:
     tagline: Research code behind EfficientNet and EfficientDet
     note: Research code; sporadic updates.
     tags: [automl, efficientdet, efficientnet, efficientnetv2, object-detection]
-  - name: Once-For-All
-    repo: mit-han-lab/once-for-all
-    description: Train one network and specialize sub-networks for diverse hardware without retraining (MIT HAN Lab, ICLR 2020).
-    tagline: Train once, deploy specialized sub-networks anywhere
-    note: Research code; no commits since Dec 2023.
-    tags: [acceleration, automl, edge-ai, efficient-model, nas, tinyml]
   - name: TinyEngine
     repo: mit-han-lab/tinyengine
     description: Memory-efficient inference engine for NAS-optimized models on microcontrollers (MIT HAN Lab).
     tagline: Inference engine for NAS models on microcontrollers
     tags: [c, codegenerator, cpp, deep-learning, edge-computing, microcontroller, neural-architecture-search, pytorch, quantization, tinyml]
-  - name: Vega
-    repo: huawei-noah/vega
-    description: AutoML pipeline covering NAS, hyperparameter optimization, auto-augmentation, and model compression (Huawei).
-    tagline: Full AutoML pipeline with NAS and compression
-    note: Unmaintained since Feb 2023.
-    tags: [automl, data-augmentation, huawei, hyperparameter-optimization, model-compression, neural-architecture-search, python, pytorch]
   - name: NASLib
     repo: automl/NASLib
     description: NAS research library from AutoML Freiburg with interfaces to state-of-the-art search spaces and optimizers.
@@ -223,12 +211,6 @@ categories:
     description: Sequential model-based algorithm configuration combining Bayesian optimization with racing mechanisms (AutoML Freiburg).
     tagline: Bayesian HPO with racing mechanisms for algorithm configuration
     tags: [algorithm-configuration, automated-machine-learning, automl, bayesian-optimisation, bayesian-optimization, configuration, gaussian-process, hyperparameter-optimization, hyperparameter-search, hyperparameter-tuning, random-forest]
-  - name: Dragonfly
-    repo: dragonfly/dragonfly
-    description: Scalable Bayesian optimization library supporting multi-fidelity and multi-objective search.
-    tagline: Scalable Bayesian optimization with multi-fidelity search
-    note: No commits since Jun 2023.
-    tags: [bayesian-optimization, hyperparameter-optimization, machine-learning, optimization, python, scalable]
   - name: Google Vizier
     repo: google/vizier
     description: Research interface for blackbox and hyperparameter optimization with Bayesian, evolutionary, and multi-objective algorithms based on Google's internal Vizier Service.
@@ -860,12 +842,6 @@ categories:
     description: Lightning-fast statistical models including AutoARIMA, AutoETS, and AutoCES for millions of time series.
     tagline: Lightning-fast AutoARIMA and AutoETS at scale
     tags: [arima, automl, baselines, data-science, econometrics, ets, exponential-smoothing, fbprophet, forecasting, machine-learning, mstl, naive, neuralprophet, predictions, prophet, python, seasonal-naive, statistics, theta, time-series]
-  - name: Merlion
-    repo: salesforce/Merlion
-    description: Time-series intelligence library with unified interfaces for forecasting, anomaly detection, and change-point detection (Salesforce).
-    tagline: Unified forecasting, anomaly, and change-point detection
-    note: Archived by Salesforce in 2026.
-    tags: [anomaly-detection, automl, benchmarking, ensemble-learning, forecasting, machine-learning, time-series]
   - name: Nixtla NeuralForecast
     repo: Nixtla/neuralforecast
     description: Production-ready neural forecasting with 30+ state-of-the-art models including N-BEATS, TFT, and PatchTST.
@@ -934,18 +910,6 @@ categories:
     description: High-density EDA visualizations and target analysis reports generated in two lines of code.
     tagline: High-density EDA visualizations in two lines of code
     tags: [data-analysis, data-exploration, data-profiling, data-science, data-visualization, eda, exploration, exploratory-data-analysis, machine-learning, pandas, pandas-dataframe, python, statistics]
-  - name: DataPrep
-    repo: sfu-db/dataprep
-    description: Low-code library for data collection, cleaning, and EDA that is 10x faster than traditional profiling.
-    tagline: Low-code data cleaning and EDA, 10x faster
-    note: Unmaintained since Jun 2024.
-    tags: [apis, apiwrapper, cleaning, connector, data-exploration, data-science, datacleaning, dataconnector, dataprep, datapreparation, eda, exploratory-data-analysis, webconnector]
-  - name: Optimus
-    repo: hi-primus/optimus
-    description: Agile data preparation supporting Pandas, Dask, cuDF, and PySpark with a unified API.
-    tagline: Unified data prep API across Pandas, Spark, and GPU
-    note: Unmaintained since Dec 2024.
-    tags: [big-data-cleaning, bigdata, cudf, dask, dask-cudf, data-analysis, data-cleaner, data-cleaning, data-cleansing, data-exploration, data-extraction, data-preparation, data-profiling, data-science, data-transformation, data-wrangling, machine-learning, pyspark, spark]
   - name: Spotlight
     repo: Renumics/spotlight
     description: Interactive visualization tool for auditing and understanding unstructured ML datasets covering images, audio, and text.
@@ -1004,12 +968,6 @@ categories:
     description: Automated image labeling by distilling foundation model knowledge into smaller task-specific models (Roboflow).
     tagline: Distill foundation models into task-specific labelers
     tags: [auto-labeling, computer-vision, deep-learning, foundation-models, grounding-dino, image-annotation, image-classification, instance-segmentation, labeling-tool, machine-learning, model-distillation, multimodal, object-detection, pytorch, segment-anything, yolov5, yolov8]
-  - name: Autolabel
-    repo: refuel-ai/autolabel
-    description: LLM-powered labeling, cleaning, and enrichment for text classification, NER, and entity matching.
-    tagline: LLM-powered labeling for classification, NER, and matching
-    note: Low activity since Mar 2025.
-    tags: [anthropic-claude, data-science, gpt-4, huggingface-transformers, langchain, large-language-models, llm, llms, machine-learning, openai, python]
   - name: X-AnyLabeling
     repo: CVHub520/X-AnyLabeling
     description: AI-assisted annotation with Segment Anything and other foundation models for automatic segmentation, detection, and classification pre-labeling.
@@ -1043,12 +1001,6 @@ categories:
     description: Reproducible LLM workflows for prompting, synthetic data generation, and model training in one pipeline.
     tagline: Reproducible LLM pipelines for synthetic data and training
     tags: [alignment, deep-learning, fine-tuning, gpt, instruction-tuning, llm, llmops, llms, machine-learning, natural-language-processing, nlp, nlp-library, openai, python, pytorch, synthetic-data, synthetic-dataset-generation, transformers]
-  - name: Gretel Synthetics
-    repo: gretelai/gretel-synthetics
-    description: Synthetic data generators for structured and unstructured text with differential privacy guarantees.
-    tagline: Privacy-preserving synthetic data with differential privacy
-    note: Archived by Gretel in 2025.
-    tags: [artificial-intelligence, differential-privacy, privacy, synthetic-data, tensorflow]
   - name: Curator
     repo: bespokelabsai/curator
     description: Pipeline-oriented synthetic data curation for post-training and structured data extraction with built-in quality filtering from LLMs.

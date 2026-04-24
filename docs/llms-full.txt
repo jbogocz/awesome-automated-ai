@@ -1,0 +1,105 @@
+# Awesome Automated AI/ML — Full Content Index
+
+> This file is the expanded LLM-consumable index for awesome-automated-ai. For structured machine-readable data, use `docs/data.json`. For the full rendered list with quality scores and trend indicators, use `README.md`. See `llms.txt` for the concise top-level navigator.
+
+## Preferred machine-consumable sources
+
+1. **[`docs/data.json`](https://jbogocz.github.io/awesome-automated-ai/data.json)** — authoritative structured dataset. All 260+ entries with: name, repo, description, tagline, tags, license, commercial flag, category, section, quality score (0–100), stars, stars30d delta, last release date, last activity date, activity status (active/stale/unmaintained/archived). Regenerated weekly from live GitHub API.
+2. **[`README.md`](https://github.com/jbogocz/awesome-automated-ai/blob/main/README.md)** — human-readable view with collapsible per-entry dashboards, quality bars, medals (top 3 per category), and health markers.
+3. **[`projects.yaml`](https://github.com/jbogocz/awesome-automated-ai/blob/main/projects.yaml)** — editable content source of truth (entries, taglines, categorization).
+4. **[`src/categories.yaml`](https://github.com/jbogocz/awesome-automated-ai/blob/main/src/categories.yaml)** — category taxonomy with explicit scope_in / scope_out rules.
+
+## Scoring methodology
+
+Each entry receives a quality score from 0 to 100:
+
+- **Stars weight: 50%** — logarithmic scale (ln of star count) normalized against category max.
+- **Trend weight: 25%** — stars gained in last 30 days (growth signal).
+- **Freshness weight: 15%** — days since last commit; decays linearly after 6 months.
+- **License weight: 10%** — permissive (MIT, Apache-2.0, BSD) score full; restrictive or unknown reduced.
+- **Archived repos score 0.**
+
+Activity signals:
+
+- 🟢 **Active** — commit activity within last 6 months.
+- 🟡 **Stale** — commit activity 6–12 months ago.
+- 🔴 **Unmaintained** — no activity for 12+ months.
+- 💤 (`:zzz:`) — explicit unmaintained marker.
+- 🗄 (`:file_cabinet:`) — historical, included for foundational influence despite inactivity.
+- 🏢 (`:office:`) — commercial enterprise vendor product.
+
+## Sections and categories
+
+### Build AutoML
+
+End-to-end classical ML automation.
+
+- **General-Purpose AutoML** (23 entries) — AutoGluon, Ludwig, PyCaret, AutoKeras, FLAML, H2O AutoML, MLJAR Supervised, LightAutoML, EvalML, SapientML, GAMA, Vertex AI, Azure ML AutoML, SageMaker Autopilot, and more.
+- **Neural Architecture Search** — AutoKeras, NNI (archived, historical), NASLib, Archai, AutoPyTorch, TinyEngine, Google AutoML, plus LLM-guided NAS.
+- **Hyperparameter Optimization** — Optuna, Ray Tune, SMAC, BoTorch, Ax, Hyperopt (historical), Nevergrad, DeepHyper.
+- **Automated Feature Engineering** — Featuretools, AutoFeat, OpenFE, tsfresh; CAAFE uses LLMs for semantic feature proposals.
+- **Tabular Foundation Models** — TabPFN v2.5 (state of the art on TabArena, matches AutoGluon 1.4 ensemble in a single forward pass), Mitra, TabICL, Real-TabPFN, ContextTab, LimiX.
+- **AutoML Benchmarks** — AutoML Benchmark, TabRepo, TabArena, OpenML-CC18.
+
+### Build with LLMs
+
+LLM-specific automation.
+
+- **Automated Fine-Tuning** — Axolotl, Unsloth, LLaMA-Factory, TRL, PEFT, MS-Swift.
+- **Automated Prompt Optimization** — DSPy + MIPROv2 (Stanford, 10–40% gains over hand-tuned), TextGrad, GEPA, PromptWizard, AdalFlow.
+
+### Build Agents
+
+- **Agent Frameworks** — LangGraph, CrewAI, AutoGen, Semantic Kernel, Claude Agent SDK, OpenAI Agents SDK, Google ADK, Pydantic AI, Smolagents, PraisonAI.
+- **Coding Agents** — Claude Code, Cursor, Aider, OpenHands (formerly OpenDevin), Devin, Goose, Continue, Cline.
+- **ML and Research Agents** — AIDE (54% medal rate on MLE-Bench Lite), R&D-Agent (Microsoft), MLE-STAR (Google Research), PiEvolve (Fractal, Rank-1 on OpenAI MLE-Bench), AIRA, ML-Master. Evaluated on [MLE-Bench](https://github.com/openai/mle-bench).
+
+### Evaluate & Monitor AI
+
+- **LLM Evaluation and Testing** — DeepEval, Ragas, Promptfoo, TruLens, LangSmith, Arize Phoenix, Giskard, OpenAI Evals, LightEval.
+- **LLM Routing and Selection** — RouteLLM, LiteLLM, Portkey, not-diamond.
+- **Automated Monitoring and Observability** — Langfuse, Phoenix, Helicone, Evidently, WhyLogs, Lunary.
+- **Automated AI Safety** — PyRIT, Giskard, HarmBench, deepteam, garak.
+
+### ML Lifecycle
+
+- **Time-Series AutoML** — AutoGluon-TimeSeries, Nixtla (StatsForecast / NeuralForecast / MLForecast), Chronos (Amazon), Moirai (Salesforce), TimesFM (Google), sktime, Darts, Prophet.
+- **Automated Data Preprocessing** — YData Profiling, Great Expectations, Cleanlab, Pandera, Autoclean.
+- **Automated Data Labeling** — Label Studio, Snorkel, Argilla, Prodigy, doccano.
+- **Synthetic Data Generation** — SDV, Distilabel, Faker, Mostly AI, YData Fabric.
+- **Automated Model Compression** — GPTQ, AWQ, llama.cpp, SparseML, Optimum, OpenVINO.
+- **MLOps and Experiment Tracking** — MLflow, Weights & Biases, ClearML, Neptune, DVC, ZenML, Metaflow, Kubeflow, Flyte, Prefect, Dagster.
+
+### Deploy AI
+
+- **Model Serving** — KServe, BentoML, Ray Serve, Triton Inference Server, Seldon Core, TorchServe.
+- **LLM Inference Runtimes** — vLLM, SGLang, TensorRT-LLM, TGI (Hugging Face), LMDeploy, llama.cpp, Ollama.
+
+### Research & Reference
+
+- **Papers and Surveys** — foundational and recent papers across AutoML, agents, tabular foundation models, prompt optimization.
+- **Related Awesome Lists** — complementary curated lists linked for cross-reference (not duplicated).
+
+## How to use this list programmatically
+
+For AI agents and downstream tooling:
+
+```bash
+# Fetch the machine-readable dataset
+curl -sL https://jbogocz.github.io/awesome-automated-ai/data.json
+
+# Query: top-5 active tools in a category
+curl -sL https://jbogocz.github.io/awesome-automated-ai/data.json \
+  | jq '.categories[] | select(.name=="General-Purpose AutoML") | .entries | map(select(.activity=="active")) | sort_by(-.score) | .[0:5]'
+```
+
+## Non-goals / what this list deliberately does not cover
+
+To avoid duplicating well-maintained existing lists:
+
+- **MCP servers** — covered by [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers).
+- **Per-tool coding agent ecosystems** — covered by [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code), [awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules).
+- **General MLOps** — covered by [kelvins/awesome-mlops](https://github.com/kelvins/awesome-mlops); we cover only the AutoML-adjacent subset.
+- **Generic LLM apps** — covered by [Shubhamsaboo/awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps).
+
+This list's scope is the **intersection of AutoML and LLM-driven automation** — tools that eliminate or automate the work a human ML engineer would otherwise do.
