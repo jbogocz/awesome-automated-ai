@@ -297,6 +297,21 @@ categories:
     description: Context-aware tabular representation using pretrained language models for data with heterogeneous columns.
     tagline: LLM-powered representation for heterogeneous tabular data
     tags: [classification, data-science, graph-transformer, machine-learning, regression, transformers]
+  - name: LimiX
+    repo: limix-ldm-ai/LimiX
+    description: Structured-data foundation model that jointly models variables and missingness via a Latent Distribution Model, introducing LDM scaling laws for tabular data.
+    tagline: Joint variable + missingness modeling with LDM scaling laws
+    tags: [foundation-models, machine-learning, structured-data, tabular-data]
+  - name: ConTextTab
+    repo: SAP-samples/sap-rpt-1-oss
+    description: Semantics-aware tabular in-context learner (SAP-RPT-1) trained on real-world tabular data rather than purely synthetic priors.
+    tagline: Semantics-aware ICL trained on real tables
+    tags: [deep-learning, foundation-models, in-context-learning, tabular-data]
+  - name: TabDPT
+    repo: layer6ai-labs/TabDPT-inference
+    description: Scales tabular foundation models via pretraining on real data; inference code from "TabDPT, Scaling Tabular Foundation Models on Real Data" (Layer 6 AI).
+    tagline: Scaling tabular foundation models on real data
+    tags: [deep-learning, foundation-models, machine-learning, pretraining, tabular-data]
 - name: AutoML Benchmarks
   description: Standardised benchmarks and evaluation harnesses for comparing AutoML systems and ML agents across tasks and datasets.
   entries:
