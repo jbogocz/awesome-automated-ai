@@ -12,6 +12,7 @@
     "generate": "tsx src/cli.ts generate",
     "refresh-tags": "tsx src/cli.ts refresh-tags",
     "reclassify": "tsx src/cli.ts reclassify",
+    "validate": "tsx src/cli.ts validate",
     "site-data": "tsx src/generator/site-data.ts",
     "bump-version": "node scripts/bump-version.mjs",
     "lint": "biome check .",

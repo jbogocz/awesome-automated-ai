@@ -3,6 +3,8 @@ import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { DB } from "../db/client.js";
 import { computeQualityScore } from "../scoring/quality.js";
+import { computeTrends } from "../scoring/trends.js";
+import { logger } from "../utils/logger.js";
 import { backfillBatch } from "./backfill.js";
 import type { ApiData } from "./readme.js";
 
@@ -29,7 +31,7 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
       }
     }
   }
-  console.log(`Fetching data for ${repos.length} repos...`);
+  logger.info(`Fetching data for ${repos.length} repos...`);
 
   const dbPath = resolve(import.meta.dirname, "../../data/curator.db");
   const db = new DB(dbPath);
@@ -51,7 +53,7 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
   }
 
   if (pendingBackfill.length > 0) {
-    console.log(`Backfilling 30d history for ${pendingBackfill.length} new/missing repos...`);
+    logger.info(`Backfilling 30d history for ${pendingBackfill.length} new/missing repos...`);
     await backfillBatch(pendingBackfill, db);
   }
 
@@ -65,9 +67,12 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
     const starsPrevious = db.getPreviousStars(projectId);
     const stars7dAgo = db.getStarsNDaysAgo(projectId, 7);
     const stars30dAgo = db.getStarsNDaysAgo(projectId, 30);
-    const trend7d = stars7dAgo !== null ? raw.stars - stars7dAgo : null;
-    const trend30d = stars30dAgo !== null ? raw.stars - stars30dAgo : null;
-    const trend = trend30d ?? (starsPrevious !== null ? raw.stars - starsPrevious : null);
+    const { trend, trend7d, trend30d } = computeTrends({
+      currentStars: raw.stars,
+      stars7dAgo,
+      stars30dAgo,
+      starsPrevious,
+    });
 
     const score = computeQualityScore({
       stars: raw.stars,
@@ -153,9 +158,12 @@ export function loadApiDataFromDB(yamlContent: string): ApiData {
     const stars7dAgo = db.getStarsNDaysAgo(projectId, 7);
     const stars30dAgo = db.getStarsNDaysAgo(projectId, 30);
     const starsPrevious = db.getPreviousStars(projectId);
-    const trend7d = stars7dAgo !== null ? latest.stars - stars7dAgo : null;
-    const trend30d = stars30dAgo !== null ? latest.stars - stars30dAgo : null;
-    const trend = trend30d ?? (starsPrevious !== null ? latest.stars - starsPrevious : null);
+    const { trend, trend7d, trend30d } = computeTrends({
+      currentStars: latest.stars,
+      stars7dAgo,
+      stars30dAgo,
+      starsPrevious,
+    });
 
     const tagline = db.getTagline(projectId) ?? yamlTagline ?? null;
 
@@ -207,7 +215,9 @@ function fetchOneRepo(repo: string): RawApiResult {
       lastCommit,
       language: parsed.language ?? null,
     };
-  } catch {
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    logger.warn(`Failed to fetch repo data for ${repo}: ${msg}`);
     return {
       stars: 0,
       pushed: "",
