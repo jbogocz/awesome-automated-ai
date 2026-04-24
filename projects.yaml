@@ -652,6 +652,26 @@ categories:
     description: Autonomous research agent that plans queries, scrapes sources, and writes cited multi-page reports using any LLM with optional MCP server mode.
     tagline: Autonomous deep-research report agent
     tags: [agent, ai, automation, deepresearch, llms, mcp, mcp-server, python, research, search, webscraping]
+  - name: R&D-Agent
+    repo: microsoft/RD-Agent
+    description: Multi-agent framework automating the full R&D loop for data-driven AI (hypothesis, implementation, evaluation, iteration); top-performing MLE-Bench agent at 35.1% any-medal rate on its chosen components (Microsoft, ICLR 2026 submission).
+    tagline: Microsoft multi-agent R&D loop for data-driven AI
+    tags: [agents, autonomous-research, llm-agents, machine-learning, mle-bench, multi-agent]
+  - name: AIBuildAI
+    repo: aibuildai/AI-Build-AI
+    description: Hierarchical agent system for autonomous AI model development; ranked #1 on MLE-Bench leaderboard with 63.1% medal rate (March 2026), outperforming 26 baseline methods including AIDE, R&D-Agent, and MLE-STAR.
+    tagline: SOTA on MLE-Bench (63.1% medal rate, March 2026)
+    tags: [agents, autonomous-agents, machine-learning, mle-bench, multi-agent]
+  - name: MLEvolve
+    repo: InternScience/MLEvolve
+    description: End-to-end ML algorithm design and optimization via progressive search and experience-driven memory; tracked on the MLE-Bench leaderboard alongside AIDE and R&D-Agent.
+    tagline: Progressive search + experience memory for ML agents
+    tags: [agents, automl, evolutionary-search, machine-learning, mle-bench]
+  - name: PiEvolve
+    repo: FractalAIResearchLabs/PiEvolve
+    description: Evolutionary agent for long-horizon tasks; achieved Rank-1 overall on the OpenAI MLE-Bench leaderboard with compute-efficient variant ranked 4th at ~50% budget (Fractal AI Research).
+    tagline: Rank-1 on OpenAI MLE-Bench via evolutionary search
+    tags: [agents, autonomous-agents, evolutionary-search, machine-learning, mle-bench]
 - name: LLM Evaluation and Testing
   description: Frameworks for automated evaluation, testing, benchmarking, and red-teaming of language models, RAG pipelines, and agentic systems.
   entries:
