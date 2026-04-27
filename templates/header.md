@@ -10,9 +10,8 @@
 A curated list of tools for Automated AI/ML - from hyperparameter optimization to autonomous AI agents.
 
 [![Views](https://hits.sh/github.com/jbogocz/awesome-automated-ai.svg?style=flat-square&label=views&color=2f6feb)](https://hits.sh/github.com/jbogocz/awesome-automated-ai/)
-[![Version](https://img.shields.io/github/package-json/v/jbogocz/awesome-automated-ai?style=flat-square&label=version&color=2f6feb)](https://github.com/jbogocz/awesome-automated-ai/releases/latest)
 [![GitHub stars](https://img.shields.io/github/stars/jbogocz/awesome-automated-ai?style=flat-square&color=2f6feb)](https://github.com/jbogocz/awesome-automated-ai/stargazers)
-[![Last commit](https://img.shields.io/github/last-commit/jbogocz/awesome-automated-ai?style=flat-square&color=2f6feb)](https://github.com/jbogocz/awesome-automated-ai/commits)
+[![Version](https://img.shields.io/github/package-json/v/jbogocz/awesome-automated-ai?style=flat-square&label=version&color=2f6feb)](https://github.com/jbogocz/awesome-automated-ai/releases/latest)
 [![License: CC0 + MIT](https://img.shields.io/badge/license-CC0_+_MIT-2f6feb?style=flat-square)](LICENSE)
 [![Tools](https://img.shields.io/badge/tools-250+-2f6feb?style=flat-square)](#contents)
 
