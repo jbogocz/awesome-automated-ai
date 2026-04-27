@@ -232,11 +232,15 @@ function fetchOneRepo(repo: string): RawApiResult {
 }
 
 function fetchReleaseAndCommit(repo: string): { lastRelease: string | null; lastCommit: string | null } {
+  // 404 from `releases/latest` is normal — many repos never tag a GitHub release.
+  // Silence stderr so the gh CLI's "Not Found" noise doesn't pollute logs; the
+  // catch already handles the expected miss.
   let lastRelease: string | null = null;
   try {
     const out = execFileSync("gh", ["api", `repos/${repo}/releases/latest`, "--jq", ".published_at"], {
       timeout: 10_000,
       encoding: "utf-8",
+      stdio: ["ignore", "pipe", "ignore"],
     }).trim();
     if (out) lastRelease = out;
   } catch {
@@ -247,6 +251,7 @@ function fetchReleaseAndCommit(repo: string): { lastRelease: string | null; last
     const out = execFileSync("gh", ["api", `repos/${repo}/commits?per_page=1`, "--jq", ".[0].commit.committer.date"], {
       timeout: 10_000,
       encoding: "utf-8",
+      stdio: ["ignore", "pipe", "ignore"],
     }).trim();
     if (out) lastCommit = out;
   } catch {
