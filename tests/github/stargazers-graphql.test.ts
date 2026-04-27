@@ -140,4 +140,65 @@ describe("fetchRecentStargazersBatch", () => {
     }
     expect(mockExec).toHaveBeenCalledTimes(2);
   });
+
+  it("retries transient HTTP 5xx then succeeds", async () => {
+    vi.useFakeTimers();
+    try {
+      mockExec.mockImplementationOnce(() => {
+        throw new Error("Command failed: gh api graphql ...\ngh: HTTP 502\n");
+      });
+      mockExec.mockImplementationOnce(() =>
+        JSON.stringify({
+          data: {
+            r0: {
+              stargazerCount: 50,
+              stargazers: {
+                edges: [{ starredAt: "2026-04-10T12:00:00Z" }],
+                pageInfo: { hasNextPage: false, endCursor: null },
+              },
+            },
+            rateLimit: { remaining: 4998, resetAt: "2026-04-19T18:00:00Z", cost: 1 },
+          },
+        }),
+      );
+
+      const promise = fetchRecentStargazersBatch(["owner/repo"], new Date(Date.UTC(2026, 2, 20)));
+      await vi.runAllTimersAsync();
+      const result = await promise;
+
+      expect(mockExec).toHaveBeenCalledTimes(2);
+      expect(result.pages.get("owner/repo")?.stargazers.length).toBe(1);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("does not retry non-transient errors (4xx)", async () => {
+    mockExec.mockImplementation(() => {
+      throw new Error("Command failed: gh api graphql ...\ngh: HTTP 401 Unauthorized\n");
+    });
+    await expect(fetchRecentStargazersBatch(["owner/repo"], new Date(Date.UTC(2026, 2, 20)))).rejects.toThrow(
+      /HTTP 401/,
+    );
+    expect(mockExec).toHaveBeenCalledTimes(1);
+  });
+
+  it("rethrows after exhausting retries on persistent 5xx", async () => {
+    vi.useFakeTimers();
+    try {
+      mockExec.mockImplementation(() => {
+        throw new Error("Command failed: gh api graphql ...\ngh: HTTP 503\n");
+      });
+      const promise = fetchRecentStargazersBatch(["owner/repo"], new Date(Date.UTC(2026, 2, 20)));
+      const settled = promise.catch((e) => e);
+      await vi.runAllTimersAsync();
+      const err = await settled;
+      expect(err).toBeInstanceOf(Error);
+      expect((err as Error).message).toMatch(/HTTP 503/);
+      // 1 initial attempt + 4 retries = 5 total
+      expect(mockExec).toHaveBeenCalledTimes(5);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
 });

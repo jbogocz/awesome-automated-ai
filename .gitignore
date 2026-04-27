@@ -12,8 +12,8 @@ dist/
 .env.local
 *.tsbuildinfo
 .turbo/
-data/
-*.db
+data/*
+!data/curator.db
 *.db-wal
 *.db-shm
 coverage/

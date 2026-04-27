@@ -1,7 +1,14 @@
 import { execFileSync } from "node:child_process";
+import { logger } from "../utils/logger.js";
 import type { RateLimitInfo, RepoStargazersPage } from "./types.js";
 
 const GH_TIMEOUT_MS = 30_000;
+
+// Transient GitHub failures (502/503/504, dropped connections, DNS hiccups) used to
+// kill the whole weekly regen — see commit history. Retry with exponential backoff
+// to ride them out; non-transient errors (auth, 4xx) still fail fast.
+const MAX_RETRIES = 4;
+const BASE_BACKOFF_MS = 2_000;
 
 // GraphQL cost is ceil(sum(connection first/last args) / 100). Base query with N aliases
 // shares one `first: 100` denominator each; continuations bill per-alias. Keeping
@@ -111,18 +118,37 @@ export function parseBatchResponse(repos: string[], resp: GraphQLResponse): Batc
   return { pages, rateLimit: rl, pointsUsed: rl.cost };
 }
 
-function ghGraphQL(query: string): GraphQLResponse {
-  const out = execFileSync("gh", ["api", "graphql", "-f", `query=${query}`], {
-    timeout: GH_TIMEOUT_MS,
-    encoding: "utf-8",
-    maxBuffer: 32 * 1024 * 1024,
-  });
-  return JSON.parse(out) as GraphQLResponse;
+function isTransientGhError(err: unknown): boolean {
+  const errMsg = err instanceof Error ? err.message : String(err);
+  const stderrField = (err as { stderr?: unknown })?.stderr;
+  const stderr =
+    typeof stderrField === "string" ? stderrField : Buffer.isBuffer(stderrField) ? stderrField.toString("utf-8") : "";
+  const haystack = `${errMsg}\n${stderr}`;
+  return /HTTP 5\d\d|ETIMEDOUT|ECONNRESET|ENOTFOUND|EAI_AGAIN|connection reset|i\/o timeout/i.test(haystack);
+}
+
+async function ghGraphQL(query: string): Promise<GraphQLResponse> {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const out = execFileSync("gh", ["api", "graphql", "-f", `query=${query}`], {
+        timeout: GH_TIMEOUT_MS,
+        encoding: "utf-8",
+        maxBuffer: 32 * 1024 * 1024,
+      });
+      return JSON.parse(out) as GraphQLResponse;
+    } catch (err) {
+      if (attempt >= MAX_RETRIES || !isTransientGhError(err)) throw err;
+      const delay = BASE_BACKOFF_MS * 2 ** attempt;
+      const msg = err instanceof Error ? err.message.split("\n")[0] : String(err);
+      logger.warn(`gh graphql attempt ${attempt + 1}/${MAX_RETRIES + 1} failed (${msg}); retrying in ${delay}ms`);
+      await new Promise((r) => setTimeout(r, delay));
+    }
+  }
 }
 
 export async function fetchRecentStargazersBatch(repos: string[], since: Date): Promise<BatchResult> {
   const firstQuery = buildBatchQuery(repos);
-  const firstParse = parseBatchResponse(repos, ghGraphQL(firstQuery));
+  const firstParse = parseBatchResponse(repos, await ghGraphQL(firstQuery));
   let totalPoints = firstParse.pointsUsed;
   let lastRl = firstParse.rateLimit;
 
@@ -146,7 +172,7 @@ export async function fetchRecentStargazersBatch(repos: string[], since: Date): 
       cursorByAlias[aliasFor(i)] = chunk[i].cursor;
     });
     const q = buildBatchQuery(chunkRepos, cursorByAlias);
-    const parsed = parseBatchResponse(chunkRepos, ghGraphQL(q));
+    const parsed = parseBatchResponse(chunkRepos, await ghGraphQL(q));
     totalPoints += parsed.pointsUsed;
     lastRl = parsed.rateLimit;
 
