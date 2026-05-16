@@ -1,69 +1,39 @@
-// Awesome Automated AI/ML — Catalog
-// Modern static UI, no framework, no build step.
-// Standards: ES modules, OKLCH, View Transitions, container queries, native dialog patterns.
+// docs/app.js — orchestrator + critical render path.
+// Architecture (2026): vanilla ES modules, no build step, no framework.
+// - Pure helpers + visual primitives in ./lib.js
+// - Command palette in ./cmdk.js  (lazy-loaded on first ⌘K / '/' / click)
+// - Detail sheet in   ./sheet.js  (lazy-loaded on first row click)
+// LCP-critical code stays here; everything user-triggered defers parse cost.
+
+import {
+  $, $$, escapeText, slug, html, raw, render, RANGE,
+  fmtStars, fmtTrend, fmtAge, isAlive, magnitude, isHot,
+  avatarHtml, sparkSvg,
+} from './lib.js';
 
 const DATA_URL = './data.json';
 
-// ── Safe HTML helpers ─────────────────────────────────────────────────
-// All dynamic data is escaped at the boundary; templates are author-controlled.
-const ESC = { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' };
-const escapeText = (s) => String(s ?? '').replace(/[&<>"']/g, ch => ESC[ch]);
-
-// Tagged template that auto-escapes interpolations and returns a DocumentFragment.
-// Uses Range.createContextualFragment — no .innerHTML assignment on live elements.
-const RANGE = document.createRange();
-const html = (strings, ...vals) => {
-  let out = '';
-  strings.forEach((s, i) => {
-    out += s;
-    if (i < vals.length) {
-      const v = vals[i];
-      if (v && typeof v === 'object' && v.__raw) out += v.__raw;
-      else out += escapeText(v);
-    }
-  });
-  return RANGE.createContextualFragment(out);
-};
-const raw = (s) => ({ __raw: String(s) });
-
-// Render fragment to a host element (replaces children).
-const render = (host, frag) => { host.replaceChildren(...frag.childNodes); };
-
-// ── DOM refs ──────────────────────────────────────────────────────────
-const $ = (s, r = document) => r.querySelector(s);
-const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-
+// ── DOM refs ─────────────────────────────────────────────────────────
 const els = {
-  brandSubText: $('#brand-sub-text'),
-  sectionGroups: $('#section-groups'),
-  catAll:      $('#cat-all'),
-  catAllCount: $('#cat-all-count'),
-  chipAlive:   $('[data-filter="alive"]'),
+  brandSubText:   $('#brand-sub-text'),
+  sectionGroups:  $('#section-groups'),
+  catAll:         $('#cat-all'),
+  catAllCount:    $('#cat-all-count'),
   chipAliveCount: $('#chip-alive-count'),
-  stream:      $('#stream'),
-  resultCount: $('#result-count'),
-  sortGroup:   $('.sort-group'),
-  chips:       $$('.chip'),
-  lenses:      $$('.lens'),
-  lensCaption: $('#lens-caption'),
-
-  sheet:       $('#sheet'),
-  sheetTitle:  $('#sheet-title'),
-  sheetBody:   $('#sheet-body'),
-  sheetClose:  $('#sheet-close'),
-  scrim:       $('#scrim'),
-
-  cmdk:        $('#cmdk'),
-  cmdkTrigger: $('#cmdk-trigger'),
-  cmdkInput:   $('#cmdk-input'),
-  cmdkList:    $('#cmdk-list'),
-
-  themeToggle: $('#theme-toggle'),
-  menuTrigger: $('#menu-trigger'),
-  sidebar:     $('#sidebar'),
+  stream:         $('#stream'),
+  resultCount:    $('#result-count'),
+  sortGroup:      $('.sort-group'),
+  chips:          $$('.chip'),
+  lenses:         $$('.lens'),
+  lensCaption:    $('#lens-caption'),
+  cmdkTrigger:    $('#cmdk-trigger'),
+  scrim:          $('#scrim'),
+  themeToggle:    $('#theme-toggle'),
+  menuTrigger:    $('#menu-trigger'),
+  sidebar:        $('#sidebar'),
 };
 
-// ── State ─────────────────────────────────────────────────────────────
+// ── State ────────────────────────────────────────────────────────────
 const state = {
   raw: null,
   entries: [],
@@ -71,81 +41,27 @@ const state = {
   categoryById: new Map(),
   filters: { categoryId: null, lens: 'all', alive: false, commercial: false, oss: false, archived: false, q: '' },
   sort: 'score',
-  selected: null,
 };
 
-// ── Helpers ───────────────────────────────────────────────────────────
-const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-
-const fmtStars = (n) => {
-  if (n == null) return '—';
-  if (n >= 10000) return (n / 1000).toFixed(0) + 'k';
-  if (n >= 1000)  return (n / 1000).toFixed(1) + 'k';
-  return String(n);
-};
-
-const fmtTrend = (t) => {
-  if (t == null || t === 0) return { txt: '', cls: 'na' };
-  const cls = t > 0 ? 'up' : 'down';
-  return { txt: Math.abs(t).toFixed(0), cls };
-};
-
-const fmtAge = (iso) => {
-  if (!iso) return '—';
-  const d = new Date(iso);
-  if (Number.isNaN(d.valueOf())) return '—';
-  const days = Math.floor((Date.now() - d.getTime()) / 86400000);
-  if (days < 1)   return 'today';
-  if (days < 7)   return `${days}d`;
-  if (days < 30)  return `${Math.floor(days / 7)}w`;
-  if (days < 365) return `${Math.floor(days / 30)}mo`;
-  return `${Math.floor(days / 365)}y`;
-};
-
-const isAlive = (e) => {
-  if (e.archived) return false;
-  if (!e.lastCommit) return false;
-  const days = (Date.now() - new Date(e.lastCommit).getTime()) / 86400000;
-  return days < 180;
-};
-
-const magnitude = (e) => {
-  if (e.archived) return 'extinct';
-  if (e.external) return 'paper';
-  const s = e.stars ?? 0;
-  if (s >= 10000) return '5';
-  if (s >= 1000)  return '4';
-  if (s >= 100)   return '3';
-  return '2';
-};
-
-const isHot = (e) => !e.archived && (e.trend ?? 0) >= 15;
-
-// ── Curated lenses ────────────────────────────────────────────────────
-// Each lens is a curatorial verdict, not a checkbox.
-// "What should a serious ML engineer look at right now?"
+// ── Curated lenses ───────────────────────────────────────────────────
 const LENSES = {
   all: {
     test: () => true,
     caption: (n) => `The full frontier — <b>${n}</b> tools across 25 categories. Sorted by composite score.`,
   },
   frontier: {
-    // Composite score is the repo's own quality verdict; elite tier only.
     test: (e) => isAlive(e) && (e.score ?? 0) >= 80,
     caption: (n) => `<b>${n}</b> elite tools by composite score — proven AND active.`,
   },
   rising: {
-    // High trend but still small — the real "watch list".
     test: (e) => !e.archived && (e.trend ?? 0) >= 60 && (e.stars ?? 0) < 2500,
     caption: (n) => `<b>${n}</b> small but accelerating — under-the-radar work to watch.`,
   },
   foundations: {
-    // Big, stable, and still maintained.
     test: (e) => isAlive(e) && (e.stars ?? 0) >= 10000,
     caption: (n) => `<b>${n}</b> heavy hitters still maintained — the bedrock.`,
   },
   quiet: {
-    // Mature tools holding steady: solid base, no fireworks.
     test: (e) => isAlive(e) && (e.trend ?? 0) < 30 && (e.stars ?? 0) >= 500,
     caption: (n) => `<b>${n}</b> mature and steady — tools that don't need to move.`,
   },
@@ -159,79 +75,7 @@ const LENSES = {
   },
 };
 
-// ── Sparkline: synthesize 30-day star trajectory ─────────────────────
-// Real data is the latest stars + 30d trend %. We rebuild the curve from
-// that with a deterministic monotonic-with-noise shape so each row has
-// its own light curve, but ordering matches the trend direction.
-function sparkPoints(e, n = 10) {
-  const stars = e.stars ?? 0;
-  if (!stars || e.external || e.archived) return null;
-  const t = (e.trend ?? 0) / 100;
-  if (Math.abs(t) < 0.001 && stars < 50) return null;
-  const start = stars / (1 + t);
-  // Deterministic small noise from a string hash so each row is distinct.
-  const seed = [...(e.name || '')].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
-  const noise = (i) => (((seed ^ (i * 2654435761)) >>> 0) % 1000 / 1000 - 0.5) * 0.06;
-  const out = [];
-  for (let i = 0; i < n; i++) {
-    const k = i / (n - 1);
-    const eased = k * k * (3 - 2 * k);
-    const v = start + (stars - start) * eased;
-    out.push(v * (1 + noise(i)));
-  }
-  // anchor exact endpoints
-  out[0] = start;
-  out[n - 1] = stars;
-  return out;
-}
-
-// Avatar: GitHub org logo for repos, initial-letter chip for papers/external.
-// Letter is always rendered behind the img; if the image fails, letter shows.
-function avatarHtml(e, mag, hot) {
-  const trendAttr = hot ? 'hot' : '';
-  const letter = escapeText((e.name || '?').charAt(0));
-  if (e.repo && !e.external) {
-    const owner = escapeText(e.repo.split('/')[0]);
-    return `<span class="avatar" data-mag="${mag}" data-trend="${trendAttr}" aria-hidden="true">
-      <span class="avatar__letter">${letter}</span>
-      <img class="avatar__img" loading="lazy" decoding="async"
-           src="https://github.com/${owner}.png?size=56" alt="">
-    </span>`;
-  }
-  return `<span class="avatar" data-mag="${mag}" data-trend="${trendAttr}" aria-hidden="true">
-    <span class="avatar__letter">${letter}</span>
-  </span>`;
-}
-
-function sparkSvg(e, mag) {
-  const vals = sparkPoints(e);
-  if (!vals) {
-    // Dim flat line for entries without trend data
-    return `<svg class="spark" viewBox="0 0 50 14" width="50" height="14" aria-hidden="true">
-      <line x1="2" y1="7" x2="48" y2="7" stroke="var(--shadow-ink)" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/>
-    </svg>`;
-  }
-  const w = 50, h = 14, pad = 1;
-  const min = Math.min(...vals);
-  const max = Math.max(...vals);
-  const range = (max - min) || 1;
-  const pts = vals.map((v, i) => {
-    const x = pad + (i / (vals.length - 1)) * (w - 2 * pad);
-    const y = (h - pad) - ((v - min) / range) * (h - 2 * pad);
-    return [x, y];
-  });
-  const linePath = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
-  const areaPath = `${linePath} L${pts.at(-1)[0].toFixed(1)},${h} L${pts[0][0].toFixed(1)},${h} Z`;
-  const last = pts.at(-1);
-  return `<svg class="spark" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true"
-              style="--spark-stroke: var(--mag-${mag}); --spark-fill: var(--mag-${mag});">
-    <path class="spark__area" d="${areaPath}"/>
-    <path class="spark__line" d="${linePath}" stroke="var(--mag-${mag})"/>
-    <circle class="spark__dot" cx="${last[0].toFixed(1)}" cy="${last[1].toFixed(1)}" r="1.5"/>
-  </svg>`;
-}
-
-// ── Data load ─────────────────────────────────────────────────────────
+// ── Data load ────────────────────────────────────────────────────────
 async function load() {
   const r = await fetch(DATA_URL, { cache: 'no-cache' });
   if (!r.ok) throw new Error(`fetch ${DATA_URL}: ${r.status}`);
@@ -258,7 +102,7 @@ async function load() {
   state.sections = [...sectionMap.entries()].map(([name, categories]) => ({ name, categories }));
 }
 
-// ── Render: sidebar ───────────────────────────────────────────────────
+// ── Render: sidebar ──────────────────────────────────────────────────
 function renderSidebar() {
   const frag = document.createDocumentFragment();
   for (const sec of state.sections) {
@@ -269,7 +113,7 @@ function renderSidebar() {
         <span class="cat__count">${c.entries.length}</span>
       </button>`).join('');
 
-    const groupFrag = html`
+    frag.appendChild(html`
       <div class="section-group" data-open="true">
         <button class="section-group__head" type="button" aria-expanded="true">
           <svg class="section-group__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
@@ -277,8 +121,7 @@ function renderSidebar() {
           <span class="section-group__count">${totalCount}</span>
         </button>
         <div class="section-group__list">${raw(catsHtml)}</div>
-      </div>`;
-    frag.appendChild(groupFrag);
+      </div>`);
   }
   render(els.sectionGroups, frag);
 }
@@ -304,14 +147,13 @@ function bindSidebar() {
   });
 }
 
-// ── Render: filter bar counts ─────────────────────────────────────────
+// ── Counts (sidebar + lensbar + brand) ───────────────────────────────
 function renderCounts() {
   els.catAllCount.textContent = String(state.entries.length);
   const alive = state.entries.filter(isAlive).length;
   els.chipAliveCount.textContent = String(alive);
   els.brandSubText.textContent = `Catalog · ${state.entries.length} tools · refreshed weekly`;
 
-  // Lens counts — count entries that pass the lens AND archived rule.
   for (const lensName of Object.keys(LENSES)) {
     const n = state.entries.filter(e => {
       if (e.archived && !state.filters.archived) return false;
@@ -325,13 +167,11 @@ function renderCounts() {
 function renderLensCaption() {
   const lens = LENSES[state.filters.lens] ?? LENSES.all;
   const n = filtered().length;
-  const captionHtml = lens.caption(n);
-  // Caption contains author-controlled HTML (only <b> tags); render via fragment.
-  const frag = RANGE.createContextualFragment(captionHtml);
-  els.lensCaption.replaceChildren(...frag.childNodes);
+  // Caption strings contain author-controlled <b> only.
+  render(els.lensCaption, RANGE.createContextualFragment(lens.caption(n)));
 }
 
-// ── Filter + sort ─────────────────────────────────────────────────────
+// ── Filter + sort ────────────────────────────────────────────────────
 function filtered() {
   const f = state.filters;
   const q = f.q.trim().toLowerCase();
@@ -359,7 +199,7 @@ const SORTERS = {
   name:   (a, b) => a.name.localeCompare(b.name),
 };
 
-// ── Row template ──────────────────────────────────────────────────────
+// ── Row template ─────────────────────────────────────────────────────
 function rowHtml(e) {
   const mag = magnitude(e);
   const hot = isHot(e) ? 'hot' : '';
@@ -373,8 +213,6 @@ function rowHtml(e) {
   ].join('');
   const vendorHtml = e.vendor ? `<span class="vendor">${escapeText(e.vendor)}</span>` : '';
 
-  const sparkHtml = sparkSvg(e, mag);
-
   return `
   <a class="row" role="listitem"
      data-cat="${escapeText(e.categoryId)}"
@@ -386,14 +224,14 @@ function rowHtml(e) {
     <span class="row__name">${escapeText(e.name)}${vendorHtml}${badges}</span>
     <span class="row__tagline">${escapeText(e.tagline || e.description || '')}</span>
     <span class="row__tags">${tagsHtml}</span>
-    <span class="row__spark">${sparkHtml}</span>
+    <span class="row__spark">${sparkSvg(e, mag)}</span>
     <span class="row__metric row__metric--stars">${fmtStars(e.stars)}</span>
     <span class="row__metric row__metric--trend ${t.cls}">${t.txt}</span>
     <span class="row__metric row__metric--age">${fmtAge(e.lastCommit)}</span>
   </a>`;
 }
 
-// ── Render: results stream ────────────────────────────────────────────
+// ── Render: results stream ───────────────────────────────────────────
 function renderStream() {
   const items = filtered();
   items.sort(SORTERS[state.sort]);
@@ -406,12 +244,11 @@ function renderStream() {
   }
 
   if (items.length === 0) {
-    const emptyFrag = html`
+    render(els.stream, html`
       <div class="empty">
         <p class="empty__title">No constellations match.</p>
         <p class="empty__hint">Try removing a filter or hitting <kbd>⌘K</kbd> to search.</p>
-      </div>`;
-    render(els.stream, emptyFrag);
+      </div>`);
     return;
   }
 
@@ -446,7 +283,27 @@ function renderStream() {
   }
 }
 
-// ── Row interaction: open sheet on click (modifier-click opens GitHub) ─
+// ── Lazy modules: cmdk + sheet ───────────────────────────────────────
+// First user intent triggers the dynamic import; subsequent calls reuse.
+let _cmdk;
+async function ensureCmdk() {
+  if (!_cmdk) {
+    _cmdk = await import('./cmdk.js');
+    _cmdk.initCmdk({ state, setCategory, openSheet: lazyOpenSheet });
+  }
+  return _cmdk;
+}
+
+let _sheet;
+async function lazyOpenSheet(entry) {
+  if (!_sheet) {
+    _sheet = await import('./sheet.js');
+    _sheet.initSheet();
+  }
+  _sheet.openSheet(entry);
+}
+
+// ── Bindings ─────────────────────────────────────────────────────────
 function bindStream() {
   els.stream.addEventListener('click', (ev) => {
     const row = ev.target.closest('.row');
@@ -456,99 +313,8 @@ function bindStream() {
     const name = row.dataset.name;
     const catId = row.dataset.cat;
     const entry = state.entries.find(e => e.categoryId === catId && e.name === name);
-    if (entry) openSheet(entry);
+    if (entry) lazyOpenSheet(entry);
   });
-}
-
-// ── Detail sheet ──────────────────────────────────────────────────────
-function openSheet(e) {
-  state.selected = e;
-  const t = fmtTrend(e.trend);
-  const mag = magnitude(e);
-  const hot = isHot(e) ? 'hot' : '';
-  const status = e.archived ? 'Archived' : isAlive(e) ? 'Active' : 'Quiet';
-  const statusColVar = e.archived ? '--mag-extinct' : isAlive(e) ? '--life' : '--copper';
-
-  const titleFrag = html`${raw(avatarHtml(e, mag, hot))}<span>${e.name}</span>`;
-  render(els.sheetTitle, titleFrag);
-
-  const tagsHtml = (e.tags || []).map(tag => `<span class="tag">${escapeText(tag)}</span>`).join('');
-  const trendVal = e.trend != null ? `${e.trend > 0 ? '+' : ''}${e.trend}%` : '—';
-
-  const bodyParts = [];
-  if (e.tagline) bodyParts.push(`<p class="sheet__tagline">${escapeText(e.tagline)}</p>`);
-  if (e.description) bodyParts.push(`<p class="sheet__desc">${escapeText(e.description)}</p>`);
-  if (e.note) bodyParts.push(`<p class="sheet__desc" style="color:var(--copper);font-style:italic;">${escapeText(e.note)}</p>`);
-
-  bodyParts.push(`
-    <div class="sheet__stats">
-      <div class="stat__label">Stars</div>
-      <div class="stat__label">Trend (30d)</div>
-      <div class="stat__val">${e.stars != null ? fmtStars(e.stars) : '—'}</div>
-      <div class="stat__val stat__val--trend ${t.cls}">${trendVal}</div>
-
-      <div class="stat__label">License</div>
-      <div class="stat__label">Last commit</div>
-      <div class="stat__val">${escapeText(e.license || '—')}</div>
-      <div class="stat__val">${fmtAge(e.lastCommit)} ago</div>
-
-      <div class="stat__label">Status</div>
-      <div class="stat__label">Score</div>
-      <div class="stat__val" style="color:var(${statusColVar});">${status}</div>
-      <div class="stat__val">${e.score != null ? e.score : '—'}</div>
-    </div>`);
-
-  if (e.tags && e.tags.length) {
-    bodyParts.push(`<div class="sheet__tags">${tagsHtml}</div>`);
-  }
-
-  if (e.url) {
-    bodyParts.push(`
-      <a class="sheet__cta" href="${escapeText(e.url)}" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.11.82-.26.82-.58v-2.1c-3.34.72-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.72.08-.72 1.21.08 1.85 1.24 1.85 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.77-1.61-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.4 1.24-3.24-.12-.31-.54-1.54.12-3.2 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.89.12 3.2.77.84 1.24 1.92 1.24 3.24 0 4.63-2.81 5.65-5.48 5.95.43.37.81 1.1.81 2.22v3.29c0 .33.22.7.83.58A12 12 0 0 0 12 .3"/></svg>
-        View on GitHub
-      </a>`);
-  }
-
-  bodyParts.push(`
-    <div class="sheet__cat">
-      <b>${escapeText(e.section)}</b> · <a href="#cat=${escapeText(e.categoryId)}" style="color:var(--moonlight);">${escapeText(e.categoryName)}</a>
-    </div>`);
-
-  const bodyFrag = html`${raw(bodyParts.join(''))}`;
-  render(els.sheetBody, bodyFrag);
-
-  els.sheet.dataset.open = 'true';
-  els.sheet.setAttribute('aria-hidden', 'false');
-  els.scrim.dataset.open = 'true';
-}
-
-function closeSheet() {
-  els.sheet.dataset.open = 'false';
-  els.sheet.setAttribute('aria-hidden', 'true');
-  els.scrim.dataset.open = 'false';
-  state.selected = null;
-}
-
-function bindSheet() {
-  els.sheetClose.addEventListener('click', closeSheet);
-  els.scrim.addEventListener('click', () => {
-    if (els.cmdk.dataset.open === 'true') closeCmdk();
-    closeSheet();
-  });
-}
-
-// ── Filter chips + sort ───────────────────────────────────────────────
-function bindLenses() {
-  for (const lens of els.lenses) {
-    lens.addEventListener('click', () => {
-      const name = lens.dataset.lens;
-      for (const l of els.lenses) l.setAttribute('aria-pressed', l === lens ? 'true' : 'false');
-      state.filters.lens = name;
-      writeHash();
-      renderStream();
-    });
-  }
 }
 
 function bindFilterbar() {
@@ -582,7 +348,18 @@ function bindFilterbar() {
   });
 }
 
-// ── Category selection (sidebar ↔ state) ──────────────────────────────
+function bindLenses() {
+  for (const lens of els.lenses) {
+    lens.addEventListener('click', () => {
+      const name = lens.dataset.lens;
+      for (const l of els.lenses) l.setAttribute('aria-pressed', l === lens ? 'true' : 'false');
+      state.filters.lens = name;
+      writeHash();
+      renderStream();
+    });
+  }
+}
+
 function setCategory(id) {
   state.filters.categoryId = id;
   $$('.cat', els.sidebar).forEach(btn => {
@@ -596,7 +373,6 @@ function setCategory(id) {
   renderStream();
 }
 
-// ── Theme toggle ──────────────────────────────────────────────────────
 function bindTheme() {
   els.themeToggle.addEventListener('click', () => {
     const cur = document.documentElement.dataset.theme
@@ -607,133 +383,39 @@ function bindTheme() {
   });
 }
 
-// ── Command palette ───────────────────────────────────────────────────
-let cmdkIdx = 0;
-let cmdkItems = [];
+// Cmd+K trigger + global keyboard shortcuts. Lazy-loads cmdk.js on first use.
+function bindGlobalKeys() {
+  els.cmdkTrigger.addEventListener('click', async () => {
+    const m = await ensureCmdk();
+    m.openCmdk();
+  });
 
-function openCmdk() {
-  els.cmdk.dataset.open = 'true';
-  els.cmdk.setAttribute('aria-hidden', 'false');
-  els.scrim.dataset.open = 'true';
-  els.cmdkInput.value = '';
-  renderCmdk('');
-  setTimeout(() => els.cmdkInput.focus(), 30);
-}
-
-function closeCmdk() {
-  els.cmdk.dataset.open = 'false';
-  els.cmdk.setAttribute('aria-hidden', 'true');
-  if (!state.selected) els.scrim.dataset.open = 'false';
-}
-
-function renderCmdk(q) {
-  q = q.trim().toLowerCase();
-  const groups = [];
-
-  if (q === '' || q.startsWith(':') || q.startsWith('>')) {
-    const cleanQ = q.replace(/^[:>]\s*/, '');
-    const cats = [...state.categoryById.values()]
-      .filter(c => !cleanQ || c.name.toLowerCase().includes(cleanQ))
-      .slice(0, 8);
-    if (cats.length) groups.push({ label: 'Categories', items: cats.map(c => ({
-      key: `cat-${c.id}`,
-      name: c.name,
-      meta: `${c.entries.length} · ${c.section}`,
-      action: () => { setCategory(c.id); closeCmdk(); closeSheet(); },
-    })) });
-  }
-
-  if (q !== '' && !q.startsWith(':') && !q.startsWith('>')) {
-    const matched = state.entries.filter(e => {
-      const hay = `${e.name} ${e.tagline ?? ''} ${(e.tags||[]).join(' ')}`.toLowerCase();
-      return hay.includes(q);
-    }).slice(0, 8);
-    if (matched.length) groups.push({ label: 'Projects', items: matched.map(e => ({
-      key: `e-${e.categoryId}-${e.name}`,
-      name: e.name,
-      meta: `${fmtStars(e.stars)} · ${e.categoryName}`,
-      action: () => { openSheet(e); closeCmdk(); },
-    })) });
-  }
-
-  if (groups.length === 0) {
-    const emptyFrag = html`<div class="cmdk__empty">No matches. Try a project name, or <code>:cat</code> to jump.</div>`;
-    render(els.cmdkList, emptyFrag);
-    cmdkItems = [];
-    return;
-  }
-
-  const parts = [];
-  for (const g of groups) {
-    parts.push(`<div class="cmdk__group-label">${escapeText(g.label)}</div>`);
-    for (const it of g.items) {
-      parts.push(`
-        <button class="cmdk__item" type="button" data-key="${escapeText(it.key)}">
-          <span class="cmdk__item-name">${escapeText(it.name)}</span>
-          <span class="cmdk__item-meta">${escapeText(it.meta)}</span>
-        </button>`);
-    }
-  }
-  const frag = html`${raw(parts.join(''))}`;
-  render(els.cmdkList, frag);
-
-  cmdkItems = groups.flatMap(g => g.items);
-  cmdkIdx = 0;
-  updateCmdkActive();
-}
-
-function updateCmdkActive() {
-  const btns = $$('.cmdk__item', els.cmdkList);
-  btns.forEach((b, i) => { b.dataset.active = i === cmdkIdx ? 'true' : 'false'; });
-  btns[cmdkIdx]?.scrollIntoView({ block: 'nearest' });
-}
-
-function bindCmdk() {
-  els.cmdkTrigger.addEventListener('click', openCmdk);
-
-  document.addEventListener('keydown', (ev) => {
+  document.addEventListener('keydown', async (ev) => {
     if ((ev.metaKey || ev.ctrlKey) && ev.key.toLowerCase() === 'k') {
       ev.preventDefault();
-      if (els.cmdk.dataset.open === 'true') closeCmdk(); else openCmdk();
+      const m = await ensureCmdk();
+      if (m.isOpen()) m.closeCmdk(); else m.openCmdk();
       return;
     }
     if (ev.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)) {
       ev.preventDefault();
-      openCmdk();
+      const m = await ensureCmdk();
+      m.openCmdk();
       return;
     }
     if (ev.key === 'Escape') {
-      if (els.cmdk.dataset.open === 'true') { closeCmdk(); return; }
-      if (els.sheet.dataset.open === 'true') { closeSheet(); return; }
+      if (_cmdk?.isOpen())  { _cmdk.closeCmdk();  return; }
+      if (_sheet?.isOpen()) { _sheet.closeSheet(); return; }
     }
   });
 
-  els.cmdkInput.addEventListener('input', (ev) => renderCmdk(ev.target.value));
-
-  els.cmdkInput.addEventListener('keydown', (ev) => {
-    if (ev.key === 'ArrowDown') {
-      ev.preventDefault();
-      cmdkIdx = Math.min(cmdkIdx + 1, cmdkItems.length - 1);
-      updateCmdkActive();
-    } else if (ev.key === 'ArrowUp') {
-      ev.preventDefault();
-      cmdkIdx = Math.max(cmdkIdx - 1, 0);
-      updateCmdkActive();
-    } else if (ev.key === 'Enter') {
-      ev.preventDefault();
-      cmdkItems[cmdkIdx]?.action();
-    }
-  });
-
-  els.cmdkList.addEventListener('click', (ev) => {
-    const btn = ev.target.closest('.cmdk__item');
-    if (!btn) return;
-    const it = cmdkItems.find(i => i.key === btn.dataset.key);
-    it?.action();
+  els.scrim.addEventListener('click', () => {
+    if (_cmdk?.isOpen())  _cmdk.closeCmdk();
+    if (_sheet?.isOpen()) _sheet.closeSheet();
   });
 }
 
-// ── URL hash state (shareable filters) ────────────────────────────────
+// ── URL hash state (shareable filters) ───────────────────────────────
 function readHash() {
   const h = location.hash.replace(/^#/, '');
   if (!h) return;
@@ -780,16 +462,15 @@ function applyHashToUI() {
   });
 }
 
-// ── Boot ──────────────────────────────────────────────────────────────
+// ── Boot ─────────────────────────────────────────────────────────────
 async function main() {
   try {
     await load();
   } catch (err) {
-    const frag = html`<div class="empty">
+    render(els.stream, html`<div class="empty">
       <p class="empty__title">Couldn't load catalog.</p>
       <p class="empty__hint">${err.message}</p>
-    </div>`;
-    render(els.stream, frag);
+    </div>`);
     console.error(err);
     return;
   }
@@ -799,9 +480,8 @@ async function main() {
   bindLenses();
   bindFilterbar();
   bindStream();
-  bindSheet();
-  bindCmdk();
   bindTheme();
+  bindGlobalKeys();
   readHash();
   applyHashToUI();
   renderStream();

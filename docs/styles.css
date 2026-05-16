@@ -9,7 +9,16 @@
      red-giant for declining, life-green only for "still alive" pulse.
    - Borders-only depth strategy. Whisper-quiet elevation via lightness ticks.
    - Tokens named for the product's world.
+
+   Architecture: single CSS file with explicit cascade layers — the 2026
+   pattern used by shadcn/ui, Tailwind v4, and Astro Starlight. Print is the
+   last layer; later sections in the file can override earlier ones predictably
+   without specificity wars.
    ────────────────────────────────────────────────────────────────────────── */
+
+@layer tokens, base, layout, components, utilities, print;
+
+@layer tokens {
 
 :root {
   color-scheme: dark light;
@@ -127,6 +136,10 @@
   --mag-extinct:  oklch(0.72 0.015 40);
 }
 
+} /* end @layer tokens */
+
+@layer base {
+
 /* ── Reset & base ─────────────────────────────────────────────────────── */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -210,6 +223,10 @@ input {
   border-radius: var(--r-sm);
 }
 
+} /* end @layer base */
+
+@layer layout {
+
 /* ── Layout grid ───────────────────────────────────────────────────────── */
 
 .app {
@@ -227,6 +244,10 @@ input {
 .topbar  { grid-area: topbar; }
 .side    { grid-area: side; }
 .main    { grid-area: main; overflow-y: auto; overflow-x: hidden; }
+
+} /* end @layer layout */
+
+@layer components {
 
 /* ── Top bar ───────────────────────────────────────────────────────────── */
 
@@ -1222,6 +1243,10 @@ input {
 }
 @keyframes shimmer { to { background-position: -200% 0; } }
 
+} /* end @layer components */
+
+@layer utilities {
+
 /* ── Mobile / narrow ───────────────────────────────────────────────────── */
 
 .menu-trigger { display: none; }
@@ -1316,6 +1341,10 @@ input {
   animation-timing-function: var(--ease-out);
 }
 
+} /* end @layer utilities */
+
+@layer print {
+
 /* ── Print ─────────────────────────────────────────────────────────────── */
 
 @media print {
@@ -1323,3 +1352,5 @@ input {
   .topbar, .side, .filterbar, .sheet, .scrim, .cmdk { display: none; }
   .main { overflow: visible; }
 }
+
+} /* end @layer print */
