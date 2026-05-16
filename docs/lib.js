@@ -68,11 +68,20 @@ export const fmtAge = (iso) => {
 };
 
 // ── Entry predicates ─────────────────────────────────────────────────
+// "Active" requires BOTH signals to align:
+//   1. Real recent commit (< 180 days) — there's hands on the code
+//   2. Either a release in the last 2 years, OR no release process at all
+//      (e.g., projects that publish to PyPI/npm without GitHub releases)
+// Without the release leg, dormant projects with cosmetic commits (dependabot
+// bumps, doc fixes) read as "Active" even though they shipped nothing for years.
 export const isAlive = (e) => {
   if (e.archived) return false;
   if (!e.lastCommit) return false;
-  const days = (Date.now() - new Date(e.lastCommit).getTime()) / 86400000;
-  return days < 180;
+  const commitDays = (Date.now() - new Date(e.lastCommit).getTime()) / 86400000;
+  if (commitDays >= 180) return false;
+  if (!e.lastRelease) return true;
+  const releaseDays = (Date.now() - new Date(e.lastRelease).getTime()) / 86400000;
+  return releaseDays < 730;
 };
 
 export const magnitude = (e) => {
