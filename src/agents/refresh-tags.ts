@@ -1,5 +1,6 @@
 import { type Document, isMap, isScalar, isSeq, parseDocument, type YAMLMap, type YAMLSeq } from "yaml";
 import type { ApiData } from "../generator/readme.js";
+import { logger } from "../utils/logger.js";
 import { curateTags } from "./tag-curator.js";
 
 export interface RefreshTagsOptions {
@@ -81,8 +82,7 @@ export async function refreshTags(opts: RefreshTagsOptions): Promise<RefreshTags
   let failedCount = 0;
   let tokensUsed = 0;
 
-  for (let i = 0; i < processed.length; i++) {
-    const t = processed[i];
+  for (const [i, t] of processed.entries()) {
     try {
       const result = await curateTags({
         apiKey: opts.apiKey,
@@ -110,7 +110,7 @@ export async function refreshTags(opts: RefreshTagsOptions): Promise<RefreshTags
       });
     } catch (err) {
       failedCount++;
-      console.error(`Failed ${t.repo}: ${err instanceof Error ? err.message : err}`);
+      logger.error(`Failed ${t.repo}: ${err instanceof Error ? err.message : err}`);
     }
   }
 

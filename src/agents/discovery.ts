@@ -6,6 +6,7 @@ import { DB } from "../db/client.js";
 import { createPr } from "../github/pr.js";
 import { fetchRepoSignals, type GitHubCandidate, getDefaultTopics, searchGitHub } from "../github/search.js";
 import { computeScore } from "../scoring/composite.js";
+import { logger } from "../utils/logger.js";
 import { analyzeCandidate } from "./analysis.js";
 
 export type CandidateDecision = "auto" | "queue" | "discard";
@@ -73,7 +74,7 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
       newCandidates.push(c);
     }
 
-    console.log(`Discovery: ${candidates.length} found, ${newCandidates.length} new`);
+    logger.info(`Discovery: ${candidates.length} found, ${newCandidates.length} new`);
 
     const prsToday = db.countPrsToday();
 
@@ -125,7 +126,7 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
 
       if (decision === "auto" && prsToday + prsCreated < config.maxPrsPerDay) {
         if (config.dryRun) {
-          console.log(`[DRY RUN] Would open PR for ${candidate.repo} (score: ${scoreResult.total})`);
+          logger.info(`[DRY RUN] Would open PR for ${candidate.repo} (score: ${scoreResult.total})`);
         } else {
           const prNumber = await createPr({
             config,

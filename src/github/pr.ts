@@ -110,14 +110,16 @@ function insertEntry(yamlContent: string, category: string, newEntry: string): s
   let lastEntryLine = -1;
 
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
+    const line = lines[i] ?? "";
     if (line.startsWith("- name: ")) {
       if (inTargetCategory && lastEntryLine > 0) break;
       inTargetCategory = line === `- name: ${category}`;
     }
     if (inTargetCategory && line.startsWith("  - name: ")) {
       lastEntryLine = i;
-      while (i + 1 < lines.length && lines[i + 1].startsWith("    ") && !lines[i + 1].startsWith("  - ")) {
+      while (i + 1 < lines.length) {
+        const next = lines[i + 1] ?? "";
+        if (!next.startsWith("    ") || next.startsWith("  - ")) break;
         i++;
         lastEntryLine = i;
       }

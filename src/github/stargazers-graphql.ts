@@ -47,7 +47,7 @@ function sanitize(s: string): string {
 export function buildBatchQuery(repos: string[], cursorByAlias: Record<string, string | null> = {}): string {
   const repoBlocks = repos
     .map((repo, i) => {
-      const [owner, name] = repo.split("/");
+      const [owner = "", name = ""] = repo.split("/");
       const alias = aliasFor(i);
       const cursor = cursorByAlias[alias];
       const afterArg = cursor ? `, after: "${cursor}"` : "";
@@ -168,8 +168,8 @@ export async function fetchRecentStargazersBatch(repos: string[], since: Date): 
     const chunk = pool.splice(0, CONTINUATION_CHUNK_SIZE);
     const cursorByAlias: Record<string, string | null> = {};
     const chunkRepos = chunk.map((c) => c.repo);
-    chunkRepos.forEach((_, i) => {
-      cursorByAlias[aliasFor(i)] = chunk[i].cursor;
+    chunk.forEach((c, i) => {
+      cursorByAlias[aliasFor(i)] = c.cursor;
     });
     const q = buildBatchQuery(chunkRepos, cursorByAlias);
     const parsed = parseBatchResponse(chunkRepos, await ghGraphQL(q));
@@ -186,8 +186,8 @@ export async function fetchRecentStargazersBatch(repos: string[], since: Date): 
       if (newPage.error && !existing.error) existing.error = newPage.error;
 
       if (newPage.hasNextPage && newPage.endCursor && newPage.stargazers.length > 0) {
-        const oldest = newPage.stargazers[newPage.stargazers.length - 1];
-        if (new Date(oldest.starredAt) >= since) {
+        const oldest = newPage.stargazers.at(-1);
+        if (oldest && new Date(oldest.starredAt) >= since) {
           pool.push({ repo, cursor: newPage.endCursor });
         }
       }

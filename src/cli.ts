@@ -1,4 +1,5 @@
 import { resolve } from "node:path";
+import { parseArgs } from "node:util";
 import { runBackfillTrendsCommand } from "./commands/backfill-trends.js";
 import { runDiscoverCommand } from "./commands/discover.js";
 import { runGenerateCommand } from "./commands/generate.js";
@@ -16,27 +17,37 @@ const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 const RECLASSIFY_REPORT = resolve(ROOT, "data/reclassify-report.md");
 const DB_PATH = resolve(ROOT, "data/curator.db");
 
+const USAGE =
+  "Usage: tsx src/cli.ts <discover|generate|refresh-tags|reclassify|backfill-trends|validate> [--dry-run] [--limit=N] [--force] [--repo=X/Y] [--resume] [--no-fetch] [--verbose]";
+
 function usage(): never {
-  logger.error(
-    "Usage: tsx src/cli.ts <discover|generate|refresh-tags|reclassify|backfill-trends|validate> [--dry-run] [--limit=N] [--force] [--repo=X/Y] [--resume] [--no-fetch] [--verbose]",
-  );
+  logger.error(USAGE);
   process.exit(1);
 }
 
-function parseLimit(): number | undefined {
-  const arg = process.argv.find((a) => a.startsWith("--limit="));
-  return arg ? Number.parseInt(arg.split("=")[1], 10) : undefined;
-}
-
 async function main() {
-  const command = process.argv[2];
-  const dryRun = process.argv.includes("--dry-run");
-  const force = process.argv.includes("--force");
-  const resume = process.argv.includes("--resume");
-  const noFetch = process.argv.includes("--no-fetch");
-  const repoFlag = process.argv.find((a) => a.startsWith("--repo="));
-  const repo = repoFlag ? repoFlag.split("=")[1] : undefined;
-  const verbose = process.argv.includes("--verbose");
+  const { values, positionals } = parseArgs({
+    args: process.argv.slice(2),
+    allowPositionals: true,
+    options: {
+      "dry-run": { type: "boolean" },
+      force: { type: "boolean" },
+      resume: { type: "boolean" },
+      "no-fetch": { type: "boolean" },
+      verbose: { type: "boolean" },
+      limit: { type: "string" },
+      repo: { type: "string" },
+    },
+  });
+
+  const command = positionals[0];
+  const dryRun = values["dry-run"] ?? false;
+  const force = values.force ?? false;
+  const resume = values.resume ?? false;
+  const noFetch = values["no-fetch"] ?? false;
+  const verbose = values.verbose ?? false;
+  const limit = values.limit !== undefined ? Number.parseInt(values.limit, 10) : undefined;
+  const repo = values.repo;
 
   if (verbose) {
     process.env.LOG_LEVEL = "debug";
@@ -70,7 +81,7 @@ async function main() {
           cachePath: CACHE_FILE,
           apiKey,
           dryRun,
-          limit: parseLimit(),
+          limit,
         });
         break;
       }
@@ -84,7 +95,7 @@ async function main() {
           projectsYamlPath: PROJECTS_YAML,
           reportPath: RECLASSIFY_REPORT,
           apiKey,
-          limit: parseLimit(),
+          limit,
         });
         break;
       }

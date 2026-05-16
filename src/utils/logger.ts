@@ -34,10 +34,10 @@ function log(level: LogLevel, message: string, ...args: unknown[]): void {
   if (LEVELS[level] > currentLevel()) return;
   const label = prefix(level);
   if (args.length > 0) {
-    // eslint-disable-next-line no-console
+    // biome-ignore lint/suspicious/noConsole: this IS the logger
     console.log(label, message, ...args);
   } else {
-    // eslint-disable-next-line no-console
+    // biome-ignore lint/suspicious/noConsole: this IS the logger
     console.log(label, message);
   }
 }

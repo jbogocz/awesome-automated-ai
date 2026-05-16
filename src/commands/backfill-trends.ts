@@ -28,7 +28,7 @@ function resolveCurrentStarsBatch(repos: { repo: string; name: string }[]): {
   for (let i = 0; i < repos.length; i += CHUNK) {
     const chunk = repos.slice(i, i + CHUNK);
     const aliases = chunk.map((r, idx) => {
-      const [owner, name] = r.repo.split("/");
+      const [owner = "", name = ""] = r.repo.split("/");
       return `  r${idx}: repository(owner: "${sanitizeRepoComponent(owner)}", name: "${sanitizeRepoComponent(name)}") { stargazerCount }`;
     });
     const query = `query {\n${aliases.join("\n")}\n}`;

@@ -81,8 +81,7 @@ export async function reclassifyEntries(opts: ReclassifyOptions): Promise<Reclas
   const records: ReclassifyRecord[] = [];
   let tokensUsed = 0;
 
-  for (let i = 0; i < processed.length; i++) {
-    const c = processed[i];
+  for (const [i, c] of processed.entries()) {
     const decision = await classifyOne(anthropic, c, catalog, allowedNames);
     tokensUsed += decision.tokensUsed;
     records.push({ ...c, decision: decision.result });

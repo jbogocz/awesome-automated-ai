@@ -84,7 +84,7 @@ export async function searchGitHub(opts: SearchOptions): Promise<GitHubCandidate
 
 async function fetchReadme(octokit: Octokit, repo: string): Promise<string> {
   try {
-    const [owner, name] = repo.split("/");
+    const [owner = "", name = ""] = repo.split("/");
     const { data } = await octokit.repos.getContent({ owner, repo: name, path: "README.md" });
     if ("content" in data && typeof data.content === "string") {
       return Buffer.from(data.content, "base64").toString("utf-8").slice(0, 5000);
@@ -98,7 +98,7 @@ async function fetchReadme(octokit: Octokit, repo: string): Promise<string> {
 function thirtyDaysAgo(): string {
   const d = new Date();
   d.setDate(d.getDate() - 30);
-  return d.toISOString().split("T")[0];
+  return d.toISOString().slice(0, 10);
 }
 
 export interface RepoSignals {
@@ -108,7 +108,7 @@ export interface RepoSignals {
 
 export async function fetchRepoSignals(token: string, repo: string): Promise<RepoSignals> {
   const octokit = new Octokit({ auth: token });
-  const [owner, name] = repo.split("/");
+  const [owner = "", name = ""] = repo.split("/");
   const since = thirtyDaysAgo();
 
   const [commitCount30d, contributorCount] = await Promise.all([

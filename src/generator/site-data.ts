@@ -3,6 +3,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
+import { logger } from "../utils/logger.js";
 import { loadApiDataFromDB } from "./fetch-api.js";
 import type { ApiData } from "./readme.js";
 
@@ -67,13 +68,13 @@ function main() {
   let apiData: ApiData = {};
   try {
     apiData = loadApiDataFromDB(yamlContent);
-    console.log(`Loaded ${Object.keys(apiData).length} repos from DB`);
+    logger.info(`Loaded ${Object.keys(apiData).length} repos from DB`);
   } catch (err) {
-    console.warn(`DB read failed (${err instanceof Error ? err.message : String(err)}), falling back to cache`);
+    logger.warn(`DB read failed (${err instanceof Error ? err.message : String(err)}), falling back to cache`);
     try {
       apiData = JSON.parse(readFileSync(CACHE_FILE, "utf-8")) as ApiData;
     } catch {
-      console.log(`No API cache at ${CACHE_FILE}, using empty data`);
+      logger.info(`No API cache at ${CACHE_FILE}, using empty data`);
     }
   }
 
@@ -115,7 +116,7 @@ function main() {
 
   mkdirSync(resolve(ROOT, "docs"), { recursive: true });
   writeFileSync(OUTPUT, JSON.stringify(output, null, 2));
-  console.log(`Generated docs/data.json: ${doc.categories.length} categories`);
+  logger.info(`Generated docs/data.json: ${doc.categories.length} categories`);
 }
 
 main();

@@ -117,8 +117,8 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
   const dead = scored.filter((s) => s.isDead);
 
   const lines: string[] = [];
-  for (let i = 0; i < active.length; i++) {
-    lines.push(...buildOneCard(active[i], i + 1));
+  for (const [i, entry] of active.entries()) {
+    lines.push(...buildOneCard(entry, i + 1));
     lines.push("");
   }
   if (dead.length > 0) {
