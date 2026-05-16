@@ -16,6 +16,8 @@ const DATA_URL = './data.json';
 // ── DOM refs ─────────────────────────────────────────────────────────
 const els = {
   brandSubText:   $('#brand-sub-text'),
+  freshnessDot:   $('#freshness-dot'),
+  cmdkFreshness:  $('#cmdk-freshness'),
   sectionGroups:  $('#section-groups'),
   catAll:         $('#cat-all'),
   catAllCount:    $('#cat-all-count'),
@@ -68,6 +70,15 @@ const LENSES = {
     caption: (n) => `<b>${n}</b> high-quality tools flying under the radar (under 5k stars).`,
   },
 };
+
+// Whole-days since data.json was regenerated. null if not loaded yet.
+function dataAgeDays() {
+  const t = state.raw?.generated;
+  if (!t) return null;
+  const d = new Date(t);
+  if (Number.isNaN(d.valueOf())) return null;
+  return Math.floor((Date.now() - d.getTime()) / 86400000);
+}
 
 // ── Data load ────────────────────────────────────────────────────────
 async function load() {
@@ -146,7 +157,14 @@ function renderCounts() {
   els.catAllCount.textContent = String(state.entries.length);
   const alive = state.entries.filter(isAlive).length;
   els.chipAliveCount.textContent = String(alive);
-  els.brandSubText.textContent = `Catalog · ${state.entries.length} tools · refreshed weekly`;
+  const age = dataAgeDays();
+  const ageTxt = age == null ? 'refreshed weekly'
+    : age < 1 ? 'updated today'
+    : age === 1 ? 'updated yesterday'
+    : `updated ${age}d ago`;
+  els.brandSubText.textContent = `Catalog · ${state.entries.length} tools · ${ageTxt}`;
+  if (els.freshnessDot) els.freshnessDot.dataset.stale = age != null && age > 8 ? 'true' : 'false';
+  if (els.cmdkFreshness) els.cmdkFreshness.textContent = age == null ? '' : `snapshot ${age}d ago`;
 
   for (const lensName of Object.keys(LENSES)) {
     const n = state.entries.filter(e => {
@@ -219,9 +237,9 @@ function rowHtml(e) {
     <span class="row__tagline">${escapeText(e.tagline || e.description || '')}</span>
     <span class="row__tags">${tagsHtml}</span>
     <span class="row__spark">${sparkSvg(e, mag)}</span>
-    <span class="row__metric row__metric--stars">${fmtStars(e.stars)}</span>
+    <span class="row__metric row__metric--stars">${e.external ? '—' : fmtStars(e.stars)}</span>
     <span class="row__metric row__metric--trend ${t.cls}">${t.txt}</span>
-    <span class="row__metric row__metric--age">${fmtAge(e.lastCommit)}</span>
+    <span class="row__metric row__metric--age">${e.external ? '—' : fmtAge(e.lastCommit)}</span>
   </a>`;
 }
 

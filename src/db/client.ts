@@ -406,16 +406,31 @@ export class DB {
   }
 
   getStarsNDaysAgo(projectId: number, days: number): number | null {
-    const cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() - days);
-    const cutoffStr = cutoff.toISOString().split("T")[0];
+    // Picks the snapshot CLOSEST in time to the target date (today - days),
+    // bounded within ±max(2, ceil(days/4)) days so we never label, say, a
+    // 14-day delta as the "30-day trend". With weekly cadence this halves
+    // the systematic bias of "newest snapshot ≤ cutoff" (which could stretch
+    // the window to ~35d on average).
+    const target = new Date();
+    target.setUTCDate(target.getUTCDate() - days);
+    const tolerance = Math.max(2, Math.ceil(days / 4));
+    const lo = new Date(target);
+    lo.setUTCDate(lo.getUTCDate() - tolerance);
+    const hi = new Date(target);
+    hi.setUTCDate(hi.getUTCDate() + tolerance);
+    const targetStr = target.toISOString().split("T")[0];
+    const loStr = lo.toISOString().split("T")[0];
+    const hiStr = hi.toISOString().split("T")[0];
     const row = this.sqlite
       .prepare(
         `SELECT stars FROM snapshots
-         WHERE project_id = ? AND snapshot_date <= ?
-         ORDER BY snapshot_date DESC LIMIT 1`,
+         WHERE project_id = ?
+           AND snapshot_date BETWEEN ? AND ?
+         ORDER BY ABS(julianday(snapshot_date) - julianday(?)) ASC,
+                  snapshot_date DESC
+         LIMIT 1`,
       )
-      .get(projectId, cutoffStr) as { stars: number } | undefined;
+      .get(projectId, loStr, hiStr, targetStr) as { stars: number } | undefined;
     return row?.stars ?? null;
   }
 

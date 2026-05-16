@@ -25,13 +25,27 @@ export function openSheet(e) {
   const t = fmtTrend(e.trend);
   const mag = magnitude(e);
   const hot = isHot(e) ? 'hot' : '';
-  const status = e.archived ? 'Archived' : isAlive(e) ? 'Active' : 'Quiet';
-  const statusColVar = e.archived ? '--mag-extinct' : isAlive(e) ? '--life' : '--copper';
+
+  // Status: external papers aren't repos so don't get an active/quiet label.
+  const status = e.external ? 'Reference'
+    : e.archived ? 'Archived'
+    : isAlive(e) ? 'Active'
+    : 'Quiet';
+  const statusColVar = e.external ? '--moonlight'
+    : e.archived ? '--mag-extinct'
+    : isAlive(e) ? '--life'
+    : '--copper';
 
   render(els.sheetTitle, html`${raw(avatarHtml(e, mag, hot))}<span>${e.name}</span>`);
 
   const tagsHtml = (e.tags || []).map(tag => `<span class="tag">${escapeText(tag)}</span>`).join('');
-  const trendVal = e.trend != null ? `${e.trend > 0 ? '+' : ''}${e.trend.toLocaleString()}` : '—';
+  // Score / stars / age are unscored for externals; for archived repos the
+  // quality formula returns 0 by design, but showing "0" next to "Archived"
+  // reads as a quality verdict — display "—" instead.
+  const showStars = !e.external && e.stars != null;
+  const showScore = !e.external && !e.archived && e.score != null;
+  const showAge = !e.external && e.lastCommit;
+  const trendVal = !e.external && e.trend != null ? `${e.trend > 0 ? '+' : ''}${e.trend.toLocaleString()}` : '—';
 
   const parts = [];
   if (e.tagline)     parts.push(`<p class="sheet__tagline">${escapeText(e.tagline)}</p>`);
@@ -42,18 +56,18 @@ export function openSheet(e) {
     <div class="sheet__stats">
       <div class="stat__label">Stars</div>
       <div class="stat__label">Stars gained (30d)</div>
-      <div class="stat__val">${e.stars != null ? fmtStars(e.stars) : '—'}</div>
+      <div class="stat__val">${showStars ? fmtStars(e.stars) : '—'}</div>
       <div class="stat__val stat__val--trend ${t.cls}">${trendVal}</div>
 
       <div class="stat__label">License</div>
       <div class="stat__label">Last commit</div>
       <div class="stat__val">${escapeText(e.license || '—')}</div>
-      <div class="stat__val">${fmtAge(e.lastCommit)} ago</div>
+      <div class="stat__val">${showAge ? `${fmtAge(e.lastCommit)} ago` : '—'}</div>
 
       <div class="stat__label">Status</div>
       <div class="stat__label">Score</div>
       <div class="stat__val" style="color:var(${statusColVar});">${status}</div>
-      <div class="stat__val">${e.score != null ? e.score : '—'}</div>
+      <div class="stat__val">${showScore ? e.score : '—'}</div>
     </div>`);
 
   if (e.tags && e.tags.length) {

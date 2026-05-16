@@ -44,7 +44,9 @@ export const fmtStars = (n) => {
 export const fmtTrend = (t) => {
   if (t == null || t === 0) return { txt: '', cls: 'na' };
   const cls = t > 0 ? 'up' : 'down';
-  return { txt: Math.abs(t).toFixed(0), cls };
+  const abs = Math.abs(t);
+  const txt = abs >= 1000 ? abs.toLocaleString() : String(abs);
+  return { txt, cls };
 };
 
 export const fmtAge = (iso) => {
@@ -77,7 +79,17 @@ export const magnitude = (e) => {
   return '2';
 };
 
-export const isHot = (e) => !e.archived && (e.trend ?? 0) >= 15;
+// Hot = absolute or relative momentum. Top ~25% of alive entries.
+//  - 500+ stars in 30d for established repos, OR
+//  - 5%+ growth in 30d (catches small repos going viral).
+export const isHot = (e) => {
+  if (e.archived) return false;
+  const trend = e.trend ?? 0;
+  if (trend < 1) return false;
+  if (trend >= 500) return true;
+  const stars = e.stars ?? 0;
+  return stars > 0 && (trend / stars) >= 0.05;
+};
 
 // ── Avatar: GitHub org logo for repos, letter chip for papers ──────
 // Letter is always rendered behind the img; if the image fails, letter shows.
