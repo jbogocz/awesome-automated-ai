@@ -31,7 +31,7 @@ export function openSheet(e) {
   render(els.sheetTitle, html`${raw(avatarHtml(e, mag, hot))}<span>${e.name}</span>`);
 
   const tagsHtml = (e.tags || []).map(tag => `<span class="tag">${escapeText(tag)}</span>`).join('');
-  const trendVal = e.trend != null ? `${e.trend > 0 ? '+' : ''}${e.trend}%` : '—';
+  const trendVal = e.trend != null ? `${e.trend > 0 ? '+' : ''}${e.trend.toLocaleString()}` : '—';
 
   const parts = [];
   if (e.tagline)     parts.push(`<p class="sheet__tagline">${escapeText(e.tagline)}</p>`);
@@ -41,7 +41,7 @@ export function openSheet(e) {
   parts.push(`
     <div class="sheet__stats">
       <div class="stat__label">Stars</div>
-      <div class="stat__label">Trend (30d)</div>
+      <div class="stat__label">Stars gained (30d)</div>
       <div class="stat__val">${e.stars != null ? fmtStars(e.stars) : '—'}</div>
       <div class="stat__val stat__val--trend ${t.cls}">${trendVal}</div>
 

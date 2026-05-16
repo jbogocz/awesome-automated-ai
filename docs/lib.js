@@ -97,13 +97,16 @@ export function avatarHtml(e, mag, hot) {
   </span>`;
 }
 
-// ── Sparkline: 30-day star trajectory synthesized from stars + trend ──
+// ── Sparkline: 30-day star trajectory from stars + 30d star delta ──
+// `trend` is the absolute count of stars gained over the last 30 days
+// (current - stars30dAgo). The sparkline interpolates a smooth curve
+// from (stars - trend) → stars with a touch of seeded jitter.
 function sparkPoints(e, n = 10) {
   const stars = e.stars ?? 0;
+  const trend = e.trend ?? 0;
   if (!stars || e.external || e.archived) return null;
-  const t = (e.trend ?? 0) / 100;
-  if (Math.abs(t) < 0.001 && stars < 50) return null;
-  const start = stars / (1 + t);
+  if (trend === 0 && stars < 50) return null;
+  const start = Math.max(stars - trend, 1);
   const seed = [...(e.name || '')].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
   const noise = (i) => (((seed ^ (i * 2654435761)) >>> 0) % 1000 / 1000 - 0.5) * 0.06;
   const out = [];
