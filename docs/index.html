@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Awesome Automated AI/ML - Curated Tools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Awesome Automated AI/ML — Catalog</title>
 
-<meta name="description" content="A curated list of tools for Automated AI/ML - from hyperparameter optimization to autonomous AI agents. Interactive explorer across 24 categories, refreshed weekly by AI curation.">
+<meta name="description" content="A curated catalog of 250+ tools for Automated AI/ML — hyperparameter optimization, NAS, AutoML, LLM agents, prompt optimization, MLOps. Filterable by trend, license, activity. Refreshed weekly.">
 <meta name="keywords" content="awesome, automl, automated ai, automated ml, machine learning, neural architecture search, hyperparameter optimization, fine-tuning, prompt optimization, LLM, MLOps, AI agents, commercial AutoML">
-<meta name="theme-color" content="#0d1117">
-<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#1a1c25" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
+<meta name="color-scheme" content="dark light">
 <link rel="canonical" href="https://jbogocz.github.io/awesome-automated-ai/">
 
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
@@ -17,8 +18,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="./assets/avatar-400.png">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Awesome Automated AI/ML - Curated Tools">
-<meta property="og:description" content="A curated list of tools for Automated AI/ML - from hyperparameter optimization to autonomous AI agents. Refreshed weekly by AI curation.">
+<meta property="og:title" content="Awesome Automated AI/ML — Catalog">
+<meta property="og:description" content="A curated catalog of 250+ tools for Automated AI/ML, refreshed weekly. Filter by trend, license, activity.">
 <meta property="og:url" content="https://jbogocz.github.io/awesome-automated-ai/">
 <meta property="og:image" content="https://jbogocz.github.io/awesome-automated-ai/assets/social-preview-1280x640.png">
 <meta property="og:image:width" content="1280">
@@ -26,1031 +27,180 @@
 <meta property="og:site_name" content="Awesome Automated AI/ML">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Awesome Automated AI/ML - Curated Tools">
-<meta name="twitter:description" content="A curated list of tools for Automated AI/ML - from hyperparameter optimization to autonomous AI agents.">
+<meta name="twitter:title" content="Awesome Automated AI/ML — Catalog">
+<meta name="twitter:description" content="A curated catalog of 250+ tools for Automated AI/ML, refreshed weekly.">
 <meta name="twitter:image" content="https://jbogocz.github.io/awesome-automated-ai/assets/social-preview-1280x640.png">
-<style>
-  :root {
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-card: #161b22;
-    --bg-hover: #1c2128;
-    --border: #30363d;
-    --border-muted: #21262d;
-    --text-primary: #c9d1d9;
-    --text-secondary: #8b949e;
-    --text-muted: #6e7681;
-    --accent-blue: #1f6feb;
-    --accent-blue-light: #388bfd;
-    --accent-green: #238636;
-    --accent-green-light: #2ea043;
-    --accent-orange: #d29922;
-    --accent-red: #da3633;
-    --accent-purple: #6e40c9;
-    --star-color: #e3b341;
-    --radius: 8px;
-    --radius-sm: 5px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.4);
-    --shadow-hover: 0 4px 12px rgba(0,0,0,0.5);
-    --transition: 0.15s ease;
-  }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
-    min-height: 100vh;
-  }
-
-  a { color: var(--accent-blue-light); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  .site-header {
-    background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 32px 24px 24px;
-    text-align: center;
-  }
-
-  .site-header h1 {
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: #ffffff;
-    margin-bottom: 8px;
-  }
-
-  .site-header .subtitle {
-    color: var(--text-secondary);
-    font-size: 15px;
-    margin-bottom: 16px;
-  }
-
-  .header-links {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .header-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 12px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--bg-card);
-    color: var(--text-secondary);
-    font-size: 13px;
-    transition: all var(--transition);
-  }
-
-  .header-link:hover {
-    background: var(--bg-hover);
-    color: var(--text-primary);
-    border-color: var(--accent-blue);
-    text-decoration: none;
-  }
-
-  .controls {
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 24px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .search-wrap {
-    flex: 1 1 260px;
-    position: relative;
-  }
-
-  .search-icon {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-    pointer-events: none;
-    font-size: 15px;
-  }
-
-  #search {
-    width: 100%;
-    padding: 8px 10px 8px 34px;
-    background: var(--bg-primary);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--text-primary);
-    font-size: 14px;
-    outline: none;
-    transition: border-color var(--transition);
-  }
-
-  #search:focus { border-color: var(--accent-blue); }
-  #search::placeholder { color: var(--text-muted); }
-
-  .filter-wrap { flex: 0 1 220px; }
-
-  #category-filter {
-    width: 100%;
-    padding: 8px 10px;
-    background: var(--bg-primary);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--text-primary);
-    font-size: 14px;
-    outline: none;
-    cursor: pointer;
-    transition: border-color var(--transition);
-  }
-
-  #category-filter:focus { border-color: var(--accent-blue); }
-
-  .sort-group {
-    display: flex;
-    gap: 4px;
-    flex-shrink: 0;
-  }
-
-  .sort-group label {
-    color: var(--text-muted);
-    font-size: 12px;
-    align-self: center;
-    margin-right: 4px;
-  }
-
-  .sort-btn {
-    padding: 7px 12px;
-    background: var(--bg-primary);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--text-secondary);
-    font-size: 13px;
-    cursor: pointer;
-    transition: all var(--transition);
-    white-space: nowrap;
-  }
-
-  .sort-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
-  .sort-btn.active {
-    background: var(--accent-blue);
-    border-color: var(--accent-blue);
-    color: #fff;
-  }
-
-  .toggle-wrap {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--text-secondary);
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .toggle-wrap input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
-    accent-color: var(--accent-blue);
-    cursor: pointer;
-  }
-
-  .stats-bar {
-    padding: 10px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 13px;
-    color: var(--text-secondary);
-    border-bottom: 1px solid var(--border-muted);
-  }
-
-  .stats-count strong { color: var(--text-primary); }
-  .stats-generated { font-size: 11px; color: var(--text-muted); }
-
-  .main {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 20px 24px 40px;
-  }
-
-  .category-section { margin-bottom: 28px; }
-
-  .category-header {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border-muted);
-  }
-
-  .category-name {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-
-  .category-count {
-    font-size: 12px;
-    color: var(--text-muted);
-    background: var(--bg-secondary);
-    padding: 1px 7px;
-    border-radius: 10px;
-    border: 1px solid var(--border-muted);
-  }
-
-  .category-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-left: auto;
-    max-width: 480px;
-    text-align: right;
-    display: none;
-  }
-
-  @media (min-width: 900px) { .category-desc { display: block; } }
-
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 10px;
-  }
-
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px 16px;
-    transition: all var(--transition);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .card:hover {
-    background: var(--bg-hover);
-    border-color: var(--accent-blue);
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-1px);
-  }
-
-  .card-top {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    justify-content: space-between;
-  }
-
-  .card-name-wrap {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    flex: 1 1 0;
-    min-width: 0;
-  }
-
-  .card-name {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--accent-blue-light);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .card-name:hover { text-decoration: underline; }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    font-size: 11px;
-    font-weight: 500;
-    padding: 1px 7px;
-    border-radius: 10px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .badge-archived {
-    background: rgba(218,54,51,0.15);
-    color: #f85149;
-    border: 1px solid rgba(218,54,51,0.3);
-  }
-
-  .badge-unmaintained {
-    background: rgba(210,153,34,0.15);
-    color: #d29922;
-    border: 1px solid rgba(210,153,34,0.3);
-  }
-
-  .badge-note {
-    background: rgba(110,64,201,0.12);
-    color: #a371f7;
-    border: 1px solid rgba(110,64,201,0.25);
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .card-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
-  }
-
-  .stars {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 13px;
-    color: var(--text-secondary);
-    white-space: nowrap;
-  }
-
-  .stars .star-icon { color: var(--star-color); }
-  .stars .star-count { font-weight: 500; }
-  .stars.zero { opacity: 0.35; }
-
-  .last-commit {
-    font-size: 11px;
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
-
-  .last-commit.recent { color: var(--accent-green-light); }
-  .last-commit.medium { color: var(--accent-orange); }
-  .last-commit.stale  { color: var(--accent-red); }
-
-  .card-desc {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.45;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .cat-badge {
-    display: inline-flex;
-    align-items: center;
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    background: rgba(31,111,235,0.12);
-    color: var(--accent-blue-light);
-    border: 1px solid rgba(31,111,235,0.2);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 180px;
-    cursor: pointer;
-    transition: all var(--transition);
-  }
-
-  .cat-badge:hover {
-    background: rgba(31,111,235,0.25);
-    border-color: var(--accent-blue);
-  }
-
-  .activity-dot {
-    font-size: 10px;
-    flex-shrink: 0;
-    line-height: 1;
-  }
-
-  .score-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 1px 7px;
-    border-radius: 10px;
-    min-width: 28px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    font-variant-numeric: tabular-nums;
-  }
-  .score-badge.good   { background: rgba(46,160,67,0.15); color: #3fb950; border: 1px solid rgba(46,160,67,0.35); }
-  .score-badge.medium { background: rgba(210,153,34,0.15); color: #d29922; border: 1px solid rgba(210,153,34,0.3); }
-  .score-badge.low    { background: rgba(218,54,51,0.12); color: #f85149; border: 1px solid rgba(218,54,51,0.25); }
-
-  .license-badge {
-    display: inline-flex;
-    align-items: center;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 10.5px;
-    padding: 1px 6px;
-    border-radius: 4px;
-    background: rgba(139,148,158,0.12);
-    color: var(--text-secondary);
-    border: 1px solid var(--border-muted);
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .trend-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    font-size: 11px;
-    font-weight: 500;
-    white-space: nowrap;
-    flex-shrink: 0;
-    font-variant-numeric: tabular-nums;
-  }
-  .trend-badge.up   { color: #3fb950; }
-  .trend-badge.down { color: #f85149; }
-
-  .card-tagline {
-    font-size: 13px;
-    font-style: italic;
-    color: var(--accent-blue-light);
-    line-height: 1.4;
-    opacity: 0.95;
-  }
-
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-
-  .tag-chip {
-    display: inline-flex;
-    align-items: center;
-    font-size: 10.5px;
-    padding: 1px 7px;
-    border-radius: 10px;
-    background: rgba(139,148,158,0.08);
-    color: var(--text-muted);
-    border: 1px solid var(--border-muted);
-    white-space: nowrap;
-    cursor: pointer;
-    transition: all var(--transition);
-  }
-
-  .tag-chip:hover {
-    background: rgba(110,64,201,0.18);
-    color: #a371f7;
-    border-color: rgba(110,64,201,0.35);
-  }
-
-  .empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--text-muted);
-    display: none;
-  }
-
-  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
-  .empty-state p { font-size: 15px; }
-  .empty-state .hint { font-size: 13px; margin-top: 8px; }
-  .empty-state a { color: var(--accent-blue-light); cursor: pointer; }
-
-  .site-footer {
-    border-top: 1px solid var(--border);
-    padding: 20px 24px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-muted);
-    background: var(--bg-secondary);
-  }
-
-  .site-footer a { color: var(--text-secondary); }
-
-  #loading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 80px 24px;
-    gap: 12px;
-    color: var(--text-muted);
-  }
-
-  .spinner {
-    width: 28px;
-    height: 28px;
-    border: 3px solid var(--border);
-    border-top-color: var(--accent-blue);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-  }
-
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  #error-msg {
-    display: none;
-    margin: 40px auto;
-    max-width: 520px;
-    padding: 20px;
-    background: rgba(218,54,51,0.1);
-    border: 1px solid rgba(218,54,51,0.3);
-    border-radius: var(--radius);
-    color: #f85149;
-    text-align: center;
-  }
-
-  ::-webkit-scrollbar { width: 8px; height: 8px; }
-  ::-webkit-scrollbar-track { background: var(--bg-primary); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
-
-  @media (max-width: 640px) {
-    .site-header h1 { font-size: 22px; }
-    .controls { padding: 12px 16px; }
-    .main { padding: 16px; }
-    .cards-grid { grid-template-columns: 1fr; }
-    .stats-bar { flex-direction: column; align-items: flex-start; gap: 4px; }
-  }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+
+<link rel="stylesheet" href="./styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Awesome Automated AI/ML",
+  "description": "A curated catalog of tools for Automated AI/ML.",
+  "url": "https://jbogocz.github.io/awesome-automated-ai/"
+}
+</script>
+
+<script>
+  // Theme bootstrap — runs before paint to avoid flash.
+  (() => {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light' || saved === 'dark') {
+      document.documentElement.dataset.theme = saved;
+    }
+  })();
+</script>
 </head>
 <body>
 
-<header class="site-header">
-  <h1>&#x1F916; Awesome Automated AI/ML Explorer</h1>
-  <p class="subtitle" id="subtitle">AI/ML automation tools &mdash; sort, filter, and search</p>
-  <div class="header-links">
-    <a class="header-link" href="https://github.com/jbogocz/awesome-automated-ai" target="_blank" rel="noopener">
-      &#x2B50; GitHub Repo
+<div class="app">
+
+  <header class="topbar">
+    <button class="menu-trigger icon-btn" type="button" id="menu-trigger" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+
+    <a href="https://jbogocz.github.io/awesome-automated-ai/" class="brand" style="border:0;">
+      <span class="brand__logo" aria-hidden="true">
+        <img class="brand__logo-dark"  src="./assets/logo-dark.svg" alt="" width="28" height="28" decoding="async">
+        <img class="brand__logo-light" src="./assets/logo.svg"      alt="" width="28" height="28" decoding="async">
+      </span>
+      <span class="brand__mark">Awesome AutoML</span>
+      <span class="brand__sub" id="brand-sub">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span id="brand-sub-text">Catalog</span>
+      </span>
     </a>
-    <a class="header-link" href="https://github.com/jbogocz/awesome-automated-ai/blob/main/contributing.md" target="_blank" rel="noopener">
-      &#x270F; Contribute
-    </a>
-  </div>
-</header>
 
-<div class="controls">
-  <div class="search-wrap">
-    <span class="search-icon">&#x1F50D;</span>
-    <input id="search" type="search" placeholder="Search by name, description&#x2026;" autocomplete="off" spellcheck="false">
-  </div>
-  <div class="filter-wrap">
-    <select id="category-filter">
-      <option value="">All categories</option>
-    </select>
-  </div>
-  <div class="sort-group">
-    <label>Sort:</label>
-    <button type="button" class="sort-btn active" data-sort="stars">&#x2B50; Stars</button>
-    <button type="button" class="sort-btn" data-sort="score">Score</button>
-    <button type="button" class="sort-btn" data-sort="trend">Trend</button>
-    <button type="button" class="sort-btn" data-sort="name">A&#x2013;Z</button>
-    <button type="button" class="sort-btn" data-sort="updated">Updated</button>
-  </div>
-  <label class="toggle-wrap" title="Hide archived and unmaintained projects">
-    <input type="checkbox" id="hide-archived"> Hide archived
-  </label>
+    <span class="topbar__spacer"></span>
+
+    <button class="cmdk-trigger" type="button" id="cmdk-trigger" aria-label="Open command palette">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14">
+        <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
+      </svg>
+      <span>Search projects, jump to category…</span>
+      <span class="cmdk-trigger__hint"><kbd>⌘</kbd>K</span>
+    </button>
+
+    <div class="topbar__actions">
+      <button class="icon-btn" type="button" id="theme-toggle" aria-label="Toggle color theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" id="theme-icon">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/jbogocz/awesome-automated-ai" target="_blank" rel="noopener" aria-label="View on GitHub" style="border:0;">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.11.82-.26.82-.58v-2.1c-3.34.72-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.72.08-.72 1.21.08 1.85 1.24 1.85 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.77-1.61-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.4 1.24-3.24-.12-.31-.54-1.54.12-3.2 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.89.12 3.2.77.84 1.24 1.92 1.24 3.24 0 4.63-2.81 5.65-5.48 5.95.43.37.81 1.1.81 2.22v3.29c0 .33.22.7.83.58A12 12 0 0 0 12 .3"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <nav class="side" id="sidebar" aria-label="Categories">
+    <button class="cat" id="cat-all" aria-pressed="true">
+      <span>All projects</span>
+      <span class="cat__count" id="cat-all-count">—</span>
+    </button>
+    <div class="side__divider"></div>
+    <div id="section-groups"></div>
+    <div class="side__divider"></div>
+    <h3 class="side__title">About</h3>
+    <p class="side__about">
+      <strong>Frontier catalog</strong> for Automated AI/ML.
+      Curated and refreshed <strong>weekly</strong> by an AI pipeline
+      that scans GitHub for activity, novelty, and signal.
+    </p>
+  </nav>
+
+  <main class="main">
+
+    <!-- Lenses: curated views that do the curatorial work for you. -->
+    <div class="lensbar" role="toolbar" aria-label="Lenses">
+      <div class="lensbar__row">
+        <button class="lens" type="button" data-lens="all"         aria-pressed="true">All <span class="lens__count" data-count="all">—</span></button>
+        <button class="lens" type="button" data-lens="frontier"    aria-pressed="false">Frontier <span class="lens__count" data-count="frontier">—</span></button>
+        <button class="lens" type="button" data-lens="rising"      aria-pressed="false">Rising <span class="lens__count" data-count="rising">—</span></button>
+        <button class="lens" type="button" data-lens="foundations" aria-pressed="false">Foundations <span class="lens__count" data-count="foundations">—</span></button>
+        <button class="lens" type="button" data-lens="quiet"       aria-pressed="false">Quiet <span class="lens__count" data-count="quiet">—</span></button>
+        <button class="lens" type="button" data-lens="fresh"       aria-pressed="false">Fresh <span class="lens__count" data-count="fresh">—</span></button>
+      </div>
+      <p class="lensbar__caption" id="lens-caption">The full frontier — every tool, sorted by composite score.</p>
+    </div>
+
+    <div class="filterbar" role="toolbar" aria-label="Filters">
+      <button class="chip" type="button" data-filter="alive" aria-pressed="false">
+        <span>● Alive</span>
+        <span class="chip__count" id="chip-alive-count">—</span>
+      </button>
+      <button class="chip" type="button" data-filter="commercial" aria-pressed="false">
+        <span>Commercial</span>
+      </button>
+      <button class="chip" type="button" data-filter="oss" aria-pressed="false">
+        <span>Open source</span>
+      </button>
+      <button class="chip" type="button" data-filter="archived" aria-pressed="false">
+        <span>Show archived</span>
+      </button>
+
+      <div class="filterbar__sep" aria-hidden="true"></div>
+
+      <div class="sort-group" role="radiogroup" aria-label="Sort">
+        <button class="sort-btn" type="button" data-sort="score"  aria-pressed="true">Score</button>
+        <button class="sort-btn" type="button" data-sort="stars"  aria-pressed="false">Stars</button>
+        <button class="sort-btn" type="button" data-sort="trend"  aria-pressed="false">Trend</button>
+        <button class="sort-btn" type="button" data-sort="recent" aria-pressed="false">Recent</button>
+        <button class="sort-btn" type="button" data-sort="name"   aria-pressed="false">A→Z</button>
+      </div>
+
+      <span class="filterbar__count" id="result-count">loading…</span>
+    </div>
+
+    <div class="stream" id="stream" role="list">
+      <div class="loading-skeleton" style="width: 60%;"></div>
+      <div class="loading-skeleton" style="width: 80%;"></div>
+      <div class="loading-skeleton" style="width: 70%;"></div>
+      <div class="loading-skeleton" style="width: 75%;"></div>
+      <div class="loading-skeleton" style="width: 65%;"></div>
+    </div>
+  </main>
+
 </div>
 
-<div class="stats-bar">
-  <div class="stats-count" id="stats-count">Loading&#x2026;</div>
-  <div class="stats-generated" id="stats-generated"></div>
+<!-- Detail sheet -->
+<aside class="sheet" id="sheet" aria-label="Project details" aria-hidden="true">
+  <div class="sheet__head">
+    <h2 class="sheet__title" id="sheet-title">—</h2>
+    <button class="sheet__close" type="button" id="sheet-close" aria-label="Close details">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="sheet__body" id="sheet-body">
+    <!-- populated by JS -->
+  </div>
+</aside>
+
+<div class="scrim" id="scrim" aria-hidden="true"></div>
+
+<!-- Command palette -->
+<div class="cmdk" id="cmdk" role="dialog" aria-modal="true" aria-label="Command palette" aria-hidden="true">
+  <input class="cmdk__input" type="text" id="cmdk-input" placeholder="Search projects · jump to category · type ? for help" autocomplete="off" spellcheck="false">
+  <div class="cmdk__list" id="cmdk-list"></div>
+  <div class="cmdk__foot">
+    <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+    <span><kbd>↵</kbd> open</span>
+    <span><kbd>esc</kbd> close</span>
+    <span style="margin-left:auto;font-family:var(--font-mono);">live</span>
+  </div>
 </div>
 
-<div id="loading">
-  <div class="spinner"></div>
-  <span>Loading project data&#x2026;</span>
-</div>
-
-<div id="error-msg"></div>
-
-<main class="main" id="main" style="display:none"></main>
-
-<div class="empty-state" id="empty-state">
-  <div class="icon">&#x1F50E;</div>
-  <p>No projects match your filters.</p>
-  <p class="hint"><a id="clear-filters">Clear all filters</a> to see all projects.</p>
-</div>
-
-<footer class="site-footer">
-  Data auto-generated from
-  <a href="https://github.com/jbogocz/awesome-automated-ai/blob/main/projects.yaml" target="_blank" rel="noopener">projects.yaml</a>.
-  Powered by <strong>AI Curator Engine</strong>.
-  &nbsp;&middot;&nbsp;
-  <a href="https://github.com/jbogocz/awesome-automated-ai" target="_blank" rel="noopener">jbogocz/awesome-automated-ai</a>
-</footer>
-
-<script>
-(function () {
-  "use strict";
-
-  const allProjects = [];
-  const allCategoryMap = {};
-  const originalCategoryOrder = [];
-  const SORT_MODES = ["stars", "score", "trend", "name", "updated"];
-  let sortMode = "stars";
-  let searchQuery = "";
-  let categoryFilter = "";
-  let hideArchived = false;
-
-  function readURL() {
-    const params = new URLSearchParams(location.search);
-    const sort = params.get("sort");
-    sortMode = sort && SORT_MODES.includes(sort) ? sort : "stars";
-    categoryFilter = params.get("cat") || "";
-    searchQuery = params.get("q") || "";
-    hideArchived = params.get("archived") === "hide";
-  }
-
-  function syncURL() {
-    const params = new URLSearchParams();
-    if (sortMode !== "stars") params.set("sort", sortMode);
-    if (categoryFilter) params.set("cat", categoryFilter);
-    if (searchQuery) params.set("q", searchQuery);
-    if (hideArchived) params.set("archived", "hide");
-    const qs = params.toString();
-    const target = qs ? `${location.pathname}?${qs}` : location.pathname;
-    if (target !== `${location.pathname}${location.search}`) {
-      history.replaceState(null, "", target);
-    }
-  }
-
-  function applyUIState() {
-    document.getElementById("search").value = searchQuery;
-    const catSel = document.getElementById("category-filter");
-    if (catSel) catSel.value = categoryFilter;
-    document.getElementById("hide-archived").checked = hideArchived;
-    for (const btn of document.querySelectorAll(".sort-btn")) {
-      btn.classList.toggle("active", btn.getAttribute("data-sort") === sortMode);
-    }
-  }
-
-  readURL();
-
-  function fmtStars(n) {
-    if (!n) return "\u2013";
-    if (n >= 1000) return `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}k`;
-    return String(n);
-  }
-
-  function fmtDate(iso) {
-    if (!iso) return "";
-    const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
-    if (days < 1)  return "today";
-    if (days < 7)  return `${days}d ago`;
-    if (days < 30) return `${Math.floor(days / 7)}w ago`;
-    if (days < 365) return `${Math.floor(days / 30)}mo ago`;
-    const yrs = (days / 365).toFixed(1);
-    return yrs.endsWith(".0") ? `${yrs.slice(0, -2)}y ago` : `${yrs}y ago`;
-  }
-
-  function commitClass(iso) {
-    if (!iso) return "";
-    const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
-    if (days < 180) return "recent";
-    if (days < 365) return "medium";
-    return "stale";
-  }
-
-  function activityDot(iso, archived) {
-    if (archived || !iso) return "\uD83D\uDD34";
-    const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
-    if (days < 180) return "\uD83D\uDFE2";
-    if (days < 365) return "\uD83D\uDFE1";
-    return "\uD83D\uDD34";
-  }
-
-  function scoreClass(n) {
-    if (n >= 70) return "good";
-    if (n >= 40) return "medium";
-    return "low";
-  }
-
-  function isUnmaintained(note) {
-    if (!note) return false;
-    const lower = note.toLowerCase();
-    return lower.indexOf("unmaintained") >= 0 || lower.indexOf("deprecated") >= 0 ||
-           lower.indexOf("archived") >= 0 || lower.indexOf("historical") >= 0 ||
-           lower.indexOf("maintenance mode") >= 0;
-  }
-
-  function esc(s) {
-    return String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;");
-  }
-
-  function filterAndSort() {
-    const q = searchQuery.toLowerCase().trim();
-    const result = allProjects.filter((p) => {
-      if (hideArchived && (p.archived || isUnmaintained(p.note))) return false;
-      if (categoryFilter && p.category !== categoryFilter) return false;
-      if (q) {
-        return p.name.toLowerCase().indexOf(q) >= 0 ||
-               p.description.toLowerCase().indexOf(q) >= 0 ||
-               (p.tagline && p.tagline.toLowerCase().indexOf(q) >= 0) ||
-               p.category.toLowerCase().indexOf(q) >= 0 ||
-               (p.note && p.note.toLowerCase().indexOf(q) >= 0) ||
-               (p.tags?.some((t) => t.toLowerCase().indexOf(q) >= 0));
-      }
-      return true;
-    });
-
-    result.sort((a, b) => {
-      if (sortMode === "stars") return (b.stars || 0) - (a.stars || 0);
-      if (sortMode === "score") return (b.score || 0) - (a.score || 0);
-      if (sortMode === "trend") return (b.trend || 0) - (a.trend || 0);
-      if (sortMode === "name")  return a.name.localeCompare(b.name);
-      if (sortMode === "updated") {
-        if (!a.lastCommit && !b.lastCommit) return 0;
-        if (!a.lastCommit) return 1;
-        if (!b.lastCommit) return -1;
-        return new Date(b.lastCommit).getTime() - new Date(a.lastCommit).getTime();
-      }
-      return 0;
-    });
-
-    return result;
-  }
-
-  function renderCard(p) {
-    const archived = p.archived;
-    const unmaintained = isUnmaintained(p.note);
-    const isDead = archived || unmaintained;
-    const starsClass = p.stars ? "" : " zero";
-    const dc = commitClass(p.lastCommit);
-    const dot = activityDot(p.lastCommit, archived);
-
-    let statusBadges = "";
-    if (archived) {
-      statusBadges += '<span class="badge badge-archived">Archived</span>';
-    } else if (unmaintained) {
-      const m = p.note.match(/unmaintained|deprecated|historical|maintenance/i);
-      const lbl = m ? m[0] : "Unmaintained";
-      statusBadges += `<span class="badge badge-unmaintained">${esc(lbl)}</span>`;
-    }
-
-    let noteHtml = "";
-    if (p.note && !isDead) {
-      const short = p.note.length > 40 ? `${p.note.slice(0, 38)}\u2026` : p.note;
-      noteHtml = `<span class="badge badge-note" title="${esc(p.note)}">${esc(short)}</span>`;
-    }
-
-    let scoreHtml = "";
-    if (typeof p.score === "number" && p.score > 0) {
-      scoreHtml = `<span class="score-badge ${scoreClass(p.score)}" title="Quality score ${p.score}/100">${p.score}</span>`;
-    }
-
-    let licenseHtml = "";
-    if (p.license) {
-      licenseHtml = `<span class="license-badge" title="${esc(p.license)} license">${esc(p.license)}</span>`;
-    }
-
-    let trendHtml = "";
-    if (!isDead && typeof p.trend === "number" && Math.abs(p.trend) >= 10) {
-      const dir = p.trend > 0 ? "up" : "down";
-      const arrow = p.trend > 0 ? "\u2197" : "\u2198";
-      const sign = p.trend > 0 ? "+" : "";
-      trendHtml = `<span class="trend-badge ${dir}" title="Stars last 30 days">${arrow} ${sign}${p.trend}</span>`;
-    }
-
-    let dateHtml = "";
-    if (p.lastCommit) {
-      const dt = new Date(p.lastCommit).toLocaleDateString();
-      dateHtml = `<span class="last-commit ${dc}" title="${esc(dt)}">${fmtDate(p.lastCommit)}</span>`;
-    }
-
-    const taglineHtml = p.tagline && !isDead ? `<p class="card-tagline">${esc(p.tagline)}</p>` : "";
-    const descHtml = p.description ? `<p class="card-desc">${esc(p.description)}</p>` : "";
-
-    let tagsHtml = "";
-    if (p.tags && p.tags.length > 0) {
-      const chips = p.tags.map((t) => `<span class="tag-chip" data-tag="${esc(t)}">${esc(t)}</span>`).join("");
-      tagsHtml = `<div class="card-tags">${chips}</div>`;
-    }
-
-    return `<div class="card">` +
-      `<div class="card-top">` +
-        `<div class="card-name-wrap">` +
-          `<span class="activity-dot" title="Activity">${dot}</span>` +
-          `<a class="card-name" href="${esc(p.url)}" target="_blank" rel="noopener" title="${esc(p.name)}">${esc(p.name)}</a>` +
-          scoreHtml + licenseHtml + statusBadges + noteHtml +
-        `</div>` +
-        `<div class="card-meta">` +
-          `<span class="stars${starsClass}">` +
-            `<span class="star-icon">&#x2B50;</span>` +
-            `<span class="star-count">${fmtStars(p.stars)}</span>` +
-          `</span>` +
-          trendHtml + dateHtml +
-        `</div>` +
-      `</div>` +
-      taglineHtml +
-      descHtml +
-      tagsHtml +
-      `<div><span class="cat-badge" data-cat="${esc(p.category)}">${esc(p.category)}</span></div>` +
-    `</div>`;
-  }
-
-  function renderSection(catName, catDesc, projects) {
-    const cards = projects.map(renderCard).join("");
-    const descHtml = catDesc ? `<span class="category-desc">${esc(catDesc)}</span>` : "";
-    return '<section class="category-section">' +
-      '<div class="category-header">' +
-        '<h2 class="category-name">' + esc(catName) + '</h2>' +
-        '<span class="category-count">' + projects.length + '</span>' +
-        descHtml +
-      '</div>' +
-      '<div class="cards-grid">' + cards + '</div>' +
-    '</section>';
-  }
-
-  function renderMain(projects) {
-    const main = document.getElementById("main");
-    const emptyState = document.getElementById("empty-state");
-    const statsEl = document.getElementById("stats-count");
-
-    statsEl.textContent = "";
-    statsEl.appendChild(makeStats(projects.length, allProjects.length));
-
-    if (projects.length === 0) {
-      main.style.display = "none";
-      emptyState.style.display = "block";
-      return;
-    }
-
-    emptyState.style.display = "none";
-    main.style.display = "block";
-
-    const useFlat = categoryFilter || searchQuery;
-    let html;
-
-    if (useFlat) {
-      const catName = categoryFilter || "Search Results";
-      const catDesc = categoryFilter ? (allCategoryMap[categoryFilter] || "") : `${projects.length} matching projects`;
-      html = renderSection(catName, catDesc, projects);
-    } else {
-      const sections = [];
-      for (const cat of originalCategoryOrder) {
-        const ps = projects.filter((p) => p.category === cat);
-        if (ps.length) sections.push(renderSection(cat, allCategoryMap[cat] || "", ps));
-      }
-      html = sections.join("");
-    }
-
-    main.innerHTML = html;
-
-    for (const el of main.querySelectorAll(".cat-badge")) {
-      el.addEventListener("click", () => {
-        const cat = el.getAttribute("data-cat");
-        const sel = document.getElementById("category-filter");
-        if (categoryFilter === cat) {
-          sel.value = "";
-          categoryFilter = "";
-        } else {
-          sel.value = cat;
-          categoryFilter = cat;
-        }
-        update();
-      });
-    }
-
-    for (const el of main.querySelectorAll(".tag-chip")) {
-      el.addEventListener("click", () => {
-        const tag = el.getAttribute("data-tag") || "";
-        const searchEl = document.getElementById("search");
-        searchQuery = tag;
-        searchEl.value = tag;
-        update();
-      });
-    }
-  }
-
-  function makeStats(shown, total) {
-    const frag = document.createDocumentFragment();
-    frag.appendChild(document.createTextNode("Showing "));
-    const s1 = document.createElement("strong");
-    s1.textContent = shown;
-    frag.appendChild(s1);
-    frag.appendChild(document.createTextNode(" of "));
-    const s2 = document.createElement("strong");
-    s2.textContent = total;
-    frag.appendChild(s2);
-    frag.appendChild(document.createTextNode(" projects"));
-    return frag;
-  }
-
-  function update() {
-    renderMain(filterAndSort());
-    syncURL();
-  }
-
-  function init() {
-    const loadingEl = document.getElementById("loading");
-    const errorEl = document.getElementById("error-msg");
-
-    fetch("./data.json")
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then((data) => {
-        for (const cat of data.categories) {
-          allCategoryMap[cat.name] = cat.description || "";
-          originalCategoryOrder.push(cat.name);
-          for (const e of cat.entries) {
-            allProjects.push({
-              name: e.name, repo: e.repo, url: e.url,
-              description: e.description, tagline: e.tagline || "",
-              note: e.note,
-              stars: e.stars, trend: typeof e.trend === "number" ? e.trend : null,
-              score: typeof e.score === "number" ? e.score : 0,
-              license: e.license || "",
-              lastCommit: e.lastCommit, archived: e.archived,
-              tags: Array.isArray(e.tags) ? e.tags : [],
-              category: cat.name,
-            });
-          }
-        }
-
-        const sel = document.getElementById("category-filter");
-        for (const c of data.categories) {
-          const opt = document.createElement("option");
-          opt.value = c.name;
-          opt.textContent = `${c.name} (${c.entries.length})`;
-          sel.appendChild(opt);
-        }
-
-        document.getElementById("subtitle").textContent =
-          `${allProjects.length} AI/ML automation tools across ${data.categories.length} categories \u2014 sort, filter, and search`;
-
-        if (data.generated) {
-          document.getElementById("stats-generated").textContent =
-            `Last updated: ${new Date(data.generated).toLocaleDateString("en-US", {year:"numeric",month:"short",day:"numeric"})}`;
-        }
-
-        applyUIState();
-        loadingEl.style.display = "none";
-        update();
-      })
-      .catch((err) => {
-        loadingEl.style.display = "none";
-        errorEl.style.display = "block";
-        errorEl.textContent = `Failed to load data.json: ${String(err)}`;
-      });
-  }
-
-  document.getElementById("search").addEventListener("input", (e) => {
-    searchQuery = e.target.value;
-    update();
-  });
-
-  document.getElementById("category-filter").addEventListener("change", (e) => {
-    categoryFilter = e.target.value;
-    update();
-  });
-
-  const sortBtns = document.querySelectorAll(".sort-btn");
-  for (const btn of sortBtns) {
-    btn.addEventListener("click", () => {
-      for (const other of sortBtns) other.classList.remove("active");
-      btn.classList.add("active");
-      sortMode = btn.getAttribute("data-sort");
-      update();
-    });
-  }
-
-  document.getElementById("hide-archived").addEventListener("change", (e) => {
-    hideArchived = e.target.checked;
-    update();
-  });
-
-  document.getElementById("clear-filters").addEventListener("click", () => {
-    searchQuery = "";
-    categoryFilter = "";
-    hideArchived = false;
-    sortMode = "stars";
-    applyUIState();
-    update();
-  });
-
-  window.addEventListener("popstate", () => {
-    readURL();
-    applyUIState();
-    update();
-  });
-
-  init();
-})();
-</script>
+<script type="module" src="./app.js"></script>
 </body>
 </html>
