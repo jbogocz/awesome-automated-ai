@@ -51,6 +51,8 @@ const EMPTY_API = {
   score: 0,
   topics: [],
   tagline: null,
+  lastCommit: null,
+  lastRelease: null,
 } as const;
 
 function main() {
@@ -99,7 +101,11 @@ function main() {
           trend: api.trend,
           score: api.score,
           license: api.license,
-          lastCommit: api.pushed,
+          // Real commit date (default branch HEAD), not the MAX of [commit,
+          // release, pushed_at] — `pushed_at` updates from tag pushes and
+          // metadata changes, which made dormant repos look "Active".
+          lastCommit: api.lastCommit ?? null,
+          lastRelease: api.lastRelease ?? null,
           archived: api.archived,
           tags: tags.slice(0, 5),
           external: isExternal,

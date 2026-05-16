@@ -48,6 +48,7 @@ export function openSheet(e) {
   const showStars = !e.external && e.stars != null;
   const showScore = !e.external && !e.archived && e.score != null;
   const showAge = !e.external && e.lastCommit;
+  const showRelease = !e.external && e.lastRelease;
   const trendVal = !e.external && e.trend != null ? `${e.trend > 0 ? "+" : ""}${e.trend.toLocaleString()}` : "—";
 
   const parts = [];
@@ -57,6 +58,7 @@ export function openSheet(e) {
     parts.push(`<p class="sheet__desc" style="color:var(--copper);font-style:italic;">${escapeText(e.note)}</p>`);
 
   parts.push(`
+    <div class="sheet__statusbar" style="border-left:2px solid var(${statusColVar});color:var(${statusColVar});">${status}</div>
     <div class="sheet__stats">
       <div class="stat__label">Stars</div>
       <div class="stat__label">Stars gained (30d)</div>
@@ -64,14 +66,14 @@ export function openSheet(e) {
       <div class="stat__val stat__val--trend ${t.cls}">${trendVal}</div>
 
       <div class="stat__label">License</div>
-      <div class="stat__label">Last commit</div>
-      <div class="stat__val">${escapeText(e.license || "—")}</div>
-      <div class="stat__val">${showAge ? `${fmtAge(e.lastCommit)} ago` : "—"}</div>
-
-      <div class="stat__label">Status</div>
       <div class="stat__label">Score</div>
-      <div class="stat__val" style="color:var(${statusColVar});">${status}</div>
+      <div class="stat__val">${escapeText(e.license || "—")}</div>
       <div class="stat__val">${showScore ? e.score : "—"}</div>
+
+      <div class="stat__label">Last commit</div>
+      <div class="stat__label">Last release</div>
+      <div class="stat__val">${showAge ? `${fmtAge(e.lastCommit)} ago` : "—"}</div>
+      <div class="stat__val">${showRelease ? `${fmtAge(e.lastRelease)} ago` : "—"}</div>
     </div>`);
 
   if (e.tags?.length) {

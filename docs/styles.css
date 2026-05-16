@@ -1195,6 +1195,18 @@
     margin-bottom: var(--s-5);
   }
 
+  .sheet__statusbar {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: var(--s-2) var(--s-3);
+    margin-bottom: var(--s-3);
+    background: var(--surface);
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  }
+
   .sheet__stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
