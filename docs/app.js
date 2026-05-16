@@ -44,34 +44,28 @@ const state = {
 };
 
 // ── Curated lenses ───────────────────────────────────────────────────
+// Each lens answers one specific ML-engineer question with one click.
+// Predicates are tuned against the actual data distribution (see jq audit):
+//   score p90 = 80, stars p50 = 4302, trend p90 = 1125, lastCommit p25 = 5d.
 const LENSES = {
   all: {
     test: () => true,
-    caption: (n) => `The full frontier — <b>${n}</b> tools across 25 categories. Sorted by composite score.`,
+    caption: (n) => `All <b>${n}</b> tools in the catalog. Sorted by composite quality score.`,
   },
-  frontier: {
+  top: {
+    // Highest composite score AND still maintained.
     test: (e) => isAlive(e) && (e.score ?? 0) >= 80,
-    caption: (n) => `<b>${n}</b> elite tools by composite score — proven AND active.`,
+    caption: (n) => `<b>${n}</b> highest-scoring tools that are still actively maintained.`,
   },
-  rising: {
-    test: (e) => !e.archived && (e.trend ?? 0) >= 60 && (e.stars ?? 0) < 2500,
-    caption: (n) => `<b>${n}</b> small but accelerating — under-the-radar work to watch.`,
+  trending: {
+    // Big star growth in the last 30 days (any size).
+    test: (e) => isAlive(e) && (e.trend ?? 0) >= 200,
+    caption: (n) => `<b>${n}</b> tools with major star growth in the last 30 days.`,
   },
-  foundations: {
-    test: (e) => isAlive(e) && (e.stars ?? 0) >= 10000,
-    caption: (n) => `<b>${n}</b> heavy hitters still maintained — the bedrock.`,
-  },
-  quiet: {
-    test: (e) => isAlive(e) && (e.trend ?? 0) < 30 && (e.stars ?? 0) >= 500,
-    caption: (n) => `<b>${n}</b> mature and steady — tools that don't need to move.`,
-  },
-  fresh: {
-    test: (e) => {
-      if (!e.lastCommit) return false;
-      const days = (Date.now() - new Date(e.lastCommit).getTime()) / 86400000;
-      return days < 30;
-    },
-    caption: (n) => `<b>${n}</b> shipped this month — the live edge of the catalog.`,
+  gems: {
+    // High curator score but under-median popularity — quality below the radar.
+    test: (e) => isAlive(e) && (e.score ?? 0) >= 70 && (e.stars ?? 0) < 5000,
+    caption: (n) => `<b>${n}</b> high-quality tools flying under the radar (under 5k stars).`,
   },
 };
 

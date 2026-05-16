@@ -122,17 +122,15 @@
 
   <main class="main">
 
-    <!-- Lenses: curated views that do the curatorial work for you. -->
+    <!-- Lenses: one-click curated views. Each answers a specific question. -->
     <div class="lensbar" role="toolbar" aria-label="Lenses">
       <div class="lensbar__row">
-        <button class="lens" type="button" data-lens="all"         aria-pressed="true">All <span class="lens__count" data-count="all">—</span></button>
-        <button class="lens" type="button" data-lens="frontier"    aria-pressed="false">Frontier <span class="lens__count" data-count="frontier">—</span></button>
-        <button class="lens" type="button" data-lens="rising"      aria-pressed="false">Rising <span class="lens__count" data-count="rising">—</span></button>
-        <button class="lens" type="button" data-lens="foundations" aria-pressed="false">Foundations <span class="lens__count" data-count="foundations">—</span></button>
-        <button class="lens" type="button" data-lens="quiet"       aria-pressed="false">Quiet <span class="lens__count" data-count="quiet">—</span></button>
-        <button class="lens" type="button" data-lens="fresh"       aria-pressed="false">Fresh <span class="lens__count" data-count="fresh">—</span></button>
+        <button class="lens" type="button" data-lens="all"      aria-pressed="true"  title="Every tool in the catalog">All <span class="lens__count" data-count="all">—</span></button>
+        <button class="lens" type="button" data-lens="top"      aria-pressed="false" title="Highest composite score, still maintained">Top picks <span class="lens__count" data-count="top">—</span></button>
+        <button class="lens" type="button" data-lens="trending" aria-pressed="false" title="Major star growth in the last 30 days">Trending <span class="lens__count" data-count="trending">—</span></button>
+        <button class="lens" type="button" data-lens="gems"     aria-pressed="false" title="High score but under 5k stars — under the radar">Hidden gems <span class="lens__count" data-count="gems">—</span></button>
       </div>
-      <p class="lensbar__caption" id="lens-caption">The full frontier — every tool, sorted by composite score.</p>
+      <p class="lensbar__caption" id="lens-caption">All tools in the catalog. Sorted by composite quality score.</p>
     </div>
 
     <div class="filterbar" role="toolbar" aria-label="Filters">
@@ -153,11 +151,11 @@
       <div class="filterbar__sep" aria-hidden="true"></div>
 
       <div class="sort-group" role="radiogroup" aria-label="Sort">
-        <button class="sort-btn" type="button" data-sort="score"  aria-pressed="true">Score</button>
-        <button class="sort-btn" type="button" data-sort="stars"  aria-pressed="false">Stars</button>
-        <button class="sort-btn" type="button" data-sort="trend"  aria-pressed="false">Trend</button>
-        <button class="sort-btn" type="button" data-sort="recent" aria-pressed="false">Recent</button>
-        <button class="sort-btn" type="button" data-sort="name"   aria-pressed="false">A→Z</button>
+        <button class="sort-btn" type="button" data-sort="score"  aria-pressed="true"  title="Composite quality score">Score</button>
+        <button class="sort-btn" type="button" data-sort="stars"  aria-pressed="false" title="GitHub star count">Stars</button>
+        <button class="sort-btn" type="button" data-sort="trend"  aria-pressed="false" title="30-day star growth %">Trend</button>
+        <button class="sort-btn" type="button" data-sort="recent" aria-pressed="false" title="Most recent commit first">Updated</button>
+        <button class="sort-btn" type="button" data-sort="name"   aria-pressed="false" title="Alphabetical">A→Z</button>
       </div>
 
       <span class="filterbar__count" id="result-count">loading…</span>

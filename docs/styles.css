@@ -895,10 +895,15 @@ input {
 .row__tags {
   display: flex;
   gap: 3px;
-  justify-content: flex-end;
+  justify-content: flex-start;
   flex-wrap: nowrap;
   overflow: hidden;
+  /* Tags overflow on the trailing edge (left-to-right reading), with a soft
+     fade — the cut is deliberate, never a half-readable first chip. */
+  mask-image: linear-gradient(to right, black 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 78%, transparent 100%);
 }
+.row__tags .tag { flex-shrink: 0; }
 
 .tag {
   font-family: var(--font-mono);
