@@ -142,7 +142,7 @@ function buildExternalCard(entry: Entry): string[] {
   const url = entry.url ?? "#";
   const icon = entry.authors ? "\u{1F4C4}" : entry.vendor ? "\u{1F3E2}" : "\u{1F517}";
   const nameHtml = `<b><a href="${url}">${entry.name}</a></b>`;
-  const tagline = entry.tagline || generateTagline(entry.description ?? "");
+  const tagline = entry.tagline ?? generateTagline(entry.description ?? "");
   const taglinePart = tagline ? ` ${tagline}` : "";
   const summary = `<details><summary>${icon} ${nameHtml}${taglinePart}</summary>`;
 
@@ -199,7 +199,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
       : "";
   const licenseBadge = rd.license ? ` <code>${rd.license}</code>` : "";
 
-  const tagline = rd.tagline || entry.tagline || generateTagline(entry.description ?? "");
+  const tagline = rd.tagline ?? entry.tagline ?? generateTagline(entry.description ?? "");
   const taglinePart = tagline ? ` ${tagline}` : "";
 
   const summary = `<details><summary>${dot}${rankLabel} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${taglinePart}</summary>`;

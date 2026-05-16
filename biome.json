@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.12/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -29,6 +29,15 @@
       "complexity": {
         "noForEach": "off",
         "useArrowFunction": "off"
+      },
+      "nursery": {
+        "noFloatingPromises": "error",
+        "noMisusedPromises": "error",
+        "useAwaitThenable": "error",
+        "noImpliedEval": "error",
+        "noUnsafePlusOperands": "error",
+        "useExhaustiveSwitchCases": "error",
+        "useNullishCoalescing": "warn"
       }
     }
   },
