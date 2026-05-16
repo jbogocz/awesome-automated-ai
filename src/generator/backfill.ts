@@ -1,6 +1,5 @@
 import type { DB } from "../db/client.js";
 import { fetchRecentStargazersBatch } from "../github/stargazers-graphql.js";
-import { fetchRecentStargazersRest } from "../github/stargazers-rest.js";
 import type { BackfillInput, BackfillSummary, RepoStargazersPage, StargazerEntry } from "../github/types.js";
 
 export interface DailySnapshot {
@@ -141,20 +140,13 @@ export async function backfillBatch(
       }
 
       for (const input of chunk) {
-        let page = result.pages.get(input.repo);
+        const page = result.pages.get(input.repo);
         if (!page || page.error) {
-          const originalError = page?.error ?? "missing_page";
-          const rest = await fetchRecentStargazersRest(input.repo, since);
-          if (rest.error) {
-            db.setBackfillRepoState(runId, input.projectId, "skipped", rest.error);
-            bumpReason(reasons, rest.error);
-            skipped += 1;
-            continue;
-          }
-          if (originalError !== "not_found") {
-            bumpReason(reasons, "graphql_recovered");
-          }
-          page = rest;
+          const err = page?.error ?? "missing_page";
+          db.setBackfillRepoState(runId, input.projectId, "skipped", err);
+          bumpReason(reasons, err);
+          skipped += 1;
+          continue;
         }
         persistSnapshots(db, input.projectId, page, input.currentStars, today);
         db.setBackfillRepoState(runId, input.projectId, "done");

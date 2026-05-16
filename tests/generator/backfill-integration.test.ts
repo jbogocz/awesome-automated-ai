@@ -2,12 +2,8 @@ import { describe, expect, it, vi } from "vitest";
 import { DB } from "../../src/db/client.js";
 
 const graphqlMock = vi.fn();
-const restMock = vi.fn();
 vi.mock("../../src/github/stargazers-graphql.js", () => ({
   fetchRecentStargazersBatch: (...a: unknown[]) => graphqlMock(...a),
-}));
-vi.mock("../../src/github/stargazers-rest.js", () => ({
-  fetchRecentStargazersRest: (...a: unknown[]) => restMock(...a),
 }));
 
 const { backfillBatch } = await import("../../src/generator/backfill.js");
@@ -49,7 +45,6 @@ function starsOn(db: DB, pid: number, dateKey: string): number | null {
 describe("backfillBatch", () => {
   it("writes 30 snapshots per repo and records a completed run", async () => {
     graphqlMock.mockReset();
-    restMock.mockReset();
 
     const db = setupDB();
     const pid = db.upsertProject("a/b", "ab");
@@ -86,9 +81,8 @@ describe("backfillBatch", () => {
     db.close();
   });
 
-  it("falls back to REST when GraphQL errors for a specific repo", async () => {
+  it("skips a repo when GraphQL returns an error for it", async () => {
     graphqlMock.mockReset();
-    restMock.mockReset();
 
     const db = setupDB();
     const pid = db.upsertProject("missing/repo", "missing");
@@ -109,12 +103,6 @@ describe("backfillBatch", () => {
       rateLimit: { remaining: 4999, resetAt: "z", cost: 1 },
       pointsUsed: 1,
     });
-    restMock.mockResolvedValueOnce({
-      stargazers: [{ starredAt: "2026-04-10T12:00:00Z" }],
-      totalCount: 10,
-      hasNextPage: false,
-      endCursor: null,
-    });
 
     const today = new Date(Date.UTC(2026, 3, 19));
     const summary = await backfillBatch([{ repo: "missing/repo", projectId: pid, currentStars: 10 }], db, {
@@ -122,14 +110,15 @@ describe("backfillBatch", () => {
       batchSize: 20,
     });
 
-    expect(summary.ok).toBe(1);
-    expect(restMock).toHaveBeenCalledOnce();
+    expect(summary.ok).toBe(0);
+    expect(summary.skipped).toBe(1);
+    expect(summary.reasons.graphql_error).toBe(1);
+    expect(countSnapshots(db, pid)).toBe(0);
     db.close();
   });
 
   it("does not overwrite existing real snapshots", async () => {
     graphqlMock.mockReset();
-    restMock.mockReset();
 
     const db = setupDB();
     const pid = db.upsertProject("a/b", "ab");
@@ -156,7 +145,6 @@ describe("backfillBatch", () => {
 
   it("resume: only queries GraphQL for pending projects", async () => {
     graphqlMock.mockReset();
-    restMock.mockReset();
 
     const db = setupDB();
     const p1 = db.upsertProject("a/b", "ab");
@@ -188,7 +176,6 @@ describe("backfillBatch", () => {
 
   it("aborts with status=aborted when rate limit is critically low with reset >15 min away", async () => {
     graphqlMock.mockReset();
-    restMock.mockReset();
 
     const db = setupDB();
     const pid = db.upsertProject("a/b", "ab");
@@ -214,7 +201,6 @@ describe("backfillBatch", () => {
 
   it("marks run as failed when an exception propagates from within the batch loop", async () => {
     graphqlMock.mockReset();
-    restMock.mockReset();
 
     const db = setupDB();
     const pid = db.upsertProject("a/b", "ab");
@@ -233,7 +219,6 @@ describe("backfillBatch", () => {
 
   it("dedupes inputs by projectId so the same repo listed twice doesn't break the run", async () => {
     graphqlMock.mockReset();
-    restMock.mockReset();
 
     const db = setupDB();
     const pid = db.upsertProject("ray-project/ray", "Ray");
