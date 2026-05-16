@@ -1,6 +1,6 @@
 // docs/cmdk.js — Command palette UI.
 // Lazy-loaded on first ⌘K / '/' press; never parsed for users who don't open it.
-import { $, $$, escapeText, fmtStars, html, raw, render } from './lib.js';
+import { $, $$, escapeText, fmtStars, html, raw, render } from "./lib.js";
 
 let _state, _setCategory, _openSheet;
 let els;
@@ -12,33 +12,33 @@ export function initCmdk({ state, setCategory, openSheet }) {
   _setCategory = setCategory;
   _openSheet = openSheet;
   els = {
-    cmdk:      $('#cmdk'),
-    cmdkInput: $('#cmdk-input'),
-    cmdkList:  $('#cmdk-list'),
-    scrim:     $('#scrim'),
+    cmdk: $("#cmdk"),
+    cmdkInput: $("#cmdk-input"),
+    cmdkList: $("#cmdk-list"),
+    scrim: $("#scrim"),
   };
-  els.cmdkInput.addEventListener('input', (ev) => renderCmdk(ev.target.value));
-  els.cmdkInput.addEventListener('keydown', onInputKey);
-  els.cmdkList.addEventListener('click', onListClick);
+  els.cmdkInput.addEventListener("input", (ev) => renderCmdk(ev.target.value));
+  els.cmdkInput.addEventListener("keydown", onInputKey);
+  els.cmdkList.addEventListener("click", onListClick);
 }
 
 export function openCmdk() {
-  els.cmdk.dataset.open = 'true';
-  els.cmdk.setAttribute('aria-hidden', 'false');
-  els.scrim.dataset.open = 'true';
-  els.cmdkInput.value = '';
-  renderCmdk('');
+  els.cmdk.dataset.open = "true";
+  els.cmdk.setAttribute("aria-hidden", "false");
+  els.scrim.dataset.open = "true";
+  els.cmdkInput.value = "";
+  renderCmdk("");
   setTimeout(() => els.cmdkInput.focus(), 30);
 }
 
 export function closeCmdk() {
-  els.cmdk.dataset.open = 'false';
-  els.cmdk.setAttribute('aria-hidden', 'true');
-  els.scrim.dataset.open = 'false';
+  els.cmdk.dataset.open = "false";
+  els.cmdk.setAttribute("aria-hidden", "true");
+  els.scrim.dataset.open = "false";
 }
 
 export function isOpen() {
-  return els?.cmdk.dataset.open === 'true';
+  return els?.cmdk.dataset.open === "true";
 }
 
 // ── internals ────────────────────────────────────────────────────────
@@ -46,34 +46,53 @@ function renderCmdk(q) {
   q = q.trim().toLowerCase();
   const groups = [];
 
-  if (q === '' || q.startsWith(':') || q.startsWith('>')) {
-    const cleanQ = q.replace(/^[:>]\s*/, '');
+  if (q === "" || q.startsWith(":") || q.startsWith(">")) {
+    const cleanQ = q.replace(/^[:>]\s*/, "");
     const cats = [..._state.categoryById.values()]
-      .filter(c => !cleanQ || c.name.toLowerCase().includes(cleanQ))
+      .filter((c) => !cleanQ || c.name.toLowerCase().includes(cleanQ))
       .slice(0, 8);
-    if (cats.length) groups.push({ label: 'Categories', items: cats.map(c => ({
-      key: `cat-${c.id}`,
-      name: c.name,
-      meta: `${c.entries.length} · ${c.section}`,
-      action: () => { _setCategory(c.id); closeCmdk(); },
-    })) });
+    if (cats.length)
+      groups.push({
+        label: "Categories",
+        items: cats.map((c) => ({
+          key: `cat-${c.id}`,
+          name: c.name,
+          meta: `${c.entries.length} · ${c.section}`,
+          action: () => {
+            _setCategory(c.id);
+            closeCmdk();
+          },
+        })),
+      });
   }
 
-  if (q !== '' && !q.startsWith(':') && !q.startsWith('>')) {
-    const matched = _state.entries.filter(e => {
-      const hay = `${e.name} ${e.tagline ?? ''} ${(e.tags||[]).join(' ')}`.toLowerCase();
-      return hay.includes(q);
-    }).slice(0, 8);
-    if (matched.length) groups.push({ label: 'Projects', items: matched.map(e => ({
-      key: `e-${e.categoryId}-${e.name}`,
-      name: e.name,
-      meta: `${fmtStars(e.stars)} · ${e.categoryName}`,
-      action: () => { _openSheet(e); closeCmdk(); },
-    })) });
+  if (q !== "" && !q.startsWith(":") && !q.startsWith(">")) {
+    const matched = _state.entries
+      .filter((e) => {
+        const hay = `${e.name} ${e.tagline ?? ""} ${(e.tags || []).join(" ")}`.toLowerCase();
+        return hay.includes(q);
+      })
+      .slice(0, 8);
+    if (matched.length)
+      groups.push({
+        label: "Projects",
+        items: matched.map((e) => ({
+          key: `e-${e.categoryId}-${e.name}`,
+          name: e.name,
+          meta: `${fmtStars(e.stars)} · ${e.categoryName}`,
+          action: () => {
+            _openSheet(e);
+            closeCmdk();
+          },
+        })),
+      });
   }
 
   if (groups.length === 0) {
-    render(els.cmdkList, html`<div class="cmdk__empty">No matches. Try a project name, or <code>:cat</code> to jump.</div>`);
+    render(
+      els.cmdkList,
+      html`<div class="cmdk__empty">No matches. Try a project name, or <code>:cat</code> to jump.</div>`,
+    );
     cmdkItems = [];
     return;
   }
@@ -89,37 +108,39 @@ function renderCmdk(q) {
         </button>`);
     }
   }
-  render(els.cmdkList, html`${raw(parts.join(''))}`);
+  render(els.cmdkList, html`${raw(parts.join(""))}`);
 
-  cmdkItems = groups.flatMap(g => g.items);
+  cmdkItems = groups.flatMap((g) => g.items);
   cmdkIdx = 0;
   updateCmdkActive();
 }
 
 function updateCmdkActive() {
-  const btns = $$('.cmdk__item', els.cmdkList);
-  btns.forEach((b, i) => { b.dataset.active = i === cmdkIdx ? 'true' : 'false'; });
-  btns[cmdkIdx]?.scrollIntoView({ block: 'nearest' });
+  const btns = $$(".cmdk__item", els.cmdkList);
+  btns.forEach((b, i) => {
+    b.dataset.active = i === cmdkIdx ? "true" : "false";
+  });
+  btns[cmdkIdx]?.scrollIntoView({ block: "nearest" });
 }
 
 function onInputKey(ev) {
-  if (ev.key === 'ArrowDown') {
+  if (ev.key === "ArrowDown") {
     ev.preventDefault();
     cmdkIdx = Math.min(cmdkIdx + 1, cmdkItems.length - 1);
     updateCmdkActive();
-  } else if (ev.key === 'ArrowUp') {
+  } else if (ev.key === "ArrowUp") {
     ev.preventDefault();
     cmdkIdx = Math.max(cmdkIdx - 1, 0);
     updateCmdkActive();
-  } else if (ev.key === 'Enter') {
+  } else if (ev.key === "Enter") {
     ev.preventDefault();
     cmdkItems[cmdkIdx]?.action();
   }
 }
 
 function onListClick(ev) {
-  const btn = ev.target.closest('.cmdk__item');
+  const btn = ev.target.closest(".cmdk__item");
   if (!btn) return;
-  const it = cmdkItems.find(i => i.key === btn.dataset.key);
+  const it = cmdkItems.find((i) => i.key === btn.dataset.key);
   it?.action();
 }

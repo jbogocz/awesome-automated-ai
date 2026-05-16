@@ -1,76 +1,80 @@
 // docs/sheet.js — Detail sheet UI.
 // Lazy-loaded on first row click; never parsed for users who only scan the list.
 import {
-  $, escapeText, html, raw, render,
-  fmtStars, fmtTrend, fmtAge, isAlive, magnitude, isHot,
+  $,
   avatarHtml,
-} from './lib.js';
+  escapeText,
+  fmtAge,
+  fmtStars,
+  fmtTrend,
+  html,
+  isAlive,
+  isHot,
+  magnitude,
+  raw,
+  render,
+} from "./lib.js";
 
 let els;
 let _opened = null;
 
 export function initSheet() {
   els = {
-    sheet:      $('#sheet'),
-    sheetTitle: $('#sheet-title'),
-    sheetBody:  $('#sheet-body'),
-    sheetClose: $('#sheet-close'),
-    scrim:      $('#scrim'),
+    sheet: $("#sheet"),
+    sheetTitle: $("#sheet-title"),
+    sheetBody: $("#sheet-body"),
+    sheetClose: $("#sheet-close"),
+    scrim: $("#scrim"),
   };
-  els.sheetClose.addEventListener('click', closeSheet);
+  els.sheetClose.addEventListener("click", closeSheet);
 }
 
 export function openSheet(e) {
   _opened = e;
   const t = fmtTrend(e.trend);
   const mag = magnitude(e);
-  const hot = isHot(e) ? 'hot' : '';
+  const hot = isHot(e) ? "hot" : "";
 
   // Status: external papers aren't repos so don't get an active/quiet label.
-  const status = e.external ? 'Reference'
-    : e.archived ? 'Archived'
-    : isAlive(e) ? 'Active'
-    : 'Quiet';
-  const statusColVar = e.external ? '--moonlight'
-    : e.archived ? '--mag-extinct'
-    : isAlive(e) ? '--life'
-    : '--copper';
+  const status = e.external ? "Reference" : e.archived ? "Archived" : isAlive(e) ? "Active" : "Quiet";
+  const statusColVar = e.external ? "--moonlight" : e.archived ? "--mag-extinct" : isAlive(e) ? "--life" : "--copper";
 
   render(els.sheetTitle, html`${raw(avatarHtml(e, mag, hot))}<span>${e.name}</span>`);
 
-  const tagsHtml = (e.tags || []).map(tag => `<span class="tag">${escapeText(tag)}</span>`).join('');
+  const tagsHtml = (e.tags || []).map((tag) => `<span class="tag">${escapeText(tag)}</span>`).join("");
   // Score / stars / age are unscored for externals; for archived repos the
   // quality formula returns 0 by design, but showing "0" next to "Archived"
   // reads as a quality verdict — display "—" instead.
   const showStars = !e.external && e.stars != null;
   const showScore = !e.external && !e.archived && e.score != null;
   const showAge = !e.external && e.lastCommit;
-  const trendVal = !e.external && e.trend != null ? `${e.trend > 0 ? '+' : ''}${e.trend.toLocaleString()}` : '—';
+  const trendVal = !e.external && e.trend != null ? `${e.trend > 0 ? "+" : ""}${e.trend.toLocaleString()}` : "—";
 
   const parts = [];
-  if (e.tagline)     parts.push(`<p class="sheet__tagline">${escapeText(e.tagline)}</p>`);
+  if (e.tagline) parts.push(`<p class="sheet__tagline">${escapeText(e.tagline)}</p>`);
   if (e.description) parts.push(`<p class="sheet__desc">${escapeText(e.description)}</p>`);
-  if (e.note)        parts.push(`<p class="sheet__desc" style="color:var(--copper);font-style:italic;">${escapeText(e.note)}</p>`);
+  if (e.note)
+    parts.push(`<p class="sheet__desc" style="color:var(--copper);font-style:italic;">${escapeText(e.note)}</p>`);
 
   parts.push(`
     <div class="sheet__stats">
       <div class="stat__label">Stars</div>
       <div class="stat__label">Stars gained (30d)</div>
-      <div class="stat__val">${showStars ? fmtStars(e.stars) : '—'}</div>
+      <div class="stat__val">${showStars ? fmtStars(e.stars) : "—"}</div>
       <div class="stat__val stat__val--trend ${t.cls}">${trendVal}</div>
 
       <div class="stat__label">License</div>
       <div class="stat__label">Last commit</div>
-      <div class="stat__val">${escapeText(e.license || '—')}</div>
-      <div class="stat__val">${showAge ? `${fmtAge(e.lastCommit)} ago` : '—'}</div>
+      <div class="stat__val">${escapeText(e.license || "—")}</div>
+      <div class="stat__val">${showAge ? `${fmtAge(e.lastCommit)} ago` : "—"}</div>
 
       <div class="stat__label">Status</div>
       <div class="stat__label">Score</div>
       <div class="stat__val" style="color:var(${statusColVar});">${status}</div>
-      <div class="stat__val">${showScore ? e.score : '—'}</div>
+      <div class="stat__val">${showScore ? e.score : "—"}</div>
     </div>`);
 
-  if (e.tags && e.tags.length) {
+  if (e.tags?.length) {
     parts.push(`<div class="sheet__tags">${tagsHtml}</div>`);
   }
 
@@ -87,18 +91,18 @@ export function openSheet(e) {
       <b>${escapeText(e.section)}</b> · <a href="#cat=${escapeText(e.categoryId)}" style="color:var(--moonlight);">${escapeText(e.categoryName)}</a>
     </div>`);
 
-  render(els.sheetBody, html`${raw(parts.join(''))}`);
+  render(els.sheetBody, html`${raw(parts.join(""))}`);
 
-  els.sheet.dataset.open = 'true';
-  els.sheet.setAttribute('aria-hidden', 'false');
-  els.scrim.dataset.open = 'true';
+  els.sheet.dataset.open = "true";
+  els.sheet.setAttribute("aria-hidden", "false");
+  els.scrim.dataset.open = "true";
 }
 
 export function closeSheet() {
   if (!els) return;
-  els.sheet.dataset.open = 'false';
-  els.sheet.setAttribute('aria-hidden', 'true');
-  els.scrim.dataset.open = 'false';
+  els.sheet.dataset.open = "false";
+  els.sheet.setAttribute("aria-hidden", "true");
+  els.scrim.dataset.open = "false";
   _opened = null;
 }
 

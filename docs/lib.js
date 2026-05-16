@@ -3,20 +3,20 @@
 // No state ownership. Free of side effects on import.
 
 // ── Safe HTML helpers ─────────────────────────────────────────────────
-const ESC = { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' };
-export const escapeText = (s) => String(s ?? '').replace(/[&<>"']/g, ch => ESC[ch]);
+const ESC = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+export const escapeText = (s) => String(s ?? "").replace(/[&<>"']/g, (ch) => ESC[ch]);
 
 export const RANGE = document.createRange();
 
 // Tagged template that escapes interpolations and returns a DocumentFragment.
 // Pass `raw(string)` for trusted pre-rendered HTML.
 export const html = (strings, ...vals) => {
-  let out = '';
+  let out = "";
   strings.forEach((s, i) => {
     out += s;
     if (i < vals.length) {
       const v = vals[i];
-      if (v && typeof v === 'object' && v.__raw) out += v.__raw;
+      if (v && typeof v === "object" && v.__raw) out += v.__raw;
       else out += escapeText(v);
     }
   });
@@ -25,38 +25,44 @@ export const html = (strings, ...vals) => {
 export const raw = (s) => ({ __raw: String(s) });
 
 // Render fragment to a host (replaces children).
-export const render = (host, frag) => { host.replaceChildren(...frag.childNodes); };
+export const render = (host, frag) => {
+  host.replaceChildren(...frag.childNodes);
+};
 
 // ── DOM helpers ──────────────────────────────────────────────────────
-export const $  = (s, r = document) => r.querySelector(s);
+export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
 // ── Formatters ───────────────────────────────────────────────────────
-export const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+export const slug = (s) =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
 export const fmtStars = (n) => {
-  if (n == null) return '—';
-  if (n >= 10000) return (n / 1000).toFixed(0) + 'k';
-  if (n >= 1000)  return (n / 1000).toFixed(1) + 'k';
+  if (n == null) return "—";
+  if (n >= 10000) return `${(n / 1000).toFixed(0)}k`;
+  if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
   return String(n);
 };
 
 export const fmtTrend = (t) => {
-  if (t == null || t === 0) return { txt: '', cls: 'na' };
-  const cls = t > 0 ? 'up' : 'down';
+  if (t == null || t === 0) return { txt: "", cls: "na" };
+  const cls = t > 0 ? "up" : "down";
   const abs = Math.abs(t);
   const txt = abs >= 1000 ? abs.toLocaleString() : String(abs);
   return { txt, cls };
 };
 
 export const fmtAge = (iso) => {
-  if (!iso) return '—';
+  if (!iso) return "—";
   const d = new Date(iso);
-  if (Number.isNaN(d.valueOf())) return '—';
+  if (Number.isNaN(d.valueOf())) return "—";
   const days = Math.floor((Date.now() - d.getTime()) / 86400000);
-  if (days < 1)   return 'today';
-  if (days < 7)   return `${days}d`;
-  if (days < 30)  return `${Math.floor(days / 7)}w`;
+  if (days < 1) return "today";
+  if (days < 7) return `${days}d`;
+  if (days < 30) return `${Math.floor(days / 7)}w`;
   if (days < 365) return `${Math.floor(days / 30)}mo`;
   return `${Math.floor(days / 365)}y`;
 };
@@ -70,13 +76,13 @@ export const isAlive = (e) => {
 };
 
 export const magnitude = (e) => {
-  if (e.archived) return 'extinct';
-  if (e.external) return 'paper';
+  if (e.archived) return "extinct";
+  if (e.external) return "paper";
   const s = e.stars ?? 0;
-  if (s >= 10000) return '5';
-  if (s >= 1000)  return '4';
-  if (s >= 100)   return '3';
-  return '2';
+  if (s >= 10000) return "5";
+  if (s >= 1000) return "4";
+  if (s >= 100) return "3";
+  return "2";
 };
 
 // Hot = absolute or relative momentum. Top ~25% of alive entries.
@@ -88,16 +94,16 @@ export const isHot = (e) => {
   if (trend < 1) return false;
   if (trend >= 500) return true;
   const stars = e.stars ?? 0;
-  return stars > 0 && (trend / stars) >= 0.05;
+  return stars > 0 && trend / stars >= 0.05;
 };
 
 // ── Avatar: GitHub org logo for repos, letter chip for papers ──────
 // Letter is always rendered behind the img; if the image fails, letter shows.
 export function avatarHtml(e, mag, hot) {
-  const trendAttr = hot ? 'hot' : '';
-  const letter = escapeText((e.name || '?').charAt(0));
+  const trendAttr = hot ? "hot" : "";
+  const letter = escapeText((e.name || "?").charAt(0));
   if (e.repo && !e.external) {
-    const owner = escapeText(e.repo.split('/')[0]);
+    const owner = escapeText(e.repo.split("/")[0]);
     return `<span class="avatar" data-mag="${mag}" data-trend="${trendAttr}" aria-hidden="true">
       <span class="avatar__letter">${letter}</span>
       <img class="avatar__img" loading="lazy" decoding="async"
@@ -119,8 +125,8 @@ function sparkPoints(e, n = 10) {
   if (!stars || e.external || e.archived) return null;
   if (trend === 0 && stars < 50) return null;
   const start = Math.max(stars - trend, 1);
-  const seed = [...(e.name || '')].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
-  const noise = (i) => (((seed ^ (i * 2654435761)) >>> 0) % 1000 / 1000 - 0.5) * 0.06;
+  const seed = [...(e.name || "")].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
+  const noise = (i) => ((((seed ^ (i * 2654435761)) >>> 0) % 1000) / 1000 - 0.5) * 0.06;
   const out = [];
   for (let i = 0; i < n; i++) {
     const k = i / (n - 1);
@@ -140,16 +146,18 @@ export function sparkSvg(e, mag) {
       <line x1="2" y1="7" x2="48" y2="7" stroke="var(--shadow-ink)" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/>
     </svg>`;
   }
-  const w = 50, h = 14, pad = 1;
+  const w = 50,
+    h = 14,
+    pad = 1;
   const min = Math.min(...vals);
   const max = Math.max(...vals);
-  const range = (max - min) || 1;
+  const range = max - min || 1;
   const pts = vals.map((v, i) => {
     const x = pad + (i / (vals.length - 1)) * (w - 2 * pad);
-    const y = (h - pad) - ((v - min) / range) * (h - 2 * pad);
+    const y = h - pad - ((v - min) / range) * (h - 2 * pad);
     return [x, y];
   });
-  const linePath = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+  const linePath = pts.map((p, i) => `${(i ? "L" : "M") + p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ");
   const areaPath = `${linePath} L${pts.at(-1)[0].toFixed(1)},${h} L${pts[0][0].toFixed(1)},${h} Z`;
   const last = pts.at(-1);
   return `<svg class="spark" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true"
