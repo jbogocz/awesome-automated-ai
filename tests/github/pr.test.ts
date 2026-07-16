@@ -1,5 +1,14 @@
 import { describe, expect, it } from "vitest";
+import { parse } from "yaml";
 import { buildYamlEntry } from "../../src/github/pr.js";
+
+/** Parse an entry back in the projects.yaml structure it gets spliced into. */
+function roundTrip(entry: string): Record<string, unknown> {
+  const doc = parse(`categories:\n- name: Cat\n  entries:\n${entry}\n`) as {
+    categories: { entries: Record<string, unknown>[] }[];
+  };
+  return doc.categories[0]?.entries[0] ?? {};
+}
 
 describe("buildYamlEntry", () => {
   it("emits name, repo, description, tagline and tags when all provided", () => {
@@ -45,5 +54,52 @@ describe("buildYamlEntry", () => {
       note: null,
     });
     expect(yaml).toBe(["  - name: Bare", "    repo: owner/bare", "    description: Short."].join("\n"));
+  });
+});
+
+describe("buildYamlEntry escaping (values derive from untrusted READMEs via the LLM)", () => {
+  it("quotes values that would otherwise inject or break YAML structure", () => {
+    const entry = buildYamlEntry({
+      name: "Evil: tool",
+      repo: "owner/evil",
+      description: "description ending with a colon:",
+      tagline: "- looks like a list item",
+      tags: ["ok", "with,comma", "with]bracket"],
+      note: "#looks like a comment",
+    });
+    expect(roundTrip(entry)).toEqual({
+      name: "Evil: tool",
+      repo: "owner/evil",
+      description: "description ending with a colon:",
+      tagline: "- looks like a list item",
+      tags: ["ok", "with,comma", "with]bracket"],
+      note: "#looks like a comment",
+    });
+  });
+
+  it("flattens newlines so entries stay single-line per field", () => {
+    const entry = buildYamlEntry({
+      name: "Tool",
+      repo: "o/r",
+      description: "line1\nline2  spaced",
+      tagline: "",
+      tags: [],
+      note: null,
+    });
+    expect(entry.split("\n")).toHaveLength(3);
+    expect(roundTrip(entry).description).toBe("line1 line2 spaced");
+  });
+
+  it("keeps benign values as plain unquoted scalars (style parity with projects.yaml)", () => {
+    const entry = buildYamlEntry({
+      name: "AutoGluon",
+      repo: "autogluon/autogluon",
+      description: "Stack ensembling for tabular, text, and image data.",
+      tagline: "Multi-modal stack ensembling",
+      tags: ["automl", "deep-learning"],
+      note: null,
+    });
+    expect(entry).toContain("    description: Stack ensembling for tabular, text, and image data.");
+    expect(entry).toContain("    tags: [automl, deep-learning]");
   });
 });

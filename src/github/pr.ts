@@ -1,4 +1,5 @@
 import { Octokit } from "@octokit/rest";
+import { stringify } from "yaml";
 import type { Config } from "../config.js";
 
 interface PrEntryInput {
@@ -27,16 +28,31 @@ interface CreatePrOptions {
   bodyInput: PrBodyInput;
 }
 
+// Entry values derive from untrusted repo READMEs via the LLM, so they must be
+// serialized through the yaml library — structural characters (colons, leading
+// indicators, brackets) would otherwise inject keys or break projects.yaml.
+// Values are flattened to one line to match the file's single-line convention.
+function yamlScalar(value: string): string {
+  return stringify(value.replace(/\s+/g, " ").trim(), { lineWidth: 0 }).trimEnd();
+}
+
 export function buildYamlEntry(input: PrEntryInput): string {
-  const lines = [`  - name: ${input.name}`, `    repo: ${input.repo}`, `    description: ${input.description}`];
+  const lines = [
+    `  - name: ${yamlScalar(input.name)}`,
+    `    repo: ${yamlScalar(input.repo)}`,
+    `    description: ${yamlScalar(input.description)}`,
+  ];
   if (input.tagline) {
-    lines.push(`    tagline: ${input.tagline}`);
+    lines.push(`    tagline: ${yamlScalar(input.tagline)}`);
   }
   if (input.tags.length > 0) {
-    lines.push(`    tags: [${input.tags.join(", ")}]`);
+    const tags = input.tags.map((t) => t.replace(/\s+/g, " ").trim());
+    lines.push(
+      `    tags: ${stringify(tags, { collectionStyle: "flow", flowCollectionPadding: false, lineWidth: 0 }).trimEnd()}`,
+    );
   }
   if (input.note) {
-    lines.push(`    note: ${input.note}`);
+    lines.push(`    note: ${yamlScalar(input.note)}`);
   }
   return lines.join("\n");
 }
