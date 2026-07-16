@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { parse as parseYaml } from "yaml";
 import { loadManifest } from "../categories.js";
 import { logger } from "../utils/logger.js";
-import { validateProjectsYaml } from "../validation/projects-yaml.js";
+import { findDuplicateReposInCategories, validateProjectsYaml } from "../validation/projects-yaml.js";
 
 export interface ValidateOptions {
   projectsYamlPath: string;
@@ -56,6 +56,12 @@ export function runValidateCommand(options: ValidateOptions): void {
 
   if (orphanEntries.length > 0) {
     logger.warn(`Entries missing both repo and url: ${orphanEntries.join("; ")}`);
+    ok = false;
+  }
+
+  const duplicateInCategory = findDuplicateReposInCategories(validation.data);
+  if (duplicateInCategory.length > 0) {
+    logger.warn(`Duplicate repos within a category: ${duplicateInCategory.join("; ")}`);
     ok = false;
   }
 

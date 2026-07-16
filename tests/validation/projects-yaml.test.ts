@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { validateProjectsYaml } from "../../src/validation/projects-yaml.js";
+import { findDuplicateReposInCategories, validateProjectsYaml } from "../../src/validation/projects-yaml.js";
 
 describe("validateProjectsYaml", () => {
   it("accepts a minimal valid document", () => {
@@ -76,5 +76,41 @@ describe("validateProjectsYaml", () => {
       ],
     });
     expect(result.ok).toBe(true);
+  });
+});
+
+describe("findDuplicateReposInCategories", () => {
+  const entry = (repo: string) => ({ name: repo, repo, description: "d" });
+
+  it("flags the same repo twice within one category", () => {
+    const dups = findDuplicateReposInCategories({
+      categories: [{ name: "HPO", entries: [entry("a/b"), entry("c/d"), entry("a/b")] }],
+    });
+    expect(dups).toEqual(["HPO / a/b"]);
+  });
+
+  it("allows the same repo across different categories (cross-listing)", () => {
+    const dups = findDuplicateReposInCategories({
+      categories: [
+        { name: "HPO", entries: [entry("ray-project/ray")] },
+        { name: "MLOps", entries: [entry("ray-project/ray")] },
+      ],
+    });
+    expect(dups).toEqual([]);
+  });
+
+  it("ignores entries without a repo", () => {
+    const dups = findDuplicateReposInCategories({
+      categories: [
+        {
+          name: "Commercial",
+          entries: [
+            { name: "X", url: "https://example.com", description: "d" },
+            { name: "Y", url: "https://example.com", description: "d" },
+          ],
+        },
+      ],
+    });
+    expect(dups).toEqual([]);
   });
 });

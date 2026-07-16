@@ -53,3 +53,24 @@ export function validateProjectsYaml(raw: unknown): { ok: true; data: ProjectsYa
   }
   return { ok: true, data: result.data };
 }
+
+/**
+ * Find repos listed more than once within a single category — always a
+ * mistake. The same repo across DIFFERENT categories is allowed (deliberate
+ * cross-listing, e.g. Ray Tune under HPO and Ray under MLOps).
+ * Returns "category / repo" strings for each duplicate occurrence.
+ */
+export function findDuplicateReposInCategories(data: ProjectsYaml): string[] {
+  const duplicates: string[] = [];
+  for (const cat of data.categories) {
+    const seen = new Set<string>();
+    for (const entry of cat.entries ?? []) {
+      if (!entry.repo) continue;
+      if (seen.has(entry.repo)) {
+        duplicates.push(`${cat.name} / ${entry.repo}`);
+      }
+      seen.add(entry.repo);
+    }
+  }
+  return duplicates;
+}
