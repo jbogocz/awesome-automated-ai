@@ -79,6 +79,11 @@ categories:
     description: AutoML tool that generates optimized ML pipelines using genetic programming and Bayesian optimization (OpenML).
     tagline: Genetic programming and Bayesian pipeline optimization
     tags: [automl, hyperparameter-optimization, research-tool]
+  - name: PySR
+    repo: MilesCranmer/PySR
+    description: High-performance symbolic regression that automatically discovers interpretable equations from data, with a multi-population evolutionary engine in Julia and a scikit-learn-style Python API. A favorite in scientific ML.
+    tagline: Automated interpretable equation discovery from data
+    tags: [symbolic-regression, automl, equation-discovery, genetic-algorithm, interpretable-ml, julia, python, scientific-ml]
   - name: Vertex AI AutoML
     url: https://cloud.google.com/vertex-ai
     description: Google Cloud's managed AutoML service for training tabular classification, regression, forecasting, image, and video models with one-click endpoint deployment.
@@ -409,6 +414,11 @@ categories:
     description: Hugging Face's end-to-end library for robotics learning with pretrained policies, datasets, and simulation environments for imitation and RL.
     tagline: End-to-end learning for robotics
     tags: [imitation-learning, pytorch, reinforcement-learning, robotics]
+  - name: Agent Lightning
+    repo: microsoft/agent-lightning
+    description: Trainer that turns agent execution traces into reinforcement-learning signal, optimizing the underlying models with almost zero changes to existing agent code - works with any agent framework (Microsoft).
+    tagline: Train and optimize agents with reinforcement learning
+    tags: [reinforcement-learning, agent-training, fine-tuning, llm, optimization, mlops]
 - name: Automated Prompt Optimization
   description: Systematic optimization of prompts, instructions, and demonstrations to improve LLM performance without manual tuning.
   entries:
@@ -525,6 +535,81 @@ categories:
     description: Model-driven SDK that builds agents in a few lines of code - 14M+ downloads, Python and TypeScript builds, deploys to Bedrock AgentCore, Lambda, Fargate, or Kubernetes (AWS).
     tagline: AWS model-driven agents SDK, 14M downloads
     tags: [agent, agents-sdk, aws, bedrock, llm, multi-agent, python, typescript]
+  - name: OpenClaw
+    repo: openclaw/openclaw
+    description: Self-hosted personal AI assistant that answers on 15+ channels you already use - WhatsApp, Telegram, Slack, Discord, iMessage - with voice on macOS/iOS/Android and a live Canvas. The fastest-growing open-source project of 2026.
+    tagline: Self-hosted personal AI assistant on your channels
+    tags: [ai-assistant, personal-assistant, self-hosted, agents, multi-channel, voice, whatsapp, telegram, discord]
+  - name: Hermes Agent
+    repo: NousResearch/hermes-agent
+    description: Self-improving agent with a built-in learning loop - it creates skills from experience, searches its own past conversations, and builds a model of you across sessions. Runs anywhere from a $5 VPS to a GPU cluster (Nous Research).
+    tagline: Self-improving agent that learns skills from experience
+    tags: [ai-agent, self-improving, skills, agent-memory, llm, assistant]
+  - name: AutoGPT
+    repo: Significant-Gravitas/AutoGPT
+    description: The project that ignited the autonomous-agent wave in 2023, now a full platform for building, deploying, and monitoring continuous agents with a visual workflow builder.
+    tagline: The original autonomous agent, now a platform
+    tags: [autonomous-agents, agent-platform, workflow-builder, ai, llm, orchestration, no-code]
+  - name: Dify
+    repo: langgenius/dify
+    description: Production-ready platform for building agentic workflows visually, with built-in RAG pipelines, model management, and observability. The go-to self-hosted choice for shipping LLM apps without glue code.
+    tagline: Visual platform for production agentic workflows
+    tags: [agentic-workflow, llmops, low-code, rag, orchestration, self-hosted, workflow]
+  - name: LangChain
+    repo: langchain-ai/langchain
+    description: The framework that defined LLM application development, now an agent engineering platform with the largest integration ecosystem in the space. Pairs with LangGraph when you need production-grade control.
+    tagline: The original LLM framework, evolved for agents
+    tags: [agents, llm, framework, integrations, python, orchestration, openai, anthropic]
+  - name: DeerFlow
+    repo: bytedance/deer-flow
+    description: Open-source super-agent harness that orchestrates sub-agents, memory, and sandboxes through extensible skills - the 2.0 rewrite topped GitHub Trending in February 2026 (ByteDance).
+    tagline: Super-agent harness with sub-agents and sandboxes
+    tags: [agent-harness, multi-agent, deep-research, sandbox, skills, agent-memory]
+  - name: AnythingLLM
+    repo: Mintplex-Labs/anything-llm
+    description: All-in-one local-first AI workspace - chat with documents, run agents, and keep every byte on your own hardware, with desktop and Docker distributions and multi-user support.
+    tagline: Local-first all-in-one agent and RAG workspace
+    tags: [local-ai, rag, ai-agents, desktop, self-hosted, vector-database, multimodal, privacy]
+  - name: Flowise
+    repo: FlowiseAI/Flowise
+    description: Visual drag-and-drop builder for AI agents and LLM workflows - wire up chains, tools, and memory in the browser and deploy as APIs without writing orchestration code.
+    tagline: Build AI agents visually, deploy as APIs
+    tags: [low-code, no-code, agents, visual-builder, llm, workflow, javascript, chatbot]
+  - name: Daytona
+    repo: daytonaio/daytona
+    description: Secure and elastic infrastructure for running AI-generated code in isolated sandboxes with near-instant cold starts - the self-hostable counterpart to E2B for agent code execution.
+    tagline: Elastic secure sandboxes for AI-generated code
+    tags: [sandbox, code-execution, agent-infrastructure, ai-runtime, developer-tools, self-hosted]
+  - name: nanobot
+    repo: HKUDS/nanobot
+    description: Lightweight open-source AI agent for your tools, chats, and workflows - pip-installable and refreshingly small compared to heavyweight agent platforms (HKU Data Science Lab).
+    tagline: Lightweight AI agent for tools and workflows
+    tags: [ai-agent, lightweight, python, workflows, assistant, open-source]
+  - name: AgenticSeek
+    repo: Fosowl/agenticSeek
+    description: Fully local autonomous agent - a self-hosted Manus alternative that thinks, browses the web, and writes code with no API keys and no monthly bill.
+    tagline: Fully local autonomous agent, no API bills
+    tags: [local-ai, autonomous-agents, privacy, browser-automation, self-hosted, voice]
+  - name: Letta
+    repo: letta-ai/letta
+    description: Stateful agents framework from the team behind MemGPT - agents get editable long-term memory that persists across sessions, served via REST APIs with a visual development environment.
+    tagline: Stateful agents with editable long-term memory
+    tags: [agent-memory, stateful-agents, memgpt, llm, framework, rest-api, python]
+  - name: claude-mem
+    repo: thedotmack/claude-mem
+    description: Persistent memory plugin for Claude Code - captures everything the agent does in a session, compresses it with AI, and injects the relevant context into future sessions.
+    tagline: Persistent compressed memory across agent sessions
+    tags: [agent-memory, claude-code, context, ai-agents, plugin, developer-tools]
+  - name: Hindsight
+    repo: vectorize-io/hindsight
+    description: Agent memory engine built for learning rather than plain recall - backed by a published paper and SDKs for Python and TypeScript, positioning itself as the post-RAG approach to agent memory.
+    tagline: Agent memory that learns, not just remembers
+    tags: [agent-memory, ai-memory, learning, python, typescript, agents]
+  - name: Agno
+    repo: agno-agi/agno
+    description: Full-stack framework (formerly Phidata) for building and operating agent platforms with memory, knowledge, and human-in-the-loop control, known for fast agent instantiation and a built-in UI.
+    tagline: Full-stack framework for building agent platforms
+    tags: [agents, multi-agent, framework, agent-memory, python, agent-ui, developer-tools]
 - name: Coding Agents
   description: Ready-to-use AI agents that autonomously write, debug, refactor, and review software code.
   entries:
@@ -583,6 +668,11 @@ categories:
     description: Terminal-native coding agent that hits ~80.8% on SWE-bench Verified with Opus 4.6 and ships as CLI plus IDE extensions (Anthropic).
     tagline: Anthropic's 80.8% SWE-bench terminal coding agent
     tags: [agent, agentic, ai, anthropic, claude, cli, coding-agent, llm, terminal]
+  - name: Crush
+    repo: charmbracelet/crush
+    description: Terminal-native coding agent with the signature glamorous TUI - model-agnostic, with LSP integration and MCP support, from the makers of Bubble Tea (Charm).
+    tagline: Glamorous terminal coding agent from Charm
+    tags: [coding-agent, terminal, tui, cli, agentic-ai, golang, mcp]
   - name: Cursor
     url: https://cursor.com
     description: VS Code fork built around deeply integrated AI chat, autocomplete, and multi-file editing - the market-defining commercial IDE for agentic coding (Anysphere).
@@ -740,6 +830,11 @@ categories:
     description: UC Berkeley project training and evaluating LLMs for function and tool calling, home of the Berkeley Function-Calling Leaderboard (BFCL).
     tagline: Function-calling models and BFCL leaderboard
     tags: [api, api-documentation, chatgpt, claude-api, function-calling, gpt-4-api, llm, openai-api, openai-functions]
+  - name: Coze Loop
+    repo: coze-dev/coze-loop
+    description: Full-lifecycle agent optimization platform covering prompt development, evaluation, and observability with tracing for agent applications (ByteDance Coze team).
+    tagline: Full-lifecycle agent evaluation and optimization
+    tags: [agent-evaluation, agent-observability, prompt-engineering, tracing, llmops, evaluation]
 - name: LLM Gateways and Routers
   description: Gateways and routers that proxy, load-balance, cache, and intelligently select between LLM providers - unifying model access, controlling cost, and improving reliability.
   entries:
