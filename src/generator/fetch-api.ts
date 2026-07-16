@@ -40,6 +40,15 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
     }
   }
 
+  // Keep projects.status truthful: projects.yaml is the authoritative list.
+  const { delisted, relisted } = db.syncListedStatus(repos.map((r) => r.repo));
+  if (delisted.length > 0) {
+    logger.info(`Delisted ${delisted.length} project(s) removed from projects.yaml: ${delisted.join(", ")}`);
+  }
+  if (relisted.length > 0) {
+    logger.info(`Marked ${relisted.length} project(s) as listed: ${relisted.join(", ")}`);
+  }
+
   if (pendingBackfill.length > 0) {
     logger.info(`Backfilling 30d history for ${pendingBackfill.length} new/missing repos...`);
     await backfillBatch(pendingBackfill, db);

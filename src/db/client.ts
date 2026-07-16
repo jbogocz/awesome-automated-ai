@@ -58,11 +58,6 @@ export class DB {
         project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
         snapshot_date TEXT NOT NULL DEFAULT (date('now')),
         stars INTEGER,
-        forks INTEGER,
-        open_issues INTEGER,
-        contributors INTEGER,
-        commit_count_30d INTEGER,
-        avg_issue_response_hours REAL,
         composite_score INTEGER,
         archived INTEGER,
         pushed_at TEXT,
@@ -156,6 +151,25 @@ export class DB {
     tryAlter("ALTER TABLE snapshots ADD COLUMN topics TEXT"); // JSON array
     tryAlter("ALTER TABLE snapshots ADD COLUMN last_release TEXT");
     tryAlter("ALTER TABLE snapshots ADD COLUMN last_commit TEXT");
+
+    // Legacy cleanup for databases created before this schema: snapshot
+    // metric columns that no pipeline ever populated, and the marker table
+    // of a retired migration scheme. On an already-clean database the only
+    // expected failure is "no such column".
+    const tryDrop = (sql: string): void => {
+      try {
+        this.sqlite.exec(sql);
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        if (!/no such column/i.test(msg)) throw err;
+      }
+    };
+    tryDrop("ALTER TABLE snapshots DROP COLUMN forks");
+    tryDrop("ALTER TABLE snapshots DROP COLUMN open_issues");
+    tryDrop("ALTER TABLE snapshots DROP COLUMN contributors");
+    tryDrop("ALTER TABLE snapshots DROP COLUMN commit_count_30d");
+    tryDrop("ALTER TABLE snapshots DROP COLUMN avg_issue_response_hours");
+    this.sqlite.exec("DROP TABLE IF EXISTS _migrations");
   }
 
   findProjectByRepo(repo: string): ProjectRow | null {
@@ -268,9 +282,59 @@ export class DB {
       | undefined;
     if (existing) return existing.id;
     const info = this.sqlite
-      .prepare("INSERT INTO projects (repo, name, status, discovered_via) VALUES (?, ?, 'listed', 'github')")
+      .prepare(
+        "INSERT INTO projects (repo, name, status, discovered_via, listed_at) VALUES (?, ?, 'listed', 'github', datetime('now'))",
+      )
       .run(repo, name);
     return Number(info.lastInsertRowid);
+  }
+
+  /**
+   * Reconcile projects.status with the authoritative projects.yaml list.
+   * Rows marked 'listed' whose repo left the list become 'rejected'; rows in
+   * any other status whose repo IS on the list become 'listed'. Each flip is
+   * recorded in decisions so the curation history stays auditable.
+   */
+  syncListedStatus(reposInList: string[]): { delisted: string[]; relisted: string[] } {
+    const inList = new Set(reposInList);
+    const delisted: string[] = [];
+    const relisted: string[] = [];
+    const rows = this.sqlite.prepare("SELECT id, repo, status FROM projects").all() as {
+      id: number;
+      repo: string;
+      status: string;
+    }[];
+    const delist = this.sqlite.prepare(
+      "UPDATE projects SET status = 'rejected', updated_at = datetime('now') WHERE id = ?",
+    );
+    const relist = this.sqlite.prepare(
+      "UPDATE projects SET status = 'listed', listed_at = COALESCE(listed_at, datetime('now')), updated_at = datetime('now') WHERE id = ?",
+    );
+    const tx = this.sqlite.transaction(() => {
+      for (const row of rows) {
+        if (row.status === "listed" && !inList.has(row.repo)) {
+          delist.run(row.id);
+          this.insertDecision({
+            project_id: row.id,
+            decision: "remove",
+            proposed_by: "generate",
+            reasoning: "Delisted: repo no longer present in projects.yaml",
+          });
+          delisted.push(row.repo);
+        } else if (row.status !== "listed" && inList.has(row.repo)) {
+          relist.run(row.id);
+          this.insertDecision({
+            project_id: row.id,
+            decision: "add",
+            proposed_by: "generate",
+            reasoning: "Listed: repo present in projects.yaml",
+          });
+          relisted.push(row.repo);
+        }
+      }
+    });
+    tx();
+    return { delisted, relisted };
   }
 
   getTagline(projectId: number): string | null {
