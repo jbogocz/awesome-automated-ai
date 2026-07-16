@@ -17,6 +17,7 @@ import {
 
 let els;
 let _opened = null;
+let _restoreFocus = null;
 
 export function initSheet() {
   els = {
@@ -25,8 +26,14 @@ export function initSheet() {
     sheetBody: $("#sheet-body"),
     sheetClose: $("#sheet-close"),
     scrim: $("#scrim"),
+    app: $(".app"),
   };
   els.sheetClose.addEventListener("click", closeSheet);
+  // Category link inside the sheet filters the stream behind it — close the
+  // sheet so the result is visible (the hashchange handler does the filtering).
+  els.sheetBody.addEventListener("click", (ev) => {
+    if (ev.target.closest('a[href^="#"]')) closeSheet();
+  });
 }
 
 export function openSheet(e) {
@@ -95,17 +102,25 @@ export function openSheet(e) {
 
   render(els.sheetBody, html`${raw(parts.join(""))}`);
 
+  _restoreFocus = document.activeElement;
   els.sheet.dataset.open = "true";
   els.sheet.setAttribute("aria-hidden", "false");
+  els.sheet.inert = false;
+  els.app.inert = true; // native focus trap: background leaves the tab order
   els.scrim.dataset.open = "true";
+  els.sheetClose.focus();
 }
 
 export function closeSheet() {
   if (!els) return;
   els.sheet.dataset.open = "false";
   els.sheet.setAttribute("aria-hidden", "true");
+  els.sheet.inert = true;
+  els.app.inert = false;
   els.scrim.dataset.open = "false";
   _opened = null;
+  if (_restoreFocus?.isConnected) _restoreFocus.focus();
+  _restoreFocus = null;
 }
 
 export function isOpen() {

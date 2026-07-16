@@ -95,7 +95,9 @@ function dataAgeDays() {
 
 // ── Data load ────────────────────────────────────────────────────────
 async function load() {
-  const r = await fetch(DATA_URL, { cache: "no-cache" });
+  // Default HTTP caching: GitHub Pages serves ETag + short max-age, and the
+  // data only changes weekly — a forced revalidation on the LCP path buys nothing.
+  const r = await fetch(DATA_URL);
   if (!r.ok) throw new Error(`fetch ${DATA_URL}: ${r.status}`);
   const data = await r.json();
   state.raw = data;
@@ -148,6 +150,13 @@ function renderSidebar() {
   render(els.sectionGroups, frag);
 }
 
+// Off-screen drawer on mobile must also leave the tab order — transform alone
+// keeps its buttons focusable for keyboard/SR users.
+const mqMobile = window.matchMedia("(max-width: 900px)");
+function syncSidebarInert() {
+  els.sidebar.inert = mqMobile.matches && els.sidebar.dataset.open !== "true";
+}
+
 function bindSidebar() {
   els.catAll.addEventListener("click", () => setCategory(null));
   els.sectionGroups.addEventListener("click", (ev) => {
@@ -166,7 +175,10 @@ function bindSidebar() {
     const open = els.sidebar.dataset.open === "true";
     els.sidebar.dataset.open = open ? "false" : "true";
     els.menuTrigger.setAttribute("aria-expanded", open ? "false" : "true");
+    syncSidebarInert();
   });
+  mqMobile.addEventListener("change", syncSidebarInert);
+  syncSidebarInert();
 }
 
 // ── Counts (sidebar + lensbar + brand) ───────────────────────────────
@@ -248,7 +260,7 @@ function rowHtml(e) {
   const vendorHtml = e.vendor ? `<span class="vendor">${escapeText(e.vendor)}</span>` : "";
 
   return `
-  <a class="row" role="listitem"
+  <a class="row"
      data-cat="${escapeText(e.categoryId)}"
      data-name="${escapeText(e.name)}"
      href="${escapeText(e.url || "#")}"
@@ -403,8 +415,9 @@ function setCategory(id) {
     const match = btn.dataset.cat === id || (btn === els.catAll && !id);
     btn.setAttribute("aria-pressed", match ? "true" : "false");
   });
-  if (window.matchMedia("(max-width: 900px)").matches) {
+  if (mqMobile.matches) {
     els.sidebar.dataset.open = "false";
+    syncSidebarInert();
   }
   writeHash();
   renderStream();

@@ -33,8 +33,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style"
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
 <link rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
 
@@ -51,12 +49,15 @@
 </script>
 
 <script>
-  // Theme bootstrap — runs before paint to avoid flash.
+  // Theme bootstrap — runs before paint to avoid flash. Always stamps the
+  // resolved theme so system-light first-time visitors get the light tokens
+  // (which live only under :root[data-theme="light"]).
   (() => {
     const saved = localStorage.getItem('theme');
-    if (saved === 'light' || saved === 'dark') {
-      document.documentElement.dataset.theme = saved;
-    }
+    const theme = saved === 'light' || saved === 'dark'
+      ? saved
+      : (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.dataset.theme = theme;
   })();
 </script>
 </head>
@@ -150,18 +151,23 @@
 
       <div class="filterbar__sep" aria-hidden="true"></div>
 
-      <div class="sort-group" role="radiogroup" aria-label="Sort">
-        <button class="sort-btn" type="button" data-sort="score"  aria-pressed="true"  title="Composite quality score">Score</button>
-        <button class="sort-btn" type="button" data-sort="stars"  aria-pressed="false" title="GitHub star count">Stars</button>
-        <button class="sort-btn" type="button" data-sort="trend"  aria-pressed="false" title="Most stars gained in the last 30 days">Trend</button>
-        <button class="sort-btn" type="button" data-sort="recent" aria-pressed="false" title="Most recent commit first">Updated</button>
-        <button class="sort-btn" type="button" data-sort="name"   aria-pressed="false" title="Alphabetical">A→Z</button>
+      <div class="sort-group" role="radiogroup" aria-label="Sort rows within each category">
+        <button class="sort-btn" type="button" data-sort="score"  aria-pressed="true"  title="Composite quality score (within each category)">Score</button>
+        <button class="sort-btn" type="button" data-sort="stars"  aria-pressed="false" title="GitHub star count (within each category)">Stars</button>
+        <button class="sort-btn" type="button" data-sort="trend"  aria-pressed="false" title="Most stars gained in the last 30 days (within each category)">Trend</button>
+        <button class="sort-btn" type="button" data-sort="recent" aria-pressed="false" title="Most recent commit first (within each category)">Updated</button>
+        <button class="sort-btn" type="button" data-sort="name"   aria-pressed="false" title="Alphabetical (within each category)">A→Z</button>
       </div>
 
       <span class="filterbar__count" id="result-count">loading…</span>
     </div>
 
-    <div class="stream" id="stream" role="list">
+    <noscript>
+      <p style="padding: 16px;">This interactive catalog requires JavaScript.
+        Browse the full list in the <a href="https://github.com/jbogocz/awesome-automated-ai#readme">README on GitHub</a>.</p>
+    </noscript>
+
+    <div class="stream" id="stream">
       <div class="loading-skeleton" style="width: 60%;"></div>
       <div class="loading-skeleton" style="width: 80%;"></div>
       <div class="loading-skeleton" style="width: 70%;"></div>
@@ -173,7 +179,7 @@
 </div>
 
 <!-- Detail sheet -->
-<aside class="sheet" id="sheet" aria-label="Project details" aria-hidden="true">
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Project details" aria-hidden="true" inert>
   <div class="sheet__head">
     <h2 class="sheet__title" id="sheet-title">—</h2>
     <button class="sheet__close" type="button" id="sheet-close" aria-label="Close details">
@@ -188,7 +194,7 @@
 <div class="scrim" id="scrim" aria-hidden="true"></div>
 
 <!-- Command palette -->
-<div class="cmdk" id="cmdk" role="dialog" aria-modal="true" aria-label="Command palette" aria-hidden="true">
+<div class="cmdk" id="cmdk" role="dialog" aria-modal="true" aria-label="Command palette" aria-hidden="true" inert>
   <input class="cmdk__input" type="text" id="cmdk-input" placeholder="Search projects · jump to category · type ? for help" autocomplete="off" spellcheck="false">
   <div class="cmdk__list" id="cmdk-list"></div>
   <div class="cmdk__foot">

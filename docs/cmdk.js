@@ -6,6 +6,7 @@ let _state, _setCategory, _openSheet;
 let els;
 let cmdkIdx = 0;
 let cmdkItems = [];
+let _restoreFocus = null;
 
 export function initCmdk({ state, setCategory, openSheet }) {
   _state = state;
@@ -16,6 +17,7 @@ export function initCmdk({ state, setCategory, openSheet }) {
     cmdkInput: $("#cmdk-input"),
     cmdkList: $("#cmdk-list"),
     scrim: $("#scrim"),
+    app: $(".app"),
   };
   els.cmdkInput.addEventListener("input", (ev) => renderCmdk(ev.target.value));
   els.cmdkInput.addEventListener("keydown", onInputKey);
@@ -23,8 +25,11 @@ export function initCmdk({ state, setCategory, openSheet }) {
 }
 
 export function openCmdk() {
+  _restoreFocus = document.activeElement;
   els.cmdk.dataset.open = "true";
   els.cmdk.setAttribute("aria-hidden", "false");
+  els.cmdk.inert = false;
+  els.app.inert = true; // native focus trap: background leaves the tab order
   els.scrim.dataset.open = "true";
   els.cmdkInput.value = "";
   renderCmdk("");
@@ -34,7 +39,11 @@ export function openCmdk() {
 export function closeCmdk() {
   els.cmdk.dataset.open = "false";
   els.cmdk.setAttribute("aria-hidden", "true");
+  els.cmdk.inert = true;
+  els.app.inert = false;
   els.scrim.dataset.open = "false";
+  if (_restoreFocus?.isConnected) _restoreFocus.focus();
+  _restoreFocus = null;
 }
 
 export function isOpen() {

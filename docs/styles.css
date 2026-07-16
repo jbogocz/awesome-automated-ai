@@ -944,6 +944,14 @@
     .avatar[data-trend="hot"]::after {
       animation: none;
     }
+    .loading-skeleton {
+      animation: none;
+    }
+    .sheet,
+    .cmdk,
+    .side {
+      transition: none;
+    }
   }
 
   /* ── Row content ──────────────────────────────────────────────────────── */
