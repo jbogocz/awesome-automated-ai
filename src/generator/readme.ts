@@ -18,11 +18,60 @@ export interface ApiRepoData {
 }
 export type ApiData = Record<string, ApiRepoData>;
 
+export interface TocCategory {
+  name: string;
+  section: string;
+}
+export interface TocManifest {
+  sections: string[];
+  categories: TocCategory[];
+}
+
 interface GenerateOptions {
   yamlContent: string;
   header: string;
   footer: string;
   apiData: ApiData;
+  /**
+   * Category manifest (src/categories.yaml). When provided, the block between
+   * the TOC markers in the header is generated from it — keeping the manifest
+   * as the single source of truth for category names, order, and anchors.
+   */
+  manifest?: TocManifest;
+}
+
+export const TOC_BEGIN = "<!-- toc:begin -->";
+export const TOC_END = "<!-- toc:end -->";
+
+/** Anchor for a `## Category Name` heading — must match GitHub's slugging for the names we use. */
+export function categoryAnchor(name: string): string {
+  return name.toLowerCase().replace(/ /g, "-").replace(/\//g, "").replace(/&/g, "and");
+}
+
+export function buildToc(manifest: TocManifest, countByName: Map<string, number>): string {
+  const blocks: string[] = [];
+  for (const section of manifest.sections) {
+    const cats = manifest.categories.filter((c) => c.section === section);
+    if (cats.length === 0) continue;
+    const lines = cats.map((c) => `- [${c.name}](#${categoryAnchor(c.name)}) (${countByName.get(c.name) ?? 0})`);
+    blocks.push([`**${section}**`, ...lines].join("\n"));
+  }
+  return blocks.join("\n\n");
+}
+
+function injectToc(header: string, manifest: TocManifest, categories: Category[]): string {
+  const known = new Set(manifest.categories.map((c) => c.name));
+  const unknown = categories.filter((c) => !known.has(c.name)).map((c) => c.name);
+  if (unknown.length > 0) {
+    throw new Error(`projects.yaml categories missing from src/categories.yaml: ${unknown.join(", ")}`);
+  }
+  const begin = header.indexOf(TOC_BEGIN);
+  const end = header.indexOf(TOC_END);
+  if (begin === -1 || end === -1 || end < begin) {
+    throw new Error(`header template must contain "${TOC_BEGIN}" followed by "${TOC_END}"`);
+  }
+  const counts = new Map(categories.map((c) => [c.name, (c.entries ?? []).length]));
+  return `${header.slice(0, begin + TOC_BEGIN.length)}\n\n${buildToc(manifest, counts)}\n\n${header.slice(end)}`;
 }
 
 interface Entry {
@@ -47,12 +96,14 @@ interface Category {
 }
 
 export function generateReadme(opts: GenerateOptions): string {
-  const { yamlContent, header, footer, apiData } = opts;
+  const { yamlContent, header, footer, apiData, manifest } = opts;
   const doc = parseYaml(yamlContent) as { categories: Category[] };
   const categories = doc.categories;
 
+  const resolvedHeader = manifest ? injectToc(header, manifest, categories) : header;
+
   const parts: string[] = [];
-  parts.push(header.trimEnd(), "");
+  parts.push(resolvedHeader.trimEnd(), "");
 
   for (const cat of categories) {
     parts.push(`## ${cat.name}`, "");
@@ -65,18 +116,7 @@ export function generateReadme(opts: GenerateOptions): string {
   }
 
   parts.push(footer.trimEnd(), "");
-  let readme = parts.join("\n");
-
-  for (const cat of categories) {
-    const count = (cat.entries ?? []).length;
-    const name = cat.name;
-    const anchor = name.toLowerCase().replace(/ /g, "-").replace(/\//g, "").replace(/&/g, "and");
-    readme = readme.replace(
-      new RegExp(`(\\[${escapeRegex(name)}\\]\\(#${escapeRegex(anchor)}\\)) \\(\\d+\\)`),
-      `$1 (${count})`,
-    );
-  }
-  return readme;
+  return parts.join("\n");
 }
 
 interface ScoredEntry {
@@ -254,8 +294,4 @@ function isUnmaintained(pushed: string, months = STALE_MONTHS): boolean {
   } catch {
     return false;
   }
-}
-
-function escapeRegex(str: string): string {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }

@@ -57,6 +57,15 @@ const SAMPLE_API: ApiData = {
 const HEADER = "# Awesome Automated AI/ML\n\n## Contents\n";
 const FOOTER = "## Contributing\n\nContributions welcome!";
 
+const HEADER_WITH_TOC = "# Awesome Automated AI/ML\n\n## Contents\n\n<!-- toc:begin -->\n<!-- toc:end -->\n";
+const SAMPLE_MANIFEST = {
+  sections: ["Build AutoML", "Empty Section"],
+  categories: [
+    { name: "General-Purpose AutoML", section: "Build AutoML" },
+    { name: "Neural Architecture Search", section: "Build AutoML" },
+  ],
+};
+
 describe("generateReadme", () => {
   it("produces details/summary cards instead of tables", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
@@ -143,5 +152,61 @@ describe("generateReadme", () => {
     const oldIdx = result.indexOf("OldTool");
     expect(autogluonIdx).toBeLessThan(pycaretIdx);
     expect(pycaretIdx).toBeLessThan(oldIdx);
+  });
+});
+
+describe("generateReadme TOC (manifest-driven)", () => {
+  it("generates section-grouped links with real counts between the markers", () => {
+    const result = generateReadme({
+      yamlContent: SAMPLE_YAML,
+      header: HEADER_WITH_TOC,
+      footer: FOOTER,
+      apiData: SAMPLE_API,
+      manifest: SAMPLE_MANIFEST,
+    });
+    expect(result).toContain("**Build AutoML**");
+    expect(result).toContain("- [General-Purpose AutoML](#general-purpose-automl) (3)");
+    // Manifest category absent from projects.yaml renders with a zero count.
+    expect(result).toContain("- [Neural Architecture Search](#neural-architecture-search) (0)");
+    // Sections with no categories are omitted entirely.
+    expect(result).not.toContain("**Empty Section**");
+    // TOC anchors must match the emitted `## <name>` headings.
+    expect(result).toContain("## General-Purpose AutoML");
+  });
+
+  it("throws loudly when the header lacks TOC markers", () => {
+    expect(() =>
+      generateReadme({
+        yamlContent: SAMPLE_YAML,
+        header: HEADER,
+        footer: FOOTER,
+        apiData: SAMPLE_API,
+        manifest: SAMPLE_MANIFEST,
+      }),
+    ).toThrow(/toc:begin/);
+  });
+
+  it("throws loudly when projects.yaml uses a category unknown to the manifest", () => {
+    expect(() =>
+      generateReadme({
+        yamlContent: SAMPLE_YAML,
+        header: HEADER_WITH_TOC,
+        footer: FOOTER,
+        apiData: SAMPLE_API,
+        manifest: { sections: ["Build AutoML"], categories: [{ name: "Other", section: "Build AutoML" }] },
+      }),
+    ).toThrow(/General-Purpose AutoML/);
+  });
+
+  it("keeps anchors stable for names with '&' and '/' (matches heading slugs)", () => {
+    const yaml = `categories:\n- name: Data & IO/Streams\n  entries: []\n`;
+    const result = generateReadme({
+      yamlContent: yaml,
+      header: HEADER_WITH_TOC,
+      footer: FOOTER,
+      apiData: {},
+      manifest: { sections: ["S"], categories: [{ name: "Data & IO/Streams", section: "S" }] },
+    });
+    expect(result).toContain("- [Data & IO/Streams](#data-and-iostreams) (0)");
   });
 });

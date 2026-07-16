@@ -46,44 +46,10 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 
 ## Contents
 
-**Build AutoML**
-- [General-Purpose AutoML](#general-purpose-automl) (0)
-- [Neural Architecture Search](#neural-architecture-search) (0)
-- [Hyperparameter Optimization](#hyperparameter-optimization) (0)
-- [Automated Feature Engineering](#automated-feature-engineering) (0)
-- [Tabular Foundation Models](#tabular-foundation-models) (0)
-- [AutoML Benchmarks](#automl-benchmarks) (0)
-
-**Build with LLMs**
-- [Automated Fine-Tuning](#automated-fine-tuning) (0)
-- [Automated Prompt Optimization](#automated-prompt-optimization) (0)
-
-**Build Agents**
-- [Agent Frameworks](#agent-frameworks) (0)
-- [Coding Agents](#coding-agents) (0)
-- [ML and Research Agents](#ml-and-research-agents) (0)
-
-**Evaluate & Monitor AI**
-- [LLM Evaluation and Testing](#llm-evaluation-and-testing) (0)
-- [LLM Gateways and Routers](#llm-gateways-and-routers) (0)
-- [Automated Monitoring and Observability](#automated-monitoring-and-observability) (0)
-- [Automated AI Safety](#automated-ai-safety) (0)
-
-**ML Lifecycle**
-- [Time-Series AutoML](#time-series-automl) (0)
-- [Automated Data Preprocessing](#automated-data-preprocessing) (0)
-- [Automated Data Labeling](#automated-data-labeling) (0)
-- [Synthetic Data Generation](#synthetic-data-generation) (0)
-- [Automated Model Compression](#automated-model-compression) (0)
-- [MLOps and Experiment Tracking](#mlops-and-experiment-tracking) (0)
-
-**Deploy AI**
-- [Model Serving](#model-serving) (0)
-- [LLM Inference Runtimes](#llm-inference-runtimes) (0)
-
-**Research & Reference**
-- [Papers and Surveys](#papers-and-surveys) (0)
-- [Related Awesome Lists](#related-awesome-lists) (0)
+<!-- Category TOC is generated from src/categories.yaml + projects.yaml at
+     generate time — edit those files, not this block. -->
+<!-- toc:begin -->
+<!-- toc:end -->
 
 **Resources**
 - [Research Notes by Topic](#research-notes-by-topic)

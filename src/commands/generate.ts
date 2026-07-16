@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { parse as parseYaml } from "yaml";
+import { loadManifest } from "../categories.js";
 import { fetchRepoData, loadApiDataFromDB } from "../generator/fetch-api.js";
 import { type ApiData, generateReadme } from "../generator/readme.js";
 import { logger } from "../utils/logger.js";
@@ -38,7 +39,7 @@ export async function runGenerateCommand(options: GenerateOptions): Promise<void
     logger.info("Cached API data");
   }
 
-  const readme = generateReadme({ yamlContent, header, footer, apiData });
+  const readme = generateReadme({ yamlContent, header, footer, apiData, manifest: loadManifest() });
   writeFileSync(options.readmePath, readme);
   logger.info("Generated README.md");
 }
