@@ -114,4 +114,4 @@
 
 ## Contributing
 
-Contributions welcome! Read the [contributing guidelines](contributing.md) first.
+Contributions welcome! Read the [contributing guidelines](CONTRIBUTING.md) first.

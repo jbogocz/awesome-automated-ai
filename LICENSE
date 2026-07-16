@@ -4,7 +4,7 @@ This project uses a dual license structure:
 
 ## Content (CC0 1.0)
 
-The curated list content — including `projects.yaml`, `README.md`, `config/`,
+The curated list content — including `projects.yaml`, `README.md`, `templates/`,
 and `docs/` — is dedicated to the public domain under
 [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
 
@@ -12,7 +12,7 @@ See https://creativecommons.org/publicdomain/zero/1.0/ for the full CC0 text.
 
 ## Source Code (MIT)
 
-The AI Curator Engine source code in `engine/` is licensed under the MIT License:
+The AI Curator Engine source code in `src/`, `scripts/`, and `tests/` is licensed under the MIT License:
 
 MIT License
 
