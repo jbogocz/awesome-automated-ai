@@ -127,7 +127,8 @@ function isTransientGhError(err: unknown): boolean {
   return /HTTP 5\d\d|ETIMEDOUT|ECONNRESET|ENOTFOUND|EAI_AGAIN|connection reset|i\/o timeout/i.test(haystack);
 }
 
-async function ghGraphQL(query: string): Promise<GraphQLResponse> {
+/** Shared gh-CLI GraphQL transport: transient-error retry with exponential backoff. */
+export async function ghGraphQL<T>(query: string): Promise<T> {
   for (let attempt = 0; ; attempt++) {
     try {
       const out = execFileSync("gh", ["api", "graphql", "-f", `query=${query}`], {
@@ -135,8 +136,21 @@ async function ghGraphQL(query: string): Promise<GraphQLResponse> {
         encoding: "utf-8",
         maxBuffer: 32 * 1024 * 1024,
       });
-      return JSON.parse(out) as GraphQLResponse;
+      return JSON.parse(out) as T;
     } catch (err) {
+      // gh exits non-zero whenever the GraphQL response carries an `errors`
+      // array (e.g. one NOT_FOUND alias in a batch) but still prints the full
+      // JSON body — including partial data — to stdout. Recover that body so
+      // callers can do per-alias error handling instead of failing the batch.
+      const stdout = (err as { stdout?: unknown })?.stdout;
+      const body = typeof stdout === "string" ? stdout : Buffer.isBuffer(stdout) ? stdout.toString("utf-8") : "";
+      if (body.trimStart().startsWith("{")) {
+        try {
+          return JSON.parse(body) as T;
+        } catch {
+          // Not a JSON body — fall through to retry/throw.
+        }
+      }
       if (attempt >= MAX_RETRIES || !isTransientGhError(err)) throw err;
       const delay = BASE_BACKOFF_MS * 2 ** attempt;
       const msg = err instanceof Error ? err.message.split("\n")[0] : String(err);
@@ -148,7 +162,7 @@ async function ghGraphQL(query: string): Promise<GraphQLResponse> {
 
 export async function fetchRecentStargazersBatch(repos: string[], since: Date): Promise<BatchResult> {
   const firstQuery = buildBatchQuery(repos);
-  const firstParse = parseBatchResponse(repos, await ghGraphQL(firstQuery));
+  const firstParse = parseBatchResponse(repos, await ghGraphQL<GraphQLResponse>(firstQuery));
   let totalPoints = firstParse.pointsUsed;
   let lastRl = firstParse.rateLimit;
 
@@ -172,7 +186,7 @@ export async function fetchRecentStargazersBatch(repos: string[], since: Date): 
       cursorByAlias[aliasFor(i)] = c.cursor;
     });
     const q = buildBatchQuery(chunkRepos, cursorByAlias);
-    const parsed = parseBatchResponse(chunkRepos, await ghGraphQL(q));
+    const parsed = parseBatchResponse(chunkRepos, await ghGraphQL<GraphQLResponse>(q));
     totalPoints += parsed.pointsUsed;
     lastRl = parsed.rateLimit;
 

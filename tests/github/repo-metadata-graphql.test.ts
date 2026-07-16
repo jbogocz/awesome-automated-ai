@@ -1,0 +1,141 @@
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+const mockExec = vi.fn();
+vi.mock("node:child_process", () => ({
+  execFileSync: (...args: unknown[]) => mockExec(...args),
+}));
+
+const { buildMetadataQuery, EMPTY_METADATA, parseMetadataResponse, fetchRepoMetadataBatch } = await import(
+  "../../src/github/repo-metadata-graphql.js"
+);
+
+describe("buildMetadataQuery", () => {
+  it("aliases each repo and requests all metadata fields", () => {
+    const q = buildMetadataQuery(["autogluon/autogluon", "pycaret/pycaret"]);
+    expect(q).toContain('r0: repository(owner: "autogluon", name: "autogluon")');
+    expect(q).toContain('r1: repository(owner: "pycaret", name: "pycaret")');
+    for (const field of [
+      "stargazerCount",
+      "pushedAt",
+      "isArchived",
+      "licenseInfo { spdxId }",
+      "primaryLanguage { name }",
+      "repositoryTopics(first: 20)",
+      "latestRelease { publishedAt }",
+      "defaultBranchRef { target { ... on Commit { committedDate } } }",
+    ]) {
+      expect(q).toContain(field);
+    }
+  });
+
+  it("strips GraphQL-breaking characters from owner/name (injection hardening)", () => {
+    const q = buildMetadataQuery(['evil"){ x }(owner/name"']);
+    expect(q).not.toContain('""');
+    expect(q).toContain('owner: "evilxowner"');
+  });
+});
+
+describe("parseMetadataResponse", () => {
+  const fullNode = {
+    stargazerCount: 12000,
+    pushedAt: "2026-07-01T00:00:00Z",
+    isArchived: false,
+    licenseInfo: { spdxId: "Apache-2.0" },
+    primaryLanguage: { name: "Python" },
+    repositoryTopics: { nodes: [{ topic: { name: "automl" } }, { topic: { name: "ml" } }] },
+    latestRelease: { publishedAt: "2026-07-05T00:00:00Z" },
+    defaultBranchRef: { target: { committedDate: "2026-07-10T00:00:00Z" } },
+  };
+
+  it("maps a full node and takes the freshest activity date as pushed", () => {
+    const out = parseMetadataResponse(["a/b"], { data: { r0: fullNode } });
+    expect(out.get("a/b")).toEqual({
+      stars: 12000,
+      pushed: "2026-07-10T00:00:00Z", // lastCommit is newest
+      archived: false,
+      license: "Apache-2.0",
+      topics: ["automl", "ml"],
+      lastRelease: "2026-07-05T00:00:00Z",
+      lastCommit: "2026-07-10T00:00:00Z",
+      language: "Python",
+    });
+  });
+
+  it("handles repos without release/commit/license/language/topics", () => {
+    const out = parseMetadataResponse(["a/b"], {
+      data: {
+        r0: {
+          stargazerCount: 5,
+          pushedAt: "2026-01-01T00:00:00Z",
+          isArchived: true,
+          licenseInfo: null,
+          primaryLanguage: null,
+          repositoryTopics: { nodes: [] },
+          latestRelease: null,
+          defaultBranchRef: null,
+        },
+      },
+    });
+    expect(out.get("a/b")).toEqual({
+      stars: 5,
+      pushed: "2026-01-01T00:00:00Z",
+      archived: true,
+      license: null,
+      topics: [],
+      lastRelease: null,
+      lastCommit: null,
+      language: null,
+    });
+  });
+
+  it("falls back to empty metadata for aliases with GraphQL errors or missing data", () => {
+    const out = parseMetadataResponse(["gone/repo", "ok/repo"], {
+      data: { r0: null, r1: { stargazerCount: 1 } },
+      errors: [{ path: ["r0"], message: "Could not resolve", type: "NOT_FOUND" }],
+    });
+    expect(out.get("gone/repo")).toEqual(EMPTY_METADATA);
+    expect(out.get("ok/repo")?.stars).toBe(1);
+  });
+
+  it("errored alias overrides partially-present data", () => {
+    const out = parseMetadataResponse(["a/b"], {
+      data: { r0: { stargazerCount: 7 } },
+      errors: [{ path: ["r0"], message: "FORBIDDEN", type: "FORBIDDEN" }],
+    });
+    expect(out.get("a/b")).toEqual(EMPTY_METADATA);
+  });
+});
+
+describe("fetchRepoMetadataBatch transport", () => {
+  beforeEach(() => {
+    mockExec.mockReset();
+  });
+
+  it("recovers partial data when gh exits non-zero because one alias errored", async () => {
+    // gh api graphql exits 1 whenever the response carries `errors`, but the
+    // full JSON body (with data for the healthy aliases) is on stdout.
+    const body = JSON.stringify({
+      data: { r0: { stargazerCount: 7, pushedAt: "2026-01-01T00:00:00Z", isArchived: false }, r1: null },
+      errors: [{ path: ["r1"], message: "Could not resolve to a Repository", type: "NOT_FOUND" }],
+    });
+    mockExec.mockImplementation(() => {
+      const err = new Error("Command failed: gh api graphql") as Error & { stdout: string };
+      err.stdout = body;
+      throw err;
+    });
+
+    const out = await fetchRepoMetadataBatch(["ok/repo", "gone/repo"]);
+    expect(out.get("ok/repo")?.stars).toBe(7);
+    expect(out.get("gone/repo")).toEqual(EMPTY_METADATA);
+  });
+
+  it("still zeroes the whole chunk on a non-JSON hard failure", async () => {
+    mockExec.mockImplementation(() => {
+      const err = new Error("gh: command not found") as Error & { stdout: string };
+      err.stdout = "";
+      throw err;
+    });
+    const out = await fetchRepoMetadataBatch(["a/b"]);
+    expect(out.get("a/b")).toEqual(EMPTY_METADATA);
+  });
+});

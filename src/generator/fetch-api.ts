@@ -1,23 +1,12 @@
-import { execFileSync } from "node:child_process";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { DB } from "../db/client.js";
+import { fetchRepoMetadataBatch } from "../github/repo-metadata-graphql.js";
 import { computeQualityScore } from "../scoring/quality.js";
 import { computeTrends } from "../scoring/trends.js";
 import { logger } from "../utils/logger.js";
 import { backfillBatch } from "./backfill.js";
 import type { ApiData } from "./readme.js";
-
-interface RawApiResult {
-  stars: number;
-  pushed: string;
-  archived: boolean;
-  license: string | null;
-  topics: string[];
-  lastRelease: string | null;
-  lastCommit: string | null;
-  language: string | null;
-}
 
 export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
   const doc = parseYaml(yamlContent) as {
@@ -37,18 +26,17 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
   const db = new DB(dbPath);
   db.migrate();
 
-  // Pass 1: fetch live state and detect which repos lack 30d history.
-  const rawByRepo = new Map<string, RawApiResult>();
+  // Pass 1: fetch live state (alias-batched GraphQL, ~40 repos per request)
+  // and detect which repos lack 30d history.
+  const rawByRepo = await fetchRepoMetadataBatch(repos.map((r) => r.repo));
   const projectIdByRepo = new Map<string, number>();
   const pendingBackfill: { repo: string; projectId: number; currentStars: number }[] = [];
 
   for (const { repo, name } of repos) {
-    const raw = fetchOneRepo(repo);
     const projectId = db.upsertProject(repo, name);
-    rawByRepo.set(repo, raw);
     projectIdByRepo.set(repo, projectId);
     if (db.getStarsNDaysAgo(projectId, 30) === null) {
-      pendingBackfill.push({ repo, projectId, currentStars: raw.stars });
+      pendingBackfill.push({ repo, projectId, currentStars: rawByRepo.get(repo)?.stars ?? 0 });
     }
   }
 
@@ -184,78 +172,4 @@ export function loadApiDataFromDB(yamlContent: string): ApiData {
   }
   db.close();
   return data;
-}
-
-function fetchOneRepo(repo: string): RawApiResult {
-  try {
-    const result = execFileSync(
-      "gh",
-      [
-        "api",
-        `repos/${repo}`,
-        "--jq",
-        "{stars: .stargazers_count, pushed: .pushed_at, archived: .archived, license: .license.spdx_id, topics: .topics, language: .language}",
-      ],
-      { timeout: 15_000, encoding: "utf-8" },
-    );
-    const parsed = JSON.parse(result);
-    const { lastRelease, lastCommit } = fetchReleaseAndCommit(repo);
-    const activityDates = [lastRelease, lastCommit, parsed.pushed].filter(
-      (d): d is string => typeof d === "string" && d.length > 0,
-    );
-    // ISO-8601 sorts lexicographically, so max string = newest timestamp.
-    const pushed = activityDates.length > 0 ? activityDates.reduce((a, b) => (a > b ? a : b)) : "";
-    return {
-      stars: parsed.stars ?? 0,
-      pushed,
-      archived: parsed.archived ?? false,
-      license: parsed.license ?? null,
-      topics: parsed.topics ?? [],
-      lastRelease,
-      lastCommit,
-      language: parsed.language ?? null,
-    };
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    logger.warn(`Failed to fetch repo data for ${repo}: ${msg}`);
-    return {
-      stars: 0,
-      pushed: "",
-      archived: false,
-      license: null,
-      topics: [],
-      lastRelease: null,
-      lastCommit: null,
-      language: null,
-    };
-  }
-}
-
-function fetchReleaseAndCommit(repo: string): { lastRelease: string | null; lastCommit: string | null } {
-  // 404 from `releases/latest` is normal — many repos never tag a GitHub release.
-  // Silence stderr so the gh CLI's "Not Found" noise doesn't pollute logs; the
-  // catch already handles the expected miss.
-  let lastRelease: string | null = null;
-  try {
-    const out = execFileSync("gh", ["api", `repos/${repo}/releases/latest`, "--jq", ".published_at"], {
-      timeout: 10_000,
-      encoding: "utf-8",
-      stdio: ["ignore", "pipe", "ignore"],
-    }).trim();
-    if (out) lastRelease = out;
-  } catch {
-    // No releases - leave null
-  }
-  let lastCommit: string | null = null;
-  try {
-    const out = execFileSync("gh", ["api", `repos/${repo}/commits?per_page=1`, "--jq", ".[0].commit.committer.date"], {
-      timeout: 10_000,
-      encoding: "utf-8",
-      stdio: ["ignore", "pipe", "ignore"],
-    }).trim();
-    if (out) lastCommit = out;
-  } catch {
-    // Leave null
-  }
-  return { lastRelease, lastCommit };
 }
