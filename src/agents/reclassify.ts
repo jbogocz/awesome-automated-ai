@@ -1,11 +1,18 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { isMap, isScalar, isSeq, parseDocument } from "yaml";
+import { z } from "zod";
 import { type Manifest, renderCategoryCatalog } from "../categories.js";
 import { getModel } from "./llm.js";
 
 const MAX_TOKENS = 512;
 
 export type Verdict = "fits" | "move_to" | "uncertain";
+
+const VerdictSchema = z.object({
+  verdict: z.enum(["fits", "move_to", "uncertain"]),
+  target: z.string().nullable(),
+  reason: z.string(),
+});
 
 export interface ReclassifyCandidate {
   name: string;
@@ -126,11 +133,11 @@ Call the submit_verdict tool.`;
   });
 
   const toolUse = response.content.find((c) => c.type === "tool_use");
-  if (!toolUse || toolUse.type !== "tool_use") {
+  if (toolUse?.type !== "tool_use") {
     throw new Error(`No tool call for ${candidate.repo}`);
   }
 
-  const parsed = toolUse.input as { verdict: Verdict; target: string | null; reason: string };
+  const parsed = VerdictSchema.parse(toolUse.input);
   const target = parsed.verdict === "move_to" ? parsed.target : null;
 
   if (parsed.verdict === "move_to" && (!target || !allowedNames.has(target))) {

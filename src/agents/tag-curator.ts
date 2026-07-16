@@ -108,7 +108,7 @@ Call the submit_tags tool with the curated list.`;
   });
 
   const toolUse = response.content.find((c) => c.type === "tool_use");
-  if (!toolUse || toolUse.type !== "tool_use") {
+  if (toolUse?.type !== "tool_use") {
     throw new Error("Claude did not return a tool call");
   }
 
