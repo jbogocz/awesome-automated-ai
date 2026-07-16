@@ -42,38 +42,14 @@ export class DB {
         last_commit TEXT,
         language TEXT,
         archived INTEGER DEFAULT 0,
+        tagline TEXT,
         created_at TEXT NOT NULL DEFAULT (datetime('now')),
         updated_at TEXT NOT NULL DEFAULT (datetime('now'))
       );
 
       CREATE INDEX IF NOT EXISTS idx_projects_status ON projects(status);
       CREATE INDEX IF NOT EXISTS idx_projects_repo ON projects(repo);
-
-      -- Migration tracking + idempotent ALTERs for additive columns.
-      CREATE TABLE IF NOT EXISTS _migrations (name TEXT PRIMARY KEY);
-      INSERT OR IGNORE INTO _migrations (name) VALUES ('add_tagline');
-      INSERT OR IGNORE INTO _migrations (name) VALUES ('snapshot_metadata_v1');
     `);
-
-    const tryAlter = (sql: string): void => {
-      try {
-        this.sqlite.exec(sql);
-      } catch {
-        // Column already exists
-      }
-    };
-
-    if (this.sqlite.prepare("SELECT 1 FROM _migrations WHERE name = 'add_tagline'").get()) {
-      tryAlter("ALTER TABLE projects ADD COLUMN tagline TEXT");
-    }
-    if (this.sqlite.prepare("SELECT 1 FROM _migrations WHERE name = 'snapshot_metadata_v1'").get()) {
-      tryAlter("ALTER TABLE snapshots ADD COLUMN archived INTEGER");
-      tryAlter("ALTER TABLE snapshots ADD COLUMN pushed_at TEXT");
-      tryAlter("ALTER TABLE snapshots ADD COLUMN license TEXT");
-      tryAlter("ALTER TABLE snapshots ADD COLUMN topics TEXT"); // JSON array
-      tryAlter("ALTER TABLE snapshots ADD COLUMN last_release TEXT");
-      tryAlter("ALTER TABLE snapshots ADD COLUMN last_commit TEXT");
-    }
 
     this.sqlite.exec(`
 
@@ -88,6 +64,12 @@ export class DB {
         commit_count_30d INTEGER,
         avg_issue_response_hours REAL,
         composite_score INTEGER,
+        archived INTEGER,
+        pushed_at TEXT,
+        license TEXT,
+        topics TEXT, -- JSON array
+        last_release TEXT,
+        last_commit TEXT,
         created_at TEXT NOT NULL DEFAULT (datetime('now')),
         UNIQUE(project_id, snapshot_date)
       );
@@ -154,6 +136,26 @@ export class DB {
       );
       CREATE INDEX IF NOT EXISTS idx_backfill_repo_status_state ON backfill_repo_status(run_id, state);
     `);
+
+    // Additive columns for databases created before these fields existed.
+    // Runs after every CREATE TABLE above, so the tables are guaranteed to
+    // exist; the only expected failure is "duplicate column name" on an
+    // up-to-date database. Anything else is a real error and must surface.
+    const tryAlter = (sql: string): void => {
+      try {
+        this.sqlite.exec(sql);
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        if (!/duplicate column name/i.test(msg)) throw err;
+      }
+    };
+    tryAlter("ALTER TABLE projects ADD COLUMN tagline TEXT");
+    tryAlter("ALTER TABLE snapshots ADD COLUMN archived INTEGER");
+    tryAlter("ALTER TABLE snapshots ADD COLUMN pushed_at TEXT");
+    tryAlter("ALTER TABLE snapshots ADD COLUMN license TEXT");
+    tryAlter("ALTER TABLE snapshots ADD COLUMN topics TEXT"); // JSON array
+    tryAlter("ALTER TABLE snapshots ADD COLUMN last_release TEXT");
+    tryAlter("ALTER TABLE snapshots ADD COLUMN last_commit TEXT");
   }
 
   findProjectByRepo(repo: string): ProjectRow | null {
@@ -252,10 +254,11 @@ export class DB {
   }
 
   countPrsToday(): number {
-    const today = new Date().toISOString().split("T")[0];
+    // created_at is written by datetime('now') — "YYYY-MM-DD HH:MM:SS" in UTC.
+    // Compare via date() so the format can never drift out from under us.
     const row = this.sqlite
-      .prepare("SELECT COUNT(*) as count FROM decisions WHERE created_at >= ? AND pr_number IS NOT NULL")
-      .get(`${today}T00:00:00`) as { count: number };
+      .prepare("SELECT COUNT(*) as count FROM decisions WHERE pr_number IS NOT NULL AND date(created_at) = date('now')")
+      .get() as { count: number };
     return row.count;
   }
 

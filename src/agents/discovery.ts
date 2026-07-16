@@ -1,4 +1,5 @@
-import { readFileSync } from "node:fs";
+import { mkdirSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { loadManifest } from "../categories.js";
 import type { Config } from "../config.js";
@@ -36,8 +37,6 @@ interface RunResult {
 }
 
 export async function runDiscovery(config: Config, projectsYamlPath: string): Promise<RunResult> {
-  const { resolve } = await import("node:path");
-  const { mkdirSync } = await import("node:fs");
   const dbDir = resolve(projectsYamlPath, "..", config.dbPath, "..");
   mkdirSync(dbDir, { recursive: true });
   const dbPath = resolve(projectsYamlPath, "..", config.dbPath);
@@ -124,7 +123,19 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
         scoreThresholdQueue: config.scoreThresholdQueue,
       });
 
-      if (decision === "auto" && prsToday + prsCreated < config.maxPrsPerDay) {
+      if (decision === "auto" && prsToday + prsCreated >= config.maxPrsPerDay) {
+        // Daily PR budget exhausted — throttle, don't discard. Park the
+        // candidate in the review queue so it stays visible for promotion;
+        // rejecting here would permanently drop it (existing project rows
+        // are skipped on every future run).
+        db.insertDecision({
+          project_id: project.id,
+          decision: "add",
+          proposed_by: "discovery",
+          reasoning: `Queued: auto (score ${scoreResult.total}) but daily PR cap of ${config.maxPrsPerDay} reached. ${analysis.reasoning}`,
+        });
+        queued++;
+      } else if (decision === "auto") {
         if (config.dryRun) {
           logger.info(`[DRY RUN] Would open PR for ${candidate.repo} (score: ${scoreResult.total})`);
         } else {
