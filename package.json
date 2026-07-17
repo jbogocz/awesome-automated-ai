@@ -15,6 +15,7 @@
     "reclassify": "tsx src/cli.ts reclassify",
     "validate": "tsx src/cli.ts validate",
     "site-data": "tsx src/generator/site-data.ts",
+    "bump-version": "node scripts/bump-version.mjs",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write ."

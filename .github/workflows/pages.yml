@@ -1,13 +1,19 @@
 name: Deploy Pages
 
-# Manual/backup deploy path only. The weekly pipeline deploys Pages itself
-# (see weekly-regenerate.yml); this workflow exists for out-of-band redeploys.
+# Manual/backup deploy path. The weekly pipeline deploys Pages itself
+# (see weekly-regenerate.yml) because releases it creates with GITHUB_TOKEN
+# never fire the `release` trigger here — GitHub blocks workflow chaining
+# off GITHUB_TOKEN events. The release trigger below still works for
+# releases published by a human. Default checkout uses github.sha, which
+# for a release event is the tagged commit — no need for github.event.*.
 
 on:
+  release:
+    types: [published]
   workflow_dispatch:
     inputs:
       tag:
-        description: "Ref to deploy (default: workflow's own ref)"
+        description: "Tag to deploy (default: workflow's own ref)"
         required: false
         type: string
         default: ""
