@@ -3,6 +3,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
+import { repoStatus } from "../status.js";
 import { logger } from "../utils/logger.js";
 import { loadApiDataFromDB } from "./fetch-api.js";
 import type { ApiData } from "./readme.js";
@@ -53,6 +54,8 @@ const EMPTY_API = {
   tagline: null,
   lastCommit: null,
   lastRelease: null,
+  lastTag: null,
+  commits90d: null,
 } as const;
 
 function main() {
@@ -87,9 +90,22 @@ function main() {
       section: sectionByCategory.get(cat.name) ?? "",
       description: cat.description ?? "",
       entries: (cat.entries ?? []).map((entry) => {
+        const hasApi = Boolean(entry.repo && apiData[entry.repo]);
         const api = apiData[entry.repo ?? ""] ?? EMPTY_API;
         const tags = entry.tags && entry.tags.length > 0 ? entry.tags : (api.topics ?? []);
         const isExternal = !entry.repo;
+        // Precomputed health status — THE source of truth for the site.
+        // docs/lib.js must read this field, never re-derive it from dates:
+        // two copies of the rule is how README and site drifted apart.
+        const status = hasApi
+          ? repoStatus({
+              archived: api.archived,
+              lastCommit: api.lastCommit ?? null,
+              lastRelease: api.lastRelease ?? null,
+              lastTag: api.lastTag ?? null,
+              commits90d: api.commits90d ?? null,
+            })
+          : null;
         return {
           name: entry.name,
           repo: entry.repo ?? "",
@@ -107,6 +123,7 @@ function main() {
           lastCommit: api.lastCommit ?? null,
           lastRelease: api.lastRelease ?? null,
           archived: api.archived,
+          status,
           tags: tags.slice(0, 5),
           external: isExternal,
           ...(entry.commercial ? { commercial: true } : {}),

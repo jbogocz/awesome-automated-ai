@@ -22,10 +22,16 @@ describe("buildMetadataQuery", () => {
       "primaryLanguage { name }",
       "repositoryTopics(first: 20)",
       "latestRelease { publishedAt }",
-      "defaultBranchRef { target { ... on Commit { committedDate } } }",
+      'refs(refPrefix: "refs/tags/", first: 1, orderBy: {field: TAG_COMMIT_DATE, direction: DESC})',
+      "committedDate history(since:",
     ]) {
       expect(q).toContain(field);
     }
+  });
+
+  it("uses the provided pulse window start date", () => {
+    const q = buildMetadataQuery(["a/b"], "2026-04-18T00:00:00.000Z");
+    expect(q).toContain('history(since: "2026-04-18T00:00:00.000Z")');
   });
 
   it("strips GraphQL-breaking characters from owner/name (injection hardening)", () => {
@@ -38,30 +44,57 @@ describe("buildMetadataQuery", () => {
 describe("parseMetadataResponse", () => {
   const fullNode = {
     stargazerCount: 12000,
-    pushedAt: "2026-07-01T00:00:00Z",
+    pushedAt: "2026-07-12T00:00:00Z",
     isArchived: false,
     licenseInfo: { spdxId: "Apache-2.0" },
     primaryLanguage: { name: "Python" },
     repositoryTopics: { nodes: [{ topic: { name: "automl" } }, { topic: { name: "ml" } }] },
     latestRelease: { publishedAt: "2026-07-05T00:00:00Z" },
-    defaultBranchRef: { target: { committedDate: "2026-07-10T00:00:00Z" } },
+    refs: { nodes: [{ target: { committedDate: "2026-07-04T00:00:00Z" } }] },
+    defaultBranchRef: { target: { committedDate: "2026-07-10T00:00:00Z", history: { totalCount: 42 } } },
   };
 
-  it("maps a full node and takes the freshest activity date as pushed", () => {
+  it("maps a full node, keeping pushed as the RAW pushedAt (never a max)", () => {
     const out = parseMetadataResponse(["a/b"], { data: { r0: fullNode } });
     expect(out.get("a/b")).toEqual({
       stars: 12000,
-      pushed: "2026-07-10T00:00:00Z", // lastCommit is newest
+      pushed: "2026-07-12T00:00:00Z",
       archived: false,
       license: "Apache-2.0",
       topics: ["automl", "ml"],
       lastRelease: "2026-07-05T00:00:00Z",
       lastCommit: "2026-07-10T00:00:00Z",
+      lastTag: "2026-07-04T00:00:00Z",
+      commits90d: 42,
       language: "Python",
     });
   });
 
-  it("handles repos without release/commit/license/language/topics", () => {
+  it("extracts the tag date from annotated tags (Tag node with tagger)", () => {
+    const out = parseMetadataResponse(["a/b"], {
+      data: {
+        r0: {
+          ...fullNode,
+          refs: { nodes: [{ target: { tagger: { date: "2026-06-01T00:00:00Z" } } }] },
+        },
+      },
+    });
+    expect(out.get("a/b")?.lastTag).toBe("2026-06-01T00:00:00Z");
+  });
+
+  it("falls back to the annotated tag's commit date when tagger is absent", () => {
+    const out = parseMetadataResponse(["a/b"], {
+      data: {
+        r0: {
+          ...fullNode,
+          refs: { nodes: [{ target: { target: { committedDate: "2026-05-01T00:00:00Z" } } }] },
+        },
+      },
+    });
+    expect(out.get("a/b")?.lastTag).toBe("2026-05-01T00:00:00Z");
+  });
+
+  it("handles repos without release/tag/commit/license/language/topics", () => {
     const out = parseMetadataResponse(["a/b"], {
       data: {
         r0: {
@@ -72,6 +105,7 @@ describe("parseMetadataResponse", () => {
           primaryLanguage: null,
           repositoryTopics: { nodes: [] },
           latestRelease: null,
+          refs: { nodes: [] },
           defaultBranchRef: null,
         },
       },
@@ -84,6 +118,8 @@ describe("parseMetadataResponse", () => {
       topics: [],
       lastRelease: null,
       lastCommit: null,
+      lastTag: null,
+      commits90d: null,
       language: null,
     });
   });

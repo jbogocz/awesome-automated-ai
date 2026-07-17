@@ -68,21 +68,14 @@ export const fmtAge = (iso) => {
 };
 
 // ── Entry predicates ─────────────────────────────────────────────────
-// "Active" requires BOTH signals to align:
-//   1. Real recent commit (< 180 days) — there's hands on the code
-//   2. Either a release in the last 2 years, OR no release process at all
-//      (e.g., projects that publish to PyPI/npm without GitHub releases)
-// Without the release leg, dormant projects with cosmetic commits (dependabot
-// bumps, doc fixes) read as "Active" even though they shipped nothing for years.
-export const isAlive = (e) => {
-  if (e.archived) return false;
-  if (!e.lastCommit) return false;
-  const commitDays = (Date.now() - new Date(e.lastCommit).getTime()) / 86400000;
-  if (commitDays >= 180) return false;
-  if (!e.lastRelease) return true;
-  const releaseDays = (Date.now() - new Date(e.lastRelease).getTime()) / 86400000;
-  return releaseDays < 730;
-};
+// `status` is precomputed weekly by src/status.ts (the single source of
+// truth: mainline commits + releases/tags + 90-day commit pulse) and baked
+// into data.json. Never re-derive it from dates here — two copies of the
+// rule is how the README and the site drifted apart in July 2026.
+//   "active" — recent mainline work AND healthy shipping
+//   "quiet"  — aging, shipping stalled 2y+, or coasting (<3 commits/90d)
+//   "dead"   — archived or no life sign in 12 months
+export const isAlive = (e) => e.status === "active";
 
 export const magnitude = (e) => {
   if (e.archived) return "extinct";

@@ -1,12 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { activityDot, formatDateMonth, formatStarsShort, generateTagline } from "../../src/generator/formatters.js";
-
-// Helper to build a date string N days ago from now
-function daysAgo(n: number): string {
-  const d = new Date();
-  d.setDate(d.getDate() - n);
-  return d.toISOString();
-}
+import { formatDateMonth, formatStarsShort, generateTagline } from "../../src/generator/formatters.js";
 
 describe("formatStarsShort", () => {
   it("returns '0' for 0", () => {
@@ -33,48 +26,7 @@ describe("formatStarsShort", () => {
   });
 });
 
-describe("activityDot", () => {
-  it("returns green for recent push (30 days ago)", () => {
-    expect(activityDot(daysAgo(30), false)).toBe("🟢");
-  });
-
-  it("returns yellow for stale push (250 days ago)", () => {
-    expect(activityDot(daysAgo(250), false)).toBe("🟡");
-  });
-
-  it("returns red for dead push (400 days ago)", () => {
-    expect(activityDot(daysAgo(400), false)).toBe("🔴");
-  });
-
-  it("returns red for archived repo even if recently pushed", () => {
-    expect(activityDot(daysAgo(30), true)).toBe("🔴");
-  });
-
-  it("returns red for empty pushed string", () => {
-    expect(activityDot("", false)).toBe("🔴");
-  });
-
-  it("caps at yellow when pushes are fresh but the latest release is over 2 years old", () => {
-    // e.g. PyCaret: commits in 2026, last release Apr 2024 — not honestly green
-    expect(activityDot(daysAgo(30), false, daysAgo(800))).toBe("🟡");
-  });
-
-  it("stays green when both push and release are fresh", () => {
-    expect(activityDot(daysAgo(30), false, daysAgo(60))).toBe("🟢");
-  });
-
-  it("tolerates a slow release cadence under 2 years (active repos with rare releases)", () => {
-    expect(activityDot(daysAgo(30), false, daysAgo(400))).toBe("🟢");
-  });
-
-  it("stays green when the repo has no releases at all", () => {
-    expect(activityDot(daysAgo(30), false, null)).toBe("🟢");
-  });
-
-  it("release staleness never upgrades a dead repo", () => {
-    expect(activityDot(daysAgo(400), false, daysAgo(30))).toBe("🔴");
-  });
-});
+// Dot/status logic moved to src/status.ts — covered by tests/status.test.ts.
 
 describe("generateTagline", () => {
   it("takes first 7 words", () => {

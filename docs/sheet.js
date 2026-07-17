@@ -43,8 +43,23 @@ export function openSheet(e) {
   const hot = isHot(e) ? "hot" : "";
 
   // Status: external papers aren't repos so don't get an active/quiet label.
-  const status = e.external ? "Reference" : e.archived ? "Archived" : isAlive(e) ? "Active" : "Quiet";
-  const statusColVar = e.external ? "--moonlight" : e.archived ? "--mag-extinct" : isAlive(e) ? "--life" : "--copper";
+  // e.status is precomputed by src/status.ts ("active" | "quiet" | "dead").
+  const status = e.external
+    ? "Reference"
+    : e.archived
+      ? "Archived"
+      : e.status === "dead"
+        ? "Dormant"
+        : isAlive(e)
+          ? "Active"
+          : "Quiet";
+  const statusColVar = e.external
+    ? "--moonlight"
+    : e.archived || e.status === "dead"
+      ? "--mag-extinct"
+      : isAlive(e)
+        ? "--life"
+        : "--copper";
 
   render(els.sheetTitle, html`${raw(avatarHtml(e, mag, hot))}<span>${e.name}</span>`);
 

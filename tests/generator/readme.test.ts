@@ -31,6 +31,9 @@ const SAMPLE_API: ApiData = {
     score: 88,
     topics: ["automl", "machine-learning"],
     tagline: "Multi-modal ensembling, Kaggle champion",
+    lastCommit: now,
+    lastRelease: now,
+    commits90d: 120,
   },
   "pycaret/pycaret": {
     stars: 9500,
@@ -41,6 +44,9 @@ const SAMPLE_API: ApiData = {
     score: 75,
     topics: ["automl", "low-code"],
     tagline: null,
+    lastCommit: now,
+    lastRelease: now,
+    commits90d: 40,
   },
   "old/tool": {
     stars: 500,
@@ -51,6 +57,9 @@ const SAMPLE_API: ApiData = {
     score: 10,
     topics: [],
     tagline: null,
+    lastCommit: stale,
+    lastRelease: null,
+    commits90d: 0,
   },
 };
 

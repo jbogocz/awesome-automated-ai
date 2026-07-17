@@ -1,3 +1,4 @@
+import { PULSE_WINDOW_DAYS } from "../constants.js";
 import { logger } from "../utils/logger.js";
 import { ghGraphQL } from "./stargazers-graphql.js";
 
@@ -9,13 +10,20 @@ import { ghGraphQL } from "./stargazers-graphql.js";
 
 export interface RepoMetadata {
   stars: number;
-  /** Freshest activity signal: max(pushedAt, lastRelease, lastCommit). */
+  /** Raw pushedAt — any-branch pushes; NEVER a health signal (bots and PR
+   * branches inflate it), only kept for quality-score recency. Health status
+   * derives from lastCommit/lastRelease/lastTag/commits90d via src/status.ts. */
   pushed: string;
   archived: boolean;
   license: string | null;
   topics: string[];
   lastRelease: string | null;
   lastCommit: string | null;
+  /** Newest tag's commit/tagger date — many projects (e.g. PyCaret) tag and
+   * publish to PyPI/npm without ever touching GitHub Releases. */
+  lastTag: string | null;
+  /** Commits on the default branch in the last PULSE_WINDOW_DAYS days. */
+  commits90d: number | null;
   language: string | null;
 }
 
@@ -27,14 +35,23 @@ export const EMPTY_METADATA: RepoMetadata = {
   topics: [],
   lastRelease: null,
   lastCommit: null,
+  lastTag: null,
+  commits90d: null,
   language: null,
 };
 
-// GraphQL cost is ceil(nodes/100); 40 aliases with 20 topic nodes each is
-// well under a single-digit point cost per chunk.
-const CHUNK_SIZE = 40;
+// GraphQL cost is ceil(nodes/100); 20 aliases with 20 topic nodes, a tag ref
+// and a commit-history count each stays a single-digit point cost per chunk
+// (verified live against all 249 repos during the July 2026 audit).
+const CHUNK_SIZE = 20;
 // README/site display at most 5 tags; 20 covers projects.yaml curation needs.
 const TOPICS_FIRST = 20;
+
+interface TagTarget {
+  committedDate?: string | null; // lightweight tag -> Commit
+  tagger?: { date?: string | null } | null; // annotated tag -> Tag
+  target?: { committedDate?: string | null } | null; // annotated tag's commit
+}
 
 interface RepoNode {
   stargazerCount?: number | null;
@@ -44,7 +61,10 @@ interface RepoNode {
   primaryLanguage?: { name?: string | null } | null;
   repositoryTopics?: { nodes?: ({ topic?: { name?: string | null } | null } | null)[] | null } | null;
   latestRelease?: { publishedAt?: string | null } | null;
-  defaultBranchRef?: { target?: { committedDate?: string | null } | null } | null;
+  refs?: { nodes?: ({ target?: TagTarget | null } | null)[] | null } | null;
+  defaultBranchRef?: {
+    target?: { committedDate?: string | null; history?: { totalCount?: number | null } | null } | null;
+  } | null;
 }
 
 interface MetadataGraphQLResponse {
@@ -60,7 +80,8 @@ function sanitize(s: string): string {
   return s.replace(/[^A-Za-z0-9._-]/g, "");
 }
 
-export function buildMetadataQuery(repos: string[]): string {
+export function buildMetadataQuery(repos: string[], pulseSince?: string): string {
+  const since = pulseSince ?? new Date(Date.now() - PULSE_WINDOW_DAYS * 86_400_000).toISOString();
   const blocks = repos.map((repo, i) => {
     const [owner = "", name = ""] = repo.split("/");
     return `  ${aliasFor(i)}: repository(owner: "${sanitize(owner)}", name: "${sanitize(name)}") {
@@ -71,7 +92,10 @@ export function buildMetadataQuery(repos: string[]): string {
     primaryLanguage { name }
     repositoryTopics(first: ${TOPICS_FIRST}) { nodes { topic { name } } }
     latestRelease { publishedAt }
-    defaultBranchRef { target { ... on Commit { committedDate } } }
+    refs(refPrefix: "refs/tags/", first: 1, orderBy: {field: TAG_COMMIT_DATE, direction: DESC}) {
+      nodes { target { ... on Commit { committedDate } ... on Tag { tagger { date } target { ... on Commit { committedDate } } } } }
+    }
+    defaultBranchRef { target { ... on Commit { committedDate history(since: "${since}") { totalCount } } } }
   }`;
   });
   return `query {\n${blocks.join("\n")}\n}`;
@@ -95,16 +119,14 @@ export function parseMetadataResponse(repos: string[], resp: MetadataGraphQLResp
     }
 
     const lastRelease = node.latestRelease?.publishedAt ?? null;
-    const lastCommit = node.defaultBranchRef?.target?.committedDate ?? null;
-    const activityDates = [lastRelease, lastCommit, node.pushedAt].filter(
-      (d): d is string => typeof d === "string" && d.length > 0,
-    );
-    // ISO-8601 sorts lexicographically, so max string = newest timestamp.
-    const pushed = activityDates.length > 0 ? activityDates.reduce((a, b) => (a > b ? a : b)) : "";
+    const branchTarget = node.defaultBranchRef?.target;
+    const lastCommit = branchTarget?.committedDate ?? null;
+    const tagTarget = node.refs?.nodes?.[0]?.target;
+    const lastTag = tagTarget?.committedDate ?? tagTarget?.tagger?.date ?? tagTarget?.target?.committedDate ?? null;
 
     out.set(repo, {
       stars: node.stargazerCount ?? 0,
-      pushed,
+      pushed: node.pushedAt ?? "",
       archived: node.isArchived ?? false,
       license: node.licenseInfo?.spdxId ?? null,
       topics: (node.repositoryTopics?.nodes ?? [])
@@ -112,6 +134,8 @@ export function parseMetadataResponse(repos: string[], resp: MetadataGraphQLResp
         .filter((n): n is string => typeof n === "string"),
       lastRelease,
       lastCommit,
+      lastTag,
+      commits90d: branchTarget?.history?.totalCount ?? null,
       language: node.primaryLanguage?.name ?? null,
     });
   });

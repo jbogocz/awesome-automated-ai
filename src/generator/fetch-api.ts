@@ -87,6 +87,8 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
       topics: raw.topics,
       lastRelease: raw.lastRelease,
       lastCommit: raw.lastCommit,
+      lastTag: raw.lastTag,
+      commits90d: raw.commits90d,
     });
     db.updateProjectMetadata(projectId, {
       stars: raw.stars,
@@ -112,6 +114,8 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
       trend30d,
       lastRelease: raw.lastRelease,
       lastCommit: raw.lastCommit,
+      lastTag: raw.lastTag,
+      commits90d: raw.commits90d,
       score,
       topics: raw.topics,
       tagline,
@@ -147,10 +151,17 @@ export function loadApiDataFromDB(yamlContent: string): ApiData {
   db.migrate();
 
   const data: ApiData = {};
+  const missing: string[] = [];
   for (const { repo, name, tagline: yamlTagline } of repos) {
     const projectId = db.upsertProject(repo, name);
     const latest = db.getLatestSnapshot(projectId);
-    if (!latest) continue; // No snapshot yet — skip; generate must be run first.
+    if (!latest) {
+      // No snapshot yet (added to projects.yaml after the last generate run).
+      // Skipping keeps the entry out of ApiData so consumers render it as
+      // "no data yet" instead of fabricating zero stars / a red dot.
+      missing.push(repo);
+      continue;
+    }
 
     const stars7dAgo = db.getStarsNDaysAgo(projectId, 7);
     const stars30dAgo = db.getStarsNDaysAgo(projectId, 30);
@@ -174,10 +185,18 @@ export function loadApiDataFromDB(yamlContent: string): ApiData {
       trend30d,
       lastRelease: latest.lastRelease,
       lastCommit: latest.lastCommit,
+      lastTag: latest.lastTag,
+      commits90d: latest.commits90d,
       score: latest.compositeScore ?? 0,
       topics: latest.topics ?? [],
       tagline,
     };
+  }
+  if (missing.length > 0) {
+    logger.warn(
+      `${missing.length} repo(s) have no snapshot yet and will render without stats ` +
+        `(run generate with fetch to backfill): ${missing.join(", ")}`,
+    );
   }
   db.close();
   return data;

@@ -1,6 +1,7 @@
 import { parse as parseYaml } from "yaml";
-import { RELEASE_STALE_DAYS, RELEASE_STALE_MONTHS, STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.js";
-import { activityDot, formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
+import { RELEASE_STALE_MONTHS, STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.js";
+import { assessRepo, lastLifeSign, STATUS_DOT, type StatusReason } from "../status.js";
+import { formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
 
 export interface ApiRepoData {
   stars: number;
@@ -12,6 +13,8 @@ export interface ApiRepoData {
   trend30d?: number | null;
   lastRelease?: string | null;
   lastCommit?: string | null;
+  lastTag?: string | null;
+  commits90d?: number | null;
   score: number;
   topics: string[];
   tagline: string | null;
@@ -122,9 +125,29 @@ export function generateReadme(opts: GenerateOptions): string {
 interface ScoredEntry {
   entry: Entry;
   rd: ApiRepoData;
+  /** False when the repo has no API data yet (added after the last fetch). */
+  hasData: boolean;
+  status: "active" | "quiet" | "dead";
   note: string;
   isDead: boolean;
   isHistorical: boolean;
+}
+
+/** Honest note for the status the dot shows — one per rule leg. */
+function statusNote(reason: StatusReason | null): string {
+  switch (reason) {
+    case "stale":
+    case "no-signals":
+      return `Unmaintained - no activity for ${STALE_MONTHS}+ months.`;
+    case "shipping-stalled":
+      return `No release for ${RELEASE_STALE_MONTHS}+ months.`;
+    case "aging":
+      return "Quiet - no commits for 6+ months.";
+    case "coasting":
+      return "Quiet - minimal recent development.";
+    default:
+      return "";
+  }
 }
 
 function buildCards(entries: Entry[], apiData: ApiData): string[] {
@@ -133,6 +156,7 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
 
   const scored: ScoredEntry[] = githubEntries.map((entry) => {
     const repo = entry.repo ?? "";
+    const hasData = repo in apiData;
     const rd = apiData[repo] ?? {
       stars: 0,
       pushed: "",
@@ -143,13 +167,19 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
       topics: [],
       tagline: null,
     };
+    const { status, reason } = assessRepo({
+      archived: rd.archived,
+      lastCommit: rd.lastCommit,
+      lastRelease: rd.lastRelease,
+      lastTag: rd.lastTag,
+      commits90d: rd.commits90d,
+    });
     let note = entry.note ?? "";
     if (rd.archived && !note.includes("Archived")) note = `Archived. ${note}`.trim();
-    else if (!note && isUnmaintained(rd.pushed)) note = `Unmaintained - no commits for ${STALE_MONTHS}+ months.`;
-    else if (!note && isReleaseStalled(rd.lastRelease)) note = `No release for ${RELEASE_STALE_MONTHS}+ months.`;
+    else if (!note && hasData) note = statusNote(reason);
     const isHistorical = /historical/i.test(note);
-    const isDead = rd.archived || isUnmaintained(rd.pushed) || /unmaintained|deprecated/i.test(note);
-    return { entry, rd, note, isDead, isHistorical };
+    const isDead = (hasData && status === "dead") || /unmaintained|deprecated/i.test(note);
+    return { entry, rd, hasData, status, note, isDead, isHistorical };
   });
 
   scored.sort((a, b) => b.rd.score - a.rd.score);
@@ -209,10 +239,11 @@ function buildExternalCard(entry: Entry): string[] {
 const MEDAL = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];
 
 function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
-  const { entry, rd, note, isDead, isHistorical } = s;
+  const { entry, rd, hasData, status, note, isDead, isHistorical } = s;
   const repo = entry.repo ?? "";
   const url = entry.url ?? `https://github.com/${repo}`;
-  const dot = activityDot(rd.pushed, rd.archived, rd.lastRelease);
+  if (!hasData) return buildPendingCard(entry, url);
+  const dot = STATUS_DOT[status];
   const score = rd.score;
 
   let rankLabel: string;
@@ -252,7 +283,17 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   const starsExact = rd.stars.toLocaleString("en-US");
   const trendDetail = buildTrendDetail(rd, isDead);
 
-  const actDate = formatDateMonth(rd.pushed);
+  // Show the date of the newest life sign (mainline commit / release / tag) —
+  // the same signal the dot is judged on, never any-branch pushes.
+  const actDate = formatDateMonth(
+    lastLifeSign({
+      archived: rd.archived,
+      lastCommit: rd.lastCommit,
+      lastRelease: rd.lastRelease,
+      lastTag: rd.lastTag,
+      commits90d: rd.commits90d,
+    }) ?? "",
+  );
   let actSuffix = "";
   if (rd.archived) actSuffix = " - archived";
   else if (isHistorical) actSuffix = " - historical";
@@ -288,18 +329,15 @@ function buildTrendDetail(rd: ApiRepoData, isDead: boolean): string {
   return parts.length > 0 ? `(${parts.join(", ")})` : "(n/a)";
 }
 
-function isUnmaintained(pushed: string, months = STALE_MONTHS): boolean {
-  if (!pushed) return true;
-  try {
-    return Date.now() - new Date(pushed).getTime() > months * 30 * 24 * 60 * 60 * 1000;
-  } catch {
-    return false;
-  }
-}
-
-/** True when the repo publishes releases but the latest is over 2 years old. */
-function isReleaseStalled(lastRelease: string | null | undefined): boolean {
-  if (!lastRelease) return false;
-  const days = (Date.now() - new Date(lastRelease).getTime()) / (1000 * 60 * 60 * 24);
-  return days >= RELEASE_STALE_DAYS;
+/**
+ * Card for a repo with no API data yet (added to projects.yaml after the last
+ * fetch): white dot, no fabricated stats. The next weekly regen fills it in.
+ */
+function buildPendingCard(entry: Entry, url: string): string[] {
+  const tagline = entry.tagline ?? generateTagline(entry.description ?? "");
+  const taglinePart = tagline ? ` ${tagline}` : "";
+  const summary = `<details><summary>⚪ <b><a href="${url}">${entry.name}</a></b>${taglinePart}</summary>`;
+  const desc = entry.description ?? "";
+  const pendingNote = "*Stats pending - this entry is new and gets its data on the next weekly refresh.*";
+  return [summary, "", "<br>", "", desc, "", pendingNote, "", "</details>"];
 }
