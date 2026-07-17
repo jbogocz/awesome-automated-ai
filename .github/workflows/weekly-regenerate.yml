@@ -35,9 +35,6 @@ jobs:
       - name: Regenerate dashboard data
         run: pnpm run site-data
 
-      - name: Bump version to today's date
-        run: pnpm run bump-version
-
       - name: Commit and push changes
         env:
           BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
@@ -45,7 +42,7 @@ jobs:
         run: |
           git config user.name "$BOT_NAME"
           git config user.email "$BOT_EMAIL"
-          git add README.md docs/data.json package.json data/curator.db
+          git add README.md docs/data.json data/curator.db
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0
@@ -53,21 +50,6 @@ jobs:
           git commit -m "chore: weekly regeneration [skip ci]"
           git push
 
-      - name: Publish weekly release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          VER=$(node -p "require('./package.json').version")
-          TAG="v$VER"
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release $TAG already exists, skipping"
-          else
-            gh release create "$TAG" --title "$TAG" --generate-notes
-          fi
-
-  # Releases created with GITHUB_TOKEN never fire pages.yml's `on: release`
-  # trigger (GitHub blocks workflow chaining off GITHUB_TOKEN events), so the
-  # weekly pipeline deploys Pages itself. pages.yml remains for manual deploys.
   deploy-pages:
     needs: regenerate
     runs-on: ubuntu-latest
