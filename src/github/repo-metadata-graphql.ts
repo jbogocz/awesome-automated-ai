@@ -3,51 +3,31 @@ import { isPrereleaseTag } from "../status.js";
 import { logger } from "../utils/logger.js";
 import { ghGraphQL } from "./stargazers-graphql.js";
 
-// Live repo metadata for the weekly regen, fetched as alias-batched GraphQL.
-// Replaces three sequential REST calls per repo (repos/{r}, releases/latest,
-// commits?per_page=1) with one query per CHUNK_SIZE repos — the same batching
-// pattern the stargazer backfill already uses, so the pipeline stays O(N/40)
-// requests instead of O(3N) subprocess spawns as the list grows.
+// Live repo metadata for the weekly regen, fetched as alias-batched GraphQL:
+// one query per CHUNK_SIZE repos instead of several REST calls per repo, so
+// request count stays O(N/CHUNK_SIZE) as the list grows.
 
 export interface RepoMetadata {
   stars: number;
-  /** Raw pushedAt — any-branch pushes; NEVER a health signal (bots and PR
-   * branches inflate it), only kept for quality-score recency. Health status
-   * derives from lastCommit/lastRelease/lastTag/commits90d via src/status.ts. */
+  /** Raw pushedAt (any-branch pushes) — used for quality-score recency only,
+   * never for health status (see src/status.ts). */
   pushed: string;
   archived: boolean;
   license: string | null;
   topics: string[];
   lastRelease: string | null;
   lastCommit: string | null;
-  /** Newest tag's commit/tagger date, prereleases included — many projects
-   * tag and publish to PyPI/npm without ever touching GitHub Releases. */
+  /** Newest tag's commit/tagger date, prereleases included. */
   lastTag: string | null;
-  /** Newest tag whose name is NOT a prerelease (see isPrereleaseTag) — the
-   * stable shipping signal alongside latestRelease. */
+  /** Newest tag whose name is not a prerelease (see isPrereleaseTag). */
   lastStableTag: string | null;
   /** Commits on the default branch in the last PULSE_WINDOW_DAYS days. */
   commits90d: number | null;
   language: string | null;
 }
 
-export const EMPTY_METADATA: RepoMetadata = {
-  stars: 0,
-  pushed: "",
-  archived: false,
-  license: null,
-  topics: [],
-  lastRelease: null,
-  lastCommit: null,
-  lastTag: null,
-  lastStableTag: null,
-  commits90d: null,
-  language: null,
-};
-
 // GraphQL cost is ceil(nodes/100); 15 aliases with 20 topic nodes, 20 tag
-// refs and a commit-history count each stays a single-digit point cost per
-// chunk (the July 2026 audit ran this shape live against all 249 repos).
+// refs and a commit-history count each stays a single-digit point cost per chunk.
 const CHUNK_SIZE = 15;
 // README/site display at most 5 tags; 20 covers projects.yaml curation needs.
 const TOPICS_FIRST = 20;
@@ -126,8 +106,9 @@ export function parseMetadataResponse(repos: string[], resp: MetadataGraphQLResp
     const alias = aliasFor(i);
     const node = resp.data?.[alias];
     if (!node || erroredAliases.has(alias)) {
-      logger.warn(`Failed to fetch repo metadata for ${repo}`);
-      out.set(repo, { ...EMPTY_METADATA });
+      // Omit failed repos instead of fabricating zeros — a zeroed entry
+      // would be snapshotted into the DB and rendered as a dead project.
+      logger.warn(`Failed to fetch repo metadata for ${repo} — skipping`);
       return;
     }
 
@@ -179,7 +160,6 @@ export async function fetchRepoMetadataBatch(repos: string[]): Promise<Map<strin
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       logger.warn(`Metadata batch ${i}-${i + chunk.length} failed after retries: ${msg}`);
-      for (const repo of chunk) out.set(repo, { ...EMPTY_METADATA });
     }
   }
   return out;

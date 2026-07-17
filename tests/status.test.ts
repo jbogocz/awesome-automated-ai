@@ -31,7 +31,7 @@ function signals(overrides: Partial<StatusSignals>): StatusSignals {
 describe("isPrereleaseTag", () => {
   it("flags PEP 440 / semver prerelease names", () => {
     for (const name of [
-      "v4.0.0a2", // PyCaret's 4.0 alphas
+      "v4.0.0a2",
       "1.0.0-rc.1",
       "v1.94.0-dev.3",
       "3.7.9.dev3",
@@ -54,7 +54,7 @@ describe("isPrereleaseTag", () => {
       "3.3.2",
       "v0.10.0",
       "2026.07.1", // calver
-      "b10056", // llama.cpp build numbers are not betas
+      "b10056", // build-number scheme, not a beta
       "release-1.4",
       "v1.0.0-post1", // post-releases are stable
     ]) {
@@ -103,17 +103,13 @@ describe("repoStatus", () => {
     );
   });
 
-  // The July 2026 push-inflation class: pushedAt is NOT a signal here at all.
-  // e.g. hitsz-ids/synthetic-data-generator pushed 4d ago (bot branches) but
-  // mainline dormant 498d — the rule only sees mainline + shipping.
+  // pushedAt is not a signal: only mainline commits and shipping count.
   it("stale mainline cannot be rescued by anything but shipping", () => {
     expect(repoStatus(signals({ lastCommit: daysAgo(498), lastRelease: daysAgo(591) }), NOW)).toBe("dead");
   });
 
-  // PyCaret: 4.0 ALPHA tags through 2026, but the last STABLE release is
-  // Apr 2024 — users can install nothing new, so prereleases don't rescue
-  // it from the shipping-stalled cap. It stays quiet, not dead (the alphas
-  // and 121 commits/90d are life signs).
+  // Fresh alphas atop a 2+ year old stable channel: quiet, not active
+  // (and not dead — prereleases are life signs).
   it("prerelease tags do not rescue a stale stable-release channel", () => {
     expect(
       repoStatus(
@@ -129,8 +125,7 @@ describe("repoStatus", () => {
     ).toBe("quiet");
   });
 
-  // A fresh STABLE tag does rescue a repo whose Releases feed is abandoned
-  // (projects that tag + publish to PyPI/npm without GitHub Releases).
+  // Projects that tag + publish to a registry without GitHub Releases.
   it("fresh stable tags rescue a repo with a stale Releases feed", () => {
     expect(
       repoStatus(
@@ -146,8 +141,6 @@ describe("repoStatus", () => {
     ).toBe("active");
   });
 
-  // openai/evals: no GitHub releases, tag 3.0.1 807d old, 0 commits/90d —
-  // previously unjudged (no releases), now the stale tag caps it at quiet.
   it("stale tags cap at quiet even when mainline commits are fresh-ish", () => {
     expect(repoStatus(signals({ lastCommit: daysAgo(94), lastTag: daysAgo(807), commits90d: 0 }), NOW)).toBe("quiet");
   });
@@ -166,7 +159,7 @@ describe("repoStatus", () => {
     );
   });
 
-  // sweetviz: 0 commits in the window but it SHIPPED 97d ago — not coasting.
+  // A repo that just shipped is not coasting, whatever its commit count.
   it("a recent release keeps a low-commit repo active", () => {
     expect(repoStatus(signals({ lastCommit: daysAgo(97), lastRelease: daysAgo(97), commits90d: 0 }), NOW)).toBe(
       "active",
@@ -189,8 +182,7 @@ describe("repoStatus", () => {
     );
   });
 
-  // Pre-migration snapshots have no commits90d — pulse check must be skipped,
-  // not treated as zero (that would yellow every repo on --no-fetch regens).
+  // Older snapshots lack commits90d — unknown must not be treated as zero.
   it("unknown commits90d skips the pulse check instead of guessing", () => {
     expect(repoStatus(signals({ lastCommit: daysAgo(10), lastRelease: daysAgo(400), commits90d: null }), NOW)).toBe(
       "active",

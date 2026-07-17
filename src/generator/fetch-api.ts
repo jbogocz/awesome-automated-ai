@@ -6,7 +6,44 @@ import { computeQualityScore } from "../scoring/quality.js";
 import { computeTrends } from "../scoring/trends.js";
 import { logger } from "../utils/logger.js";
 import { backfillBatch } from "./backfill.js";
-import type { ApiData } from "./readme.js";
+import type { ApiData, ApiRepoData } from "./readme.js";
+
+/**
+ * Build an ApiData entry from the latest DB snapshot. Shared by the offline
+ * path and the live path's fallback for repos whose fetch failed.
+ */
+function entryFromLatestSnapshot(db: DB, projectId: number, yamlTagline: string | undefined): ApiRepoData | null {
+  const latest = db.getLatestSnapshot(projectId);
+  if (!latest) return null;
+
+  const stars7dAgo = db.getStarsNDaysAgo(projectId, 7);
+  const stars30dAgo = db.getStarsNDaysAgo(projectId, 30);
+  const starsPrevious = db.getPreviousStars(projectId);
+  const { trend, trend7d, trend30d } = computeTrends({
+    currentStars: latest.stars,
+    stars7dAgo,
+    stars30dAgo,
+    starsPrevious,
+  });
+
+  return {
+    stars: latest.stars,
+    pushed: latest.pushedAt ?? "",
+    archived: latest.archived ?? false,
+    license: latest.license,
+    trend,
+    trend7d,
+    trend30d,
+    lastRelease: latest.lastRelease,
+    lastCommit: latest.lastCommit,
+    lastTag: latest.lastTag,
+    lastStableTag: latest.lastStableTag,
+    commits90d: latest.commits90d,
+    score: latest.compositeScore ?? 0,
+    topics: latest.topics ?? [],
+    tagline: db.getTagline(projectId) ?? yamlTagline ?? null,
+  };
+}
 
 export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
   const doc = parseYaml(yamlContent) as {
@@ -26,8 +63,8 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
   const db = new DB(dbPath);
   db.migrate();
 
-  // Pass 1: fetch live state (alias-batched GraphQL, ~40 repos per request)
-  // and detect which repos lack 30d history.
+  // Pass 1: fetch live state (alias-batched GraphQL) and detect which
+  // repos lack 30d history.
   const rawByRepo = await fetchRepoMetadataBatch(repos.map((r) => r.repo));
   const projectIdByRepo = new Map<string, number>();
   const pendingBackfill: { repo: string; projectId: number; currentStars: number }[] = [];
@@ -56,10 +93,23 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
 
   // Pass 2: compute trends + scores now that history exists.
   const data: ApiData = {};
+  const stale: string[] = [];
+  const failed: string[] = [];
   for (const { repo, tagline: yamlTagline } of repos) {
     const raw = rawByRepo.get(repo);
     const projectId = projectIdByRepo.get(repo);
-    if (!raw || projectId === undefined) continue;
+    if (!raw || projectId === undefined) {
+      // Fetch failed: serve the latest DB snapshot when one exists,
+      // otherwise leave the entry out so it renders as "stats pending".
+      const fallback = projectId !== undefined ? entryFromLatestSnapshot(db, projectId, yamlTagline) : null;
+      if (fallback) {
+        data[repo] = fallback;
+        stale.push(repo);
+      } else {
+        failed.push(repo);
+      }
+      continue;
+    }
 
     const starsPrevious = db.getPreviousStars(projectId);
     const stars7dAgo = db.getStarsNDaysAgo(projectId, 7);
@@ -123,6 +173,12 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
       tagline,
     };
   }
+  if (stale.length > 0) {
+    logger.warn(`${stale.length} repo(s) failed to fetch; serving their latest DB snapshot: ${stale.join(", ")}`);
+  }
+  if (failed.length > 0) {
+    logger.warn(`${failed.length} repo(s) failed to fetch with no snapshot to fall back on: ${failed.join(", ")}`);
+  }
 
   db.close();
   return data;
@@ -156,44 +212,13 @@ export function loadApiDataFromDB(yamlContent: string): ApiData {
   const missing: string[] = [];
   for (const { repo, name, tagline: yamlTagline } of repos) {
     const projectId = db.upsertProject(repo, name);
-    const latest = db.getLatestSnapshot(projectId);
-    if (!latest) {
-      // No snapshot yet (added to projects.yaml after the last generate run).
-      // Skipping keeps the entry out of ApiData so consumers render it as
-      // "no data yet" instead of fabricating zero stars / a red dot.
+    const entry = entryFromLatestSnapshot(db, projectId, yamlTagline);
+    if (!entry) {
+      // No snapshot yet — the entry renders as "stats pending".
       missing.push(repo);
       continue;
     }
-
-    const stars7dAgo = db.getStarsNDaysAgo(projectId, 7);
-    const stars30dAgo = db.getStarsNDaysAgo(projectId, 30);
-    const starsPrevious = db.getPreviousStars(projectId);
-    const { trend, trend7d, trend30d } = computeTrends({
-      currentStars: latest.stars,
-      stars7dAgo,
-      stars30dAgo,
-      starsPrevious,
-    });
-
-    const tagline = db.getTagline(projectId) ?? yamlTagline ?? null;
-
-    data[repo] = {
-      stars: latest.stars,
-      pushed: latest.pushedAt ?? "",
-      archived: latest.archived ?? false,
-      license: latest.license,
-      trend,
-      trend7d,
-      trend30d,
-      lastRelease: latest.lastRelease,
-      lastCommit: latest.lastCommit,
-      lastTag: latest.lastTag,
-      lastStableTag: latest.lastStableTag,
-      commits90d: latest.commits90d,
-      score: latest.compositeScore ?? 0,
-      topics: latest.topics ?? [],
-      tagline,
-    };
+    data[repo] = entry;
   }
   if (missing.length > 0) {
     logger.warn(

@@ -95,9 +95,8 @@ function main() {
         const api = apiData[entry.repo ?? ""] ?? EMPTY_API;
         const tags = entry.tags && entry.tags.length > 0 ? entry.tags : (api.topics ?? []);
         const isExternal = !entry.repo;
-        // Precomputed health status — THE source of truth for the site.
-        // docs/lib.js must read this field, never re-derive it from dates:
-        // two copies of the rule is how README and site drifted apart.
+        // Precomputed health status (src/status.ts) — docs/lib.js reads
+        // this field and must never re-derive it from dates.
         const status = hasApi
           ? repoStatus({
               archived: api.archived,
@@ -119,9 +118,6 @@ function main() {
           trend: api.trend,
           score: api.score,
           license: api.license,
-          // Real commit date (default branch HEAD), not the MAX of [commit,
-          // release, pushed_at] — `pushed_at` updates from tag pushes and
-          // metadata changes, which made dormant repos look "Active".
           lastCommit: api.lastCommit ?? null,
           lastRelease: api.lastRelease ?? null,
           archived: api.archived,

@@ -285,8 +285,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   const starsExact = rd.stars.toLocaleString("en-US");
   const trendDetail = buildTrendDetail(rd, isDead);
 
-  // Show the date of the newest life sign (mainline commit / release / tag) —
-  // the same signal the dot is judged on, never any-branch pushes.
+  // Activity shows the newest life sign — the same signal the dot is judged on.
   const actDate = formatDateMonth(
     lastLifeSign({
       archived: rd.archived,
@@ -332,10 +331,7 @@ function buildTrendDetail(rd: ApiRepoData, isDead: boolean): string {
   return parts.length > 0 ? `(${parts.join(", ")})` : "(n/a)";
 }
 
-/**
- * Card for a repo with no API data yet (added to projects.yaml after the last
- * fetch): white dot, no fabricated stats. The next weekly regen fills it in.
- */
+/** Card for a repo with no API data yet: white dot, no fabricated stats. */
 function buildPendingCard(entry: Entry, url: string): string[] {
   const tagline = entry.tagline ?? generateTagline(entry.description ?? "");
   const taglinePart = tagline ? ` ${tagline}` : "";

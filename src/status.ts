@@ -3,29 +3,21 @@ import { MAINTAINED_DAYS, PULSE_MIN_COMMITS, RELEASE_STALE_DAYS, SHIPPED_FRESH_D
 /**
  * Single source of truth for repository health status.
  *
- * Consumed by the README generator (dot colour + notes) and baked into
- * docs/data.json as a precomputed `status` field that docs/lib.js reads
- * verbatim. Nothing else may reimplement this rule — the July 2026
- * README/site drift came from two hand-synced copies of it.
+ * The README generator derives the activity dot from it, and site-data
+ * bakes the result into docs/data.json as a `status` field that
+ * docs/lib.js reads verbatim. Never duplicate this rule elsewhere.
  *
- * The rule (commit window modelled on OpenSSF Scorecard's 90-day
- * "Maintained" check):
- *   dead   — archived, or newest life sign (mainline commit, release or
+ * The rule (commit window per OpenSSF Scorecard's "Maintained" check):
+ *   dead   — archived, or newest life sign (mainline commit, release,
  *            tag) is 12+ months old
- *   quiet  — life sign 6-12 months old; OR ships releases/tags but the
- *            newest is 2+ years old; OR coasting: under 3 mainline
- *            commits in 90 days with nothing shipped in 6 months
- *   active — recent mainline work AND healthy shipping
+ *   quiet  — life sign 6-12 months old; stable shipping stalled 2+
+ *            years; or coasting: under 3 mainline commits in 90 days
+ *            with nothing stable shipped in 6 months
+ *   active — recent mainline work and healthy stable shipping
  *
- * Why not pushedAt: it updates on pushes to ANY branch (bots, PR heads) —
- * in the July 2026 audit 8 of 249 listed repos looked alive on pushes
- * alone while their mainline had been dormant for 200-1200 days.
- * Why stable tags count as shipping: GitHub Releases alone is unreliable —
- * some projects tag + publish to PyPI/npm without touching the Releases
- * feed. But prerelease tags (v4.0.0a2, -rc1, -beta, nightly) are NOT
- * shipping: PyCaret cut 4.0 alphas through 2026 while its last stable
- * release stayed at Apr 2024 — users still cannot install anything new.
- * Prereleases only prove the project is not dead (life sign).
+ * pushedAt is deliberately not a signal — it updates on pushes to any
+ * branch (bots, PR heads). Stable releases and stable-named tags count
+ * as shipping; prerelease tags only prove the project is alive.
  */
 
 export type RepoStatus = "active" | "quiet" | "dead";
@@ -42,23 +34,19 @@ export interface StatusSignals {
   archived: boolean;
   /** Default-branch HEAD commit date (ISO). */
   lastCommit: string | null | undefined;
-  /** Latest GitHub release publishedAt (ISO) — GitHub's latestRelease
-   * already excludes prereleases and drafts, so this is a STABLE signal. */
+  /** Latest GitHub release publishedAt (ISO); excludes prereleases and drafts. */
   lastRelease: string | null | undefined;
   /** Newest tag's commit/tagger date (ISO), prereleases included. */
   lastTag: string | null | undefined;
   /** Newest tag whose name does not look like a prerelease (ISO). */
   lastStableTag?: string | null | undefined;
-  /** Commits on the default branch in the last 90 days; null = unknown
-   * (pre-migration snapshot) — the pulse check is skipped, never guessed. */
+  /** Commits on the default branch in the last 90 days; null = unknown (pulse check skipped). */
   commits90d: number | null | undefined;
 }
 
-// Prerelease tag names, PEP 440 + semver conventions: a digit followed by
-// a/alpha/b/beta/rc/pre/preview/dev suffix ("v4.0.0a2", "1.0.0-rc.1",
-// "3.7.9.dev3", "0.8-alpha"), or a bare channel name ("nightly", "canary").
-// Requires the digit prefix so build-number schemes like llama.cpp's
-// "b10056" are NOT misread as betas.
+// PEP 440 + semver prerelease names: a digit followed by an
+// a/alpha/b/beta/rc/pre/preview/dev suffix, or a bare channel name.
+// The digit prefix keeps build-number tags like "b10056" stable.
 const PRERELEASE_TAG =
   /(\d[-._]?(a(lpha)?|b(eta)?|rc|c|pre(view)?|dev|nightly|snapshot|canary|next|unstable)[-._]?\d*(\.\d+)?|^(nightly|canary|dev|snapshot|edge|latest|unstable|beta|alpha)$)/i;
 
@@ -110,11 +98,8 @@ export function assessRepo(
   if (lifeDays >= STALE_DAYS) return { status: "dead", reason: "stale" };
   if (lifeDays >= MAINTAINED_DAYS) return { status: "quiet", reason: "aging" };
 
-  // Shipping health is judged on STABLE ships only. A project that once
-  // shipped stable releases and has served nothing installable for 2+
-  // years is stalled, no matter how many alphas it tags (PyCaret: 4.0
-  // prereleases through 2026, last stable Apr 2024). Repos that never
-  // stable-shipped (curated lists, research code) are not judged on this.
+  // Shipping health is judged on the stable channel only; repos that
+  // never stable-shipped (curated lists, research code) are not judged.
   const stable = stableShippedAt(s);
   const stableDays = stable ? (now - new Date(stable).getTime()) / DAY_MS : null;
   if (stableDays !== null && stableDays >= RELEASE_STALE_DAYS) {

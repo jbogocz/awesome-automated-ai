@@ -68,13 +68,8 @@ export const fmtAge = (iso) => {
 };
 
 // ── Entry predicates ─────────────────────────────────────────────────
-// `status` is precomputed weekly by src/status.ts (the single source of
-// truth: mainline commits + releases/tags + 90-day commit pulse) and baked
-// into data.json. Never re-derive it from dates here — two copies of the
-// rule is how the README and the site drifted apart in July 2026.
-//   "active" — recent mainline work AND healthy shipping
-//   "quiet"  — aging, shipping stalled 2y+, or coasting (<3 commits/90d)
-//   "dead"   — archived or no life sign in 12 months
+// `status` ("active" | "quiet" | "dead") is precomputed by src/status.ts
+// and baked into data.json — never re-derive it from dates here.
 export const isAlive = (e) => e.status === "active";
 
 export const magnitude = (e) => {

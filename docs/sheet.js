@@ -42,8 +42,7 @@ export function openSheet(e) {
   const mag = magnitude(e);
   const hot = isHot(e) ? "hot" : "";
 
-  // Status: external papers aren't repos so don't get an active/quiet label.
-  // e.status is precomputed by src/status.ts ("active" | "quiet" | "dead").
+  // External papers aren't repos so don't get an active/quiet label.
   const status = e.external
     ? "Reference"
     : e.archived

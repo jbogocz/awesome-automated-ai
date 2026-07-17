@@ -5,7 +5,7 @@ vi.mock("node:child_process", () => ({
   execFileSync: (...args: unknown[]) => mockExec(...args),
 }));
 
-const { buildMetadataQuery, EMPTY_METADATA, parseMetadataResponse, fetchRepoMetadataBatch } = await import(
+const { buildMetadataQuery, parseMetadataResponse, fetchRepoMetadataBatch } = await import(
   "../../src/github/repo-metadata-graphql.js"
 );
 
@@ -146,12 +146,14 @@ describe("parseMetadataResponse", () => {
     });
   });
 
-  it("falls back to empty metadata for aliases with GraphQL errors or missing data", () => {
+  it("omits aliases with GraphQL errors or missing data instead of fabricating zeros", () => {
+    // A zeroed entry would be snapshotted into the DB (poisoning star trends)
+    // and rendered as a dead 0-star project; absence means "no data".
     const out = parseMetadataResponse(["gone/repo", "ok/repo"], {
       data: { r0: null, r1: { stargazerCount: 1 } },
       errors: [{ path: ["r0"], message: "Could not resolve", type: "NOT_FOUND" }],
     });
-    expect(out.get("gone/repo")).toEqual(EMPTY_METADATA);
+    expect(out.has("gone/repo")).toBe(false);
     expect(out.get("ok/repo")?.stars).toBe(1);
   });
 
@@ -160,7 +162,7 @@ describe("parseMetadataResponse", () => {
       data: { r0: { stargazerCount: 7 } },
       errors: [{ path: ["r0"], message: "FORBIDDEN", type: "FORBIDDEN" }],
     });
-    expect(out.get("a/b")).toEqual(EMPTY_METADATA);
+    expect(out.has("a/b")).toBe(false);
   });
 });
 
@@ -184,16 +186,16 @@ describe("fetchRepoMetadataBatch transport", () => {
 
     const out = await fetchRepoMetadataBatch(["ok/repo", "gone/repo"]);
     expect(out.get("ok/repo")?.stars).toBe(7);
-    expect(out.get("gone/repo")).toEqual(EMPTY_METADATA);
+    expect(out.has("gone/repo")).toBe(false);
   });
 
-  it("still zeroes the whole chunk on a non-JSON hard failure", async () => {
+  it("omits the whole chunk on a non-JSON hard failure", async () => {
     mockExec.mockImplementation(() => {
       const err = new Error("gh: command not found") as Error & { stdout: string };
       err.stdout = "";
       throw err;
     });
     const out = await fetchRepoMetadataBatch(["a/b"]);
-    expect(out.get("a/b")).toEqual(EMPTY_METADATA);
+    expect(out.has("a/b")).toBe(false);
   });
 });
