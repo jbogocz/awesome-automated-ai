@@ -54,13 +54,17 @@ describe("activityDot", () => {
     expect(activityDot("", false)).toBe("🔴");
   });
 
-  it("caps at yellow when pushes are fresh but the latest release is over a year old", () => {
+  it("caps at yellow when pushes are fresh but the latest release is over 2 years old", () => {
     // e.g. PyCaret: commits in 2026, last release Apr 2024 — not honestly green
     expect(activityDot(daysAgo(30), false, daysAgo(800))).toBe("🟡");
   });
 
   it("stays green when both push and release are fresh", () => {
     expect(activityDot(daysAgo(30), false, daysAgo(60))).toBe("🟢");
+  });
+
+  it("tolerates a slow release cadence under 2 years (active repos with rare releases)", () => {
+    expect(activityDot(daysAgo(30), false, daysAgo(400))).toBe("🟢");
   });
 
   it("stays green when the repo has no releases at all", () => {

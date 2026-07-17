@@ -1,5 +1,5 @@
 import { parse as parseYaml } from "yaml";
-import { STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.js";
+import { RELEASE_STALE_DAYS, RELEASE_STALE_MONTHS, STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.js";
 import { activityDot, formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
 
 export interface ApiRepoData {
@@ -146,6 +146,7 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
     let note = entry.note ?? "";
     if (rd.archived && !note.includes("Archived")) note = `Archived. ${note}`.trim();
     else if (!note && isUnmaintained(rd.pushed)) note = `Unmaintained - no commits for ${STALE_MONTHS}+ months.`;
+    else if (!note && isReleaseStalled(rd.lastRelease)) note = `No release for ${RELEASE_STALE_MONTHS}+ months.`;
     const isHistorical = /historical/i.test(note);
     const isDead = rd.archived || isUnmaintained(rd.pushed) || /unmaintained|deprecated/i.test(note);
     return { entry, rd, note, isDead, isHistorical };
@@ -294,4 +295,11 @@ function isUnmaintained(pushed: string, months = STALE_MONTHS): boolean {
   } catch {
     return false;
   }
+}
+
+/** True when the repo publishes releases but the latest is over 2 years old. */
+function isReleaseStalled(lastRelease: string | null | undefined): boolean {
+  if (!lastRelease) return false;
+  const days = (Date.now() - new Date(lastRelease).getTime()) / (1000 * 60 * 60 * 24);
+  return days >= RELEASE_STALE_DAYS;
 }

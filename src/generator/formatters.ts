@@ -21,10 +21,13 @@ export function formatStarsShort(n: number): string {
 
 /**
  * Return a coloured circle dot indicating repository health.
+ * Mirrors the site's isAlive rule (docs/lib.js): green requires BOTH a
+ * recent push AND a release in the last 2 years (when the repo publishes
+ * releases at all).
  * - archived or empty pushed -> red
- * - pushed < 180 days ago    -> green, UNLESS the repo publishes releases
- *   and the latest one is over a year old -> yellow (recent pushes can be
- *   docs/CI churn masking a stalled project)
+ * - pushed < 180 days ago    -> green, UNLESS the latest release is over
+ *   2 years old -> yellow (recent pushes can be docs/CI churn masking a
+ *   project that stopped shipping)
  * - pushed < 365 days ago    -> yellow
  * - otherwise                -> red
  * Repos with no releases are never downgraded for release staleness.
