@@ -44,9 +44,8 @@ export function computeQualityScore(input: QualityInput): number {
   return clamp(Math.round(raw), 0, 100);
 }
 
-// log10 saturating at 1M stars so the top end stays differentiated.
-// 1k -> 50, 100k -> 83, 1M -> 100. Previously /5 capped at 100k and
-// made every mega-repo tie on the stars dimension.
+// log10 saturating at 1M stars so the top end stays differentiated:
+// 1k -> 50, 100k -> 83, 1M -> 100.
 function computeStarsScore(stars: number): number {
   return clamp((Math.log10(Math.max(stars, 1)) / 6) * 100, 0, 100);
 }

@@ -60,7 +60,7 @@ const state = {
 
 // ── Curated lenses ───────────────────────────────────────────────────
 // Each lens answers one specific ML-engineer question with one click.
-// Predicates are tuned against the actual data distribution (see jq audit):
+// Predicates are tuned against the actual data distribution:
 //   score p90 = 80, stars p50 = 4302, trend p90 = 1125, lastCommit p25 = 5d.
 const LENSES = {
   all: {

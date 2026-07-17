@@ -4,9 +4,9 @@ import type { RateLimitInfo, RepoStargazersPage } from "./types.js";
 
 const GH_TIMEOUT_MS = 30_000;
 
-// Transient GitHub failures (502/503/504, dropped connections, DNS hiccups) used to
-// kill the whole weekly regen — see commit history. Retry with exponential backoff
-// to ride them out; non-transient errors (auth, 4xx) still fail fast.
+// Transient GitHub failures (502/503/504, dropped connections, DNS hiccups)
+// are retried with exponential backoff; non-transient errors (auth, 4xx)
+// fail fast.
 const MAX_RETRIES = 4;
 const BASE_BACKOFF_MS = 2_000;
 
