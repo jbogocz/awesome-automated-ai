@@ -55,6 +55,7 @@ const EMPTY_API = {
   lastCommit: null,
   lastRelease: null,
   lastTag: null,
+  lastStableTag: null,
   commits90d: null,
 } as const;
 
@@ -103,6 +104,7 @@ function main() {
               lastCommit: api.lastCommit ?? null,
               lastRelease: api.lastRelease ?? null,
               lastTag: api.lastTag ?? null,
+              lastStableTag: api.lastStableTag ?? null,
               commits90d: api.commits90d ?? null,
             })
           : null;

@@ -66,6 +66,7 @@ export class DB {
         last_release TEXT,
         last_commit TEXT,
         last_tag TEXT,
+        last_stable_tag TEXT,
         commits_90d INTEGER,
         created_at TEXT NOT NULL DEFAULT (datetime('now')),
         UNIQUE(project_id, snapshot_date)
@@ -154,6 +155,7 @@ export class DB {
     tryAlter("ALTER TABLE snapshots ADD COLUMN last_release TEXT");
     tryAlter("ALTER TABLE snapshots ADD COLUMN last_commit TEXT");
     tryAlter("ALTER TABLE snapshots ADD COLUMN last_tag TEXT");
+    tryAlter("ALTER TABLE snapshots ADD COLUMN last_stable_tag TEXT");
     tryAlter("ALTER TABLE snapshots ADD COLUMN commits_90d INTEGER");
 
     // Legacy cleanup for databases created before this schema: snapshot
@@ -364,6 +366,7 @@ export class DB {
       lastRelease?: string | null;
       lastCommit?: string | null;
       lastTag?: string | null;
+      lastStableTag?: string | null;
       commits90d?: number | null;
     } = {},
   ): void {
@@ -372,8 +375,8 @@ export class DB {
       .prepare(
         `INSERT OR REPLACE INTO snapshots
            (project_id, snapshot_date, stars, composite_score,
-            archived, pushed_at, license, topics, last_release, last_commit, last_tag, commits_90d)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            archived, pushed_at, license, topics, last_release, last_commit, last_tag, last_stable_tag, commits_90d)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
       .run(
         projectId,
@@ -387,6 +390,7 @@ export class DB {
         meta.lastRelease ?? null,
         meta.lastCommit ?? null,
         meta.lastTag ?? null,
+        meta.lastStableTag ?? null,
         meta.commits90d ?? null,
       );
   }
@@ -434,11 +438,12 @@ export class DB {
     lastRelease: string | null;
     lastCommit: string | null;
     lastTag: string | null;
+    lastStableTag: string | null;
     commits90d: number | null;
   } | null {
     const row = this.sqlite
       .prepare(
-        `SELECT snapshot_date, stars, composite_score, archived, pushed_at, license, topics, last_release, last_commit, last_tag, commits_90d
+        `SELECT snapshot_date, stars, composite_score, archived, pushed_at, license, topics, last_release, last_commit, last_tag, last_stable_tag, commits_90d
            FROM snapshots
           WHERE project_id = ?
           ORDER BY snapshot_date DESC LIMIT 1`,
@@ -455,6 +460,7 @@ export class DB {
           last_release: string | null;
           last_commit: string | null;
           last_tag: string | null;
+          last_stable_tag: string | null;
           commits_90d: number | null;
         }
       | undefined;
@@ -470,6 +476,7 @@ export class DB {
       lastRelease: row.last_release,
       lastCommit: row.last_commit,
       lastTag: row.last_tag,
+      lastStableTag: row.last_stable_tag,
       commits90d: row.commits_90d,
     };
   }

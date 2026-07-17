@@ -1,4 +1,5 @@
 import { PULSE_WINDOW_DAYS } from "../constants.js";
+import { isPrereleaseTag } from "../status.js";
 import { logger } from "../utils/logger.js";
 import { ghGraphQL } from "./stargazers-graphql.js";
 
@@ -19,9 +20,12 @@ export interface RepoMetadata {
   topics: string[];
   lastRelease: string | null;
   lastCommit: string | null;
-  /** Newest tag's commit/tagger date — many projects (e.g. PyCaret) tag and
-   * publish to PyPI/npm without ever touching GitHub Releases. */
+  /** Newest tag's commit/tagger date, prereleases included — many projects
+   * tag and publish to PyPI/npm without ever touching GitHub Releases. */
   lastTag: string | null;
+  /** Newest tag whose name is NOT a prerelease (see isPrereleaseTag) — the
+   * stable shipping signal alongside latestRelease. */
+  lastStableTag: string | null;
   /** Commits on the default branch in the last PULSE_WINDOW_DAYS days. */
   commits90d: number | null;
   language: string | null;
@@ -36,21 +40,30 @@ export const EMPTY_METADATA: RepoMetadata = {
   lastRelease: null,
   lastCommit: null,
   lastTag: null,
+  lastStableTag: null,
   commits90d: null,
   language: null,
 };
 
-// GraphQL cost is ceil(nodes/100); 20 aliases with 20 topic nodes, a tag ref
-// and a commit-history count each stays a single-digit point cost per chunk
-// (verified live against all 249 repos during the July 2026 audit).
-const CHUNK_SIZE = 20;
+// GraphQL cost is ceil(nodes/100); 15 aliases with 20 topic nodes, 20 tag
+// refs and a commit-history count each stays a single-digit point cost per
+// chunk (the July 2026 audit ran this shape live against all 249 repos).
+const CHUNK_SIZE = 15;
 // README/site display at most 5 tags; 20 covers projects.yaml curation needs.
 const TOPICS_FIRST = 20;
+// Deep enough to find the newest STABLE tag behind a run of prereleases
+// (e.g. rc1..rc9 before a stable); latestRelease is the backstop beyond it.
+const TAGS_FIRST = 20;
 
 interface TagTarget {
   committedDate?: string | null; // lightweight tag -> Commit
   tagger?: { date?: string | null } | null; // annotated tag -> Tag
   target?: { committedDate?: string | null } | null; // annotated tag's commit
+}
+
+interface TagNode {
+  name?: string | null;
+  target?: TagTarget | null;
 }
 
 interface RepoNode {
@@ -61,7 +74,7 @@ interface RepoNode {
   primaryLanguage?: { name?: string | null } | null;
   repositoryTopics?: { nodes?: ({ topic?: { name?: string | null } | null } | null)[] | null } | null;
   latestRelease?: { publishedAt?: string | null } | null;
-  refs?: { nodes?: ({ target?: TagTarget | null } | null)[] | null } | null;
+  refs?: { nodes?: (TagNode | null)[] | null } | null;
   defaultBranchRef?: {
     target?: { committedDate?: string | null; history?: { totalCount?: number | null } | null } | null;
   } | null;
@@ -92,8 +105,8 @@ export function buildMetadataQuery(repos: string[], pulseSince?: string): string
     primaryLanguage { name }
     repositoryTopics(first: ${TOPICS_FIRST}) { nodes { topic { name } } }
     latestRelease { publishedAt }
-    refs(refPrefix: "refs/tags/", first: 1, orderBy: {field: TAG_COMMIT_DATE, direction: DESC}) {
-      nodes { target { ... on Commit { committedDate } ... on Tag { tagger { date } target { ... on Commit { committedDate } } } } }
+    refs(refPrefix: "refs/tags/", first: ${TAGS_FIRST}, orderBy: {field: TAG_COMMIT_DATE, direction: DESC}) {
+      nodes { name target { ... on Commit { committedDate } ... on Tag { tagger { date } target { ... on Commit { committedDate } } } } }
     }
     defaultBranchRef { target { ... on Commit { committedDate history(since: "${since}") { totalCount } } } }
   }`;
@@ -121,8 +134,21 @@ export function parseMetadataResponse(repos: string[], resp: MetadataGraphQLResp
     const lastRelease = node.latestRelease?.publishedAt ?? null;
     const branchTarget = node.defaultBranchRef?.target;
     const lastCommit = branchTarget?.committedDate ?? null;
-    const tagTarget = node.refs?.nodes?.[0]?.target;
-    const lastTag = tagTarget?.committedDate ?? tagTarget?.tagger?.date ?? tagTarget?.target?.committedDate ?? null;
+
+    // Tags arrive newest-first. lastTag = newest of any kind (life sign);
+    // lastStableTag = newest whose name is not a prerelease (shipping).
+    let lastTag: string | null = null;
+    let lastStableTag: string | null = null;
+    for (const tagNode of node.refs?.nodes ?? []) {
+      const t = tagNode?.target;
+      const date = t?.committedDate ?? t?.tagger?.date ?? t?.target?.committedDate ?? null;
+      if (!date) continue;
+      if (lastTag === null) lastTag = date;
+      if (lastStableTag === null && typeof tagNode?.name === "string" && !isPrereleaseTag(tagNode.name)) {
+        lastStableTag = date;
+      }
+      if (lastTag !== null && lastStableTag !== null) break;
+    }
 
     out.set(repo, {
       stars: node.stargazerCount ?? 0,
@@ -135,6 +161,7 @@ export function parseMetadataResponse(repos: string[], resp: MetadataGraphQLResp
       lastRelease,
       lastCommit,
       lastTag,
+      lastStableTag,
       commits90d: branchTarget?.history?.totalCount ?? null,
       language: node.primaryLanguage?.name ?? null,
     });

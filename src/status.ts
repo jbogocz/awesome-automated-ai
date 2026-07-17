@@ -20,9 +20,12 @@ import { MAINTAINED_DAYS, PULSE_MIN_COMMITS, RELEASE_STALE_DAYS, SHIPPED_FRESH_D
  * Why not pushedAt: it updates on pushes to ANY branch (bots, PR heads) —
  * in the July 2026 audit 8 of 249 listed repos looked alive on pushes
  * alone while their mainline had been dormant for 200-1200 days.
- * Why tags count as shipping: GitHub Releases alone is unreliable — e.g.
- * PyCaret cut v4.0.0a2 tags and PyPI uploads in 2026 while its Releases
- * feed sat at Apr 2024.
+ * Why stable tags count as shipping: GitHub Releases alone is unreliable —
+ * some projects tag + publish to PyPI/npm without touching the Releases
+ * feed. But prerelease tags (v4.0.0a2, -rc1, -beta, nightly) are NOT
+ * shipping: PyCaret cut 4.0 alphas through 2026 while its last stable
+ * release stayed at Apr 2024 — users still cannot install anything new.
+ * Prereleases only prove the project is not dead (life sign).
  */
 
 export type RepoStatus = "active" | "quiet" | "dead";
@@ -39,13 +42,29 @@ export interface StatusSignals {
   archived: boolean;
   /** Default-branch HEAD commit date (ISO). */
   lastCommit: string | null | undefined;
-  /** Latest GitHub release publishedAt (ISO). */
+  /** Latest GitHub release publishedAt (ISO) — GitHub's latestRelease
+   * already excludes prereleases and drafts, so this is a STABLE signal. */
   lastRelease: string | null | undefined;
-  /** Newest tag's commit/tagger date (ISO). */
+  /** Newest tag's commit/tagger date (ISO), prereleases included. */
   lastTag: string | null | undefined;
+  /** Newest tag whose name does not look like a prerelease (ISO). */
+  lastStableTag?: string | null | undefined;
   /** Commits on the default branch in the last 90 days; null = unknown
    * (pre-migration snapshot) — the pulse check is skipped, never guessed. */
   commits90d: number | null | undefined;
+}
+
+// Prerelease tag names, PEP 440 + semver conventions: a digit followed by
+// a/alpha/b/beta/rc/pre/preview/dev suffix ("v4.0.0a2", "1.0.0-rc.1",
+// "3.7.9.dev3", "0.8-alpha"), or a bare channel name ("nightly", "canary").
+// Requires the digit prefix so build-number schemes like llama.cpp's
+// "b10056" are NOT misread as betas.
+const PRERELEASE_TAG =
+  /(\d[-._]?(a(lpha)?|b(eta)?|rc|c|pre(view)?|dev|nightly|snapshot|canary|next|unstable)[-._]?\d*(\.\d+)?|^(nightly|canary|dev|snapshot|edge|latest|unstable|beta|alpha)$)/i;
+
+/** True when a tag name denotes a prerelease/dev build rather than a stable cut. */
+export function isPrereleaseTag(name: string): boolean {
+  return PRERELEASE_TAG.test(name.trim());
 }
 
 const DAY_MS = 86_400_000;
@@ -60,14 +79,23 @@ function newest(dates: (string | null | undefined)[]): string | null {
   return valid.length > 0 ? valid.reduce((a, b) => (a > b ? a : b)) : null;
 }
 
-/** Newest shipping signal — release or tag. Null when the repo ships neither. */
-export function shippedAt(s: StatusSignals): string | null {
-  return newest([s.lastRelease, s.lastTag]);
+/**
+ * Newest STABLE shipping signal — a real release users can install:
+ * GitHub latestRelease (non-prerelease by definition) or the newest
+ * stable-named tag. Prerelease tags never count here.
+ */
+export function stableShippedAt(s: StatusSignals): string | null {
+  return newest([s.lastRelease, s.lastStableTag]);
 }
 
-/** Newest life sign of any kind — mainline commit, release or tag. */
+/** Newest shipping signal of ANY kind, prereleases included. */
+export function anyShippedAt(s: StatusSignals): string | null {
+  return newest([s.lastRelease, s.lastTag, s.lastStableTag]);
+}
+
+/** Newest life sign of any kind — mainline commit, release or any tag. */
 export function lastLifeSign(s: StatusSignals): string | null {
-  return newest([s.lastCommit, shippedAt(s)]);
+  return newest([s.lastCommit, anyShippedAt(s)]);
 }
 
 export function assessRepo(
@@ -82,13 +110,18 @@ export function assessRepo(
   if (lifeDays >= STALE_DAYS) return { status: "dead", reason: "stale" };
   if (lifeDays >= MAINTAINED_DAYS) return { status: "quiet", reason: "aging" };
 
-  const shipped = shippedAt(s);
-  const shippedDays = shipped ? (now - new Date(shipped).getTime()) / DAY_MS : null;
-  if (shippedDays !== null && shippedDays >= RELEASE_STALE_DAYS) {
+  // Shipping health is judged on STABLE ships only. A project that once
+  // shipped stable releases and has served nothing installable for 2+
+  // years is stalled, no matter how many alphas it tags (PyCaret: 4.0
+  // prereleases through 2026, last stable Apr 2024). Repos that never
+  // stable-shipped (curated lists, research code) are not judged on this.
+  const stable = stableShippedAt(s);
+  const stableDays = stable ? (now - new Date(stable).getTime()) / DAY_MS : null;
+  if (stableDays !== null && stableDays >= RELEASE_STALE_DAYS) {
     return { status: "quiet", reason: "shipping-stalled" };
   }
 
-  const shippedRecently = shippedDays !== null && shippedDays < SHIPPED_FRESH_DAYS;
+  const shippedRecently = stableDays !== null && stableDays < SHIPPED_FRESH_DAYS;
   if (typeof s.commits90d === "number" && s.commits90d < PULSE_MIN_COMMITS && !shippedRecently) {
     return { status: "quiet", reason: "coasting" };
   }

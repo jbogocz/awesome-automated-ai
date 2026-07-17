@@ -22,7 +22,7 @@ describe("buildMetadataQuery", () => {
       "primaryLanguage { name }",
       "repositoryTopics(first: 20)",
       "latestRelease { publishedAt }",
-      'refs(refPrefix: "refs/tags/", first: 1, orderBy: {field: TAG_COMMIT_DATE, direction: DESC})',
+      'refs(refPrefix: "refs/tags/", first: 20, orderBy: {field: TAG_COMMIT_DATE, direction: DESC})',
       "committedDate history(since:",
     ]) {
       expect(q).toContain(field);
@@ -50,7 +50,7 @@ describe("parseMetadataResponse", () => {
     primaryLanguage: { name: "Python" },
     repositoryTopics: { nodes: [{ topic: { name: "automl" } }, { topic: { name: "ml" } }] },
     latestRelease: { publishedAt: "2026-07-05T00:00:00Z" },
-    refs: { nodes: [{ target: { committedDate: "2026-07-04T00:00:00Z" } }] },
+    refs: { nodes: [{ name: "v2.1.0", target: { committedDate: "2026-07-04T00:00:00Z" } }] },
     defaultBranchRef: { target: { committedDate: "2026-07-10T00:00:00Z", history: { totalCount: 42 } } },
   };
 
@@ -65,9 +65,30 @@ describe("parseMetadataResponse", () => {
       lastRelease: "2026-07-05T00:00:00Z",
       lastCommit: "2026-07-10T00:00:00Z",
       lastTag: "2026-07-04T00:00:00Z",
+      lastStableTag: "2026-07-04T00:00:00Z",
       commits90d: 42,
       language: "Python",
     });
+  });
+
+  it("splits newest-any vs newest-stable when prereleases lead the tag list", () => {
+    const out = parseMetadataResponse(["a/b"], {
+      data: {
+        r0: {
+          ...fullNode,
+          refs: {
+            nodes: [
+              { name: "v4.0.0a2", target: { committedDate: "2026-04-24T00:00:00Z" } },
+              { name: "v4.0.0a1", target: { committedDate: "2026-02-01T00:00:00Z" } },
+              { name: "3.3.2", target: { committedDate: "2024-04-28T00:00:00Z" } },
+            ],
+          },
+        },
+      },
+    });
+    const meta = out.get("a/b");
+    expect(meta?.lastTag).toBe("2026-04-24T00:00:00Z"); // the alpha — life sign
+    expect(meta?.lastStableTag).toBe("2024-04-28T00:00:00Z"); // 3.3.2 — shipping
   });
 
   it("extracts the tag date from annotated tags (Tag node with tagger)", () => {
@@ -119,6 +140,7 @@ describe("parseMetadataResponse", () => {
       lastRelease: null,
       lastCommit: null,
       lastTag: null,
+      lastStableTag: null,
       commits90d: null,
       language: null,
     });

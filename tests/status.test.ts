@@ -1,5 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { assessRepo, lastLifeSign, repoStatus, type StatusSignals, shippedAt, statusDot } from "../src/status.js";
+import {
+  anyShippedAt,
+  assessRepo,
+  isPrereleaseTag,
+  lastLifeSign,
+  repoStatus,
+  type StatusSignals,
+  stableShippedAt,
+  statusDot,
+} from "../src/status.js";
 
 const NOW = new Date("2026-07-17T08:00:00Z").getTime();
 
@@ -13,23 +22,61 @@ function signals(overrides: Partial<StatusSignals>): StatusSignals {
     lastCommit: null,
     lastRelease: null,
     lastTag: null,
+    lastStableTag: null,
     commits90d: null,
     ...overrides,
   };
 }
 
-describe("shippedAt", () => {
-  it("returns the newest of release and tag", () => {
-    expect(shippedAt(signals({ lastRelease: daysAgo(800), lastTag: daysAgo(83) }))).toBe(daysAgo(83));
-    expect(shippedAt(signals({ lastRelease: daysAgo(10), lastTag: daysAgo(83) }))).toBe(daysAgo(10));
+describe("isPrereleaseTag", () => {
+  it("flags PEP 440 / semver prerelease names", () => {
+    for (const name of [
+      "v4.0.0a2", // PyCaret's 4.0 alphas
+      "1.0.0-rc.1",
+      "v1.94.0-dev.3",
+      "3.7.9.dev3",
+      "0.8-alpha",
+      "v2.0.0-beta.3",
+      "v0.52.0-preview.0",
+      "v0.86.3.dev",
+      "nightly",
+      "v0.3.0-pre",
+      "3.3.0b1",
+      "v1.3.0rc21",
+    ]) {
+      expect(isPrereleaseTag(name), name).toBe(true);
+    }
   });
 
-  it("returns null when the repo ships neither", () => {
-    expect(shippedAt(signals({}))).toBeNull();
+  it("keeps stable names stable", () => {
+    for (const name of [
+      "v1.2.3",
+      "3.3.2",
+      "v0.10.0",
+      "2026.07.1", // calver
+      "b10056", // llama.cpp build numbers are not betas
+      "release-1.4",
+      "v1.0.0-post1", // post-releases are stable
+    ]) {
+      expect(isPrereleaseTag(name), name).toBe(false);
+    }
+  });
+});
+
+describe("stableShippedAt / anyShippedAt", () => {
+  it("stable uses latestRelease and stable tags only", () => {
+    const s = signals({ lastRelease: daysAgo(810), lastTag: daysAgo(83), lastStableTag: daysAgo(810) });
+    expect(stableShippedAt(s)).toBe(daysAgo(810)); // the alpha tag does not count
+    expect(anyShippedAt(s)).toBe(daysAgo(83)); // but it IS a life sign
+  });
+
+  it("returns null when the repo ships nothing", () => {
+    expect(stableShippedAt(signals({}))).toBeNull();
+    expect(anyShippedAt(signals({}))).toBeNull();
   });
 
   it("ignores invalid dates", () => {
-    expect(shippedAt(signals({ lastRelease: "not-a-date", lastTag: daysAgo(5) }))).toBe(daysAgo(5));
+    expect(anyShippedAt(signals({ lastRelease: "not-a-date", lastTag: daysAgo(5) }))).toBe(daysAgo(5));
   });
 });
 
@@ -63,12 +110,37 @@ describe("repoStatus", () => {
     expect(repoStatus(signals({ lastCommit: daysAgo(498), lastRelease: daysAgo(591) }), NOW)).toBe("dead");
   });
 
-  // PyCaret: GitHub Releases feed stale (Apr 2024) but tags v4.0.0a2 (83d)
-  // and 121 mainline commits/90d — genuinely alive; tags count as shipping.
-  it("fresh tags rescue a repo with a stale Releases feed", () => {
+  // PyCaret: 4.0 ALPHA tags through 2026, but the last STABLE release is
+  // Apr 2024 — users can install nothing new, so prereleases don't rescue
+  // it from the shipping-stalled cap. It stays quiet, not dead (the alphas
+  // and 121 commits/90d are life signs).
+  it("prerelease tags do not rescue a stale stable-release channel", () => {
     expect(
       repoStatus(
-        signals({ lastCommit: daysAgo(62), lastRelease: daysAgo(810), lastTag: daysAgo(83), commits90d: 121 }),
+        signals({
+          lastCommit: daysAgo(62),
+          lastRelease: daysAgo(810),
+          lastTag: daysAgo(83), // v4.0.0a2
+          lastStableTag: daysAgo(810), // 3.3.2
+          commits90d: 121,
+        }),
+        NOW,
+      ),
+    ).toBe("quiet");
+  });
+
+  // A fresh STABLE tag does rescue a repo whose Releases feed is abandoned
+  // (projects that tag + publish to PyPI/npm without GitHub Releases).
+  it("fresh stable tags rescue a repo with a stale Releases feed", () => {
+    expect(
+      repoStatus(
+        signals({
+          lastCommit: daysAgo(62),
+          lastRelease: daysAgo(810),
+          lastTag: daysAgo(83),
+          lastStableTag: daysAgo(83),
+          commits90d: 121,
+        }),
         NOW,
       ),
     ).toBe("active");

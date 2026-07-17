@@ -88,6 +88,7 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
       lastRelease: raw.lastRelease,
       lastCommit: raw.lastCommit,
       lastTag: raw.lastTag,
+      lastStableTag: raw.lastStableTag,
       commits90d: raw.commits90d,
     });
     db.updateProjectMetadata(projectId, {
@@ -115,6 +116,7 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
       lastRelease: raw.lastRelease,
       lastCommit: raw.lastCommit,
       lastTag: raw.lastTag,
+      lastStableTag: raw.lastStableTag,
       commits90d: raw.commits90d,
       score,
       topics: raw.topics,
@@ -186,6 +188,7 @@ export function loadApiDataFromDB(yamlContent: string): ApiData {
       lastRelease: latest.lastRelease,
       lastCommit: latest.lastCommit,
       lastTag: latest.lastTag,
+      lastStableTag: latest.lastStableTag,
       commits90d: latest.commits90d,
       score: latest.compositeScore ?? 0,
       topics: latest.topics ?? [],

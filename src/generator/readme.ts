@@ -14,6 +14,7 @@ export interface ApiRepoData {
   lastRelease?: string | null;
   lastCommit?: string | null;
   lastTag?: string | null;
+  lastStableTag?: string | null;
   commits90d?: number | null;
   score: number;
   topics: string[];
@@ -140,7 +141,7 @@ function statusNote(reason: StatusReason | null): string {
     case "no-signals":
       return `Unmaintained - no activity for ${STALE_MONTHS}+ months.`;
     case "shipping-stalled":
-      return `No release for ${RELEASE_STALE_MONTHS}+ months.`;
+      return `No stable release for ${RELEASE_STALE_MONTHS}+ months.`;
     case "aging":
       return "Quiet - no commits for 6+ months.";
     case "coasting":
@@ -172,6 +173,7 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
       lastCommit: rd.lastCommit,
       lastRelease: rd.lastRelease,
       lastTag: rd.lastTag,
+      lastStableTag: rd.lastStableTag,
       commits90d: rd.commits90d,
     });
     let note = entry.note ?? "";
@@ -291,6 +293,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
       lastCommit: rd.lastCommit,
       lastRelease: rd.lastRelease,
       lastTag: rd.lastTag,
+      lastStableTag: rd.lastStableTag,
       commits90d: rd.commits90d,
     }) ?? "",
   );
