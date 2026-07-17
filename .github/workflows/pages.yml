@@ -1,9 +1,11 @@
 name: Deploy Pages
 
-# Pages goes live ONLY when a release is published. Pushes to main no longer
-# update the site — work lands on main freely; releases are the cut point.
-# Default checkout uses github.sha, which for a release event is the tagged
-# commit — no need to reference github.event.* (and no injection surface).
+# Manual/backup deploy path. The weekly pipeline deploys Pages itself
+# (see weekly-regenerate.yml) because releases it creates with GITHUB_TOKEN
+# never fire the `release` trigger here — GitHub blocks workflow chaining
+# off GITHUB_TOKEN events. The release trigger below still works for
+# releases published by a human. Default checkout uses github.sha, which
+# for a release event is the tagged commit — no need for github.event.*.
 
 on:
   release:

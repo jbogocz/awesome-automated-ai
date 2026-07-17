@@ -5,9 +5,6 @@ on:
     - cron: "0 6 * * 1"
   workflow_dispatch: {}
 
-permissions:
-  contents: write
-
 concurrency:
   group: weekly-regenerate
   cancel-in-progress: false
@@ -15,6 +12,8 @@ concurrency:
 jobs:
   regenerate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v7
 
@@ -65,3 +64,33 @@ jobs:
           else
             gh release create "$TAG" --title "$TAG" --generate-notes
           fi
+
+  # Releases created with GITHUB_TOKEN never fire pages.yml's `on: release`
+  # trigger (GitHub blocks workflow chaining off GITHUB_TOKEN events), so the
+  # weekly pipeline deploys Pages itself. pages.yml remains for manual deploys.
+  deploy-pages:
+    needs: regenerate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main # regenerate just pushed a new commit; github.sha predates it
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./docs
+
+      - id: deployment
+        uses: actions/deploy-pages@v5
