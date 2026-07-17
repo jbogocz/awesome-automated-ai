@@ -53,6 +53,23 @@ describe("activityDot", () => {
   it("returns red for empty pushed string", () => {
     expect(activityDot("", false)).toBe("🔴");
   });
+
+  it("caps at yellow when pushes are fresh but the latest release is over a year old", () => {
+    // e.g. PyCaret: commits in 2026, last release Apr 2024 — not honestly green
+    expect(activityDot(daysAgo(30), false, daysAgo(800))).toBe("🟡");
+  });
+
+  it("stays green when both push and release are fresh", () => {
+    expect(activityDot(daysAgo(30), false, daysAgo(60))).toBe("🟢");
+  });
+
+  it("stays green when the repo has no releases at all", () => {
+    expect(activityDot(daysAgo(30), false, null)).toBe("🟢");
+  });
+
+  it("release staleness never upgrades a dead repo", () => {
+    expect(activityDot(daysAgo(400), false, daysAgo(30))).toBe("🔴");
+  });
 });
 
 describe("generateTagline", () => {

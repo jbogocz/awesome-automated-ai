@@ -1,7 +1,7 @@
 /**
  * Pure formatting helper functions for collapsible card generation.
  */
-import { MAINTAINED_DAYS, STALE_DAYS } from "../constants.js";
+import { MAINTAINED_DAYS, RELEASE_STALE_DAYS, STALE_DAYS } from "../constants.js";
 
 /**
  * Format a star count as a short human-readable string.
@@ -20,20 +20,29 @@ export function formatStarsShort(n: number): string {
 }
 
 /**
- * Return a coloured circle dot indicating repository activity.
+ * Return a coloured circle dot indicating repository health.
  * - archived or empty pushed -> red
- * - pushed < 180 days ago    -> green
+ * - pushed < 180 days ago    -> green, UNLESS the repo publishes releases
+ *   and the latest one is over a year old -> yellow (recent pushes can be
+ *   docs/CI churn masking a stalled project)
  * - pushed < 365 days ago    -> yellow
  * - otherwise                -> red
+ * Repos with no releases are never downgraded for release staleness.
  * Returns red on any parse error.
  */
-export function activityDot(pushed: string, archived: boolean): string {
+export function activityDot(pushed: string, archived: boolean, lastRelease?: string | null): string {
   try {
     if (archived || !pushed) return "\uD83D\uDD34"; // red
     const pushedDate = new Date(pushed);
     const now = new Date();
     const diffDays = (now.getTime() - pushedDate.getTime()) / (1000 * 60 * 60 * 24);
-    if (diffDays < MAINTAINED_DAYS) return "\uD83D\uDFE2"; // green
+    if (diffDays < MAINTAINED_DAYS) {
+      if (lastRelease) {
+        const releaseDays = (now.getTime() - new Date(lastRelease).getTime()) / (1000 * 60 * 60 * 24);
+        if (releaseDays >= RELEASE_STALE_DAYS) return "\uD83D\uDFE1"; // yellow
+      }
+      return "\uD83D\uDFE2"; // green
+    }
     if (diffDays < STALE_DAYS) return "\uD83D\uDFE1"; // yellow
     return "\uD83D\uDD34"; // red
   } catch {

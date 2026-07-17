@@ -211,7 +211,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   const { entry, rd, note, isDead, isHistorical } = s;
   const repo = entry.repo ?? "";
   const url = entry.url ?? `https://github.com/${repo}`;
-  const dot = activityDot(rd.pushed, rd.archived);
+  const dot = activityDot(rd.pushed, rd.archived, rd.lastRelease);
   const score = rd.score;
 
   let rankLabel: string;
