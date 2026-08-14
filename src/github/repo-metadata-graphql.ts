@@ -8,9 +8,12 @@ import { ghGraphQL } from "./stargazers-graphql.js";
 // request count stays O(N/CHUNK_SIZE) as the list grows.
 
 export interface RepoMetadata {
+  /** Where the slug actually resolved. Differs from the requested repo when
+   * GitHub served a rename/transfer redirect. */
+  nameWithOwner: string | null;
   stars: number;
-  /** Raw pushedAt (any-branch pushes) — used for quality-score recency only,
-   * never for health status (see src/status.ts). */
+  /** Raw pushedAt (any-branch pushes). Not a health signal and no longer a
+   * scoring signal either — see src/status.ts and src/scoring/quality.ts. */
   pushed: string;
   archived: boolean;
   license: string | null;
@@ -47,6 +50,7 @@ interface TagNode {
 }
 
 interface RepoNode {
+  nameWithOwner?: string | null;
   stargazerCount?: number | null;
   pushedAt?: string | null;
   isArchived?: boolean | null;
@@ -78,6 +82,7 @@ export function buildMetadataQuery(repos: string[], pulseSince?: string): string
   const blocks = repos.map((repo, i) => {
     const [owner = "", name = ""] = repo.split("/");
     return `  ${aliasFor(i)}: repository(owner: "${sanitize(owner)}", name: "${sanitize(name)}") {
+    nameWithOwner
     stargazerCount
     pushedAt
     isArchived
@@ -112,6 +117,16 @@ export function parseMetadataResponse(repos: string[], resp: MetadataGraphQLResp
       return;
     }
 
+    // GitHub serves renamed and transferred repos through a permanent
+    // redirect, so a stale slug fetches successfully forever and the drift is
+    // invisible unless we ask where we actually landed. Nine entries had
+    // drifted this way before this check existed, leaving the list crediting
+    // vendors who no longer own the project.
+    const canonical = node.nameWithOwner ?? null;
+    if (canonical && canonical !== repo) {
+      logger.warn(`renamed: ${repo} -> ${canonical} (update projects.yaml; the old slug only works via redirect)`);
+    }
+
     const lastRelease = node.latestRelease?.publishedAt ?? null;
     const branchTarget = node.defaultBranchRef?.target;
     const lastCommit = branchTarget?.committedDate ?? null;
@@ -132,6 +147,7 @@ export function parseMetadataResponse(repos: string[], resp: MetadataGraphQLResp
     }
 
     out.set(repo, {
+      nameWithOwner: canonical,
       stars: node.stargazerCount ?? 0,
       pushed: node.pushedAt ?? "",
       archived: node.isArchived ?? false,

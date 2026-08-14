@@ -15,6 +15,7 @@ describe("buildMetadataQuery", () => {
     expect(q).toContain('r0: repository(owner: "autogluon", name: "autogluon")');
     expect(q).toContain('r1: repository(owner: "pycaret", name: "pycaret")');
     for (const field of [
+      "nameWithOwner",
       "stargazerCount",
       "pushedAt",
       "isArchived",
@@ -43,6 +44,7 @@ describe("buildMetadataQuery", () => {
 
 describe("parseMetadataResponse", () => {
   const fullNode = {
+    nameWithOwner: "a/b",
     stargazerCount: 12000,
     pushedAt: "2026-07-12T00:00:00Z",
     isArchived: false,
@@ -57,6 +59,7 @@ describe("parseMetadataResponse", () => {
   it("maps a full node, keeping pushed as the RAW pushedAt (never a max)", () => {
     const out = parseMetadataResponse(["a/b"], { data: { r0: fullNode } });
     expect(out.get("a/b")).toEqual({
+      nameWithOwner: "a/b",
       stars: 12000,
       pushed: "2026-07-12T00:00:00Z",
       archived: false,
@@ -69,6 +72,24 @@ describe("parseMetadataResponse", () => {
       commits90d: 42,
       language: "Python",
     });
+  });
+
+  // GitHub serves renamed and transferred repos through a permanent redirect,
+  // so a stale slug fetches successfully forever. Nine entries had drifted
+  // this way undetected because the query never asked where it landed.
+  it("surfaces the canonical slug so a rename is detectable", () => {
+    const out = parseMetadataResponse(["block/goose"], {
+      data: { r0: { ...fullNode, nameWithOwner: "aaif-goose/goose" } },
+    });
+    expect(out.get("block/goose")?.nameWithOwner).toBe("aaif-goose/goose");
+  });
+
+  it("still keys the result by the requested slug when the repo was renamed", () => {
+    const out = parseMetadataResponse(["old/name"], {
+      data: { r0: { ...fullNode, nameWithOwner: "new/name" } },
+    });
+    expect(out.has("old/name")).toBe(true);
+    expect(out.has("new/name")).toBe(false);
   });
 
   it("splits newest-any vs newest-stable when prereleases lead the tag list", () => {
@@ -132,6 +153,7 @@ describe("parseMetadataResponse", () => {
       },
     });
     expect(out.get("a/b")).toEqual({
+      nameWithOwner: null,
       stars: 5,
       pushed: "2026-01-01T00:00:00Z",
       archived: true,

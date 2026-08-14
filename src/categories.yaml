@@ -68,7 +68,7 @@ categories:
     scope_out:
       - Data preprocessing broadly (see Automated Data Preprocessing).
       - End-to-end AutoML systems where feature engineering is a side effect.
-    examples: [Featuretools, OpenFE, AutoFeat]
+    examples: [Featuretools, feature-engine, AutoFeat]
 
   - id: tabular-foundation-models
     name: Tabular Foundation Models
@@ -232,7 +232,7 @@ categories:
     scope_out:
       - Feature generation beyond cleaning (see Automated Feature Engineering).
       - Synthetic data fabrication (see Synthetic Data Generation).
-    examples: [Great Expectations, Pandas Profiling, Cleanlab]
+    examples: [Great Expectations, ydata-profiling, Cleanlab]
 
   - id: automated-data-labeling
     name: Automated Data Labeling
@@ -244,7 +244,7 @@ categories:
     scope_out:
       - Synthetic data from scratch (see Synthetic Data Generation).
       - Manual annotation platforms without ML assistance.
-    examples: [Snorkel, Label Studio, Prodigy]
+    examples: [Snorkel, Label Studio, Argilla]
 
   - id: synthetic-data-generation
     name: Synthetic Data Generation
@@ -256,7 +256,7 @@ categories:
     scope_out:
       - Data augmentation during training only.
       - Labeling tools (see Automated Data Labeling).
-    examples: [SDV, Gretel Synthetics, NeMo Data Designer]
+    examples: [SDV, DataDreamer, NeMo Data Designer]
 
   - id: automated-model-compression
     name: Automated Model Compression
@@ -328,8 +328,9 @@ categories:
     description: Complementary awesome lists covering adjacent ML / AI topics.
     scope_in:
       - Curated awesome-* style lists that complement this one.
-      - Lists with active maintenance in the last 12 months.
+      - Reference lists that stay useful even when their commit cadence slows;
+        the health dot already tells the reader how current one is.
     scope_out:
-      - Dead or unmaintained awesome lists (we drop them).
+      - Lists a live alternative has superseded on the same topic.
       - Generic link roundups that are not scoped and curated.
     examples: [awesome-machine-learning, awesome-deep-learning]

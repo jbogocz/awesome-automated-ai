@@ -105,10 +105,10 @@
 
 ## Conferences and Communities
 
-- [AutoML Conference](https://automl.cc/) - Annual conference dedicated to AutoML research. 2025: New York City, 2026: Ljubljana.
+- [AutoML Conference](https://automl.cc/) - Annual conference dedicated to AutoML research.
 - [OpenML](https://www.openml.org/) - Open science platform for sharing ML experiments, datasets, tasks, and flows.
-- [Papers With Code](https://paperswithcode.com/) - Community linking research papers with their official code implementations and benchmark results.
-- [MLE-Bench Leaderboard](https://mle-bench.github.io/) - Public leaderboard for ML engineering agents competing on Kaggle tasks.
+- [Hugging Face Papers](https://huggingface.co/papers) - Daily-curated ML papers with linked models, datasets, and demos. Successor to Papers With Code.
+- [MLE-Bench Leaderboard](https://github.com/openai/mle-bench#leaderboard) - Public leaderboard for ML engineering agents competing on Kaggle tasks.
 
 **[⬆ Back to Contents](#contents)**
 
