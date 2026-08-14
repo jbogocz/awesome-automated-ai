@@ -275,7 +275,10 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
       : "";
   const licenseBadge = rd.license ? ` <code>${rd.license}</code>` : "";
 
-  const tagline = rd.tagline ?? entry.tagline ?? generateTagline(entry.description ?? "");
+  // Per-entry YAML first: the cached tagline is keyed by repo, so two entries
+  // cross-listing one repo (Ray Tune under HPO, Ray under MLOps) would
+  // otherwise print the same line twice.
+  const tagline = entry.tagline ?? rd.tagline ?? generateTagline(entry.description ?? "");
   const taglinePart = tagline ? ` ${tagline}` : "";
 
   const summary = `<details><summary>${dot}${rankLabel} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${taglinePart}</summary>`;

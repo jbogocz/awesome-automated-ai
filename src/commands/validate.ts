@@ -2,7 +2,12 @@ import { readFileSync } from "node:fs";
 import { parse as parseYaml } from "yaml";
 import { loadManifest } from "../categories.js";
 import { logger } from "../utils/logger.js";
-import { findDuplicateReposInCategories, validateProjectsYaml } from "../validation/projects-yaml.js";
+import {
+  findCrossCategoryDuplicates,
+  findDuplicateReposInCategories,
+  findStaleNoteYears,
+  validateProjectsYaml,
+} from "../validation/projects-yaml.js";
 
 export interface ValidateOptions {
   projectsYamlPath: string;
@@ -63,6 +68,24 @@ export function runValidateCommand(options: ValidateOptions): void {
   if (duplicateInCategory.length > 0) {
     logger.warn(`Duplicate repos within a category: ${duplicateInCategory.join("; ")}`);
     ok = false;
+  }
+
+  // Advisory checks below. These describe curation drift rather than a broken
+  // file, and some of them go true with no code change at all, so they must
+  // never red-build an unrelated PR.
+  const crossListed = findCrossCategoryDuplicates(validation.data);
+  if (crossListed.length > 0) {
+    logger.warn(
+      `Cross-listed repos share one repo's stats, score and tagline: ${crossListed.join("; ")} ` +
+        `— give each entry its own url + tagline, or drop one.`,
+    );
+  }
+
+  const staleNotes = findStaleNoteYears(validation.data, new Date().getUTCFullYear());
+  if (staleNotes.length > 0) {
+    logger.warn(
+      `Notes asserting a hard-coded year (the weekly regeneration cannot keep these true): ${staleNotes.join("; ")}`,
+    );
   }
 
   if (ok) {

@@ -3,7 +3,7 @@
   "version": "2026.8.10",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@11.1.2",
+  "packageManager": "pnpm@11.21.0+sha512.521705bce689924eac72f5a3587122f362689ef6571e55ba80076fd637c11132ecffada26fad4ea79c485bfddbfd3d5a2a5b05805a77e893de71ec8a6cca3bb1",
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
@@ -21,17 +21,17 @@
     "format": "biome format --write ."
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.111.0",
+    "@anthropic-ai/sdk": "^0.116.0",
     "@octokit/rest": "^22.0.1",
-    "better-sqlite3": "^12.11.1",
+    "better-sqlite3": "~12.11.1",
     "yaml": "^2.9.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.4",
-    "@types/better-sqlite3": "^7.6.13",
-    "@types/node": "^24.13.3",
-    "tsx": "^4.23.1",
+    "@biomejs/biome": "^2.5.8",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^26.2.0",
+    "tsx": "^4.23.12",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"
   }

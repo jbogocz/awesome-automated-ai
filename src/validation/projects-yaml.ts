@@ -3,10 +3,23 @@ import { z } from "zod";
 /**
  * Zod schema for a single entry in projects.yaml.
  */
+/** owner/name, the only shape the GitHub API and the generated links accept. */
+const REPO_SLUG = /^[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?\/[A-Za-z0-9._-]+$/;
+
+/**
+ * http(s) only. escapeText in docs/lib.js prevents attribute breakout but not
+ * a `javascript:` or `data:` URL reaching an href, so the scheme is rejected
+ * at the source instead.
+ */
+const httpUrl = z
+  .string()
+  .url()
+  .refine((u) => /^https?:\/\//i.test(u), { message: "must be an http(s) URL" });
+
 export const EntrySchema = z.object({
   name: z.string().min(1),
-  repo: z.string().optional(),
-  url: z.string().url().optional(),
+  repo: z.string().regex(REPO_SLUG, "must be owner/name").optional(),
+  url: httpUrl.optional(),
   description: z.string().min(1),
   tagline: z.string().optional(),
   note: z.string().optional(),
@@ -73,4 +86,44 @@ export function findDuplicateReposInCategories(data: ProjectsYaml): string[] {
     }
   }
   return duplicates;
+}
+
+/**
+ * Repos cross-listed in more than one category. Deliberate cross-listing is
+ * allowed, but both entries are keyed on the same repo, so they inherit
+ * identical stars, score, status and tagline — the reader sees one project
+ * twice with the same numbers. Reported as a warning, never a failure.
+ */
+export function findCrossCategoryDuplicates(data: ProjectsYaml): string[] {
+  const byRepo = new Map<string, string[]>();
+  for (const cat of data.categories) {
+    for (const entry of cat.entries ?? []) {
+      if (!entry.repo) continue;
+      const cats = byRepo.get(entry.repo) ?? [];
+      if (!cats.includes(cat.name)) cats.push(cat.name);
+      byRepo.set(entry.repo, cats);
+    }
+  }
+  return [...byRepo.entries()]
+    .filter(([, cats]) => cats.length > 1)
+    .map(([repo, cats]) => `${repo} (${cats.join(" + ")})`);
+}
+
+/**
+ * Notes asserting a year that the entry's own rendered data contradicts.
+ * Hand-typed date prose cannot survive an unattended weekly regeneration:
+ * Hyperopt's "Maintenance-only since 2021" outlived four years of releases
+ * and rendered above its own green Jul 2026 commit.
+ */
+export function findStaleNoteYears(data: ProjectsYaml, currentYear: number): string[] {
+  const stale: string[] = [];
+  for (const cat of data.categories) {
+    for (const entry of cat.entries ?? []) {
+      if (!entry.note) continue;
+      for (const m of entry.note.matchAll(/\b(19|20)\d{2}\b/g)) {
+        stale.push(`${cat.name} / ${entry.name}: note cites ${m[0]} (${currentYear - Number(m[0])}y ago)`);
+      }
+    }
+  }
+  return stale;
 }

@@ -1,0 +1,40 @@
+version: 2
+
+# Dependency currency used to depend on someone remembering to check. It is a
+# scheduled job's business, not a person's.
+#
+# Note on timing: pnpm enforces a minimum release age, so a package published
+# in the last few hours fails `pnpm install --frozen-lockfile` even when the
+# lockfile is internally consistent. Running well after the weekly regenerate
+# keeps a fresh Dependabot bump from breaking Monday's unattended run.
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: tuesday
+      time: "07:00"
+      timezone: Etc/UTC
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+    groups:
+      # One PR for the toolchain; these move together and are covered by CI.
+      dev-tooling:
+        dependency-type: development
+        update-types: [minor, patch]
+    ignore:
+      # Native module: only the 12.x line ships prebuilt binaries for the CI
+      # runner. Taking 13.x makes every install compile from source, which is
+      # slower and can fail outright on a runner without a build toolchain.
+      # Revisit when 13.x publishes prebuilds.
+      - dependency-name: better-sqlite3
+        update-types: [version-update:semver-major]
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "chore(ci)"

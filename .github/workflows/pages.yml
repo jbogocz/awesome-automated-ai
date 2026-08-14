@@ -33,8 +33,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    env:
-      DEPLOY_TAG: ${{ inputs.tag }}
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
         with:

@@ -12,6 +12,7 @@ concurrency:
 jobs:
   regenerate:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
     steps:
@@ -19,7 +20,7 @@ jobs:
 
       - uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: pnpm
@@ -39,6 +40,7 @@ jobs:
         run: pnpm run bump-version
 
       - name: Commit and push changes
+        id: commit
         env:
           BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
           BOT_NAME: github-actions[bot]
@@ -48,21 +50,28 @@ jobs:
           git add README.md docs/data.json package.json data/curator.db
           if git diff --cached --quiet; then
             echo "No changes to commit"
+            echo "sha=" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "chore: weekly regeneration [skip ci]"
           git push
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Publish weekly release
+        if: steps.commit.outputs.sha != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Tag the commit this run actually produced. Without --target the
+          # tag lands on whatever the default branch happens to point at when
+          # the release is cut, which need not be the commit above.
+          TARGET_SHA: ${{ steps.commit.outputs.sha }}
         run: |
           VER=$(node -p "require('./package.json').version")
           TAG="v$VER"
           if gh release view "$TAG" >/dev/null 2>&1; then
             echo "Release $TAG already exists, skipping"
           else
-            gh release create "$TAG" --title "$TAG" --generate-notes
+            gh release create "$TAG" --target "$TARGET_SHA" --title "$TAG" --generate-notes
           fi
 
   # Releases created with GITHUB_TOKEN never fire pages.yml's `on: release`
@@ -71,6 +80,7 @@ jobs:
   deploy-pages:
     needs: regenerate
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: read
       pages: write

@@ -137,7 +137,9 @@ function main() {
           repo: entry.repo ?? "",
           url: entry.url ?? (entry.repo ? `https://github.com/${entry.repo}` : ""),
           description: entry.description ?? "",
-          tagline: api.tagline ?? entry.tagline ?? "",
+          // Per-entry YAML first — the cached tagline is repo-keyed, so
+          // cross-listed entries would otherwise share one line.
+          tagline: entry.tagline ?? api.tagline ?? "",
           note: entry.note ?? "",
           stars: api.stars,
           trend: api.trend,

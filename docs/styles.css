@@ -65,7 +65,7 @@
     --mag-3: oklch(0.68 0.1 50); /* ≥100:  copper */
     --mag-2: oklch(0.55 0.07 45); /* <100:  dim */
     --mag-paper: oklch(0.62 0.06 80); /* external paper / non-repo */
-    --mag-extinct: oklch(0.42 0.015 40); /* archived */
+    --mag-extinct: oklch(0.62 0.015 40); /* archived; 5.30:1, was 2.28:1 */
 
     /* Typography. Variable fonts. */
     --font-ui: "Inter", "InterVariable", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -125,12 +125,25 @@
     --young-star-soft: oklch(0.48 0.2 245 / 0.12);
     --young-star-dim: oklch(0.58 0.16 245);
 
+    /* Semantic signal colours must be redefined here, not inherited from the
+       dark set. Against this --void the dark values measure --life 1.94:1,
+       --copper 2.29:1, --red-giant 2.99:1 — and these are text, not
+       decoration: most entries carry a positive trend, so the trend column
+       renders in --life by default, and the detail sheet paints the
+       Active/Quiet/Archived word with the same tokens. */
+    --copper: oklch(0.52 0.12 55); /* 5.50:1 */
+    --copper-soft: oklch(0.52 0.12 55 / 0.14);
+    --red-giant: oklch(0.5 0.19 28); /* 6.34:1 */
+    --red-giant-soft: oklch(0.5 0.19 28 / 0.15);
+    --life: oklch(0.52 0.15 145); /* 4.95:1 */
+    --life-soft: oklch(0.52 0.15 145 / 0.14);
+
     --mag-5: oklch(0.65 0.18 50);
     --mag-4: oklch(0.62 0.16 55);
     --mag-3: oklch(0.58 0.12 60);
     --mag-2: oklch(0.55 0.07 65);
     --mag-paper: oklch(0.55 0.08 80);
-    --mag-extinct: oklch(0.72 0.015 40);
+    --mag-extinct: oklch(0.55 0.015 40); /* 4.68:1; was 2.39:1 */
   }
 } /* end @layer tokens */
 
