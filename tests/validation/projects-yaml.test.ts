@@ -155,14 +155,48 @@ describe("EntrySchema hardening", () => {
 describe("findCrossCategoryDuplicates", () => {
   const e = (repo: string) => ({ name: repo, repo, description: "d" });
 
-  it("reports a repo cross-listed in two categories with both category names", () => {
+  it("reports a cross-listed repo whose entries are not told apart", () => {
     const out = findCrossCategoryDuplicates({
       categories: [
         { name: "HPO", entries: [e("ray-project/ray")] },
         { name: "MLOps", entries: [e("ray-project/ray")] },
       ],
     });
-    expect(out).toEqual(["ray-project/ray (HPO + MLOps)"]);
+    expect(out).toEqual(["ray-project/ray shares a tagline across HPO + MLOps"]);
+  });
+
+  // Cross-listing is legitimate — Ray Tune ships inside the Ray repo, so it
+  // correctly shares Ray's stars. Only the undifferentiated case misleads.
+  it("stays quiet when each entry has its own tagline and url", () => {
+    const out = findCrossCategoryDuplicates({
+      categories: [
+        {
+          name: "HPO",
+          entries: [
+            {
+              name: "Ray Tune",
+              repo: "ray-project/ray",
+              description: "d",
+              tagline: "HPO at scale",
+              url: "https://docs.ray.io/en/latest/tune/",
+            },
+          ],
+        },
+        {
+          name: "MLOps",
+          entries: [
+            {
+              name: "Ray",
+              repo: "ray-project/ray",
+              description: "d",
+              tagline: "Distributed compute",
+              url: "https://ray.io",
+            },
+          ],
+        },
+      ],
+    });
+    expect(out).toEqual([]);
   });
 
   it("does not report a repo listed twice inside one category", () => {

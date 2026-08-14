@@ -60,6 +60,7 @@ categories:
     tags: [automated-machine-learning, automatic-machine-learning, automl, automl-algorithms, binary-classification, data-science, kaggle, lama, machine-learning, multiclass-classification, nlp, python, regression]
   - name: EvalML
     repo: alteryx/evalml
+    note: AutoGluon and FLAML cover the same ground for new work.
     description: AutoML library for building, optimizing, and evaluating ML pipelines with domain-specific objectives (Alteryx).
     tagline: AutoML pipelines with domain-specific objectives
     tags: [automl, data-science, feature-engineering, feature-selection, hyperparameter-tuning, machine-learning, model-selection, optimization]
@@ -77,6 +78,7 @@ categories:
     tags: [automl, bayesian-optimization, hyperparameter-optimization, java, machine-learning, model-selection, weka]
   - name: GAMA
     repo: amore-labs/gama
+    note: Research AutoML; AutoGluon and FLAML cover production use.
     description: AutoML tool that generates optimized ML pipelines using genetic programming and Bayesian optimization (OpenML).
     tagline: Genetic programming and Bayesian pipeline optimization
     tags: [automl, hyperparameter-optimization, research-tool]
@@ -86,8 +88,8 @@ categories:
     tagline: Automated interpretable equation discovery from data
     tags: [symbolic-regression, automl, equation-discovery, genetic-algorithm, interpretable-ml, julia, python, scientific-ml]
   - name: Vertex AI AutoML
-    url: https://cloud.google.com/vertex-ai
-    description: Google Cloud's managed AutoML service for training tabular classification, regression, forecasting, image, and video models with one-click endpoint deployment.
+    url: https://cloud.google.com/vertex-ai/docs/training-overview
+    description: Google Cloud's managed AutoML service for training tabular classification, regression, forecasting, image, and video models with one-click endpoint deployment. Now part of the Gemini Enterprise Agent Platform.
     tagline: Managed AutoML across data types on Google Cloud
     vendor: Google
     pricing: pay-as-you-go
@@ -158,11 +160,13 @@ categories:
     tags: [automl, efficientdet, efficientnet, efficientnetv2, object-detection]
   - name: TinyEngine
     repo: mit-han-lab/tinyengine
+    note: Reference implementation behind the TinyML papers.
     description: Memory-efficient inference engine for NAS-optimized models on microcontrollers (MIT HAN Lab).
     tagline: Inference engine for NAS models on microcontrollers
     tags: [c, codegenerator, cpp, deep-learning, edge-computing, microcontroller, neural-architecture-search, pytorch, quantization, tinyml]
   - name: NASLib
     repo: automl/NASLib
+    note: Reference implementation; NAS-Bench-201 remains the usable benchmark.
     description: NAS research library from AutoML Freiburg with interfaces to state-of-the-art search spaces and optimizers.
     tagline: NAS research library with standardized search spaces
     tags: [automl, nas, neural-architecture-search]
@@ -183,7 +187,7 @@ categories:
   - name: Ray Tune
     repo: ray-project/ray
     url: https://docs.ray.io/en/latest/tune/
-    description: Distributed hyperparameter tuning at scale with support for any ML framework and many search algorithms.
+    description: Distributed hyperparameter tuning at scale with support for any ML framework and many search algorithms. Ships inside the Ray repository, so its stars and activity are Ray's.
     tagline: Distributed HPO at scale for any ML framework
     tags: [distributed, hyperparameter-optimization, hyperparameter-search, machine-learning, optimization, parallel, python, ray]
   - name: Optuna
@@ -242,6 +246,7 @@ categories:
     tags: [data-science, feature-extraction, time-series]
   - name: Featuretools
     repo: alteryx/featuretools
+    note: Still the reference for deep feature synthesis; unmaintained upstream.
     description: Deep feature synthesis for automatically creating meaningful features from relational and temporal data (Alteryx).
     tagline: Deep feature synthesis for relational and temporal data
     tags: [automated-feature-engineering, automated-machine-learning, automl, data-science, feature-engineering, machine-learning, python, scikit-learn]
@@ -262,6 +267,7 @@ categories:
     tags: [automated-data-science, automated-feature-engineering, automated-machine-learning, automl, feature-engineering, feature-selection, linear-regression, machine-learning, machine-learning-models]
   - name: CAAFE
     repo: noahho/CAAFE
+    note: Research code behind the LLM feature-engineering paper.
     description: LLM-powered context-aware feature engineering that generates semantically meaningful features with explanations.
     tagline: LLM generates semantically meaningful features with explanations
     tags: [automl, data-science, deep-learning, feature-engineering, machine-learning, tabpfn]
@@ -300,6 +306,7 @@ categories:
     tags: [deep-learning, foundation-models, machine-learning, tabular-data, tabular-methods, tabular-model]
   - name: CARTE
     repo: soda-inria/carte
+    note: Research code behind the CARTE paper.
     description: Context-aware tabular representation using pretrained language models for data with heterogeneous columns.
     tagline: LLM-powered representation for heterogeneous tabular data
     tags: [classification, data-science, graph-transformer, machine-learning, regression, transformers]
@@ -344,6 +351,7 @@ categories:
     tags: [automl, dataset, nas, nas-bench-201, pytorch]
   - name: AMLB
     repo: openml/automlbenchmark
+    note: TabArena is the maintained successor for tabular benchmarking.
     description: Standard AutoML benchmark comparing frameworks across 104 classification and regression tasks (OpenML).
     tagline: Standard benchmark comparing AutoML frameworks across 104 tasks
     tags: [automl, benchmark, machine-learning]
@@ -440,11 +448,13 @@ categories:
     tags: [dspy, llm, nlp, prompt-optimization, prompting, python]
   - name: PromptWizard
     repo: microsoft/PromptWizard
+    note: DSPy and GEPA are the maintained optimizers.
     description: Task-aware agent-driven prompt optimization using self-evolving critique and synthesis (Microsoft).
     tagline: Agent-driven self-evolving prompt optimization
     tags: [automl, llm, microsoft, prompt-engineering, prompt-optimization, python]
   - name: TextGrad
     repo: zou-group/textgrad
+    note: GEPA and DSPy carry this line of work forward.
     description: Automatic differentiation via text feedback, enabling gradient-like optimization of compound AI systems (Nature 2024).
     tagline: Gradient-like optimization of AI via text feedback
     tags: [ai-optimization, compound-systems, large-language-models, prompt-optimization, textual-gradients]
@@ -662,6 +672,7 @@ categories:
     tags: [agent, agentic-ai, agentic-ai-cli, ai, ai-agent, textual]
   - name: AutoCodeRover
     repo: AutoCodeRoverSG/auto-code-rover
+    note: SWE-agent and OpenHands are the maintained alternatives.
     description: Structure-aware autonomous program repair combining code search with LLM-based patching.
     tagline: Structure-aware autonomous code repair and patching
     tags: [agents, autonomous-agents, code-generation, llm, program-repair, python, software-engineering, swe-bench]
@@ -707,10 +718,10 @@ categories:
     vendor: Anysphere
     pricing: freemium
     commercial: true
-  - name: Windsurf
-    url: https://windsurf.com
-    description: Agentic IDE with proprietary SWE-1.5 model emphasising speed at ~950 tokens/sec while scoring 40.08% on SWE-Bench (Cognition).
-    tagline: Speed-optimized agentic IDE from Cognition
+  - name: Devin Desktop
+    url: https://devin.ai/desktop
+    description: Agentic IDE from Cognition, the continuation of Windsurf, pairing an editor with a background coding agent.
+    tagline: Agentic IDE from Cognition, formerly Windsurf
     vendor: Cognition
     pricing: freemium
     commercial: true
@@ -776,6 +787,7 @@ categories:
     tags: [ai, ai-agents, automated-machine-learning, autonomous-agents, autoresearch, code-optimization, data-science, llm, machine-learning, self-improving-ai]
   - name: AutoML-Agent
     repo: DeepAuto-AI/automl-agent
+    note: Research prototype behind the AutoML-Agent paper.
     description: Multi-agent LLM framework for full-pipeline AutoML from data retrieval through model deployment (ICML 2025).
     tagline: LLM agents for end-to-end AutoML pipelines
     tags: [automl, llm-agents, multi-agent-systems]
@@ -912,6 +924,7 @@ categories:
     tags: [ai-gateway, gateway, generative-ai, hacktoberfest, langchain, llm, llm-gateway, llmops, llms, mcp, mcp-client, mcp-gateway, mcp-servers, model-router, openai]
   - name: RouteLLM
     repo: lm-sys/RouteLLM
+    note: LiteLLM and LLMRouter cover routing for new work.
     description: Framework for training and serving LLM routers that reduce costs by up to 85% without quality loss (LMSYS).
     tagline: LLM routers cutting costs 85% without quality loss
     tags: [cost-optimization, inference, llm, llm-routing, python, serving]
@@ -956,6 +969,7 @@ categories:
     tags: [data-drift, data-science, data-validation, deep-learning, html-report, jupyter-notebook, machine-learning, ml, mlops, model-monitoring, model-validation, pandas-dataframe, python, pytorch]
   - name: WhyLogs
     repo: whylabs/whylogs
+    note: Evidently covers drift and data quality for new work.
     description: Lightweight data logging library that profiles datasets for drift detection without storing raw data.
     tagline: Lightweight drift detection without storing raw data
     tags: [ai-pipelines, analytics, approximate-statistics, calculate-statistics, constraints, data-constraints, data-pipeline, data-quality, data-science, dataops, dataset, logging, machine-learning, ml-pipelines, mlops, model-performance, python, statistical-properties]
@@ -966,6 +980,7 @@ categories:
     tags: [adversarial, anomaly, concept-drift, data-drift, detection, drift-detection, images, outlier, semi-supervised-learning, tabular-data, text, time-series, unsupervised-learning]
   - name: NannyML
     repo: NannyML/nannyml
+    note: Evidently covers post-deployment monitoring for new work.
     description: Estimate model performance without ground truth labels and link data drift directly to accuracy degradation.
     tagline: Estimate model performance without ground truth labels
     tags: [data-analysis, data-drift, data-science, deep-learning, jupyter-notebook, machine-learning, machinelearning, ml, mlops, model-monitoring, monitoring, performance-estimation, performance-monitoring, postdeploymentdatascience, python, visualization]
@@ -1063,6 +1078,7 @@ categories:
     tags: [anomaly-detection, classification, clustering, data-analysis, data-mining, data-science, deep-learning, forecasting, generation, imputation, machine-learning, missing-values, neural-networks, pytorch, time-series]
   - name: Lag-Llama
     repo: time-series-foundation-models/lag-llama
+    note: Chronos and TimesFM are the maintained foundation models here.
     description: First open-source foundation model for univariate probabilistic time-series forecasting based on a decoder-only transformer (NeurIPS 2024).
     tagline: First open-source probabilistic time-series foundation model
     tags: [forecasting, foundation-models, lag-llama, llama, time-series, time-series-forecasting, time-series-prediction, time-series-transformer, timeseries, timeseries-forecasting, transformers]
@@ -1164,6 +1180,7 @@ categories:
     tags: [ai, data-augmentation, data-science, data-slicing, labeling, machine-learning, python, snorkel, training-data, weak-supervision]
   - name: Argilla
     repo: argilla-io/argilla
+    note: Label Studio is the maintained labeling platform.
     description: Collaboration platform for collecting and managing human and AI feedback for NLP and LLM development.
     tagline: Collaborative human and AI feedback for LLM development
     tags: [active-learning, ai, annotation-tool, developer-tools, gpt-4, human-in-the-loop, langchain, llm, machine-learning, mlops, natural-language-processing, nlp, rlhf, text-annotation, text-labeling, weak-supervision, weakly-supervised-learning]
@@ -1174,6 +1191,7 @@ categories:
     tags: [ai, huggingface, llms, openai, python, rlaif, rlhf, synthetic-data, synthetic-dataset-generation]
   - name: Autodistill
     repo: autodistill/autodistill
+    note: Label Studio and X-AnyLabeling are the maintained labeling tools.
     description: Automated image labeling by distilling foundation model knowledge into smaller task-specific models (Roboflow).
     tagline: Distill foundation models into task-specific labelers
     tags: [auto-labeling, computer-vision, deep-learning, foundation-models, grounding-dino, image-annotation, image-classification, instance-segmentation, labeling-tool, machine-learning, model-distillation, multimodal, object-detection, pytorch, segment-anything, yolov5, yolov8]
@@ -1202,11 +1220,13 @@ categories:
     tags: [data-generation, deep-learning, gan, gans, generative-adversarial-network, generative-ai, generative-model, generativeai, machine-learning, multi-table, relational-datasets, sdv, synthetic-data, synthetic-data-generation, time-series]
   - name: SDG
     repo: hitsz-ids/synthetic-data-generator
+    note: SDV is the maintained synthetic-data toolkit.
     description: Framework for generating high-quality synthetic tabular data preserving statistical distributions and correlations.
     tagline: Synthetic tabular data preserving statistical distributions
     tags: [agent, data-generator, deep-learning, gan, generative-ai, llm, machine-learning, privacy, synthetic-data, tabular-data]
   - name: DataDreamer
     repo: datadreamer-dev/DataDreamer
+    note: Curator and NeMo Data Designer cover synthetic data generation.
     description: Reproducible LLM workflows for prompting, synthetic data generation, and model training in one pipeline.
     tagline: Reproducible LLM pipelines for synthetic data and training
     tags: [alignment, deep-learning, fine-tuning, gpt, instruction-tuning, llm, llmops, llms, machine-learning, natural-language-processing, nlp, nlp-library, openai, python, pytorch, synthetic-data, synthetic-dataset-generation, transformers]
@@ -1230,6 +1250,7 @@ categories:
   entries:
   - name: LLM-AWQ
     repo: mit-han-lab/llm-awq
+    note: Superseded by LLM Compressor for production quantization.
     description: Activation-aware weight quantization achieving lossless 4-bit compression for LLMs (MIT HAN Lab, MLSys 2024 Best Paper).
     tagline: Lossless 4-bit LLM quantization via activation awareness
     tags: [awq, deep-learning, inference, llm, model-compression, python, pytorch, quantization]
@@ -1634,11 +1655,13 @@ categories:
     tags: [awesome, awesome-list, curated-list, deep-learning, frameworks, libraries, machine-learning]
   - name: awesome-deep-learning
     repo: ChristosChristofidis/awesome-deep-learning
+    note: Kept as a reference index; see awesome-machine-learning for a maintained one.
     description: Curated list of deep learning tutorials, projects, and communities.
     tagline: Deep learning tutorials, projects, and communities
     tags: [awesome, awesome-list, deep-learning, deep-learning-tutorial, deep-networks, face-images, machine-learning, neural-network, recurrent-networks]
   - name: awesome-llm
     repo: Hannibal046/Awesome-LLM
+    note: Kept as a reference index; see awesome-machine-learning for a maintained one.
     description: Curated list of large language model resources covering papers, tools, and applications.
     tagline: LLM resources covering papers, tools, and applications
     tags: [awesome, awesome-list, curated-list, deep-learning, large-language-models, llm, nlp]
@@ -1659,6 +1682,6 @@ categories:
     tags: [ai, awesome, data-science, machine-learning, machine-learning-engineering, ml, mlops]
   - name: best-of-ml-python
     repo: lukasmasuch/best-of-ml-python
-    description: Ranked list of Python ML libraries scored on project quality and regenerated weekly.
-    tagline: Ranked Python ML libraries, regenerated weekly
+    description: Ranked list of Python ML libraries scored on project quality across dozens of categories.
+    tagline: Python ML libraries ranked by project quality
     tags: [automl, data-science, deep-learning, jax, keras, machine-learning, ml, nlp, python, pytorch, scikit-learn, tensorflow]

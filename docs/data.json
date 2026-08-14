@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-14T13:40:58.672Z",
+  "generated": "2026-08-14T14:03:32.849Z",
   "dataAsOf": "2026-08-14",
   "categories": [
     {
@@ -24,11 +24,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "fine-tuning",
+            "llama",
+            "ml",
             "computer-vision",
-            "data-centric",
-            "data-science",
-            "deep",
-            "deep-learning"
+            "natural-language-processing"
           ],
           "external": false,
           "history": [
@@ -111,11 +111,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "autogluon",
+            "hyperparameter-optimization",
+            "time-series",
+            "forecasting",
             "automated-machine-learning",
-            "automl",
-            "computer-vision",
-            "data-science"
+            "tabular-data"
           ],
           "external": false,
           "history": [
@@ -198,11 +198,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "adsp",
-            "ag066833",
-            "aiml",
-            "alzheimer",
-            "alzheimers"
+            "hyperparameter-optimization",
+            "automated-machine-learning",
+            "scikit-learn",
+            "feature-engineering",
+            "random-forest"
           ],
           "external": false,
           "history": [
@@ -285,11 +285,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "anomaly-detection",
-            "citizen-data-scientists",
+            "time-series",
+            "ml",
             "classification",
-            "clustering",
-            "data-science"
+            "gpu",
+            "regression"
           ],
           "external": false,
           "history": [
@@ -372,10 +372,9 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "autodl",
             "automated-machine-learning",
-            "automl",
-            "deep-learning",
+            "tensorflow",
+            "neural-architecture-search",
             "keras"
           ],
           "external": false,
@@ -459,11 +458,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automated-machine-learning",
-            "automl",
-            "bayesian-optimization",
             "hyperparameter-optimization",
-            "hyperparameter-search"
+            "automated-machine-learning",
+            "scikit-learn",
+            "bayesian-optimization",
+            "hyperparameter-tuning"
           ],
           "external": false,
           "history": [
@@ -546,11 +545,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "automl",
+            "gpu",
+            "random-forest",
+            "distributed",
             "big-data",
-            "data-science",
-            "deep-learning",
-            "distributed"
+            "ensemble-learning"
           ],
           "external": false,
           "history": [
@@ -633,11 +632,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "hyperparameter-optimization",
             "automated-machine-learning",
-            "automl",
-            "classification",
-            "data-science",
-            "deep-learning"
+            "tabular-data",
+            "scikit-learn",
+            "natural-language-processing"
           ],
           "external": false,
           "history": [
@@ -720,9 +719,7 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "automl",
             "classification",
-            "machine-learning",
             "regression"
           ],
           "external": false,
@@ -806,11 +803,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "hyperparameter-optimization",
             "automated-machine-learning",
-            "automl",
-            "automl-api",
-            "automl-python",
-            "catboost"
+            "scikit-learn",
+            "feature-engineering",
+            "neural-network"
           ],
           "external": false,
           "history": [
@@ -894,10 +891,9 @@
           "bucket": "live",
           "tags": [
             "automated-machine-learning",
-            "automatic-machine-learning",
-            "automl",
-            "automl-algorithms",
-            "binary-classification"
+            "nlp",
+            "regression",
+            "kaggle"
           ],
           "external": false,
           "history": [
@@ -969,7 +965,7 @@
           "url": "https://github.com/alteryx/evalml",
           "description": "AutoML library for building, optimizing, and evaluating ML pipelines with domain-specific objectives (Alteryx).",
           "tagline": "AutoML pipelines with domain-specific objectives",
-          "note": "",
+          "note": "AutoGluon and FLAML cover the same ground for new work.",
           "stars": 853,
           "trend": 3,
           "score": 48,
@@ -980,11 +976,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automl",
-            "data-science",
             "feature-engineering",
+            "optimization",
+            "hyperparameter-tuning",
             "feature-selection",
-            "hyperparameter-tuning"
+            "model-selection"
           ],
           "external": false,
           "history": [
@@ -1068,10 +1064,7 @@
           "bucket": "live",
           "tags": [
             "automated-machine-learning",
-            "automl",
-            "automl-products",
-            "automl-python",
-            "machine-learning"
+            "automl-python"
           ],
           "external": false,
           "history": [
@@ -1155,11 +1148,10 @@
           "bucket": "historical",
           "lifecycle": "historical",
           "tags": [
-            "automl",
-            "bayesian-optimization",
             "hyperparameter-optimization",
-            "java",
-            "machine-learning"
+            "bayesian-optimization",
+            "model-selection",
+            "java"
           ],
           "external": false,
           "history": [
@@ -1231,7 +1223,7 @@
           "url": "https://github.com/amore-labs/gama",
           "description": "AutoML tool that generates optimized ML pipelines using genetic programming and Bayesian optimization (OpenML).",
           "tagline": "Genetic programming and Bayesian pipeline optimization",
-          "note": "",
+          "note": "Research AutoML; AutoGluon and FLAML cover production use.",
           "stars": 107,
           "trend": 1,
           "score": 41,
@@ -1242,9 +1234,7 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automl",
-            "hyperparameter-optimization",
-            "research-tool"
+            "hyperparameter-optimization"
           ],
           "external": false,
           "history": [
@@ -1464,8 +1454,8 @@
         {
           "name": "Vertex AI AutoML",
           "repo": "",
-          "url": "https://cloud.google.com/vertex-ai",
-          "description": "Google Cloud's managed AutoML service for training tabular classification, regression, forecasting, image, and video models with one-click endpoint deployment.",
+          "url": "https://cloud.google.com/vertex-ai/docs/training-overview",
+          "description": "Google Cloud's managed AutoML service for training tabular classification, regression, forecasting, image, and video models with one-click endpoint deployment. Now part of the Gemini Enterprise Agent Platform.",
           "tagline": "Managed AutoML across data types on Google Cloud",
           "note": "",
           "stars": 0,
@@ -1661,11 +1651,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
+            "mlops",
+            "hyperparameter-optimization",
             "automated-machine-learning",
-            "automl",
-            "bayesian-optimization",
-            "data-science",
-            "deep-learning"
+            "tensorflow",
+            "feature-engineering"
           ],
           "external": false,
           "history": [
@@ -1748,10 +1738,6 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automl",
-            "efficientdet",
-            "efficientnet",
-            "efficientnetv2",
             "object-detection"
           ],
           "external": false,
@@ -1824,7 +1810,7 @@
           "url": "https://github.com/mit-han-lab/tinyengine",
           "description": "Memory-efficient inference engine for NAS-optimized models on microcontrollers (MIT HAN Lab).",
           "tagline": "Inference engine for NAS models on microcontrollers",
-          "note": "",
+          "note": "Reference implementation behind the TinyML papers.",
           "stars": 952,
           "trend": 1,
           "score": 48,
@@ -1835,11 +1821,8 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "c",
-            "codegenerator",
-            "cpp",
-            "deep-learning",
-            "edge-computing"
+            "quantization",
+            "neural-architecture-search"
           ],
           "external": false,
           "history": [
@@ -1911,7 +1894,7 @@
           "url": "https://github.com/automl/NASLib",
           "description": "NAS research library from AutoML Freiburg with interfaces to state-of-the-art search spaces and optimizers.",
           "tagline": "NAS research library with standardized search spaces",
-          "note": "",
+          "note": "Reference implementation; NAS-Bench-201 remains the usable benchmark.",
           "stars": 595,
           "trend": 2,
           "score": 46,
@@ -1922,9 +1905,8 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automl",
-            "nas",
-            "neural-architecture-search"
+            "neural-architecture-search",
+            "nas"
           ],
           "external": false,
           "history": [
@@ -2007,11 +1989,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
+            "hyperparameter-optimization",
             "automated-machine-learning",
-            "automl",
-            "darts",
-            "deep-learning",
-            "hyperparameter-optimization"
+            "neural-architecture-search",
+            "model-compression",
+            "nas"
           ],
           "external": false,
           "history": [
@@ -2094,10 +2076,8 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automated-machine-learning",
-            "automl",
-            "deep-learning",
             "hyperparameter-optimization",
+            "automated-machine-learning",
             "neural-architecture-search"
           ],
           "external": false,
@@ -2175,7 +2155,7 @@
           "name": "Ray Tune",
           "repo": "ray-project/ray",
           "url": "https://docs.ray.io/en/latest/tune/",
-          "description": "Distributed hyperparameter tuning at scale with support for any ML framework and many search algorithms.",
+          "description": "Distributed hyperparameter tuning at scale with support for any ML framework and many search algorithms. Ships inside the Ray repository, so its stars and activity are Ray's.",
           "tagline": "Distributed HPO at scale for any ML framework",
           "note": "",
           "stars": 43513,
@@ -2188,11 +2168,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "distributed",
             "hyperparameter-optimization",
+            "optimization",
+            "distributed",
             "hyperparameter-search",
-            "machine-learning",
-            "optimization"
+            "parallel"
           ],
           "external": false,
           "history": [
@@ -2275,11 +2255,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "distributed",
             "hyperparameter-optimization",
-            "machine-learning",
-            "parallel",
-            "python"
+            "distributed",
+            "parallel"
           ],
           "external": false,
           "history": [
@@ -2445,10 +2423,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "bayesian-optimization",
-            "deep-learning",
-            "gaussian-processes",
             "hyperparameter-optimization",
+            "bayesian-optimization",
             "meta"
           ],
           "external": false,
@@ -2532,11 +2508,9 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "automl",
-            "deep-learning",
             "hyperparameter-optimization",
-            "keras",
-            "machine-learning"
+            "tensorflow",
+            "keras"
           ],
           "external": false,
           "history": [
@@ -2619,11 +2593,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "bayesian-optimization",
-            "experimentation",
-            "facebook",
             "hyperparameter-optimization",
-            "machine-learning"
+            "bayesian-optimization",
+            "meta"
           ],
           "external": false,
           "history": [
@@ -2706,11 +2678,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "algorithm-configuration",
+            "hyperparameter-optimization",
             "automated-machine-learning",
-            "automl",
-            "bayesian-optimisation",
-            "bayesian-optimization"
+            "bayesian-optimization",
+            "hyperparameter-tuning",
+            "random-forest"
           ],
           "external": false,
           "history": [
@@ -2793,11 +2765,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "algorithm",
+            "hyperparameter-optimization",
+            "open-source",
+            "optimization",
             "bayesian-optimization",
-            "blackbox-optimization",
-            "deep-learning",
-            "distributed-computing"
+            "evolutionary-algorithms"
           ],
           "external": false,
           "history": [
@@ -2880,11 +2852,10 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
+            "hyperparameter-optimization",
             "bayesian-optimization",
-            "blackbox-optimization",
             "evolutionary-algorithms",
-            "gradient-free-optimization",
-            "hyperparameter-optimization"
+            "blackbox-optimization"
           ],
           "external": false,
           "history": [
@@ -2968,10 +2939,9 @@
           "bucket": "live",
           "tags": [
             "hyperparameter-optimization",
-            "katib",
-            "kubeflow",
+            "neural-architecture-search",
             "kubernetes",
-            "machine-learning"
+            "kubeflow"
           ],
           "external": false,
           "history": [
@@ -3061,9 +3031,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "data-science",
-            "feature-extraction",
-            "time-series"
+            "time-series",
+            "feature-extraction"
           ],
           "external": false,
           "history": [
@@ -3135,7 +3104,7 @@
           "url": "https://github.com/alteryx/featuretools",
           "description": "Deep feature synthesis for automatically creating meaningful features from relational and temporal data (Alteryx).",
           "tagline": "Deep feature synthesis for relational and temporal data",
-          "note": "",
+          "note": "Still the reference for deep feature synthesis; unmaintained upstream.",
           "stars": 7662,
           "trend": -2,
           "score": 55,
@@ -3146,11 +3115,10 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automated-feature-engineering",
             "automated-machine-learning",
-            "automl",
-            "data-science",
-            "feature-engineering"
+            "scikit-learn",
+            "feature-engineering",
+            "automated-feature-engineering"
           ],
           "external": false,
           "history": [
@@ -3233,8 +3201,7 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "database-for-ai",
-            "database-for-machine-learning",
+            "mlops",
             "feature-engineering",
             "feature-extraction",
             "feature-store"
@@ -3320,11 +3287,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
+            "tabular-data",
+            "scikit-learn",
             "feature-engineering",
-            "feature-selection",
-            "machine-learning",
-            "python",
-            "random-forest"
+            "random-forest",
+            "feature-selection"
           ],
           "external": false,
           "history": [
@@ -3407,11 +3374,10 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "automated-data-science",
-            "automated-feature-engineering",
             "automated-machine-learning",
-            "automl",
-            "feature-engineering"
+            "feature-engineering",
+            "feature-selection",
+            "automated-feature-engineering"
           ],
           "external": false,
           "history": [
@@ -3483,7 +3449,7 @@
           "url": "https://github.com/noahho/CAAFE",
           "description": "LLM-powered context-aware feature engineering that generates semantically meaningful features with explanations.",
           "tagline": "LLM generates semantically meaningful features with explanations",
-          "note": "",
+          "note": "Research code behind the LLM feature-engineering paper.",
           "stars": 199,
           "trend": 5,
           "score": 43,
@@ -3494,11 +3460,8 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automl",
-            "data-science",
-            "deep-learning",
             "feature-engineering",
-            "machine-learning"
+            "tabpfn"
           ],
           "external": false,
           "history": [
@@ -3581,11 +3544,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "data-science",
+            "scikit-learn",
             "feature-engineering",
-            "feature-extraction",
             "feature-selection",
-            "machine-learning"
+            "feature-extraction"
           ],
           "external": false,
           "history": [
@@ -3668,11 +3630,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "deep-learning",
             "feature-engineering",
-            "feature-selection",
             "gpu",
-            "machine-learning"
+            "feature-selection",
+            "nvidia",
+            "preprocessing"
           ],
           "external": false,
           "history": [
@@ -3756,17 +3718,15 @@
           "trend": 176,
           "score": 70,
           "license": "NOASSERTION",
-          "lastCommit": "2026-08-14T10:17:00Z",
+          "lastCommit": "2026-08-14T13:35:36Z",
           "lastRelease": "2026-08-13T08:12:18Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "data-science",
+            "tabular-data",
             "foundation-models",
-            "machine-learning",
-            "tabpfn",
-            "tabular-data"
+            "tabpfn"
           ],
           "external": false,
           "history": [
@@ -3849,11 +3809,8 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "deep-learning",
-            "ensembling",
-            "machine-learning",
-            "neural-networks",
-            "python"
+            "tabular-data",
+            "neural-networks"
           ],
           "external": false,
           "history": [
@@ -3936,11 +3893,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "tabular",
             "tabular-data",
-            "tabular-data-benchmark",
-            "tabular-data-deep-learning",
-            "tabular-data-machine-learning"
+            "tabular-methods"
           ],
           "external": false,
           "history": [
@@ -4023,10 +3977,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "deep-learning",
-            "foundation-models",
-            "machine-learning",
             "tabular-data",
+            "foundation-models",
             "tabular-methods"
           ],
           "external": false,
@@ -4099,7 +4051,7 @@
           "url": "https://github.com/soda-inria/carte",
           "description": "Context-aware tabular representation using pretrained language models for data with heterogeneous columns.",
           "tagline": "LLM-powered representation for heterogeneous tabular data",
-          "note": "",
+          "note": "Research code behind the CARTE paper.",
           "stars": 173,
           "trend": 0,
           "score": 43,
@@ -4110,10 +4062,8 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
+            "transformers",
             "classification",
-            "data-science",
-            "graph-transformer",
-            "machine-learning",
             "regression"
           ],
           "external": false,
@@ -4197,10 +4147,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "tabular-data",
             "foundation-models",
-            "machine-learning",
-            "structured-data",
-            "tabular-data"
+            "structured-data"
           ],
           "external": false,
           "history": [
@@ -4283,10 +4232,8 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "deep-learning",
-            "foundation-models",
-            "in-context-learning",
-            "tabular-data"
+            "tabular-data",
+            "foundation-models"
           ],
           "external": false,
           "history": [
@@ -4369,11 +4316,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "deep-learning",
-            "foundation-models",
-            "machine-learning",
-            "pretraining",
-            "tabular-data"
+            "tabular-data",
+            "foundation-models"
           ],
           "external": false,
           "history": [
@@ -4456,11 +4400,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "tabular-data",
             "classification",
-            "foundation-model",
-            "google",
             "regression",
-            "tabular-data"
+            "google",
+            "foundation-model"
           ],
           "external": false,
           "history": [
@@ -4615,10 +4559,10 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "automl-benchmark",
-            "benchmark",
+            "openai",
             "evaluation",
-            "kaggle"
+            "benchmark",
+            "ml-engineering"
           ],
           "external": false,
           "history": [
@@ -4701,11 +4645,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automl",
+            "tensorflow",
+            "neural-architecture-search",
             "benchmark",
-            "dataset",
-            "deep-learning",
-            "google"
+            "google",
+            "dataset"
           ],
           "external": false,
           "history": [
@@ -4788,11 +4732,8 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "automl",
             "dataset",
-            "nas",
-            "nas-bench-201",
-            "pytorch"
+            "nas"
           ],
           "external": false,
           "history": [
@@ -4864,7 +4805,7 @@
           "url": "https://github.com/openml/automlbenchmark",
           "description": "Standard AutoML benchmark comparing frameworks across 104 classification and regression tasks (OpenML).",
           "tagline": "Standard benchmark comparing AutoML frameworks across 104 tasks",
-          "note": "",
+          "note": "TabArena is the maintained successor for tabular benchmarking.",
           "stars": 466,
           "trend": 4,
           "score": 47,
@@ -4875,9 +4816,7 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automl",
-            "benchmark",
-            "machine-learning"
+            "benchmark"
           ],
           "external": false,
           "history": [
@@ -4960,11 +4899,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "autogluon",
-            "automl",
+            "tabular-data",
             "benchmark",
-            "machine-learning",
-            "python"
+            "autogluon"
           ],
           "external": false,
           "history": [
@@ -5047,11 +4984,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "benchmark",
+            "time-series",
             "evaluation",
             "forecasting",
             "foundation-models",
-            "leaderboard"
+            "benchmark"
           ],
           "external": false,
           "history": [
@@ -5195,8 +5132,8 @@
           "description": "Unified fine-tuning framework for 100+ LLMs and VLMs with Full, LoRA, QLoRA, and DoRA methods plus web UI (ACL 2024).",
           "tagline": "Unified fine-tuning for 100+ LLMs with web UI",
           "note": "",
-          "stars": 74082,
-          "trend": 743,
+          "stars": 74084,
+          "trend": 745,
           "score": 80,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-13T12:45:55Z",
@@ -5206,10 +5143,10 @@
           "bucket": "live",
           "tags": [
             "agent",
-            "ai",
-            "deepseek",
+            "transformers",
             "fine-tuning",
-            "gemma"
+            "large-language-models",
+            "llama"
           ],
           "external": false,
           "history": [
@@ -5271,7 +5208,7 @@
             ],
             [
               "2026-08-14",
-              74082
+              74084
             ]
           ]
         },
@@ -5282,21 +5219,21 @@
           "description": "Fine-tune LLMs 2-5x faster with 80% less memory on a single GPU through optimized kernels and custom autograd.",
           "tagline": "Fine-tune LLMs 2-5x faster, 80% less memory",
           "note": "",
-          "stars": 71304,
-          "trend": 2989,
+          "stars": 71312,
+          "trend": 2997,
           "score": 85,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T13:39:53Z",
+          "lastCommit": "2026-08-14T14:01:19Z",
           "lastRelease": "2026-08-11T19:24:35Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
+            "openai",
             "agent",
-            "deepseek",
+            "llms",
             "fine-tuning",
-            "gemma",
-            "gemma3"
+            "llama"
           ],
           "external": false,
           "history": [
@@ -5358,7 +5295,7 @@
             ],
             [
               "2026-08-14",
-              71304
+              71312
             ]
           ]
         },
@@ -5379,11 +5316,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "adapter",
-            "diffusion",
+            "transformers",
             "fine-tuning",
-            "llm",
-            "lora"
+            "lora",
+            "peft",
+            "diffusion"
           ],
           "external": false,
           "history": [
@@ -5456,8 +5393,8 @@
           "description": "Transformer Reinforcement Learning with SFT, DPO, RLHF, and GRPO trainers for alignment and preference tuning (Hugging Face).",
           "tagline": "RLHF, DPO, and GRPO trainers for LLM alignment",
           "note": "",
-          "stars": 19068,
-          "trend": 208,
+          "stars": 19069,
+          "trend": 209,
           "score": 75,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-14T07:30:36Z",
@@ -5466,11 +5403,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "deep-learning",
+            "transformers",
             "fine-tuning",
+            "reinforcement-learning",
             "huggingface",
-            "llm",
-            "python"
+            "rlhf"
           ],
           "external": false,
           "history": [
@@ -5532,7 +5469,7 @@
             ],
             [
               "2026-08-14",
-              19068
+              19069
             ]
           ]
         },
@@ -5543,9 +5480,9 @@
           "description": "Recipes for pretraining, fine-tuning, and deploying 20+ LLM architectures on your own data (Lightning AI).",
           "tagline": "Pretrain, fine-tune, and deploy 20+ LLM architectures",
           "note": "",
-          "stars": 13615,
-          "trend": 126,
-          "score": 73,
+          "stars": 13616,
+          "trend": 127,
+          "score": 74,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-13T16:54:11Z",
           "lastRelease": "2026-06-29T15:53:25Z",
@@ -5553,11 +5490,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "artificial-intelligence",
-            "deep-learning",
+            "llms",
             "large-language-models",
-            "llm"
+            "artificial-intelligence",
+            "llm-inference"
           ],
           "external": false,
           "history": [
@@ -5619,7 +5555,7 @@
             ],
             [
               "2026-08-14",
-              13615
+              13616
             ]
           ]
         },
@@ -5630,8 +5566,8 @@
           "description": "Production-grade fine-tuning with multi-GPU support, sequence parallelism, and multimodal capabilities.",
           "tagline": "Production-grade multi-GPU fine-tuning framework",
           "note": "",
-          "stars": 12356,
-          "trend": 151,
+          "stars": 12357,
+          "trend": 152,
           "score": 74,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-12T16:30:01Z",
@@ -5640,8 +5576,7 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "fine-tuning",
-            "llm"
+            "fine-tuning"
           ],
           "external": false,
           "history": [
@@ -5703,7 +5638,7 @@
             ],
             [
               "2026-08-14",
-              12356
+              12357
             ]
           ]
         },
@@ -5725,10 +5660,9 @@
           "bucket": "live",
           "tags": [
             "chatgpt",
-            "deep-learning",
-            "instruction-following",
-            "language-model",
-            "pretrained-models"
+            "transformer",
+            "pretrained-models",
+            "language-model"
           ],
           "external": false,
           "history": [
@@ -5811,11 +5745,8 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "deep-learning",
             "fine-tuning",
-            "llm",
-            "meta",
-            "post-training"
+            "meta"
           ],
           "external": false,
           "history": [
@@ -5898,11 +5829,8 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "autotrain",
-            "deep-learning",
-            "huggingface",
-            "machine-learning",
-            "natural-language-processing"
+            "natural-language-processing",
+            "huggingface"
           ],
           "external": false,
           "history": [
@@ -5985,11 +5913,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
+            "llmops",
+            "transformers",
             "fine-tuning",
-            "gpt",
             "llama",
-            "llm",
-            "llm-inference"
+            "gpt"
           ],
           "external": false,
           "history": [
@@ -6072,11 +6000,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "chatbot",
-            "chatgpt",
-            "fedramp",
-            "fine-tuning"
+            "generative-ai",
+            "fine-tuning",
+            "llama",
+            "gpt",
+            "chatgpt"
           ],
           "external": false,
           "history": [
@@ -6159,11 +6087,8 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "deep-learning",
-            "llm",
-            "neural-networks",
             "nlp",
-            "pytorch"
+            "neural-networks"
           ],
           "external": false,
           "history": [
@@ -6236,8 +6161,8 @@
           "description": "Hugging Face's end-to-end library for robotics learning with pretrained policies, datasets, and simulation environments for imitation and RL.",
           "tagline": "End-to-end learning for robotics",
           "note": "",
-          "stars": 26649,
-          "trend": 761,
+          "stars": 26650,
+          "trend": 762,
           "score": 79,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-13T18:11:31Z",
@@ -6246,10 +6171,7 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "imitation-learning",
-            "pytorch",
-            "reinforcement-learning",
-            "robotics"
+            "reinforcement-learning"
           ],
           "external": false,
           "history": [
@@ -6311,7 +6233,7 @@
             ],
             [
               "2026-08-14",
-              26649
+              26650
             ]
           ]
         },
@@ -6332,11 +6254,10 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "reinforcement-learning",
-            "agent-training",
+            "mlops",
             "fine-tuning",
-            "llm",
-            "optimization"
+            "optimization",
+            "reinforcement-learning"
           ],
           "external": false,
           "history": [
@@ -6504,17 +6425,15 @@
           "trend": 1000,
           "score": 80,
           "license": "MIT",
-          "lastCommit": "2026-08-12T14:13:19Z",
+          "lastCommit": "2026-08-14T14:01:17Z",
           "lastRelease": "2026-08-03T20:06:03Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "dspy",
-            "llm",
             "nlp",
             "prompt-optimization",
-            "prompting"
+            "dspy"
           ],
           "external": false,
           "history": [
@@ -6586,7 +6505,7 @@
           "url": "https://github.com/microsoft/PromptWizard",
           "description": "Task-aware agent-driven prompt optimization using self-evolving critique and synthesis (Microsoft).",
           "tagline": "Agent-driven self-evolving prompt optimization",
-          "note": "",
+          "note": "DSPy and GEPA are the maintained optimizers.",
           "stars": 4007,
           "trend": 108,
           "score": 59,
@@ -6597,11 +6516,9 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automl",
-            "llm",
-            "microsoft",
             "prompt-engineering",
-            "prompt-optimization"
+            "prompt-optimization",
+            "microsoft"
           ],
           "external": false,
           "history": [
@@ -6673,7 +6590,7 @@
           "url": "https://github.com/zou-group/textgrad",
           "description": "Automatic differentiation via text feedback, enabling gradient-like optimization of compound AI systems (Nature 2024).",
           "tagline": "Gradient-like optimization of AI via text feedback",
-          "note": "",
+          "note": "GEPA and DSPy carry this line of work forward.",
           "stars": 3698,
           "trend": 44,
           "score": 56,
@@ -6684,11 +6601,8 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "ai-optimization",
-            "compound-systems",
             "large-language-models",
-            "prompt-optimization",
-            "textual-gradients"
+            "prompt-optimization"
           ],
           "external": false,
           "history": [
@@ -6771,11 +6685,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "evolutionary-algorithms",
-            "llm",
             "optimization",
             "prompt-optimization",
-            "python"
+            "evolutionary-algorithms"
           ],
           "external": false,
           "history": [
@@ -6848,8 +6760,8 @@
           "description": "Intent-based prompt calibration using synthetic data generation for iterative prompt refinement.",
           "tagline": "Intent-based iterative prompt calibration with synthetic data",
           "note": "",
-          "stars": 3001,
-          "trend": 10,
+          "stars": 3002,
+          "trend": 11,
           "score": 56,
           "license": "Apache-2.0",
           "lastCommit": "2025-12-02T17:23:20Z",
@@ -6859,7 +6771,6 @@
           "bucket": "live",
           "tags": [
             "prompt-engineering",
-            "prompt-tuning",
             "synthetic-dataset-generation"
           ],
           "external": false,
@@ -6922,7 +6833,7 @@
             ],
             [
               "2026-08-14",
-              3001
+              3002
             ]
           ]
         },
@@ -6943,10 +6854,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "artificial-intelligence",
             "developer-tools",
-            "llm",
-            "llm-agent",
+            "artificial-intelligence",
+            "typescript",
             "llm-tools"
           ],
           "external": false,
@@ -7030,11 +6940,8 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "automl",
-            "llm",
             "nlp",
-            "prompt-optimization",
-            "python"
+            "prompt-optimization"
           ],
           "external": false,
           "history": [
@@ -7118,10 +7025,9 @@
           "bucket": "live",
           "tags": [
             "llama",
-            "llm",
-            "meta",
             "prompt-engineering",
-            "prompt-optimization"
+            "prompt-optimization",
+            "meta"
           ],
           "external": false,
           "history": [
@@ -7204,11 +7110,10 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "evolutionary-algorithms",
-            "genetic-algorithms",
-            "llm",
             "prompt-optimization",
-            "python"
+            "evolutionary-algorithms",
+            "research",
+            "genetic-algorithms"
           ],
           "external": false,
           "history": [
@@ -7288,8 +7193,8 @@
           "description": "Multi-agent framework orchestrating role-playing specialist agents for complex AI workflows.",
           "tagline": "Role-playing specialist agents for complex workflows",
           "note": "",
-          "stars": 57068,
-          "trend": 1392,
+          "stars": 57069,
+          "trend": 1393,
           "score": 81,
           "license": "MIT",
           "lastCommit": "2026-08-14T01:27:35Z",
@@ -7299,10 +7204,9 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "ai",
+            "llms",
             "ai-agents",
-            "aiagentframework",
-            "llms"
+            "aiagentframework"
           ],
           "external": false,
           "history": [
@@ -7364,7 +7268,7 @@
             ],
             [
               "2026-08-14",
-              57068
+              57069
             ]
           ]
         },
@@ -7385,10 +7289,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "a2a",
-            "ag2",
-            "agent-framework",
-            "agentic",
+            "llms",
+            "open-source",
+            "multi-agent",
+            "mcp",
             "agentic-ai"
           ],
           "external": false,
@@ -7462,8 +7366,8 @@
           "description": "LangChain's graph-based runtime for building stateful, resilient agents with checkpointing, human-in-the-loop, and controllable multi-actor workflows.",
           "tagline": "Stateful graph runtime for agents",
           "note": "",
-          "stars": 39667,
-          "trend": 2179,
+          "stars": 39672,
+          "trend": 2184,
           "score": 85,
           "license": "MIT",
           "lastCommit": "2026-08-11T13:55:59Z",
@@ -7473,10 +7377,10 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "ai",
+            "openai",
+            "generative-ai",
             "ai-agents",
-            "chatgpt",
-            "deepagents"
+            "open-source"
           ],
           "external": false,
           "history": [
@@ -7538,7 +7442,7 @@
             ],
             [
               "2026-08-14",
-              39667
+              39672
             ]
           ]
         },
@@ -7559,11 +7463,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agent-framework",
             "genai",
-            "llm",
-            "pydantic",
-            "python"
+            "agent-framework",
+            "pydantic"
           ],
           "external": false,
           "history": [
@@ -7636,8 +7538,8 @@
           "description": "Hugging Face's minimalist agent library where agents reason by writing and executing Python code rather than emitting JSON tool calls.",
           "tagline": "Barebones code-writing agents library",
           "note": "",
-          "stars": 28801,
-          "trend": 406,
+          "stars": 28802,
+          "trend": 407,
           "score": 75,
           "license": "Apache-2.0",
           "lastCommit": "2026-07-11T10:44:42Z",
@@ -7647,10 +7549,7 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "code-agents",
-            "huggingface",
-            "llm",
-            "python"
+            "huggingface"
           ],
           "external": false,
           "history": [
@@ -7712,7 +7611,7 @@
             ],
             [
               "2026-08-14",
-              28801
+              28802
             ]
           ]
         },
@@ -7733,11 +7632,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agent",
-            "agentic",
-            "agentic-ai",
             "agents",
-            "agents-sdk"
+            "llms",
+            "ai-agents",
+            "multi-agent",
+            "agentic-ai"
           ],
           "external": false,
           "history": [
@@ -7810,8 +7709,8 @@
           "description": "Universal memory layer that gives AI agents persistent, personalized long-term memory with extraction, retrieval, and graph-backed storage.",
           "tagline": "Universal memory layer for agents",
           "note": "",
-          "stars": 63240,
-          "trend": 2213,
+          "stars": 63242,
+          "trend": 2215,
           "score": 84,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-14T12:47:17Z",
@@ -7821,10 +7720,10 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "ai",
             "ai-agents",
-            "application",
-            "chatbots"
+            "chatgpt",
+            "rag",
+            "genai"
           ],
           "external": false,
           "history": [
@@ -7886,7 +7785,7 @@
             ],
             [
               "2026-08-14",
-              63240
+              63242
             ]
           ]
         },
@@ -7897,8 +7796,8 @@
           "description": "Playwright-powered agent harness that makes websites accessible to LLMs so they can navigate, fill forms, and automate tasks across real browsers.",
           "tagline": "LLM-driven browser automation framework",
           "note": "",
-          "stars": 109195,
-          "trend": 4038,
+          "stars": 109197,
+          "trend": 4040,
           "score": 86,
           "license": "MIT",
           "lastCommit": "2026-08-13T19:28:13Z",
@@ -7908,10 +7807,8 @@
           "bucket": "live",
           "tags": [
             "ai-agents",
-            "ai-tools",
             "browser-automation",
-            "browser-use",
-            "llm"
+            "browser-use"
           ],
           "external": false,
           "history": [
@@ -7973,7 +7870,7 @@
             ],
             [
               "2026-08-14",
-              109195
+              109197
             ]
           ]
         },
@@ -7984,8 +7881,8 @@
           "description": "Open-source secure cloud sandboxes that give AI agents isolated Linux VMs to run generated code, browsers, and real-world developer tools.",
           "tagline": "Secure code sandboxes for agents",
           "note": "",
-          "stars": 13395,
-          "trend": 0,
+          "stars": 13396,
+          "trend": 1,
           "score": 72,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-13T16:56:04Z",
@@ -7994,11 +7891,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "openai",
             "agent",
-            "ai",
-            "ai-agent",
+            "gpt",
             "ai-agents",
-            "code-interpreter"
+            "typescript"
           ],
           "external": false,
           "history": [
@@ -8124,7 +8021,7 @@
             ],
             [
               "2026-08-14",
-              13395
+              13396
             ]
           ]
         },
@@ -8146,10 +8043,9 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "ai",
-            "ai-ux",
             "autogen",
-            "browser-use"
+            "browser-use",
+            "ui"
           ],
           "external": false,
           "history": [
@@ -8233,10 +8129,8 @@
           "bucket": "live",
           "tags": [
             "agent",
-            "agent-framework",
-            "ai",
-            "autogen",
-            "dotnet"
+            "multi-agent",
+            "autogen"
           ],
           "external": false,
           "history": [
@@ -8319,10 +8213,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "openai",
             "agent",
-            "agents-sdk",
             "ai-agents",
-            "llm",
             "multi-agent"
           ],
           "external": false,
@@ -8407,10 +8300,10 @@
           "bucket": "live",
           "tags": [
             "agent",
-            "agents-sdk",
+            "multi-agent",
+            "typescript",
             "aws",
-            "bedrock",
-            "llm"
+            "bedrock"
           ],
           "external": false,
           "history": [
@@ -8547,21 +8440,19 @@
           "description": "Self-hosted personal AI assistant that answers on 15+ channels you already use - WhatsApp, Telegram, Slack, Discord, iMessage - with voice on macOS/iOS/Android and a live Canvas. The fastest-growing open-source project of 2026.",
           "tagline": "Self-hosted personal AI assistant on your channels",
           "note": "",
-          "stars": 386276,
-          "trend": 3311,
+          "stars": 386283,
+          "trend": 3318,
           "score": 82,
           "license": "NOASSERTION",
-          "lastCommit": "2026-08-14T13:36:00Z",
+          "lastCommit": "2026-08-14T14:01:36Z",
           "lastRelease": "2026-08-04T00:41:26Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai-assistant",
-            "personal-assistant",
-            "self-hosted",
             "agents",
-            "multi-channel"
+            "self-hosted",
+            "voice"
           ],
           "external": false,
           "history": [
@@ -8707,7 +8598,7 @@
             ],
             [
               "2026-08-14",
-              386276
+              386283
             ]
           ]
         },
@@ -8718,8 +8609,8 @@
           "description": "Self-improving agent with a built-in learning loop - it creates skills from experience, searches its own past conversations, and builds a model of you across sessions. Runs anywhere from a $5 VPS to a GPU cluster (Nous Research).",
           "tagline": "Self-improving agent that learns skills from experience",
           "note": "",
-          "stars": 230453,
-          "trend": 15051,
+          "stars": 230462,
+          "trend": 15060,
           "score": 94,
           "license": "MIT",
           "lastCommit": "2026-08-14T13:02:09Z",
@@ -8728,11 +8619,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai-agent",
-            "self-improving",
-            "skills",
             "agent-memory",
-            "llm"
+            "ai-agent",
+            "assistant",
+            "skills"
           ],
           "external": false,
           "history": [
@@ -8878,7 +8768,7 @@
             ],
             [
               "2026-08-14",
-              230453
+              230462
             ]
           ]
         },
@@ -8889,8 +8779,8 @@
           "description": "The project that ignited the autonomous-agent wave in 2023, now a full platform for building, deploying, and monitoring continuous agents with a visual workflow builder.",
           "tagline": "The original autonomous agent, now a platform",
           "note": "",
-          "stars": 186613,
-          "trend": 1071,
+          "stars": 186615,
+          "trend": 1073,
           "score": 78,
           "license": "NOASSERTION",
           "lastCommit": "2026-08-13T03:14:20Z",
@@ -8900,10 +8790,8 @@
           "bucket": "live",
           "tags": [
             "autonomous-agents",
-            "agent-platform",
-            "workflow-builder",
-            "ai",
-            "llm"
+            "orchestration",
+            "no-code"
           ],
           "external": false,
           "history": [
@@ -9049,7 +8937,7 @@
             ],
             [
               "2026-08-14",
-              186613
+              186615
             ]
           ]
         },
@@ -9060,8 +8948,8 @@
           "description": "Production-ready platform for building agentic workflows visually, with built-in RAG pipelines, model management, and observability. The go-to self-hosted choice for shipping LLM apps without glue code.",
           "tagline": "Visual platform for production agentic workflows",
           "note": "",
-          "stars": 152430,
-          "trend": 3492,
+          "stars": 152431,
+          "trend": 3493,
           "score": 81,
           "license": "NOASSERTION",
           "lastCommit": "2026-08-14T12:03:54Z",
@@ -9070,11 +8958,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agentic-workflow",
             "llmops",
-            "low-code",
             "rag",
-            "orchestration"
+            "self-hosted",
+            "orchestration",
+            "workflow"
           ],
           "external": false,
           "history": [
@@ -9220,7 +9108,7 @@
             ],
             [
               "2026-08-14",
-              152430
+              152431
             ]
           ]
         },
@@ -9231,8 +9119,8 @@
           "description": "The framework that defined LLM application development, now an agent engineering platform with the largest integration ecosystem in the space. Pairs with LangGraph when you need production-grade control.",
           "tagline": "The original LLM framework, evolved for agents",
           "note": "",
-          "stars": 144240,
-          "trend": 2399,
+          "stars": 144241,
+          "trend": 2400,
           "score": 83,
           "license": "MIT",
           "lastCommit": "2026-08-14T13:28:46Z",
@@ -9242,10 +9130,10 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "llm",
+            "openai",
             "framework",
-            "integrations",
-            "python"
+            "anthropic",
+            "orchestration"
           ],
           "external": false,
           "history": [
@@ -9391,7 +9279,7 @@
             ],
             [
               "2026-08-14",
-              144240
+              144241
             ]
           ]
         },
@@ -9402,8 +9290,8 @@
           "description": "Open-source super-agent harness that orchestrates sub-agents, memory, and sandboxes through extensible skills - the 2.0 rewrite topped GitHub Trending in February 2026 (ByteDance).",
           "tagline": "Super-agent harness with sub-agents and sandboxes",
           "note": "",
-          "stars": 80001,
-          "trend": 2886,
+          "stars": 80000,
+          "trend": 2885,
           "score": 85,
           "license": "MIT",
           "lastCommit": "2026-08-14T07:21:10Z",
@@ -9412,8 +9300,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agent-harness",
             "multi-agent",
+            "agent-memory",
             "deep-research",
             "sandbox",
             "skills"
@@ -9562,7 +9450,7 @@
             ],
             [
               "2026-08-14",
-              80001
+              80000
             ]
           ]
         },
@@ -9583,11 +9471,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "local-ai",
-            "rag",
             "ai-agents",
-            "desktop",
-            "self-hosted"
+            "rag",
+            "self-hosted",
+            "multimodal",
+            "privacy"
           ],
           "external": false,
           "history": [
@@ -9744,8 +9632,8 @@
           "description": "Visual drag-and-drop builder for AI agents and LLM workflows - wire up chains, tools, and memory in the browser and deploy as APIs without writing orchestration code.",
           "tagline": "Build AI agents visually, deploy as APIs",
           "note": "Project wound down; repository archived upstream.",
-          "stars": 55363,
-          "trend": 709,
+          "stars": 55362,
+          "trend": 708,
           "score": 0,
           "license": "NOASSERTION",
           "lastCommit": "2026-08-13T12:38:19Z",
@@ -9754,11 +9642,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "low-code",
-            "no-code",
             "agents",
-            "visual-builder",
-            "llm"
+            "workflow",
+            "javascript",
+            "low-code",
+            "chatbot"
           ],
           "external": false,
           "history": [
@@ -9904,7 +9792,7 @@
             ],
             [
               "2026-08-14",
-              55363
+              55362
             ]
           ]
         },
@@ -9915,8 +9803,8 @@
           "description": "Secure and elastic infrastructure for running AI-generated code in isolated sandboxes with near-instant cold starts - the self-hostable counterpart to E2B for agent code execution.",
           "tagline": "Elastic secure sandboxes for AI-generated code",
           "note": "",
-          "stars": 72019,
-          "trend": -222,
+          "stars": 72021,
+          "trend": -220,
           "score": 66,
           "license": null,
           "lastCommit": "2026-06-25T11:16:13Z",
@@ -9925,11 +9813,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "sandbox",
-            "code-execution",
-            "agent-infrastructure",
-            "ai-runtime",
-            "developer-tools"
+            "developer-tools",
+            "self-hosted",
+            "sandbox"
           ],
           "external": false,
           "history": [
@@ -10075,7 +9961,7 @@
             ],
             [
               "2026-08-14",
-              72019
+              72021
             ]
           ]
         },
@@ -10086,8 +9972,8 @@
           "description": "Lightweight open-source AI agent for your tools, chats, and workflows - pip-installable and refreshingly small compared to heavyweight agent platforms (HKU Data Science Lab).",
           "tagline": "Lightweight AI agent for tools and workflows",
           "note": "",
-          "stars": 46983,
-          "trend": 1328,
+          "stars": 46982,
+          "trend": 1327,
           "score": 81,
           "license": "MIT",
           "lastCommit": "2026-08-14T10:55:25Z",
@@ -10096,11 +9982,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "open-source",
             "ai-agent",
-            "lightweight",
-            "python",
-            "workflows",
-            "assistant"
+            "assistant",
+            "workflows"
           ],
           "external": false,
           "history": [
@@ -10246,7 +10131,7 @@
             ],
             [
               "2026-08-14",
-              46983
+              46982
             ]
           ]
         },
@@ -10257,8 +10142,8 @@
           "description": "Fully local autonomous agent - a self-hosted Manus alternative that thinks, browses the web, and writes code with no API keys and no monthly bill.",
           "tagline": "Fully local autonomous agent, no API bills",
           "note": "",
-          "stars": 26822,
-          "trend": 193,
+          "stars": 26823,
+          "trend": 194,
           "score": 74,
           "license": "GPL-3.0",
           "lastCommit": "2026-08-11T14:14:08Z",
@@ -10267,11 +10152,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "local-ai",
             "autonomous-agents",
+            "self-hosted",
             "privacy",
             "browser-automation",
-            "self-hosted"
+            "local-ai"
           ],
           "external": false,
           "history": [
@@ -10417,7 +10302,7 @@
             ],
             [
               "2026-08-14",
-              26822
+              26823
             ]
           ]
         },
@@ -10438,11 +10323,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "framework",
             "agent-memory",
-            "stateful-agents",
-            "memgpt",
-            "llm",
-            "framework"
+            "rest-api"
           ],
           "external": false,
           "history": [
@@ -10599,8 +10482,8 @@
           "description": "Persistent memory plugin for Claude Code - captures everything the agent does in a session, compresses it with AI, and injects the relevant context into future sessions.",
           "tagline": "Persistent compressed memory across agent sessions",
           "note": "",
-          "stars": 90725,
-          "trend": 3345,
+          "stars": 90726,
+          "trend": 3346,
           "score": 85,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-10T20:35:56Z",
@@ -10609,11 +10492,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agent-memory",
-            "claude-code",
-            "context",
+            "developer-tools",
             "ai-agents",
-            "plugin"
+            "agent-memory"
           ],
           "external": false,
           "history": [
@@ -10759,7 +10640,7 @@
             ],
             [
               "2026-08-14",
-              90725
+              90726
             ]
           ]
         },
@@ -10770,8 +10651,8 @@
           "description": "Agent memory engine built for learning rather than plain recall - backed by a published paper and SDKs for Python and TypeScript, positioning itself as the post-RAG approach to agent memory.",
           "tagline": "Agent memory that learns, not just remembers",
           "note": "",
-          "stars": 19943,
-          "trend": 1508,
+          "stars": 19944,
+          "trend": 1509,
           "score": 86,
           "license": "MIT",
           "lastCommit": "2026-08-14T13:35:09Z",
@@ -10780,11 +10661,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "agents",
             "agent-memory",
-            "ai-memory",
-            "learning",
-            "python",
-            "typescript"
+            "typescript",
+            "learning"
           ],
           "external": false,
           "history": [
@@ -10930,7 +10810,7 @@
             ],
             [
               "2026-08-14",
-              19943
+              19944
             ]
           ]
         },
@@ -10952,10 +10832,10 @@
           "bucket": "live",
           "tags": [
             "agents",
+            "developer-tools",
             "multi-agent",
             "framework",
-            "agent-memory",
-            "python"
+            "agent-memory"
           ],
           "external": false,
           "history": [
@@ -11112,8 +10992,8 @@
           "description": "Framework for building document agents over private data, covering ingestion, parsing, indexing, and retrieval for RAG and agentic workflows.",
           "tagline": "Document agents and retrieval over private data",
           "note": "",
-          "stars": 51634,
-          "trend": -2,
+          "stars": 51635,
+          "trend": -1,
           "score": 77,
           "license": "MIT",
           "lastCommit": "2026-08-13T18:07:47Z",
@@ -11123,10 +11003,10 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "data",
+            "rag",
             "framework",
-            "llamaindex",
-            "llm"
+            "data",
+            "llamaindex"
           ],
           "external": false,
           "history": [
@@ -11252,7 +11132,7 @@
             ],
             [
               "2026-08-14",
-              51634
+              51635
             ]
           ]
         },
@@ -11267,17 +11147,17 @@
           "trend": -1,
           "score": 74,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T09:48:14Z",
+          "lastCommit": "2026-08-14T13:50:08Z",
           "lastRelease": "2026-07-20T12:07:08Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agent-framework",
-            "agentic-ai",
-            "agentic-rag",
             "agents",
-            "ai"
+            "mcp",
+            "rag",
+            "agentic-ai",
+            "framework"
           ],
           "external": false,
           "history": [
@@ -11418,17 +11298,17 @@
           "trend": 0,
           "score": 70,
           "license": "NOASSERTION",
-          "lastCommit": "2026-08-14T13:09:47Z",
+          "lastCommit": "2026-08-14T14:02:02Z",
           "lastRelease": "2026-08-12T15:50:43Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
             "agents",
-            "ai",
+            "mcp",
+            "typescript",
             "evals",
-            "javascript",
-            "llm"
+            "javascript"
           ],
           "external": false,
           "history": [
@@ -11572,8 +11452,8 @@
           "description": "AI software development platform achieving 53-72% resolve rate on SWE-Bench Verified.",
           "tagline": "AI dev platform, 53-72% SWE-Bench resolve rate",
           "note": "",
-          "stars": 84011,
-          "trend": 2956,
+          "stars": 84012,
+          "trend": 2957,
           "score": 85,
           "license": "MIT",
           "lastCommit": "2026-08-14T01:22:41Z",
@@ -11582,11 +11462,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "openai",
             "agent",
-            "artificial-intelligence",
-            "chatgpt",
-            "claude-ai",
-            "cli"
+            "developer-tools",
+            "gpt",
+            "artificial-intelligence"
           ],
           "external": false,
           "history": [
@@ -11648,7 +11528,7 @@
             ],
             [
               "2026-08-14",
-              84011
+              84012
             ]
           ]
         },
@@ -11669,11 +11549,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "anthropic",
+            "openai",
+            "llama",
             "chatgpt",
-            "claude-3",
             "cli",
-            "command-line"
+            "anthropic"
           ],
           "external": false,
           "history": [
@@ -11757,9 +11637,6 @@
           "bucket": "live",
           "tags": [
             "agent",
-            "agent-based-model",
-            "ai",
-            "cybersecurity",
             "developer-tools"
           ],
           "external": false,
@@ -11844,9 +11721,6 @@
           "bucket": "live",
           "tags": [
             "agent",
-            "agentic-ai",
-            "agentic-ai-cli",
-            "ai",
             "ai-agent"
           ],
           "external": false,
@@ -11919,7 +11793,7 @@
           "url": "https://github.com/AutoCodeRoverSG/auto-code-rover",
           "description": "Structure-aware autonomous program repair combining code search with LLM-based patching.",
           "tagline": "Structure-aware autonomous code repair and patching",
-          "note": "",
+          "note": "SWE-agent and OpenHands are the maintained alternatives.",
           "stars": 3098,
           "trend": 2,
           "score": 49,
@@ -11931,10 +11805,7 @@
           "bucket": "deprecated",
           "tags": [
             "agents",
-            "autonomous-agents",
-            "code-generation",
-            "llm",
-            "program-repair"
+            "autonomous-agents"
           ],
           "external": false,
           "history": [
@@ -12007,8 +11878,8 @@
           "description": "Autonomous VS Code extension with Plan and Act modes where every file edit, terminal command, and browser action requires explicit approval.",
           "tagline": "Approval-gated autonomous agent inside VS Code",
           "note": "",
-          "stars": 66168,
-          "trend": 1438,
+          "stars": 66169,
+          "trend": 1439,
           "score": 81,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-14T08:44:30Z",
@@ -12018,10 +11889,10 @@
           "bucket": "live",
           "tags": [
             "agent",
-            "ai",
+            "developer-tools",
             "autonomous-agents",
             "coding-agent",
-            "developer-tools"
+            "vscode-extension"
           ],
           "external": false,
           "history": [
@@ -12083,7 +11954,7 @@
             ],
             [
               "2026-08-14",
-              66168
+              66169
             ]
           ]
         },
@@ -12104,11 +11975,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
+            "developer-tools",
+            "open-source",
             "chatgpt",
             "copilot",
-            "developer-tools",
-            "ide"
+            "jetbrains"
           ],
           "external": false,
           "history": [
@@ -12181,8 +12052,8 @@
           "description": "Terminal-native AI coding agent that is model-agnostic and scriptable for headless workflows, breakout 2026 OSS entry.",
           "tagline": "Terminal-native, model-agnostic coding agent",
           "note": "",
-          "stars": 197382,
-          "trend": 8,
+          "stars": 197395,
+          "trend": 21,
           "score": 82,
           "license": "MIT",
           "lastCommit": "2026-08-14T05:48:32Z",
@@ -12192,10 +12063,9 @@
           "bucket": "live",
           "tags": [
             "agent",
-            "ai",
             "cli",
             "coding-agent",
-            "llm"
+            "terminal"
           ],
           "external": false,
           "history": [
@@ -12321,7 +12191,7 @@
             ],
             [
               "2026-08-14",
-              197382
+              197395
             ]
           ]
         },
@@ -12332,21 +12202,18 @@
           "description": "Local, extensible AI agent that handles complex engineering tasks end-to-end via the Model Context Protocol.",
           "tagline": "Local MCP-based engineering agent",
           "note": "",
-          "stars": 52793,
-          "trend": -4,
+          "stars": 52794,
+          "trend": -3,
           "score": 77,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T13:30:46Z",
+          "lastCommit": "2026-08-14T13:33:16Z",
           "lastRelease": "2026-08-12T16:05:13Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
             "agent",
-            "ai",
-            "mcp",
-            "mcp-client",
-            "model-context-protocol"
+            "mcp"
           ],
           "external": false,
           "history": [
@@ -12472,7 +12339,7 @@
             ],
             [
               "2026-08-14",
-              52793
+              52794
             ]
           ]
         },
@@ -12483,8 +12350,8 @@
           "description": "Open-source agentic CLI bringing Gemini models and ReAct-style tool use directly to the terminal (Google).",
           "tagline": "Google's open-source agentic terminal for Gemini",
           "note": "",
-          "stars": 106510,
-          "trend": 483,
+          "stars": 106511,
+          "trend": 484,
           "score": 80,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-13T22:03:29Z",
@@ -12495,9 +12362,9 @@
           "tags": [
             "agent",
             "cli",
-            "gemini",
+            "terminal",
             "google",
-            "llm"
+            "gemini"
           ],
           "external": false,
           "history": [
@@ -12559,7 +12426,7 @@
             ],
             [
               "2026-08-14",
-              106510
+              106511
             ]
           ]
         },
@@ -12570,8 +12437,8 @@
           "description": "Terminal-native coding agent that hits ~80.8% on SWE-bench Verified with Opus 4.6 and ships as CLI plus IDE extensions (Anthropic).",
           "tagline": "Anthropic's 80.8% SWE-bench terminal coding agent",
           "note": "",
-          "stars": 141429,
-          "trend": 3395,
+          "stars": 141432,
+          "trend": 3398,
           "score": 77,
           "license": null,
           "lastCommit": "2026-08-13T23:29:53Z",
@@ -12581,10 +12448,10 @@
           "bucket": "live",
           "tags": [
             "agent",
-            "agentic",
-            "ai",
+            "cli",
+            "coding-agent",
             "anthropic",
-            "claude"
+            "terminal"
           ],
           "external": false,
           "history": [
@@ -12646,7 +12513,7 @@
             ],
             [
               "2026-08-14",
-              141429
+              141432
             ]
           ]
         },
@@ -12667,11 +12534,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "coding-agent",
-            "terminal",
-            "tui",
             "cli",
-            "agentic-ai"
+            "mcp",
+            "agentic-ai",
+            "coding-agent",
+            "terminal"
           ],
           "external": false,
           "history": [
@@ -12844,11 +12711,11 @@
           "pricing": "freemium"
         },
         {
-          "name": "Windsurf",
+          "name": "Devin Desktop",
           "repo": "",
-          "url": "https://windsurf.com",
-          "description": "Agentic IDE with proprietary SWE-1.5 model emphasising speed at ~950 tokens/sec while scoring 40.08% on SWE-Bench (Cognition).",
-          "tagline": "Speed-optimized agentic IDE from Cognition",
+          "url": "https://devin.ai/desktop",
+          "description": "Agentic IDE from Cognition, the continuation of Windsurf, pairing an editor with a background coding agent.",
+          "tagline": "Agentic IDE from Cognition, formerly Windsurf",
           "note": "",
           "stars": 0,
           "trend": null,
@@ -12894,21 +12761,21 @@
           "description": "OpenAI's terminal coding agent that reads, edits, and runs code in a local sandbox, with the same agent available in the IDE and on the web.",
           "tagline": "Terminal coding agent from OpenAI",
           "note": "",
-          "stars": 105929,
-          "trend": 3,
+          "stars": 105931,
+          "trend": 5,
           "score": 79,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T12:37:13Z",
+          "lastCommit": "2026-08-14T13:50:10Z",
           "lastRelease": "2026-08-07T01:41:49Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
+            "openai",
             "agent",
-            "ai",
             "cli",
             "coding-agent",
-            "llm"
+            "terminal"
           ],
           "external": false,
           "history": [
@@ -13034,7 +12901,7 @@
             ],
             [
               "2026-08-14",
-              105929
+              105931
             ]
           ]
         },
@@ -13055,11 +12922,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agentic",
-            "ai",
-            "ai-agent",
-            "ai-coding",
-            "cli"
+            "developer-tools",
+            "cli",
+            "mcp",
+            "coding-agent",
+            "qwen"
           ],
           "external": false,
           "history": [
@@ -13196,8 +13063,8 @@
           "description": "Agentic coding platform for VS Code and JetBrains that plans, edits across files, and runs commands, with model choice spanning several providers.",
           "tagline": "Agentic coding for VS Code and JetBrains",
           "note": "",
-          "stars": 26866,
-          "trend": -3,
+          "stars": 26868,
+          "trend": -1,
           "score": 74,
           "license": "MIT",
           "lastCommit": "2026-08-14T13:07:53Z",
@@ -13206,11 +13073,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "ai-coding",
-            "ai-developer-tools",
             "cli",
-            "jetbrains"
+            "ai-coding",
+            "jetbrains",
+            "vscode"
           ],
           "external": false,
           "history": [
@@ -13336,7 +13202,7 @@
             ],
             [
               "2026-08-14",
-              26866
+              26868
             ]
           ]
         }
@@ -13354,8 +13220,8 @@
           "description": "Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026).",
           "tagline": "Agents run 100 ML experiments overnight autonomously",
           "note": "",
-          "stars": 93835,
-          "trend": 2459,
+          "stars": 93837,
+          "trend": 2461,
           "score": 67,
           "license": null,
           "lastCommit": "2026-03-26T00:07:37Z",
@@ -13365,10 +13231,9 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "automated-research",
             "autonomous-agents",
-            "llm",
-            "machine-learning"
+            "research",
+            "automated-research"
           ],
           "external": false,
           "history": [
@@ -13430,7 +13295,7 @@
             ],
             [
               "2026-08-14",
-              93835
+              93837
             ]
           ]
         },
@@ -13451,11 +13316,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "agentic-rag",
+            "large-language-models",
+            "nlp",
             "deep-research",
-            "emnlp2024",
-            "knowledge-curation",
-            "large-language-models"
+            "retrieval-augmented-generation",
+            "agentic-rag"
           ],
           "external": false,
           "history": [
@@ -13528,8 +13393,8 @@
           "description": "Fully automated open-ended scientific discovery from idea generation to experiment execution to paper writing (Sakana AI).",
           "tagline": "Fully automated discovery from idea to paper",
           "note": "",
-          "stars": 14390,
-          "trend": 151,
+          "stars": 14391,
+          "trend": 152,
           "score": 59,
           "license": "NOASSERTION",
           "lastCommit": "2025-12-19T07:46:21Z",
@@ -13539,10 +13404,10 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "automated-research",
             "autonomous-agents",
-            "llm",
-            "python"
+            "research",
+            "automated-research",
+            "scientific-discovery"
           ],
           "external": false,
           "history": [
@@ -13604,7 +13469,7 @@
             ],
             [
               "2026-08-14",
-              14390
+              14391
             ]
           ]
         },
@@ -13625,9 +13490,7 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
             "rag",
-            "science",
             "search"
           ],
           "external": false,
@@ -13711,11 +13574,10 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "agentic-search",
             "agents",
-            "automated-research",
             "autonomous-agents",
-            "llm"
+            "automated-research",
+            "scientific-discovery"
           ],
           "external": false,
           "history": [
@@ -13881,11 +13743,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "ai-agents",
             "automated-machine-learning",
-            "autonomous-agents",
-            "autoresearch"
+            "ai-agents",
+            "autonomous-agents"
           ],
           "external": false,
           "history": [
@@ -13957,7 +13817,7 @@
           "url": "https://github.com/DeepAuto-AI/automl-agent",
           "description": "Multi-agent LLM framework for full-pipeline AutoML from data retrieval through model deployment (ICML 2025).",
           "tagline": "LLM agents for end-to-end AutoML pipelines",
-          "note": "",
+          "note": "Research prototype behind the AutoML-Agent paper.",
           "stars": 159,
           "trend": 14,
           "score": 47,
@@ -13968,7 +13828,6 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "automl",
             "llm-agents",
             "multi-agent-systems"
           ],
@@ -14054,10 +13913,10 @@
           "bucket": "live",
           "tags": [
             "agent",
-            "ai",
-            "automation",
-            "deepresearch",
-            "llms"
+            "llms",
+            "mcp",
+            "research",
+            "automation"
           ],
           "external": false,
           "history": [
@@ -14141,10 +14000,9 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "autonomous-research",
-            "llm-agents",
-            "machine-learning",
-            "mle-bench"
+            "multi-agent",
+            "mle-bench",
+            "llm-agents"
           ],
           "external": false,
           "history": [
@@ -14229,9 +14087,8 @@
           "tags": [
             "agents",
             "autonomous-agents",
-            "machine-learning",
-            "mle-bench",
-            "multi-agent"
+            "multi-agent",
+            "mle-bench"
           ],
           "external": false,
           "history": [
@@ -14315,10 +14172,8 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "automl",
-            "evolutionary-search",
-            "machine-learning",
-            "mle-bench"
+            "mle-bench",
+            "evolutionary-search"
           ],
           "external": false,
           "history": [
@@ -14403,9 +14258,8 @@
           "tags": [
             "agents",
             "autonomous-agents",
-            "evolutionary-search",
-            "machine-learning",
-            "mle-bench"
+            "mle-bench",
+            "evolutionary-search"
           ],
           "external": false,
           "history": [
@@ -14488,9 +14342,7 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "alphaevolve",
             "coding-agent",
-            "discovery",
             "evolutionary-algorithms",
             "genetic-algorithms"
           ],
@@ -14639,11 +14491,7 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "evolutionary-algorithms",
-            "llm",
-            "program-synthesis",
-            "research-agent",
-            "sakana"
+            "evolutionary-algorithms"
           ],
           "external": false,
           "history": [
@@ -14791,10 +14639,9 @@
           "bucket": "live",
           "tags": [
             "agent",
-            "agentic-ai",
-            "ai-scientist",
             "data-analysis",
-            "data-science"
+            "deep-research",
+            "jupyter"
           ],
           "external": false,
           "history": [
@@ -14941,11 +14788,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "automl",
-            "data-science",
-            "llm",
-            "machine-learning",
-            "mlzero"
+            "multi-agent",
+            "multimodal"
           ],
           "external": false,
           "history": [
@@ -15099,11 +14943,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "analysis",
-            "automl",
-            "benchmarking",
-            "document-parser",
-            "embeddings"
+            "evaluation",
+            "llm-evaluation",
+            "open-source",
+            "optimization",
+            "rag"
           ],
           "external": false,
           "history": [
@@ -15186,11 +15030,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ci",
-            "ci-cd",
-            "cicd",
+            "llmops",
             "evaluation",
-            "evaluation-framework"
+            "llm-evaluation",
+            "prompt-engineering",
+            "rag"
           ],
           "external": false,
           "history": [
@@ -15273,11 +15117,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "evaluation-framework",
-            "evaluation-metrics",
             "llm-evaluation",
-            "llm-evaluation-framework",
-            "llm-evaluation-metrics"
+            "evaluation-framework",
+            "evaluation-metrics"
           ],
           "external": false,
           "history": [
@@ -15360,9 +15202,8 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "evaluation",
-            "llm",
-            "llmops"
+            "llmops",
+            "evaluation"
           ],
           "external": false,
           "history": [
@@ -15435,8 +15276,8 @@
           "description": "Standard framework for few-shot evaluation of language models across hundreds of benchmarks (EleutherAI).",
           "tagline": "Standard few-shot LLM evaluation across hundreds of benchmarks",
           "note": "",
-          "stars": 13629,
-          "trend": 316,
+          "stars": 13630,
+          "trend": 317,
           "score": 76,
           "license": "MIT",
           "lastCommit": "2026-08-14T09:42:09Z",
@@ -15445,9 +15286,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "transformer",
             "evaluation-framework",
-            "language-model",
-            "transformer"
+            "language-model"
           ],
           "external": false,
           "history": [
@@ -15509,7 +15350,7 @@
             ],
             [
               "2026-08-14",
-              13629
+              13630
             ]
           ]
         },
@@ -15530,11 +15371,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "benchmark",
-            "chatgpt",
+            "openai",
             "evaluation",
-            "large-language-model",
-            "llama2"
+            "chatgpt",
+            "benchmark",
+            "llama3"
           ],
           "external": false,
           "history": [
@@ -15618,10 +15459,10 @@
           "bucket": "live",
           "tags": [
             "agents",
+            "llmops",
             "evaluation",
-            "llm-as-a-judge",
             "llm-evaluation",
-            "llm-framework"
+            "prompt-engineering"
           ],
           "external": false,
           "history": [
@@ -15704,11 +15545,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agent-evaluation",
-            "agentops",
+            "llmops",
+            "llms",
+            "llm-evaluation",
             "ai-agents",
-            "ai-monitoring",
-            "ai-observability"
+            "neural-networks"
           ],
           "external": false,
           "history": [
@@ -15781,8 +15622,8 @@
           "description": "Evaluation and testing platform for LLM applications and AI agents with automated quality guardrails.",
           "tagline": "LLM evaluation platform with automated quality guardrails",
           "note": "",
-          "stars": 3489,
-          "trend": 121,
+          "stars": 3490,
+          "trend": 122,
           "score": 73,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-14T11:08:30Z",
@@ -15791,11 +15632,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "analytics",
-            "datasets",
-            "dspy",
-            "evaluation"
+            "llmops",
+            "openai",
+            "evaluation",
+            "prompt-engineering",
+            "gpt"
           ],
           "external": false,
           "history": [
@@ -15857,7 +15698,7 @@
             ],
             [
               "2026-08-14",
-              3489
+              3490
             ]
           ]
         },
@@ -15879,8 +15720,6 @@
           "bucket": "live",
           "tags": [
             "evaluation",
-            "evaluation-framework",
-            "evaluation-metrics",
             "huggingface"
           ],
           "external": false,
@@ -15964,11 +15803,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai-safety",
-            "benchmarking",
             "evaluation",
+            "llm-evaluation",
             "framework",
-            "llm"
+            "benchmarking"
           ],
           "external": false,
           "history": [
@@ -16051,11 +15889,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "benchmark",
+            "openai",
             "evaluation",
+            "llm-evaluation",
             "gpt",
-            "llm",
-            "llm-evaluation"
+            "benchmark"
           ],
           "external": false,
           "history": [
@@ -16138,11 +15976,8 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "api",
-            "api-documentation",
             "chatgpt",
-            "claude-api",
-            "function-calling"
+            "api"
           ],
           "external": false,
           "history": [
@@ -16225,11 +16060,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agent-evaluation",
-            "agent-observability",
+            "llmops",
+            "evaluation",
             "prompt-engineering",
-            "tracing",
-            "llmops"
+            "agent-evaluation"
           ],
           "external": false,
           "history": [
@@ -16393,8 +16227,8 @@
           "description": "Unified API gateway for 100+ LLMs with load balancing, cost tracking, and automatic fallback routing.",
           "tagline": "Unified API gateway for 100+ LLMs",
           "note": "",
-          "stars": 56327,
-          "trend": 2496,
+          "stars": 56328,
+          "trend": 2497,
           "score": 81,
           "license": "NOASSERTION",
           "lastCommit": "2026-08-14T07:01:35Z",
@@ -16403,10 +16237,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai-gateway",
+            "llmops",
+            "openai",
+            "langchain",
             "anthropic",
-            "azure-openai",
-            "bedrock",
             "gateway"
           ],
           "external": false,
@@ -16469,7 +16303,7 @@
             ],
             [
               "2026-08-14",
-              56327
+              56328
             ]
           ]
         },
@@ -16490,11 +16324,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai-gateway",
-            "gateway",
+            "llmops",
+            "openai",
+            "llms",
             "generative-ai",
-            "hacktoberfest",
-            "langchain"
+            "hacktoberfest"
           ],
           "external": false,
           "history": [
@@ -16566,7 +16400,7 @@
           "url": "https://github.com/lm-sys/RouteLLM",
           "description": "Framework for training and serving LLM routers that reduce costs by up to 85% without quality loss (LMSYS).",
           "tagline": "LLM routers cutting costs 85% without quality loss",
-          "note": "",
+          "note": "LiteLLM and LLMRouter cover routing for new work.",
           "stars": 5345,
           "trend": 142,
           "score": 58,
@@ -16577,11 +16411,10 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "cost-optimization",
             "inference",
-            "llm",
             "llm-routing",
-            "python"
+            "serving",
+            "cost-optimization"
           ],
           "external": false,
           "history": [
@@ -16665,10 +16498,9 @@
           "bucket": "live",
           "tags": [
             "inference",
-            "llm",
-            "llm-routing",
+            "research",
             "model-selection",
-            "python"
+            "llm-routing"
           ],
           "external": false,
           "history": [
@@ -16751,11 +16583,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "ai",
-            "ai-engineering",
-            "anthropic",
-            "artificial-intelligence",
-            "deep-learning"
+            "llmops",
+            "mlops",
+            "openai",
+            "llms",
+            "generative-ai"
           ],
           "external": false,
           "history": [
@@ -16832,17 +16664,17 @@
           "trend": 738,
           "score": 82,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-13T15:52:57Z",
+          "lastCommit": "2026-08-14T13:57:26Z",
           "lastRelease": "2026-08-13T20:52:23Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai-gateway",
-            "enterprise",
             "gateway",
+            "ai-gateway",
+            "llm-gateway",
             "guardrails",
-            "llm"
+            "rust"
           ],
           "external": false,
           "history": [
@@ -16926,8 +16758,6 @@
           "bucket": "live",
           "tags": [
             "gateway",
-            "llm",
-            "openai-compatible",
             "proxy"
           ],
           "external": false,
@@ -17008,8 +16838,8 @@
           "description": "ML and LLM observability with 100+ metrics for evaluating, testing, and monitoring any AI system in production.",
           "tagline": "ML and LLM observability with 100+ production metrics",
           "note": "",
-          "stars": 7807,
-          "trend": 106,
+          "stars": 7808,
+          "trend": 107,
           "score": 66,
           "license": "Apache-2.0",
           "lastCommit": "2026-05-02T13:00:57Z",
@@ -17018,11 +16848,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "data-drift",
-            "data-quality",
-            "data-science",
-            "data-validation",
-            "generative-ai"
+            "llmops",
+            "mlops",
+            "generative-ai",
+            "hacktoberfest",
+            "data-quality"
           ],
           "external": false,
           "history": [
@@ -17084,7 +16914,7 @@
             ],
             [
               "2026-08-14",
-              7807
+              7808
             ]
           ]
         },
@@ -17105,11 +16935,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agent-evaluation",
-            "ai-red-team",
-            "ai-security",
-            "ai-testing",
-            "fairness-ai"
+            "llmops",
+            "mlops",
+            "llm-evaluation",
+            "llm-security",
+            "agent-evaluation"
           ],
           "external": false,
           "history": [
@@ -17192,11 +17022,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
+            "mlops",
+            "jupyter-notebook",
+            "pandas-dataframe",
             "data-drift",
-            "data-science",
-            "data-validation",
-            "deep-learning",
-            "html-report"
+            "data-validation"
           ],
           "external": false,
           "history": [
@@ -17268,7 +17098,7 @@
           "url": "https://github.com/whylabs/whylogs",
           "description": "Lightweight data logging library that profiles datasets for drift detection without storing raw data.",
           "tagline": "Lightweight drift detection without storing raw data",
-          "note": "",
+          "note": "Evidently covers drift and data quality for new work.",
           "stars": 2830,
           "trend": 3,
           "score": 52,
@@ -17279,11 +17109,10 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "ai-pipelines",
+            "mlops",
+            "data-quality",
             "analytics",
-            "approximate-statistics",
-            "calculate-statistics",
-            "constraints"
+            "dataset"
           ],
           "external": false,
           "history": [
@@ -17366,11 +17195,10 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "adversarial",
-            "anomaly",
-            "concept-drift",
+            "time-series",
+            "tabular-data",
             "data-drift",
-            "detection"
+            "images"
           ],
           "external": false,
           "history": [
@@ -17442,7 +17270,7 @@
           "url": "https://github.com/NannyML/nannyml",
           "description": "Estimate model performance without ground truth labels and link data drift directly to accuracy degradation.",
           "tagline": "Estimate model performance without ground truth labels",
-          "note": "",
+          "note": "Evidently covers post-deployment monitoring for new work.",
           "stars": 2147,
           "trend": 2,
           "score": 52,
@@ -17453,11 +17281,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
+            "mlops",
             "data-analysis",
+            "jupyter-notebook",
             "data-drift",
-            "data-science",
-            "deep-learning",
-            "jupyter-notebook"
+            "model-monitoring"
           ],
           "external": false,
           "history": [
@@ -17540,11 +17368,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "artifical-intelligence",
-            "datascience",
+            "llmops",
             "generative-ai",
-            "good-first-issue",
-            "good-first-issues"
+            "ml",
+            "open-source",
+            "observability"
           ],
           "external": false,
           "history": [
@@ -17627,11 +17455,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agent-monitoring",
-            "analytics",
+            "llmops",
+            "openai",
             "evaluation",
-            "gpt",
-            "langchain"
+            "large-language-models",
+            "llm-evaluation"
           ],
           "external": false,
           "history": [
@@ -17711,8 +17539,8 @@
           "description": "LLM vulnerability scanner with 100+ attack modules covering prompt injection, data leakage, and jailbreaking.",
           "tagline": "LLM vulnerability scanner with 100+ attack modules",
           "note": "",
-          "stars": 8798,
-          "trend": 332,
+          "stars": 8799,
+          "trend": 333,
           "score": 77,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-13T21:11:21Z",
@@ -17721,11 +17549,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
             "llm-evaluation",
-            "llm-security",
-            "security-scanners",
-            "vulnerability-assessment"
+            "llm-security"
           ],
           "external": false,
           "history": [
@@ -17787,7 +17612,7 @@
             ],
             [
               "2026-08-14",
-              8798
+              8799
             ]
           ]
         },
@@ -17802,17 +17627,15 @@
           "trend": 121,
           "score": 73,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-13T21:05:29Z",
+          "lastCommit": "2026-08-14T13:43:24Z",
           "lastRelease": "2026-06-04T19:37:56Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
+            "openai",
             "foundation-model",
-            "gpt-3",
-            "llm",
-            "openai"
+            "gpt-3"
           ],
           "external": false,
           "history": [
@@ -17895,11 +17718,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai-gateway",
-            "ai-gateway-support",
-            "envoy",
-            "envoyproxy",
-            "gateway"
+            "llmops",
+            "openai",
+            "llms",
+            "generative-ai",
+            "llm-inference"
           ],
           "external": false,
           "history": [
@@ -17983,10 +17806,10 @@
           "bucket": "live",
           "tags": [
             "agents",
+            "llms",
             "generative-ai",
-            "guardrails",
-            "llm-safety",
-            "llm-security"
+            "llm-security",
+            "nvidia"
           ],
           "external": false,
           "history": [
@@ -18070,10 +17893,7 @@
           "bucket": "live",
           "tags": [
             "hacktoberfest",
-            "llm-guardrails",
-            "llm-red-teaming",
-            "llm-safety",
-            "python"
+            "llm-safety"
           ],
           "external": false,
           "history": [
@@ -18156,11 +17976,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "adversarial-machine-learning",
-            "chatgpt",
+            "llmops",
+            "transformers",
             "large-language-models",
-            "llm",
-            "llm-security"
+            "prompt-engineering",
+            "chatgpt"
           ],
           "external": false,
           "history": [
@@ -18243,10 +18063,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai-red-team",
             "generative-ai",
-            "red-team-tools",
-            "responsible-ai"
+            "responsible-ai",
+            "ai-red-team",
+            "red-team-tools"
           ],
           "external": false,
           "history": [
@@ -18400,9 +18220,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "deep-learning",
-            "foundation-models",
+            "time-series",
             "forecasting",
+            "foundation-models",
             "google",
             "pretrained-models"
           ],
@@ -18487,11 +18307,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "artificial-intelligence",
+            "time-series",
             "forecasting",
-            "foundation-models",
-            "huggingface",
-            "huggingface-transformers"
+            "transformers",
+            "large-language-models",
+            "foundation-models"
           ],
           "external": false,
           "history": [
@@ -18574,11 +18394,9 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "deep-learning",
+            "time-series",
             "forecasting",
-            "machine-learning",
-            "pre-trained-models",
-            "pre-training"
+            "transformers"
           ],
           "external": false,
           "history": [
@@ -18661,11 +18479,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "anomaly-detection",
-            "changepoint-detection",
-            "data-mining",
-            "data-science"
+            "time-series",
+            "forecasting",
+            "scikit-learn",
+            "hacktoberfest",
+            "anomaly-detection"
           ],
           "external": false,
           "history": [
@@ -18748,11 +18566,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "anomaly-detection",
-            "data-science",
-            "deep-learning",
+            "time-series",
             "forecasting",
-            "machine-learning"
+            "anomaly-detection"
           ],
           "external": false,
           "history": [
@@ -18835,11 +18651,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "time-series",
+            "forecasting",
+            "statistics",
             "arima",
-            "automl",
-            "baselines",
-            "data-science",
-            "econometrics"
+            "baselines"
           ],
           "external": false,
           "history": [
@@ -18922,11 +18738,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "baselines",
-            "baselines-zoo",
-            "deep-learning",
-            "deep-neural-networks",
-            "deepar"
+            "time-series",
+            "forecasting",
+            "neural-network",
+            "transformer",
+            "baselines"
           ],
           "external": false,
           "history": [
@@ -19009,11 +18825,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "anomaly-detection",
+            "time-series",
+            "forecasting",
             "classification",
-            "clustering",
-            "data-analysis",
-            "data-mining"
+            "anomaly-detection",
+            "data-analysis"
           ],
           "external": false,
           "history": [
@@ -19085,7 +18901,7 @@
           "url": "https://github.com/time-series-foundation-models/lag-llama",
           "description": "First open-source foundation model for univariate probabilistic time-series forecasting based on a decoder-only transformer (NeurIPS 2024).",
           "tagline": "First open-source probabilistic time-series foundation model",
-          "note": "",
+          "note": "Chronos and TimesFM are the maintained foundation models here.",
           "stars": 1597,
           "trend": 2,
           "score": 51,
@@ -19096,11 +18912,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
+            "time-series",
             "forecasting",
-            "foundation-models",
-            "lag-llama",
+            "transformers",
             "llama",
-            "time-series"
+            "foundation-models"
           ],
           "external": false,
           "history": [
@@ -19183,11 +18999,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "arima",
-            "autoregressive-forecasting",
-            "backtesting-forecasters",
-            "data-science",
-            "direct-forecasting"
+            "time-series",
+            "forecasting",
+            "scikit-learn",
+            "xgboost",
+            "lightgbm"
           ],
           "external": false,
           "history": [
@@ -19270,11 +19086,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "automl",
-            "autots",
-            "deep-learning",
+            "time-series",
+            "forecasting",
             "feature-engineering",
-            "forecasting"
+            "preprocessing"
           ],
           "external": false,
           "history": [
@@ -19357,11 +19172,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "aeon",
-            "ai",
+            "time-series",
+            "forecasting",
+            "scikit-learn",
             "artificial-intelligence",
-            "data-mining",
-            "data-science"
+            "neural-network"
           ],
           "external": false,
           "history": [
@@ -19444,11 +19259,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "dask",
-            "forecast",
+            "time-series",
             "forecasting",
-            "lightgbm",
-            "machine-learning"
+            "xgboost",
+            "lightgbm"
           ],
           "external": false,
           "history": [
@@ -19531,11 +19345,7 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "deep-learning",
-            "large-model",
-            "machine-learning",
-            "time-series",
-            "time-series-forecasting"
+            "time-series"
           ],
           "external": false,
           "history": [
@@ -19618,11 +19428,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "deep-learning",
+            "time-series",
             "forecasting",
-            "foundation-models",
-            "ibm",
-            "python"
+            "foundation-models"
           ],
           "external": false,
           "history": [
@@ -19712,11 +19520,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "big-data-analytics",
+            "hacktoberfest",
+            "data-quality",
             "data-analysis",
-            "data-exploration",
-            "data-profiling",
-            "data-quality"
+            "exploratory-data-analysis",
+            "jupyter-notebook"
           ],
           "external": false,
           "history": [
@@ -19863,11 +19671,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "cleandata",
+            "mlops",
+            "data-quality",
             "data-engineering",
-            "data-profilers",
-            "data-profiling",
-            "data-quality"
+            "exploratory-data-analysis",
+            "data-profiling"
           ],
           "external": false,
           "history": [
@@ -20014,11 +19822,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "assertions",
-            "data-assertions",
-            "data-check",
+            "pandas-dataframe",
+            "data-validation",
             "data-cleaning",
-            "data-processing"
+            "data-processing",
+            "testing"
           ],
           "external": false,
           "history": [
@@ -20102,9 +19910,9 @@
           "bucket": "live",
           "tags": [
             "data-analysis",
-            "data-exploration",
+            "exploratory-data-analysis",
+            "pandas-dataframe",
             "data-profiling",
-            "data-science",
             "data-visualization"
           ],
           "external": false,
@@ -20188,9 +19996,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "audio",
+            "hacktoberfest",
             "computer-vision",
-            "data-centric-ai",
+            "exploratory-data-analysis",
             "data-curation",
             "data-visualization"
           ],
@@ -20275,11 +20083,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "cleaning-data",
+            "hacktoberfest",
             "data",
-            "data-engineering",
-            "dataframe",
-            "hacktoberfest"
+            "pandas"
           ],
           "external": false,
           "history": [
@@ -20362,9 +20168,6 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "data-transformation",
-            "llm",
             "visualization"
           ],
           "external": false,
@@ -20448,10 +20251,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "data",
+            "fine-tuning",
+            "large-language-models",
+            "data-quality",
             "data-curation",
-            "data-prep",
-            "data-preparation",
             "data-processing"
           ],
           "external": false,
@@ -20599,11 +20402,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "anonymization",
-            "data-anonymization",
-            "data-masking",
-            "data-obfuscation",
-            "data-privacy"
+            "transformers",
+            "nlp",
+            "privacy",
+            "guardrails"
           ],
           "external": false,
           "history": [
@@ -20757,11 +20559,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "active-learning",
-            "annotation",
+            "data-quality",
             "anomaly-detection",
-            "data-annotation",
-            "data-centric-ai"
+            "exploratory-data-analysis",
+            "data-profiling",
+            "data-validation"
           ],
           "external": false,
           "history": [
@@ -20838,17 +20640,17 @@
           "trend": 202,
           "score": 76,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T06:29:49Z",
+          "lastCommit": "2026-08-14T13:55:48Z",
           "lastRelease": "2026-03-13T08:15:04Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
+            "mlops",
+            "computer-vision",
+            "dataset",
             "annotation",
-            "annotation-tool",
-            "annotations",
-            "boundingbox",
-            "computer-vision"
+            "data-labeling"
           ],
           "external": false,
           "history": [
@@ -20931,11 +20733,9 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "ai",
-            "data-augmentation",
-            "data-science",
-            "data-slicing",
-            "labeling"
+            "labeling",
+            "weak-supervision",
+            "data-augmentation"
           ],
           "external": false,
           "history": [
@@ -21007,7 +20807,7 @@
           "url": "https://github.com/argilla-io/argilla",
           "description": "Collaboration platform for collecting and managing human and AI feedback for NLP and LLM development.",
           "tagline": "Collaborative human and AI feedback for LLM development",
-          "note": "",
+          "note": "Label Studio is the maintained labeling platform.",
           "stars": 5079,
           "trend": 41,
           "score": 57,
@@ -21018,11 +20818,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "active-learning",
-            "ai",
-            "annotation-tool",
+            "mlops",
+            "nlp",
             "developer-tools",
-            "gpt-4"
+            "langchain",
+            "natural-language-processing"
           ],
           "external": false,
           "history": [
@@ -21105,11 +20905,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "ai",
-            "huggingface",
-            "llms",
             "openai",
-            "python"
+            "llms",
+            "huggingface",
+            "synthetic-data",
+            "rlhf"
           ],
           "external": false,
           "history": [
@@ -21181,7 +20981,7 @@
           "url": "https://github.com/autodistill/autodistill",
           "description": "Automated image labeling by distilling foundation model knowledge into smaller task-specific models (Roboflow).",
           "tagline": "Distill foundation models into task-specific labelers",
-          "note": "",
+          "note": "Label Studio and X-AnyLabeling are the maintained labeling tools.",
           "stars": 2757,
           "trend": 15,
           "score": 53,
@@ -21192,11 +20992,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "auto-labeling",
-            "computer-vision",
-            "deep-learning",
             "foundation-models",
-            "grounding-dino"
+            "computer-vision",
+            "multimodal",
+            "object-detection",
+            "image-classification"
           ],
           "external": false,
           "history": [
@@ -21280,10 +21080,10 @@
           "bucket": "live",
           "tags": [
             "artificial-intelligence",
-            "clip",
             "computer-vision",
-            "deep-learning",
-            "groundingdino"
+            "object-detection",
+            "image-classification",
+            "yolo"
           ],
           "external": false,
           "history": [
@@ -21367,8 +21167,6 @@
           "bucket": "live",
           "tags": [
             "agent",
-            "agent-based-framework",
-            "agent-oriented-programming",
             "autonomous-agents",
             "gpt-4"
           ],
@@ -21453,11 +21251,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "annotation",
-            "audio",
             "computer-vision",
+            "annotation",
             "data-labeling",
-            "image"
+            "labeling-tool",
+            "audio"
           ],
           "external": false,
           "history": [
@@ -21547,11 +21345,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "time-series",
+            "generative-ai",
+            "synthetic-data",
             "data-generation",
-            "deep-learning",
-            "gan",
-            "gans",
-            "generative-adversarial-network"
+            "gan"
           ],
           "external": false,
           "history": [
@@ -21623,7 +21421,7 @@
           "url": "https://github.com/hitsz-ids/synthetic-data-generator",
           "description": "Framework for generating high-quality synthetic tabular data preserving statistical distributions and correlations.",
           "tagline": "Synthetic tabular data preserving statistical distributions",
-          "note": "",
+          "note": "SDV is the maintained synthetic-data toolkit.",
           "stars": 2433,
           "trend": 4,
           "score": 52,
@@ -21635,10 +21433,10 @@
           "bucket": "deprecated",
           "tags": [
             "agent",
-            "data-generator",
-            "deep-learning",
-            "gan",
-            "generative-ai"
+            "generative-ai",
+            "tabular-data",
+            "synthetic-data",
+            "privacy"
           ],
           "external": false,
           "history": [
@@ -21710,7 +21508,7 @@
           "url": "https://github.com/datadreamer-dev/DataDreamer",
           "description": "Reproducible LLM workflows for prompting, synthetic data generation, and model training in one pipeline.",
           "tagline": "Reproducible LLM pipelines for synthetic data and training",
-          "note": "",
+          "note": "Curator and NeMo Data Designer cover synthetic data generation.",
           "stars": 1116,
           "trend": 3,
           "score": 49,
@@ -21721,11 +21519,11 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "alignment",
-            "deep-learning",
-            "fine-tuning",
-            "gpt",
-            "instruction-tuning"
+            "llmops",
+            "openai",
+            "llms",
+            "transformers",
+            "fine-tuning"
           ],
           "external": false,
           "history": [
@@ -21809,10 +21607,10 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "deep-learning",
             "fine-tuning",
-            "instruction-tuning",
-            "llm"
+            "natural-language-processing",
+            "synthetic-data",
+            "instruction-tuning"
           ],
           "external": false,
           "history": [
@@ -21896,10 +21694,7 @@
           "bucket": "live",
           "tags": [
             "data",
-            "generation",
-            "llm",
-            "python",
-            "synthetic"
+            "generation"
           ],
           "external": false,
           "history": [
@@ -21982,11 +21777,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "mcp",
             "agentic-ai",
-            "data-augmentation",
-            "data-generation",
-            "llm",
-            "mcp"
+            "synthetic-data",
+            "multimodal",
+            "nvidia"
           ],
           "external": false,
           "history": [
@@ -22065,7 +21860,7 @@
           "url": "https://github.com/mit-han-lab/llm-awq",
           "description": "Activation-aware weight quantization achieving lossless 4-bit compression for LLMs (MIT HAN Lab, MLSys 2024 Best Paper).",
           "tagline": "Lossless 4-bit LLM quantization via activation awareness",
-          "note": "",
+          "note": "Superseded by LLM Compressor for production quantization.",
           "stars": 3614,
           "trend": 25,
           "score": 55,
@@ -22076,11 +21871,10 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "awq",
-            "deep-learning",
             "inference",
-            "llm",
-            "model-compression"
+            "quantization",
+            "model-compression",
+            "awq"
           ],
           "external": false,
           "history": [
@@ -22163,11 +21957,9 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "efficient-deep-learning",
-            "llm",
+            "transformers",
             "model-compression",
-            "pruning",
-            "transformers"
+            "pruning"
           ],
           "external": false,
           "history": [
@@ -22250,7 +22042,6 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "compression",
             "quantization"
           ],
           "external": false,
@@ -22334,11 +22125,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "auto-tuning",
+            "large-language-models",
+            "quantization",
+            "pruning",
             "awq",
-            "fp4",
-            "gptq",
-            "int4"
+            "gptq"
           ],
           "external": false,
           "history": [
@@ -22421,11 +22212,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "deep-learning",
-            "distillation",
             "inference",
+            "quantization",
             "model-compression",
-            "nvidia"
+            "nvidia",
+            "pruning"
           ],
           "external": false,
           "history": [
@@ -22508,11 +22299,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "gptq",
-            "optimum",
-            "peft",
+            "transformers",
             "quantization",
-            "sglang"
+            "peft",
+            "vllm",
+            "gptq"
           ],
           "external": false,
           "history": [
@@ -22595,11 +22386,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "llm",
-            "machine-learning",
-            "pytorch",
-            "qlora",
-            "quantization"
+            "quantization",
+            "qlora"
           ],
           "external": false,
           "history": [
@@ -22682,10 +22470,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "graphcore",
-            "habana",
+            "transformers",
             "inference",
-            "intel",
+            "quantization",
+            "optimization",
             "onnx"
           ],
           "external": false,
@@ -22769,10 +22557,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "deep-learning",
             "fine-tuning",
             "inference",
-            "microsoft",
+            "quantization",
+            "optimization",
             "model-compression"
           ],
           "external": false,
@@ -22856,11 +22644,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "cuda",
-            "dtypes",
-            "float8",
             "inference",
-            "pytorch"
+            "quantization",
+            "transformer",
+            "cuda",
+            "sparsity"
           ],
           "external": false,
           "history": [
@@ -23014,11 +22802,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "data-science",
-            "deep-learning",
-            "deployment",
-            "distributed",
-            "hyperparameter-optimization"
+            "hyperparameter-optimization",
+            "large-language-models",
+            "tensorflow",
+            "optimization",
+            "llm-inference"
           ],
           "external": false,
           "history": [
@@ -23091,21 +22879,21 @@
           "description": "End-to-end ML lifecycle platform with experiment tracking, model registry, and integrated prompt optimization.",
           "tagline": "End-to-end ML lifecycle with experiment tracking and registry",
           "note": "",
-          "stars": 27516,
-          "trend": 448,
+          "stars": 27517,
+          "trend": 449,
           "score": 77,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T13:07:26Z",
+          "lastCommit": "2026-08-14T13:44:12Z",
           "lastRelease": "2026-08-03T11:09:58Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agentops",
             "agents",
-            "ai",
-            "ai-governance",
-            "apache-spark"
+            "llmops",
+            "mlops",
+            "openai",
+            "evaluation"
           ],
           "external": false,
           "history": [
@@ -23167,7 +22955,7 @@
             ],
             [
               "2026-08-14",
-              27516
+              27517
             ]
           ]
         },
@@ -23178,21 +22966,21 @@
           "description": "Open-source LLM engineering platform with tracing, evaluations, prompt management, and cost analytics.",
           "tagline": "Open-source LLM tracing, evals, and prompt management",
           "note": "",
-          "stars": 33093,
-          "trend": 1778,
+          "stars": 33094,
+          "trend": 1779,
           "score": 81,
           "license": "NOASSERTION",
-          "lastCommit": "2026-08-14T13:15:23Z",
+          "lastCommit": "2026-08-14T13:51:32Z",
           "lastRelease": "2026-08-14T08:04:16Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "analytics",
-            "autogen",
+            "llmops",
+            "openai",
             "evaluation",
-            "langchain",
-            "large-language-models"
+            "large-language-models",
+            "llm-evaluation"
           ],
           "external": false,
           "history": [
@@ -23254,7 +23042,7 @@
             ],
             [
               "2026-08-14",
-              33093
+              33094
             ]
           ]
         },
@@ -23275,11 +23063,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "automation",
+            "observability",
+            "orchestration",
             "data",
-            "data-engineering",
-            "data-ops",
-            "data-science"
+            "workflow",
+            "pipeline"
           ],
           "external": false,
           "history": [
@@ -23356,17 +23144,17 @@
           "trend": 734,
           "score": 80,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T10:23:27Z",
+          "lastCommit": "2026-08-14T13:53:55Z",
           "lastRelease": "2026-08-14T09:01:10Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
+            "llmops",
+            "openai",
             "evaluation",
-            "hacktoberfest",
-            "hacktoberfest2025",
-            "langchain",
-            "llama-index"
+            "llm-evaluation",
+            "prompt-engineering"
           ],
           "external": false,
           "history": [
@@ -23449,11 +23237,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "google-kubernetes-engine",
-            "jupyter",
-            "kubeflow",
+            "ml",
+            "tensorflow",
             "kubernetes",
-            "machine-learning"
+            "jupyter",
+            "kubeflow"
           ],
           "external": false,
           "history": [
@@ -23536,11 +23324,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "data-science",
-            "data-version-control",
             "developer-tools",
-            "machine-learning"
+            "reproducibility",
+            "unstructured-data"
           ],
           "external": false,
           "history": [
@@ -23623,11 +23409,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "mlops",
+            "orchestration",
             "analytics",
-            "dagster",
             "data-engineering",
-            "data-integration",
-            "data-orchestrator"
+            "workflow"
           ],
           "external": false,
           "history": [
@@ -23710,11 +23496,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "collaboration",
-            "data-science",
-            "data-versioning",
-            "deep-learning"
+            "mlops",
+            "hyperparameter-optimization",
+            "tensorflow",
+            "reinforcement-learning",
+            "hyperparameter-tuning"
           ],
           "external": false,
           "history": [
@@ -23787,8 +23573,8 @@
           "description": "Framework for reproducible, maintainable ML pipelines with clean coding patterns.",
           "tagline": "Reproducible, maintainable ML pipelines with clean patterns",
           "note": "",
-          "stars": 10953,
-          "trend": 31,
+          "stars": 10952,
+          "trend": 30,
           "score": 72,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-14T12:49:33Z",
@@ -23797,10 +23583,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "experiment-tracking",
+            "mlops",
             "hacktoberfest",
-            "kedro",
-            "machine-learning",
+            "pipeline",
+            "experiment-tracking",
             "machine-learning-engineering"
           ],
           "external": false,
@@ -23863,7 +23649,7 @@
             ],
             [
               "2026-08-14",
-              10953
+              10952
             ]
           ]
         },
@@ -23885,10 +23671,10 @@
           "bucket": "live",
           "tags": [
             "agents",
-            "ai",
-            "aws",
-            "azure",
-            "cost-optimization"
+            "llmops",
+            "mlops",
+            "generative-ai",
+            "kubernetes"
           ],
           "external": false,
           "history": [
@@ -23965,17 +23751,17 @@
           "trend": 452,
           "score": 74,
           "license": "NOASSERTION",
-          "lastCommit": "2026-08-14T07:00:31Z",
+          "lastCommit": "2026-08-14T13:48:18Z",
           "lastRelease": "2026-08-13T20:31:17Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
             "agents",
-            "ai-monitoring",
-            "ai-observability",
-            "aiengineering",
-            "anthropic"
+            "llmops",
+            "openai",
+            "llms",
+            "llm-evaluation"
           ],
           "external": false,
           "history": [
@@ -24058,10 +23844,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "big-data",
-            "data-engineering",
+            "mlops",
             "data-quality",
-            "data-science",
+            "data-engineering",
+            "big-data",
             "feature-store"
           ],
           "external": false,
@@ -24145,11 +23931,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "clearml",
-            "control",
-            "deep-learning",
-            "deeplearning"
+            "mlops",
+            "machinelearning",
+            "deeplearning",
+            "k8s"
           ],
           "external": false,
           "history": [
@@ -24232,11 +24017,11 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "ai",
-            "data-science",
+            "mlops",
+            "prompt-engineering",
+            "tensorflow",
             "data-visualization",
-            "experiment-tracking",
-            "machine-learning"
+            "visualization"
           ],
           "external": false,
           "history": [
@@ -24319,11 +24104,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "agentops",
             "agents",
-            "ai",
-            "automl",
-            "data-science"
+            "llmops",
+            "mlops",
+            "tensorflow",
+            "genai"
           ],
           "external": false,
           "history": [
@@ -24403,8 +24188,8 @@
           "description": "Cross-platform inference accelerator supporting PyTorch, TensorFlow, scikit-learn, and XGBoost via the ONNX format (Microsoft).",
           "tagline": "Cross-platform inference accelerator via ONNX format",
           "note": "",
-          "stars": 21373,
-          "trend": 263,
+          "stars": 21374,
+          "trend": 264,
           "score": 76,
           "license": "MIT",
           "lastCommit": "2026-08-14T11:49:29Z",
@@ -24413,11 +24198,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai-framework",
-            "deep-learning",
-            "hardware-acceleration",
-            "machine-learning",
-            "neural-networks"
+            "tensorflow",
+            "scikit-learn",
+            "neural-networks",
+            "onnx"
           ],
           "external": false,
           "history": [
@@ -24479,7 +24263,7 @@
             ],
             [
               "2026-08-14",
-              21373
+              21374
             ]
           ]
         },
@@ -24500,10 +24284,7 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "cloud",
-            "datacenter",
-            "deep-learning",
-            "edge",
+            "inference",
             "gpu"
           ],
           "external": false,
@@ -24577,21 +24358,21 @@
           "description": "Inference optimization and deployment toolkit for CPUs, GPUs, and edge accelerators (Intel).",
           "tagline": "Intel inference optimization for CPU, GPU, and edge",
           "note": "",
-          "stars": 10652,
-          "trend": 123,
+          "stars": 10651,
+          "trend": 122,
           "score": 73,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T11:58:20Z",
+          "lastCommit": "2026-08-14T12:24:04Z",
           "lastRelease": "2026-08-04T16:16:22Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "computer-vision",
-            "deep-learning",
-            "deploy-ai",
-            "diffusion-models"
+            "generative-ai",
+            "transformers",
+            "inference",
+            "nlp",
+            "llm-inference"
           ],
           "external": false,
           "history": [
@@ -24653,7 +24434,7 @@
             ],
             [
               "2026-08-14",
-              10652
+              10651
             ]
           ]
         },
@@ -24674,11 +24455,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai-inference",
-            "deep-learning",
+            "llmops",
+            "mlops",
             "generative-ai",
-            "inference-platform",
-            "llm"
+            "llm-inference",
+            "llm-serving"
           ],
           "external": false,
           "history": [
@@ -24761,11 +24542,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "artificial-intelligence",
-            "cncf",
-            "genai",
+            "mlops",
+            "tensorflow",
             "hacktoberfest",
-            "istio"
+            "artificial-intelligence",
+            "llm-inference"
           ],
           "external": false,
           "history": [
@@ -24848,11 +24629,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "deep-learning",
-            "embedded",
-            "gpu",
-            "machine-learning",
-            "mobile"
+            "neural-network",
+            "gpu"
           ],
           "external": false,
           "history": [
@@ -24935,11 +24713,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "api",
+            "developer-tools",
             "artificial-intelligence",
-            "deep-learning",
-            "developer-tools"
+            "serving",
+            "api",
+            "rest-api"
           ],
           "external": false,
           "history": [
@@ -25022,11 +24800,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "containers",
-            "cuda",
-            "docker",
-            "machine-learning"
+            "tensorflow",
+            "cuda"
           ],
           "external": false,
           "history": [
@@ -25109,8 +24884,6 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "apache-beam",
-            "machine-learning",
             "tensorflow"
           ],
           "external": false,
@@ -25191,8 +24964,8 @@
           "description": "Docker-like local LLM runner for getting models up and running quickly for prototyping.",
           "tagline": "Docker-like local LLM runner for fast prototyping",
           "note": "",
-          "stars": 178529,
-          "trend": 2235,
+          "stars": 178532,
+          "trend": 2238,
           "score": 83,
           "license": "MIT",
           "lastCommit": "2026-08-13T22:19:02Z",
@@ -25201,11 +24974,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "llms",
+            "llama",
+            "qwen",
             "deepseek",
-            "gemma",
-            "gemma3",
-            "glm",
-            "go"
+            "gpt-oss"
           ],
           "external": false,
           "history": [
@@ -25267,7 +25040,7 @@
             ],
             [
               "2026-08-14",
-              178529
+              178532
             ]
           ]
         },
@@ -25278,8 +25051,8 @@
           "description": "LLM inference in C/C++ with broad hardware support - the foundation for most local LLM applications.",
           "tagline": "C/C++ LLM inference, foundation for local apps",
           "note": "",
-          "stars": 123892,
-          "trend": 3230,
+          "stars": 123895,
+          "trend": 3233,
           "score": 85,
           "license": "MIT",
           "lastCommit": "2026-08-14T12:14:19Z",
@@ -25350,7 +25123,7 @@
             ],
             [
               "2026-08-14",
-              123892
+              123895
             ]
           ]
         },
@@ -25365,17 +25138,17 @@
           "trend": 2556,
           "score": 84,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T10:09:51Z",
+          "lastCommit": "2026-08-14T13:49:47Z",
           "lastRelease": "2026-08-11T10:47:49Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "amd",
-            "blackwell",
-            "cuda",
-            "deepseek",
-            "deepseek-v3"
+            "openai",
+            "inference",
+            "llama",
+            "gpt",
+            "qwen"
           ],
           "external": false,
           "history": [
@@ -25448,21 +25221,21 @@
           "description": "High-performance LLM serving framework powering 400K+ GPUs with best-in-class structured and constrained decoding.",
           "tagline": "High-performance LLM serving with constrained decoding",
           "note": "",
-          "stars": 31788,
-          "trend": 1383,
+          "stars": 31789,
+          "trend": 1384,
           "score": 83,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T12:02:04Z",
+          "lastCommit": "2026-08-14T14:01:48Z",
           "lastRelease": "2026-08-08T00:19:16Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "attention",
-            "blackwell",
-            "cuda",
-            "deepseek",
-            "diffusion"
+            "inference",
+            "llama",
+            "reinforcement-learning",
+            "qwen",
+            "transformer"
           ],
           "external": false,
           "history": [
@@ -25524,7 +25297,7 @@
             ],
             [
               "2026-08-14",
-              31788
+              31789
             ]
           ]
         },
@@ -25539,17 +25312,16 @@
           "trend": 245,
           "score": 71,
           "license": "NOASSERTION",
-          "lastCommit": "2026-08-14T13:40:02Z",
+          "lastCommit": "2026-08-14T14:00:50Z",
           "lastRelease": "2026-04-20T11:51:33Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
           "tags": [
-            "blackwell",
             "cuda",
             "llm-serving",
             "moe",
-            "pytorch"
+            "blackwell"
           ],
           "external": false,
           "history": [
@@ -25632,11 +25404,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "codellama",
-            "cuda-kernels",
-            "deepspeed",
-            "fastertransformer",
-            "internlm"
+            "llama",
+            "llm-inference"
           ],
           "external": false,
           "history": [
@@ -25719,10 +25488,9 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "deep-learning",
-            "gpt",
             "llama",
-            "llm",
+            "nlp",
+            "gpt",
             "model-serving"
           ],
           "external": false,
@@ -25806,10 +25574,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "cpu-offload",
             "inference",
-            "llm",
-            "mixture-of-experts",
+            "quantization",
             "optimization"
           ],
           "external": false,
@@ -25957,11 +25723,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "disaggregated-serving",
-            "kubernetes",
             "llm-inference",
-            "routing-engine",
-            "rust"
+            "kubernetes",
+            "rust",
+            "vllm",
+            "sglang"
           ],
           "external": false,
           "history": [
@@ -26108,11 +25874,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
-            "cncf",
-            "distributed-inference",
+            "inference",
             "gpu",
-            "inference"
+            "kubernetes",
+            "cncf"
           ],
           "external": false,
           "history": [
@@ -26259,10 +26024,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "apple-silicon",
-            "inference",
             "llms",
-            "mlx",
+            "inference",
             "quantization"
           ],
           "external": false,
@@ -26909,10 +26672,7 @@
           "bucket": "live",
           "tags": [
             "awesome",
-            "awesome-list",
-            "curated-list",
-            "deep-learning",
-            "frameworks"
+            "curated-list"
           ],
           "external": false,
           "history": [
@@ -26984,7 +26744,7 @@
           "url": "https://github.com/ChristosChristofidis/awesome-deep-learning",
           "description": "Curated list of deep learning tutorials, projects, and communities.",
           "tagline": "Deep learning tutorials, projects, and communities",
-          "note": "",
+          "note": "Kept as a reference index; see awesome-machine-learning for a maintained one.",
           "stars": 28750,
           "trend": 146,
           "score": 54,
@@ -26995,11 +26755,8 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
-            "awesome",
-            "awesome-list",
-            "deep-learning",
-            "deep-learning-tutorial",
-            "deep-networks"
+            "neural-network",
+            "awesome"
           ],
           "external": false,
           "history": [
@@ -27071,7 +26828,7 @@
           "url": "https://github.com/Hannibal046/Awesome-LLM",
           "description": "Curated list of large language model resources covering papers, tools, and applications.",
           "tagline": "LLM resources covering papers, tools, and applications",
-          "note": "",
+          "note": "Kept as a reference index; see awesome-machine-learning for a maintained one.",
           "stars": 27261,
           "trend": 110,
           "score": 62,
@@ -27082,11 +26839,10 @@
           "status": "dead",
           "bucket": "deprecated",
           "tags": [
+            "large-language-models",
+            "nlp",
             "awesome",
-            "awesome-list",
-            "curated-list",
-            "deep-learning",
-            "large-language-models"
+            "curated-list"
           ],
           "external": false,
           "history": [
@@ -27169,11 +26925,11 @@
           "status": "active",
           "bucket": "live",
           "tags": [
+            "mlops",
             "awesome",
-            "awesome-list",
             "data-mining",
-            "deep-learning",
-            "explainability"
+            "responsible-ai",
+            "ml-ops"
           ],
           "external": false,
           "history": [
@@ -27256,11 +27012,10 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "ai",
+            "generative-ai",
+            "large-language-models",
             "artificial-intelligence",
-            "awesome",
-            "awesome-list",
-            "generative-ai"
+            "awesome"
           ],
           "external": false,
           "history": [
@@ -27343,10 +27098,8 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "ai",
+            "mlops",
             "awesome",
-            "data-science",
-            "machine-learning",
             "machine-learning-engineering"
           ],
           "external": false,
@@ -27481,8 +27234,8 @@
           "name": "best-of-ml-python",
           "repo": "lukasmasuch/best-of-ml-python",
           "url": "https://github.com/lukasmasuch/best-of-ml-python",
-          "description": "Ranked list of Python ML libraries scored on project quality and regenerated weekly.",
-          "tagline": "Ranked Python ML libraries, regenerated weekly",
+          "description": "Ranked list of Python ML libraries scored on project quality across dozens of categories.",
+          "tagline": "Python ML libraries ranked by project quality",
           "note": "",
           "stars": 23712,
           "trend": -2,
@@ -27494,10 +27247,10 @@
           "status": "quiet",
           "bucket": "live",
           "tags": [
-            "automl",
-            "data-science",
-            "deep-learning",
-            "jax",
+            "ml",
+            "tensorflow",
+            "nlp",
+            "scikit-learn",
             "keras"
           ],
           "external": false,

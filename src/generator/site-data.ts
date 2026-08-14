@@ -9,6 +9,7 @@ import { displayBucket, type Lifecycle, repoStatus } from "../status.js";
 import { logger } from "../utils/logger.js";
 import { loadApiDataFromDB } from "./fetch-api.js";
 import type { ApiData, ApiRepoData } from "./readme.js";
+import { buildTagCorpus, selectTags } from "./tags.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
@@ -110,6 +111,14 @@ function main() {
     }
   }
 
+  // Same corpus-derived ranking the README uses, so both surfaces show the
+  // same tags for an entry.
+  const tagCorpus = buildTagCorpus(
+    doc.categories.flatMap((cat) =>
+      (cat.entries ?? []).map((e) => (e.tags && e.tags.length > 0 ? e.tags : (apiData[e.repo ?? ""]?.topics ?? []))),
+    ),
+  );
+
   const output = {
     generated: new Date().toISOString(),
     dataAsOf: readDataAsOf(),
@@ -158,7 +167,7 @@ function main() {
           // True when this entry's live fetch failed and it is being served
           // from an older snapshot; the row renders an age marker.
           ...(api.stale ? { stale: api.stale } : {}),
-          tags: tags.slice(0, 5),
+          tags: selectTags(tags, tagCorpus),
           external: isExternal,
           // Measured weekly star history, oldest first, as compact
           // [date, stars] tuples — the sparkline plots these verbatim.

@@ -95,24 +95,38 @@ export function findDuplicateReposInCategories(data: ProjectsYaml): string[] {
 }
 
 /**
- * Repos cross-listed in more than one category. Deliberate cross-listing is
- * allowed, but both entries are keyed on the same repo, so they inherit
- * identical stars, score, status and tagline — the reader sees one project
- * twice with the same numbers. Reported as a warning, never a failure.
+ * Repos cross-listed in more than one category WITHOUT being told apart.
+ *
+ * Cross-listing itself is legitimate — Ray Tune ships inside the Ray repo, so
+ * both entries correctly share Ray's stars and health. What misleads a reader
+ * is seeing the same project twice with the same link and the same one-liner
+ * and no indication why. So this reports only the undifferentiated case:
+ * entries sharing a repo AND a tagline, or a repo AND a URL. Warning only.
  */
 export function findCrossCategoryDuplicates(data: ProjectsYaml): string[] {
-  const byRepo = new Map<string, string[]>();
+  const byRepo = new Map<string, { category: string; tagline?: string; url?: string }[]>();
   for (const cat of data.categories) {
     for (const entry of cat.entries ?? []) {
       if (!entry.repo) continue;
-      const cats = byRepo.get(entry.repo) ?? [];
-      if (!cats.includes(cat.name)) cats.push(cat.name);
-      byRepo.set(entry.repo, cats);
+      const list = byRepo.get(entry.repo) ?? [];
+      list.push({ category: cat.name, tagline: entry.tagline, url: entry.url });
+      byRepo.set(entry.repo, list);
     }
   }
-  return [...byRepo.entries()]
-    .filter(([, cats]) => cats.length > 1)
-    .map(([repo, cats]) => `${repo} (${cats.join(" + ")})`);
+
+  const out: string[] = [];
+  for (const [repo, entries] of byRepo) {
+    if (entries.length < 2) continue;
+    // Twice inside ONE category is findDuplicateReposInCategories' business,
+    // and it treats that as a hard error; don't report it twice.
+    if (new Set(entries.map((e) => e.category)).size < 2) continue;
+    const taglines = new Set(entries.map((e) => e.tagline ?? ""));
+    const urls = new Set(entries.map((e) => e.url ?? ""));
+    if (taglines.size === entries.length && urls.size === entries.length) continue;
+    const which = taglines.size < entries.length ? "tagline" : "url";
+    out.push(`${repo} shares a ${which} across ${entries.map((e) => e.category).join(" + ")}`);
+  }
+  return out;
 }
 
 /**
@@ -132,4 +146,26 @@ export function findStaleNoteYears(data: ProjectsYaml, currentYear: number): str
     }
   }
   return stale;
+}
+
+/**
+ * Entries the published data marks dead that carry no note. The red dot is
+ * correct, but the entry text still reads like a recommendation and offers no
+ * migration target — which is what a reader actually needs.
+ *
+ * Takes the statuses from the caller rather than reading the DB, so this stays
+ * a pure function and validate keeps working offline. Advisory only: an entry
+ * crosses the 12-month line with no code change at all, so making this fatal
+ * would red-build unrelated pull requests.
+ */
+export function findDeadEntriesWithoutNote(data: ProjectsYaml, isDead?: (repo: string) => boolean): string[] {
+  if (!isDead) return [];
+  const out: string[] = [];
+  for (const cat of data.categories) {
+    for (const entry of cat.entries ?? []) {
+      if (!entry.repo || entry.note || entry.lifecycle) continue;
+      if (isDead(entry.repo)) out.push(`${cat.name} / ${entry.name}`);
+    }
+  }
+  return out;
 }

@@ -178,6 +178,14 @@ export class DB {
     this.sqlite.exec("DROP TABLE IF EXISTS _migrations");
   }
 
+  /** Repo + id for every project currently on the list. */
+  listListedProjects(): { id: number; repo: string }[] {
+    return this.sqlite.prepare("SELECT id, repo FROM projects WHERE status = 'listed' ORDER BY repo").all() as {
+      id: number;
+      repo: string;
+    }[];
+  }
+
   findProjectByRepo(repo: string): ProjectRow | null {
     const row = this.sqlite.prepare("SELECT * FROM projects WHERE repo = ?").get(repo) as ProjectRow | undefined;
     return row ?? null;

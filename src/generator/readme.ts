@@ -2,6 +2,7 @@ import { parse as parseYaml } from "yaml";
 import { RELEASE_STALE_MONTHS, STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.js";
 import { assessRepo, displayBucket, type Lifecycle, lastLifeSign, STATUS_DOT, type StatusReason } from "../status.js";
 import { formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
+import { buildTagCorpus, selectTags, type TagCorpus } from "./tags.js";
 
 export interface ApiRepoData {
   stars: number;
@@ -74,6 +75,28 @@ export function buildToc(manifest: TocManifest, countByName: Map<string, number>
   return blocks.join("\n\n");
 }
 
+/**
+ * Fills {{entries}} / {{categories}} / {{sections}} / {{entriesRounded}} in the
+ * header. These were hard-coded literals sitting directly above a generated
+ * TOC, so they went false the moment src/categories.yaml changed and nothing
+ * in the weekly job would have noticed.
+ */
+export function injectCounts(header: string, manifest: TocManifest | undefined, categories: Category[]): string {
+  const entries = categories.reduce((n, c) => n + (c.entries?.length ?? 0), 0);
+  const usedSections = new Set(
+    (manifest?.categories ?? []).filter((c) => categories.some((y) => y.name === c.name)).map((c) => c.section),
+  );
+  const values: Record<string, string> = {
+    entries: String(entries),
+    // Round down to the nearest 50 so the badge reads as a floor, not a stat
+    // that drifts by one every week.
+    entriesRounded: `${Math.floor(entries / 50) * 50}+`,
+    categories: String(categories.length),
+    sections: String(manifest ? usedSections.size : 0),
+  };
+  return header.replace(/\{\{(entries|entriesRounded|categories|sections)\}\}/g, (_, key: string) => values[key] ?? "");
+}
+
 function injectToc(header: string, manifest: TocManifest, categories: Category[]): string {
   const known = new Set(manifest.categories.map((c) => c.name));
   const unknown = categories.filter((c) => !known.has(c.name)).map((c) => c.name);
@@ -116,7 +139,19 @@ export function generateReadme(opts: GenerateOptions): string {
   const doc = parseYaml(yamlContent) as { categories: Category[] };
   const categories = doc.categories;
 
-  const resolvedHeader = manifest ? injectToc(header, manifest, categories) : header;
+  const resolvedHeader = injectCounts(
+    manifest ? injectToc(header, manifest, categories) : header,
+    manifest,
+    categories,
+  );
+
+  // Tag frequencies across the whole list; selectTags needs the corpus to
+  // tell a shared tag from a one-off grant identifier.
+  const tagCorpus = buildTagCorpus(
+    categories.flatMap((c) =>
+      (c.entries ?? []).map((e) => (e.tags && e.tags.length > 0 ? e.tags : (apiData[e.repo ?? ""]?.topics ?? []))),
+    ),
+  );
 
   const parts: string[] = [];
   parts.push(resolvedHeader.trimEnd(), "");
@@ -126,7 +161,7 @@ export function generateReadme(opts: GenerateOptions): string {
     if (cat.description) parts.push(`*${cat.description}*`, "");
     const entries = cat.entries ?? [];
     if (entries.length > 0) {
-      for (const line of buildCards(entries, apiData)) parts.push(line);
+      for (const line of buildCards(entries, apiData, tagCorpus)) parts.push(line);
     }
     parts.push("", "**[\u2b06 Back to Contents](#contents)**", "");
   }
@@ -163,7 +198,7 @@ function statusNote(reason: StatusReason | null): string {
   }
 }
 
-function buildCards(entries: Entry[], apiData: ApiData): string[] {
+function buildCards(entries: Entry[], apiData: ApiData, corpus: TagCorpus): string[] {
   const githubEntries = entries.filter((e) => e.repo);
   const externalEntries = entries.filter((e) => !e.repo);
 
@@ -205,13 +240,13 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
 
   const lines: string[] = [];
   for (const [i, entry] of active.entries()) {
-    lines.push(...buildOneCard(entry, i + 1));
+    lines.push(...buildOneCard(entry, i + 1, corpus));
     lines.push("");
   }
   if (dead.length > 0) {
     lines.push("---", "");
     for (const s of dead) {
-      lines.push(...buildOneCard(s, null));
+      lines.push(...buildOneCard(s, null, corpus));
       lines.push("");
     }
   }
@@ -219,13 +254,13 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
     lines.push("---", "");
   }
   for (const entry of externalEntries) {
-    lines.push(...buildExternalCard(entry));
+    lines.push(...buildExternalCard(entry, corpus));
     lines.push("");
   }
   return lines;
 }
 
-function buildExternalCard(entry: Entry): string[] {
+function buildExternalCard(entry: Entry, corpus: TagCorpus): string[] {
   const url = entry.url ?? "#";
   const icon = entry.authors ? "\u{1F4C4}" : entry.vendor ? "\u{1F3E2}" : "\u{1F517}";
   const nameHtml = `<b><a href="${url}">${entry.name}</a></b>`;
@@ -243,9 +278,9 @@ function buildExternalCard(entry: Entry): string[] {
   if (entry.authors) metaLines.push(`  Authors   ${entry.authors}`);
   if (entry.venue) metaLines.push(`  Venue     ${entry.venue}`);
   if (entry.year !== undefined) metaLines.push(`  Year      ${entry.year}`);
-  if (entry.tags && entry.tags.length > 0) {
-    const tags = entry.tags.slice(0, 5);
-    metaLines.push(`  Tags      ${tags.join(" \u00B7 ")}`);
+  const externalTags = selectTags(entry.tags, corpus);
+  if (externalTags.length > 0) {
+    metaLines.push(`  Tags      ${externalTags.join(" \u00B7 ")}`);
   }
   const dashboard = metaLines.length > 0 ? ["```", ...metaLines, "```"] : [];
 
@@ -254,7 +289,7 @@ function buildExternalCard(entry: Entry): string[] {
 
 const MEDAL = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];
 
-function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
+function buildOneCard(s: ScoredEntry, rank: number | null, corpus: TagCorpus): string[] {
   const { entry, rd, hasData, status, note, isDead, isHistorical } = s;
   const repo = entry.repo ?? "";
   const url = entry.url ?? `https://github.com/${repo}`;
@@ -319,7 +354,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   else if (isDead) actSuffix = ` - unmaintained ${STALE_MONTHS}+ months`;
 
   const allTags = entry.tags && entry.tags.length > 0 ? entry.tags : (rd.topics ?? []);
-  const tags = allTags.slice(0, 5);
+  const tags = selectTags(allTags, corpus);
   const tagsLine = tags.length > 0 ? `\n  Tags      ${tags.join(" \u00B7 ")}` : "";
 
   const dashboard: string[] = [

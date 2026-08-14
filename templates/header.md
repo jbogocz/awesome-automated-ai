@@ -5,7 +5,7 @@
   <img alt="Awesome Automated AI/ML logo" src="docs/assets/logo.svg" width="180" height="180">
 </picture>
 
-# Awesome Automated AI/ML [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Automated AI/ML
 
 A curated list of tools for Automated AI/ML - from hyperparameter optimization to autonomous AI agents.
 
@@ -13,7 +13,7 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 [![GitHub stars](https://img.shields.io/github/stars/jbogocz/awesome-automated-ai?style=flat-square&color=2f6feb)](https://github.com/jbogocz/awesome-automated-ai/stargazers)
 [![Version](https://img.shields.io/github/package-json/v/jbogocz/awesome-automated-ai?style=flat-square&label=version&color=2f6feb)](https://github.com/jbogocz/awesome-automated-ai/releases/latest)
 [![License: CC0 + MIT](https://img.shields.io/badge/license-CC0_+_MIT-2f6feb?style=flat-square)](LICENSE)
-[![Tools](https://img.shields.io/badge/tools-250+-2f6feb?style=flat-square)](#contents)
+[![Tools](https://img.shields.io/badge/tools-{{entriesRounded}}-2f6feb?style=flat-square)](#contents)
 
 </div>
 
@@ -21,23 +21,23 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 
 ### **[> Explore interactively <](https://jbogocz.github.io/awesome-automated-ai)**
 
-250+ entries across 25 categories in 7 sections
+{{entries}} entries across {{categories}} categories in {{sections}} sections
 
 </div>
 
 > [!TIP]
-> ### Why this list?
+> ### Why this list exists
 >
-> Every other awesome-automl list stopped updating. Since then:
+> Most curated lists are a snapshot of the day someone wrote them. This one is rebuilt weekly from live GitHub data, which matters because the field moved:
 >
-> - **Foundation models replaced entire ML pipelines** - TabPFN matches tuned XGBoost in 2.8 seconds on small datasets.
+> - **Foundation models replaced entire ML pipelines** - TabPFN beats tuned baselines on small tabular data in seconds ([Nature, 2024](https://www.nature.com/articles/s41586-024-08328-6)).
 > - **Autonomous AI agents** now run hundreds of ML experiments overnight without human intervention.
-> - **Prompt engineering became prompt optimization** - DSPy outperforms hand-crafted prompts by up to 46%.
+> - **Prompt engineering became prompt optimization** - DSPy outperforms expert-written prompts by up to 46% ([ICLR, 2024](https://arxiv.org/abs/2310.03714)).
 > - **ML engineering itself got automated** - from data labeling to deployment to monitoring.
 >
 > This list covers both the classical tools that still power production ML and the new wave that is replacing them.
 
-### Who is this for?
+### Who this is for
 
 - **ML engineers** automating training, evaluation, and deployment pipelines
 - **AI researchers** tracking automated experimentation, NAS, and agentic ML
