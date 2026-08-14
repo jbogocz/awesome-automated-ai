@@ -159,7 +159,9 @@ export async function fetchRepoMetadataBatch(repos: string[]): Promise<Map<strin
       for (const [repo, meta] of parseMetadataResponse(chunk, resp)) out.set(repo, meta);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      logger.warn(`Metadata batch ${i}-${i + chunk.length} failed after retries: ${msg}`);
+      // Not every error here was retried — ghGraphQL only retries transient
+      // ones — so don't claim it was.
+      logger.warn(`Metadata batch ${i}-${i + chunk.length} failed (${chunk.length} repos skipped): ${msg}`);
     }
   }
   return out;

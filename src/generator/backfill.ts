@@ -68,16 +68,12 @@ function persistSnapshots(
   currentStars: number,
   today: Date,
 ): void {
-  const rows = computeDailySnapshots(page.stargazers, currentStars, today);
-  const raw = db as unknown as {
-    sqlite: { prepare: (s: string) => { run: (...args: unknown[]) => void } };
-  };
-  const stmt = raw.sqlite.prepare(
-    "INSERT OR IGNORE INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, NULL)",
-  );
-  for (const row of rows) {
-    stmt.run(projectId, row.date, row.stars);
-  }
+  // Defence in depth: a caller that lost its live metadata would pass
+  // currentStars=0 and computeDailySnapshots would emit negative star counts,
+  // which INSERT OR IGNORE then makes permanent.
+  if (currentStars <= 0) return;
+  const rows = computeDailySnapshots(page.stargazers, currentStars, today).filter((r) => r.stars > 0);
+  db.insertBackfilledSnapshots(projectId, rows);
 }
 
 export async function backfillBatch(

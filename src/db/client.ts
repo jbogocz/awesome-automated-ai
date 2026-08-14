@@ -499,6 +499,21 @@ export class DB {
     return rows.map((r) => ({ date: r.snapshot_date, stars: r.stars }));
   }
 
+  /**
+   * Write reconstructed historical snapshots in one transaction. Existing
+   * rows win: a backfilled estimate must never overwrite a measured one.
+   */
+  insertBackfilledSnapshots(projectId: number, rows: { date: string; stars: number }[]): void {
+    const stmt = this.sqlite.prepare(
+      "INSERT OR IGNORE INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, NULL)",
+    );
+    this.sqlite.transaction((batch: { date: string; stars: number }[]) => {
+      for (const row of batch) {
+        if (row.stars > 0) stmt.run(projectId, row.date, row.stars);
+      }
+    })(rows);
+  }
+
   /** Newest snapshot date across all projects — the real "data as of" date. */
   getMaxSnapshotDate(): string | null {
     const row = this.sqlite.prepare("SELECT MAX(snapshot_date) AS d FROM snapshots").get() as

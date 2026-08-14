@@ -17,3 +17,12 @@ export const SHIPPED_FRESH_DAYS = 180;
 
 // Minimum absolute star delta to render as a trend indicator (noise filter)
 export const TREND_DISPLAY_MIN = 10;
+
+// Share of repos that must return live data before the unattended weekly job
+// is allowed to regenerate. Below this the run fails loudly rather than
+// publishing cached data as current.
+export const MIN_FRESH_RATIO = 0.9;
+
+// Same gate for docs/data.json: refuse to write the dashboard feed when fewer
+// than this share of repo-backed entries resolved to real stats.
+export const MIN_SITE_COVERAGE = 0.9;

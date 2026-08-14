@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { DB } from "../../src/db/client.js";
 import { computeDailySnapshots } from "../../src/generator/backfill.js";
 
 function iso(y: number, m: number, d: number, hh = 12): string {
@@ -68,5 +69,41 @@ describe("computeDailySnapshots", () => {
     expect(byDate.get("2026-04-15")).toBe(99);
     // End of 04-16: neither star is after → 100
     expect(byDate.get("2026-04-16")).toBe(100);
+  });
+
+  // The failure this guards: the backfill queue used to be seeded from a
+  // FAILED fetch (`rawByRepo.get(repo)?.stars ?? 0`), so currentStars was 0
+  // and these rows went negative. INSERT OR IGNORE made them permanent, and
+  // the next good week rendered a fabricated four-digit "+N last 30d".
+  it("goes negative when seeded with zero current stars — why callers must not", () => {
+    const today = new Date(Date.UTC(2026, 3, 19));
+    const rows = computeDailySnapshots([{ starredAt: iso(2026, 4, 10) }, { starredAt: iso(2026, 4, 12) }], 0, today);
+    expect(rows.some((r) => r.stars < 0)).toBe(true);
+  });
+});
+
+describe("DB.insertBackfilledSnapshots", () => {
+  it("refuses to write non-positive star rows", () => {
+    const db = new DB(":memory:");
+    db.migrate();
+    const id = db.upsertProject("a/b", "ab");
+    db.insertBackfilledSnapshots(id, [
+      { date: "2026-04-16", stars: -2 },
+      { date: "2026-04-17", stars: 0 },
+      { date: "2026-04-18", stars: 41 },
+    ]);
+    expect(db.getSnapshotSeries(id, 100_000)).toEqual([{ date: "2026-04-18", stars: 41 }]);
+    db.close();
+  });
+
+  it("never overwrites a measured snapshot with a reconstructed one", () => {
+    const db = new DB(":memory:");
+    db.migrate();
+    const id = db.upsertProject("a/b", "ab");
+    db.insertSnapshot(id, 500, 80);
+    const today = new Date().toISOString().split("T")[0];
+    db.insertBackfilledSnapshots(id, [{ date: today, stars: 1 }]);
+    expect(db.getLatestSnapshot(id)?.stars).toBe(500);
+    db.close();
   });
 });

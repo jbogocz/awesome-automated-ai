@@ -42,7 +42,7 @@ function entryFromLatestSnapshot(db: DB, projectId: number, yamlTagline: string 
     commits90d: latest.commits90d,
     score: latest.compositeScore ?? 0,
     topics: latest.topics ?? [],
-    tagline: db.getTagline(projectId) ?? yamlTagline ?? null,
+    tagline: yamlTagline ?? db.getTagline(projectId) ?? null,
     history: db.getSnapshotSeries(projectId, SPARKLINE_DAYS),
   };
 }
@@ -50,7 +50,23 @@ function entryFromLatestSnapshot(db: DB, projectId: number, yamlTagline: string 
 /** Window the dashboard sparkline plots, in days. */
 const SPARKLINE_DAYS = 90;
 
-export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
+export interface FetchResult {
+  data: ApiData;
+  /** Repos whose live fetch failed but had a DB snapshot to fall back on. */
+  stale: string[];
+  /** Repos whose live fetch failed with no snapshot to fall back on. */
+  failed: string[];
+  /** Repos with a `repo:` field that were attempted this run. */
+  attempted: number;
+}
+
+/** Share of attempted repos that returned live data this run. */
+export function freshRatio(r: FetchResult): number {
+  if (r.attempted === 0) return 1;
+  return (r.attempted - r.stale.length - r.failed.length) / r.attempted;
+}
+
+export async function fetchRepoData(yamlContent: string): Promise<FetchResult> {
   const doc = parseYaml(yamlContent) as {
     categories: { entries?: { repo?: string; name?: string; tagline?: string }[] }[];
   };
@@ -66,6 +82,17 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
 
   const dbPath = resolve(import.meta.dirname, "../../data/curator.db");
   const db = new DB(dbPath);
+  try {
+    return await collectRepoData(db, repos);
+  } finally {
+    db.close();
+  }
+}
+
+async function collectRepoData(
+  db: DB,
+  repos: { repo: string; name: string; tagline?: string }[],
+): Promise<FetchResult> {
   db.migrate();
 
   // Pass 1: fetch live state (alias-batched GraphQL) and detect which
@@ -77,8 +104,14 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
   for (const { repo, name } of repos) {
     const projectId = db.upsertProject(repo, name);
     projectIdByRepo.set(repo, projectId);
-    if (db.getStarsNDaysAgo(projectId, 30) === null) {
-      pendingBackfill.push({ repo, projectId, currentStars: rawByRepo.get(repo)?.stars ?? 0 });
+    // Only backfill from live metadata. Seeding from a failed fetch meant
+    // currentStars=0, which computeDailySnapshots turned into 30 zero and
+    // negative star rows — persisted with INSERT OR IGNORE, never rewritten
+    // (the getStarsNDaysAgo guard below stays satisfied forever after), and
+    // later surfacing as a fabricated four-digit "+N last 30d".
+    const raw = rawByRepo.get(repo);
+    if (raw && raw.stars > 0 && db.getStarsNDaysAgo(projectId, 30) === null) {
+      pendingBackfill.push({ repo, projectId, currentStars: raw.stars });
     }
   }
 
@@ -160,9 +193,11 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
       language: raw.language,
     });
 
-    // Tagline: DB first, seed from YAML if DB empty
+    // Tagline: projects.yaml is the source of truth, so a YAML edit wins and
+    // rewrites the cached copy. The DB used to win, which meant curators
+    // editing projects.yaml saw no effect and no error.
     let tagline = db.getTagline(projectId);
-    if (!tagline && yamlTagline) {
+    if (yamlTagline && yamlTagline !== tagline) {
       db.setTagline(projectId, yamlTagline);
       tagline = yamlTagline;
     }
@@ -194,8 +229,7 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
     logger.warn(`${failed.length} repo(s) failed to fetch with no snapshot to fall back on: ${failed.join(", ")}`);
   }
 
-  db.close();
-  return data;
+  return { data, stale, failed, attempted: repos.length };
 }
 
 /**
@@ -220,26 +254,29 @@ export function loadApiDataFromDB(yamlContent: string): ApiData {
 
   const dbPath = resolve(import.meta.dirname, "../../data/curator.db");
   const db = new DB(dbPath);
-  db.migrate();
+  try {
+    db.migrate();
 
-  const data: ApiData = {};
-  const missing: string[] = [];
-  for (const { repo, name, tagline: yamlTagline } of repos) {
-    const projectId = db.upsertProject(repo, name);
-    const entry = entryFromLatestSnapshot(db, projectId, yamlTagline);
-    if (!entry) {
-      // No snapshot yet — the entry renders as "stats pending".
-      missing.push(repo);
-      continue;
+    const data: ApiData = {};
+    const missing: string[] = [];
+    for (const { repo, name, tagline: yamlTagline } of repos) {
+      const projectId = db.upsertProject(repo, name);
+      const entry = entryFromLatestSnapshot(db, projectId, yamlTagline);
+      if (!entry) {
+        // No snapshot yet — the entry renders as "stats pending".
+        missing.push(repo);
+        continue;
+      }
+      data[repo] = entry;
     }
-    data[repo] = entry;
+    if (missing.length > 0) {
+      logger.warn(
+        `${missing.length} repo(s) have no snapshot yet and will render without stats ` +
+          `(run generate with fetch to backfill): ${missing.join(", ")}`,
+      );
+    }
+    return data;
+  } finally {
+    db.close();
   }
-  if (missing.length > 0) {
-    logger.warn(
-      `${missing.length} repo(s) have no snapshot yet and will render without stats ` +
-        `(run generate with fetch to backfill): ${missing.join(", ")}`,
-    );
-  }
-  db.close();
-  return data;
 }
