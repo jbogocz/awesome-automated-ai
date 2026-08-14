@@ -3,6 +3,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
+import { DB } from "../db/client.js";
 import { repoStatus } from "../status.js";
 import { logger } from "../utils/logger.js";
 import { loadApiDataFromDB } from "./fetch-api.js";
@@ -57,7 +58,29 @@ const EMPTY_API = {
   lastTag: null,
   lastStableTag: null,
   commits90d: null,
+  history: [] as { date: string; stars: number }[],
 } as const;
+
+/**
+ * The date the underlying measurements were actually taken, read from the
+ * newest snapshot in the DB. `generated` only says when this file was
+ * written — on a degraded run the two diverge, and the dashboard must show
+ * the measured date rather than assert a currency nothing verified.
+ */
+function readDataAsOf(): string | null {
+  try {
+    const db = new DB(resolve(ROOT, "data/curator.db"));
+    try {
+      db.migrate();
+      return db.getMaxSnapshotDate();
+    } finally {
+      db.close();
+    }
+  } catch (err) {
+    logger.warn(`Could not read snapshot date: ${err instanceof Error ? err.message : String(err)}`);
+    return null;
+  }
+}
 
 function main() {
   const yamlContent = readFileSync(PROJECTS_YAML, "utf-8");
@@ -86,6 +109,7 @@ function main() {
 
   const output = {
     generated: new Date().toISOString(),
+    dataAsOf: readDataAsOf(),
     categories: doc.categories.map((cat) => ({
       name: cat.name,
       section: sectionByCategory.get(cat.name) ?? "",
@@ -124,6 +148,12 @@ function main() {
           status,
           tags: tags.slice(0, 5),
           external: isExternal,
+          // Measured weekly star history, oldest first, as compact
+          // [date, stars] tuples — the sparkline plots these verbatim.
+          // Tuples rather than objects keep this affordable as the list grows.
+          ...(api.history && api.history.length > 0
+            ? { history: api.history.map((p) => [p.date, p.stars] as [string, number]) }
+            : {}),
           ...(entry.commercial ? { commercial: true } : {}),
           ...(entry.vendor ? { vendor: entry.vendor } : {}),
           ...(entry.pricing ? { pricing: entry.pricing } : {}),

@@ -6,7 +6,7 @@ describe("computeQualityScore", () => {
     const input: QualityInput = {
       stars: 10000,
       starsPrevious: 9700,
-      pushedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+      lastLifeSign: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
       license: "MIT",
       archived: false,
     };
@@ -15,11 +15,42 @@ describe("computeQualityScore", () => {
     expect(score).toBeLessThanOrEqual(100);
   });
 
+  // Regression guard: freshness used to be computed from pushedAt, which
+  // updates on pushes to ANY branch. auto-sklearn (dead since 2023, but with
+  // recent bot traffic on its pushed_at) scored 67 that way and outranked
+  // live projects under the dashboard's default sort.
+  it("scores a repo with a stale life sign low even when bot pushes are recent", () => {
+    const abandoned: QualityInput = {
+      stars: 8000,
+      starsPrevious: 8000,
+      lastLifeSign: new Date(Date.now() - 1215 * 24 * 60 * 60 * 1000).toISOString(),
+      license: "BSD-3-Clause",
+      archived: false,
+    };
+    const live: QualityInput = { ...abandoned, lastLifeSign: new Date(Date.now() - 46 * 86400000).toISOString() };
+    expect(computeQualityScore(abandoned)).toBeLessThan(computeQualityScore(live));
+    expect(computeQualityScore(abandoned)).toBeLessThan(60);
+  });
+
+  it("treats a missing life sign as zero freshness rather than throwing", () => {
+    const input: QualityInput = {
+      stars: 1000,
+      starsPrevious: 1000,
+      lastLifeSign: null,
+      license: "MIT",
+      archived: false,
+    };
+    expect(computeQualityScore(input)).toBeGreaterThanOrEqual(0);
+    expect(computeQualityScore(input)).toBeLessThan(
+      computeQualityScore({ ...input, lastLifeSign: new Date().toISOString() }),
+    );
+  });
+
   it("scores an unmaintained project low", () => {
     const input: QualityInput = {
       stars: 500,
       starsPrevious: 510,
-      pushedAt: new Date(Date.now() - 400 * 24 * 60 * 60 * 1000).toISOString(),
+      lastLifeSign: new Date(Date.now() - 400 * 24 * 60 * 60 * 1000).toISOString(),
       license: null,
       archived: false,
     };
@@ -31,7 +62,7 @@ describe("computeQualityScore", () => {
     const input: QualityInput = {
       stars: 5000,
       starsPrevious: null,
-      pushedAt: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
+      lastLifeSign: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
       license: "Apache-2.0",
       archived: false,
     };
@@ -43,7 +74,7 @@ describe("computeQualityScore", () => {
     const active: QualityInput = {
       stars: 5000,
       starsPrevious: 4900,
-      pushedAt: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
+      lastLifeSign: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
       license: "MIT",
       archived: false,
     };
@@ -55,7 +86,7 @@ describe("computeQualityScore", () => {
     const extreme: QualityInput = {
       stars: 999999,
       starsPrevious: 1,
-      pushedAt: new Date().toISOString(),
+      lastLifeSign: new Date().toISOString(),
       license: "MIT",
       archived: false,
     };
@@ -67,7 +98,7 @@ describe("computeQualityScore", () => {
     const base: QualityInput = {
       stars: 0,
       starsPrevious: null,
-      pushedAt: new Date().toISOString(),
+      lastLifeSign: new Date().toISOString(),
       license: "MIT",
       archived: false,
     };
@@ -82,7 +113,7 @@ describe("computeQualityScore", () => {
     const base: QualityInput = {
       stars: 10000,
       starsPrevious: null,
-      pushedAt: new Date().toISOString(),
+      lastLifeSign: new Date().toISOString(),
       license: "MIT",
       archived: false,
     };
@@ -99,14 +130,14 @@ describe("computeQualityScore", () => {
     const healthyNoHistory: QualityInput = {
       stars: 145000,
       starsPrevious: null,
-      pushedAt: new Date().toISOString(),
+      lastLifeSign: new Date().toISOString(),
       license: "MIT",
       archived: false,
     };
     const poorNoHistory: QualityInput = {
       stars: 145000,
       starsPrevious: null,
-      pushedAt: new Date(Date.now() - 400 * 24 * 60 * 60 * 1000).toISOString(),
+      lastLifeSign: new Date(Date.now() - 400 * 24 * 60 * 60 * 1000).toISOString(),
       license: null,
       archived: false,
     };
@@ -122,7 +153,7 @@ describe("computeQualityScore", () => {
       starsPrevious: 9500, // legacy -> +500
       trend30d: 0, // 30d -> 0 (flat)
       trend7d: 500, // 7d -> +500 (hot)
-      pushedAt: new Date().toISOString(),
+      lastLifeSign: new Date().toISOString(),
       license: "MIT",
       archived: false,
     };

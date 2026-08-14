@@ -84,9 +84,12 @@ const LENSES = {
   },
 };
 
-// Whole-days since data.json was regenerated. null if not loaded yet.
+// Whole-days since the underlying measurements were taken. Prefers
+// `dataAsOf` (newest snapshot actually recorded) over `generated` (when the
+// file was written) — on a degraded run the file is fresh but the data is
+// not, and the dot must report the data.
 function dataAgeDays() {
-  const t = state.raw?.generated;
+  const t = state.raw?.dataAsOf || state.raw?.generated;
   if (!t) return null;
   const d = new Date(t);
   if (Number.isNaN(d.valueOf())) return null;

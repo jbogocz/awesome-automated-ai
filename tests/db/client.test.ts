@@ -117,6 +117,68 @@ describe("DB.migrate on a legacy database", () => {
   });
 });
 
+describe("DB.getSnapshotSeries", () => {
+  function seed(rows: [string, number][]): { db: DB; id: number } {
+    const path = join(tmpDir, `series-${rows.length}-${rows[0]?.[0] ?? "empty"}.db`);
+    const db = new DB(path);
+    db.migrate();
+    const id = db.upsertProject("a/series", "series");
+    const raw = new Database(path);
+    const stmt = raw.prepare("INSERT OR REPLACE INTO snapshots (project_id, snapshot_date, stars) VALUES (?, ?, ?)");
+    for (const [date, stars] of rows) stmt.run(id, date, stars);
+    raw.close();
+    return { db, id };
+  }
+
+  function daysAgo(n: number): string {
+    const d = new Date();
+    d.setUTCDate(d.getUTCDate() - n);
+    return d.toISOString().split("T")[0];
+  }
+
+  it("returns measured points oldest first, inside the window", () => {
+    const { db, id } = seed([
+      [daysAgo(21), 100],
+      [daysAgo(14), 120],
+      [daysAgo(7), 150],
+    ]);
+    const series = db.getSnapshotSeries(id, 90);
+    expect(series.map((p) => p.stars)).toEqual([100, 120, 150]);
+    expect(series[0].date < series[2].date).toBe(true);
+    db.close();
+  });
+
+  it("excludes points older than the window", () => {
+    const { db, id } = seed([
+      [daysAgo(200), 10],
+      [daysAgo(5), 300],
+      [daysAgo(3), 310],
+    ]);
+    expect(db.getSnapshotSeries(id, 90).map((p) => p.stars)).toEqual([300, 310]);
+    db.close();
+  });
+
+  // The sparkline plots these verbatim, so a corrupt zero/negative row would
+  // render as a real measured collapse to nothing.
+  it("drops non-positive star rows", () => {
+    const { db, id } = seed([
+      [daysAgo(30), 0],
+      [daysAgo(20), -2],
+      [daysAgo(10), 500],
+    ]);
+    expect(db.getSnapshotSeries(id, 90)).toEqual([{ date: daysAgo(10), stars: 500 }]);
+    db.close();
+  });
+
+  it("returns an empty series for a project with no snapshots", () => {
+    const db = new DB(":memory:");
+    db.migrate();
+    expect(db.getSnapshotSeries(db.upsertProject("x/y", "xy"), 90)).toEqual([]);
+    expect(db.getMaxSnapshotDate()).toBeNull();
+    db.close();
+  });
+});
+
 describe("DB.syncListedStatus", () => {
   it("marks listed projects removed from the list as rejected with a 'remove' decision", () => {
     const path = join(tmpDir, "sync-delist.db");

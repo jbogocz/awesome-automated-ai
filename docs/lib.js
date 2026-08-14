@@ -112,33 +112,29 @@ export function avatarHtml(e, mag, hot) {
   </span>`;
 }
 
-// ── Sparkline: 30-day star trajectory from stars + 30d star delta ──
-// `trend` is the absolute count of stars gained over the last 30 days
-// (current - stars30dAgo). The sparkline interpolates a smooth curve
-// from (stars - trend) → stars with a touch of seeded jitter.
-function sparkPoints(e, n = 10) {
-  const stars = e.stars ?? 0;
-  const trend = e.trend ?? 0;
-  if (!stars || e.external || e.archived) return null;
-  if (trend === 0 && stars < 50) return null;
-  const start = Math.max(stars - trend, 1);
-  const seed = [...(e.name || "")].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
-  const noise = (i) => ((((seed ^ (i * 2654435761)) >>> 0) % 1000) / 1000 - 0.5) * 0.06;
-  const out = [];
-  for (let i = 0; i < n; i++) {
-    const k = i / (n - 1);
-    const eased = k * k * (3 - 2 * k);
-    const v = start + (stars - start) * eased;
-    out.push(v * (1 + noise(i)));
+// ── Sparkline: measured star history, plotted verbatim ──────────────
+// `e.history` is the entry's real weekly snapshots (src/db/client.ts
+// getSnapshotSeries) as [date, stars] tuples, oldest first. Every point
+// drawn is a recorded measurement — nothing here interpolates, smooths or
+// imputes. Entries without enough history render the dashed placeholder.
+const SPARK_MIN_POINTS = 3;
+
+function sparkPoints(e) {
+  if (e.external || e.archived) return null;
+  const history = Array.isArray(e.history) ? e.history : null;
+  if (!history || history.length < SPARK_MIN_POINTS) return null;
+  const pts = [];
+  for (const [date, stars] of history) {
+    const t = Date.parse(date);
+    if (Number.isNaN(t) || typeof stars !== "number") continue;
+    pts.push({ t, v: stars });
   }
-  out[0] = start;
-  out[n - 1] = stars;
-  return out;
+  return pts.length >= SPARK_MIN_POINTS ? pts : null;
 }
 
 export function sparkSvg(e, mag) {
-  const vals = sparkPoints(e);
-  if (!vals) {
+  const pts0 = sparkPoints(e);
+  if (!pts0) {
     return `<svg class="spark" viewBox="0 0 50 14" width="50" height="14" aria-hidden="true">
       <line x1="2" y1="7" x2="48" y2="7" stroke="var(--shadow-ink)" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/>
     </svg>`;
@@ -146,12 +142,17 @@ export function sparkSvg(e, mag) {
   const w = 50,
     h = 14,
     pad = 1;
+  const vals = pts0.map((p) => p.v);
   const min = Math.min(...vals);
   const max = Math.max(...vals);
   const range = max - min || 1;
-  const pts = vals.map((v, i) => {
-    const x = pad + (i / (vals.length - 1)) * (w - 2 * pad);
-    const y = h - pad - ((v - min) / range) * (h - 2 * pad);
+  // x is proportional to elapsed time, not index, so a missed weekly
+  // snapshot reads as a gap rather than a compressed step.
+  const t0 = pts0[0].t;
+  const span = pts0.at(-1).t - t0 || 1;
+  const pts = pts0.map((p) => {
+    const x = pad + ((p.t - t0) / span) * (w - 2 * pad);
+    const y = h - pad - ((p.v - min) / range) * (h - 2 * pad);
     return [x, y];
   });
   const linePath = pts.map((p, i) => `${(i ? "L" : "M") + p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ");

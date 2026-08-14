@@ -481,6 +481,32 @@ export class DB {
     };
   }
 
+  /**
+   * Real star history for the sparkline, oldest first. Served straight from
+   * the weekly snapshots — the chart plots these points verbatim, so nothing
+   * here may be smoothed, interpolated or imputed.
+   */
+  getSnapshotSeries(projectId: number, days: number): { date: string; stars: number }[] {
+    const cutoff = new Date();
+    cutoff.setUTCDate(cutoff.getUTCDate() - days);
+    const rows = this.sqlite
+      .prepare(
+        `SELECT snapshot_date, stars FROM snapshots
+         WHERE project_id = ? AND snapshot_date >= ? AND stars > 0
+         ORDER BY snapshot_date ASC`,
+      )
+      .all(projectId, cutoff.toISOString().split("T")[0]) as { snapshot_date: string; stars: number }[];
+    return rows.map((r) => ({ date: r.snapshot_date, stars: r.stars }));
+  }
+
+  /** Newest snapshot date across all projects — the real "data as of" date. */
+  getMaxSnapshotDate(): string | null {
+    const row = this.sqlite.prepare("SELECT MAX(snapshot_date) AS d FROM snapshots").get() as
+      | { d: string | null }
+      | undefined;
+    return row?.d ?? null;
+  }
+
   getPreviousStars(projectId: number): number | null {
     const today = new Date().toISOString().split("T")[0];
     const row = this.sqlite

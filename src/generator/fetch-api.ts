@@ -4,6 +4,7 @@ import { DB } from "../db/client.js";
 import { fetchRepoMetadataBatch } from "../github/repo-metadata-graphql.js";
 import { computeQualityScore } from "../scoring/quality.js";
 import { computeTrends } from "../scoring/trends.js";
+import { lastLifeSign } from "../status.js";
 import { logger } from "../utils/logger.js";
 import { backfillBatch } from "./backfill.js";
 import type { ApiData, ApiRepoData } from "./readme.js";
@@ -42,8 +43,12 @@ function entryFromLatestSnapshot(db: DB, projectId: number, yamlTagline: string 
     score: latest.compositeScore ?? 0,
     topics: latest.topics ?? [],
     tagline: db.getTagline(projectId) ?? yamlTagline ?? null,
+    history: db.getSnapshotSeries(projectId, SPARKLINE_DAYS),
   };
 }
+
+/** Window the dashboard sparkline plots, in days. */
+const SPARKLINE_DAYS = 90;
 
 export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
   const doc = parseYaml(yamlContent) as {
@@ -126,7 +131,14 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
       starsPrevious,
       trend7d,
       trend30d,
-      pushedAt: raw.pushed,
+      lastLifeSign: lastLifeSign({
+        archived: raw.archived,
+        lastCommit: raw.lastCommit,
+        lastRelease: raw.lastRelease,
+        lastTag: raw.lastTag,
+        lastStableTag: raw.lastStableTag,
+        commits90d: raw.commits90d,
+      }),
       license: raw.license,
       archived: raw.archived,
     });
@@ -171,6 +183,8 @@ export async function fetchRepoData(yamlContent: string): Promise<ApiData> {
       score,
       topics: raw.topics,
       tagline,
+      // Read after insertSnapshot above so today's point is included.
+      history: db.getSnapshotSeries(projectId, SPARKLINE_DAYS),
     };
   }
   if (stale.length > 0) {

@@ -19,6 +19,8 @@ export interface ApiRepoData {
   score: number;
   topics: string[];
   tagline: string | null;
+  /** Real weekly star snapshots, oldest first. Plotted verbatim by the dashboard sparkline. */
+  history?: { date: string; stars: number }[];
 }
 export type ApiData = Record<string, ApiRepoData>;
 

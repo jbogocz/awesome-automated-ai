@@ -5,7 +5,12 @@ export interface QualityInput {
   starsPrevious: number | null;
   trend7d?: number | null;
   trend30d?: number | null;
-  pushedAt: string;
+  /**
+   * Newest life sign — mainline commit, release or tag (src/status.ts).
+   * Deliberately NOT pushedAt: that updates on pushes to any branch, so bot
+   * and PR-head traffic would make an abandoned repo look fresh.
+   */
+  lastLifeSign: string | null;
   license: string | null;
   archived: boolean;
 }
@@ -31,7 +36,7 @@ export function computeQualityScore(input: QualityInput): number {
   if (input.archived) return 0;
 
   const starsScore = computeStarsScore(input.stars);
-  const freshnessScore = computeFreshnessScore(input.pushedAt);
+  const freshnessScore = computeFreshnessScore(input.lastLifeSign);
   const licenseScore = computeLicenseScore(input.license);
 
   // Real momentum signal if snapshots allow it, otherwise impute neutrally from the
@@ -52,10 +57,10 @@ function computeStarsScore(stars: number): number {
 
 // Continuous exponential decay so a 1-day-old push outranks a 29-day-old one.
 // 0d=100, 30d=85, 90d=61, 180d=37, 365d=13.
-function computeFreshnessScore(pushedAt: string): number {
-  if (!pushedAt) return 0;
+function computeFreshnessScore(lastLifeSign: string | null): number {
+  if (!lastLifeSign) return 0;
   try {
-    const days = (Date.now() - new Date(pushedAt).getTime()) / (24 * 60 * 60 * 1000);
+    const days = (Date.now() - new Date(lastLifeSign).getTime()) / (24 * 60 * 60 * 1000);
     if (days < 0) return 100;
     return clamp(100 * Math.exp(-days / 180), 0, 100);
   } catch {
