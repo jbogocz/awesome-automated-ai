@@ -268,3 +268,61 @@ describe("DB.countPrsToday", () => {
     db.close();
   });
 });
+
+describe("DB.pruneSnapshotHistory", () => {
+  function seeded(rows: [string, number][]): { db: DB; id: number; path: string } {
+    const path = join(tmpDir, `prune-${rows.length}-${rows[0]?.[0] ?? "e"}.db`);
+    const db = new DB(path);
+    db.migrate();
+    const id = db.upsertProject("a/prune", "prune");
+    const raw = new Database(path);
+    const stmt = raw.prepare("INSERT OR REPLACE INTO snapshots (project_id, snapshot_date, stars) VALUES (?, ?, ?)");
+    for (const [date, stars] of rows) stmt.run(id, date, stars);
+    raw.close();
+    return { db, id, path };
+  }
+
+  function daysAgo(n: number): string {
+    const d = new Date();
+    d.setUTCDate(d.getUTCDate() - n);
+    return d.toISOString().split("T")[0];
+  }
+
+  it("leaves recent history at full resolution", () => {
+    const { db, id } = seeded([
+      [daysAgo(30), 10],
+      [daysAgo(21), 11],
+      [daysAgo(14), 12],
+      [daysAgo(7), 13],
+    ]);
+    expect(db.pruneSnapshotHistory(180)).toBe(0);
+    expect(db.getSnapshotSeries(id, 400)).toHaveLength(4);
+    db.close();
+  });
+
+  it("thins older history to one row per month, keeping the newest", () => {
+    const { db, id } = seeded([
+      ["2020-01-05", 1],
+      ["2020-01-12", 2],
+      ["2020-01-26", 3],
+      ["2020-02-09", 4],
+      ["2020-02-23", 5],
+      [daysAgo(3), 99],
+    ]);
+    expect(db.pruneSnapshotHistory(180)).toBe(3);
+    const kept = db.getSnapshotSeries(id, 100_000).map((p) => p.date);
+    expect(kept).toEqual(["2020-01-26", "2020-02-23", daysAgo(3)]);
+    db.close();
+  });
+
+  it("is idempotent", () => {
+    const { db } = seeded([
+      ["2020-01-05", 1],
+      ["2020-01-12", 2],
+      [daysAgo(3), 9],
+    ]);
+    expect(db.pruneSnapshotHistory(180)).toBe(1);
+    expect(db.pruneSnapshotHistory(180)).toBe(0);
+    db.close();
+  });
+});

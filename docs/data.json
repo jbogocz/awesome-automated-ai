@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-14T14:03:32.849Z",
+  "generated": "2026-08-14T14:14:20.760Z",
   "dataAsOf": "2026-08-14",
   "categories": [
     {
@@ -1586,7 +1586,7 @@
         {
           "name": "Dataiku Visual ML",
           "repo": "",
-          "url": "https://www.dataiku.com/product/key-capabilities/machine-learning/automl/",
+          "url": "https://www.dataiku.com/product/machine-learning",
           "description": "AutoML and visual ML inside the Dataiku data platform covering classification, regression, forecasting, unsupervised learning, image classification, and object detection, with automated diagnostics, fairness analysis, and MLOps integration.",
           "tagline": "Visual AutoML inside the Dataiku data platform",
           "note": "",
@@ -5219,8 +5219,8 @@
           "description": "Fine-tune LLMs 2-5x faster with 80% less memory on a single GPU through optimized kernels and custom autograd.",
           "tagline": "Fine-tune LLMs 2-5x faster, 80% less memory",
           "note": "",
-          "stars": 71312,
-          "trend": 2997,
+          "stars": 71313,
+          "trend": 2998,
           "score": 85,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-14T14:01:19Z",
@@ -5295,7 +5295,7 @@
             ],
             [
               "2026-08-14",
-              71312
+              71313
             ]
           ]
         },
@@ -6161,8 +6161,8 @@
           "description": "Hugging Face's end-to-end library for robotics learning with pretrained policies, datasets, and simulation environments for imitation and RL.",
           "tagline": "End-to-end learning for robotics",
           "note": "",
-          "stars": 26650,
-          "trend": 762,
+          "stars": 26649,
+          "trend": 761,
           "score": 79,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-13T18:11:31Z",
@@ -6233,7 +6233,7 @@
             ],
             [
               "2026-08-14",
-              26650
+              26649
             ]
           ]
         },
@@ -7366,8 +7366,8 @@
           "description": "LangChain's graph-based runtime for building stateful, resilient agents with checkpointing, human-in-the-loop, and controllable multi-actor workflows.",
           "tagline": "Stateful graph runtime for agents",
           "note": "",
-          "stars": 39672,
-          "trend": 2184,
+          "stars": 39674,
+          "trend": 2186,
           "score": 85,
           "license": "MIT",
           "lastCommit": "2026-08-11T13:55:59Z",
@@ -7442,7 +7442,7 @@
             ],
             [
               "2026-08-14",
-              39672
+              39674
             ]
           ]
         },
@@ -7709,8 +7709,8 @@
           "description": "Universal memory layer that gives AI agents persistent, personalized long-term memory with extraction, retrieval, and graph-backed storage.",
           "tagline": "Universal memory layer for agents",
           "note": "",
-          "stars": 63242,
-          "trend": 2215,
+          "stars": 63244,
+          "trend": 2217,
           "score": 84,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-14T12:47:17Z",
@@ -7785,7 +7785,7 @@
             ],
             [
               "2026-08-14",
-              63242
+              63244
             ]
           ]
         },
@@ -8444,7 +8444,7 @@
           "trend": 3318,
           "score": 82,
           "license": "NOASSERTION",
-          "lastCommit": "2026-08-14T14:01:36Z",
+          "lastCommit": "2026-08-14T14:02:47Z",
           "lastRelease": "2026-08-04T00:41:26Z",
           "archived": false,
           "status": "active",
@@ -8609,8 +8609,8 @@
           "description": "Self-improving agent with a built-in learning loop - it creates skills from experience, searches its own past conversations, and builds a model of you across sessions. Runs anywhere from a $5 VPS to a GPU cluster (Nous Research).",
           "tagline": "Self-improving agent that learns skills from experience",
           "note": "",
-          "stars": 230462,
-          "trend": 15060,
+          "stars": 230468,
+          "trend": 15066,
           "score": 94,
           "license": "MIT",
           "lastCommit": "2026-08-14T13:02:09Z",
@@ -8768,7 +8768,7 @@
             ],
             [
               "2026-08-14",
-              230462
+              230468
             ]
           ]
         },
@@ -8779,8 +8779,8 @@
           "description": "The project that ignited the autonomous-agent wave in 2023, now a full platform for building, deploying, and monitoring continuous agents with a visual workflow builder.",
           "tagline": "The original autonomous agent, now a platform",
           "note": "",
-          "stars": 186615,
-          "trend": 1073,
+          "stars": 186618,
+          "trend": 1076,
           "score": 78,
           "license": "NOASSERTION",
           "lastCommit": "2026-08-13T03:14:20Z",
@@ -8937,7 +8937,7 @@
             ],
             [
               "2026-08-14",
-              186615
+              186618
             ]
           ]
         },
@@ -8952,7 +8952,7 @@
           "trend": 3493,
           "score": 81,
           "license": "NOASSERTION",
-          "lastCommit": "2026-08-14T12:03:54Z",
+          "lastCommit": "2026-08-14T13:51:41Z",
           "lastRelease": "2026-07-28T03:43:51Z",
           "archived": false,
           "status": "active",
@@ -10313,8 +10313,8 @@
           "description": "Stateful agents framework from the team behind MemGPT - agents get editable long-term memory that persists across sessions, served via REST APIs with a visual development environment.",
           "tagline": "Stateful agents with editable long-term memory",
           "note": "",
-          "stars": 24238,
-          "trend": 433,
+          "stars": 24239,
+          "trend": 434,
           "score": 77,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-14T03:08:39Z",
@@ -10471,7 +10471,7 @@
             ],
             [
               "2026-08-14",
-              24238
+              24239
             ]
           ]
         },
@@ -10655,7 +10655,7 @@
           "trend": 1509,
           "score": 86,
           "license": "MIT",
-          "lastCommit": "2026-08-14T13:35:09Z",
+          "lastCommit": "2026-08-14T14:11:28Z",
           "lastRelease": "2026-08-14T09:09:19Z",
           "archived": false,
           "status": "active",
@@ -10821,8 +10821,8 @@
           "description": "Full-stack framework (formerly Phidata) for building and operating agent platforms with memory, knowledge, and human-in-the-loop control, known for fast agent instantiation and a built-in UI.",
           "tagline": "Full-stack framework for building agent platforms",
           "note": "",
-          "stars": 41707,
-          "trend": 534,
+          "stars": 41708,
+          "trend": 535,
           "score": 78,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-13T12:07:30Z",
@@ -10981,7 +10981,7 @@
             ],
             [
               "2026-08-14",
-              41707
+              41708
             ]
           ]
         },
@@ -10992,8 +10992,8 @@
           "description": "Framework for building document agents over private data, covering ingestion, parsing, indexing, and retrieval for RAG and agentic workflows.",
           "tagline": "Document agents and retrieval over private data",
           "note": "",
-          "stars": 51635,
-          "trend": -1,
+          "stars": 51634,
+          "trend": -2,
           "score": 77,
           "license": "MIT",
           "lastCommit": "2026-08-13T18:07:47Z",
@@ -11132,7 +11132,7 @@
             ],
             [
               "2026-08-14",
-              51635
+              51634
             ]
           ]
         },
@@ -11452,11 +11452,11 @@
           "description": "AI software development platform achieving 53-72% resolve rate on SWE-Bench Verified.",
           "tagline": "AI dev platform, 53-72% SWE-Bench resolve rate",
           "note": "",
-          "stars": 84012,
-          "trend": 2957,
+          "stars": 84014,
+          "trend": 2959,
           "score": 85,
           "license": "MIT",
-          "lastCommit": "2026-08-14T01:22:41Z",
+          "lastCommit": "2026-08-14T14:05:27Z",
           "lastRelease": "2026-08-13T01:57:00Z",
           "archived": false,
           "status": "active",
@@ -11528,7 +11528,7 @@
             ],
             [
               "2026-08-14",
-              84012
+              84014
             ]
           ]
         },
@@ -11878,8 +11878,8 @@
           "description": "Autonomous VS Code extension with Plan and Act modes where every file edit, terminal command, and browser action requires explicit approval.",
           "tagline": "Approval-gated autonomous agent inside VS Code",
           "note": "",
-          "stars": 66169,
-          "trend": 1439,
+          "stars": 66170,
+          "trend": 1440,
           "score": 81,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-14T08:44:30Z",
@@ -11954,7 +11954,7 @@
             ],
             [
               "2026-08-14",
-              66169
+              66170
             ]
           ]
         },
@@ -12437,8 +12437,8 @@
           "description": "Terminal-native coding agent that hits ~80.8% on SWE-bench Verified with Opus 4.6 and ships as CLI plus IDE extensions (Anthropic).",
           "tagline": "Anthropic's 80.8% SWE-bench terminal coding agent",
           "note": "",
-          "stars": 141432,
-          "trend": 3398,
+          "stars": 141433,
+          "trend": 3399,
           "score": 77,
           "license": null,
           "lastCommit": "2026-08-13T23:29:53Z",
@@ -12513,7 +12513,7 @@
             ],
             [
               "2026-08-14",
-              141432
+              141433
             ]
           ]
         },
@@ -13306,8 +13306,8 @@
           "description": "LLM-powered knowledge curation that researches topics and generates full articles with citations (Stanford).",
           "tagline": "LLM researches topics and writes full articles",
           "note": "",
-          "stars": 30989,
-          "trend": 865,
+          "stars": 30988,
+          "trend": 864,
           "score": 67,
           "license": "MIT",
           "lastCommit": "2025-09-30T18:07:17Z",
@@ -13382,7 +13382,7 @@
             ],
             [
               "2026-08-14",
-              30989
+              30988
             ]
           ]
         },
@@ -16227,8 +16227,8 @@
           "description": "Unified API gateway for 100+ LLMs with load balancing, cost tracking, and automatic fallback routing.",
           "tagline": "Unified API gateway for 100+ LLMs",
           "note": "",
-          "stars": 56328,
-          "trend": 2497,
+          "stars": 56329,
+          "trend": 2498,
           "score": 81,
           "license": "NOASSERTION",
           "lastCommit": "2026-08-14T07:01:35Z",
@@ -16303,7 +16303,7 @@
             ],
             [
               "2026-08-14",
-              56328
+              56329
             ]
           ]
         },
@@ -16401,9 +16401,9 @@
           "description": "Framework for training and serving LLM routers that reduce costs by up to 85% without quality loss (LMSYS).",
           "tagline": "LLM routers cutting costs 85% without quality loss",
           "note": "LiteLLM and LLMRouter cover routing for new work.",
-          "stars": 5345,
-          "trend": 142,
-          "score": 58,
+          "stars": 5346,
+          "trend": 143,
+          "score": 59,
           "license": "Apache-2.0",
           "lastCommit": "2024-08-10T19:10:15Z",
           "lastRelease": null,
@@ -16476,7 +16476,7 @@
             ],
             [
               "2026-08-14",
-              5345
+              5346
             ]
           ]
         },
@@ -16660,11 +16660,11 @@
           "description": "High-performance enterprise AI gateway with adaptive load balancing, cluster mode, guardrails, and 1000+ model support; claims 50x lower latency than LiteLLM at under 100µs overhead at 5K RPS (Maxim AI).",
           "tagline": "Enterprise AI gateway with <100µs overhead at 5K RPS",
           "note": "",
-          "stars": 7309,
-          "trend": 738,
+          "stars": 7311,
+          "trend": 740,
           "score": 82,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T13:57:26Z",
+          "lastCommit": "2026-08-14T14:06:48Z",
           "lastRelease": "2026-08-13T20:52:23Z",
           "archived": false,
           "status": "active",
@@ -16736,7 +16736,7 @@
             ],
             [
               "2026-08-14",
-              7309
+              7311
             ]
           ]
         },
@@ -17445,8 +17445,8 @@
           "description": "LLM observability platform with one-line integration for cost tracking, latency analysis, prompt versioning, and usage dashboards (YC W23).",
           "tagline": "One-line LLM observability for cost and latency tracking",
           "note": "",
-          "stars": 6067,
-          "trend": 112,
+          "stars": 6068,
+          "trend": 113,
           "score": 71,
           "license": "Apache-2.0",
           "lastCommit": "2026-07-21T12:35:38Z",
@@ -17521,7 +17521,7 @@
             ],
             [
               "2026-08-14",
-              6067
+              6068
             ]
           ]
         }
@@ -20392,8 +20392,8 @@
           "description": "PII detection and anonymization framework that redacts, masks, and de-identifies sensitive data across text, images, and structured records.",
           "tagline": "PII detection and anonymization framework",
           "note": "",
-          "stars": 10479,
-          "trend": 1,
+          "stars": 10480,
+          "trend": 2,
           "score": 71,
           "license": "MIT",
           "lastCommit": "2026-08-09T06:51:19Z",
@@ -20531,7 +20531,7 @@
             ],
             [
               "2026-08-14",
-              10479
+              10480
             ]
           ]
         }
@@ -22289,8 +22289,8 @@
           "description": "LLM quantization toolkit with support for NVIDIA CUDA, AMD ROCm, Intel, and Apple Silicon backends.",
           "tagline": "LLM quantization for CUDA, ROCm, and Apple Silicon",
           "note": "",
-          "stars": 1227,
-          "trend": 21,
+          "stars": 1228,
+          "trend": 22,
           "score": 62,
           "license": "NOASSERTION",
           "lastCommit": "2026-08-11T06:55:28Z",
@@ -22365,7 +22365,7 @@
             ],
             [
               "2026-08-14",
-              1227
+              1228
             ]
           ]
         },
@@ -22970,7 +22970,7 @@
           "trend": 1779,
           "score": 81,
           "license": "NOASSERTION",
-          "lastCommit": "2026-08-14T13:51:32Z",
+          "lastCommit": "2026-08-14T14:09:39Z",
           "lastRelease": "2026-08-14T08:04:16Z",
           "archived": false,
           "status": "active",
@@ -24274,8 +24274,8 @@
           "description": "Multi-framework inference serving for TensorRT, PyTorch, ONNX, and custom backends (NVIDIA).",
           "tagline": "Multi-framework inference server for production deployment",
           "note": "",
-          "stars": 10918,
-          "trend": 70,
+          "stars": 10919,
+          "trend": 71,
           "score": 72,
           "license": "BSD-3-Clause",
           "lastCommit": "2026-08-13T00:09:27Z",
@@ -24347,7 +24347,7 @@
             ],
             [
               "2026-08-14",
-              10918
+              10919
             ]
           ]
         },
@@ -24358,8 +24358,8 @@
           "description": "Inference optimization and deployment toolkit for CPUs, GPUs, and edge accelerators (Intel).",
           "tagline": "Intel inference optimization for CPU, GPU, and edge",
           "note": "",
-          "stars": 10651,
-          "trend": 122,
+          "stars": 10652,
+          "trend": 123,
           "score": 73,
           "license": "Apache-2.0",
           "lastCommit": "2026-08-14T12:24:04Z",
@@ -24434,7 +24434,7 @@
             ],
             [
               "2026-08-14",
-              10651
+              10652
             ]
           ]
         },
@@ -24964,8 +24964,8 @@
           "description": "Docker-like local LLM runner for getting models up and running quickly for prototyping.",
           "tagline": "Docker-like local LLM runner for fast prototyping",
           "note": "",
-          "stars": 178532,
-          "trend": 2238,
+          "stars": 178533,
+          "trend": 2239,
           "score": 83,
           "license": "MIT",
           "lastCommit": "2026-08-13T22:19:02Z",
@@ -25040,7 +25040,7 @@
             ],
             [
               "2026-08-14",
-              178532
+              178533
             ]
           ]
         },
@@ -25051,8 +25051,8 @@
           "description": "LLM inference in C/C++ with broad hardware support - the foundation for most local LLM applications.",
           "tagline": "C/C++ LLM inference, foundation for local apps",
           "note": "",
-          "stars": 123895,
-          "trend": 3233,
+          "stars": 123896,
+          "trend": 3234,
           "score": 85,
           "license": "MIT",
           "lastCommit": "2026-08-14T12:14:19Z",
@@ -25123,7 +25123,7 @@
             ],
             [
               "2026-08-14",
-              123895
+              123896
             ]
           ]
         },
@@ -25225,7 +25225,7 @@
           "trend": 1384,
           "score": 83,
           "license": "Apache-2.0",
-          "lastCommit": "2026-08-14T14:01:48Z",
+          "lastCommit": "2026-08-14T14:11:34Z",
           "lastRelease": "2026-08-08T00:19:16Z",
           "archived": false,
           "status": "active",
@@ -25713,8 +25713,8 @@
           "description": "Datacenter-scale distributed inference server with disaggregated prefill and decode, KV-cache-aware routing, and multi-backend support.",
           "tagline": "Datacenter-scale disaggregated inference serving",
           "note": "",
-          "stars": 7762,
-          "trend": 0,
+          "stars": 7763,
+          "trend": 1,
           "score": 66,
           "license": "NOASSERTION",
           "lastCommit": "2026-08-14T13:17:38Z",
@@ -25853,7 +25853,7 @@
             ],
             [
               "2026-08-14",
-              7762
+              7763
             ]
           ]
         },

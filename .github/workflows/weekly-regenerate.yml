@@ -57,6 +57,46 @@ jobs:
           git push
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
+      # Everything below reports; nothing below can fail the run. The
+      # regeneration refreshes metadata but never adds, retires or re-slugs an
+      # entry, so drift accumulated silently until someone went looking.
+      - name: Audit catalog drift
+        id: audit
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pnpm run audit > audit-report.md 2>audit.log || true
+          cat audit.log
+          # The command prints the report to stdout only when something drifted.
+          if [ -s audit-report.md ]; then
+            echo "drift=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "drift=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check links the metadata fetch never touches
+        continue-on-error: true
+        run: pnpm run check-links 2>&1 | tee -a audit-report.md
+
+      - name: Open or update the drift tracking issue
+        if: steps.audit.outputs.drift == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: "Catalog drift"
+        run: |
+          # One long-lived issue, updated in place, so the weekly job never
+          # accumulates a pile of near-identical reports.
+          NUM=$(gh issue list --state open --search "$TITLE in:title" --json number,title \
+                  --jq "[.[] | select(.title == \"$TITLE\")] | .[0].number // empty")
+          if [ -n "$NUM" ]; then
+            gh issue edit "$NUM" --body-file audit-report.md
+            echo "Updated issue #$NUM"
+          else
+            gh issue create --title "$TITLE" --body-file audit-report.md
+          fi
+
       - name: Publish weekly release
         if: steps.commit.outputs.sha != ''
         env:

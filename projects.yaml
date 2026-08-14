@@ -130,7 +130,7 @@ categories:
     pricing: enterprise
     commercial: true
   - name: Dataiku Visual ML
-    url: https://www.dataiku.com/product/key-capabilities/machine-learning/automl/
+    url: https://www.dataiku.com/product/machine-learning
     description: AutoML and visual ML inside the Dataiku data platform covering classification, regression, forecasting, unsupervised learning, image classification, and object detection, with automated diagnostics, fairness analysis, and MLOps integration.
     tagline: Visual AutoML inside the Dataiku data platform
     vendor: Dataiku

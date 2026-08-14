@@ -2,6 +2,11 @@ import { clamp } from "./utils.js";
 
 export interface ScoreInput {
   stars: number;
+  /**
+   * Not supplied by discovery today, so scoreStarsVelocity returns its neutral
+   * 50. Kept because the field is real and cheap to start passing; the neutral
+   * default is explicit rather than an accidental zero.
+   */
   starsLastMonth?: number;
   commitCount30d?: number;
   issueResponseHours?: number;
@@ -21,14 +26,24 @@ export interface ScoreResult {
   llmRelevance: number;
 }
 
+/**
+ * Discovery-triage weights. They sum to 1, so the result is a real weighted
+ * mean rather than a number scaled by whatever the weights happen to total.
+ *
+ * There used to be a seventh term, `communityPlaceholder: 0.1`, whose value
+ * was `(starsVelocity + commitFrequency + llmRelevance) / 3` — a re-average of
+ * three terms already carrying 0.20/0.15/0.20. That is not a signal, it is the
+ * same evidence counted twice, and it quietly gave those three an extra ~10%
+ * of the weight while presenting itself as a distinct dimension. Its share is
+ * redistributed across the terms that measure something.
+ */
 const W = {
-  starsVelocity: 0.2,
-  commitFrequency: 0.15,
+  starsVelocity: 0.22,
+  commitFrequency: 0.17,
   issueResponse: 0.1,
-  contributors: 0.1,
-  documentation: 0.15,
-  llmRelevance: 0.2,
-  communityPlaceholder: 0.1,
+  contributors: 0.11,
+  documentation: 0.18,
+  llmRelevance: 0.22,
 } as const;
 
 export function computeScore(input: ScoreInput): ScoreResult {
@@ -38,7 +53,6 @@ export function computeScore(input: ScoreInput): ScoreResult {
   const contributors = scoreContributors(input.contributorCount);
   const documentation = scoreDocumentation(input.hasReadme, input.hasLicense);
   const llmRelevance = input.llmRelevanceScore;
-  const communityEstimate = (starsVelocity + commitFrequency + llmRelevance) / 3;
 
   const raw =
     starsVelocity * W.starsVelocity +
@@ -46,8 +60,7 @@ export function computeScore(input: ScoreInput): ScoreResult {
     issueResponse * W.issueResponse +
     contributors * W.contributors +
     documentation * W.documentation +
-    llmRelevance * W.llmRelevance +
-    communityEstimate * W.communityPlaceholder;
+    llmRelevance * W.llmRelevance;
 
   return {
     total: clamp(Math.round(raw), 0, 100),

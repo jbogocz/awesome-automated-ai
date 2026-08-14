@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { parse as parseYaml } from "yaml";
 import { loadManifest } from "../categories.js";
-import { MIN_FRESH_RATIO } from "../constants.js";
+import { MIN_FRESH_RATIO, README_RENDER_LIMIT_BYTES, README_WARN_BYTES } from "../constants.js";
 import { fetchRepoData, freshRatio, loadApiDataFromDB } from "../generator/fetch-api.js";
 import { type ApiData, generateReadme } from "../generator/readme.js";
 import { logger } from "../utils/logger.js";
@@ -59,5 +59,17 @@ export async function runGenerateCommand(options: GenerateOptions): Promise<void
 
   const readme = generateReadme({ yamlContent, header, footer, apiData, manifest: loadManifest() });
   writeFileSync(options.readmePath, readme);
-  logger.info("Generated README.md");
+
+  const bytes = Buffer.byteLength(readme, "utf-8");
+  const entries = Object.keys(apiData).length;
+  logger.info(`Generated README.md (${Math.round(bytes / 1024)} KB)`);
+  if (bytes >= README_WARN_BYTES) {
+    const perEntry = entries > 0 ? bytes / entries : bytes;
+    const room = Math.floor((README_RENDER_LIMIT_BYTES - bytes) / perEntry);
+    logger.warn(
+      `README is ${Math.round(bytes / 1024)} KB; GitHub stops rendering markdown around ` +
+        `${README_RENDER_LIMIT_BYTES / 1024} KB. Roughly ${room} more entries of headroom — ` +
+        `plan to split per-section files before then.`,
+    );
+  }
 }

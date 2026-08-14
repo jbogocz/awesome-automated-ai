@@ -522,6 +522,36 @@ export class DB {
     })(rows);
   }
 
+  /**
+   * Thins snapshot history older than `fullResolutionDays` down to one row per
+   * project per calendar month, keeping the newest row in each month.
+   *
+   * curator.db is committed, so every weekly row is permanent git history —
+   * about 86 KB per week at 269 repos, and roughly 330 KB per week at the
+   * 1000-entry target. Nothing renders beyond 90 days (the sparkline window),
+   * so full weekly resolution past six months buys nothing. Returns the number
+   * of rows removed. Deliberately does NOT vacuum: on an append-mostly SQLite
+   * file that rewrites every page and produces a worse git delta than the rows
+   * it reclaims.
+   */
+  pruneSnapshotHistory(fullResolutionDays = 180): number {
+    const cutoff = new Date();
+    cutoff.setUTCDate(cutoff.getUTCDate() - fullResolutionDays);
+    const cutoffStr = cutoff.toISOString().split("T")[0];
+    const info = this.sqlite
+      .prepare(
+        `DELETE FROM snapshots
+          WHERE snapshot_date < ?
+            AND id NOT IN (
+              SELECT MAX(id) FROM snapshots
+               WHERE snapshot_date < ?
+               GROUP BY project_id, substr(snapshot_date, 1, 7)
+            )`,
+      )
+      .run(cutoffStr, cutoffStr);
+    return info.changes;
+  }
+
   /** Newest snapshot date across all projects — the real "data as of" date. */
   getMaxSnapshotDate(): string | null {
     const row = this.sqlite.prepare("SELECT MAX(snapshot_date) AS d FROM snapshots").get() as

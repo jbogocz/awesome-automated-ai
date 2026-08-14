@@ -98,7 +98,7 @@
 ## Books and Courses
 
 - [Automated Machine Learning (Springer)](https://www.automl.org/book/) - The definitive AutoML textbook by Hutter, Kotthoff, and Vanschoren covering methods, systems, and challenges.
-- [MIT EfficientML.ai](https://efficientml.ai/) - Course on efficient ML and neural architecture search by Song Han at MIT.
+- [MIT EfficientML.ai](https://hanlab.mit.edu/course) - Course on efficient ML and neural architecture search by Song Han at MIT.
 - [AutoML.org](https://www.automl.org/) - Research portal and resources from the AutoML group at University of Freiburg and Leibniz University Hannover.
 
 **[⬆ Back to Contents](#contents)**

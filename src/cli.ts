@@ -1,6 +1,8 @@
 import { resolve } from "node:path";
 import { parseArgs } from "node:util";
+import { defaultAuditOptions, renderAuditReport, runAuditCommand } from "./commands/audit.js";
 import { runBackfillTrendsCommand } from "./commands/backfill-trends.js";
+import { defaultCheckLinksOptions, runCheckLinksCommand } from "./commands/check-links.js";
 import { runDiscoverCommand } from "./commands/discover.js";
 import { runGenerateCommand } from "./commands/generate.js";
 import { runReclassifyCommand } from "./commands/reclassify.js";
@@ -18,7 +20,7 @@ const RECLASSIFY_REPORT = resolve(ROOT, "data/reclassify-report.md");
 const DB_PATH = resolve(ROOT, "data/curator.db");
 
 const USAGE =
-  "Usage: tsx src/cli.ts <discover|generate|refresh-tags|reclassify|backfill-trends|validate> [--dry-run] [--limit=N] [--force] [--repo=X/Y] [--resume] [--no-fetch] [--verbose]";
+  "Usage: tsx src/cli.ts <discover|generate|refresh-tags|reclassify|backfill-trends|validate|check-links|audit> [--dry-run] [--limit=N] [--force] [--repo=X/Y] [--resume] [--no-fetch] [--strict] [--verbose]";
 
 function usage(): never {
   logger.error(USAGE);
@@ -37,6 +39,7 @@ async function main() {
       verbose: { type: "boolean" },
       limit: { type: "string" },
       repo: { type: "string" },
+      strict: { type: "boolean" },
     },
   });
 
@@ -48,6 +51,7 @@ async function main() {
   const verbose = values.verbose ?? false;
   const limit = values.limit !== undefined ? Number.parseInt(values.limit, 10) : undefined;
   const repo = values.repo;
+  const strict = values.strict ?? false;
 
   if (verbose) {
     process.env.LOG_LEVEL = "debug";
@@ -55,6 +59,26 @@ async function main() {
 
   try {
     switch (command) {
+      case "audit": {
+        const findings = await runAuditCommand(defaultAuditOptions(ROOT));
+        const report = renderAuditReport(findings);
+        if (report === "") {
+          logger.info("No catalog drift found.");
+        } else {
+          logger.warn(`${findings.length} drift finding(s):`);
+          // stdout so the workflow can pipe this straight into an issue body.
+          process.stdout.write(`${report}\n`);
+        }
+        break;
+      }
+      case "check-links": {
+        // Advisory by default: link rot appears with no code change, so a
+        // scheduled run reports it rather than failing the pipeline. --strict
+        // is for a deliberate pre-release check.
+        const broken = await runCheckLinksCommand({ ...defaultCheckLinksOptions(ROOT), reportRedirects: true });
+        if (strict && broken > 0) process.exit(1);
+        break;
+      }
       case "discover": {
         await runDiscoverCommand({ projectsYamlPath: PROJECTS_YAML });
         break;

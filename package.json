@@ -14,6 +14,8 @@
     "refresh-tags": "tsx src/cli.ts refresh-tags",
     "reclassify": "tsx src/cli.ts reclassify",
     "validate": "tsx src/cli.ts validate",
+    "check-links": "tsx src/cli.ts check-links",
+    "audit": "tsx src/cli.ts audit",
     "site-data": "tsx src/generator/site-data.ts",
     "bump-version": "node scripts/bump-version.mjs",
     "lint": "biome check .",

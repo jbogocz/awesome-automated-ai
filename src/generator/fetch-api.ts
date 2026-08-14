@@ -239,6 +239,12 @@ async function collectRepoData(
     logger.warn(`${failed.length} repo(s) failed to fetch with no snapshot to fall back on: ${failed.join(", ")}`);
   }
 
+  // Keep the committed database bounded: full weekly resolution for the last
+  // six months, monthly beyond that. Nothing renders past the 90-day
+  // sparkline window, so this costs no visible history.
+  const pruned = db.pruneSnapshotHistory();
+  if (pruned > 0) logger.info(`Thinned ${pruned} snapshot row(s) older than 180 days to monthly resolution`);
+
   return { data, stale, failed, attempted: repos.length };
 }
 

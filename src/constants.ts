@@ -26,3 +26,9 @@ export const MIN_FRESH_RATIO = 0.9;
 // Same gate for docs/data.json: refuse to write the dashboard feed when fewer
 // than this share of repo-backed entries resolved to real stats.
 export const MIN_SITE_COVERAGE = 0.9;
+
+// GitHub truncates markdown rendering past ~512 KB. Measured today: 640 bytes
+// per entry, so the ceiling arrives around 800 entries — below the 1000-entry
+// target. Warn with room to act rather than discovering it on a Monday.
+export const README_WARN_BYTES = 400 * 1024;
+export const README_RENDER_LIMIT_BYTES = 512 * 1024;
