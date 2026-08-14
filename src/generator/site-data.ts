@@ -5,10 +5,10 @@ import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { MIN_SITE_COVERAGE } from "../constants.js";
 import { DB } from "../db/client.js";
-import { repoStatus } from "../status.js";
+import { displayBucket, type Lifecycle, repoStatus } from "../status.js";
 import { logger } from "../utils/logger.js";
 import { loadApiDataFromDB } from "./fetch-api.js";
-import type { ApiData } from "./readme.js";
+import type { ApiData, ApiRepoData } from "./readme.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
@@ -23,6 +23,7 @@ interface Entry {
   description?: string;
   tagline?: string;
   note?: string;
+  lifecycle?: Lifecycle;
   tags?: string[];
   vendor?: string;
   pricing?: string;
@@ -60,7 +61,8 @@ const EMPTY_API = {
   lastStableTag: null,
   commits90d: null,
   history: [] as { date: string; stars: number }[],
-} as const;
+  stale: undefined,
+} as const satisfies Partial<ApiRepoData> & Record<string, unknown>;
 
 /**
  * The date the underlying measurements were actually taken, read from the
@@ -149,6 +151,13 @@ function main() {
           lastRelease: api.lastRelease ?? null,
           archived: api.archived,
           status,
+          // Same rule the README uses (src/status.ts), baked in so the site
+          // never re-derives presentation from free text.
+          bucket: status ? displayBucket(status, entry.lifecycle) : null,
+          ...(entry.lifecycle ? { lifecycle: entry.lifecycle } : {}),
+          // True when this entry's live fetch failed and it is being served
+          // from an older snapshot; the row renders an age marker.
+          ...(api.stale ? { stale: api.stale } : {}),
           tags: tags.slice(0, 5),
           external: isExternal,
           // Measured weekly star history, oldest first, as compact

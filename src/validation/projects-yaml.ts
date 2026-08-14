@@ -23,6 +23,12 @@ export const EntrySchema = z.object({
   description: z.string().min(1),
   tagline: z.string().optional(),
   note: z.string().optional(),
+  /**
+   * Curator-declared lifecycle. Drives presentation via status.displayBucket;
+   * previously inferred by regexing the free-text note, which the site could
+   * not reproduce.
+   */
+  lifecycle: z.enum(["historical", "deprecated"]).optional(),
   tags: z.array(z.string()).optional(),
   vendor: z.string().optional(),
   pricing: z.string().optional(),

@@ -72,7 +72,8 @@ categories:
     repo: automl/autoweka
     description: The original AutoML system (2013) combining algorithm selection and HPO in WEKA.
     tagline: Original AutoML combining algorithm selection and HPO
-    note: Historical; Java-only, of interest for the original AutoML formulation.
+    lifecycle: historical
+    note: Java-only; of interest for the original AutoML formulation.
     tags: [automl, bayesian-optimization, hyperparameter-optimization, java, machine-learning, model-selection, weka]
   - name: GAMA
     repo: amore-labs/gama

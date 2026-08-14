@@ -534,7 +534,13 @@ export class DB {
     return row?.stars ?? null;
   }
 
-  getStarsNDaysAgo(projectId: number, days: number): number | null {
+  /**
+   * Stars at the snapshot closest to `today - days`, together with that
+   * snapshot's actual date. The date matters: with a weekly cadence the
+   * chosen point is typically t-28, not t-30, so anything labelling the
+   * result "last 30d" would overstate the window by two days.
+   */
+  getStarsNDaysAgo(projectId: number, days: number): { stars: number; date: string } | null {
     // Picks the snapshot CLOSEST in time to the target date (today - days),
     // bounded within ±max(2, ceil(days/4)) days so we never label, say, a
     // 14-day delta as the "30-day trend". With weekly cadence this halves
@@ -552,15 +558,15 @@ export class DB {
     const hiStr = hi.toISOString().split("T")[0];
     const row = this.sqlite
       .prepare(
-        `SELECT stars FROM snapshots
+        `SELECT stars, snapshot_date FROM snapshots
          WHERE project_id = ?
            AND snapshot_date BETWEEN ? AND ?
          ORDER BY ABS(julianday(snapshot_date) - julianday(?)) ASC,
                   snapshot_date DESC
          LIMIT 1`,
       )
-      .get(projectId, loStr, hiStr, targetStr) as { stars: number } | undefined;
-    return row?.stars ?? null;
+      .get(projectId, loStr, hiStr, targetStr) as { stars: number; snapshot_date: string } | undefined;
+    return row ? { stars: row.stars, date: row.snapshot_date } : null;
   }
 
   startBackfillRun(projectIds: number[]): number {
@@ -621,11 +627,46 @@ export class DB {
     return (row ?? null) as BackfillRunRow | null;
   }
 
+  /**
+   * Newest 'running' run that still has work left. The bare "status =
+   * 'running'" query returned crashed runs whose repos were all done, so
+   * `backfill-trends --resume` picked one up, found nothing pending, and
+   * exited reporting success without backfilling anything.
+   */
   getResumableBackfillRun(): number | null {
     const row = this.sqlite
-      .prepare("SELECT id FROM backfill_runs WHERE status = 'running' ORDER BY id DESC LIMIT 1")
+      .prepare(
+        `SELECT r.id FROM backfill_runs r
+          WHERE r.status = 'running'
+            AND EXISTS (
+              SELECT 1 FROM backfill_repo_status s
+               WHERE s.run_id = r.id AND s.state IN ('pending', 'in_progress')
+            )
+          ORDER BY r.id DESC LIMIT 1`,
+      )
       .get() as { id: number } | undefined;
     return row?.id ?? null;
+  }
+
+  /**
+   * Close out 'running' runs that can never be resumed — a crash between the
+   * last repo finishing and finishBackfillRun. Returns how many were reaped.
+   */
+  reapStrandedBackfillRuns(): number {
+    const info = this.sqlite
+      .prepare(
+        `UPDATE backfill_runs
+            SET status = 'aborted',
+                finished_at = COALESCE(finished_at, datetime('now')),
+                notes = COALESCE(NULLIF(notes, ''), 'stranded: no pending repos on reap')
+          WHERE status = 'running'
+            AND NOT EXISTS (
+              SELECT 1 FROM backfill_repo_status s
+               WHERE s.run_id = backfill_runs.id AND s.state IN ('pending', 'in_progress')
+            )`,
+      )
+      .run();
+    return info.changes;
   }
 
   close(): void {

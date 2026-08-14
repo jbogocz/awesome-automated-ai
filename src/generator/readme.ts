@@ -1,6 +1,6 @@
 import { parse as parseYaml } from "yaml";
 import { RELEASE_STALE_MONTHS, STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.js";
-import { assessRepo, lastLifeSign, STATUS_DOT, type StatusReason } from "../status.js";
+import { assessRepo, displayBucket, type Lifecycle, lastLifeSign, STATUS_DOT, type StatusReason } from "../status.js";
 import { formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
 
 export interface ApiRepoData {
@@ -11,6 +11,9 @@ export interface ApiRepoData {
   trend: number | null;
   trend7d?: number | null;
   trend30d?: number | null;
+  /** Days the trend figures actually span; snapshots are weekly, so ~28 not 30. */
+  trend30dDays?: number | null;
+  trend7dDays?: number | null;
   lastRelease?: string | null;
   lastCommit?: string | null;
   lastTag?: string | null;
@@ -21,6 +24,12 @@ export interface ApiRepoData {
   tagline: string | null;
   /** Real weekly star snapshots, oldest first. Plotted verbatim by the dashboard sparkline. */
   history?: { date: string; stars: number }[];
+  /**
+   * Set when this entry's live fetch failed and the values above come from an
+   * older snapshot. Carries that snapshot's date so the reader is told how old
+   * the figures are rather than being shown them as present tense.
+   */
+  stale?: string;
 }
 export type ApiData = Record<string, ApiRepoData>;
 
@@ -87,6 +96,7 @@ interface Entry {
   description?: string;
   tagline?: string;
   note?: string;
+  lifecycle?: Lifecycle;
   tags?: string[];
   vendor?: string;
   pricing?: string;
@@ -181,8 +191,10 @@ function buildCards(entries: Entry[], apiData: ApiData): string[] {
     let note = entry.note ?? "";
     if (rd.archived && !note.includes("Archived")) note = `Archived. ${note}`.trim();
     else if (!note && hasData) note = statusNote(reason);
-    const isHistorical = /historical/i.test(note);
-    const isDead = (hasData && status === "dead") || /unmaintained|deprecated/i.test(note);
+    // Presentation comes from status.ts, never from parsing the note text.
+    const bucket = displayBucket(hasData ? status : "active", entry.lifecycle);
+    const isHistorical = bucket === "historical";
+    const isDead = bucket !== "live";
     return { entry, rd, hasData, status, note, isDead, isHistorical };
   });
 
@@ -325,13 +337,24 @@ function buildOneCard(s: ScoredEntry, rank: number | null): string[] {
   return [summary, "", "<br>", "", displayDesc, "", ...dashboard, "", "</details>"];
 }
 
+/**
+ * Reports the window each delta actually spans. Snapshots land weekly, so the
+ * point nearest t-30 is normally t-28; printing that as "last 30d" overstated
+ * every figure. The `rd.trend` fallback comes from the previous snapshot of
+ * unknown age, so it is labelled "since last snapshot" rather than given a
+ * window it cannot support.
+ */
 function buildTrendDetail(rd: ApiRepoData, isDead: boolean): string {
   if (isDead) return "(n/a)";
   const parts: string[] = [];
-  const t30 = rd.trend30d ?? rd.trend;
-  if (t30 !== null && t30 !== undefined) parts.push(`${t30 > 0 ? "+" : ""}${t30} last 30d`);
+  const signed = (n: number): string => `${n > 0 ? "+" : ""}${n}`;
+  if (rd.trend30d !== null && rd.trend30d !== undefined) {
+    parts.push(`${signed(rd.trend30d)} last ${rd.trend30dDays ?? 30}d`);
+  } else if (rd.trend !== null && rd.trend !== undefined) {
+    parts.push(`${signed(rd.trend)} since last snapshot`);
+  }
   if (rd.trend7d !== null && rd.trend7d !== undefined) {
-    parts.push(`${rd.trend7d > 0 ? "+" : ""}${rd.trend7d} last 7d`);
+    parts.push(`${signed(rd.trend7d)} last ${rd.trend7dDays ?? 7}d`);
   }
   return parts.length > 0 ? `(${parts.join(", ")})` : "(n/a)";
 }

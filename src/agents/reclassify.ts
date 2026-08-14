@@ -2,6 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { isMap, isScalar, isSeq, parseDocument } from "yaml";
 import { z } from "zod";
 import { type Manifest, renderCategoryCatalog } from "../categories.js";
+import { logger } from "../utils/logger.js";
 import { getModel } from "./llm.js";
 
 const MAX_TOKENS = 512;
@@ -50,6 +51,8 @@ export interface ReclassifyRecord extends ReclassifyCandidate {
 export interface ReclassifyResult {
   records: ReclassifyRecord[];
   tokensUsed: number;
+  /** Entries whose classification threw; the run continues without them. */
+  failures: { name: string; error: string }[];
 }
 
 const TOOL_DEFINITION = {
@@ -88,14 +91,28 @@ export async function reclassifyEntries(opts: ReclassifyOptions): Promise<Reclas
   const records: ReclassifyRecord[] = [];
   let tokensUsed = 0;
 
+  // One transient API error used to throw out of this loop, and the caller
+  // writes its report only after the loop returns — so a failure at entry 200
+  // of 249 discarded all 199 completed verdicts and wrote nothing. Contain
+  // per-entry failures the way discovery already does and report them.
+  const failures: { name: string; error: string }[] = [];
   for (const [i, c] of processed.entries()) {
-    const decision = await classifyOne(anthropic, c, catalog, allowedNames);
-    tokensUsed += decision.tokensUsed;
-    records.push({ ...c, decision: decision.result });
-    opts.onProgress?.({ index: i + 1, total: processed.length, candidate: c, decision: decision.result });
+    try {
+      const decision = await classifyOne(anthropic, c, catalog, allowedNames);
+      tokensUsed += decision.tokensUsed;
+      records.push({ ...c, decision: decision.result });
+      opts.onProgress?.({ index: i + 1, total: processed.length, candidate: c, decision: decision.result });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      failures.push({ name: c.name, error: message });
+      logger.warn(`Reclassify failed for ${c.name}: ${message}`);
+    }
+  }
+  if (failures.length > 0) {
+    logger.warn(`${failures.length}/${processed.length} entries could not be classified; the rest are still reported.`);
   }
 
-  return { records, tokensUsed };
+  return { records, tokensUsed, failures };
 }
 
 async function classifyOne(

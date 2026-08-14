@@ -65,7 +65,7 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 | :1st_place_medal: :2nd_place_medal: :3rd_place_medal: **4** **5** | Rank within the category by quality score |
 | `Score 72/100` (inside an entry) | Quality score: stars 50%, trend 25%, freshness 15%, license 10%; archived repos score 0 |
 | :star: 11.7K | GitHub stars |
-| :arrow_upper_right: +340 | Stars gained in last 30 days (shown when >= 10) |
+| :arrow_upper_right: +340 | Stars gained since the snapshot nearest 30 days ago (shown when >= 10); each entry states the window it actually measured |
 | :zzz: | Unmaintained - no activity for 12+ months |
 | :file_cabinet: | Historical - included for foundational influence |
 | :office: | Commercial enterprise platform (vendor product) |

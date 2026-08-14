@@ -1,6 +1,7 @@
 import type { DB } from "../db/client.js";
 import { fetchRecentStargazersBatch } from "../github/stargazers-graphql.js";
 import type { BackfillInput, BackfillSummary, RepoStargazersPage, StargazerEntry } from "../github/types.js";
+import { logger } from "../utils/logger.js";
 
 export interface DailySnapshot {
   date: string; // YYYY-MM-DD
@@ -100,6 +101,11 @@ export async function backfillBatch(
     seenProjectIds.add(i.projectId);
     return true;
   });
+
+  // Close out runs a crash left marked 'running' with nothing left to do, so
+  // they cannot be picked up as resumable and turn --resume into a no-op.
+  const reaped = db.reapStrandedBackfillRuns();
+  if (reaped > 0) logger.info(`Reaped ${reaped} stranded backfill run(s) with no pending repos`);
 
   let runId: number;
   let toProcess: BackfillInput[];

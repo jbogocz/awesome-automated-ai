@@ -13,14 +13,19 @@ import type { ApiData, ApiRepoData } from "./readme.js";
  * Build an ApiData entry from the latest DB snapshot. Shared by the offline
  * path and the live path's fallback for repos whose fetch failed.
  */
-function entryFromLatestSnapshot(db: DB, projectId: number, yamlTagline: string | undefined): ApiRepoData | null {
+function entryFromLatestSnapshot(
+  db: DB,
+  projectId: number,
+  yamlTagline: string | undefined,
+  markStale = false,
+): ApiRepoData | null {
   const latest = db.getLatestSnapshot(projectId);
   if (!latest) return null;
 
   const stars7dAgo = db.getStarsNDaysAgo(projectId, 7);
   const stars30dAgo = db.getStarsNDaysAgo(projectId, 30);
   const starsPrevious = db.getPreviousStars(projectId);
-  const { trend, trend7d, trend30d } = computeTrends({
+  const { trend, trend7d, trend30d, trend30dDays, trend7dDays } = computeTrends({
     currentStars: latest.stars,
     stars7dAgo,
     stars30dAgo,
@@ -35,6 +40,8 @@ function entryFromLatestSnapshot(db: DB, projectId: number, yamlTagline: string 
     trend,
     trend7d,
     trend30d,
+    trend30dDays,
+    trend7dDays,
     lastRelease: latest.lastRelease,
     lastCommit: latest.lastCommit,
     lastTag: latest.lastTag,
@@ -44,6 +51,7 @@ function entryFromLatestSnapshot(db: DB, projectId: number, yamlTagline: string 
     topics: latest.topics ?? [],
     tagline: yamlTagline ?? db.getTagline(projectId) ?? null,
     history: db.getSnapshotSeries(projectId, SPARKLINE_DAYS),
+    ...(markStale ? { stale: latest.snapshotDate } : {}),
   };
 }
 
@@ -139,7 +147,7 @@ async function collectRepoData(
     if (!raw || projectId === undefined) {
       // Fetch failed: serve the latest DB snapshot when one exists,
       // otherwise leave the entry out so it renders as "stats pending".
-      const fallback = projectId !== undefined ? entryFromLatestSnapshot(db, projectId, yamlTagline) : null;
+      const fallback = projectId !== undefined ? entryFromLatestSnapshot(db, projectId, yamlTagline, true) : null;
       if (fallback) {
         data[repo] = fallback;
         stale.push(repo);
@@ -152,7 +160,7 @@ async function collectRepoData(
     const starsPrevious = db.getPreviousStars(projectId);
     const stars7dAgo = db.getStarsNDaysAgo(projectId, 7);
     const stars30dAgo = db.getStarsNDaysAgo(projectId, 30);
-    const { trend, trend7d, trend30d } = computeTrends({
+    const { trend, trend7d, trend30d, trend30dDays, trend7dDays } = computeTrends({
       currentStars: raw.stars,
       stars7dAgo,
       stars30dAgo,
@@ -210,6 +218,8 @@ async function collectRepoData(
       trend,
       trend7d,
       trend30d,
+      trend30dDays,
+      trend7dDays,
       lastRelease: raw.lastRelease,
       lastCommit: raw.lastCommit,
       lastTag: raw.lastTag,

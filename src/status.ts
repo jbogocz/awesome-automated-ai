@@ -118,6 +118,29 @@ export function repoStatus(s: StatusSignals, now: number = Date.now()): RepoStat
   return assessRepo(s, now).status;
 }
 
+/**
+ * Curator-declared lifecycle, independent of measured health.
+ * `historical` means kept for foundational influence; `deprecated` means the
+ * curator retired it ahead of the data agreeing.
+ */
+export type Lifecycle = "historical" | "deprecated";
+
+/** How an entry is presented: which section, which icon, whether italicised. */
+export type DisplayBucket = "live" | "deprecated" | "historical";
+
+/**
+ * Single rule for presentation bucketing, so the README and the dashboard
+ * cannot disagree. This used to be two regexes over the free-text note in
+ * readme.ts, which meant the first note containing "deprecated" moved an
+ * entry to the README graveyard while the site still called it active — and
+ * data.json carried no equivalent field, so the site could not reproduce it.
+ */
+export function displayBucket(status: RepoStatus, lifecycle?: Lifecycle | null): DisplayBucket {
+  if (lifecycle === "historical") return "historical";
+  if (lifecycle === "deprecated") return "deprecated";
+  return status === "dead" ? "deprecated" : "live";
+}
+
 export const STATUS_DOT: Record<RepoStatus, string> = {
   active: "\u{1F7E2}", // green
   quiet: "\u{1F7E1}", // yellow

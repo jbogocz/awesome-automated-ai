@@ -15,7 +15,8 @@ const SAMPLE_YAML = `categories:
   - name: OldTool
     repo: old/tool
     description: Legacy framework from the old days.
-    note: Historical.
+    lifecycle: historical
+    note: Kept for the original formulation.
 `;
 
 const now = new Date().toISOString();
@@ -113,9 +114,27 @@ describe("generateReadme", () => {
     expect(result).toContain("88/100");
   });
 
-  it("shows exact stars with trend in details", () => {
+  // The fixture has a bare `trend` and no 30d window, which is the
+  // previous-snapshot fallback: it must not borrow the "last 30d" label.
+  it("labels a windowless delta as since-last-snapshot, not 30d", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
-    expect(result).toContain("12,000 (+340 last 30d)");
+    expect(result).toContain("12,000 (+340 since last snapshot)");
+    expect(result).not.toContain("+340 last 30d");
+  });
+
+  it("prints the window a delta actually spans", () => {
+    const withWindow: ApiData = {
+      ...SAMPLE_API,
+      "autogluon/autogluon": {
+        ...SAMPLE_API["autogluon/autogluon"],
+        trend30d: 340,
+        trend30dDays: 28,
+        trend7d: 12,
+        trend7dDays: 6,
+      },
+    };
+    const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: withWindow });
+    expect(result).toContain("(+340 last 28d, +12 last 6d)");
   });
 
   it("shows tags from YAML in dashboard", () => {

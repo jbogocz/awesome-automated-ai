@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   anyShippedAt,
   assessRepo,
+  displayBucket,
   isPrereleaseTag,
   lastLifeSign,
   repoStatus,
@@ -221,5 +222,29 @@ describe("statusDot", () => {
     expect(statusDot(signals({ lastCommit: daysAgo(1), commits90d: 90 }), NOW)).toBe("🟢");
     expect(statusDot(signals({ lastCommit: daysAgo(250) }), NOW)).toBe("🟡");
     expect(statusDot(signals({ archived: true }), NOW)).toBe("🔴");
+  });
+});
+
+describe("displayBucket", () => {
+  // Presentation used to be decided by regexing the free-text note in
+  // readme.ts, which meant the first note containing "deprecated" moved an
+  // entry to the README graveyard while the dashboard still called it active.
+  it("follows measured health when the curator declares nothing", () => {
+    expect(displayBucket("active")).toBe("live");
+    expect(displayBucket("quiet")).toBe("live");
+    expect(displayBucket("dead")).toBe("deprecated");
+  });
+
+  it("lets the curator mark an entry historical regardless of health", () => {
+    expect(displayBucket("active", "historical")).toBe("historical");
+    expect(displayBucket("dead", "historical")).toBe("historical");
+  });
+
+  it("lets the curator retire an entry ahead of the data", () => {
+    expect(displayBucket("active", "deprecated")).toBe("deprecated");
+  });
+
+  it("treats an absent lifecycle the same as null", () => {
+    expect(displayBucket("active", null)).toBe(displayBucket("active"));
   });
 });
