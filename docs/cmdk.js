@@ -2,6 +2,10 @@
 // Lazy-loaded on first ⌘K / '/' press; never parsed for users who don't open it.
 import { $, $$, escapeText, fmtStars, html, raw, render } from "./lib.js";
 
+// Ranked, so a truncated list still shows the best matches. The count is
+// surfaced in the group label when the cap bites.
+const CMDK_MAX_RESULTS = 12;
+
 let _state, _setCategory, _openSheet;
 let els;
 let cmdkIdx = 0;
@@ -76,15 +80,36 @@ function renderCmdk(q) {
   }
 
   if (q !== "" && !q.startsWith(":") && !q.startsWith(">")) {
+    // Same corpus the list filter searches — the palette used to omit
+    // description and vendor, so a query that filtered the list to 40 rows
+    // could return nothing here. Results are ranked rather than taken in
+    // catalog order: 76 entries contain "agent", and an unranked slice of 8
+    // showed whichever happened to come first.
     const matched = _state.entries
-      .filter((e) => {
-        const hay = `${e.name} ${e.tagline ?? ""} ${(e.tags || []).join(" ")}`.toLowerCase();
-        return hay.includes(q);
+      .map((e) => {
+        const name = (e.name || "").toLowerCase();
+        const tagline = (e.tagline ?? "").toLowerCase();
+        const tags = (e.tags || []).join(" ").toLowerCase();
+        const rest = `${e.description ?? ""} ${e.vendor ?? ""}`.toLowerCase();
+        let rank;
+        if (name === q) rank = 0;
+        else if (name.startsWith(q)) rank = 1;
+        else if (name.includes(q)) rank = 2;
+        else if (tags.split(/\s+/).includes(q)) rank = 3;
+        else if (tagline.includes(q)) rank = 4;
+        else if (tags.includes(q)) rank = 5;
+        else if (rest.includes(q)) rank = 6;
+        else return null;
+        return { e, rank };
       })
-      .slice(0, 8);
+      .filter(Boolean)
+      // Ties break on score, so the strongest project wins a crowded term.
+      .sort((a, b) => a.rank - b.rank || (b.e.score ?? 0) - (a.e.score ?? 0))
+      .slice(0, CMDK_MAX_RESULTS)
+      .map((m) => m.e);
     if (matched.length)
       groups.push({
-        label: "Projects",
+        label: matched.length === CMDK_MAX_RESULTS ? `Projects (top ${CMDK_MAX_RESULTS})` : "Projects",
         items: matched.map((e) => ({
           key: `e-${e.categoryId}-${e.name}`,
           name: e.name,

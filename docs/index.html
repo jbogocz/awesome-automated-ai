@@ -123,6 +123,8 @@
 
   <main class="main">
 
+    <h1 class="sr-only">Awesome Automated AI/ML — catalog of tools for automated AI and machine learning</h1>
+
     <!-- Lenses: one-click curated views. Each answers a specific question. -->
     <div class="lensbar" role="toolbar" aria-label="Lenses">
       <div class="lensbar__row">
@@ -135,6 +137,14 @@
     </div>
 
     <div class="filterbar" role="toolbar" aria-label="Filters">
+      <div class="searchbox">
+        <label class="sr-only" for="filter-q">Filter the catalog by name, tagline, description, tag or vendor</label>
+        <svg class="searchbox__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
+        <input class="searchbox__input" id="filter-q" type="search" autocomplete="off" spellcheck="false"
+               placeholder="Filter…" enterkeyhint="search">
+        <button class="searchbox__clear" id="filter-q-clear" type="button" aria-label="Clear filter" hidden>&times;</button>
+      </div>
+
       <button class="chip" type="button" data-filter="alive" aria-pressed="false">
         <span>● Alive</span>
         <span class="chip__count" id="chip-alive-count">—</span>
@@ -151,16 +161,37 @@
 
       <div class="filterbar__sep" aria-hidden="true"></div>
 
-      <div class="sort-group" role="radiogroup" aria-label="Sort rows within each category">
+      <fieldset class="sort-group">
+        <legend class="sr-only">Sort rows within each category</legend>
         <button class="sort-btn" type="button" data-sort="score"  aria-pressed="true"  title="Composite quality score (within each category)">Score</button>
         <button class="sort-btn" type="button" data-sort="stars"  aria-pressed="false" title="GitHub star count (within each category)">Stars</button>
         <button class="sort-btn" type="button" data-sort="trend"  aria-pressed="false" title="Most stars gained in the last 30 days (within each category)">Trend</button>
         <button class="sort-btn" type="button" data-sort="recent" aria-pressed="false" title="Most recent commit first (within each category)">Updated</button>
         <button class="sort-btn" type="button" data-sort="name"   aria-pressed="false" title="Alphabetical (within each category)">A→Z</button>
-      </div>
+      </fieldset>
 
-      <span class="filterbar__count" id="result-count">loading…</span>
+      <span class="filterbar__count" id="result-count" role="status" aria-live="polite" aria-atomic="true">loading…</span>
     </div>
+
+    <details class="legend">
+      <summary class="legend__summary">What the columns mean</summary>
+      <dl class="legend__list">
+        <div><dt><span class="legend__dot" data-status="active"></span> Active</dt>
+             <dd>Recent mainline commits and healthy stable shipping.</dd></div>
+        <div><dt><span class="legend__dot" data-status="quiet"></span> Quiet</dt>
+             <dd>Slow or coasting, or nothing stable shipped in two years.</dd></div>
+        <div><dt><span class="legend__dot" data-status="dead"></span> Archived or dormant</dt>
+             <dd>Archived upstream, or no sign of life for 12 months.</dd></div>
+        <div><dt>Score</dt>
+             <dd>0&ndash;100 from stars 50%, trend 25%, freshness 15%, licence 10%. Archived repos score 0.</dd></div>
+        <div><dt>Sparkline</dt>
+             <dd>Measured weekly star history over the last 90 days, plotted as recorded. No curve fitting.</dd></div>
+        <div><dt>Trend</dt>
+             <dd>Stars gained since the snapshot nearest 30 days ago.</dd></div>
+        <div><dt>Updated</dt>
+             <dd>Age of the newest commit on the default branch.</dd></div>
+      </dl>
+    </details>
 
     <noscript>
       <p style="padding: 16px;">This interactive catalog requires JavaScript.

@@ -46,6 +46,8 @@ const els = {
   themeToggle: $("#theme-toggle"),
   menuTrigger: $("#menu-trigger"),
   sidebar: $("#sidebar"),
+  filterQ: $("#filter-q"),
+  filterQClear: $("#filter-q-clear"),
 };
 
 // ── State ────────────────────────────────────────────────────────────
@@ -160,6 +162,17 @@ function syncSidebarInert() {
   els.sidebar.inert = mqMobile.matches && els.sidebar.dataset.open !== "true";
 }
 
+function setDrawer(open) {
+  els.sidebar.dataset.open = open ? "true" : "false";
+  els.menuTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+  syncSidebarInert();
+  if (!open && mqMobile.matches) els.menuTrigger.focus();
+}
+
+function drawerIsOpen() {
+  return mqMobile.matches && els.sidebar.dataset.open === "true";
+}
+
 function bindSidebar() {
   els.catAll.addEventListener("click", () => setCategory(null));
   els.sectionGroups.addEventListener("click", (ev) => {
@@ -175,19 +188,34 @@ function bindSidebar() {
     if (cat) setCategory(cat.dataset.cat);
   });
   els.menuTrigger.addEventListener("click", () => {
-    const open = els.sidebar.dataset.open === "true";
-    els.sidebar.dataset.open = open ? "false" : "true";
-    els.menuTrigger.setAttribute("aria-expanded", open ? "false" : "true");
-    syncSidebarInert();
+    setDrawer(els.sidebar.dataset.open !== "true");
   });
+
+  // The drawer could only be closed by the hamburger it came from: no tap
+  // outside, no Escape. On a phone that reads as a trap.
+  document.addEventListener("pointerdown", (ev) => {
+    if (!drawerIsOpen()) return;
+    if (els.sidebar.contains(ev.target) || els.menuTrigger.contains(ev.target)) return;
+    setDrawer(false);
+  });
+
   mqMobile.addEventListener("change", syncSidebarInert);
   syncSidebarInert();
 }
 
 // ── Counts (sidebar + lensbar + brand) ───────────────────────────────
 function renderCounts() {
+  // One pass over the catalog fills every counter; this used to be one pass
+  // for `alive` plus one more per lens.
+  let alive = 0;
+  const lensNames = Object.keys(LENSES);
+  const lensCounts = Object.fromEntries(lensNames.map((n) => [n, 0]));
+  for (const e of state.entries) {
+    if (isAlive(e)) alive += 1;
+    if (e.archived && !state.filters.archived) continue;
+    for (const n of lensNames) if (LENSES[n].test(e)) lensCounts[n] += 1;
+  }
   els.catAllCount.textContent = String(state.entries.length);
-  const alive = state.entries.filter(isAlive).length;
   els.chipAliveCount.textContent = String(alive);
   const age = dataAgeDays();
   const ageTxt =
@@ -202,19 +230,15 @@ function renderCounts() {
   if (els.freshnessDot) els.freshnessDot.dataset.stale = age != null && age > 8 ? "true" : "false";
   if (els.cmdkFreshness) els.cmdkFreshness.textContent = age == null ? "" : `snapshot ${age}d ago`;
 
-  for (const lensName of Object.keys(LENSES)) {
-    const n = state.entries.filter((e) => {
-      if (e.archived && !state.filters.archived) return false;
-      return LENSES[lensName].test(e);
-    }).length;
+  for (const lensName of lensNames) {
     const node = document.querySelector(`.lens__count[data-count="${lensName}"]`);
-    if (node) node.textContent = String(n);
+    if (node) node.textContent = String(lensCounts[lensName]);
   }
 }
 
-function renderLensCaption() {
+function renderLensCaption(count) {
   const lens = LENSES[state.filters.lens] ?? LENSES.all;
-  const n = filtered().length;
+  const n = count ?? filtered().length;
   // Caption strings contain author-controlled <b> only.
   render(els.lensCaption, RANGE.createContextualFragment(lens.caption(n)));
 }
@@ -261,6 +285,9 @@ function rowHtml(e) {
     e.external ? '<span class="badge badge--paper">paper</span>' : "",
   ].join("");
   const vendorHtml = e.vendor ? `<span class="vendor">${escapeText(e.vendor)}</span>` : "";
+  const staleHtml = e.stale
+    ? `<span class="badge badge--stale" title="Live fetch failed; figures are from the ${escapeText(e.stale)} snapshot">as of ${escapeText(e.stale)}</span>`
+    : "";
 
   return `
   <a class="row"
@@ -270,10 +297,11 @@ function rowHtml(e) {
      target="_blank" rel="noopener"
      data-archived="${e.archived ? "true" : "false"}">
     <span class="row__marker">${avatarHtml(e, mag, hot)}</span>
-    <span class="row__name">${escapeText(e.name)}${vendorHtml}${badges}</span>
+    <span class="row__name">${escapeText(e.name)}${vendorHtml}${badges}${staleHtml}</span>
     <span class="row__tagline">${escapeText(e.tagline || e.description || "")}</span>
     <span class="row__tags">${tagsHtml}</span>
     <span class="row__spark">${sparkSvg(e, mag)}</span>
+    <span class="row__metric row__metric--score" title="Quality score: stars 50%, trend 25%, freshness 15%, licence 10%">${e.external ? "—" : (e.score ?? 0)}</span>
     <span class="row__metric row__metric--stars">${e.external ? "—" : fmtStars(e.stars)}</span>
     <span class="row__metric row__metric--trend ${t.cls}">${t.txt}</span>
     <span class="row__metric row__metric--age">${e.external ? "—" : fmtAge(e.lastCommit)}</span>
@@ -281,7 +309,10 @@ function rowHtml(e) {
 }
 
 // ── Render: results stream ───────────────────────────────────────────
-function renderStream() {
+// `animate: false` skips the view transition for high-frequency updates
+// (typing in the filter box). Back-to-back transitions abort each other,
+// which both looks unsettled and rejects the skipped transition's promise.
+function renderStream({ animate = true } = {}) {
   const items = filtered();
   items.sort(SORTERS[state.sort]);
   els.resultCount.textContent = `${items.length} of ${state.entries.length}`;
@@ -301,6 +332,8 @@ function renderStream() {
         <p class="empty__hint">Try removing a filter or hitting <kbd>⌘K</kbd> to search.</p>
       </div>`,
     );
+    renderLensCaption(0);
+    renderCounts();
     return;
   }
 
@@ -325,11 +358,13 @@ function renderStream() {
 
   const apply = () => {
     render(els.stream, frag);
-    renderLensCaption();
+    renderLensCaption(items.length);
     renderCounts();
   };
-  if (document.startViewTransition && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    document.startViewTransition(apply);
+  const wantsMotion = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (animate && wantsMotion && document.startViewTransition) {
+    // A skipped transition rejects; that is expected here, not an error.
+    document.startViewTransition(apply).finished.catch(() => {});
   } else {
     apply();
   }
@@ -418,10 +453,7 @@ function setCategory(id) {
     const match = btn.dataset.cat === id || (btn === els.catAll && !id);
     btn.setAttribute("aria-pressed", match ? "true" : "false");
   });
-  if (mqMobile.matches) {
-    els.sidebar.dataset.open = "false";
-    syncSidebarInert();
-  }
+  if (mqMobile.matches) setDrawer(false);
   writeHash();
   renderStream();
 }
@@ -467,6 +499,10 @@ function bindGlobalKeys() {
         _sheet.closeSheet();
         return;
       }
+      if (drawerIsOpen()) {
+        setDrawer(false);
+        return;
+      }
     }
   });
 
@@ -476,19 +512,67 @@ function bindGlobalKeys() {
   });
 }
 
+// ── Text filter ──────────────────────────────────────────────────────
+let _qTimer = null;
+
+function syncQueryUI() {
+  if (!els.filterQ) return;
+  if (els.filterQ.value !== state.filters.q) els.filterQ.value = state.filters.q;
+  if (els.filterQClear) els.filterQClear.hidden = state.filters.q === "";
+}
+
+function bindSearch() {
+  if (!els.filterQ) return;
+  els.filterQ.addEventListener("input", () => {
+    // Debounced: each keystroke re-filters and re-renders the whole stream.
+    clearTimeout(_qTimer);
+    _qTimer = setTimeout(() => {
+      state.filters.q = els.filterQ.value;
+      if (els.filterQClear) els.filterQClear.hidden = state.filters.q === "";
+      writeHash();
+      renderStream({ animate: false });
+    }, 120);
+  });
+  els.filterQ.addEventListener("keydown", (ev) => {
+    if (ev.key !== "Escape" || els.filterQ.value === "") return;
+    ev.stopPropagation(); // don't also close a sheet or the palette
+    clearQuery();
+  });
+  els.filterQClear?.addEventListener("click", () => {
+    clearQuery();
+    els.filterQ.focus();
+  });
+}
+
+function clearQuery() {
+  clearTimeout(_qTimer);
+  state.filters.q = "";
+  syncQueryUI();
+  writeHash();
+  renderStream({ animate: false });
+}
+
 // ── URL hash state (shareable filters) ───────────────────────────────
 function readHash() {
-  const h = location.hash.replace(/^#/, "");
-  if (!h) return;
-  const params = new URLSearchParams(h);
-  if (params.has("cat")) state.filters.categoryId = params.get("cat");
-  if (params.has("lens") && LENSES[params.get("lens")]) state.filters.lens = params.get("lens");
-  if (params.has("sort")) state.sort = params.get("sort");
-  if (params.get("alive") === "1") state.filters.alive = true;
-  if (params.get("archived") === "1") state.filters.archived = true;
-  if (params.get("commercial") === "1") state.filters.commercial = true;
-  if (params.get("oss") === "1") state.filters.oss = true;
-  if (params.has("q")) state.filters.q = params.get("q");
+  const params = new URLSearchParams(location.hash.replace(/^#/, ""));
+
+  // Every value is validated against what actually exists, and every field is
+  // assigned unconditionally: parsing used to be additive, so removing a
+  // param from the hash (or pressing Back) left the old filter applied.
+  const cat = params.get("cat");
+  state.filters.categoryId = cat && state.categoryById.has(cat) ? cat : null;
+
+  const lens = params.get("lens");
+  state.filters.lens = lens && Object.hasOwn(LENSES, lens) ? lens : "all";
+
+  const sort = params.get("sort");
+  state.sort = sort && Object.hasOwn(SORTERS, sort) ? sort : "score";
+
+  state.filters.alive = params.get("alive") === "1";
+  state.filters.archived = params.get("archived") === "1";
+  state.filters.commercial = params.get("commercial") === "1";
+  state.filters.oss = params.get("oss") === "1";
+  state.filters.q = params.get("q") ?? "";
 }
 
 function writeHash() {
@@ -516,6 +600,7 @@ function applyHashToUI() {
   for (const l of els.lenses) {
     l.setAttribute("aria-pressed", l.dataset.lens === state.filters.lens ? "true" : "false");
   }
+  syncQueryUI();
   $$(".cat", els.sidebar).forEach((btn) => {
     const match = btn.dataset.cat === state.filters.categoryId || (btn === els.catAll && !state.filters.categoryId);
     btn.setAttribute("aria-pressed", match ? "true" : "false");
@@ -544,6 +629,7 @@ async function main() {
   bindFilterbar();
   bindStream();
   bindTheme();
+  bindSearch();
   bindGlobalKeys();
   readHash();
   applyHashToUI();
