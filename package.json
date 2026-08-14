@@ -23,7 +23,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.116.0",
     "@octokit/rest": "^22.0.1",
-    "better-sqlite3": "~12.11.1",
+    "better-sqlite3": "^12.11.1",
     "yaml": "^2.9.0",
     "zod": "^4.4.3"
   },
