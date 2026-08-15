@@ -1,20 +1,51 @@
-.claude/
-.superpowers/
-.DS_Store
-*.swp
-*.swo
-*~
-.idea/
-.vscode/
-node_modules/
-dist/
-.env
-.env.local
-*.tsbuildinfo
-.turbo/
-data/*
-!data/curator.db
+# Allowlist: nothing is tracked unless it is listed below.
+#
+# A denylist only blocks what someone remembered to add, and it had already
+# fallen behind: `pnpm run audit` writes audit-report.md and audit.log into
+# the repo root and no rule caught them. Defaulting to "ignored" means a new
+# tool, key or scratch file cannot be committed by forgetting a line.
+#
+# A directory must be re-included separately from its contents. Git does not
+# descend into a directory excluded by `*`, so `!/src/**` alone matches
+# nothing without `!/src/` first.
+*
+
+# --- source ---
+!/src/
+!/src/**
+!/tests/
+!/tests/**
+!/scripts/
+!/scripts/**
+!/templates/
+!/templates/**
+!/.github/
+!/.github/**
+
+# --- site: generated, but committed because Pages serves it from the repo ---
+!/docs/
+!/docs/**
+
+# --- the one data artifact that belongs in git; api_cache.json does not ---
+!/data/
+!/data/curator.db
+
+# --- root files ---
+!/.env.example
+!/.gitignore
+!/CONTRIBUTING.md
+!/LICENSE
+!/README.md
+!/biome.json
+!/package.json
+!/pnpm-lock.yaml
+!/pnpm-workspace.yaml
+!/projects.yaml
+!/tsconfig.json
+!/vitest.config.ts
+
+# --- re-excluded inside the directories opened up above ---
 *.db-wal
 *.db-shm
-coverage/
-api_cache.json
+*.tsbuildinfo
+.DS_Store
