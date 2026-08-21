@@ -9,6 +9,12 @@
  *
  * Control via LOG_LEVEL env var (error | warn | info | debug).
  * Default is "info". Set to "debug" for verbose CLI output.
+ *
+ * Every level goes to stderr, never stdout. stdout is a command's RESULT —
+ * `pnpm run audit > audit-report.md` is meant to capture drift findings and
+ * nothing else. While the logger wrote to stdout, that file was never empty,
+ * so the weekly job's `[ -s audit-report.md ]` drift test was pinned true and
+ * every run tried to file a report whose body was log noise.
  */
 
 export type LogLevel = "error" | "warn" | "info" | "debug";
@@ -34,11 +40,9 @@ function log(level: LogLevel, message: string, ...args: unknown[]): void {
   if (LEVELS[level] > currentLevel()) return;
   const label = prefix(level);
   if (args.length > 0) {
-    // biome-ignore lint/suspicious/noConsole: this IS the logger
-    console.log(label, message, ...args);
+    console.error(label, message, ...args);
   } else {
-    // biome-ignore lint/suspicious/noConsole: this IS the logger
-    console.log(label, message);
+    console.error(label, message);
   }
 }
 

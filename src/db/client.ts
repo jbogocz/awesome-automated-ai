@@ -1,15 +1,8 @@
 import { mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import Database from "better-sqlite3";
-import type {
-  AgentName,
-  BackfillRepoState,
-  BackfillRunRow,
-  DecisionInsert,
-  ProjectInsert,
-  ProjectRow,
-  RunStatus,
-} from "./types.js";
+import { logger } from "../utils/logger.js";
+import type { AgentName, DecisionInsert, ProjectInsert, ProjectRow, RunStatus } from "./types.js";
 
 export class DB {
   private sqlite: Database.Database;
@@ -49,6 +42,7 @@ export class DB {
 
       CREATE INDEX IF NOT EXISTS idx_projects_status ON projects(status);
       CREATE INDEX IF NOT EXISTS idx_projects_repo ON projects(repo);
+      CREATE INDEX IF NOT EXISTS idx_projects_repo_nocase ON projects(repo COLLATE NOCASE);
     `);
 
     this.sqlite.exec(`
@@ -112,6 +106,15 @@ export class DB {
       );
     `);
 
+    // Retained, not written. Star-history reconstruction was retired when
+    // GitHub restricted stargazer listings (2026-06-30 changelog); these two
+    // tables are the audit record of what it did while it ran — including
+    // run 12, whose output had to be deleted. Dropping them would erase the
+    // evidence of a data incident.
+    // Retained, not written. Star-history reconstruction was retired when
+    // GitHub restricted stargazer listings (2026-06-30 changelog); these two
+    // tables are the audit record of what it did while it ran, including the
+    // run whose fabricated output had to be deleted.
     this.sqlite.exec(`
       CREATE TABLE IF NOT EXISTS backfill_runs (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -148,6 +151,9 @@ export class DB {
       }
     };
     tryAlter("ALTER TABLE projects ADD COLUMN tagline TEXT");
+    // GitHub's immutable repository id — see upsertProject. Nullable: rows
+    // predate it and are filled in on the next fetch that resolves them.
+    tryAlter("ALTER TABLE projects ADD COLUMN github_id INTEGER");
     tryAlter("ALTER TABLE snapshots ADD COLUMN archived INTEGER");
     tryAlter("ALTER TABLE snapshots ADD COLUMN pushed_at TEXT");
     tryAlter("ALTER TABLE snapshots ADD COLUMN license TEXT");
@@ -157,6 +163,9 @@ export class DB {
     tryAlter("ALTER TABLE snapshots ADD COLUMN last_tag TEXT");
     tryAlter("ALTER TABLE snapshots ADD COLUMN last_stable_tag TEXT");
     tryAlter("ALTER TABLE snapshots ADD COLUMN commits_90d INTEGER");
+
+    // Indexed only after the ALTER above has guaranteed the column exists.
+    this.sqlite.exec("CREATE INDEX IF NOT EXISTS idx_projects_github_id ON projects(github_id);");
 
     // Legacy cleanup for databases created before this schema: snapshot
     // metric columns that no pipeline ever populated, and the marker table
@@ -177,6 +186,21 @@ export class DB {
     tryDrop("ALTER TABLE snapshots DROP COLUMN avg_issue_response_hours");
     this.sqlite.exec("DROP TABLE IF EXISTS _migrations");
   }
+
+  /**
+   * A snapshot is MEASURED when it was written by insertSnapshot from a live
+   * GitHub fetch, which always supplies a composite score. The retired
+   * reconstruction path was the only writer that left composite_score NULL,
+   * so this predicate cleanly separates the two and does so retroactively:
+   * across the 13,593 rows audited on 2026-08-21, `composite_score IS NULL` agreed exactly with
+   * `date(created_at) > snapshot_date` — a row dated before the run that
+   * wrote it.
+   *
+   * Everything published to README.md and docs/data.json is filtered through
+   * it, which is what makes the site's "every point is a recorded
+   * measurement" claim true rather than aspirational.
+   */
+  private static readonly MEASURED = "composite_score IS NOT NULL";
 
   /** Repo + id for every project currently on the list. */
   listListedProjects(): { id: number; repo: string }[] {
@@ -290,16 +314,51 @@ export class DB {
     return row.count;
   }
 
-  upsertProject(repo: string, name: string): number {
-    const existing = this.sqlite.prepare("SELECT id FROM projects WHERE repo = ?").get(repo) as
+  /**
+   * Resolve a projects.yaml entry to its project row, creating one if needed.
+   *
+   * Identity is GitHub's immutable numeric id when we know it, and only the
+   * slug otherwise. Keying on the slug alone is what stranded five months of
+   * star history behind nine upstream renames: a renamed entry minted a fresh
+   * row, syncListedStatus retired the old one, and the new row started from
+   * nothing. GitHub serves renamed repos through a permanent redirect, so the
+   * old slug keeps fetching and the drift is invisible without the id.
+   *
+   * The slug lookup is case-insensitive because GitHub slugs are: e2b-dev/e2b
+   * and e2b-dev/E2B are one repository, and they had become two rows.
+   */
+  upsertProject(repo: string, name: string, githubId?: number | null): number {
+    if (githubId != null) {
+      const byId = this.sqlite.prepare("SELECT id, repo FROM projects WHERE github_id = ?").get(githubId) as
+        | { id: number; repo: string }
+        | undefined;
+      if (byId) {
+        // Same repository, new address: move the row rather than orphan it.
+        if (byId.repo !== repo) {
+          this.sqlite
+            .prepare("UPDATE projects SET repo = ?, name = ?, updated_at = datetime('now') WHERE id = ?")
+            .run(repo, name, byId.id);
+          logger.info(`Re-pointed project ${byId.id} from ${byId.repo} to ${repo} (same GitHub id ${githubId})`);
+        }
+        return byId.id;
+      }
+    }
+
+    const existing = this.sqlite.prepare("SELECT id FROM projects WHERE repo = ? COLLATE NOCASE").get(repo) as
       | { id: number }
       | undefined;
-    if (existing) return existing.id;
+    if (existing) {
+      if (githubId != null) {
+        this.sqlite.prepare("UPDATE projects SET github_id = ? WHERE id = ?").run(githubId, existing.id);
+      }
+      return existing.id;
+    }
+
     const info = this.sqlite
       .prepare(
-        "INSERT INTO projects (repo, name, status, discovered_via, listed_at) VALUES (?, ?, 'listed', 'github', datetime('now'))",
+        "INSERT INTO projects (repo, name, github_id, status, discovered_via, listed_at) VALUES (?, ?, ?, 'listed', 'github', datetime('now'))",
       )
-      .run(repo, name);
+      .run(repo, name, githubId ?? null);
     return Number(info.lastInsertRowid);
   }
 
@@ -453,7 +512,7 @@ export class DB {
       .prepare(
         `SELECT snapshot_date, stars, composite_score, archived, pushed_at, license, topics, last_release, last_commit, last_tag, last_stable_tag, commits_90d
            FROM snapshots
-          WHERE project_id = ?
+          WHERE project_id = ? AND ${DB.MEASURED}
           ORDER BY snapshot_date DESC LIMIT 1`,
       )
       .get(projectId) as
@@ -490,9 +549,10 @@ export class DB {
   }
 
   /**
-   * Real star history for the sparkline, oldest first. Served straight from
-   * the weekly snapshots — the chart plots these points verbatim, so nothing
-   * here may be smoothed, interpolated or imputed.
+   * Real star history for the sparkline, oldest first. Measured snapshots
+   * only — the chart plots these points verbatim, so nothing here may be
+   * smoothed, interpolated or imputed. An entry with fewer than three of them
+   * gets no sparkline at all rather than a curve drawn through guesses.
    */
   getSnapshotSeries(projectId: number, days: number): { date: string; stars: number }[] {
     const cutoff = new Date();
@@ -500,26 +560,11 @@ export class DB {
     const rows = this.sqlite
       .prepare(
         `SELECT snapshot_date, stars FROM snapshots
-         WHERE project_id = ? AND snapshot_date >= ? AND stars > 0
+         WHERE project_id = ? AND snapshot_date >= ? AND stars > 0 AND ${DB.MEASURED}
          ORDER BY snapshot_date ASC`,
       )
       .all(projectId, cutoff.toISOString().split("T")[0]) as { snapshot_date: string; stars: number }[];
     return rows.map((r) => ({ date: r.snapshot_date, stars: r.stars }));
-  }
-
-  /**
-   * Write reconstructed historical snapshots in one transaction. Existing
-   * rows win: a backfilled estimate must never overwrite a measured one.
-   */
-  insertBackfilledSnapshots(projectId: number, rows: { date: string; stars: number }[]): void {
-    const stmt = this.sqlite.prepare(
-      "INSERT OR IGNORE INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, NULL)",
-    );
-    this.sqlite.transaction((batch: { date: string; stars: number }[]) => {
-      for (const row of batch) {
-        if (row.stars > 0) stmt.run(projectId, row.date, row.stars);
-      }
-    })(rows);
   }
 
   /**
@@ -552,9 +597,14 @@ export class DB {
     return info.changes;
   }
 
-  /** Newest snapshot date across all projects — the real "data as of" date. */
+  /**
+   * Newest MEASURED snapshot date across all projects — the real "data as of"
+   * date. Measured-only for the same reason as the other publication readers:
+   * it drives the dashboard's "updated N days ago", and a backdated unmeasured
+   * row must never let the page assert a freshness nobody observed.
+   */
   getMaxSnapshotDate(): string | null {
-    const row = this.sqlite.prepare("SELECT MAX(snapshot_date) AS d FROM snapshots").get() as
+    const row = this.sqlite.prepare(`SELECT MAX(snapshot_date) AS d FROM snapshots WHERE ${DB.MEASURED}`).get() as
       | { d: string | null }
       | undefined;
     return row?.d ?? null;
@@ -565,7 +615,7 @@ export class DB {
     const row = this.sqlite
       .prepare(
         `SELECT stars FROM snapshots
-         WHERE project_id = ? AND snapshot_date < ?
+         WHERE project_id = ? AND snapshot_date < ? AND stars > 0 AND ${DB.MEASURED}
          ORDER BY snapshot_date DESC LIMIT 1`,
       )
       .get(projectId, today) as { stars: number } | undefined;
@@ -599,112 +649,13 @@ export class DB {
         `SELECT stars, snapshot_date FROM snapshots
          WHERE project_id = ?
            AND snapshot_date BETWEEN ? AND ?
+           AND stars > 0 AND ${DB.MEASURED}
          ORDER BY ABS(julianday(snapshot_date) - julianday(?)) ASC,
                   snapshot_date DESC
          LIMIT 1`,
       )
       .get(projectId, loStr, hiStr, targetStr) as { stars: number; snapshot_date: string } | undefined;
     return row ? { stars: row.stars, date: row.snapshot_date } : null;
-  }
-
-  startBackfillRun(projectIds: number[]): number {
-    const info = this.sqlite.prepare("INSERT INTO backfill_runs (total_repos) VALUES (?)").run(projectIds.length);
-    const runId = Number(info.lastInsertRowid);
-    const stmt = this.sqlite.prepare(
-      "INSERT INTO backfill_repo_status (run_id, project_id, state) VALUES (?, ?, 'pending')",
-    );
-    const tx = this.sqlite.transaction((ids: number[]) => {
-      for (const id of ids) stmt.run(runId, id);
-    });
-    tx(projectIds);
-    return runId;
-  }
-
-  /** Returns project ids in 'pending' or 'in_progress' state — both still need processing on resume. */
-  getBackfillPending(runId: number): number[] {
-    const rows = this.sqlite
-      .prepare(
-        "SELECT project_id FROM backfill_repo_status WHERE run_id = ? AND state IN ('pending', 'in_progress') ORDER BY project_id",
-      )
-      .all(runId) as { project_id: number }[];
-    return rows.map((r) => r.project_id);
-  }
-
-  setBackfillRepoState(runId: number, projectId: number, state: BackfillRepoState, reason: string | null = null): void {
-    this.sqlite
-      .prepare("UPDATE backfill_repo_status SET state = ?, skip_reason = ? WHERE run_id = ? AND project_id = ?")
-      .run(state, reason, runId, projectId);
-  }
-
-  finishBackfillRun(
-    runId: number,
-    stats: {
-      ok: number;
-      skipped: number;
-      pointsUsed: number;
-      notes: string;
-      status?: "completed" | "aborted" | "failed";
-    },
-  ): void {
-    this.sqlite
-      .prepare(
-        `UPDATE backfill_runs
-           SET status = ?,
-               finished_at = datetime('now'),
-               completed_repos = ?,
-               skipped_repos = ?,
-               points_used = ?,
-               notes = ?
-         WHERE id = ?`,
-      )
-      .run(stats.status ?? "completed", stats.ok, stats.skipped, stats.pointsUsed, stats.notes, runId);
-  }
-
-  getBackfillRun(runId: number): BackfillRunRow | null {
-    const row = this.sqlite.prepare("SELECT * FROM backfill_runs WHERE id = ?").get(runId);
-    return (row ?? null) as BackfillRunRow | null;
-  }
-
-  /**
-   * Newest 'running' run that still has work left. The bare "status =
-   * 'running'" query returned crashed runs whose repos were all done, so
-   * `backfill-trends --resume` picked one up, found nothing pending, and
-   * exited reporting success without backfilling anything.
-   */
-  getResumableBackfillRun(): number | null {
-    const row = this.sqlite
-      .prepare(
-        `SELECT r.id FROM backfill_runs r
-          WHERE r.status = 'running'
-            AND EXISTS (
-              SELECT 1 FROM backfill_repo_status s
-               WHERE s.run_id = r.id AND s.state IN ('pending', 'in_progress')
-            )
-          ORDER BY r.id DESC LIMIT 1`,
-      )
-      .get() as { id: number } | undefined;
-    return row?.id ?? null;
-  }
-
-  /**
-   * Close out 'running' runs that can never be resumed — a crash between the
-   * last repo finishing and finishBackfillRun. Returns how many were reaped.
-   */
-  reapStrandedBackfillRuns(): number {
-    const info = this.sqlite
-      .prepare(
-        `UPDATE backfill_runs
-            SET status = 'aborted',
-                finished_at = COALESCE(finished_at, datetime('now')),
-                notes = COALESCE(NULLIF(notes, ''), 'stranded: no pending repos on reap')
-          WHERE status = 'running'
-            AND NOT EXISTS (
-              SELECT 1 FROM backfill_repo_status s
-               WHERE s.run_id = backfill_runs.id AND s.state IN ('pending', 'in_progress')
-            )`,
-      )
-      .run();
-    return info.changes;
   }
 
   close(): void {

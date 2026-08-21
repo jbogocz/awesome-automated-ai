@@ -88,7 +88,7 @@ categories:
     tagline: Automated interpretable equation discovery from data
     tags: [symbolic-regression, automl, equation-discovery, genetic-algorithm, interpretable-ml, julia, python, scientific-ml]
   - name: Vertex AI AutoML
-    url: https://cloud.google.com/vertex-ai/docs/training-overview
+    url: https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning/training-overview
     description: Google Cloud's managed AutoML service for training tabular classification, regression, forecasting, image, and video models with one-click endpoint deployment. Now part of the Gemini Enterprise Agent Platform.
     tagline: Managed AutoML across data types on Google Cloud
     vendor: Google

@@ -113,10 +113,12 @@ export function avatarHtml(e, mag, hot) {
 }
 
 // ── Sparkline: measured star history, plotted verbatim ──────────────
-// `e.history` is the entry's real weekly snapshots (src/db/client.ts
-// getSnapshotSeries) as [date, stars] tuples, oldest first. Every point
-// drawn is a recorded measurement — nothing here interpolates, smooths or
-// imputes. Entries without enough history render the dashed placeholder.
+// `e.history` is the entry's measured weekly snapshots (src/db/client.ts
+// getSnapshotSeries, which filters on DB.MEASURED) as [date, stars] tuples,
+// oldest first. Every point drawn is a recorded measurement — nothing here
+// interpolates, smooths or imputes, and nothing upstream does either now that
+// star-history reconstruction is retired. Entries with fewer than three
+// measurements render the dashed placeholder rather than a curve.
 const SPARK_MIN_POINTS = 3;
 
 function sparkPoints(e) {

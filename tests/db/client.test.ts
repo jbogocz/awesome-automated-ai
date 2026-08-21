@@ -124,7 +124,11 @@ describe("DB.getSnapshotSeries", () => {
     db.migrate();
     const id = db.upsertProject("a/series", "series");
     const raw = new Database(path);
-    const stmt = raw.prepare("INSERT OR REPLACE INTO snapshots (project_id, snapshot_date, stars) VALUES (?, ?, ?)");
+    // A composite_score is what marks a row as measured; the publication
+    // readers filter on it, so a fixture without one is invisible to them.
+    const stmt = raw.prepare(
+      "INSERT OR REPLACE INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, 50)",
+    );
     for (const [date, stars] of rows) stmt.run(id, date, stars);
     raw.close();
     return { db, id };
@@ -276,7 +280,11 @@ describe("DB.pruneSnapshotHistory", () => {
     db.migrate();
     const id = db.upsertProject("a/prune", "prune");
     const raw = new Database(path);
-    const stmt = raw.prepare("INSERT OR REPLACE INTO snapshots (project_id, snapshot_date, stars) VALUES (?, ?, ?)");
+    // A composite_score is what marks a row as measured; the publication
+    // readers filter on it, so a fixture without one is invisible to them.
+    const stmt = raw.prepare(
+      "INSERT OR REPLACE INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, 50)",
+    );
     for (const [date, stars] of rows) stmt.run(id, date, stars);
     raw.close();
     return { db, id, path };
@@ -323,6 +331,121 @@ describe("DB.pruneSnapshotHistory", () => {
     ]);
     expect(db.pruneSnapshotHistory(180)).toBe(1);
     expect(db.pruneSnapshotHistory(180)).toBe(0);
+    db.close();
+  });
+});
+
+describe("published readers serve measured snapshots only", () => {
+  /**
+   * The failure this guards: GitHub restricted stargazer listings, the
+   * retired reconstruction path read that silence as "gained nothing", and
+   * wrote today's star count across 30 past days. Those rows carried no
+   * composite score, so filtering on one is what keeps a reconstructed or
+   * otherwise unscored row out of the sparkline, the trend and the README.
+   */
+  function withRows(tag: string): { db: DB; id: number } {
+    const path = join(tmpDir, `measured-only-${tag}.db`);
+    const db = new DB(path);
+    db.migrate();
+    const id = db.upsertProject("a/measured", "measured");
+    const raw = new Database(path);
+    const today = new Date();
+    const day = (n: number): string => {
+      const d = new Date(today);
+      d.setUTCDate(d.getUTCDate() - n);
+      return d.toISOString().split("T")[0];
+    };
+    raw
+      .prepare("INSERT INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, 60)")
+      .run(id, day(1), 500);
+    // Same shape a reconstruction wrote: a star count and no score.
+    for (const n of [28, 29, 30, 31, 32]) {
+      raw
+        .prepare("INSERT INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, NULL)")
+        .run(id, day(n), 490);
+    }
+    raw.close();
+    return { db, id };
+  }
+
+  it("getSnapshotSeries omits unscored rows", () => {
+    const { db, id } = withRows("series");
+    const series = db.getSnapshotSeries(id, 90);
+    expect(series).toHaveLength(1);
+    expect(series[0]?.stars).toBe(500);
+    db.close();
+  });
+
+  it("getStarsNDaysAgo will not anchor a trend on an unscored row", () => {
+    const { db, id } = withRows("ndays");
+    expect(db.getStarsNDaysAgo(id, 30)).toBeNull();
+    db.close();
+  });
+
+  it("getPreviousStars skips a newer unscored row for an older measured one", () => {
+    const path = join(tmpDir, "measured-only-prev.db");
+    const db = new DB(path);
+    db.migrate();
+    const id = db.upsertProject("a/prev", "prev");
+    const raw = new Database(path);
+    const day = (n: number): string => {
+      const d = new Date();
+      d.setUTCDate(d.getUTCDate() - n);
+      return d.toISOString().split("T")[0];
+    };
+    raw
+      .prepare("INSERT INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, 60)")
+      .run(id, day(9), 400);
+    // Newer, but unscored: taking it would report growth that was never measured.
+    raw
+      .prepare("INSERT INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, NULL)")
+      .run(id, day(2), 490);
+    raw.close();
+    expect(db.getPreviousStars(id)).toBe(400);
+    db.close();
+  });
+});
+
+describe("DB.upsertProject identity", () => {
+  it("re-points an existing row when the repo is renamed under the same GitHub id", () => {
+    const db = new DB(":memory:");
+    db.migrate();
+    const id = db.upsertProject("sst/opencode", "OpenCode", 975734319);
+    db.insertSnapshot(id, 185248, 80);
+
+    // Same repository, new address — must be the same row, history intact.
+    const after = db.upsertProject("anomalyco/opencode", "OpenCode", 975734319);
+    expect(after).toBe(id);
+    expect(db.findProjectByRepo("anomalyco/opencode")?.id).toBe(id);
+    expect(db.findProjectByRepo("sst/opencode")).toBeNull();
+    expect(db.getSnapshotSeries(id, 90)).toHaveLength(1);
+    db.close();
+  });
+
+  it("treats a case-only slug change as the same repo", () => {
+    const db = new DB(":memory:");
+    db.migrate();
+    const id = db.upsertProject("e2b-dev/e2b", "E2B");
+    expect(db.upsertProject("e2b-dev/E2B", "E2B")).toBe(id);
+    db.close();
+  });
+
+  it("keeps genuinely different repos apart even when the name matches", () => {
+    const db = new DB(":memory:");
+    db.migrate();
+    const a = db.upsertProject("visenger/awesome-mlops", "awesome-mlops", 244620269);
+    const b = db.upsertProject("kelvins/awesome-mlops", "awesome-mlops", 266895706);
+    expect(b).not.toBe(a);
+    db.close();
+  });
+
+  it("backfills github_id onto a row first seen without one", () => {
+    const db = new DB(":memory:");
+    db.migrate();
+    const id = db.upsertProject("a/b", "ab");
+    expect(db.upsertProject("a/b", "ab", 4242)).toBe(id);
+    // Now resolvable by id alone, so a later rename cannot orphan it.
+    expect(db.upsertProject("c/d", "ab", 4242)).toBe(id);
     db.close();
   });
 });

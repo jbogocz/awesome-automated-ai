@@ -1,7 +1,7 @@
 import { PULSE_WINDOW_DAYS } from "../constants.js";
 import { isPrereleaseTag } from "../status.js";
 import { logger } from "../utils/logger.js";
-import { ghGraphQL } from "./stargazers-graphql.js";
+import { ghGraphQL } from "./graphql.js";
 
 // Live repo metadata for the weekly regen, fetched as alias-batched GraphQL:
 // one query per CHUNK_SIZE repos instead of several REST calls per repo, so
@@ -11,6 +11,13 @@ export interface RepoMetadata {
   /** Where the slug actually resolved. Differs from the requested repo when
    * GitHub served a rename/transfer redirect. */
   nameWithOwner: string | null;
+  /**
+   * GitHub's immutable numeric repository id. Survives renames, transfers and
+   * case changes, so it — not the slug — is what identifies a project row.
+   * Keying on the slug is what stranded five months of star history behind
+   * nine upstream renames; see DB.upsertProject.
+   */
+  githubId: number | null;
   stars: number;
   /** Raw pushedAt (any-branch pushes). Not a health signal and no longer a
    * scoring signal either — see src/status.ts and src/scoring/quality.ts. */
@@ -51,6 +58,7 @@ interface TagNode {
 
 interface RepoNode {
   nameWithOwner?: string | null;
+  databaseId?: number | null;
   stargazerCount?: number | null;
   pushedAt?: string | null;
   isArchived?: boolean | null;
@@ -83,6 +91,7 @@ export function buildMetadataQuery(repos: string[], pulseSince?: string): string
     const [owner = "", name = ""] = repo.split("/");
     return `  ${aliasFor(i)}: repository(owner: "${sanitize(owner)}", name: "${sanitize(name)}") {
     nameWithOwner
+    databaseId
     stargazerCount
     pushedAt
     isArchived
@@ -148,6 +157,7 @@ export function parseMetadataResponse(repos: string[], resp: MetadataGraphQLResp
 
     out.set(repo, {
       nameWithOwner: canonical,
+      githubId: node.databaseId ?? null,
       stars: node.stargazerCount ?? 0,
       pushed: node.pushedAt ?? "",
       archived: node.isArchived ?? false,

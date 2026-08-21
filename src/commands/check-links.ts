@@ -73,14 +73,32 @@ function isBotWalled(url: string): boolean {
   }
 }
 
+/**
+ * 429 means "you asked too often", not "this page is gone". devin.ai answers
+ * 429 to every datacenter client including a browser user agent, and was
+ * reported as dead in the weekly run for weeks while the site was up.
+ */
+export function isThrottled(status: number | null): boolean {
+  return status === 429;
+}
+
 /** True when a redirect changed more than the trailing slash or the scheme. */
 export function isMeaningfulRedirect(from: string, to: string): boolean {
   try {
     const a = new URL(from);
     const b = new URL(to);
     if (INTERSTITIAL.some((re) => re.test(b.hostname) || re.test(to))) return false;
-    if (a.hostname.replace(/^www\./, "") !== b.hostname.replace(/^www\./, "")) return true;
-    return a.pathname.replace(/\/$/, "") !== b.pathname.replace(/\/$/, "");
+    const hostA = a.hostname.replace(/^www\./, "");
+    const hostB = b.hostname.replace(/^www\./, "");
+    const pathA = a.pathname.replace(/\/$/, "");
+    const pathB = b.pathname.replace(/\/$/, "");
+    // A bare domain redirecting into one of its own subdomains, same path, is
+    // a site-internal rollover, not a link to update: automl.cc sends you to
+    // the current year's edition and will do so again next year. Reporting it
+    // weekly would pin the drift issue open forever over nothing.
+    if (hostB.endsWith(`.${hostA}`) && pathA === pathB) return false;
+    if (hostA !== hostB) return true;
+    return pathA !== pathB;
   } catch {
     return false;
   }
@@ -169,8 +187,10 @@ export async function runCheckLinksCommand(opts: CheckLinksOptions): Promise<num
   const results = await mapLimit(targets, CONCURRENCY, (t) => probe(t.url, t.where));
 
   const judgeable = results.filter((r) => !NOT_JUDGEABLE.some((re) => re.test(r.url)));
-  const broken = judgeable.filter((r) => r.status === null || r.status >= 400).filter((r) => !isBotWalled(r.url));
-  const walled = judgeable.filter((r) => (r.status === null || r.status >= 400) && isBotWalled(r.url));
+  const isRot = (r: LinkResult): boolean => (r.status === null || r.status >= 400) && !isThrottled(r.status);
+  const broken = judgeable.filter(isRot).filter((r) => !isBotWalled(r.url));
+  const walled = judgeable.filter((r) => isRot(r) && isBotWalled(r.url));
+  const throttled = judgeable.filter((r) => isThrottled(r.status));
   const moved = opts.reportRedirects
     ? judgeable.filter(
         (r) => r.status !== null && r.status < 400 && r.finalUrl && isMeaningfulRedirect(r.url, r.finalUrl),
@@ -185,16 +205,41 @@ export async function runCheckLinksCommand(opts: CheckLinksOptions): Promise<num
       `${walled.length} URL(s) on known bot-walled publishers were not judged: ${walled.map((r) => r.url).join(", ")}`,
     );
   }
-
-  if (broken.length === 0) {
-    logger.info(`All ${targets.length} URLs resolved.`);
-    return 0;
+  if (throttled.length > 0) {
+    logger.info(
+      `${throttled.length} URL(s) rate-limited us, which says nothing: ${throttled.map((r) => r.url).join(", ")}`,
+    );
   }
   for (const r of broken) {
     logger.error(`dead: ${r.url} -> ${r.error ?? `HTTP ${r.status}`} (${r.where})`);
   }
-  logger.error(`${broken.length} of ${targets.length} URLs are unreachable.`);
+  if (broken.length === 0) {
+    logger.info(`All ${targets.length} URLs resolved.`);
+  } else {
+    logger.error(`${broken.length} of ${targets.length} URLs are unreachable.`);
+  }
+
+  // stdout carries the findings and nothing else, so the weekly job can append
+  // it straight to the drift report and treat "file is non-empty" as "something
+  // is wrong". Diagnostics above went to stderr.
+  const report = renderLinkReport(broken, moved);
+  if (report !== "") process.stdout.write(`${report}\n`);
+
   return broken.length;
+}
+
+/** Markdown for the weekly drift issue. Empty when every link is healthy. */
+export function renderLinkReport(broken: LinkResult[], moved: LinkResult[]): string {
+  if (broken.length === 0 && moved.length === 0) return "";
+  const lines: string[] = ["## Link rot", ""];
+  for (const r of broken) {
+    lines.push(`- **dead** \`${r.url}\` -> ${r.error ?? `HTTP ${r.status}`} (${r.where})`);
+  }
+  for (const r of moved) {
+    lines.push(`- **moved** \`${r.url}\` -> \`${r.finalUrl}\` (${r.where})`);
+  }
+  lines.push("");
+  return lines.join("\n");
 }
 
 export function defaultCheckLinksOptions(root: string): CheckLinksOptions {

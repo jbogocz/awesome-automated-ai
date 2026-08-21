@@ -6,7 +6,6 @@ import { computeQualityScore } from "../scoring/quality.js";
 import { computeTrends } from "../scoring/trends.js";
 import { lastLifeSign } from "../status.js";
 import { logger } from "../utils/logger.js";
-import { backfillBatch } from "./backfill.js";
 import type { ApiData, ApiRepoData } from "./readme.js";
 
 /**
@@ -103,24 +102,22 @@ async function collectRepoData(
 ): Promise<FetchResult> {
   db.migrate();
 
-  // Pass 1: fetch live state (alias-batched GraphQL) and detect which
-  // repos lack 30d history.
+  // Pass 1: fetch live state (alias-batched GraphQL) and resolve project rows.
+  //
+  // This used to also queue repos with no 30-day history for star-history
+  // reconstruction. That path is gone: GitHub restricted stargazer listings
+  // to admins and collaborators (2026-06-30 changelog), so the connection now
+  // returns an empty edge list with no error for every third-party repo, and
+  // the reconstruction arithmetic turned that silence into today's star count
+  // stamped across all 30 past days. It ran here, inside the unattended
+  // weekly job, so every newly listed entry would have been fabricated afresh
+  // each week. A new entry now simply starts accumulating measured history
+  // from its first weekly snapshot, and shows no trend until it has one.
   const rawByRepo = await fetchRepoMetadataBatch(repos.map((r) => r.repo));
   const projectIdByRepo = new Map<string, number>();
-  const pendingBackfill: { repo: string; projectId: number; currentStars: number }[] = [];
 
   for (const { repo, name } of repos) {
-    const projectId = db.upsertProject(repo, name);
-    projectIdByRepo.set(repo, projectId);
-    // Only backfill from live metadata. Seeding from a failed fetch meant
-    // currentStars=0, which computeDailySnapshots turned into 30 zero and
-    // negative star rows — persisted with INSERT OR IGNORE, never rewritten
-    // (the getStarsNDaysAgo guard below stays satisfied forever after), and
-    // later surfacing as a fabricated four-digit "+N last 30d".
-    const raw = rawByRepo.get(repo);
-    if (raw && raw.stars > 0 && db.getStarsNDaysAgo(projectId, 30) === null) {
-      pendingBackfill.push({ repo, projectId, currentStars: raw.stars });
-    }
+    projectIdByRepo.set(repo, db.upsertProject(repo, name, rawByRepo.get(repo)?.githubId));
   }
 
   // Keep projects.status truthful: projects.yaml is the authoritative list.
@@ -130,11 +127,6 @@ async function collectRepoData(
   }
   if (relisted.length > 0) {
     logger.info(`Marked ${relisted.length} project(s) as listed: ${relisted.join(", ")}`);
-  }
-
-  if (pendingBackfill.length > 0) {
-    logger.info(`Backfilling 30d history for ${pendingBackfill.length} new/missing repos...`);
-    await backfillBatch(pendingBackfill, db);
   }
 
   // Pass 2: compute trends + scores now that history exists.
@@ -252,7 +244,7 @@ async function collectRepoData(
  * Assemble ApiData from the SQLite database only — no GitHub API calls.
  * Uses the latest snapshot per repo + projects.tagline. Trend values come from
  * comparing latest snapshot.stars against snapshots from 7 and 30 days ago.
- * Safe to call offline; requires that generate or backfill-trends has been
+ * Safe to call offline; requires that generate has been
  * run at least once to populate the DB.
  */
 export function loadApiDataFromDB(yamlContent: string): ApiData {
@@ -288,7 +280,7 @@ export function loadApiDataFromDB(yamlContent: string): ApiData {
     if (missing.length > 0) {
       logger.warn(
         `${missing.length} repo(s) have no snapshot yet and will render without stats ` +
-          `(run generate with fetch to backfill): ${missing.join(", ")}`,
+          `(run generate with fetch to record them): ${missing.join(", ")}`,
       );
     }
     return data;

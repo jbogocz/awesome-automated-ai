@@ -82,7 +82,7 @@ export function openSheet(e) {
     <div class="sheet__statusbar" style="border-left:2px solid var(${statusColVar});color:var(${statusColVar});">${status}</div>
     <div class="sheet__stats">
       <div class="stat__label">Stars</div>
-      <div class="stat__label">Stars gained (30d)</div>
+      <div class="stat__label">Stars gained ${e.trendDays ? `(${e.trendDays}d)` : "(since last snapshot)"}</div>
       <div class="stat__val">${showStars ? fmtStars(e.stars) : "—"}</div>
       <div class="stat__val stat__val--trend ${t.cls}">${trendVal}</div>
 

@@ -1,7 +1,6 @@
 import { resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { defaultAuditOptions, renderAuditReport, runAuditCommand } from "./commands/audit.js";
-import { runBackfillTrendsCommand } from "./commands/backfill-trends.js";
 import { defaultCheckLinksOptions, runCheckLinksCommand } from "./commands/check-links.js";
 import { runDiscoverCommand } from "./commands/discover.js";
 import { runGenerateCommand } from "./commands/generate.js";
@@ -17,10 +16,9 @@ const FOOTER_MD = resolve(ROOT, "templates/footer.md");
 const README_MD = resolve(ROOT, "README.md");
 const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 const RECLASSIFY_REPORT = resolve(ROOT, "data/reclassify-report.md");
-const DB_PATH = resolve(ROOT, "data/curator.db");
 
 const USAGE =
-  "Usage: tsx src/cli.ts <discover|generate|refresh-tags|reclassify|backfill-trends|validate|check-links|audit> [--dry-run] [--limit=N] [--force] [--repo=X/Y] [--resume] [--no-fetch] [--strict] [--verbose]";
+  "Usage: tsx src/cli.ts <discover|generate|refresh-tags|reclassify|validate|check-links|audit> [--dry-run] [--limit=N] [--no-fetch] [--strict] [--verbose]";
 
 function usage(): never {
   logger.error(USAGE);
@@ -33,24 +31,18 @@ async function main() {
     allowPositionals: true,
     options: {
       "dry-run": { type: "boolean" },
-      force: { type: "boolean" },
-      resume: { type: "boolean" },
       "no-fetch": { type: "boolean" },
       verbose: { type: "boolean" },
       limit: { type: "string" },
-      repo: { type: "string" },
       strict: { type: "boolean" },
     },
   });
 
   const command = positionals[0];
   const dryRun = values["dry-run"] ?? false;
-  const force = values.force ?? false;
-  const resume = values.resume ?? false;
   const noFetch = values["no-fetch"] ?? false;
   const verbose = values.verbose ?? false;
   const limit = values.limit !== undefined ? Number.parseInt(values.limit, 10) : undefined;
-  const repo = values.repo;
   const strict = values.strict ?? false;
 
   if (verbose) {
@@ -120,16 +112,6 @@ async function main() {
           reportPath: RECLASSIFY_REPORT,
           apiKey,
           limit,
-        });
-        break;
-      }
-      case "backfill-trends": {
-        await runBackfillTrendsCommand({
-          projectsYamlPath: PROJECTS_YAML,
-          dbPath: DB_PATH,
-          force,
-          resume,
-          repo,
         });
         break;
       }

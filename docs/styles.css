@@ -1100,7 +1100,7 @@
     min-width: 44px;
   }
 
-  /* Light curve — sparkline of synthesized 30-day star trajectory. */
+  /* Light curve — sparkline of measured star history over 90 days. */
   .row__spark {
     display: flex;
     align-items: center;

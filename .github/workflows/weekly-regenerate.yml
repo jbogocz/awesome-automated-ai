@@ -15,6 +15,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: write
+      issues: write # the drift report files an issue; without this gh exits 1
     steps:
       - uses: actions/checkout@v7
 
@@ -48,10 +49,12 @@ jobs:
           git config user.name "$BOT_NAME"
           git config user.email "$BOT_EMAIL"
           git add README.md docs/data.json package.json data/curator.db
+          # Not a "nothing to do" case: a successful run always records a new
+          # measured snapshot per listed project, so an empty diff means the
+          # regeneration produced nothing and must not be reported as success.
           if git diff --cached --quiet; then
-            echo "No changes to commit"
-            echo "sha=" >> "$GITHUB_OUTPUT"
-            exit 0
+            echo "::error::regeneration staged no changes - no measurement was recorded this run"
+            exit 1
           fi
           git commit -m "chore: weekly regeneration [skip ci]"
           git push
@@ -60,24 +63,27 @@ jobs:
       # Everything below reports; nothing below can fail the run. The
       # regeneration refreshes metadata but never adds, retires or re-slugs an
       # entry, so drift accumulated silently until someone went looking.
+      # Both reporters write findings to stdout and diagnostics to stderr, so
+      # the report body stays free of log noise and "report is non-empty"
+      # genuinely means "something drifted".
       - name: Audit catalog drift
-        id: audit
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm run audit >> audit-report.md || true
+
+      - name: Check links the metadata fetch never touches
+        continue-on-error: true
+        run: pnpm run check-links >> audit-report.md || true
+
+      - name: Decide whether anything drifted
+        id: audit
         run: |
-          pnpm run audit > audit-report.md 2>audit.log || true
-          cat audit.log
-          # The command prints the report to stdout only when something drifted.
           if [ -s audit-report.md ]; then
             echo "drift=true" >> "$GITHUB_OUTPUT"
           else
             echo "drift=false" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: Check links the metadata fetch never touches
-        continue-on-error: true
-        run: pnpm run check-links 2>&1 | tee -a audit-report.md
 
       - name: Open or update the drift tracking issue
         if: steps.audit.outputs.drift == 'true'
@@ -88,10 +94,12 @@ jobs:
         run: |
           # One long-lived issue, updated in place, so the weekly job never
           # accumulates a pile of near-identical reports.
-          NUM=$(gh issue list --state open --search "$TITLE in:title" --json number,title \
+          # --state all, so a closed issue is reopened rather than duplicated.
+          NUM=$(gh issue list --state all --search "$TITLE in:title" --json number,title,state \
                   --jq "[.[] | select(.title == \"$TITLE\")] | .[0].number // empty")
           if [ -n "$NUM" ]; then
             gh issue edit "$NUM" --body-file audit-report.md
+            gh issue reopen "$NUM" 2>/dev/null || true
             echo "Updated issue #$NUM"
           else
             gh issue create --title "$TITLE" --body-file audit-report.md

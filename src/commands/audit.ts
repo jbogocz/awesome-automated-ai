@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
+import { MIN_FRESH_RATIO } from "../constants.js";
 import { DB } from "../db/client.js";
 import { fetchRepoMetadataBatch } from "../github/repo-metadata-graphql.js";
 import { repoStatus } from "../status.js";
@@ -18,7 +19,7 @@ import { logger } from "../utils/logger.js";
  */
 
 export interface AuditFinding {
-  kind: "renamed" | "archived" | "dead-no-note" | "stale-note";
+  kind: "renamed" | "archived" | "dead-no-note" | "stale-note" | "unreachable";
   entry: string;
   detail: string;
 }
@@ -67,6 +68,25 @@ export async function runAuditCommand(opts: AuditOptions): Promise<AuditFinding[
   }
 
   const metadata = await fetchRepoMetadataBatch(repoEntries.map((e) => e.entry.repo as string));
+
+  // fetchRepoMetadataBatch logs chunk failures and returns whatever it got, so
+  // a run in which every GitHub call failed produces an empty map, zero
+  // findings and an empty report — which the weekly job reads as "nothing
+  // drifted". That is the same mistake that let star-history reconstruction
+  // publish an empty API response as fact, so it gets the same treatment:
+  // below MIN_FRESH_RATIO coverage the audit reports that it does not know.
+  const coverage = repoEntries.length > 0 ? metadata.size / repoEntries.length : 1;
+  if (coverage < MIN_FRESH_RATIO) {
+    findings.push({
+      kind: "unreachable",
+      entry: "(audit)",
+      detail:
+        `reached only ${metadata.size}/${repoEntries.length} repos ` +
+        `(${Math.round(coverage * 100)}%); drift status is UNKNOWN for this run, not clean`,
+    });
+    logger.error(`Audit coverage ${metadata.size}/${repoEntries.length} is below the ${MIN_FRESH_RATIO} gate`);
+  }
+
   const db = new DB(opts.dbPath);
   try {
     db.migrate();
@@ -123,6 +143,9 @@ export function renderAuditReport(findings: AuditFinding[]): string {
   if (findings.length === 0) return "";
 
   const titles: Record<AuditFinding["kind"], string> = {
+    // First, so a run that could not see the catalog says so before anything
+    // it did manage to check is read as the whole picture.
+    unreachable: "Audit could not reach GitHub - results incomplete",
     renamed: "Renamed or transferred upstream",
     archived: "Archived upstream",
     "dead-no-note": "Dead with no successor named",

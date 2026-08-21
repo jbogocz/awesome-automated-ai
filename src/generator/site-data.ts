@@ -53,6 +53,7 @@ const EMPTY_API = {
   archived: false,
   license: null,
   trend: null,
+  trend30dDays: null,
   score: 0,
   topics: [],
   tagline: null,
@@ -152,9 +153,17 @@ function main() {
           // cross-listed entries would otherwise share one line.
           tagline: entry.tagline ?? api.tagline ?? "",
           note: entry.note ?? "",
-          stars: api.stars,
+          // Null, not zero, when nothing resolved. EMPTY_API's zeros exist so
+          // the shape is stable, but publishing them made an unresolved entry
+          // render "0 stars, score 0" — a measurement nobody took, and a
+          // verdict the README avoids by printing a "stats pending" card.
+          stars: hasApi ? api.stars : null,
           trend: api.trend,
-          score: api.score,
+          // The window the trend actually spans. Snapshots are weekly, so the
+          // point nearest t-30 is usually t-28 or t-31; the dashboard used to
+          // hard-code "(30d)" and overstate or understate every figure.
+          trendDays: api.trend30dDays ?? null,
+          score: hasApi ? api.score : null,
           license: api.license,
           lastCommit: api.lastCommit ?? null,
           lastRelease: api.lastRelease ?? null,

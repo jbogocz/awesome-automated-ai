@@ -62,12 +62,14 @@ const state = {
 
 // ── Curated lenses ───────────────────────────────────────────────────
 // Each lens answers one specific ML-engineer question with one click.
-// Predicates are tuned against the actual data distribution:
-//   score p90 = 80, stars p50 = 4302, trend p90 = 1125, lastCommit p25 = 5d.
+// Predicates are tuned against the data distribution as it stood when they
+// were chosen (2026-05-11: score p90 = 80, stars p50 = 4302, trend p90 = 1125).
+// They are deliberately fixed thresholds, not recomputed percentiles, so a
+// lens means the same thing from one week to the next.
 const LENSES = {
   all: {
     test: () => true,
-    caption: (n) => `All <b>${n}</b> tools in the catalog. Sorted by composite quality score.`,
+    caption: (n) => `Showing <b>${n}</b> tools.`,
   },
   top: {
     // Highest composite score AND still maintained.
@@ -77,7 +79,7 @@ const LENSES = {
   trending: {
     // Big star growth in the last 30 days (any size).
     test: (e) => isAlive(e) && (e.trend ?? 0) >= 200,
-    caption: (n) => `<b>${n}</b> tools with major star growth in the last 30 days.`,
+    caption: (n) => `<b>${n}</b> maintained tools with major star growth in the last 30 days.`,
   },
   gems: {
     // High curator score but under-median popularity — quality below the radar.
@@ -282,7 +284,7 @@ function rowHtml(e) {
   const badges = [
     e.commercial ? '<span class="badge badge--commercial">comm.</span>' : "",
     e.archived ? '<span class="badge badge--archived">archived</span>' : "",
-    e.external ? '<span class="badge badge--paper">paper</span>' : "",
+    e.authors ? '<span class="badge badge--paper">paper</span>' : "",
   ].join("");
   const vendorHtml = e.vendor ? `<span class="vendor">${escapeText(e.vendor)}</span>` : "";
   const staleHtml = e.stale
@@ -301,7 +303,7 @@ function rowHtml(e) {
     <span class="row__tagline">${escapeText(e.tagline || e.description || "")}</span>
     <span class="row__tags">${tagsHtml}</span>
     <span class="row__spark">${sparkSvg(e, mag)}</span>
-    <span class="row__metric row__metric--score" title="Quality score: stars 50%, trend 25%, freshness 15%, licence 10%">${e.external ? "—" : (e.score ?? 0)}</span>
+    <span class="row__metric row__metric--score" title="Quality score: stars 50%, trend 25%, freshness 15%, licence 10%">${e.external || e.score == null ? "—" : e.score}</span>
     <span class="row__metric row__metric--stars">${e.external ? "—" : fmtStars(e.stars)}</span>
     <span class="row__metric row__metric--trend ${t.cls}">${t.txt}</span>
     <span class="row__metric row__metric--age">${e.external ? "—" : fmtAge(e.lastCommit)}</span>

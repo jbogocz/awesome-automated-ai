@@ -60,6 +60,7 @@ describe("parseMetadataResponse", () => {
     const out = parseMetadataResponse(["a/b"], { data: { r0: fullNode } });
     expect(out.get("a/b")).toEqual({
       nameWithOwner: "a/b",
+      githubId: null,
       stars: 12000,
       pushed: "2026-07-12T00:00:00Z",
       archived: false,
@@ -154,6 +155,7 @@ describe("parseMetadataResponse", () => {
     });
     expect(out.get("a/b")).toEqual({
       nameWithOwner: null,
+      githubId: null,
       stars: 5,
       pushed: "2026-01-01T00:00:00Z",
       archived: true,
