@@ -63,18 +63,26 @@ jobs:
       # Everything below reports; nothing below can fail the run. The
       # regeneration refreshes metadata but never adds, retires or re-slugs an
       # entry, so drift accumulated silently until someone went looking.
-      # Both reporters write findings to stdout and diagnostics to stderr, so
-      # the report body stays free of log noise and "report is non-empty"
-      # genuinely means "something drifted".
+      # DRIFT_REPORT makes each reporter append its findings to the file itself.
+      # Shell redirection is not usable here: `pnpm run <script>` writes its own
+      # lockfile-verification summary to stdout whenever that check is stale, so
+      # a cold runner appended "Lockfile passes supply-chain policies ... Done in
+      # 782ms using pnpm v11" to the report and filed it as catalog drift, while
+      # the same command locally wrote nothing at all. Passing it as a flag is
+      # not usable either: `pnpm run <script> -- --report=X` forwards a literal
+      # "--", which parseArgs turns into a positional and the flag never lands.
       - name: Audit catalog drift
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm run audit >> audit-report.md || true
+          DRIFT_REPORT: audit-report.md
+        run: pnpm run audit || true
 
       - name: Check links the metadata fetch never touches
         continue-on-error: true
-        run: pnpm run check-links >> audit-report.md || true
+        env:
+          DRIFT_REPORT: audit-report.md
+        run: pnpm run check-links || true
 
       - name: Decide whether anything drifted
         id: audit

@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { logger } from "../utils/logger.js";
+import { emitReport } from "../utils/report.js";
 
 /**
  * Probes the URLs the pipeline never touches.
@@ -55,6 +56,8 @@ export interface CheckLinksOptions {
   templatePaths: string[];
   /** Report redirects that land on a different path, not just a different host. */
   reportRedirects?: boolean;
+  /** Append findings here instead of stdout. See src/utils/report.ts. */
+  reportPath?: string;
 }
 
 /** Every http(s) URL in a markdown file, with duplicates collapsed. */
@@ -219,11 +222,7 @@ export async function runCheckLinksCommand(opts: CheckLinksOptions): Promise<num
     logger.error(`${broken.length} of ${targets.length} URLs are unreachable.`);
   }
 
-  // stdout carries the findings and nothing else, so the weekly job can append
-  // it straight to the drift report and treat "file is non-empty" as "something
-  // is wrong". Diagnostics above went to stderr.
-  const report = renderLinkReport(broken, moved);
-  if (report !== "") process.stdout.write(`${report}\n`);
+  emitReport(renderLinkReport(broken, moved), opts.reportPath);
 
   return broken.length;
 }
