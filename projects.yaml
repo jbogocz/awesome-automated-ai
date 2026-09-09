@@ -949,6 +949,14 @@ categories:
     description: OpenAI-compatible proxy that normalizes requests across providers (OpenAI, Anthropic, Google, open models) with streaming, caching, and observability hooks.
     tagline: OpenAI-compatible proxy normalizing across providers
     tags: [gateway, llm, openai-compatible, proxy]
+  - name: ModelRush
+    url: https://modelrush.ai
+    description: Proprietary hosted gateway for text, image, video, and voice models using prepaid usage credits. Chat is OpenAI-compatible; media endpoints are model-specific.
+    tagline: Hosted API access for text and media models
+    vendor: ModelRush
+    pricing: pay-as-you-go
+    commercial: true
+    note: No ongoing free tier or trial; includes an age-restricted Spicy catalog.
 - name: Automated Monitoring and Observability
   description: Automated drift detection, performance monitoring, and quality observability for models deployed in production.
   entries:
