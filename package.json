@@ -23,17 +23,17 @@
     "format": "biome format --write ."
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.117.1",
+    "@anthropic-ai/sdk": "^0.124.0",
     "@octokit/rest": "^22.0.1",
     "better-sqlite3": "^12.11.1",
     "yaml": "^2.9.0",
-    "zod": "^4.4.3"
+    "zod": "^4.5.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.8",
+    "@biomejs/biome": "^2.5.12",
     "@types/better-sqlite3": "^9.6.0",
-    "@types/node": "^26.2.0",
-    "tsx": "^4.23.12",
+    "@types/node": "^26.4.1",
+    "tsx": "^4.23.13",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"
   }
