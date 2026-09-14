@@ -32,6 +32,9 @@ pnpm install
 pnpm validate
 ```
 
+The toolchain is pinned in `package.json`: Node 24 (the Active LTS line CI runs)
+and pnpm 12, which `packageManager` fetches for you on first use.
+
 Don't edit `README.md` directly — it is regenerated weekly from `projects.yaml`
 plus live GitHub data, and manual edits will be overwritten.
 

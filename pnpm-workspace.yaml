@@ -1,3 +1,13 @@
+# Native and platform-specific packages that may run their install scripts.
+# better-sqlite3 13.x ships prebuilt binaries inside its npm tarball, so this
+# is only the fallback path for a platform it has no prebuild for.
 allowBuilds:
   better-sqlite3: true
   esbuild: true
+# Note on a pnpm 12 quirk, so nobody commits the churn: `pnpm install
+# --frozen-lockfile` (what CI runs) rewrites pnpm-lock.yaml to also record
+# `@pnpm/exe` under packageManagerDependencies, and the next `pnpm run`
+# removes it again. A plain `pnpm install` - what local work and contributors
+# do - leaves the committed form untouched, so that is the one in git. A
+# lock file dirtied by a frozen install is the quirk, not a real change; run
+# `git checkout pnpm-lock.yaml` rather than committing it.
