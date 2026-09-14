@@ -16,6 +16,7 @@ categories:
     repo: EpistasisLab/tpot
     description: Genetic programming-based pipeline optimizer that designs and optimizes scikit-learn pipelines.
     tagline: Genetic programming pipeline optimizer for sklearn
+    note: Still the reference for genetic-programming pipeline search; AutoGluon and FLAML cover production use.
     tags: [adsp, ag066833, aiml, alzheimer, alzheimers, automated-machine-learning, automation, automl, data-science, feature-engineering, gradient-boosting, hyperparameter-optimization, machine-learning, model-selection, nia, parameter-tuning, python, random-forest, scikit-learn, u01ag066833]
   - name: PyCaret
     repo: pycaret/pycaret
@@ -802,7 +803,7 @@ categories:
     tagline: Microsoft multi-agent R&D loop for data-driven AI
     tags: [agents, autonomous-research, llm-agents, machine-learning, mle-bench, multi-agent]
   - name: AIBuildAI
-    repo: aibuildai/AI-Build-AI
+    repo: aibuildai-inc/AI-Build-AI
     description: Hierarchical agent system for autonomous AI model development; ranked #1 on MLE-Bench leaderboard with 63.1% medal rate (March 2026), outperforming 26 baseline methods including AIDE, R&D-Agent, and MLE-STAR.
     tagline: SOTA on MLE-Bench (63.1% medal rate, March 2026)
     tags: [agents, autonomous-agents, machine-learning, mle-bench, multi-agent]
@@ -1258,6 +1259,7 @@ categories:
     repo: VainF/Torch-Pruning
     description: Structural pruning framework for any PyTorch model including LLMs, YOLO, ViT, and diffusion models (CVPR 2023).
     tagline: Structural pruning for any PyTorch model
+    note: Still the reference for dependency-graph structural pruning; Intel Neural Compressor and TensorRT Model Optimizer cover production use.
     tags: [efficient-deep-learning, llm, model-compression, pruning, transformers, vision]
   - name: LLM Compressor
     repo: vllm-project/llm-compressor
