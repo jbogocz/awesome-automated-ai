@@ -25,11 +25,12 @@ updates:
         dependency-type: development
         update-types: [minor, patch]
     ignore:
-      # Native module: only the 12.x line ships prebuilt binaries for the CI
-      # runner. Taking 13.x makes every install compile from source, which is
-      # slower and can fail outright on a runner without a build toolchain.
-      # Revisit when 13.x publishes prebuilds.
-      - dependency-name: better-sqlite3
+      # Node type definitions track the runtime, never the newest release. CI
+      # and the weekly job both run Node 24 (Active LTS), so 26.x types would
+      # typecheck calls against APIs the runtime does not have - a green build
+      # that fails at 06:00 on Monday. Lift this together with node-version in
+      # the workflows, not before.
+      - dependency-name: "@types/node"
         update-types: [version-update:semver-major]
 
   - package-ecosystem: github-actions
