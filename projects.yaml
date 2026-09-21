@@ -748,6 +748,11 @@ categories:
     description: Agentic coding platform for VS Code and JetBrains that plans, edits across files, and runs commands, with model choice spanning several providers.
     tagline: Agentic coding for VS Code and JetBrains
     tags: [ai, ai-coding, ai-developer-tools, cli, jetbrains, vscode, vscode-extension]
+  - name: Orkas
+    repo: Orkas-AI/Orkas
+    description: Local-first desktop app where a commander coordinates specialist agents and installed coding CLIs with approval-aware task execution.
+    tagline: Desktop orchestration for local coding-agent teams
+    tags: [agent, ai, coding-agent, desktop, local-first, multi-agent, orchestration]
 - name: ML and Research Agents
   description: Ready-to-use agents that autonomously run ML experiments, design studies, or conduct scientific research end-to-end.
   entries:
