@@ -27,7 +27,7 @@
     "format": "biome format --write ."
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.125.0",
+    "@anthropic-ai/sdk": "^0.128.0",
     "@octokit/rest": "^22.0.1",
     "better-sqlite3": "^13.0.3",
     "yaml": "^2.9.1",
