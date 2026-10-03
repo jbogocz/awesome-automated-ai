@@ -5,23 +5,36 @@ on:
     - cron: "0 6 * * 1"
   workflow_dispatch: {}
 
+# Two runs at once would race each other's push and drift issue. Pushes from
+# outside this workflow are handled by the rebase-and-retry in `publish`.
 concurrency:
   group: weekly-regenerate
   cancel-in-progress: false
 
+# Nothing gets a token scope it does not name below.
+permissions: {}
+
 jobs:
+  # Everything that executes third-party code lives here: `pnpm install` runs
+  # native build scripts (better-sqlite3) and tsx loads ~80 packages. With a
+  # contents:write token in reach, any one of them could push to main or cut a
+  # release. So this job holds a read-only token and hands its output to the
+  # jobs below as artifacts; those run git and gh only, never pnpm.
   regenerate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # pinned: the native better-sqlite3 build must not move with ubuntu-latest
     timeout-minutes: 30
     permissions:
-      contents: write
-      issues: write # the drift report files an issue; without this gh exits 1
+      contents: read
+    outputs:
+      drift: ${{ steps.audit.outputs.drift }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - uses: pnpm/action-setup@v6
+      - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
           cache: pnpm
@@ -29,9 +42,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # The fetch goes through `gh api graphql`, which reads GH_TOKEN. A
+      # contents:read token reads public repositories just as well as a
+      # write token did; the write scope never reached other owners' repos.
       - name: Regenerate README with fresh API data
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: pnpm run generate
 
       - name: Regenerate dashboard data
@@ -40,27 +56,23 @@ jobs:
       - name: Bump version to today's date
         run: pnpm run bump-version
 
-      - name: Commit and push changes
-        id: commit
-        env:
-          BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          BOT_NAME: github-actions[bot]
-        run: |
-          git config user.name "$BOT_NAME"
-          git config user.email "$BOT_EMAIL"
-          git add README.md docs/data.json package.json data/curator.db
-          # Not a "nothing to do" case: a successful run always records a new
-          # measured snapshot per listed project, so an empty diff means the
-          # regeneration produced nothing and must not be reported as success.
-          if git diff --cached --quiet; then
-            echo "::error::regeneration staged no changes - no measurement was recorded this run"
-            exit 1
-          fi
-          git commit -m "chore: weekly regeneration [skip ci]"
-          git push
-          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      # Uploaded before the reporters run, so nothing they touch (the audit
+      # opens and migrates the DB) can ride along into the commit, exactly as
+      # when the commit used to happen before them.
+      - name: Hand the regenerated files to the publish job
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: regenerated-files
+          path: |
+            README.md
+            docs/data.json
+            data/curator.db
+            package.json
+          if-no-files-found: error
+          # Long enough to recover by hand if the push is refused (see publish).
+          retention-days: 14
 
-      # Everything below reports; nothing below can fail the run. The
+      # Everything below reports; nothing below can block the publish. The
       # regeneration refreshes metadata but never adds, retires or re-slugs an
       # entry, so drift accumulated silently until someone went looking.
       # DRIFT_REPORT makes each reporter append its findings to the file itself.
@@ -71,18 +83,38 @@ jobs:
       # the same command locally wrote nothing at all. Passing it as a flag is
       # not usable either: `pnpm run <script> -- --report=X` forwards a literal
       # "--", which parseArgs turns into a positional and the flag never lands.
+      #
+      # Both reporters exit 0 when they find drift (check-links only exits 1
+      # under --strict, which is not passed), so a non-zero exit means the
+      # checker itself crashed. That used to be swallowed by `|| true`, and a
+      # crash produced an empty report — read as "nothing drifted". Now a crash
+      # writes its own line, so it files the drift issue like any finding.
+      # `timeout` turns a hang into an exit code for the same treatment; a
+      # step-level timeout would cancel the step before it could say so.
       - name: Audit catalog drift
         continue-on-error: true
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           DRIFT_REPORT: audit-report.md
-        run: pnpm run audit || true
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if ! timeout 10m pnpm run audit; then
+            echo "::error::pnpm run audit failed to run"
+            # shellcheck disable=SC2016 # the backticks are markdown, not a command
+            printf '### The audit failed to run\n\n`pnpm run audit` exited non-zero, so catalog drift is UNKNOWN for this run, not clean. See [the run log](%s).\n\n' "$RUN_URL" >> "$DRIFT_REPORT"
+          fi
 
       - name: Check links the metadata fetch never touches
         continue-on-error: true
         env:
           DRIFT_REPORT: audit-report.md
-        run: pnpm run check-links || true
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if ! timeout 10m pnpm run check-links; then
+            echo "::error::pnpm run check-links failed to run"
+            # shellcheck disable=SC2016 # the backticks are markdown, not a command
+            printf '### The link check failed to run\n\n`pnpm run check-links` exited non-zero, so link rot is UNKNOWN for this run, not clean. See [the run log](%s).\n\n' "$RUN_URL" >> "$DRIFT_REPORT"
+          fi
 
       - name: Decide whether anything drifted
         id: audit
@@ -93,49 +125,203 @@ jobs:
             echo "drift=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Open or update the drift tracking issue
+      - name: Hand the drift report to the issue job
         if: steps.audit.outputs.drift == 'true'
-        continue-on-error: true
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: drift-report
+          path: audit-report.md
+          if-no-files-found: error
+          retention-days: 14
+
+  # Holds the write token, so it runs no pnpm, no tsx and no project code:
+  # only git on a fresh checkout and the regenerated files from above.
+  publish:
+    needs: regenerate
+    # The push below rebases onto main; files built from another branch must
+    # not land there. A dispatch on a branch is a dry run: it regenerates and
+    # reports drift, and release/deploy skip with this job.
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    outputs:
+      sha: ${{ steps.commit.outputs.sha }}
+      version: ${{ steps.commit.outputs.version }}
+    steps:
+      # Same commit the regenerate job built from, so the copied files are a
+      # diff against their own base. Full history keeps the rebase below from
+      # tripping over a shallow boundary; the repository is a few MB.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      # Into a staging directory, then copied by name: the artifact came out of
+      # the job that ran third-party code, so only the four files this pipeline
+      # produces may land in the tree — anything else in it is ignored.
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: regenerated-files
+          path: ${{ runner.temp }}/regenerated
+
+      - name: Commit and push changes
+        id: commit
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TITLE: "Catalog drift"
+          BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          BOT_NAME: github-actions[bot]
+          STAGED: ${{ runner.temp }}/regenerated
+        run: |
+          FILES="README.md docs/data.json data/curator.db package.json"
+          for f in $FILES; do
+            if [ ! -f "$STAGED/$f" ]; then
+              echo "::error::regenerated artifact is missing $f"
+              exit 1
+            fi
+            cp "$STAGED/$f" "$f"
+          done
+          git config user.name "$BOT_NAME"
+          git config user.email "$BOT_EMAIL"
+          # shellcheck disable=SC2086 # word splitting over FILES is intended
+          git add -- $FILES
+          # Not a "nothing to do" case: a successful run always records a new
+          # measured snapshot per listed project, so an empty diff means the
+          # regeneration produced nothing and must not be reported as success.
+          if git diff --cached --quiet; then
+            echo "::error::regeneration staged no changes - no measurement was recorded this run"
+            exit 1
+          fi
+          git commit -m "chore: weekly regeneration [skip ci]"
+
+          # main can move while the regenerate job runs (a curation commit, a
+          # Dependabot merge), and a plain push from the start-of-job checkout
+          # is then rejected. Rebase onto the current main and retry. A
+          # conflict — curator.db is binary, so any concurrent change to it is
+          # one — must stop the run rather than pick a side and lose data.
+          for attempt in 1 2 3; do
+            if ! git pull --rebase origin main; then
+              git rebase --abort || true
+              echo "::error::could not rebase onto the current main, so nothing was pushed." \
+                "Usually main moved during this run and a concurrent commit changed the same files ($FILES);" \
+                "the log above names them. Re-run the workflow to regenerate on top of the new main;" \
+                "the regenerated files stay in this run's 'regenerated-files' artifact meanwhile."
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+              echo "version=$(jq -r .version package.json)" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "::warning::push to main rejected (attempt $attempt of 3), rebasing again"
+            sleep $((attempt * 10))
+          done
+          echo "::error::push to main was rejected three times; nothing was pushed"
+          exit 1
+
+  # Separate from publish so it can report even when the commit is refused,
+  # and so it needs only issues:write. Not continue-on-error: a drift issue
+  # that failed to file must turn the run red, or the drift goes unseen again.
+  # Runs only when regenerate succeeded, so an unknown drift state never closes
+  # the issue.
+  report-drift:
+    needs: regenerate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TITLE: "Catalog drift"
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        if: needs.regenerate.outputs.drift == 'true'
+        with:
+          name: drift-report
+          path: ${{ runner.temp }}/drift
+
+      - name: Open or update the drift tracking issue
+        if: needs.regenerate.outputs.drift == 'true'
+        env:
+          REPORT: ${{ runner.temp }}/drift/audit-report.md
         run: |
           # One long-lived issue, updated in place, so the weekly job never
           # accumulates a pile of near-identical reports.
           # --state all, so a closed issue is reopened rather than duplicated.
-          NUM=$(gh issue list --state all --search "$TITLE in:title" --json number,title,state \
-                  --jq "[.[] | select(.title == \"$TITLE\")] | .[0].number // empty")
+          # A failed lookup must stop here, not fall through to a duplicate.
+          FOUND=$(gh issue list --state all --search "$TITLE in:title" --json number,title,state \
+                  --jq "[.[] | select(.title == \"$TITLE\")] | .[0] | select(.) | \"\(.number) \(.state)\"")
+          read -r NUM STATE <<<"$FOUND"
           if [ -n "$NUM" ]; then
-            gh issue edit "$NUM" --body-file audit-report.md
-            gh issue reopen "$NUM" 2>/dev/null || true
+            gh issue edit "$NUM" --body-file "$REPORT"
+            if [ "$STATE" = "CLOSED" ]; then gh issue reopen "$NUM"; fi
             echo "Updated issue #$NUM"
           else
-            gh issue create --title "$TITLE" --body-file audit-report.md
+            gh issue create --title "$TITLE" --body-file "$REPORT"
           fi
 
-      - name: Publish weekly release
-        if: steps.commit.outputs.sha != ''
+      # The issue body promises that closing it is safe because the next run
+      # reopens it; the converse was never kept, so a resolved drift stayed
+      # open until someone noticed. Only reached on a run whose checkers all
+      # ran (a crash writes a report line, so it never lands here).
+      - name: Close the drift tracking issue
+        if: needs.regenerate.outputs.drift == 'false'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Tag the commit this run actually produced. Without --target the
-          # tag lands on whatever the default branch happens to point at when
-          # the release is cut, which need not be the commit above.
-          TARGET_SHA: ${{ steps.commit.outputs.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          VER=$(node -p "require('./package.json').version")
-          TAG="v$VER"
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release $TAG already exists, skipping"
+          NUM=$(gh issue list --state open --search "$TITLE in:title" --json number,title \
+                  --jq "[.[] | select(.title == \"$TITLE\")] | .[0].number // empty")
+          if [ -n "$NUM" ]; then
+            gh issue close "$NUM" --comment "No drift found by the weekly run ($RUN_URL). Closing; the next run reopens this if drift returns."
+            echo "Closed issue #$NUM"
           else
+            echo "No open drift issue"
+          fi
+
+  # Off the deploy's critical path: a failed release must not leave the
+  # dashboard stale, and a failed deploy must not suppress the release.
+  release:
+    needs: publish
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: v${{ needs.publish.outputs.version }}
+      # Tag the commit this run actually produced. Without --target the tag
+      # lands on whatever the default branch happens to point at when the
+      # release is cut, which need not be the commit above.
+      TARGET_SHA: ${{ needs.publish.outputs.sha }}
+    steps:
+      - name: Publish weekly release
+        run: |
+          # The version comes out of the job that ran third-party code; only a
+          # date version (scripts/bump-version.mjs) may become a tag.
+          if ! printf '%s' "$TAG" | grep -Eq '^v[0-9]{4}\.[0-9]{1,2}\.[0-9]{1,2}$'; then
+            echo "::error::refusing to tag unexpected version '$TAG'"
+            exit 1
+          fi
+          # `gh release view` exits 1 for "not found" and for every other
+          # failure alike, so an auth or network error used to be read as
+          # "no release yet". Only an HTTP 404 means that.
+          if err=$(gh api "repos/$GH_REPO/releases/tags/$TAG" --silent 2>&1); then
+            echo "Release $TAG already exists, skipping"
+          elif printf '%s' "$err" | grep -q 'HTTP 404'; then
             gh release create "$TAG" --target "$TARGET_SHA" --title "$TAG" --generate-notes
+          else
+            echo "::error::could not check whether release $TAG exists: $err"
+            exit 1
           fi
 
   # Releases created with GITHUB_TOKEN never fire pages.yml's `on: release`
-  # trigger (GitHub blocks workflow chaining off GITHUB_TOKEN events), so the
-  # weekly pipeline deploys Pages itself. pages.yml remains for manual deploys.
+  # trigger, and neither does the push above (GitHub blocks workflow chaining
+  # off GITHUB_TOKEN events), so the weekly pipeline deploys Pages itself.
+  # pages.yml covers human pushes to docs/ and manual deploys.
   deploy-pages:
-    needs: regenerate
-    runs-on: ubuntu-latest
+    needs: publish
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
       contents: read
@@ -148,15 +334,17 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: main # regenerate just pushed a new commit; github.sha predates it
+          # The commit publish pushed; github.sha predates it.
+          ref: ${{ needs.publish.outputs.sha }}
+          persist-credentials: false
 
-      - uses: actions/configure-pages@v6
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
-      - uses: actions/upload-pages-artifact@v5
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: ./docs
 
       - id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

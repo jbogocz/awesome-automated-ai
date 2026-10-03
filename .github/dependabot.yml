@@ -33,6 +33,9 @@ updates:
       - dependency-name: "@types/node"
         update-types: [version-update:semver-major]
 
+  # Workflows pin every action to a commit SHA (a moved tag must not change
+  # what runs with a write token); this bumps the SHA and its `# vX.Y.Z`
+  # comment together, so the pins do not rot.
   - package-ecosystem: github-actions
     directory: "/"
     schedule:

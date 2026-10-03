@@ -15,14 +15,16 @@ concurrency:
 
 jobs:
   checks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # pinned: the native better-sqlite3 build must not move with ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - uses: pnpm/action-setup@v6
+      - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
           cache: pnpm
@@ -44,3 +46,13 @@ jobs:
       # unattended regeneration.
       - name: Validate projects.yaml
         run: pnpm run validate
+
+      # Generation only ever ran in the unattended weekly job, so a change
+      # that broke the README or dashboard build merged green and surfaced at
+      # 06:00 on Monday. --no-fetch renders from the committed DB: no network,
+      # no token. The rewritten files are discarded with the runner.
+      - name: Generate README from the committed DB
+        run: pnpm run generate --no-fetch
+
+      - name: Generate dashboard data from the committed DB
+        run: pnpm run site-data

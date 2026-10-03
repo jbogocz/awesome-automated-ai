@@ -1,22 +1,28 @@
 name: Deploy Pages
 
-# Manual/backup deploy path. The weekly pipeline deploys Pages itself
-# (see weekly-regenerate.yml) because releases it creates with GITHUB_TOKEN
-# never fire the `release` trigger here — GitHub blocks workflow chaining
-# off GITHUB_TOKEN events. The release trigger below still works for
-# releases published by a human. Default checkout uses github.sha, which
-# for a release event is the tagged commit — no need for github.event.*.
+# The weekly pipeline deploys Pages itself (see weekly-regenerate.yml):
+# neither its push nor the release it creates with GITHUB_TOKEN fires a
+# trigger here — GitHub blocks workflow chaining off GITHUB_TOKEN events — so
+# the push trigger below never double-deploys a weekly run. It exists for
+# human commits to docs/: Pages serves an Actions artifact, not the branch, so
+# without it such a commit left the live dashboard stale until someone
+# remembered to dispatch this. The release trigger still works for releases
+# published by a human. Default checkout uses github.sha: the pushed commit,
+# the tagged commit for a release, the dispatched ref's head otherwise.
+#
+# There is deliberately no ref/tag input. Checking out an arbitrary input ref
+# deployed whatever it named while the environment's branch policy only saw
+# the ref the workflow was dispatched from. To redeploy an older release,
+# dispatch on its tag instead (`gh workflow run pages.yml --ref vYYYY.M.D`),
+# which the github-pages environment checks against its allowed refs.
 
 on:
+  push:
+    branches: [main]
+    paths: ["docs/**"]
   release:
     types: [published]
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: "Tag to deploy (default: workflow's own ref)"
-        required: false
-        type: string
-        default: ""
+  workflow_dispatch: {}
 
 permissions:
   contents: read
@@ -32,18 +38,18 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ inputs.tag != '' && inputs.tag || github.sha }}
+          persist-credentials: false
 
-      - uses: actions/configure-pages@v6
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
-      - uses: actions/upload-pages-artifact@v5
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: ./docs
 
       - id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
