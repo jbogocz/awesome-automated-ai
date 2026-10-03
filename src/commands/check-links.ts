@@ -101,6 +101,10 @@ export function isMeaningfulRedirect(from: string, to: string): boolean {
     // weekly would pin the drift issue open forever over nothing.
     if (hostB.endsWith(`.${hostA}`) && pathA === pathB) return false;
     if (hostA !== hostB) return true;
+    // Same rollover one level down: huggingface.co/papers lands on
+    // /papers/date/<today>. A page forwarding into its own subtree is still
+    // the address to link, and the destination changes every day.
+    if (pathA !== "" && pathB.startsWith(`${pathA}/`)) return false;
     return pathA !== pathB;
   } catch {
     return false;
