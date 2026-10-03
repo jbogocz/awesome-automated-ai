@@ -178,8 +178,26 @@ jobs:
               echo "::error::regenerated artifact is missing $f"
               exit 1
             fi
+          done
+          # Data files are copied whole. package.json is not: its scripts and
+          # dependencies run in CI and on every checkout, so a compromised
+          # package in the regenerate job could plant code there. Only the
+          # version bump is taken from it, and only if it is a date version —
+          # it also lands in GITHUB_OUTPUT below, where a newline would let it
+          # forge the `sha` output.
+          for f in README.md docs/data.json data/curator.db; do
             cp "$STAGED/$f" "$f"
           done
+          VERSION=$(jq -r '.version' "$STAGED/package.json")
+          # [[ =~ ]] anchors to the whole string; grep would pass a value whose
+          # first line matches.
+          if ! [[ "$VERSION" =~ ^[0-9]{4}\.[0-9]{1,2}\.[0-9]{1,2}$ ]]; then
+            echo "::error::regenerated package.json carries an unexpected version"
+            exit 1
+          fi
+          # Same formatting scripts/bump-version.mjs writes (2-space JSON + newline).
+          jq --arg v "$VERSION" '.version = $v' package.json > "$RUNNER_TEMP/package.json"
+          mv "$RUNNER_TEMP/package.json" package.json
           git config user.name "$BOT_NAME"
           git config user.email "$BOT_EMAIL"
           # shellcheck disable=SC2086 # word splitting over FILES is intended
@@ -209,7 +227,7 @@ jobs:
             fi
             if git push origin HEAD:main; then
               echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-              echo "version=$(jq -r .version package.json)" >> "$GITHUB_OUTPUT"
+              echo "version=$VERSION" >> "$GITHUB_OUTPUT"
               exit 0
             fi
             echo "::warning::push to main rejected (attempt $attempt of 3), rebasing again"
@@ -299,7 +317,7 @@ jobs:
         run: |
           # The version comes out of the job that ran third-party code; only a
           # date version (scripts/bump-version.mjs) may become a tag.
-          if ! printf '%s' "$TAG" | grep -Eq '^v[0-9]{4}\.[0-9]{1,2}\.[0-9]{1,2}$'; then
+          if ! [[ "$TAG" =~ ^v[0-9]{4}\.[0-9]{1,2}\.[0-9]{1,2}$ ]]; then
             echo "::error::refusing to tag unexpected version '$TAG'"
             exit 1
           fi
