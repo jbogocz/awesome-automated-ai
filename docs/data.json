@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-03T13:39:28.809Z",
+  "generated": "2026-10-03T13:43:33.669Z",
   "dataAsOf": "2026-10-03",
   "categories": [
     {
@@ -9487,9 +9487,9 @@
           "name": "Daytona",
           "repo": "daytonaio/daytona",
           "url": "https://github.com/daytonaio/daytona",
-          "description": "Secure and elastic infrastructure for running AI-generated code in isolated sandboxes with near-instant cold starts - the self-hostable counterpart to E2B for agent code execution.",
+          "description": "Secure and elastic infrastructure for running AI-generated code in isolated sandboxes with near-instant cold starts. The open-source repository is frozen; development continues in Daytona's hosted platform.",
           "tagline": "Elastic secure sandboxes for AI-generated code",
-          "note": "",
+          "note": "Archived upstream after core development went private; E2B is the maintained open-source sandbox.",
           "stars": 71673,
           "trend": -196,
           "trendDays": 33,

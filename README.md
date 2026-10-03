@@ -2118,7 +2118,7 @@ Microsoft Research prototype for a human-centered web agent with co-planning, ac
 
 <br>
 
-*Secure and elastic infrastructure for running AI-generated code in isolated sandboxes with near-instant cold starts - the self-hostable counterpart to E2B for agent code execution. **Archived.***
+*Secure and elastic infrastructure for running AI-generated code in isolated sandboxes with near-instant cold starts. The open-source repository is frozen; development continues in Daytona's hosted platform. **Archived upstream after core development went private; E2B is the maintained open-source sandbox.***
 
 ```
   Score     0/100

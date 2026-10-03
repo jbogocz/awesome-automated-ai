@@ -601,8 +601,9 @@ categories:
     tags: [low-code, no-code, agents, visual-builder, llm, workflow, javascript, chatbot]
   - name: Daytona
     repo: daytonaio/daytona
-    description: Secure and elastic infrastructure for running AI-generated code in isolated sandboxes with near-instant cold starts - the self-hostable counterpart to E2B for agent code execution.
+    description: Secure and elastic infrastructure for running AI-generated code in isolated sandboxes with near-instant cold starts. The open-source repository is frozen; development continues in Daytona's hosted platform.
     tagline: Elastic secure sandboxes for AI-generated code
+    note: Archived upstream after core development went private; E2B is the maintained open-source sandbox.
     tags: [sandbox, code-execution, agent-infrastructure, ai-runtime, developer-tools, self-hosted]
   - name: nanobot
     repo: HKUDS/nanobot
