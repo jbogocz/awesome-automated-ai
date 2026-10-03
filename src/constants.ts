@@ -1,13 +1,15 @@
 // Project health thresholds, consumed only by src/status.ts.
 // Life sign = newest of: default-branch commit, release, tag.
 export const MAINTAINED_DAYS = 180; // life sign fresher than this -> candidate for active
-export const STALE_DAYS = 365; // life sign older than this -> dead
-export const STALE_MONTHS = 12;
+// Thresholds are set in months, the unit the README states them in; the day
+// counts status.ts compares against are derived, so the two cannot disagree.
+export const STALE_MONTHS = 12; // life sign older than this -> dead
+export const STALE_DAYS = (STALE_MONTHS * 365) / 12;
 
 // Stable shipping (release or stable tag) older than this caps a repo at
 // quiet; repos that never shipped are not judged on it.
-export const RELEASE_STALE_DAYS = 730;
 export const RELEASE_STALE_MONTHS = 24;
+export const RELEASE_STALE_DAYS = (RELEASE_STALE_MONTHS * 365) / 12;
 
 // Active needs a pulse: PULSE_MIN_COMMITS mainline commits within
 // PULSE_WINDOW_DAYS, or a stable ship within SHIPPED_FRESH_DAYS.

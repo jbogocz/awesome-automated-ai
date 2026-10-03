@@ -6,8 +6,9 @@ import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 import { MIN_SITE_COVERAGE } from "../constants.js";
 import { DB } from "../db/client.js";
-import { displayBucket, type Lifecycle, repoStatus } from "../status.js";
+import { displayBucket, repoStatus } from "../status.js";
 import { logger } from "../utils/logger.js";
+import type { Category } from "../validation/projects-yaml.js";
 import { loadApiDataFromDB } from "./fetch-api.js";
 import { displayLicense } from "./formatters.js";
 import type { ApiData, ApiRepoData } from "./readme.js";
@@ -19,34 +20,11 @@ const MANIFEST_YAML = resolve(ROOT, "src/categories.yaml");
 const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 const OUTPUT = resolve(ROOT, "docs/data.json");
 
-interface Entry {
-  name: string;
-  repo?: string;
-  url?: string;
-  description?: string;
-  tagline?: string;
-  note?: string;
-  lifecycle?: Lifecycle;
-  tags?: string[];
-  vendor?: string;
-  pricing?: string;
-  authors?: string;
-  venue?: string;
-  year?: number | string;
-  commercial?: boolean;
-}
-
 interface ManifestCategory {
   id: string;
   name: string;
   section: string;
   description?: string;
-}
-
-interface Category {
-  name: string;
-  description?: string;
-  entries?: Entry[];
 }
 
 const EMPTY_API = {

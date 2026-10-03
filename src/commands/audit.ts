@@ -6,6 +6,7 @@ import { DB } from "../db/client.js";
 import { fetchRepoMetadataBatch } from "../github/repo-metadata-graphql.js";
 import { repoStatus } from "../status.js";
 import { logger } from "../utils/logger.js";
+import { yearsCitedIn } from "../validation/projects-yaml.js";
 
 /**
  * Reports catalog drift the weekly regeneration cannot fix by itself.
@@ -56,8 +57,7 @@ export function unfetchableDetail(repo: string, latestSnapshot: string | null, n
 
 /** Notes asserting a year, which the unattended regeneration cannot keep true. */
 export function noteCitesYear(note: string | undefined): string | null {
-  const m = note?.match(/\b(19|20)\d{2}\b/);
-  return m ? m[0] : null;
+  return yearsCitedIn(note)[0] ?? null;
 }
 
 export async function runAuditCommand(opts: AuditOptions): Promise<AuditFinding[]> {

@@ -130,6 +130,14 @@ export function findCrossCategoryDuplicates(data: ProjectsYaml): string[] {
 }
 
 /**
+ * Years a note asserts. The one definition shared by validate and audit, so
+ * the two reports cannot disagree about what counts as a dated note.
+ */
+export function yearsCitedIn(note: string | undefined): string[] {
+  return note ? [...note.matchAll(/\b(19|20)\d{2}\b/g)].map((m) => m[0]) : [];
+}
+
+/**
  * Notes asserting a year that the entry's own rendered data contradicts.
  * Hand-typed date prose cannot survive an unattended weekly regeneration:
  * Hyperopt's "Maintenance-only since 2021" outlived four years of releases
@@ -139,9 +147,8 @@ export function findStaleNoteYears(data: ProjectsYaml, currentYear: number): str
   const stale: string[] = [];
   for (const cat of data.categories) {
     for (const entry of cat.entries ?? []) {
-      if (!entry.note) continue;
-      for (const m of entry.note.matchAll(/\b(19|20)\d{2}\b/g)) {
-        stale.push(`${cat.name} / ${entry.name}: note cites ${m[0]} (${currentYear - Number(m[0])}y ago)`);
+      for (const year of yearsCitedIn(entry.note)) {
+        stale.push(`${cat.name} / ${entry.name}: note cites ${year} (${currentYear - Number(year)}y ago)`);
       }
     }
   }

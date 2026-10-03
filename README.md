@@ -139,7 +139,7 @@ Multi-layer stack ensembling for tabular, text, image, time-series, and multimod
 
 <br>
 
-Declarative deep learning framework supporting custom model building and LLM fine-tuning via YAML configs. Now under Linux Foundation AI & Data.
+Declarative deep learning framework supporting custom model building and LLM fine-tuning via YAML configs. Now under Linux Foundation AI &amp; Data.
 
 ```
   Score     71/100
@@ -1005,7 +1005,7 @@ State-of-the-art tabular foundation model achieving 10x faster inference than Ta
 
 <br>
 
-Scales tabular foundation models via pretraining on real data; inference code from "TabDPT, Scaling Tabular Foundation Models on Real Data" (Layer 6 AI).
+Scales tabular foundation models via pretraining on real data; inference code from &quot;TabDPT, Scaling Tabular Foundation Models on Real Data&quot; (Layer 6 AI).
 
 ```
   Score     66/100
@@ -2460,11 +2460,11 @@ Autonomous research agent that plans queries, scrapes sources, and writes cited 
 
 </details>
 
-<details><summary>🟢 🥈 <b><a href="https://github.com/microsoft/RD-Agent">R&D-Agent</a></b> <code>⭐ 14.8K</code> <code>↗️ +448</code> <code>MIT</code> Microsoft multi-agent R&D loop for data-driven AI</summary>
+<details><summary>🟢 🥈 <b><a href="https://github.com/microsoft/RD-Agent">R&amp;D-Agent</a></b> <code>⭐ 14.8K</code> <code>↗️ +448</code> <code>MIT</code> Microsoft multi-agent R&amp;D loop for data-driven AI</summary>
 
 <br>
 
-Multi-agent framework automating the full R&D loop for data-driven AI (hypothesis, implementation, evaluation, iteration); top-performing MLE-Bench agent at 35.1% any-medal rate on its chosen components (Microsoft, ICLR 2026 submission).
+Multi-agent framework automating the full R&amp;D loop for data-driven AI (hypothesis, implementation, evaluation, iteration); top-performing MLE-Bench agent at 35.1% any-medal rate on its chosen components (Microsoft, ICLR 2026 submission).
 
 ```
   Score     76/100
@@ -2598,7 +2598,7 @@ Minimal script enabling AI agents to autonomously run ~100 ML experiments overni
 
 <br>
 
-End-to-end ML algorithm design and optimization via progressive search and experience-driven memory; tracked on the MLE-Bench leaderboard alongside AIDE and R&D-Agent.
+End-to-end ML algorithm design and optimization via progressive search and experience-driven memory; tracked on the MLE-Bench leaderboard alongside AIDE and R&amp;D-Agent.
 
 ```
   Score     63/100
@@ -2976,7 +2976,7 @@ UC Berkeley project training and evaluating LLMs for function and tool calling, 
 
 *Gateways and routers that proxy, load-balance, cache, and intelligently select between LLM providers - unifying model access, controlling cost, and improving reliability.*
 
-<details><summary>🟢 🥇 <b><a href="https://github.com/maximhq/bifrost">Bifrost</a></b> <code>⭐ 8.5K</code> <code>↗️ +846</code> <code>Apache-2.0</code> Enterprise AI gateway with <100µs overhead at 5K RPS</summary>
+<details><summary>🟢 🥇 <b><a href="https://github.com/maximhq/bifrost">Bifrost</a></b> <code>⭐ 8.5K</code> <code>↗️ +846</code> <code>Apache-2.0</code> Enterprise AI gateway with &lt;100µs overhead at 5K RPS</summary>
 
 <br>
 
@@ -4381,7 +4381,7 @@ AI observability platform with OpenTelemetry-native tracing and LLM evaluation d
 
 </details>
 
-<details><summary>🟢 <b>9</b> <b><a href="https://github.com/wandb/wandb">W&B</a></b> <code>⭐ 11.3K</code> <code>↗️ +20</code> <code>MIT</code> Experiment tracking and visualization for ML teams</summary>
+<details><summary>🟢 <b>9</b> <b><a href="https://github.com/wandb/wandb">W&amp;B</a></b> <code>⭐ 11.3K</code> <code>↗️ +20</code> <code>MIT</code> Experiment tracking and visualization for ML teams</summary>
 
 <br>
 

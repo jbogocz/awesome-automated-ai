@@ -19,15 +19,20 @@ export function formatStarsShort(n: number): string {
   return String(n);
 }
 
-/**
- * Generate a short tagline from a description (max 7 words).
- * - Takes first 7 words of the description
- * - Replaces "&" with "&amp;"
- */
+/** Generate a short tagline from a description: its first `maxWords` words, trailing punctuation dropped. */
 export function generateTagline(description: string, maxWords = 7): string {
   const words = description.split(/\s+/).slice(0, maxWords);
-  const text = words.join(" ").replace(/[.,;:!?]+$/, "");
-  return text.replace(/&/g, "&amp;");
+  return words.join(" ").replace(/[.,;:!?]+$/, "");
+}
+
+/**
+ * Escape curated text for the README's raw HTML (cards are <details> blocks).
+ * Only "&" used to be escaped, so a tagline like "<model>" would have opened
+ * a tag and swallowed the rest of the card; "<100µs" survived only because a
+ * digit cannot start a tag name.
+ */
+export function escapeHtml(text: string): string {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
 /**

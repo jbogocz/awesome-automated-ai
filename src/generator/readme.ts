@@ -1,7 +1,8 @@
 import { parse as parseYaml } from "yaml";
 import { RELEASE_STALE_MONTHS, STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.js";
-import { assessRepo, displayBucket, type Lifecycle, lastLifeSign, STATUS_DOT, type StatusReason } from "../status.js";
-import { displayLicense, formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
+import { assessRepo, displayBucket, lastLifeSign, STATUS_DOT, type StatusReason } from "../status.js";
+import type { Category, Entry } from "../validation/projects-yaml.js";
+import { displayLicense, escapeHtml, formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
 import { buildTagCorpus, selectTags, type TagCorpus } from "./tags.js";
 
 export interface ApiRepoData {
@@ -110,28 +111,6 @@ function injectToc(header: string, manifest: TocManifest, categories: Category[]
   }
   const counts = new Map(categories.map((c) => [c.name, (c.entries ?? []).length]));
   return `${header.slice(0, begin + TOC_BEGIN.length)}\n\n${buildToc(manifest, counts)}\n\n${header.slice(end)}`;
-}
-
-interface Entry {
-  name: string;
-  repo?: string;
-  url?: string;
-  description?: string;
-  tagline?: string;
-  note?: string;
-  lifecycle?: Lifecycle;
-  tags?: string[];
-  vendor?: string;
-  pricing?: string;
-  authors?: string;
-  venue?: string;
-  year?: number | string;
-  commercial?: boolean;
-}
-interface Category {
-  name: string;
-  description?: string;
-  entries?: Entry[];
 }
 
 export function generateReadme(opts: GenerateOptions): string {
@@ -263,13 +242,13 @@ function buildCards(entries: Entry[], apiData: ApiData, corpus: TagCorpus): stri
 function buildExternalCard(entry: Entry, corpus: TagCorpus): string[] {
   const url = entry.url ?? "#";
   const icon = entry.authors ? "\u{1F4C4}" : entry.vendor ? "\u{1F3E2}" : "\u{1F517}";
-  const nameHtml = `<b><a href="${url}">${entry.name}</a></b>`;
+  const nameHtml = `<b><a href="${escapeHtml(url)}">${escapeHtml(entry.name)}</a></b>`;
   const tagline = entry.tagline ?? generateTagline(entry.description ?? "");
-  const taglinePart = tagline ? ` ${tagline}` : "";
+  const taglinePart = tagline ? ` ${escapeHtml(tagline)}` : "";
   const summary = `<details><summary>${icon} ${nameHtml}${taglinePart}</summary>`;
 
-  const desc = entry.description ?? "";
-  const note = entry.note ?? "";
+  const desc = escapeHtml(entry.description ?? "");
+  const note = escapeHtml(entry.note ?? "");
   const fullDesc = note ? `${desc} **${note}**` : desc;
 
   const metaLines: string[] = [];
@@ -308,11 +287,11 @@ function buildOneCard(s: ScoredEntry, rank: number | null, corpus: TagCorpus): s
 
   let nameHtml: string;
   if (isDead && isHistorical) {
-    nameHtml = `\u{1F5C4}\uFE0F <i><a href="${url}">${entry.name}</a></i>`;
+    nameHtml = `\u{1F5C4}\uFE0F <i><a href="${escapeHtml(url)}">${escapeHtml(entry.name)}</a></i>`;
   } else if (isDead) {
-    nameHtml = `\u{1F4A4} <i><a href="${url}">${entry.name}</a></i>`;
+    nameHtml = `\u{1F4A4} <i><a href="${escapeHtml(url)}">${escapeHtml(entry.name)}</a></i>`;
   } else {
-    nameHtml = `<b><a href="${url}">${entry.name}</a></b>`;
+    nameHtml = `<b><a href="${escapeHtml(url)}">${escapeHtml(entry.name)}</a></b>`;
   }
 
   const starsBadge = `<code>\u2B50 ${formatStarsShort(rd.stars)}</code>`;
@@ -330,12 +309,12 @@ function buildOneCard(s: ScoredEntry, rank: number | null, corpus: TagCorpus): s
   // cross-listing one repo (Ray Tune under HPO, Ray under MLOps) would
   // otherwise print the same line twice.
   const tagline = entry.tagline ?? rd.tagline ?? generateTagline(entry.description ?? "");
-  const taglinePart = tagline ? ` ${tagline}` : "";
+  const taglinePart = tagline ? ` ${escapeHtml(tagline)}` : "";
 
   const summary = `<details><summary>${dot}${rankLabel} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${staleBadge}${taglinePart}</summary>`;
 
-  const desc = entry.description ?? "";
-  const fullDesc = note ? `${desc} **${note}**` : desc;
+  const desc = escapeHtml(entry.description ?? "");
+  const fullDesc = note ? `${desc} **${escapeHtml(note)}**` : desc;
   const displayDesc = isDead ? `*${fullDesc}*` : fullDesc;
 
   const starsExact = rd.stars.toLocaleString("en-US");
@@ -401,9 +380,9 @@ function buildTrendDetail(rd: ApiRepoData, isDead: boolean): string {
 /** Card for a repo with no API data yet: white dot, no fabricated stats. */
 function buildPendingCard(entry: Entry, url: string): string[] {
   const tagline = entry.tagline ?? generateTagline(entry.description ?? "");
-  const taglinePart = tagline ? ` ${tagline}` : "";
-  const summary = `<details><summary>⚪ <b><a href="${url}">${entry.name}</a></b>${taglinePart}</summary>`;
-  const desc = entry.description ?? "";
+  const taglinePart = tagline ? ` ${escapeHtml(tagline)}` : "";
+  const summary = `<details><summary>⚪ <b><a href="${escapeHtml(url)}">${escapeHtml(entry.name)}</a></b>${taglinePart}</summary>`;
+  const desc = escapeHtml(entry.description ?? "");
   const pendingNote = "*Stats pending - this entry is new and gets its data on the next weekly refresh.*";
   return [summary, "", "<br>", "", desc, "", pendingNote, "", "</details>"];
 }

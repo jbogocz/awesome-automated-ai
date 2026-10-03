@@ -109,12 +109,8 @@ export class DB {
     // Retained, not written. Star-history reconstruction was retired when
     // GitHub restricted stargazer listings (2026-06-30 changelog); these two
     // tables are the audit record of what it did while it ran — including
-    // run 12, whose output had to be deleted. Dropping them would erase the
-    // evidence of a data incident.
-    // Retained, not written. Star-history reconstruction was retired when
-    // GitHub restricted stargazer listings (2026-06-30 changelog); these two
-    // tables are the audit record of what it did while it ran, including the
-    // run whose fabricated output had to be deleted.
+    // run 12, whose output had to be deleted (scripts/repair-star-history.mjs).
+    // Dropping them would erase the evidence of a data incident.
     this.sqlite.exec(`
       CREATE TABLE IF NOT EXISTS backfill_runs (
         id INTEGER PRIMARY KEY AUTOINCREMENT,

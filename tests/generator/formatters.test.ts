@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatDateMonth, formatStarsShort, generateTagline } from "../../src/generator/formatters.js";
+import { escapeHtml, formatDateMonth, formatStarsShort, generateTagline } from "../../src/generator/formatters.js";
 
 describe("formatStarsShort", () => {
   it("returns '0' for 0", () => {
@@ -39,8 +39,8 @@ describe("generateTagline", () => {
     expect(generateTagline("Fast ML framework, easy to use.")).toBe("Fast ML framework, easy to use");
   });
 
-  it("escapes ampersand", () => {
-    expect(generateTagline("Training & tuning toolkit for ML")).toBe("Training &amp; tuning toolkit for ML");
+  it("returns plain text; escaping happens where it is rendered", () => {
+    expect(generateTagline("Training & tuning toolkit for ML")).toBe("Training & tuning toolkit for ML");
   });
 
   it("passes through short text", () => {
@@ -63,5 +63,15 @@ describe("formatDateMonth", () => {
 
   it("returns '-' for empty string", () => {
     expect(formatDateMonth("")).toBe("-");
+  });
+});
+
+describe("escapeHtml", () => {
+  it("neutralises everything that could open a tag or break an attribute", () => {
+    expect(escapeHtml('R&D <model> "x"')).toBe("R&amp;D &lt;model&gt; &quot;x&quot;");
+  });
+
+  it("leaves markdown syntax alone", () => {
+    expect(escapeHtml("**bold** `code` [link](https://a.dev)")).toBe("**bold** `code` [link](https://a.dev)");
   });
 });
