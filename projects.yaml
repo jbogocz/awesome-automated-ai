@@ -488,6 +488,7 @@ categories:
     repo: beeevita/EvoPrompt
     description: Connects LLMs with evolutionary algorithms for discrete prompt optimization with up to 25% improvement over manual prompts.
     tagline: Evolutionary algorithms for discrete prompt optimization
+    note: Still the reference implementation of evolutionary prompt search; GEPA and DSPy cover maintained prompt optimization.
     tags: [evolutionary-algorithms, genetic-algorithms, llm, prompt-optimization, python, research]
 - name: Agent Frameworks
   description: Libraries and SDKs for building multi-agent systems, conversational agents, tool-using agents, and agentic workflows. Also includes agent infrastructure like memory, browser control, and sandboxes.
@@ -760,6 +761,7 @@ categories:
     repo: stanford-oval/storm
     description: LLM-powered knowledge curation that researches topics and generates full articles with citations (Stanford).
     tagline: LLM researches topics and writes full articles
+    note: Still the reference for cited, Wikipedia-style article generation; GPT Researcher covers maintained deep research.
     tags: [agentic-rag, deep-research, emnlp2024, knowledge-curation, large-language-models, naacl, nlp, report-generation, retrieval-augmented-generation]
   - name: AI-Scientist
     repo: SakanaAI/AI-Scientist
