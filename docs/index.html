@@ -53,7 +53,9 @@
   // resolved theme so system-light first-time visitors get the light tokens
   // (which live only under :root[data-theme="light"]).
   (() => {
-    const saved = localStorage.getItem('theme');
+    // Blocked storage throws on access; fall back to the system preference.
+    let saved = null;
+    try { saved = localStorage.getItem('theme'); } catch {}
     const theme = saved === 'light' || saved === 'dark'
       ? saved
       : (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -93,7 +95,7 @@
     </button>
 
     <div class="topbar__actions">
-      <button class="icon-btn" type="button" id="theme-toggle" aria-label="Toggle color theme">
+      <button class="icon-btn" type="button" id="theme-toggle" aria-label="Dark theme" aria-pressed="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" id="theme-icon" aria-hidden="true">
           <circle cx="12" cy="12" r="4"/>
           <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
@@ -131,7 +133,7 @@
       <div class="lensbar__row">
         <button class="lens" type="button" data-lens="all"      aria-pressed="true"  title="Every tool in the catalog">All <span class="lens__count" data-count="all">—</span></button>
         <button class="lens" type="button" data-lens="top"      aria-pressed="false" title="Highest composite score, still maintained">Top picks <span class="lens__count" data-count="top">—</span></button>
-        <button class="lens" type="button" data-lens="trending" aria-pressed="false" title="Maintained, and 200+ stars gained in the last 30 days">Trending <span class="lens__count" data-count="trending">—</span></button>
+        <button class="lens" type="button" data-lens="trending" aria-pressed="false" title="Maintained, and 200+ stars gained over the latest trend window">Trending <span class="lens__count" data-count="trending">—</span></button>
         <button class="lens" type="button" data-lens="gems"     aria-pressed="false" title="High score but under 5k stars — under the radar">Hidden gems <span class="lens__count" data-count="gems">—</span></button>
       </div>
       <p class="lensbar__caption" id="lens-caption">Sorted by composite quality score.</p>
@@ -166,7 +168,7 @@
         <legend class="sr-only">Sort rows within each category</legend>
         <button class="sort-btn" type="button" data-sort="score"  aria-pressed="true"  title="Composite quality score (within each category)">Score</button>
         <button class="sort-btn" type="button" data-sort="stars"  aria-pressed="false" title="GitHub star count (within each category)">Stars</button>
-        <button class="sort-btn" type="button" data-sort="trend"  aria-pressed="false" title="Most stars gained in the last 30 days (within each category)">Trend</button>
+        <button class="sort-btn" type="button" data-sort="trend"  aria-pressed="false" title="Most stars gained over the latest trend window (within each category)">Trend</button>
         <button class="sort-btn" type="button" data-sort="recent" aria-pressed="false" title="Most recent commit first (within each category)">Updated</button>
         <button class="sort-btn" type="button" data-sort="name"   aria-pressed="false" title="Alphabetical (within each category)">A→Z</button>
       </fieldset>
@@ -227,8 +229,10 @@
 
 <!-- Command palette -->
 <div class="cmdk" id="cmdk" role="dialog" aria-modal="true" aria-label="Command palette" aria-hidden="true" inert>
-  <input class="cmdk__input" type="text" id="cmdk-input" placeholder="Search projects · jump to category · type ? for help" autocomplete="off" spellcheck="false">
-  <div class="cmdk__list" id="cmdk-list"></div>
+  <label class="sr-only" for="cmdk-input">Search projects, or type a colon to jump to a category</label>
+  <input class="cmdk__input" type="text" id="cmdk-input" placeholder="Search projects, or : for categories" autocomplete="off" spellcheck="false"
+         role="combobox" aria-expanded="false" aria-controls="cmdk-list" aria-autocomplete="list">
+  <div class="cmdk__list" id="cmdk-list" role="listbox" aria-label="Results"></div>
   <div class="cmdk__foot">
     <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
     <span><kbd>↵</kbd> open</span>

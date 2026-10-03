@@ -14,8 +14,10 @@ import {
   fmtStars,
   fmtTrend,
   html,
+  httpUrl,
   isAlive,
   isHot,
+  MOD_KEY,
   magnitude,
   RANGE,
   raw,
@@ -46,6 +48,10 @@ const els = {
   themeToggle: $("#theme-toggle"),
   menuTrigger: $("#menu-trigger"),
   sidebar: $("#sidebar"),
+  app: $(".app"),
+  main: $(".main"),
+  sheet: $("#sheet"),
+  cmdkHint: $(".cmdk-trigger__hint"),
   filterQ: $("#filter-q"),
   filterQClear: $("#filter-q-clear"),
 };
@@ -56,6 +62,7 @@ const state = {
   entries: [],
   sections: [],
   categoryById: new Map(),
+  trendDays: null,
   filters: { categoryId: null, lens: "all", alive: false, commercial: false, oss: false, archived: false, q: "" },
   sort: "score",
 };
@@ -77,9 +84,9 @@ const LENSES = {
     caption: (n) => `<b>${n}</b> highest-scoring tools that are still actively maintained.`,
   },
   trending: {
-    // Big star growth in the last 30 days (any size).
+    // Big star growth over the trend window (any size).
     test: (e) => isAlive(e) && (e.trend ?? 0) >= 200,
-    caption: (n) => `<b>${n}</b> maintained tools with major star growth in the last 30 days.`,
+    caption: (n) => `<b>${n}</b> maintained tools with major star growth ${trendWindowText()}.`,
   },
   gems: {
     // High curator score but under-median popularity — quality below the radar.
@@ -87,6 +94,20 @@ const LENSES = {
     caption: (n) => `<b>${n}</b> high-quality tools flying under the radar (under 5k stars).`,
   },
 };
+
+// The trend window is whatever span the pipeline actually measured (each
+// entry carries `trendDays`), not a nominal 30 days — label it from the data.
+function trendWindowText() {
+  return state.trendDays ? `in the last ${state.trendDays} days` : "over the latest trend window";
+}
+
+function applyTrendWindow() {
+  const w = trendWindowText();
+  const lens = $('.lens[data-lens="trending"]');
+  if (lens) lens.title = `Maintained, and 200+ stars gained ${w}`;
+  const sort = $('.sort-btn[data-sort="trend"]');
+  if (sort) sort.title = `Most stars gained ${w} (within each category)`;
+}
 
 // Whole-days since the underlying measurements were taken. Prefers
 // `dataAsOf` (newest snapshot actually recorded) over `generated` (when the
@@ -127,6 +148,11 @@ async function load() {
     }
   }
   state.sections = [...sectionMap.entries()].map(([name, categories]) => ({ name, categories }));
+
+  // Most common window across entries; a degraded run can leave a few stale.
+  const windows = new Map();
+  for (const e of state.entries) if (e.trendDays) windows.set(e.trendDays, (windows.get(e.trendDays) ?? 0) + 1);
+  state.trendDays = [...windows].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
 }
 
 // ── Render: sidebar ──────────────────────────────────────────────────
@@ -159,9 +185,13 @@ function renderSidebar() {
 
 // Off-screen drawer on mobile must also leave the tab order — transform alone
 // keeps its buttons focusable for keyboard/SR users.
+// While the drawer is open the page behind it leaves the tab order too, the
+// way the sheet and palette inert the app — and a CSS backdrop dims it.
 const mqMobile = window.matchMedia("(max-width: 900px)");
 function syncSidebarInert() {
-  els.sidebar.inert = mqMobile.matches && els.sidebar.dataset.open !== "true";
+  const open = els.sidebar.dataset.open === "true";
+  els.sidebar.inert = mqMobile.matches && !open;
+  els.main.inert = mqMobile.matches && open;
 }
 
 function setDrawer(open) {
@@ -199,10 +229,32 @@ function bindSidebar() {
     if (!drawerIsOpen()) return;
     if (els.sidebar.contains(ev.target) || els.menuTrigger.contains(ev.target)) return;
     setDrawer(false);
+    swallowNextClick();
   });
 
   mqMobile.addEventListener("change", syncSidebarInert);
   syncSidebarInert();
+}
+
+// A tap outside the drawer only dismisses it. Closing on pointerdown lifts
+// the inert backdrop before the click lands, so without this the same tap
+// would also open whatever row sat under the finger.
+function swallowNextClick() {
+  const swallow = (ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+    done();
+  };
+  // A gesture that never becomes a click (scroll, cancel) must not leave the
+  // guard armed for the next, unrelated tap.
+  const done = () => {
+    document.removeEventListener("click", swallow, true);
+    document.removeEventListener("pointercancel", done, true);
+    document.removeEventListener("pointerdown", done, true);
+  };
+  document.addEventListener("click", swallow, true);
+  document.addEventListener("pointercancel", done, true);
+  document.addEventListener("pointerdown", done, true);
 }
 
 // ── Counts (sidebar + lensbar + brand) ───────────────────────────────
@@ -275,6 +327,10 @@ const SORTERS = {
 };
 
 // ── Row template ─────────────────────────────────────────────────────
+// Labels match the legend; `status` comes from data.json (src/status.ts).
+// External entries (papers, commercial products) are not repos and have none.
+const STATUS_LABEL = { active: "Active", quiet: "Quiet", dead: "Dormant" };
+
 function rowHtml(e) {
   const mag = magnitude(e);
   const hot = isHot(e) ? "hot" : "";
@@ -290,20 +346,27 @@ function rowHtml(e) {
   const staleHtml = e.stale
     ? `<span class="badge badge--stale" title="Live fetch failed; figures are from the ${escapeText(e.stale)} snapshot">as of ${escapeText(e.stale)}</span>`
     : "";
+  const statusLabel = e.archived ? "Archived" : STATUS_LABEL[e.status];
+  const statusKey = e.archived ? "dead" : e.status;
+  const dotHtml = statusLabel
+    ? `<span class="status-dot" data-status="${escapeText(statusKey)}" title="${statusLabel}" aria-hidden="true"></span>`
+    : "";
+  const statusSr = statusLabel ? `<span class="sr-only">, ${statusLabel.toLowerCase()}</span>` : "";
 
   return `
   <a class="row"
      data-cat="${escapeText(e.categoryId)}"
      data-name="${escapeText(e.name)}"
-     href="${escapeText(e.url || "#")}"
+     href="${escapeText(httpUrl(e.url) ?? "#")}"
      target="_blank" rel="noopener"
+     data-external="${e.external ? "true" : "false"}"
      data-archived="${e.archived ? "true" : "false"}">
-    <span class="row__marker">${avatarHtml(e, mag, hot)}</span>
-    <span class="row__name">${escapeText(e.name)}${vendorHtml}${badges}${staleHtml}</span>
+    <span class="row__marker">${avatarHtml(e, mag, hot)}${dotHtml}</span>
+    <span class="row__name">${escapeText(e.name)}${statusSr}${vendorHtml}${badges}${staleHtml}</span>
     <span class="row__tagline">${escapeText(e.tagline || e.description || "")}</span>
     <span class="row__tags">${tagsHtml}</span>
     <span class="row__spark">${sparkSvg(e, mag)}</span>
-    <span class="row__metric row__metric--score" title="Quality score: stars 50%, trend 25%, freshness 15%, licence 10%">${e.external || e.score == null ? "—" : e.score}</span>
+    <span class="row__metric row__metric--score" title="Quality score: stars 50%, trend 25%, freshness 15%, licence 10%">${e.external || e.archived || e.score == null ? "—" : e.score}</span>
     <span class="row__metric row__metric--stars">${e.external ? "—" : fmtStars(e.stars)}</span>
     <span class="row__metric row__metric--trend ${t.cls}">${t.txt}</span>
     <span class="row__metric row__metric--age">${e.external ? "—" : fmtAge(e.lastCommit)}</span>
@@ -326,12 +389,17 @@ function renderStream({ animate = true } = {}) {
   }
 
   if (items.length === 0) {
+    // Same breakpoint that hides the topbar's shortcut hint: on a phone there
+    // is no keyboard shortcut to point at, only the search icon.
+    const hint = mqMobile.matches
+      ? "Try removing a filter, or tap the search icon to search."
+      : raw(`Try removing a filter or press <kbd>${MOD_KEY === "⌘" ? "⌘" : "Ctrl+"}K</kbd> to search.`);
     render(
       els.stream,
       html`
       <div class="empty">
         <p class="empty__title">No constellations match.</p>
-        <p class="empty__hint">Try removing a filter or hitting <kbd>⌘K</kbd> to search.</p>
+        <p class="empty__hint">${hint}</p>
       </div>`,
     );
     renderLensCaption(0);
@@ -359,7 +427,15 @@ function renderStream({ animate = true } = {}) {
   const frag = html`${raw(parts.join(""))}`;
 
   const apply = () => {
+    // Re-rendering replaces every row; keep keyboard focus on the same entry
+    // (e.g. after the sheet's category link), or the first row if it was
+    // filtered out, instead of dropping it to <body>.
+    const focused = document.activeElement?.closest?.(".row");
     render(els.stream, frag);
+    if (focused && !focused.isConnected) {
+      const sel = `.row[data-cat="${CSS.escape(focused.dataset.cat)}"][data-name="${CSS.escape(focused.dataset.name)}"]`;
+      ($(sel, els.stream) ?? $(".row", els.stream))?.focus();
+    }
     renderLensCaption(items.length);
     renderCounts();
   };
@@ -378,7 +454,17 @@ let _cmdk;
 async function ensureCmdk() {
   if (!_cmdk) {
     _cmdk = await import("./cmdk.js");
-    _cmdk.initCmdk({ state, setCategory, openSheet: lazyOpenSheet });
+    _cmdk.initCmdk({
+      state,
+      // Jumping to a category from a palette opened over the sheet also
+      // dismisses the sheet, so the filtered stream is what the user sees.
+      setCategory: (id) => {
+        _sheet?.closeSheet();
+        setCategory(id);
+      },
+      openSheet: lazyOpenSheet,
+      syncModal: syncModalChrome,
+    });
   }
   return _cmdk;
 }
@@ -387,9 +473,21 @@ let _sheet;
 async function lazyOpenSheet(entry) {
   if (!_sheet) {
     _sheet = await import("./sheet.js");
-    _sheet.initSheet();
+    _sheet.initSheet({ syncModal: syncModalChrome });
   }
   _sheet.openSheet(entry);
+}
+
+// Backdrop + inertness for the two modal layers, derived from both. The
+// palette can open over the sheet (⌘K), so neither module may clear the
+// scrim or un-inert the page on its own close while the other is still up.
+// The palette stacks on top: while it is open the sheet is inert as well.
+function syncModalChrome() {
+  const cmdkOpen = Boolean(_cmdk?.isOpen());
+  const sheetOpen = Boolean(_sheet?.isOpen());
+  els.scrim.dataset.open = cmdkOpen || sheetOpen ? "true" : "false";
+  els.app.inert = cmdkOpen || sheetOpen;
+  els.sheet.inert = !sheetOpen || cmdkOpen;
 }
 
 // ── Bindings ─────────────────────────────────────────────────────────
@@ -460,14 +558,26 @@ function setCategory(id) {
   renderStream();
 }
 
+// The toggle is a pressed/unpressed "Dark theme" switch, so assistive tech
+// hears the current state rather than an unlabelled action.
+function syncThemeToggle() {
+  els.themeToggle.setAttribute("aria-pressed", document.documentElement.dataset.theme === "light" ? "false" : "true");
+}
+
 function bindTheme() {
+  syncThemeToggle();
   els.themeToggle.addEventListener("click", () => {
     const cur =
       document.documentElement.dataset.theme ||
       (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
     const next = cur === "light" ? "dark" : "light";
     document.documentElement.dataset.theme = next;
-    localStorage.setItem("theme", next);
+    syncThemeToggle();
+    // Blocked storage (privacy mode, disabled cookies) throws; the toggle
+    // still works for this page view.
+    try {
+      localStorage.setItem("theme", next);
+    } catch {}
   });
 }
 
@@ -508,9 +618,11 @@ function bindGlobalKeys() {
     }
   });
 
+  // Dismiss the top layer only: a click beside the palette must not also
+  // throw away the sheet beneath it.
   els.scrim.addEventListener("click", () => {
     if (_cmdk?.isOpen()) _cmdk.closeCmdk();
-    if (_sheet?.isOpen()) _sheet.closeSheet();
+    else if (_sheet?.isOpen()) _sheet.closeSheet();
   });
 }
 
@@ -625,6 +737,8 @@ async function main() {
     return;
   }
   renderSidebar();
+  applyTrendWindow();
+  if (els.cmdkHint) els.cmdkHint.replaceChildren(html`<kbd>${MOD_KEY}</kbd>${MOD_KEY === "⌘" ? "" : "+"}K`);
   renderCounts();
   bindSidebar();
   bindLenses();

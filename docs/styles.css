@@ -854,12 +854,28 @@
   }
 
   .row__marker {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 28px;
     height: 28px;
     flex-shrink: 0;
+  }
+
+  /* Status pip on the avatar's corner — the Active / Quiet / Dormant dot the
+     legend documents. Ringed in the page colour so it reads on any logo. */
+  .status-dot {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 2px solid var(--void);
+  }
+  .row:hover .status-dot {
+    border-color: var(--surface);
   }
 
   /* ── Avatar (the signature: identity, not math) ───────────────────────
@@ -1123,22 +1139,6 @@
   }
   .spark__dot {
     fill: var(--spark-stroke);
-  }
-
-  /* External-link micro-cue */
-  .row__ext {
-    display: inline-flex;
-    align-items: center;
-    color: var(--shadow-ink);
-    transition: color var(--dur-1) var(--ease-out);
-    margin-left: var(--s-1);
-  }
-  .row__ext svg {
-    width: 12px;
-    height: 12px;
-  }
-  .row:hover .row__ext {
-    color: var(--young-star);
   }
 
   /* ── Detail sheet (slides from right; modal on narrow) ─────────────────── */
@@ -1537,8 +1537,8 @@
     .row {
       grid-template-columns: 24px minmax(0, 1fr) auto auto auto;
       grid-template-areas:
-        "marker name    spark stars trend"
-        ".      tagline tagline tagline tagline";
+        "marker name    spark   stars   trend"
+        ".      tagline tagline tagline score";
       gap: 2px var(--s-3);
       padding: var(--s-3) var(--s-3) 12px;
     }
@@ -1578,8 +1578,48 @@
     .row__metric--age {
       display: none;
     }
-    .row__ext {
+    /* Score joins the second line, under the trend column, rather than
+       crowding the metrics row; the word says what the bare number is. */
+    .row__metric--score {
+      grid-area: score;
+      align-self: start;
+      margin-top: 2px;
+      font-size: 11px;
+    }
+    .row__metric--score::before {
+      content: "score ";
+      color: var(--dust);
+      font-weight: 400;
+    }
+
+    /* Papers and commercial products have no stars, trend or score: drop
+       those columns so the name gets the width instead of truncating. */
+    .row[data-external="true"] {
+      grid-template-columns: 24px minmax(0, 1fr);
+      grid-template-areas:
+        "marker name"
+        ".      tagline";
+    }
+    .row[data-external="true"] :is(.row__spark, .row__metric) {
       display: none;
+    }
+    .row[data-external="true"] .row__name {
+      white-space: normal;
+    }
+
+    /* Dims the page behind the open category drawer (main is inert then). */
+    .main::after {
+      content: "";
+      position: fixed;
+      inset: var(--topbar-h) 0 0;
+      background: oklch(0 0 0 / 0.45);
+      z-index: 20;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--dur-2) var(--ease-out);
+    }
+    .app:has(.side[data-open="true"]) .main::after {
+      opacity: 1;
     }
 
     .lensbar {
@@ -1795,21 +1835,20 @@
     border-radius: 50%;
     display: inline-block;
   }
-  .legend__dot[data-status="active"] {
+  .legend__dot[data-status="active"],
+  .status-dot[data-status="active"] {
     background: var(--life);
   }
-  .legend__dot[data-status="quiet"] {
+  .legend__dot[data-status="quiet"],
+  .status-dot[data-status="quiet"] {
     background: var(--copper);
   }
-  .legend__dot[data-status="dead"] {
+  .legend__dot[data-status="dead"],
+  .status-dot[data-status="dead"] {
     background: var(--red-giant);
   }
 
   @media (max-width: 900px) {
-    /* Score joins the second line rather than crowding the metrics row. */
-    .row__metric--score {
-      display: none;
-    }
     .searchbox {
       max-width: none;
       order: -1;

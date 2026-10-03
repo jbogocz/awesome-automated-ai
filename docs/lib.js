@@ -29,6 +29,17 @@ export const render = (host, frag) => {
   host.replaceChildren(...frag.childNodes);
 };
 
+// Only http(s) URLs become hrefs. data.json is generated, but a stray
+// `javascript:` or `data:` URL would otherwise run on click.
+export const httpUrl = (u) => {
+  try {
+    const { protocol } = new URL(u);
+    return protocol === "https:" || protocol === "http:" ? u : null;
+  } catch {
+    return null;
+  }
+};
+
 // ── DOM helpers ──────────────────────────────────────────────────────
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -71,6 +82,13 @@ export const fmtAge = (iso) => {
 // `status` ("active" | "quiet" | "dead") is precomputed by src/status.ts
 // and baked into data.json — never re-derive it from dates here.
 export const isAlive = (e) => e.status === "active";
+
+// Shortcut glyph for the palette: ⌘ on Apple platforms, Ctrl elsewhere —
+// both work (the handler accepts either modifier), but the hint should name
+// the key the visitor actually has.
+export const MOD_KEY = /Mac|iPhone|iPad|iPod/.test(navigator.userAgentData?.platform || navigator.platform || "")
+  ? "⌘"
+  : "Ctrl";
 
 export const magnitude = (e) => {
   if (e.archived) return "extinct";

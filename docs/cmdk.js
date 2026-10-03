@@ -6,22 +6,23 @@ import { $, $$, escapeText, fmtStars, html, raw, render } from "./lib.js";
 // surfaced in the group label when the cap bites.
 const CMDK_MAX_RESULTS = 12;
 
-let _state, _setCategory, _openSheet;
+let _state, _setCategory, _openSheet, _syncModal;
 let els;
 let cmdkIdx = 0;
 let cmdkItems = [];
 let _restoreFocus = null;
 
-export function initCmdk({ state, setCategory, openSheet }) {
+export function initCmdk({ state, setCategory, openSheet, syncModal }) {
   _state = state;
   _setCategory = setCategory;
   _openSheet = openSheet;
+  // Scrim and background inertness are shared with the sheet; app.js
+  // derives them from both layers.
+  _syncModal = syncModal;
   els = {
     cmdk: $("#cmdk"),
     cmdkInput: $("#cmdk-input"),
     cmdkList: $("#cmdk-list"),
-    scrim: $("#scrim"),
-    app: $(".app"),
   };
   els.cmdkInput.addEventListener("input", (ev) => renderCmdk(ev.target.value));
   els.cmdkInput.addEventListener("keydown", onInputKey);
@@ -29,12 +30,13 @@ export function initCmdk({ state, setCategory, openSheet }) {
 }
 
 export function openCmdk() {
+  if (isOpen()) return;
   _restoreFocus = document.activeElement;
   els.cmdk.dataset.open = "true";
   els.cmdk.setAttribute("aria-hidden", "false");
   els.cmdk.inert = false;
-  els.app.inert = true; // native focus trap: background leaves the tab order
-  els.scrim.dataset.open = "true";
+  els.cmdkInput.setAttribute("aria-expanded", "true");
+  _syncModal(); // native focus trap: everything behind leaves the tab order
   els.cmdkInput.value = "";
   renderCmdk("");
   setTimeout(() => els.cmdkInput.focus(), 30);
@@ -44,8 +46,10 @@ export function closeCmdk() {
   els.cmdk.dataset.open = "false";
   els.cmdk.setAttribute("aria-hidden", "true");
   els.cmdk.inert = true;
-  els.app.inert = false;
-  els.scrim.dataset.open = "false";
+  els.cmdkInput.setAttribute("aria-expanded", "false");
+  els.cmdkInput.removeAttribute("aria-activedescendant");
+  // Un-inert whatever is beneath (the sheet, or the page) before focusing it.
+  _syncModal();
   if (_restoreFocus?.isConnected) _restoreFocus.focus();
   _restoreFocus = null;
 }
@@ -72,8 +76,8 @@ function renderCmdk(q) {
           name: c.name,
           meta: `${c.entries.length} · ${c.section}`,
           action: () => {
-            _setCategory(c.id);
             closeCmdk();
+            _setCategory(c.id);
           },
         })),
       });
@@ -114,9 +118,12 @@ function renderCmdk(q) {
           key: `e-${e.categoryId}-${e.name}`,
           name: e.name,
           meta: `${fmtStars(e.stars)} · ${e.categoryName}`,
+          // Close first: the palette hands focus back to where it came from,
+          // and the sheet then records that as its own return target. The
+          // other order let closeCmdk pull focus out of the fresh sheet.
           action: () => {
-            _openSheet(e);
             closeCmdk();
+            void _openSheet(e);
           },
         })),
       });
@@ -128,20 +135,28 @@ function renderCmdk(q) {
       html`<div class="cmdk__empty">No matches. Try a project name, or <code>:cat</code> to jump.</div>`,
     );
     cmdkItems = [];
+    els.cmdkInput.removeAttribute("aria-activedescendant");
     return;
   }
 
+  // Listbox semantics: focus stays in the input (a combobox) and
+  // aria-activedescendant names the highlighted option, so screen readers
+  // follow the arrow keys. Options are out of the tab order for the same reason.
   const parts = [];
-  for (const g of groups) {
-    parts.push(`<div class="cmdk__group-label">${escapeText(g.label)}</div>`);
+  let n = 0;
+  groups.forEach((g, gi) => {
+    parts.push(`<div role="group" aria-labelledby="cmdk-g${gi}">
+      <div class="cmdk__group-label" id="cmdk-g${gi}" role="presentation">${escapeText(g.label)}</div>`);
     for (const it of g.items) {
       parts.push(`
-        <button class="cmdk__item" type="button" data-key="${escapeText(it.key)}">
+        <button class="cmdk__item" type="button" role="option" tabindex="-1" aria-selected="false"
+                id="cmdk-opt-${n++}" data-key="${escapeText(it.key)}">
           <span class="cmdk__item-name">${escapeText(it.name)}</span>
           <span class="cmdk__item-meta">${escapeText(it.meta)}</span>
         </button>`);
     }
-  }
+    parts.push("</div>");
+  });
   render(els.cmdkList, html`${raw(parts.join(""))}`);
 
   cmdkItems = groups.flatMap((g) => g.items);
@@ -153,8 +168,12 @@ function updateCmdkActive() {
   const btns = $$(".cmdk__item", els.cmdkList);
   btns.forEach((b, i) => {
     b.dataset.active = i === cmdkIdx ? "true" : "false";
+    b.setAttribute("aria-selected", i === cmdkIdx ? "true" : "false");
   });
-  btns[cmdkIdx]?.scrollIntoView({ block: "nearest" });
+  const cur = btns[cmdkIdx];
+  if (cur) els.cmdkInput.setAttribute("aria-activedescendant", cur.id);
+  else els.cmdkInput.removeAttribute("aria-activedescendant");
+  cur?.scrollIntoView({ block: "nearest" });
 }
 
 function onInputKey(ev) {
