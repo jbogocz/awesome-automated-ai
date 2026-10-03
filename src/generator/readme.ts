@@ -1,7 +1,7 @@
 import { parse as parseYaml } from "yaml";
 import { RELEASE_STALE_MONTHS, STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.js";
 import { assessRepo, displayBucket, type Lifecycle, lastLifeSign, STATUS_DOT, type StatusReason } from "../status.js";
-import { formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
+import { displayLicense, formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
 import { buildTagCorpus, selectTags, type TagCorpus } from "./tags.js";
 
 export interface ApiRepoData {
@@ -320,7 +320,11 @@ function buildOneCard(s: ScoredEntry, rank: number | null, corpus: TagCorpus): s
     !isDead && rd.trend !== null && Math.abs(rd.trend) >= TREND_DISPLAY_MIN
       ? ` <code>${rd.trend > 0 ? "\u2197\uFE0F" : "\u2198\uFE0F"} ${rd.trend > 0 ? "+" : ""}${rd.trend}</code>`
       : "";
-  const licenseBadge = rd.license ? ` <code>${rd.license}</code>` : "";
+  const license = displayLicense(rd.license);
+  const licenseBadge = license ? ` <code>${license}</code>` : "";
+  // Same "as of" wording the dashboard uses, so a failed refresh is visible
+  // here too instead of week-old figures reading as this week's.
+  const staleBadge = rd.stale ? ` <code>as of ${rd.stale}</code>` : "";
 
   // Per-entry YAML first: the cached tagline is keyed by repo, so two entries
   // cross-listing one repo (Ray Tune under HPO, Ray under MLOps) would
@@ -328,7 +332,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null, corpus: TagCorpus): s
   const tagline = entry.tagline ?? rd.tagline ?? generateTagline(entry.description ?? "");
   const taglinePart = tagline ? ` ${tagline}` : "";
 
-  const summary = `<details><summary>${dot}${rankLabel} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${taglinePart}</summary>`;
+  const summary = `<details><summary>${dot}${rankLabel} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${staleBadge}${taglinePart}</summary>`;
 
   const desc = entry.description ?? "";
   const fullDesc = note ? `${desc} **${note}**` : desc;
@@ -351,6 +355,9 @@ function buildOneCard(s: ScoredEntry, rank: number | null, corpus: TagCorpus): s
   let actSuffix = "";
   if (rd.archived) actSuffix = " - archived";
   else if (isHistorical) actSuffix = " - historical";
+  // A curator retirement, not a measurement: the repo may still be busy, so
+  // "unmaintained 12+ months" would contradict the date printed beside it.
+  else if (entry.lifecycle === "deprecated") actSuffix = " - deprecated";
   else if (isDead) actSuffix = ` - unmaintained ${STALE_MONTHS}+ months`;
 
   const allTags = entry.tags && entry.tags.length > 0 ? entry.tags : (rd.topics ?? []);
@@ -366,7 +373,7 @@ function buildOneCard(s: ScoredEntry, rank: number | null, corpus: TagCorpus): s
   if (rd.lastRelease) {
     dashboard.push(`  Release   \u{1F4E6} ${formatDateMonth(rd.lastRelease)}`);
   }
-  dashboard.push(`  License   ${rd.license ?? "-"}${tagsLine}`);
+  dashboard.push(`  License   ${license ?? "-"}${tagsLine}`);
   dashboard.push("```");
 
   return [summary, "", "<br>", "", displayDesc, "", ...dashboard, "", "</details>"];
@@ -375,9 +382,8 @@ function buildOneCard(s: ScoredEntry, rank: number | null, corpus: TagCorpus): s
 /**
  * Reports the window each delta actually spans. Snapshots land weekly, so the
  * point nearest t-30 is normally t-28; printing that as "last 30d" overstated
- * every figure. The `rd.trend` fallback comes from the previous snapshot of
- * unknown age, so it is labelled "since last snapshot" rather than given a
- * window it cannot support.
+ * every figure. `rd.trend` is always trend30d (src/scoring/trends.ts), so it
+ * needs no line of its own.
  */
 function buildTrendDetail(rd: ApiRepoData, isDead: boolean): string {
   if (isDead) return "(n/a)";
@@ -385,8 +391,6 @@ function buildTrendDetail(rd: ApiRepoData, isDead: boolean): string {
   const signed = (n: number): string => `${n > 0 ? "+" : ""}${n}`;
   if (rd.trend30d !== null && rd.trend30d !== undefined) {
     parts.push(`${signed(rd.trend30d)} last ${rd.trend30dDays ?? 30}d`);
-  } else if (rd.trend !== null && rd.trend !== undefined) {
-    parts.push(`${signed(rd.trend)} since last snapshot`);
   }
   if (rd.trend7d !== null && rd.trend7d !== undefined) {
     parts.push(`${signed(rd.trend7d)} last ${rd.trend7dDays ?? 7}d`);

@@ -35,14 +35,40 @@ function isTransientGhError(err: unknown): boolean {
 }
 
 /**
- * Primary (403/429 + "rate limit") and secondary ("abuse detection",
- * "secondary rate limit") limits, plus GraphQL's own RATE_LIMITED error type,
- * which arrives with HTTP 200. None of these were retried before, and the
- * GraphQL one was worse than not retried — see recoverJsonBody.
+ * Primary ("rate limit", or an exhausted x-ratelimit-remaining) and secondary
+ * ("abuse detection", "secondary rate limit") limits, HTTP 429, plus
+ * GraphQL's own RATE_LIMITED error type, which arrives with HTTP 200.
+ *
+ * A bare 403 is deliberately not enough: GitHub also answers 403 for a
+ * revoked token, a missing scope or an SSO-blocked org, and treating those as
+ * rate limits burned the whole retry budget at 30s-300s a step until the job
+ * timed out, without ever saying the token was the problem.
  */
 export function isRateLimited(text: string): boolean {
-  return /HTTP 40[39]|HTTP 429|rate limit|RATE_LIMITED|abuse detection|secondary rate/i.test(text);
+  return /HTTP 429|rate limit|RATE_LIMITED|abuse detection|secondary rate|x-ratelimit-remaining:\s*0\b/i.test(text);
 }
+
+/** 401/403 that is not rate limiting: retrying cannot fix credentials. */
+function isAuthError(text: string): boolean {
+  return /HTTP 40[13]\b/.test(text) && !isRateLimited(text);
+}
+
+/** Process boundary, injectable so retry behaviour is testable without `gh`. */
+export interface GhDeps {
+  /** Runs `gh api graphql` and returns stdout; throws like execFileSync on a non-zero exit. */
+  run: (query: string) => string;
+  sleep: (ms: number) => Promise<void>;
+}
+
+const defaultDeps: GhDeps = {
+  run: (query) =>
+    execFileSync("gh", ["api", "graphql", "-f", `query=${query}`], {
+      timeout: GH_TIMEOUT_MS,
+      encoding: "utf-8",
+      maxBuffer: 32 * 1024 * 1024,
+    }),
+  sleep: (ms) => new Promise((r) => setTimeout(r, ms)),
+};
 
 /** Seconds to wait from a Retry-After header or an x-ratelimit-reset epoch, if present. */
 export function retryAfterMs(text: string, now: number = Date.now()): number | null {
@@ -57,14 +83,10 @@ export function retryAfterMs(text: string, now: number = Date.now()): number | n
 }
 
 /** Shared gh-CLI GraphQL transport: transient-error retry with exponential backoff. */
-export async function ghGraphQL<T>(query: string): Promise<T> {
+export async function ghGraphQL<T>(query: string, deps: GhDeps = defaultDeps): Promise<T> {
   for (let attempt = 0; ; attempt++) {
     try {
-      const out = execFileSync("gh", ["api", "graphql", "-f", `query=${query}`], {
-        timeout: GH_TIMEOUT_MS,
-        encoding: "utf-8",
-        maxBuffer: 32 * 1024 * 1024,
-      });
+      const out = deps.run(query);
       const parsed = JSON.parse(out) as T & {
         errors?: { type?: string; message?: string }[];
       };
@@ -76,7 +98,7 @@ export async function ghGraphQL<T>(query: string): Promise<T> {
         logger.warn(
           `gh graphql attempt ${attempt + 1}/${MAX_RETRIES + 1} returned RATE_LIMITED; retrying in ${Math.round(delay / 1000)}s`,
         );
-        await new Promise((r) => setTimeout(r, delay));
+        await deps.sleep(delay);
         continue;
       }
       return parsed as T;
@@ -89,27 +111,44 @@ export async function ghGraphQL<T>(query: string): Promise<T> {
       const body = typeof stdout === "string" ? stdout : Buffer.isBuffer(stdout) ? stdout.toString("utf-8") : "";
       const text = `${errorText(err)}\n${body}`;
       const limited = isRateLimited(text);
+      const msg = err instanceof Error ? (err.message.split("\n")[0] ?? "") : String(err);
+
+      if (isAuthError(text)) {
+        throw new Error(
+          `gh graphql was refused (HTTP 401/403, not rate limiting) - check that the token is valid and has ` +
+            `access to the repositories queried; not retrying. ${msg}`,
+          { cause: err },
+        );
+      }
 
       // A rate-limit body is JSON too, and recovering it as success is worse
       // than failing: every alias in the chunk silently resolves to nothing
-      // and the run reports a clean pass over missing data.
-      if (!limited && body.trimStart().startsWith("{")) {
-        try {
-          return JSON.parse(body) as T;
-        } catch {
-          // Not a JSON body — fall through to retry/throw.
-        }
-      }
-      if (attempt >= MAX_RETRIES || !(limited || isTransientGhError(err))) throw err;
+      // and the run reports a clean pass over missing data. The same goes
+      // for a 502/503/504 or timeout ({"data":null,"errors":[...]}): taking
+      // it dropped a whole chunk of repos on a blip one retry would have
+      // cleared. So a body counts as the answer only for a non-transient
+      // failure, or once the retries are spent and it is all there is.
+      const transient = isTransientGhError(err);
+      const recovered = !limited && body.trimStart().startsWith("{") ? tryParse<T>(body) : null;
+      if (recovered !== null && (!transient || attempt >= MAX_RETRIES)) return recovered;
+      if (attempt >= MAX_RETRIES || !(limited || transient)) throw err;
+
       const delay = limited
         ? Math.min(retryAfterMs(text) ?? RATE_LIMIT_BASE_BACKOFF_MS * 2 ** attempt, RATE_LIMIT_MAX_BACKOFF_MS)
         : BASE_BACKOFF_MS * 2 ** attempt;
-      const msg = err instanceof Error ? err.message.split("\n")[0] : String(err);
       logger.warn(
         `gh graphql attempt ${attempt + 1}/${MAX_RETRIES + 1} failed` +
           `${limited ? " (rate limited)" : ""} (${msg}); retrying in ${Math.round(delay / 1000)}s`,
       );
-      await new Promise((r) => setTimeout(r, delay));
+      await deps.sleep(delay);
     }
+  }
+}
+
+function tryParse<T>(body: string): T | null {
+  try {
+    return JSON.parse(body) as T;
+  } catch {
+    return null;
   }
 }

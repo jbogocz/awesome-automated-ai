@@ -5,6 +5,9 @@ export interface QualityInput {
   starsPrevious: number | null;
   trend7d?: number | null;
   trend30d?: number | null;
+  /** Days trend7d / trend30d actually span (src/scoring/trends.ts); nominal 7 / 30 when unknown. */
+  trend7dDays?: number | null;
+  trend30dDays?: number | null;
   /**
    * Newest life sign — mainline commit, release or tag (src/status.ts).
    * Deliberately NOT pushedAt: that updates on pushes to any branch, so bot
@@ -82,12 +85,15 @@ function computeLicenseScore(license: string | null): number {
 // Weekly star growth mapped to 0-100. Prefer the 30d window (smoother) and
 // fall back to 7d then to the legacy "most recent prior snapshot" signal.
 // Returns null when no signal is available so the caller can impute.
+// Deltas are normalised by the window they actually span: weekly snapshots
+// put the "30d" anchor at t-28 as often as not, and dividing by a fixed 30
+// understated that growth.
 function computeMomentumScore(input: QualityInput): number | null {
   let weeklyPct: number | null = null;
   if (input.trend30d != null && input.stars > 0) {
-    weeklyPct = (((input.trend30d / 30) * 7) / input.stars) * 100;
+    weeklyPct = (((input.trend30d / (input.trend30dDays ?? 30)) * 7) / input.stars) * 100;
   } else if (input.trend7d != null && input.stars > 0) {
-    weeklyPct = (input.trend7d / input.stars) * 100;
+    weeklyPct = (((input.trend7d / (input.trend7dDays ?? 7)) * 7) / input.stars) * 100;
   } else if (input.starsPrevious != null && input.starsPrevious > 0) {
     weeklyPct = ((input.stars - input.starsPrevious) / input.starsPrevious) * 100;
   }

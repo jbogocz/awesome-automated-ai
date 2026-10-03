@@ -3,6 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import Database from "better-sqlite3";
 import { describe, expect, it, vi } from "vitest";
+import { analyzeCandidate } from "../../src/agents/analysis.js";
 import { classifyCandidate } from "../../src/agents/discovery.js";
 import type { Config } from "../../src/config.js";
 
@@ -59,6 +60,15 @@ vi.mock("../../src/agents/analysis.js", () => ({
   })),
 }));
 
+// The category the analysis mock picks has to exist: a PR can only file an
+// entry under a heading projects.yaml already has.
+const PROJECTS_YAML = `categories:
+- name: General-Purpose AutoML
+  entries:
+  - name: Existing
+    repo: owner/existing
+`;
+
 function testConfig(maxPrsPerDay: number): Config {
   return {
     anthropicApiKey: "test-key",
@@ -78,7 +88,7 @@ describe("runDiscovery daily PR cap", () => {
   it("queues auto-worthy candidates over the cap instead of permanently rejecting them", async () => {
     const dir = mkdtempSync(join(tmpdir(), "discovery-test-"));
     const projectsYamlPath = join(dir, "projects.yaml");
-    writeFileSync(projectsYamlPath, "categories: []\n");
+    writeFileSync(projectsYamlPath, PROJECTS_YAML);
 
     const { runDiscovery } = await import("../../src/agents/discovery.js");
     const result = await runDiscovery(testConfig(1), projectsYamlPath);
@@ -110,6 +120,36 @@ describe("runDiscovery daily PR cap", () => {
       .get() as { n: number };
     expect(prsToday.n).toBe(1);
     sqlite.close();
+  });
+});
+
+describe("runDiscovery category validation", () => {
+  it("queues instead of opening a PR when the model's category matches nothing", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "discovery-test-"));
+    const projectsYamlPath = join(dir, "projects.yaml");
+    writeFileSync(projectsYamlPath, PROJECTS_YAML);
+    const real = vi.mocked(analyzeCandidate).getMockImplementation();
+    vi.mocked(analyzeCandidate).mockImplementation(async (...args) => {
+      const analysis = await (real as typeof analyzeCandidate)(...args);
+      return { ...analysis, category: "AutoML Frameworks" };
+    });
+
+    try {
+      const { runDiscovery } = await import("../../src/agents/discovery.js");
+      const result = await runDiscovery(testConfig(10), projectsYamlPath);
+      expect(result.prsCreated).toBe(0);
+      expect(result.queued).toBe(2);
+
+      const sqlite = new Database(join(dir, "curator.db"), { readonly: true });
+      const reasons = sqlite.prepare("SELECT reasoning FROM decisions WHERE pr_number IS NULL").all() as {
+        reasoning: string;
+      }[];
+      sqlite.close();
+      expect(reasons).toHaveLength(2);
+      for (const r of reasons) expect(r.reasoning).toMatch(/category "AutoML Frameworks" matches no category/);
+    } finally {
+      if (real) vi.mocked(analyzeCandidate).mockImplementation(real);
+    }
   });
 });
 

@@ -137,7 +137,7 @@ describe("DB.getSnapshotSeries", () => {
   function daysAgo(n: number): string {
     const d = new Date();
     d.setUTCDate(d.getUTCDate() - n);
-    return d.toISOString().split("T")[0];
+    return d.toISOString().slice(0, 10);
   }
 
   it("returns measured points oldest first, inside the window", () => {
@@ -148,7 +148,7 @@ describe("DB.getSnapshotSeries", () => {
     ]);
     const series = db.getSnapshotSeries(id, 90);
     expect(series.map((p) => p.stars)).toEqual([100, 120, 150]);
-    expect(series[0].date < series[2].date).toBe(true);
+    expect(series.map((p) => p.date)).toEqual([daysAgo(21), daysAgo(14), daysAgo(7)]);
     db.close();
   });
 
@@ -293,7 +293,7 @@ describe("DB.pruneSnapshotHistory", () => {
   function daysAgo(n: number): string {
     const d = new Date();
     d.setUTCDate(d.getUTCDate() - n);
-    return d.toISOString().split("T")[0];
+    return d.toISOString().slice(0, 10);
   }
 
   it("leaves recent history at full resolution", () => {
@@ -353,7 +353,7 @@ describe("published readers serve measured snapshots only", () => {
     const day = (n: number): string => {
       const d = new Date(today);
       d.setUTCDate(d.getUTCDate() - n);
-      return d.toISOString().split("T")[0];
+      return d.toISOString().slice(0, 10);
     };
     raw
       .prepare("INSERT INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, 60)")
@@ -391,7 +391,7 @@ describe("published readers serve measured snapshots only", () => {
     const day = (n: number): string => {
       const d = new Date();
       d.setUTCDate(d.getUTCDate() - n);
-      return d.toISOString().split("T")[0];
+      return d.toISOString().slice(0, 10);
     };
     raw
       .prepare("INSERT INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, 60)")
@@ -446,6 +446,50 @@ describe("DB.upsertProject identity", () => {
     expect(db.upsertProject("a/b", "ab", 4242)).toBe(id);
     // Now resolvable by id alone, so a later rename cannot orphan it.
     expect(db.upsertProject("c/d", "ab", 4242)).toBe(id);
+    db.close();
+  });
+
+  // The crash: the renamed slug's first fetch failed, so upsertProject minted
+  // a row for it by slug; the next successful fetch re-pointed the id owner
+  // onto that slug and hit UNIQUE(projects.repo) on every run thereafter.
+  it("merges a slug-minted duplicate into the row that owns the GitHub id", () => {
+    const path = join(tmpDir, "rename-merge.db");
+    const db = new DB(path);
+    db.migrate();
+    const owner = db.upsertProject("old/name", "Tool", 777);
+    const dup = db.upsertProject("new/name", "Tool"); // id unknown: fetch failed
+    expect(dup).not.toBe(owner);
+
+    const raw = new Database(path);
+    const snap = raw.prepare(
+      "INSERT INTO snapshots (project_id, snapshot_date, stars, composite_score) VALUES (?, ?, ?, 50)",
+    );
+    snap.run(owner, "2026-09-07", 100);
+    snap.run(owner, "2026-09-14", 110);
+    snap.run(dup, "2026-09-14", 999); // same date as the owner's: owner wins
+    snap.run(dup, "2026-09-21", 120); // a date only the duplicate measured
+    raw.close();
+    db.insertDecision({ project_id: dup, decision: "add", proposed_by: "generate" });
+
+    expect(() => db.upsertProject("new/name", "Tool", 777)).not.toThrow();
+    expect(db.findProjectByRepo("new/name")?.id).toBe(owner);
+    expect(db.findProjectByRepo("old/name")).toBeNull();
+
+    const check = new Database(path, { readonly: true });
+    const rows = check
+      .prepare("SELECT project_id, snapshot_date, stars FROM snapshots ORDER BY snapshot_date")
+      .all() as { project_id: number; snapshot_date: string; stars: number }[];
+    const projects = check.prepare("SELECT id FROM projects").all() as { id: number }[];
+    const decisions = check.prepare("SELECT project_id FROM decisions").all() as { project_id: number }[];
+    check.close();
+
+    expect(rows).toEqual([
+      { project_id: owner, snapshot_date: "2026-09-07", stars: 100 },
+      { project_id: owner, snapshot_date: "2026-09-14", stars: 110 },
+      { project_id: owner, snapshot_date: "2026-09-21", stars: 120 },
+    ]);
+    expect(projects.map((p) => p.id)).toEqual([owner]);
+    expect(decisions.map((d) => d.project_id)).toEqual([owner]);
     db.close();
   });
 });

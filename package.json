@@ -12,7 +12,7 @@
     "build": "tsc",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc -p tests",
     "discover": "tsx src/cli.ts discover",
     "generate": "tsx src/cli.ts generate",
     "refresh-tags": "tsx src/cli.ts refresh-tags",

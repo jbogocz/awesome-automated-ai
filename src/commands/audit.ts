@@ -19,7 +19,7 @@ import { logger } from "../utils/logger.js";
  */
 
 export interface AuditFinding {
-  kind: "renamed" | "archived" | "dead-no-note" | "stale-note" | "unreachable";
+  kind: "renamed" | "archived" | "dead-no-note" | "stale-note" | "unreachable" | "unfetchable";
   entry: string;
   detail: string;
 }
@@ -34,6 +34,24 @@ interface YamlEntry {
   repo?: string;
   note?: string;
   lifecycle?: string;
+}
+
+/**
+ * Two missed weekly runs. One miss is a blip the generate fallback already
+ * covers; a second means the entry has stopped refreshing and needs a look.
+ */
+export const UNFETCHABLE_DAYS = 14;
+
+/**
+ * Why a repo-backed entry has stopped refreshing, judged from the DB: no
+ * measured snapshot at all, or none in the last UNFETCHABLE_DAYS. Null when it
+ * is current.
+ */
+export function unfetchableDetail(repo: string, latestSnapshot: string | null, now: Date = new Date()): string | null {
+  if (!latestSnapshot) return `${repo} has never been fetched successfully; it renders as "stats pending"`;
+  const ageDays = Math.floor((now.getTime() - Date.parse(`${latestSnapshot}T00:00:00Z`)) / 86_400_000);
+  if (ageDays <= UNFETCHABLE_DAYS) return null;
+  return `${repo} last refreshed ${latestSnapshot} (${ageDays} days ago); every run since served that snapshot`;
 }
 
 /** Notes asserting a year, which the unattended regeneration cannot keep true. */
@@ -92,9 +110,17 @@ export async function runAuditCommand(opts: AuditOptions): Promise<AuditFinding[
     db.migrate();
     for (const { category, entry } of repoEntries) {
       const repo = entry.repo;
-      const meta = repo ? metadata.get(repo) : undefined;
-      if (!repo || !meta) continue;
+      if (!repo) continue;
       const where = `${category} / ${entry.name}`;
+
+      // Checked from the DB, before the live-metadata guard below: an entry
+      // whose fetch fails every week has no metadata here either, and used to
+      // be skipped without a word while the site served its old figures.
+      const unfetchable = unfetchableDetail(repo, db.getLatestSnapshotDateByRepo(repo));
+      if (unfetchable) findings.push({ kind: "unfetchable", entry: where, detail: unfetchable });
+
+      const meta = metadata.get(repo);
+      if (!meta) continue;
 
       if (meta.nameWithOwner && meta.nameWithOwner !== repo) {
         findings.push({
@@ -146,6 +172,7 @@ export function renderAuditReport(findings: AuditFinding[]): string {
     // First, so a run that could not see the catalog says so before anything
     // it did manage to check is read as the whole picture.
     unreachable: "Audit could not reach GitHub - results incomplete",
+    unfetchable: `Not refreshed in ${UNFETCHABLE_DAYS}+ days - fetch keeps failing`,
     renamed: "Renamed or transferred upstream",
     archived: "Archived upstream",
     "dead-no-note": "Dead with no successor named",

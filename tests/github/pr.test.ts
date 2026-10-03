@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { parse } from "yaml";
-import { buildYamlEntry } from "../../src/github/pr.js";
+import { buildYamlEntry, insertEntry } from "../../src/github/pr.js";
 
 /** Parse an entry back in the projects.yaml structure it gets spliced into. */
 function roundTrip(entry: string): Record<string, unknown> {
@@ -101,5 +101,34 @@ describe("buildYamlEntry escaping (values derive from untrusted READMEs via the 
     });
     expect(entry).toContain("    description: Stack ensembling for tabular, text, and image data.");
     expect(entry).toContain("    tags: [automl, deep-learning]");
+  });
+});
+
+describe("insertEntry", () => {
+  const yaml = [
+    "categories:",
+    "- name: First",
+    "  entries:",
+    "  - name: A",
+    "    repo: o/a",
+    "- name: Last",
+    "  entries:",
+    "  - name: Z",
+    "    repo: o/z",
+    "",
+  ].join("\n");
+  const entry = "  - name: New\n    repo: o/new";
+
+  it("splices the entry after the target category's last entry", () => {
+    const out = insertEntry(yaml, "First", entry);
+    const doc = parse(out) as { categories: { name: string; entries: { name: string }[] }[] };
+    expect(doc.categories[0]?.entries.map((e) => e.name)).toEqual(["A", "New"]);
+    expect(doc.categories[1]?.entries.map((e) => e.name)).toEqual(["Z"]);
+  });
+
+  // It used to append to the end of the file, i.e. under whichever category
+  // happened to be last.
+  it("refuses a category that matches no heading", () => {
+    expect(() => insertEntry(yaml, "Firts", entry)).toThrow(/no entries under category "Firts"/);
   });
 });

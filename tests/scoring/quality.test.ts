@@ -163,4 +163,20 @@ describe("computeQualityScore", () => {
     const score7d = computeQualityScore({ ...base, trend30d: null });
     expect(score7d).toBeGreaterThan(score30d);
   });
+
+  // Weekly snapshots put the "30d" anchor at t-28 as often as not; the same
+  // delta over fewer days is faster growth and must score as such.
+  it("normalises momentum by the window the delta actually spans", () => {
+    const base: QualityInput = {
+      stars: 10000,
+      starsPrevious: null,
+      trend30d: 300,
+      lastLifeSign: new Date().toISOString(),
+      license: "MIT",
+      archived: false,
+    };
+    const nominal = computeQualityScore(base);
+    expect(computeQualityScore({ ...base, trend30dDays: 30 })).toBe(nominal);
+    expect(computeQualityScore({ ...base, trend30dDays: 14 })).toBeGreaterThan(nominal);
+  });
 });

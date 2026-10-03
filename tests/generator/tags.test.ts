@@ -5,7 +5,7 @@ import { buildTagCorpus, selectTags } from "../../src/generator/tags.js";
 function corpusOf(spec: Record<string, number>, entryCount: number) {
   const entries: string[][] = Array.from({ length: entryCount }, () => []);
   for (const [tag, n] of Object.entries(spec)) {
-    for (let i = 0; i < n; i++) entries[i % entryCount].push(tag);
+    for (let i = 0; i < n; i++) entries[i % entryCount]?.push(tag);
   }
   return buildTagCorpus(entries);
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { type ApiData, generateReadme } from "../../src/generator/readme.js";
+import { type ApiData, type ApiRepoData, generateReadme } from "../../src/generator/readme.js";
 
 const SAMPLE_YAML = `categories:
 - name: General-Purpose AutoML
@@ -22,20 +22,24 @@ const SAMPLE_YAML = `categories:
 const now = new Date().toISOString();
 const stale = "2022-01-01T00:00:00Z";
 
+// computeTrends always publishes trend === trend30d, so fixtures do too.
+const AUTOGLUON: ApiRepoData = {
+  stars: 12000,
+  pushed: now,
+  archived: false,
+  license: "Apache-2.0",
+  trend: 340,
+  trend30d: 340,
+  score: 88,
+  topics: ["automl", "machine-learning"],
+  tagline: "Multi-modal ensembling, Kaggle champion",
+  lastCommit: now,
+  lastRelease: now,
+  commits90d: 120,
+};
+
 const SAMPLE_API: ApiData = {
-  "autogluon/autogluon": {
-    stars: 12000,
-    pushed: now,
-    archived: false,
-    license: "Apache-2.0",
-    trend: 340,
-    score: 88,
-    topics: ["automl", "machine-learning"],
-    tagline: "Multi-modal ensembling, Kaggle champion",
-    lastCommit: now,
-    lastRelease: now,
-    commits90d: 120,
-  },
+  "autogluon/autogluon": AUTOGLUON,
   "pycaret/pycaret": {
     stars: 9500,
     pushed: now,
@@ -114,20 +118,11 @@ describe("generateReadme", () => {
     expect(result).toContain("88/100");
   });
 
-  // The fixture has a bare `trend` and no 30d window, which is the
-  // previous-snapshot fallback: it must not borrow the "last 30d" label.
-  it("labels a windowless delta as since-last-snapshot, not 30d", () => {
-    const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
-    expect(result).toContain("12,000 (+340 since last snapshot)");
-    expect(result).not.toContain("+340 last 30d");
-  });
-
   it("prints the window a delta actually spans", () => {
     const withWindow: ApiData = {
       ...SAMPLE_API,
       "autogluon/autogluon": {
-        ...SAMPLE_API["autogluon/autogluon"],
-        trend30d: 340,
+        ...AUTOGLUON,
         trend30dDays: 28,
         trend7d: 12,
         trend7dDays: 6,
@@ -171,6 +166,35 @@ describe("generateReadme", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
     const oldCard = result.split("OldTool")[1]?.split("</details>")[0] ?? "";
     expect(oldCard).toContain("(n/a)");
+  });
+
+  it("marks an entry served from an older snapshot with its measurement date", () => {
+    const apiData: ApiData = { ...SAMPLE_API, "autogluon/autogluon": { ...AUTOGLUON, stale: "2026-09-21" } };
+    const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData });
+    const summary = result.split("AutoGluon")[1]?.split("</summary>")[0] ?? "";
+    expect(summary).toContain("<code>as of 2026-09-21</code>");
+    const pycaret = result.split("PyCaret")[1]?.split("</summary>")[0] ?? "";
+    expect(pycaret).not.toContain("as of");
+  });
+
+  it("shows NOASSERTION as Other", () => {
+    const apiData: ApiData = { ...SAMPLE_API, "autogluon/autogluon": { ...AUTOGLUON, license: "NOASSERTION" } };
+    const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData });
+    expect(result).not.toContain("NOASSERTION");
+    const card = result.split("AutoGluon")[1]?.split("</details>")[0] ?? "";
+    expect(card).toContain("<code>Other</code>");
+    expect(card).toContain("License   Other");
+  });
+
+  it("words a curator-deprecated entry as deprecated, not unmaintained", () => {
+    const yaml = SAMPLE_YAML.replace(
+      "    description: Low-code ML library.\n",
+      "    description: Low-code ML library.\n    lifecycle: deprecated\n",
+    );
+    const result = generateReadme({ yamlContent: yaml, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
+    const card = result.split("PyCaret")[1]?.split("</details>")[0] ?? "";
+    expect(card).toContain(" - deprecated");
+    expect(card).not.toContain("unmaintained");
   });
 
   it("sorts by score descending", () => {

@@ -19,7 +19,10 @@ export interface TrendInput {
    * comparable thing across every entry.
    */
   starsPrevious: number | null;
-  /** Reference date for window arithmetic; defaults to now. */
+  /**
+   * Date the current figure was measured, for window arithmetic; defaults to
+   * now. Only its UTC calendar day matters.
+   */
   today?: Date;
 }
 
@@ -50,9 +53,16 @@ export interface TrendResult {
 
 const DAY_MS = 86_400_000;
 
+/**
+ * Whole UTC calendar days between the snapshot date and `today`. Snapshots are
+ * dates, not instants, so the clock time of the run must not enter: rounding
+ * a fractional span reported 34 days for a 33-day window on any run after
+ * 12:00 UTC.
+ */
 function spanDays(point: SnapshotPoint, today: Date): number {
-  const then = new Date(`${point.date}T00:00:00Z`).getTime();
-  return Math.max(1, Math.round((today.getTime() - then) / DAY_MS));
+  const then = Date.parse(`${point.date}T00:00:00Z`);
+  const now = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+  return Math.max(1, Math.round((now - then) / DAY_MS));
 }
 
 export function computeTrends(input: TrendInput): TrendResult {

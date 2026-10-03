@@ -2,12 +2,14 @@
 // Falls back to data/api_cache.json only if the DB is empty (fresh clone without generate run).
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 import { MIN_SITE_COVERAGE } from "../constants.js";
 import { DB } from "../db/client.js";
 import { displayBucket, type Lifecycle, repoStatus } from "../status.js";
 import { logger } from "../utils/logger.js";
 import { loadApiDataFromDB } from "./fetch-api.js";
+import { displayLicense } from "./formatters.js";
 import type { ApiData, ApiRepoData } from "./readme.js";
 import { buildTagCorpus, selectTags } from "./tags.js";
 
@@ -89,7 +91,6 @@ function readDataAsOf(): string | null {
 
 function main() {
   const yamlContent = readFileSync(PROJECTS_YAML, "utf-8");
-  const doc = parseYaml(yamlContent) as { categories: Category[] };
 
   let sectionByCategory = new Map<string, string>();
   if (existsSync(MANIFEST_YAML)) {
@@ -112,6 +113,42 @@ function main() {
     }
   }
 
+  const output = buildSiteData({ yamlContent, apiData, sectionByCategory, dataAsOf: readDataAsOf() });
+
+  // Coverage gate. loadApiDataFromDB returns {} on an empty DB without
+  // throwing, which produced an all-zero-stars dashboard with no error at
+  // all — the feed must refuse to publish rather than assert nothing.
+  const all = output.categories.flatMap((c) => c.entries);
+  const repoBacked = all.filter((e) => e.repo);
+  const resolved = repoBacked.filter((e) => e.status !== null);
+  const coverage = repoBacked.length === 0 ? 1 : resolved.length / repoBacked.length;
+  if (coverage < MIN_SITE_COVERAGE) {
+    logger.error(
+      `Only ${resolved.length}/${repoBacked.length} repo-backed entries resolved to real stats ` +
+        `(${(coverage * 100).toFixed(1)}%); refusing to write docs/data.json below ` +
+        `${(MIN_SITE_COVERAGE * 100).toFixed(0)}%. Run generate to refresh the DB first.`,
+    );
+    process.exit(1);
+  }
+
+  mkdirSync(resolve(ROOT, "docs"), { recursive: true });
+  writeFileSync(OUTPUT, JSON.stringify(output, null, 2));
+  logger.info(
+    `Generated docs/data.json: ${output.categories.length} categories, ` +
+      `${resolved.length}/${repoBacked.length} repos with stats, data as of ${output.dataAsOf ?? "unknown"}`,
+  );
+}
+
+/** The docs/data.json document, built from already-loaded inputs. Pure, so it can be tested without the DB. */
+export function buildSiteData(input: {
+  yamlContent: string;
+  apiData: ApiData;
+  sectionByCategory: Map<string, string>;
+  dataAsOf: string | null;
+}) {
+  const { yamlContent, apiData, sectionByCategory, dataAsOf } = input;
+  const doc = parseYaml(yamlContent) as { categories: Category[] };
+
   // Same corpus-derived ranking the README uses, so both surfaces show the
   // same tags for an entry.
   const tagCorpus = buildTagCorpus(
@@ -120,9 +157,9 @@ function main() {
     ),
   );
 
-  const output = {
+  return {
     generated: new Date().toISOString(),
-    dataAsOf: readDataAsOf(),
+    dataAsOf,
     categories: doc.categories.map((cat) => ({
       name: cat.name,
       section: sectionByCategory.get(cat.name) ?? "",
@@ -164,7 +201,7 @@ function main() {
           // hard-code "(30d)" and overstate or understate every figure.
           trendDays: api.trend30dDays ?? null,
           score: hasApi ? api.score : null,
-          license: api.license,
+          license: displayLicense(api.license),
           lastCommit: api.lastCommit ?? null,
           lastRelease: api.lastRelease ?? null,
           archived: api.archived,
@@ -194,29 +231,8 @@ function main() {
       }),
     })),
   };
-
-  // Coverage gate. loadApiDataFromDB returns {} on an empty DB without
-  // throwing, which produced an all-zero-stars dashboard with no error at
-  // all — the feed must refuse to publish rather than assert nothing.
-  const all = output.categories.flatMap((c) => c.entries);
-  const repoBacked = all.filter((e) => e.repo);
-  const resolved = repoBacked.filter((e) => e.status !== null);
-  const coverage = repoBacked.length === 0 ? 1 : resolved.length / repoBacked.length;
-  if (coverage < MIN_SITE_COVERAGE) {
-    logger.error(
-      `Only ${resolved.length}/${repoBacked.length} repo-backed entries resolved to real stats ` +
-        `(${(coverage * 100).toFixed(1)}%); refusing to write docs/data.json below ` +
-        `${(MIN_SITE_COVERAGE * 100).toFixed(0)}%. Run generate to refresh the DB first.`,
-    );
-    process.exit(1);
-  }
-
-  mkdirSync(resolve(ROOT, "docs"), { recursive: true });
-  writeFileSync(OUTPUT, JSON.stringify(output, null, 2));
-  logger.info(
-    `Generated docs/data.json: ${doc.categories.length} categories, ` +
-      `${resolved.length}/${repoBacked.length} repos with stats, data as of ${output.dataAsOf ?? "unknown"}`,
-  );
 }
 
-main();
+// Run only as a script: importing the module (tests) must not read the real
+// DB or write docs/data.json.
+if (resolve(process.argv[1] ?? "") === fileURLToPath(import.meta.url)) main();

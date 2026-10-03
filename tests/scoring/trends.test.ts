@@ -90,6 +90,22 @@ describe("computeTrends", () => {
     expect(result.trend7dDays).toBeNull();
   });
 
+  // Spans are counted in calendar days between snapshot dates. Rounding the
+  // fractional span made any run after 12:00 UTC report one day too many.
+  it("counts whole UTC calendar days regardless of the run's clock time", () => {
+    const point = at("2026-07-12", 800);
+    for (const time of ["00:00:00", "11:59:00", "12:01:00", "23:59:59"]) {
+      const result = computeTrends({
+        currentStars: 1000,
+        stars7dAgo: null,
+        stars30dAgo: point,
+        starsPrevious: null,
+        today: new Date(`2026-08-14T${time}Z`),
+      });
+      expect(result.trend30dDays).toBe(33);
+    }
+  });
+
   it("never reports a zero-day window", () => {
     const result = computeTrends({
       currentStars: 1000,

@@ -56,6 +56,10 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
     for (const cat of doc.categories) {
       for (const entry of cat.entries ?? []) existingRepos.add(entry.repo);
     }
+    // Where a PR can file an entry. The model is told to pick an exact name
+    // but nothing enforced it, and insertEntry has nowhere sensible to put
+    // a name that matches no heading.
+    const knownCategories = new Set(doc.categories.map((c) => c.name));
     const manifest = loadManifest();
 
     const candidates = await searchGitHub({
@@ -123,7 +127,18 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
         scoreThresholdQueue: config.scoreThresholdQueue,
       });
 
-      if (decision === "auto" && prsToday + prsCreated >= config.maxPrsPerDay) {
+      if (decision === "auto" && !knownCategories.has(analysis.category)) {
+        // Park it for a human rather than drop it: the project row already
+        // exists, so a rejection here would hide it from every future run.
+        logger.warn(`Not opening a PR for ${candidate.repo}: unknown category "${analysis.category}"; queued instead`);
+        db.insertDecision({
+          project_id: project.id,
+          decision: "add",
+          proposed_by: "discovery",
+          reasoning: `Queued: auto (score ${scoreResult.total}) but category "${analysis.category}" matches no category in projects.yaml. ${analysis.reasoning}`,
+        });
+        queued++;
+      } else if (decision === "auto" && prsToday + prsCreated >= config.maxPrsPerDay) {
         // Daily PR budget exhausted — throttle, don't discard. Park the
         // candidate in the review queue so it stays visible for promotion;
         // rejecting here would permanently drop it (existing project rows

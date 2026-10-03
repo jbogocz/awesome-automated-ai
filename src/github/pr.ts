@@ -120,7 +120,15 @@ export async function createPr(opts: CreatePrOptions): Promise<number> {
   return pr.number;
 }
 
-function insertEntry(yamlContent: string, category: string, newEntry: string): string {
+/**
+ * Splice `newEntry` after the last entry of `category`.
+ *
+ * Throws when the category has no entries to anchor on. Falling back to the
+ * end of the file used to append the entry to whichever category happened to
+ * be last, so a model-chosen name that matched nothing opened a PR filing the
+ * project under an unrelated heading.
+ */
+export function insertEntry(yamlContent: string, category: string, newEntry: string): string {
   const lines = yamlContent.split("\n");
   let inTargetCategory = false;
   let lastEntryLine = -1;
@@ -143,7 +151,7 @@ function insertEntry(yamlContent: string, category: string, newEntry: string): s
   }
 
   if (lastEntryLine === -1) {
-    return `${yamlContent}\n${newEntry}\n`;
+    throw new Error(`projects.yaml has no entries under category "${category}"; refusing to guess where to insert`);
   }
   lines.splice(lastEntryLine + 1, 0, newEntry);
   return lines.join("\n");

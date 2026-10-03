@@ -334,12 +334,7 @@ export class DB {
         | undefined;
       if (byId) {
         // Same repository, new address: move the row rather than orphan it.
-        if (byId.repo !== repo) {
-          this.sqlite
-            .prepare("UPDATE projects SET repo = ?, name = ?, updated_at = datetime('now') WHERE id = ?")
-            .run(repo, name, byId.id);
-          logger.info(`Re-pointed project ${byId.id} from ${byId.repo} to ${repo} (same GitHub id ${githubId})`);
-        }
+        if (byId.repo !== repo) this.repointProject(byId, repo, name, githubId);
         return byId.id;
       }
     }
@@ -360,6 +355,44 @@ export class DB {
       )
       .run(repo, name, githubId ?? null);
     return Number(info.lastInsertRowid);
+  }
+
+  /**
+   * Move the row that owns `githubId` to its new slug.
+   *
+   * The new slug may already have a row of its own: when the renamed entry's
+   * first fetch failed, upsertProject had no id to match on and minted one by
+   * slug. A plain UPDATE then hit the UNIQUE constraint on projects.repo and
+   * crashed generate on every subsequent run. The id owner is the real
+   * history, so it survives; the duplicate's snapshots fill only dates the
+   * owner lacks, its decisions move across, and the duplicate is deleted.
+   */
+  private repointProject(owner: { id: number; repo: string }, repo: string, name: string, githubId: number): void {
+    const duplicate = this.sqlite
+      .prepare("SELECT id, tagline FROM projects WHERE repo = ? COLLATE NOCASE AND id != ?")
+      .get(repo, owner.id) as { id: number; tagline: string | null } | undefined;
+
+    const tx = this.sqlite.transaction(() => {
+      if (duplicate) {
+        // OR IGNORE: on a date both rows measured, the owner's row stands and
+        // the duplicate's goes with the cascade below.
+        this.sqlite
+          .prepare("UPDATE OR IGNORE snapshots SET project_id = ? WHERE project_id = ?")
+          .run(owner.id, duplicate.id);
+        this.sqlite.prepare("UPDATE decisions SET project_id = ? WHERE project_id = ?").run(owner.id, duplicate.id);
+        this.sqlite
+          .prepare("UPDATE projects SET tagline = COALESCE(tagline, ?) WHERE id = ?")
+          .run(duplicate.tagline, owner.id);
+        this.sqlite.prepare("DELETE FROM projects WHERE id = ?").run(duplicate.id);
+      }
+      this.sqlite
+        .prepare("UPDATE projects SET repo = ?, name = ?, updated_at = datetime('now') WHERE id = ?")
+        .run(repo, name, owner.id);
+    });
+    tx();
+
+    const merged = duplicate ? `; merged duplicate row ${duplicate.id}` : "";
+    logger.info(`Re-pointed project ${owner.id} from ${owner.repo} to ${repo} (same GitHub id ${githubId})${merged}`);
   }
 
   /**
@@ -417,7 +450,8 @@ export class DB {
     return row?.tagline ?? null;
   }
 
-  setTagline(projectId: number, tagline: string): void {
+  /** Null clears the cached copy, so a tagline removed from projects.yaml stops rendering. */
+  setTagline(projectId: number, tagline: string | null): void {
     this.sqlite.prepare("UPDATE projects SET tagline = ? WHERE id = ?").run(tagline, projectId);
   }
 
@@ -610,31 +644,36 @@ export class DB {
     return row?.d ?? null;
   }
 
-  getPreviousStars(projectId: number): number | null {
-    const today = new Date().toISOString().split("T")[0];
+  /** Newest measured stars strictly before `before` (YYYY-MM-DD; defaults to today). */
+  getPreviousStars(projectId: number, before: string = todayUtc()): number | null {
     const row = this.sqlite
       .prepare(
         `SELECT stars FROM snapshots
          WHERE project_id = ? AND snapshot_date < ? AND stars > 0 AND ${DB.MEASURED}
          ORDER BY snapshot_date DESC LIMIT 1`,
       )
-      .get(projectId, today) as { stars: number } | undefined;
+      .get(projectId, before) as { stars: number } | undefined;
     return row?.stars ?? null;
   }
 
   /**
-   * Stars at the snapshot closest to `today - days`, together with that
+   * Stars at the snapshot closest to `asOf - days`, together with that
    * snapshot's actual date. The date matters: with a weekly cadence the
    * chosen point is typically t-28, not t-30, so anything labelling the
    * result "last 30d" would overstate the window by two days.
+   *
+   * `asOf` (YYYY-MM-DD, default today) is the date the current figure was
+   * measured. An entry served from an older snapshot must look back from
+   * that snapshot, not from today, or its "last 7d" compares a week-old
+   * count with itself.
    */
-  getStarsNDaysAgo(projectId: number, days: number): { stars: number; date: string } | null {
+  getStarsNDaysAgo(projectId: number, days: number, asOf: string = todayUtc()): { stars: number; date: string } | null {
     // Picks the snapshot CLOSEST in time to the target date (today - days),
     // bounded within ±max(2, ceil(days/4)) days so we never label, say, a
     // 14-day delta as the "30-day trend". With weekly cadence this halves
     // the systematic bias of "newest snapshot ≤ cutoff" (which could stretch
     // the window to ~35d on average).
-    const target = new Date();
+    const target = new Date(`${asOf}T00:00:00Z`);
     target.setUTCDate(target.getUTCDate() - days);
     const tolerance = Math.max(2, Math.ceil(days / 4));
     const lo = new Date(target);
@@ -658,7 +697,27 @@ export class DB {
     return row ? { stars: row.stars, date: row.snapshot_date } : null;
   }
 
+  /**
+   * Date of the newest measured snapshot for a repo slug, or null when the
+   * slug has no row or no measurement. Read-only: unlike upsertProject it
+   * never creates a row, so the audit can call it without side effects.
+   */
+  getLatestSnapshotDateByRepo(repo: string): string | null {
+    const row = this.sqlite
+      .prepare(
+        `SELECT MAX(s.snapshot_date) AS d
+           FROM projects p JOIN snapshots s ON s.project_id = p.id
+          WHERE p.repo = ? COLLATE NOCASE AND s.${DB.MEASURED}`,
+      )
+      .get(repo) as { d: string | null } | undefined;
+    return row?.d ?? null;
+  }
+
   close(): void {
     this.sqlite.close();
   }
+}
+
+function todayUtc(): string {
+  return new Date().toISOString().slice(0, 10);
 }
