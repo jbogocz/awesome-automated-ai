@@ -650,6 +650,11 @@ categories:
     description: TypeScript framework for AI agents with typed workflows, tool calling, memory, and evaluations, deployable to standard Node and edge runtimes.
     tagline: TypeScript agent framework with typed workflows
     tags: [agents, ai, evals, javascript, llm, mcp, nodejs, typescript, workflows]
+  - name: Tale
+    repo: tale-project/tale
+    description: Self-hostable project workspace that coordinates coding-agent runtimes in persistent sandboxes and collects reports and deliverables for shared review.
+    tagline: Persistent agent workspaces with shared task review
+    tags: [agent-orchestration, sandbox, self-hosted, workflows, typescript]
 - name: Coding Agents
   description: Ready-to-use AI agents that autonomously write, debug, refactor, and review software code.
   entries:
