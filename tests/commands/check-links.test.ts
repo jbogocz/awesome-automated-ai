@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { extractUrls, isMeaningfulRedirect, isThrottled } from "../../src/commands/check-links.js";
+import { extractUrls, isMeaningfulRedirect, isThrottled, renderLinkReport } from "../../src/commands/check-links.js";
 
 /**
  * Every "moved" finding lands in the weekly drift issue, so a redirect that is
@@ -57,5 +57,24 @@ describe("extractUrls", () => {
   it("strips trailing prose punctuation and collapses duplicates", () => {
     const text = "See https://a.dev/x. Also [b](https://b.dev/y), and https://a.dev/x again.";
     expect(extractUrls(text)).toEqual(["https://a.dev/x", "https://b.dev/y"]);
+  });
+});
+
+describe("renderLinkReport", () => {
+  it("renders nothing when every link is healthy", () => {
+    expect(renderLinkReport([], [])).toBe("");
+  });
+
+  // Same heading level and count format as the audit's sections, which share the issue.
+  it("renders one counted section covering dead and moved links", () => {
+    const report = renderLinkReport(
+      [{ url: "https://a.example/", where: "projects.yaml: A", status: 404, finalUrl: null }],
+      [{ url: "https://b.example/old", where: "projects.yaml: B", status: 200, finalUrl: "https://b.example/new" }],
+    );
+    expect(report).toBe(
+      "### Link rot (2)\n\n" +
+        "- **dead** `https://a.example/` -> HTTP 404 (projects.yaml: A)\n" +
+        "- **moved** `https://b.example/old` -> `https://b.example/new` (projects.yaml: B)\n",
+    );
   });
 });

@@ -231,10 +231,10 @@ export async function runCheckLinksCommand(opts: CheckLinksOptions): Promise<num
   return broken.length;
 }
 
-/** Markdown for the weekly drift issue. Empty when every link is healthy. */
+/** The link check's section of the weekly drift issue. Empty when every link is healthy. */
 export function renderLinkReport(broken: LinkResult[], moved: LinkResult[]): string {
   if (broken.length === 0 && moved.length === 0) return "";
-  const lines: string[] = ["## Link rot", ""];
+  const lines: string[] = [`### Link rot (${broken.length + moved.length})`, ""];
   for (const r of broken) {
     lines.push(`- **dead** \`${r.url}\` -> ${r.error ?? `HTTP ${r.status}`} (${r.where})`);
   }

@@ -14,10 +14,13 @@ import { appendFileSync } from "node:fs";
  * With `--report=<path>` the findings go to that file and nothing else does,
  * so "the file is non-empty" means "something drifted". Without it they go to
  * stdout, which is fine for a human reading the terminal.
+ *
+ * Every report ends in a blank line, so the next reporter's heading in the
+ * shared file starts a block of its own instead of trailing the last list.
  */
 export function emitReport(markdown: string, reportPath: string | undefined): void {
   if (markdown === "") return;
-  const body = markdown.endsWith("\n") ? markdown : `${markdown}\n`;
+  const body = markdown.replace(/\n*$/, "\n\n");
   if (reportPath) {
     appendFileSync(reportPath, body, "utf-8");
   } else {

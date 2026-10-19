@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { MIN_FRESH_RATIO } from "../constants.js";
 import { DB } from "../db/client.js";
-import { fetchRepoMetadataBatch } from "../github/repo-metadata-graphql.js";
+import { fetchRepoMetadataBatch, type RepoMetadata } from "../github/repo-metadata-graphql.js";
 import { repoStatus } from "../status.js";
 import { logger } from "../utils/logger.js";
 import { yearsCitedIn } from "../validation/projects-yaml.js";
@@ -58,6 +58,61 @@ export function unfetchableDetail(repo: string, latestSnapshot: string | null, n
 /** Notes asserting a year, which the unattended regeneration cannot keep true. */
 export function noteCitesYear(note: string | undefined): string | null {
   return yearsCitedIn(note)[0] ?? null;
+}
+
+/** What a repo-backed entry's live metadata says needs a curation decision. */
+export function metadataFindings(
+  where: string,
+  repo: string,
+  entry: Pick<YamlEntry, "note" | "lifecycle">,
+  meta: RepoMetadata,
+  now: number = Date.now(),
+): AuditFinding[] {
+  const findings: AuditFinding[] = [];
+
+  if (meta.nameWithOwner && meta.nameWithOwner !== repo) {
+    findings.push({
+      kind: "renamed",
+      entry: where,
+      detail: `${repo} -> ${meta.nameWithOwner} (the old slug only resolves through a redirect)`,
+    });
+  }
+
+  // Only when the entry does not already say so — an archived repo whose
+  // note explains it needs no decision, and reporting it every week would
+  // train the reader to ignore the issue.
+  if (entry.note || entry.lifecycle) return findings;
+
+  // An archived repo is dead by definition and one note answers both, so it
+  // is filed once. Listing it under both headings counted one decision twice.
+  if (meta.archived) {
+    findings.push({
+      kind: "archived",
+      entry: where,
+      detail: `${repo} is archived upstream and the entry does not say so`,
+    });
+    return findings;
+  }
+
+  const status = repoStatus(
+    {
+      archived: meta.archived,
+      lastCommit: meta.lastCommit,
+      lastRelease: meta.lastRelease,
+      lastTag: meta.lastTag,
+      lastStableTag: meta.lastStableTag,
+      commits90d: meta.commits90d,
+    },
+    now,
+  );
+  if (status === "dead") {
+    findings.push({
+      kind: "dead-no-note",
+      entry: where,
+      detail: `${repo} renders dead but the text still reads like a recommendation, with no successor named`,
+    });
+  }
+  return findings;
 }
 
 export async function runAuditCommand(opts: AuditOptions): Promise<AuditFinding[]> {
@@ -120,42 +175,7 @@ export async function runAuditCommand(opts: AuditOptions): Promise<AuditFinding[
       if (unfetchable) findings.push({ kind: "unfetchable", entry: where, detail: unfetchable });
 
       const meta = metadata.get(repo);
-      if (!meta) continue;
-
-      if (meta.nameWithOwner && meta.nameWithOwner !== repo) {
-        findings.push({
-          kind: "renamed",
-          entry: where,
-          detail: `${repo} -> ${meta.nameWithOwner} (the old slug only resolves through a redirect)`,
-        });
-      }
-
-      // Only when the entry does not already say so — an archived repo whose
-      // note explains it needs no decision, and reporting it every week would
-      // train the reader to ignore the issue.
-      if (meta.archived && !entry.note && !entry.lifecycle) {
-        findings.push({
-          kind: "archived",
-          entry: where,
-          detail: `${repo} is archived upstream and the entry does not say so`,
-        });
-      }
-
-      const status = repoStatus({
-        archived: meta.archived,
-        lastCommit: meta.lastCommit,
-        lastRelease: meta.lastRelease,
-        lastTag: meta.lastTag,
-        lastStableTag: meta.lastStableTag,
-        commits90d: meta.commits90d,
-      });
-      if (status === "dead" && !entry.note && !entry.lifecycle) {
-        findings.push({
-          kind: "dead-no-note",
-          entry: where,
-          detail: `${repo} renders dead but the text still reads like a recommendation, with no successor named`,
-        });
-      }
+      if (meta) findings.push(...metadataFindings(where, repo, entry, meta));
     }
   } finally {
     db.close();
@@ -164,7 +184,12 @@ export async function runAuditCommand(opts: AuditOptions): Promise<AuditFinding[
   return findings;
 }
 
-/** Markdown body for the tracking issue; empty string when nothing drifted. */
+/**
+ * The audit's sections of the drift report; empty string when nothing
+ * drifted. The issue's intro and footer are added by the workflow, once
+ * around every reporter's sections: rendered here, the footer landed above
+ * the link-rot section and credited `pnpm run audit` with it.
+ */
 export function renderAuditReport(findings: AuditFinding[]): string {
   if (findings.length === 0) return "";
 
@@ -179,11 +204,7 @@ export function renderAuditReport(findings: AuditFinding[]): string {
     "stale-note": "Note asserts a hard-coded year",
   };
 
-  const lines = [
-    "The weekly regeneration refreshes metadata but never adds, retires or re-slugs an entry.",
-    "These need a curation decision:",
-    "",
-  ];
+  const lines: string[] = [];
   for (const kind of Object.keys(titles) as AuditFinding["kind"][]) {
     const group = findings.filter((f) => f.kind === kind);
     if (group.length === 0) continue;
@@ -191,9 +212,6 @@ export function renderAuditReport(findings: AuditFinding[]): string {
     for (const f of group) lines.push(`- **${f.entry}** — ${f.detail}`);
     lines.push("");
   }
-  lines.push(
-    "<sub>Generated by `pnpm run audit`. Closing this issue is safe; the next run reopens it if the drift remains.</sub>",
-  );
   return lines.join("\n");
 }
 

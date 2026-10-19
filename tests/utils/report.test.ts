@@ -22,22 +22,24 @@ describe("emitReport", () => {
 
   it("appends findings so two reporters can share one file", () => {
     const path = join(dir, "both.md");
-    emitReport("## Catalog drift\n\n- one\n", path);
-    emitReport("## Link rot\n\n- two\n", path);
-    expect(readFileSync(path, "utf-8")).toBe("## Catalog drift\n\n- one\n## Link rot\n\n- two\n");
+    emitReport("### Archived upstream (1)\n\n- one\n", path);
+    emitReport("### Link rot (1)\n\n- two\n", path);
+    expect(readFileSync(path, "utf-8")).toBe("### Archived upstream (1)\n\n- one\n\n### Link rot (1)\n\n- two\n\n");
   });
 
   it("leaves an unrelated writer's content alone rather than truncating it", () => {
     const path = join(dir, "preexisting.md");
     writeFileSync(path, "earlier\n");
     emitReport("later\n", path);
-    expect(readFileSync(path, "utf-8")).toBe("earlier\nlater\n");
+    expect(readFileSync(path, "utf-8")).toBe("earlier\nlater\n\n");
   });
 
-  it("terminates a report that does not end in a newline", () => {
+  it("ends every report in exactly one blank line, however it was terminated", () => {
     const path = join(dir, "nl.md");
     emitReport("no trailing newline", path);
-    expect(readFileSync(path, "utf-8")).toBe("no trailing newline\n");
+    emitReport("one newline\n", path);
+    emitReport("three newlines\n\n\n", path);
+    expect(readFileSync(path, "utf-8")).toBe("no trailing newline\n\none newline\n\nthree newlines\n\n");
   });
 
   it("falls back to stdout when no report path is given", () => {
@@ -53,6 +55,6 @@ describe("emitReport", () => {
     } finally {
       process.stdout.write = original;
     }
-    expect(written).toEqual(["- finding\n"]);
+    expect(written).toEqual(["- finding\n\n"]);
   });
 });

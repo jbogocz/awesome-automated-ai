@@ -262,7 +262,18 @@ jobs:
         if: needs.regenerate.outputs.drift == 'true'
         env:
           REPORT: ${{ runner.temp }}/drift/audit-report.md
+          BODY: ${{ runner.temp }}/drift/issue-body.md
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
+          # Each reporter writes only its own ### sections; the intro and the
+          # footer belong to the issue, so they are added once, here. When the
+          # audit rendered them itself, the link-rot section landed below a
+          # footer that credited `pnpm run audit` with it.
+          {
+            printf 'The weekly regeneration refreshes metadata but never adds, retires or re-slugs an entry, and never edits a link.\nThese need a curation decision:\n\n'
+            cat "$REPORT"
+            printf '<sub>Filed by [the weekly run](%s) from `pnpm run audit` and `pnpm run check-links`. Closing this issue is safe; the next run reopens it if the drift remains.</sub>\n' "$RUN_URL"
+          } > "$BODY"
           # One long-lived issue, updated in place, so the weekly job never
           # accumulates a pile of near-identical reports.
           # --state all, so a closed issue is reopened rather than duplicated.
@@ -271,11 +282,11 @@ jobs:
                   --jq "[.[] | select(.title == \"$TITLE\")] | .[0] | select(.) | \"\(.number) \(.state)\"")
           read -r NUM STATE <<<"$FOUND"
           if [ -n "$NUM" ]; then
-            gh issue edit "$NUM" --body-file "$REPORT"
+            gh issue edit "$NUM" --body-file "$BODY"
             if [ "$STATE" = "CLOSED" ]; then gh issue reopen "$NUM"; fi
             echo "Updated issue #$NUM"
           else
-            gh issue create --title "$TITLE" --body-file "$REPORT"
+            gh issue create --title "$TITLE" --body-file "$BODY"
           fi
 
       # The issue body promises that closing it is safe because the next run
