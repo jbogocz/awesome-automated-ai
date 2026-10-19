@@ -432,7 +432,7 @@ AWS AutoML service that runs feature engineering, algorithm selection, and tunin
 
 </details>
 
-<details><summary>🏢 <b><a href="https://h2o.ai/platform/ai-cloud/make/h2o-driverless-ai/">H2O Driverless AI</a></b> Commercial AutoML with feature engineering and interpretability</summary>
+<details><summary>🏢 <b><a href="https://h2o.ai/products/driverless-ai">H2O Driverless AI</a></b> Commercial AutoML with feature engineering and interpretability</summary>
 
 <br>
 
@@ -1426,7 +1426,7 @@ Composable building blocks for pretraining, fine-tuning, and evaluating foundati
 
 <br>
 
-*Multi-LoRA inference server that scales to thousands of fine-tuned LLMs on a single GPU (Predibase). **Archived.***
+*Multi-LoRA inference server that scales to thousands of fine-tuned LLMs on a single GPU (Predibase). **Archived by Predibase; vLLM and SGLang serve multiple LoRA adapters per base model for new work.***
 
 ```
   Score     0/100
@@ -2700,7 +2700,7 @@ Evolutionary agent for long-horizon tasks; achieved Rank-1 overall on the OpenAI
 
 <br>
 
-*Autonomous agent automating the full research lifecycle from literature review to experimentation (NeurIPS 2025 Spotlight). **Unmaintained - no activity for 12+ months.***
+*Autonomous agent automating the full research lifecycle from literature review to experimentation (NeurIPS 2025 Spotlight). **The repository now points to Novix, a hosted production version; R&amp;D-Agent is the maintained open-source alternative.***
 
 ```
   Score     50/100

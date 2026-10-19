@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-19T11:35:31.979Z",
+  "generated": "2026-10-19T20:17:39.348Z",
   "dataAsOf": "2026-10-19",
   "categories": [
     {
@@ -1539,7 +1539,7 @@
         {
           "name": "H2O Driverless AI",
           "repo": "",
-          "url": "https://h2o.ai/platform/ai-cloud/make/h2o-driverless-ai/",
+          "url": "https://h2o.ai/products/driverless-ai",
           "description": "H2O.ai's commercial AutoML platform that automates feature engineering, model tuning, interpretability, and deployment for tabular, time-series, image, and text data, deployable on-prem, in cloud, or hybrid.",
           "tagline": "Commercial AutoML with feature engineering and interpretability",
           "note": "",
@@ -6014,7 +6014,7 @@
           "url": "https://github.com/predibase/lorax",
           "description": "Multi-LoRA inference server that scales to thousands of fine-tuned LLMs on a single GPU (Predibase).",
           "tagline": "Thousands of LoRA adapters on a single GPU",
-          "note": "",
+          "note": "Archived by Predibase; vLLM and SGLang serve multiple LoRA adapters per base model for new work.",
           "stars": 3836,
           "trend": 3,
           "trendDays": 28,
@@ -11949,7 +11949,7 @@
           "url": "https://github.com/HKUDS/AI-Researcher",
           "description": "Autonomous agent automating the full research lifecycle from literature review to experimentation (NeurIPS 2025 Spotlight).",
           "tagline": "Full research lifecycle from literature to experiments",
-          "note": "",
+          "note": "The repository now points to Novix, a hosted production version; R&D-Agent is the maintained open-source alternative.",
           "stars": 5820,
           "trend": 66,
           "trendDays": 28,

@@ -110,7 +110,7 @@ categories:
     pricing: pay-as-you-go
     commercial: true
   - name: H2O Driverless AI
-    url: https://h2o.ai/platform/ai-cloud/make/h2o-driverless-ai/
+    url: https://h2o.ai/products/driverless-ai
     description: H2O.ai's commercial AutoML platform that automates feature engineering, model tuning, interpretability, and deployment for tabular, time-series, image, and text data, deployable on-prem, in cloud, or hybrid.
     tagline: Commercial AutoML with feature engineering and interpretability
     vendor: H2O.ai
@@ -418,6 +418,7 @@ categories:
     repo: predibase/lorax
     description: Multi-LoRA inference server that scales to thousands of fine-tuned LLMs on a single GPU (Predibase).
     tagline: Thousands of LoRA adapters on a single GPU
+    note: Archived by Predibase; vLLM and SGLang serve multiple LoRA adapters per base model for new work.
     tags: [fine-tuning, gpt, llama, llm, llm-inference, llm-serving, llmops, lora, model-serving, pytorch, transformers]
   - name: H2O LLM Studio
     repo: h2oai/h2o-llmstudio
@@ -783,6 +784,7 @@ categories:
     repo: HKUDS/AI-Researcher
     description: Autonomous agent automating the full research lifecycle from literature review to experimentation (NeurIPS 2025 Spotlight).
     tagline: Full research lifecycle from literature to experiments
+    note: The repository now points to Novix, a hosted production version; R&D-Agent is the maintained open-source alternative.
     tags: [ai-researcher]
   - name: AIDE
     repo: WecoAI/aideml
