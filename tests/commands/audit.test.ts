@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { metadataFindings, renderAuditReport, UNFETCHABLE_DAYS, unfetchableDetail } from "../../src/commands/audit.ts";
+import {
+  metadataFindings,
+  renderAuditReport,
+  starHistoryFinding,
+  UNFETCHABLE_DAYS,
+  unfetchableDetail,
+} from "../../src/commands/audit.ts";
 import type { RepoMetadata } from "../../src/github/repo-metadata-graphql.ts";
 
 const NOW = new Date("2026-10-05T06:00:00Z");
@@ -88,5 +94,34 @@ describe("metadataFindings", () => {
   // A note explains the project's state, not its slug, so it never silences a rename.
   it("reports a rename even when the entry carries a note", () => {
     expect(kinds({ note: "Archived." }, meta({ nameWithOwner: "o/new", archived: true }))).toEqual(["renamed"]);
+  });
+});
+
+describe("starHistoryFinding", () => {
+  const window = (net: number) => ({ from: "2026-09-28", to: "2026-10-28", net });
+
+  // Removals only pull the net figure down, so net below given is normal:
+  // across the catalog on 2026-10-28 it was a median 0.89 of it.
+  it("accepts a net change at or below the stars GitHub records as given", () => {
+    expect(starHistoryFinding("Cat / R", "o/r", window(125), 144)).toBeNull();
+    expect(starHistoryFinding("Cat / R", "o/r", window(-40), 12)).toBeNull();
+  });
+
+  it("absorbs a few stars of day-boundary slack", () => {
+    expect(starHistoryFinding("Cat / R", "o/r", window(13), 10)).toBeNull();
+    expect(starHistoryFinding("Cat / R", "o/r", window(1020), 1000)).toBeNull();
+  });
+
+  it("flags a net change GitHub's history cannot account for", () => {
+    const finding = starHistoryFinding("Cat / R", "o/r", window(500), 111);
+    expect(finding?.kind).toBe("star-history");
+    expect(finding?.detail).toMatch(/\+500 stars from 2026-09-28 to 2026-10-28.*only 111/);
+  });
+
+  it("renders under its own heading", () => {
+    const finding = starHistoryFinding("Cat / R", "o/r", window(500), 111);
+    expect(renderAuditReport(finding ? [finding] : [])).toContain(
+      "### Our star counts disagree with GitHub's star history (1)",
+    );
   });
 });

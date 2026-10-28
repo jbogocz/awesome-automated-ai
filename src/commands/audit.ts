@@ -2,9 +2,12 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { MIN_FRESH_RATIO } from "../constants.ts";
-import { DB } from "../db/client.ts";
 import { fetchRepoMetadataBatch, type RepoMetadata } from "../github/repo-metadata-graphql.ts";
+import { fetchStarHistory, starsGivenBetween } from "../github/star-history.ts";
 import { repoStatus } from "../status.ts";
+import { findLatest, loadLatest } from "../store/latest.ts";
+import { type DataPaths, defaultDataPaths } from "../store/paths.ts";
+import { loadSnapshots, seriesById, starsNDaysAgo } from "../store/snapshots.ts";
 import { logger } from "../utils/logger.ts";
 import { yearsCitedIn } from "../validation/projects-yaml.ts";
 
@@ -20,14 +23,14 @@ import { yearsCitedIn } from "../validation/projects-yaml.ts";
  */
 
 export interface AuditFinding {
-  kind: "renamed" | "archived" | "dead-no-note" | "stale-note" | "unreachable" | "unfetchable";
+  kind: "renamed" | "archived" | "dead-no-note" | "stale-note" | "unreachable" | "unfetchable" | "star-history";
   entry: string;
   detail: string;
 }
 
 export interface AuditOptions {
   projectsYamlPath: string;
-  dbPath: string;
+  paths: DataPaths;
 }
 
 interface YamlEntry {
@@ -44,15 +47,45 @@ interface YamlEntry {
 export const UNFETCHABLE_DAYS = 14;
 
 /**
- * Why a repo-backed entry has stopped refreshing, judged from the DB: no
- * measured snapshot at all, or none in the last UNFETCHABLE_DAYS. Null when it
- * is current.
+ * Why a repo-backed entry has stopped refreshing, judged from data/latest.json:
+ * never measured, or not in the last UNFETCHABLE_DAYS. Null when it is current.
  */
 export function unfetchableDetail(repo: string, latestSnapshot: string | null, now: Date = new Date()): string | null {
   if (!latestSnapshot) return `${repo} has never been fetched successfully; it renders as "stats pending"`;
   const ageDays = Math.floor((now.getTime() - Date.parse(`${latestSnapshot}T00:00:00Z`)) / 86_400_000);
   if (ageDays <= UNFETCHABLE_DAYS) return null;
   return `${repo} last refreshed ${latestSnapshot} (${ageDays} days ago); every run since served that snapshot`;
+}
+
+/**
+ * Slack for GitHub's day boundaries, which it does not promise to align with
+ * UTC: a few stars, or 2% of a busy window.
+ */
+function starHistoryTolerance(given: number): number {
+  return Math.max(3, Math.ceil(given * 0.02));
+}
+
+/**
+ * Our measured net change over a window cannot exceed the stars GitHub
+ * records as given in it: removals only ever pull the net figure down. A
+ * repo above that bound means our own measurements are wrong somewhere —
+ * the failure that went unnoticed for a month in July 2026, when fabricated
+ * history was published as measured.
+ */
+export function starHistoryFinding(
+  where: string,
+  repo: string,
+  window: { from: string; to: string; net: number },
+  given: number,
+): AuditFinding | null {
+  if (window.net <= given + starHistoryTolerance(given)) return null;
+  return {
+    kind: "star-history",
+    entry: where,
+    detail:
+      `${repo} measured +${window.net} stars from ${window.from} to ${window.to}, but GitHub records only ` +
+      `${given} given in that window; our snapshots for it cannot be right`,
+  };
 }
 
 /** Notes asserting a year, which the unattended regeneration cannot keep true. */
@@ -160,28 +193,88 @@ export async function runAuditCommand(opts: AuditOptions): Promise<AuditFinding[
     logger.error(`Audit coverage ${metadata.size}/${repoEntries.length} is below the ${MIN_FRESH_RATIO} gate`);
   }
 
-  const db = new DB(opts.dbPath);
-  try {
-    db.migrate();
-    for (const { category, entry } of repoEntries) {
-      const repo = entry.repo;
-      if (!repo) continue;
-      const where = `${category} / ${entry.name}`;
+  const latest = loadLatest(opts.paths.latestPath);
+  for (const { category, entry } of repoEntries) {
+    const repo = entry.repo;
+    if (!repo) continue;
+    const where = `${category} / ${entry.name}`;
 
-      // Checked from the DB, before the live-metadata guard below: an entry
-      // whose fetch fails every week has no metadata here either, and used to
-      // be skipped without a word while the site served its old figures.
-      const unfetchable = unfetchableDetail(repo, db.getLatestSnapshotDateByRepo(repo));
-      if (unfetchable) findings.push({ kind: "unfetchable", entry: where, detail: unfetchable });
+    // Checked from the last measurement, before the live-metadata guard
+    // below: an entry whose fetch fails every week has no metadata here
+    // either, and used to be skipped without a word while the site served
+    // its old figures.
+    const unfetchable = unfetchableDetail(repo, findLatest(latest, repo)?.date ?? null);
+    if (unfetchable) findings.push({ kind: "unfetchable", entry: where, detail: unfetchable });
 
-      const meta = metadata.get(repo);
-      if (meta) findings.push(...metadataFindings(where, repo, entry, meta));
-    }
-  } finally {
-    db.close();
+    const meta = metadata.get(repo);
+    if (meta) findings.push(...metadataFindings(where, repo, entry, meta));
   }
 
+  findings.push(...(await crossCheckStarHistory(repoEntries, latest, opts.paths)));
   return findings;
+}
+
+const STAR_HISTORY_CONCURRENCY = 8;
+
+/**
+ * Every repo with a measured 30-day window, checked against GitHub's own star
+ * history. One REST call per repo; the token in Actions allows 1,000 an hour,
+ * which covers about three times today's list.
+ */
+async function crossCheckStarHistory(
+  repoEntries: { category: string; entry: YamlEntry }[],
+  latest: ReturnType<typeof loadLatest>,
+  paths: DataPaths,
+): Promise<AuditFinding[]> {
+  const seriesByRepoId = seriesById(loadSnapshots(paths.snapshotsDir));
+  const checks: { where: string; repo: string; window: { from: string; to: string; net: number } }[] = [];
+  const seen = new Set<string>();
+  for (const { category, entry } of repoEntries) {
+    const repo = entry.repo as string;
+    const last = findLatest(latest, repo);
+    if (!last || seen.has(repo)) continue;
+    seen.add(repo);
+    const start = starsNDaysAgo(seriesByRepoId.get(last.id) ?? [], 30, last.date);
+    if (!start) continue;
+    checks.push({
+      where: `${category} / ${entry.name}`,
+      repo,
+      window: { from: start.date, to: last.date, net: last.stars - start.stars },
+    });
+  }
+
+  const findings: AuditFinding[] = [];
+  let failures = 0;
+  let next = 0;
+  const worker = async () => {
+    while (next < checks.length) {
+      const check = checks[next++];
+      if (!check) break;
+      try {
+        const given = starsGivenBetween(await fetchStarHistory(check.repo), check.window.from, check.window.to);
+        const finding = starHistoryFinding(check.where, check.repo, check.window, given);
+        if (finding) findings.push(finding);
+      } catch (err) {
+        failures++;
+        logger.warn(`Star history for ${check.repo} failed: ${err instanceof Error ? err.message : String(err)}`);
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: STAR_HISTORY_CONCURRENCY }, worker));
+
+  // GitHub may withdraw or change the endpoint. Our trends do not depend on
+  // it, but the check silently not running must not read as a clean pass.
+  if (checks.length > 0 && failures / checks.length > 1 - MIN_FRESH_RATIO) {
+    findings.push({
+      kind: "star-history",
+      entry: "(audit)",
+      detail:
+        `GitHub's star-history endpoint failed for ${failures}/${checks.length} repos; ` +
+        "the cross-check of our measurements is UNKNOWN for this run, not clean",
+    });
+  }
+  logger.info(`Star history cross-checked ${checks.length - failures}/${checks.length} repos`);
+  return findings.sort((a, b) => a.entry.localeCompare(b.entry));
 }
 
 /**
@@ -202,6 +295,7 @@ export function renderAuditReport(findings: AuditFinding[]): string {
     archived: "Archived upstream",
     "dead-no-note": "Dead with no successor named",
     "stale-note": "Note asserts a hard-coded year",
+    "star-history": "Our star counts disagree with GitHub's star history",
   };
 
   const lines: string[] = [];
@@ -216,5 +310,5 @@ export function renderAuditReport(findings: AuditFinding[]): string {
 }
 
 export function defaultAuditOptions(root: string): AuditOptions {
-  return { projectsYamlPath: resolve(root, "projects.yaml"), dbPath: resolve(root, "data/curator.db") };
+  return { projectsYamlPath: resolve(root, "projects.yaml"), paths: defaultDataPaths() };
 }

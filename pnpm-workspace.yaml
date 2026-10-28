@@ -1,8 +1,6 @@
-# Native and platform-specific packages that may run their install scripts.
-# better-sqlite3 13.x ships prebuilt binaries inside its npm tarball, so this
-# is only the fallback path for a platform it has no prebuild for.
+# Packages that may run their install scripts. esbuild (pulled in by vite
+# through vitest) verifies its platform binary on install.
 allowBuilds:
-  better-sqlite3: true
   esbuild: true
 # Note on a pnpm 12 quirk, so nobody commits the churn: `pnpm install
 # --frozen-lockfile` (what CI runs) rewrites pnpm-lock.yaml to also record

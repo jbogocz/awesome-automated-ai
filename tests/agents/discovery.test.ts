@@ -1,11 +1,12 @@
 import { mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import Database from "better-sqlite3";
 import { describe, expect, it, vi } from "vitest";
 import { analyzeCandidate } from "../../src/agents/analysis.ts";
 import { classifyCandidate } from "../../src/agents/discovery.ts";
 import type { Config } from "../../src/config.ts";
+import { loadDecisions } from "../../src/store/decisions.ts";
+import { todayUtc } from "../../src/store/snapshots.ts";
 
 vi.mock("../../src/github/search.ts", () => ({
   getDefaultTopics: () => ["automl"],
@@ -74,7 +75,7 @@ function testConfig(maxPrsPerDay: number): Config {
     anthropicApiKey: "test-key",
     githubRepoOwner: "owner",
     githubRepoName: "repo",
-    dbPath: "curator.db",
+    decisionsPath: "decisions.jsonl",
     maxCandidatesPerRun: 50,
     scoreThresholdAuto: 70,
     scoreThresholdQueue: 50,
@@ -97,28 +98,15 @@ describe("runDiscovery daily PR cap", () => {
     expect(result.queued).toBe(1);
     expect(result.discarded).toBe(0);
 
-    const sqlite = new Database(join(dir, "curator.db"), { readonly: true });
-    const rejected = sqlite.prepare("SELECT COUNT(*) AS n FROM projects WHERE status = 'rejected'").get() as {
-      n: number;
-    };
-    expect(rejected.n).toBe(0);
+    const decisions = loadDecisions(join(dir, "decisions.jsonl"));
+    expect(decisions.filter((d) => d.decision === "reject")).toHaveLength(0);
 
-    const two = sqlite.prepare("SELECT status FROM projects WHERE repo = 'owner/two'").get() as { status: string };
-    expect(two.status).toBe("candidate");
+    const queuedDecision = decisions.find((d) => d.repo === "owner/two" && d.prNumber === undefined);
+    expect(queuedDecision?.decision).toBe("add");
+    expect(queuedDecision?.reasoning).toMatch(/cap/i);
 
-    const queuedDecision = sqlite
-      .prepare(
-        "SELECT d.reasoning FROM decisions d JOIN projects p ON p.id = d.project_id WHERE p.repo = 'owner/two' AND d.decision = 'add' AND d.pr_number IS NULL",
-      )
-      .get() as { reasoning: string };
-    expect(queuedDecision.reasoning).toMatch(/cap/i);
-
-    // Cross-run cap accounting: the PR opened above must be visible to countPrsToday.
-    const prsToday = sqlite
-      .prepare("SELECT COUNT(*) AS n FROM decisions WHERE pr_number IS NOT NULL AND date(created_at) = date('now')")
-      .get() as { n: number };
-    expect(prsToday.n).toBe(1);
-    sqlite.close();
+    // Cross-run cap accounting: the PR opened above is what the next run counts.
+    expect(decisions.filter((d) => d.prNumber !== undefined && d.date === todayUtc())).toHaveLength(1);
   });
 });
 
@@ -139,11 +127,7 @@ describe("runDiscovery category validation", () => {
       expect(result.prsCreated).toBe(0);
       expect(result.queued).toBe(2);
 
-      const sqlite = new Database(join(dir, "curator.db"), { readonly: true });
-      const reasons = sqlite.prepare("SELECT reasoning FROM decisions WHERE pr_number IS NULL").all() as {
-        reasoning: string;
-      }[];
-      sqlite.close();
+      const reasons = loadDecisions(join(dir, "decisions.jsonl")).filter((d) => d.prNumber === undefined);
       expect(reasons).toHaveLength(2);
       for (const r of reasons) expect(r.reasoning).toMatch(/category "AutoML Frameworks" matches no category/);
     } finally {

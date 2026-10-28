@@ -1,12 +1,13 @@
-import { mkdirSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { loadManifest } from "../categories.ts";
 import type { Config } from "../config.ts";
-import { DB } from "../db/client.ts";
 import { createPr } from "../github/pr.ts";
 import { fetchRepoSignals, type GitHubCandidate, getDefaultTopics, searchGitHub } from "../github/search.ts";
 import { computeScore } from "../scoring/composite.ts";
+import { appendDecision, type Decision, loadDecisions } from "../store/decisions.ts";
+import { todayUtc } from "../store/snapshots.ts";
 import { logger } from "../utils/logger.ts";
 import { analyzeCandidate } from "./analysis.ts";
 
@@ -37,12 +38,17 @@ interface RunResult {
 }
 
 export async function runDiscovery(config: Config, projectsYamlPath: string): Promise<RunResult> {
-  const dbDir = resolve(projectsYamlPath, "..", config.dbPath, "..");
-  mkdirSync(dbDir, { recursive: true });
-  const dbPath = resolve(projectsYamlPath, "..", config.dbPath);
-  const db = new DB(dbPath);
-  db.migrate();
-  const runId = db.startAgentRun("discovery");
+  const decisionsPath = resolve(projectsYamlPath, "..", config.decisionsPath);
+  const decided = loadDecisions(decisionsPath);
+  const today = todayUtc();
+  const record = (repo: string, decision: Decision["decision"], reasoning: string, prNumber?: number) =>
+    appendDecision(decisionsPath, {
+      date: today,
+      repo,
+      decision,
+      reasoning,
+      ...(prNumber === undefined ? {} : { prNumber }),
+    });
 
   let tokensUsed = 0;
   let prsCreated = 0;
@@ -71,14 +77,14 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
     const newCandidates: GitHubCandidate[] = [];
     for (const c of candidates) {
       if (existingRepos.has(c.repo)) continue;
-      const existing = db.findProjectByRepo(c.repo);
-      if (existing) continue;
+      // Any earlier verdict, including a queued one, is final for discovery.
+      if (decided.some((d) => d.repo === c.repo)) continue;
       newCandidates.push(c);
     }
 
     logger.info(`Discovery: ${candidates.length} found, ${newCandidates.length} new`);
 
-    const prsToday = db.countPrsToday();
+    const prsToday = decided.filter((d) => d.prNumber !== undefined && d.date === today).length;
 
     for (const candidate of newCandidates) {
       const analysis = await analyzeCandidate({
@@ -102,22 +108,6 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
         hasLicense: candidate.license !== null,
       });
 
-      const project = db.insertProject({
-        repo: candidate.repo,
-        name: candidate.name,
-        category: analysis.category,
-        description: analysis.description,
-        note: analysis.note ?? undefined,
-        status: "candidate",
-        relevance_score: analysis.relevance_score,
-        quality_score: scoreResult.total,
-        discovered_via: "github",
-        stars: candidate.stars,
-        last_commit: candidate.pushedAt,
-        language: candidate.language ?? undefined,
-        archived: candidate.archived,
-      });
-
       const decision = classifyCandidate({
         relevant: analysis.relevant,
         relevanceScore: analysis.relevance_score,
@@ -127,27 +117,24 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
       });
 
       if (decision === "auto" && !knownCategories.has(analysis.category)) {
-        // Park it for a human rather than drop it: the project row already
-        // exists, so a rejection here would hide it from every future run.
+        // Park it for a human rather than drop it: a rejection here would
+        // hide it from every future run.
         logger.warn(`Not opening a PR for ${candidate.repo}: unknown category "${analysis.category}"; queued instead`);
-        db.insertDecision({
-          project_id: project.id,
-          decision: "add",
-          proposed_by: "discovery",
-          reasoning: `Queued: auto (score ${scoreResult.total}) but category "${analysis.category}" matches no category in projects.yaml. ${analysis.reasoning}`,
-        });
+        record(
+          candidate.repo,
+          "add",
+          `Queued: auto (score ${scoreResult.total}) but category "${analysis.category}" matches no category in projects.yaml. ${analysis.reasoning}`,
+        );
         queued++;
       } else if (decision === "auto" && prsToday + prsCreated >= config.maxPrsPerDay) {
         // Daily PR budget exhausted — throttle, don't discard. Park the
         // candidate in the review queue so it stays visible for promotion;
-        // rejecting here would permanently drop it (existing project rows
-        // are skipped on every future run).
-        db.insertDecision({
-          project_id: project.id,
-          decision: "add",
-          proposed_by: "discovery",
-          reasoning: `Queued: auto (score ${scoreResult.total}) but daily PR cap of ${config.maxPrsPerDay} reached. ${analysis.reasoning}`,
-        });
+        // rejecting here would permanently drop it.
+        record(
+          candidate.repo,
+          "add",
+          `Queued: auto (score ${scoreResult.total}) but daily PR cap of ${config.maxPrsPerDay} reached. ${analysis.reasoning}`,
+        );
         queued++;
       } else if (decision === "auto") {
         if (config.dryRun) {
@@ -174,49 +161,27 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
               source: "github",
             },
           });
-          db.insertDecision({
-            project_id: project.id,
-            decision: "add",
-            proposed_by: "discovery",
-            pr_number: prNumber,
-            pr_status: "open",
-            reasoning: analysis.reasoning,
-          });
+          record(candidate.repo, "add", analysis.reasoning, prNumber);
         }
         prsCreated++;
       } else if (decision === "queue") {
-        db.insertDecision({
-          project_id: project.id,
-          decision: "add",
-          proposed_by: "discovery",
-          reasoning: `Queued: score ${scoreResult.total}. ${analysis.reasoning}`,
-        });
+        record(candidate.repo, "add", `Queued: score ${scoreResult.total}. ${analysis.reasoning}`);
         queued++;
       } else {
-        db.updateProject(project.id, { status: "rejected" });
-        db.insertDecision({
-          project_id: project.id,
-          decision: "reject",
-          proposed_by: "discovery",
-          reasoning: analysis.reasoning,
-        });
+        record(candidate.repo, "reject", analysis.reasoning);
         discarded++;
       }
     }
 
-    db.finishAgentRun(runId, "completed", {
-      candidates_found: newCandidates.length,
-      actions_taken: prsCreated,
-      claude_tokens_used: tokensUsed,
-    });
-    db.close();
+    logger.info(
+      `Discovery finished: ${newCandidates.length} new, ${prsCreated} PRs, ${queued} queued, ` +
+        `${discarded} discarded, ${tokensUsed} tokens`,
+    );
     return { candidatesFound: newCandidates.length, prsCreated, queued, discarded, tokensUsed };
   } catch (error) {
-    db.finishAgentRun(runId, "failed", {
-      error_log: error instanceof Error ? error.message : String(error),
-      claude_tokens_used: tokensUsed,
-    });
-    db.close();
+    logger.error(
+      `Discovery failed after ${tokensUsed} tokens: ${error instanceof Error ? error.message : String(error)}`,
+    );
     throw error;
   }
 }

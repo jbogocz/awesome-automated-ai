@@ -171,7 +171,7 @@ describe("parseMetadataResponse", () => {
   });
 
   it("omits aliases with GraphQL errors or missing data instead of fabricating zeros", () => {
-    // A zeroed entry would be snapshotted into the DB (poisoning star trends)
+    // A zeroed entry would be recorded as a measurement (poisoning star trends)
     // and rendered as a dead 0-star project; absence means "no data".
     const out = parseMetadataResponse(["gone/repo", "ok/repo"], {
       data: { r0: null, r1: { stargazerCount: 1 } },

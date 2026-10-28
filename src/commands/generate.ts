@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { parse as parseYaml } from "yaml";
 import { loadManifest } from "../categories.ts";
 import { MIN_FRESH_RATIO, README_RENDER_LIMIT_BYTES, README_WARN_BYTES } from "../constants.ts";
-import { fetchRepoData, freshRatio, loadApiDataFromDB } from "../generator/fetch-api.ts";
+import { fetchRepoData, freshRatio, loadApiData } from "../generator/fetch-api.ts";
 import { type ApiData, generateReadme } from "../generator/readme.ts";
 import { logger } from "../utils/logger.ts";
 import { validateProjectsYaml } from "../validation/projects-yaml.ts";
@@ -12,7 +12,6 @@ export interface GenerateOptions {
   headerPath: string;
   footerPath: string;
   readmePath: string;
-  cachePath: string;
   noFetch: boolean;
 }
 
@@ -32,8 +31,8 @@ export async function runGenerateCommand(options: GenerateOptions): Promise<void
   let apiData: ApiData;
 
   if (options.noFetch) {
-    apiData = loadApiDataFromDB(yamlContent);
-    logger.info(`Loaded ${Object.keys(apiData).length} repos from DB (--no-fetch)`);
+    apiData = loadApiData(yamlContent);
+    logger.info(`Loaded ${Object.keys(apiData).length} repos from data/latest.json (--no-fetch)`);
   } else {
     const result = await fetchRepoData(yamlContent);
     const fresh = freshRatio(result);
@@ -53,8 +52,6 @@ export async function runGenerateCommand(options: GenerateOptions): Promise<void
       logger.warn(`${(fresh * 100).toFixed(1)}% live coverage — proceeding, but some entries serve cached data.`);
     }
     apiData = result.data;
-    writeFileSync(options.cachePath, JSON.stringify(apiData, null, 2));
-    logger.info("Cached API data");
   }
 
   const readme = generateReadme({ yamlContent, header, footer, apiData, manifest: loadManifest() });

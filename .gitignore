@@ -26,9 +26,12 @@
 !/docs/
 !/docs/**
 
-# --- the one data artifact that belongs in git; api_cache.json does not ---
+# --- measured data: text, so every weekly change is reviewable in a diff ---
 !/data/
-!/data/curator.db
+!/data/latest.json
+!/data/decisions.jsonl
+!/data/snapshots/
+!/data/snapshots/*.jsonl
 
 # --- root files ---
 !/.env.example
@@ -45,7 +48,5 @@
 !/vitest.config.ts
 
 # --- re-excluded inside the directories opened up above ---
-*.db-wal
-*.db-shm
 *.tsbuildinfo
 .DS_Store

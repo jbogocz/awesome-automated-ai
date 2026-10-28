@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   checks:
-    runs-on: ubuntu-24.04 # pinned: the native better-sqlite3 build must not move with ubuntu-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -49,10 +49,10 @@ jobs:
 
       # Generation only ever ran in the unattended weekly job, so a change
       # that broke the README or dashboard build merged green and surfaced at
-      # 06:00 on Monday. --no-fetch renders from the committed DB: no network,
+      # 06:00 on Monday. --no-fetch renders from the committed data/: no network,
       # no token. The rewritten files are discarded with the runner.
-      - name: Generate README from the committed DB
+      - name: Generate README from the committed data
         run: pnpm run generate --no-fetch
 
-      - name: Generate dashboard data from the committed DB
+      - name: Generate dashboard data from the committed data
         run: pnpm run site-data

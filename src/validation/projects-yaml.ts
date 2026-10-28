@@ -160,7 +160,7 @@ export function findStaleNoteYears(data: ProjectsYaml, currentYear: number): str
  * correct, but the entry text still reads like a recommendation and offers no
  * migration target — which is what a reader actually needs.
  *
- * Takes the statuses from the caller rather than reading the DB, so this stays
+ * Takes the statuses from the caller rather than reading data/, so this stays
  * a pure function and validate keeps working offline. Advisory only: an entry
  * crosses the 12-month line with no code change at all, so making this fatal
  * would red-build unrelated pull requests.

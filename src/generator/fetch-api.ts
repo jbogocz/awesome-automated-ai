@@ -1,49 +1,55 @@
-import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
-import { DB } from "../db/client.ts";
 import { fetchRepoMetadataBatch } from "../github/repo-metadata-graphql.ts";
 import { computeQualityScore } from "../scoring/quality.ts";
 import { computeTrends } from "../scoring/trends.ts";
 import { lastLifeSign } from "../status.ts";
+import { findLatest, type LatestRepo, type LatestState, latestDate, loadLatest, saveLatest } from "../store/latest.ts";
+import { type DataPaths, defaultDataPaths } from "../store/paths.ts";
+import {
+  loadSnapshots,
+  mergeSnapshots,
+  previousStars,
+  type StarPoint,
+  type StarSnapshot,
+  seriesById,
+  seriesSince,
+  starsNDaysAgo,
+  todayUtc,
+  writeSnapshots,
+} from "../store/snapshots.ts";
 import { logger } from "../utils/logger.ts";
 import type { ApiData, ApiRepoData } from "./readme.ts";
 
 /**
- * Build an ApiData entry from the latest DB snapshot. Shared by the offline
- * path and the live path's fallback for repos whose fetch failed.
+ * Build an ApiData entry from a repo's last live measurement. Shared by the
+ * offline path and the live path's fallback for repos whose fetch failed.
  *
- * `runDate` is the date of the current run's fetch. A latest snapshot older
- * than that failed to refresh, so the entry carries `stale` with the date its
+ * `runDate` is the date of the current run's fetch. A measurement older than
+ * that failed to refresh, so the entry carries `stale` with the date its
  * figures were actually measured.
  */
-function entryFromLatestSnapshot(
-  db: DB,
-  projectId: number,
+function entryFromLatest(
+  latest: LatestRepo,
+  series: StarPoint[],
   repoTagline: string | undefined,
   runDate: string | null,
-): ApiRepoData | null {
-  const latest = db.getLatestSnapshot(projectId);
-  if (!latest) return null;
-
-  // Trend windows look back from the snapshot's own date. Measured from
+): ApiRepoData {
+  // Trend windows look back from the measurement's own date. Measured from
   // today, a week-old fallback compared its count with itself and published
   // "+0 last 7d" under a window label it did not span.
-  const asOf = latest.snapshotDate;
-  const stars7dAgo = db.getStarsNDaysAgo(projectId, 7, asOf);
-  const stars30dAgo = db.getStarsNDaysAgo(projectId, 30, asOf);
-  const starsPrevious = db.getPreviousStars(projectId, asOf);
+  const asOf = latest.date;
   const { trend, trend7d, trend30d, trend30dDays, trend7dDays } = computeTrends({
     currentStars: latest.stars,
-    stars7dAgo,
-    stars30dAgo,
-    starsPrevious,
+    stars7dAgo: starsNDaysAgo(series, 7, asOf),
+    stars30dAgo: starsNDaysAgo(series, 30, asOf),
+    starsPrevious: previousStars(series, asOf),
     today: new Date(`${asOf}T00:00:00Z`),
   });
 
   return {
     stars: latest.stars,
-    pushed: latest.pushedAt ?? "",
-    archived: latest.archived ?? false,
+    pushed: latest.pushed,
+    archived: latest.archived,
     license: latest.license,
     trend,
     trend7d,
@@ -55,13 +61,12 @@ function entryFromLatestSnapshot(
     lastTag: latest.lastTag,
     lastStableTag: latest.lastStableTag,
     commits90d: latest.commits90d,
-    score: latest.compositeScore ?? 0,
-    topics: latest.topics ?? [],
-    // projects.yaml only: the DB copy mirrors it, and falling back to that
-    // copy kept rendering a tagline after the curator deleted it.
+    score: latest.score,
+    topics: latest.topics,
+    // projects.yaml only, so deleting a tagline there removes it here.
     tagline: repoTagline ?? null,
-    history: db.getSnapshotSeries(projectId, SPARKLINE_DAYS),
-    ...(runDate && latest.snapshotDate < runDate ? { stale: latest.snapshotDate } : {}),
+    history: seriesSince(series, SPARKLINE_DAYS),
+    ...(runDate && latest.date < runDate ? { stale: latest.date } : {}),
   };
 }
 
@@ -70,7 +75,7 @@ const SPARKLINE_DAYS = 90;
 
 export interface FetchResult {
   data: ApiData;
-  /** Repos whose live fetch failed but had a DB snapshot to fall back on. */
+  /** Repos whose live fetch failed but had a last measurement to fall back on. */
   stale: string[];
   /** Repos whose live fetch failed with no snapshot to fall back on. */
   failed: string[];
@@ -84,94 +89,61 @@ export function freshRatio(r: FetchResult): number {
   return (r.attempted - r.stale.length - r.failed.length) / r.attempted;
 }
 
-const DEFAULT_DB_PATH = resolve(import.meta.dirname, "../../data/curator.db");
-
-interface RepoEntry {
-  repo: string;
-  name: string;
-}
-
 /**
- * Repo-backed entries of projects.yaml, plus the tagline cached per repo. The
- * cache is repo-keyed, so a repo cross-listed under two entries takes the
- * first tagline any of them declares — otherwise the entry without one would
- * clear what its sibling just wrote, and the stored value would flip with
- * YAML order.
+ * Repo-backed entries of projects.yaml, plus one tagline per repo. Stats are
+ * per repo, so a repo cross-listed under two entries takes the first tagline
+ * any of them declares, rather than one that flips with YAML order.
  */
-function readRepoEntries(yamlContent: string): { repos: RepoEntry[]; taglineByRepo: Map<string, string> } {
+function readRepoEntries(yamlContent: string): { repos: { repo: string }[]; taglineByRepo: Map<string, string> } {
   const doc = parseYaml(yamlContent) as {
-    categories: { entries?: { repo?: string; name?: string; tagline?: string }[] }[];
+    categories: { entries?: { repo?: string; tagline?: string }[] }[];
   };
-  const repos: RepoEntry[] = [];
+  const repos: { repo: string }[] = [];
   const taglineByRepo = new Map<string, string>();
   for (const cat of doc.categories) {
     for (const entry of cat.entries ?? []) {
       if (!entry.repo) continue;
-      repos.push({ repo: entry.repo, name: entry.name ?? entry.repo });
+      repos.push({ repo: entry.repo });
       if (entry.tagline && !taglineByRepo.has(entry.repo)) taglineByRepo.set(entry.repo, entry.tagline);
     }
   }
   return { repos, taglineByRepo };
 }
 
-export async function fetchRepoData(yamlContent: string): Promise<FetchResult> {
+export async function fetchRepoData(yamlContent: string, paths: DataPaths = defaultDataPaths()): Promise<FetchResult> {
   const { repos, taglineByRepo } = readRepoEntries(yamlContent);
   logger.info(`Fetching data for ${repos.length} repos...`);
-
-  const db = new DB(DEFAULT_DB_PATH);
-  try {
-    return await collectRepoData(db, repos, taglineByRepo);
-  } finally {
-    db.close();
-  }
-}
-
-async function collectRepoData(db: DB, repos: RepoEntry[], taglineByRepo: Map<string, string>): Promise<FetchResult> {
-  db.migrate();
-
-  // Pass 1: fetch live state (alias-batched GraphQL) and resolve project rows.
-  //
-  // This used to also queue repos with no 30-day history for star-history
-  // reconstruction. That path is gone: GitHub restricted stargazer listings
-  // to admins and collaborators (2026-06-30 changelog), so the connection now
-  // returns an empty edge list with no error for every third-party repo, and
-  // the reconstruction arithmetic turned that silence into today's star count
-  // stamped across all 30 past days. It ran here, inside the unattended
-  // weekly job, so every newly listed entry would have been fabricated afresh
-  // each week. A new entry now simply starts accumulating measured history
-  // from its first weekly snapshot, and shows no trend until it has one.
   const rawByRepo = await fetchRepoMetadataBatch(repos.map((r) => r.repo));
-  const projectIdByRepo = new Map<string, number>();
 
-  for (const { repo, name } of repos) {
-    projectIdByRepo.set(repo, db.upsertProject(repo, name, rawByRepo.get(repo)?.githubId));
-  }
+  const previous = loadLatest(paths.latestPath);
+  const runDate = todayUtc();
 
-  // Keep projects.status truthful: projects.yaml is the authoritative list.
-  const { delisted, relisted } = db.syncListedStatus(repos.map((r) => r.repo));
-  if (delisted.length > 0) {
-    logger.info(`Delisted ${delisted.length} project(s) removed from projects.yaml: ${delisted.join(", ")}`);
-  }
-  if (relisted.length > 0) {
-    logger.info(`Marked ${relisted.length} project(s) as listed: ${relisted.join(", ")}`);
-  }
-
-  // Pass 2: compute trends + scores now that history exists.
-  const data: ApiData = {};
-  const stale: string[] = [];
-  const failed: string[] = [];
-  // The date insertSnapshot stamps on every live row this run.
-  const runDate = new Date().toISOString().slice(0, 10);
+  // Today's measurements go into the history first, so each series below
+  // already ends at today's point. Keyed by GitHub id, so a renamed entry
+  // continues its own history instead of starting from nothing.
+  const measured: StarSnapshot[] = [];
   for (const { repo } of repos) {
     const raw = rawByRepo.get(repo);
-    const projectId = projectIdByRepo.get(repo);
-    if (!raw || projectId === undefined) {
-      // Fetch failed: serve the latest DB snapshot when one exists,
+    if (raw?.githubId != null && !measured.some((m) => m.id === raw.githubId)) {
+      measured.push({ date: runDate, id: raw.githubId, repo, stars: raw.stars });
+    }
+  }
+  const history = mergeSnapshots(loadSnapshots(paths.snapshotsDir), measured);
+  const seriesByRepoId = seriesById(history);
+
+  const data: ApiData = {};
+  const latest: LatestState = {};
+  const stale: string[] = [];
+  const failed: string[] = [];
+  for (const { repo } of repos) {
+    const raw = rawByRepo.get(repo);
+    if (!raw || raw.githubId == null) {
+      // Fetch failed: serve the last measurement when there is one,
       // otherwise leave the entry out so it renders as "stats pending".
-      const fallback =
-        projectId !== undefined ? entryFromLatestSnapshot(db, projectId, taglineByRepo.get(repo), runDate) : null;
+      const fallback = findLatest(previous, repo);
       if (fallback) {
-        data[repo] = fallback;
+        latest[repo] = fallback;
+        data[repo] = entryFromLatest(fallback, seriesByRepoId.get(fallback.id) ?? [], taglineByRepo.get(repo), runDate);
         stale.push(repo);
       } else {
         failed.push(repo);
@@ -179,13 +151,12 @@ async function collectRepoData(db: DB, repos: RepoEntry[], taglineByRepo: Map<st
       continue;
     }
 
-    const starsPrevious = db.getPreviousStars(projectId);
-    const stars7dAgo = db.getStarsNDaysAgo(projectId, 7);
-    const stars30dAgo = db.getStarsNDaysAgo(projectId, 30);
+    const series = seriesByRepoId.get(raw.githubId) ?? [];
+    const starsPrevious = previousStars(series);
     const { trend, trend7d, trend30d, trend30dDays, trend7dDays } = computeTrends({
       currentStars: raw.stars,
-      stars7dAgo,
-      stars30dAgo,
+      stars7dAgo: starsNDaysAgo(series, 7),
+      stars30dAgo: starsNDaysAgo(series, 30),
       starsPrevious,
     });
 
@@ -207,9 +178,14 @@ async function collectRepoData(db: DB, repos: RepoEntry[], taglineByRepo: Map<st
       license: raw.license,
       archived: raw.archived,
     });
-    db.insertSnapshot(projectId, raw.stars, score, {
+
+    latest[repo] = {
+      date: runDate,
+      id: raw.githubId,
+      stars: raw.stars,
+      score,
       archived: raw.archived,
-      pushedAt: raw.pushed || null,
+      pushed: raw.pushed,
       license: raw.license,
       topics: raw.topics,
       lastRelease: raw.lastRelease,
@@ -217,21 +193,7 @@ async function collectRepoData(db: DB, repos: RepoEntry[], taglineByRepo: Map<st
       lastTag: raw.lastTag,
       lastStableTag: raw.lastStableTag,
       commits90d: raw.commits90d,
-    });
-    db.updateProjectMetadata(projectId, {
-      stars: raw.stars,
-      archived: raw.archived,
-      lastCommit: raw.lastCommit,
-      language: raw.language,
-    });
-
-    // Tagline: projects.yaml is the source of truth, so a YAML edit wins and
-    // rewrites the cached copy. The DB used to win, which meant curators
-    // editing projects.yaml saw no effect and no error. A deletion is an edit
-    // too: only overwriting meant a removed tagline lived on in the cache.
-    const tagline = taglineByRepo.get(repo) ?? null;
-    if (db.getTagline(projectId) !== tagline) db.setTagline(projectId, tagline);
-
+    };
     data[repo] = {
       stars: raw.stars,
       pushed: raw.pushed,
@@ -249,64 +211,51 @@ async function collectRepoData(db: DB, repos: RepoEntry[], taglineByRepo: Map<st
       commits90d: raw.commits90d,
       score,
       topics: raw.topics,
-      tagline,
-      // Read after insertSnapshot above so today's point is included.
-      history: db.getSnapshotSeries(projectId, SPARKLINE_DAYS),
+      tagline: taglineByRepo.get(repo) ?? null,
+      history: seriesSince(series, SPARKLINE_DAYS),
     };
   }
   if (stale.length > 0) {
-    logger.warn(`${stale.length} repo(s) failed to fetch; serving their latest DB snapshot: ${stale.join(", ")}`);
+    logger.warn(`${stale.length} repo(s) failed to fetch; serving their last measurement: ${stale.join(", ")}`);
   }
   if (failed.length > 0) {
-    logger.warn(`${failed.length} repo(s) failed to fetch with no snapshot to fall back on: ${failed.join(", ")}`);
+    logger.warn(`${failed.length} repo(s) failed to fetch with no measurement to fall back on: ${failed.join(", ")}`);
   }
 
-  // Keep the committed database bounded: full weekly resolution for the last
-  // six months, monthly beyond that. Nothing renders past the 90-day
-  // sparkline window, so this costs no visible history.
-  const pruned = db.pruneSnapshotHistory();
-  if (pruned > 0) logger.info(`Thinned ${pruned} snapshot row(s) older than 180 days to monthly resolution`);
-
+  writeSnapshots(paths.snapshotsDir, history, [runDate.slice(0, 4)]);
+  saveLatest(paths.latestPath, latest);
   return { data, stale, failed, attempted: repos.length };
 }
 
 /**
- * Assemble ApiData from the SQLite database only — no GitHub API calls.
- * Uses the latest snapshot per repo + the projects.yaml tagline. Trend values
- * compare each entry's latest snapshot against the snapshots 7 and 30 days
- * before it. Safe to call offline; requires that generate has been run at
- * least once to populate the DB.
+ * Assemble ApiData from the committed data only — no GitHub API calls. Trend
+ * values compare each entry's last measurement against the measurements 7
+ * and 30 days before it.
  */
-export function loadApiDataFromDB(yamlContent: string, dbPath: string = DEFAULT_DB_PATH): ApiData {
+export function loadApiData(yamlContent: string, paths: DataPaths = defaultDataPaths()): ApiData {
   const { repos, taglineByRepo } = readRepoEntries(yamlContent);
+  const state = loadLatest(paths.latestPath);
+  const seriesByRepoId = seriesById(loadSnapshots(paths.snapshotsDir));
 
-  const db = new DB(dbPath);
-  try {
-    db.migrate();
-
-    // The newest measurement in the DB is the last run's fetch date; an entry
-    // whose own latest snapshot is older failed to refresh on that run.
-    const runDate = db.getMaxSnapshotDate();
-    const data: ApiData = {};
-    const missing: string[] = [];
-    for (const { repo, name } of repos) {
-      const projectId = db.upsertProject(repo, name);
-      const entry = entryFromLatestSnapshot(db, projectId, taglineByRepo.get(repo), runDate);
-      if (!entry) {
-        // No snapshot yet — the entry renders as "stats pending".
-        missing.push(repo);
-        continue;
-      }
-      data[repo] = entry;
+  // The newest measurement is the last run's fetch date; an entry whose own
+  // measurement is older failed to refresh on that run.
+  const runDate = latestDate(state);
+  const data: ApiData = {};
+  const missing: string[] = [];
+  for (const { repo } of repos) {
+    const latest = findLatest(state, repo);
+    if (!latest) {
+      // Never measured — the entry renders as "stats pending".
+      missing.push(repo);
+      continue;
     }
-    if (missing.length > 0) {
-      logger.warn(
-        `${missing.length} repo(s) have no snapshot yet and will render without stats ` +
-          `(run generate with fetch to record them): ${missing.join(", ")}`,
-      );
-    }
-    return data;
-  } finally {
-    db.close();
+    data[repo] = entryFromLatest(latest, seriesByRepoId.get(latest.id) ?? [], taglineByRepo.get(repo), runDate);
   }
+  if (missing.length > 0) {
+    logger.warn(
+      `${missing.length} repo(s) have no measurement yet and will render without stats ` +
+        `(run generate with fetch to record them): ${missing.join(", ")}`,
+    );
+  }
+  return data;
 }

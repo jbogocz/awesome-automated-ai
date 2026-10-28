@@ -15,7 +15,6 @@ const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
 const HEADER_MD = resolve(ROOT, "templates/header.md");
 const FOOTER_MD = resolve(ROOT, "templates/footer.md");
 const README_MD = resolve(ROOT, "README.md");
-const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 const RECLASSIFY_REPORT = resolve(ROOT, "data/reclassify-report.md");
 
 const USAGE =
@@ -92,7 +91,6 @@ async function main() {
           headerPath: HEADER_MD,
           footerPath: FOOTER_MD,
           readmePath: README_MD,
-          cachePath: CACHE_FILE,
           noFetch,
         });
         break;
@@ -105,7 +103,6 @@ async function main() {
         }
         await runRefreshTagsCommand({
           projectsYamlPath: PROJECTS_YAML,
-          cachePath: CACHE_FILE,
           apiKey,
           dryRun,
           limit,

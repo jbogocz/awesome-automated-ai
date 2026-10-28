@@ -16,11 +16,12 @@ permissions: {}
 
 jobs:
   # Everything that executes third-party code lives here: `pnpm install` runs
-  # native build scripts (better-sqlite3). With a contents:write token in
-  # reach, any one of them could push to main or cut a release. So this job holds a read-only token and hands its output to the
+  # install scripts and every project script loads dependencies. With a
+  # contents:write token in reach, any one of them could push to main or cut
+  # a release. So this job holds a read-only token and hands its output to the
   # jobs below as artifacts; those run git and gh only, never pnpm.
   regenerate:
-    runs-on: ubuntu-24.04 # pinned: the native better-sqlite3 build must not move with ubuntu-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
       contents: read
@@ -55,9 +56,8 @@ jobs:
       - name: Bump version to today's date
         run: pnpm run bump-version
 
-      # Uploaded before the reporters run, so nothing they touch (the audit
-      # opens and migrates the DB) can ride along into the commit, exactly as
-      # when the commit used to happen before them.
+      # Uploaded before the reporters run, so nothing they write can ride
+      # along into the commit.
       - name: Hand the regenerated files to the publish job
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
@@ -65,7 +65,8 @@ jobs:
           path: |
             README.md
             docs/data.json
-            data/curator.db
+            data/latest.json
+            data/snapshots/
             package.json
           if-no-files-found: error
           # Long enough to recover by hand if the push is refused (see publish).
@@ -141,7 +142,7 @@ jobs:
     # not land there. A dispatch on a branch is a dry run: it regenerates and
     # reports drift, and release/deploy skip with this job.
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
       contents: write
@@ -171,7 +172,7 @@ jobs:
           BOT_NAME: github-actions[bot]
           STAGED: ${{ runner.temp }}/regenerated
         run: |
-          FILES="README.md docs/data.json data/curator.db package.json"
+          FILES="README.md docs/data.json data/latest.json package.json"
           for f in $FILES; do
             if [ ! -f "$STAGED/$f" ]; then
               echo "::error::regenerated artifact is missing $f"
@@ -184,8 +185,19 @@ jobs:
           # version bump is taken from it, and only if it is a date version —
           # it also lands in GITHUB_OUTPUT below, where a newline would let it
           # forge the `sha` output.
-          for f in README.md docs/data.json data/curator.db; do
+          for f in README.md docs/data.json data/latest.json; do
             cp "$STAGED/$f" "$f"
+          done
+          # Snapshot history: one file per year, and only names of that shape,
+          # so the artifact cannot place anything else under data/.
+          mkdir -p data/snapshots
+          for path in "$STAGED"/data/snapshots/*; do
+            name=$(basename "$path")
+            if ! [[ "$name" =~ ^[0-9]{4}\.jsonl$ ]]; then
+              echo "::error::unexpected file in the regenerated snapshots: $name"
+              exit 1
+            fi
+            cp "$path" "data/snapshots/$name"
           done
           VERSION=$(jq -r '.version' "$STAGED/package.json")
           # [[ =~ ]] anchors to the whole string; grep would pass a value whose
@@ -200,9 +212,9 @@ jobs:
           git config user.name "$BOT_NAME"
           git config user.email "$BOT_EMAIL"
           # shellcheck disable=SC2086 # word splitting over FILES is intended
-          git add -- $FILES
+          git add -- $FILES data/snapshots
           # Not a "nothing to do" case: a successful run always records a new
-          # measured snapshot per listed project, so an empty diff means the
+          # measurement per listed project, so an empty diff means the
           # regeneration produced nothing and must not be reported as success.
           if git diff --cached --quiet; then
             echo "::error::regeneration staged no changes - no measurement was recorded this run"
@@ -213,8 +225,8 @@ jobs:
           # main can move while the regenerate job runs (a curation commit, a
           # Dependabot merge), and a plain push from the start-of-job checkout
           # is then rejected. Rebase onto the current main and retry. A
-          # conflict — curator.db is binary, so any concurrent change to it is
-          # one — must stop the run rather than pick a side and lose data.
+          # conflict in the data files must stop the run rather than pick a
+          # side and lose measurements.
           for attempt in 1 2 3; do
             if ! git pull --rebase origin main; then
               git rebase --abort || true
@@ -242,7 +254,7 @@ jobs:
   # the issue.
   report-drift:
     needs: regenerate
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
       issues: write
@@ -310,7 +322,7 @@ jobs:
   # dashboard stale, and a failed deploy must not suppress the release.
   release:
     needs: publish
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
       contents: write
@@ -349,7 +361,7 @@ jobs:
   # pages.yml covers human pushes to docs/ and manual deploys.
   deploy-pages:
     needs: publish
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
       contents: read

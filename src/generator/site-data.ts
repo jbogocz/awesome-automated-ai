@@ -1,15 +1,15 @@
-// Generates docs/data.json from projects.yaml + the SQLite DB (source of truth).
-// Falls back to data/api_cache.json only if the DB is empty (fresh clone without generate run).
+// Generates docs/data.json from projects.yaml + the committed measurements in data/.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 import { MIN_SITE_COVERAGE } from "../constants.ts";
-import { DB } from "../db/client.ts";
 import { displayBucket, repoStatus } from "../status.ts";
+import { latestDate, loadLatest } from "../store/latest.ts";
+import { defaultDataPaths } from "../store/paths.ts";
 import { logger } from "../utils/logger.ts";
 import type { Category } from "../validation/projects-yaml.ts";
-import { loadApiDataFromDB } from "./fetch-api.ts";
+import { loadApiData } from "./fetch-api.ts";
 import { displayLicense } from "./formatters.ts";
 import type { ApiData, ApiRepoData } from "./readme.ts";
 import { buildTagCorpus, selectTags } from "./tags.ts";
@@ -17,7 +17,6 @@ import { buildTagCorpus, selectTags } from "./tags.ts";
 const ROOT = resolve(import.meta.dirname, "../..");
 const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
 const MANIFEST_YAML = resolve(ROOT, "src/categories.yaml");
-const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 const OUTPUT = resolve(ROOT, "docs/data.json");
 
 interface ManifestCategory {
@@ -47,24 +46,13 @@ const EMPTY_API = {
 } as const satisfies Partial<ApiRepoData> & Record<string, unknown>;
 
 /**
- * The date the underlying measurements were actually taken, read from the
- * newest snapshot in the DB. `generated` only says when this file was
- * written — on a degraded run the two diverge, and the dashboard must show
- * the measured date rather than assert a currency nothing verified.
+ * The date the underlying measurements were actually taken: the newest one
+ * in data/latest.json. `generated` only says when this file was written — on
+ * a degraded run the two diverge, and the dashboard must show the measured
+ * date rather than assert a currency nothing verified.
  */
 function readDataAsOf(): string | null {
-  try {
-    const db = new DB(resolve(ROOT, "data/curator.db"));
-    try {
-      db.migrate();
-      return db.getMaxSnapshotDate();
-    } finally {
-      db.close();
-    }
-  } catch (err) {
-    logger.warn(`Could not read snapshot date: ${err instanceof Error ? err.message : String(err)}`);
-    return null;
-  }
+  return latestDate(loadLatest(defaultDataPaths().latestPath));
 }
 
 function main() {
@@ -78,22 +66,12 @@ function main() {
     sectionByCategory = new Map(manifest.categories.map((c) => [c.name, c.section]));
   }
 
-  let apiData: ApiData = {};
-  try {
-    apiData = loadApiDataFromDB(yamlContent);
-    logger.info(`Loaded ${Object.keys(apiData).length} repos from DB`);
-  } catch (err) {
-    logger.warn(`DB read failed (${err instanceof Error ? err.message : String(err)}), falling back to cache`);
-    try {
-      apiData = JSON.parse(readFileSync(CACHE_FILE, "utf-8")) as ApiData;
-    } catch {
-      logger.info(`No API cache at ${CACHE_FILE}, using empty data`);
-    }
-  }
+  const apiData = loadApiData(yamlContent);
+  logger.info(`Loaded ${Object.keys(apiData).length} repos from data/latest.json`);
 
   const output = buildSiteData({ yamlContent, apiData, sectionByCategory, dataAsOf: readDataAsOf() });
 
-  // Coverage gate. loadApiDataFromDB returns {} on an empty DB without
+  // Coverage gate. loadApiData returns {} on missing data without
   // throwing, which produced an all-zero-stars dashboard with no error at
   // all — the feed must refuse to publish rather than assert nothing.
   const all = output.categories.flatMap((c) => c.entries);
@@ -104,7 +82,7 @@ function main() {
     logger.error(
       `Only ${resolved.length}/${repoBacked.length} repo-backed entries resolved to real stats ` +
         `(${(coverage * 100).toFixed(1)}%); refusing to write docs/data.json below ` +
-        `${(MIN_SITE_COVERAGE * 100).toFixed(0)}%. Run generate to refresh the DB first.`,
+        `${(MIN_SITE_COVERAGE * 100).toFixed(0)}%. Run generate to refresh data/ first.`,
     );
     process.exit(1);
   }
@@ -117,7 +95,7 @@ function main() {
   );
 }
 
-/** The docs/data.json document, built from already-loaded inputs. Pure, so it can be tested without the DB. */
+/** The docs/data.json document, built from already-loaded inputs. Pure, so it can be tested without data files. */
 export function buildSiteData(input: {
   yamlContent: string;
   apiData: ApiData;
@@ -212,5 +190,5 @@ export function buildSiteData(input: {
 }
 
 // Run only as a script: importing the module (tests) must not read the real
-// DB or write docs/data.json.
+// data files or write docs/data.json.
 if (resolve(process.argv[1] ?? "") === fileURLToPath(import.meta.url)) main();

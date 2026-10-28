@@ -1,9 +1,9 @@
 import { existsSync, readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { loadManifest } from "../categories.ts";
-import { DB } from "../db/client.ts";
 import { repoStatus } from "../status.ts";
+import { findLatest, loadLatest } from "../store/latest.ts";
+import { defaultDataPaths } from "../store/paths.ts";
 import { logger } from "../utils/logger.ts";
 import {
   findCrossCategoryDuplicates,
@@ -18,39 +18,18 @@ export interface ValidateOptions {
 }
 
 /**
- * Health lookup backed by the snapshot DB, or undefined when there is no DB to
- * read (fresh clone, CI without the cache). validate must keep working
- * offline, so the DB-derived checks simply do not run rather than failing.
+ * Health lookup backed by data/latest.json, or undefined when there is none
+ * (a fresh clone before the first fetch). validate must keep working
+ * offline, so the data-derived checks simply do not run rather than failing.
  */
 function deadRepoPredicate(): ((repo: string) => boolean) | undefined {
-  const dbPath = resolve(import.meta.dirname, "../../data/curator.db");
-  if (!existsSync(dbPath)) return undefined;
-  try {
-    const db = new DB(dbPath);
-    try {
-      db.migrate();
-      const dead = new Set<string>();
-      for (const project of db.listListedProjects()) {
-        const latest = db.getLatestSnapshot(project.id);
-        if (!latest) continue;
-        const status = repoStatus({
-          archived: latest.archived ?? false,
-          lastCommit: latest.lastCommit,
-          lastRelease: latest.lastRelease,
-          lastTag: latest.lastTag,
-          lastStableTag: latest.lastStableTag,
-          commits90d: latest.commits90d,
-        });
-        if (status === "dead") dead.add(project.repo);
-      }
-      return (repo: string) => dead.has(repo);
-    } finally {
-      db.close();
-    }
-  } catch (err) {
-    logger.warn(`Skipping DB-derived checks: ${err instanceof Error ? err.message : String(err)}`);
-    return undefined;
-  }
+  const path = defaultDataPaths().latestPath;
+  if (!existsSync(path)) return undefined;
+  const state = loadLatest(path);
+  return (repo: string) => {
+    const latest = findLatest(state, repo);
+    return latest !== undefined && repoStatus(latest) === "dead";
+  };
 }
 
 export function runValidateCommand(options: ValidateOptions): void {

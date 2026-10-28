@@ -1,11 +1,10 @@
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { refreshTags } from "../agents/refresh-tags.ts";
-import type { ApiData } from "../generator/readme.ts";
+import { loadApiData } from "../generator/fetch-api.ts";
 import { logger } from "../utils/logger.ts";
 
 export interface RefreshTagsOptions {
   projectsYamlPath: string;
-  cachePath: string;
   apiKey: string;
   dryRun: boolean;
   limit?: number;
@@ -13,7 +12,7 @@ export interface RefreshTagsOptions {
 
 export async function runRefreshTagsCommand(options: RefreshTagsOptions): Promise<void> {
   const yamlContent = readFileSync(options.projectsYamlPath, "utf-8");
-  const apiData: ApiData = existsSync(options.cachePath) ? JSON.parse(readFileSync(options.cachePath, "utf-8")) : {};
+  const apiData = loadApiData(yamlContent);
 
   const result = await refreshTags({
     yamlContent,

@@ -13,9 +13,9 @@ export interface RepoMetadata {
   nameWithOwner: string | null;
   /**
    * GitHub's immutable numeric repository id. Survives renames, transfers and
-   * case changes, so it — not the slug — is what identifies a project row.
+   * case changes, so it — not the slug — is what keys the star history.
    * Keying on the slug is what stranded five months of star history behind
-   * nine upstream renames; see DB.upsertProject.
+   * nine upstream renames; see src/store/snapshots.ts.
    */
   githubId: number | null;
   stars: number;
@@ -121,7 +121,7 @@ export function parseMetadataResponse(repos: string[], resp: MetadataGraphQLResp
     const node = resp.data?.[alias];
     if (!node || erroredAliases.has(alias)) {
       // Omit failed repos instead of fabricating zeros — a zeroed entry
-      // would be snapshotted into the DB and rendered as a dead project.
+      // would be recorded as a measurement and rendered as a dead project.
       logger.warn(`Failed to fetch repo metadata for ${repo} — skipping`);
       return;
     }

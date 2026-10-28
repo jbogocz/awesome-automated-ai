@@ -55,7 +55,7 @@ export function formatDateMonth(pushed: string): string {
 /**
  * License label for display. GitHub reports NOASSERTION when a license file
  * exists but matches no SPDX identifier; printed raw it reads like an error
- * code. The raw value stays in the DB because scoring tiers on it.
+ * code. The raw value stays in data/latest.json because scoring tiers on it.
  */
 export function displayLicense(license: string | null): string | null {
   return license === "NOASSERTION" ? "Other" : license;
