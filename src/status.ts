@@ -64,6 +64,7 @@ function isDate(d: string | null | undefined): d is string {
 /** ISO-8601 sorts lexicographically, so max string = newest timestamp. */
 function newest(dates: (string | null | undefined)[]): string | null {
   const valid = dates.filter(isDate);
+  // biome-ignore lint/complexity/useMathMinMax: ISO date strings compare lexically; Math.max would coerce them to NaN
   return valid.length > 0 ? valid.reduce((a, b) => (a > b ? a : b)) : null;
 }
 

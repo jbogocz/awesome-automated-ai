@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.6.3/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -53,6 +53,12 @@
       "semicolons": "always",
       "trailingCommas": "all"
     }
+  },
+  "markdown": {
+    "formatter": { "enabled": false }
+  },
+  "yaml": {
+    "formatter": { "enabled": false }
   },
   "files": {
     "includes": ["**", "!**/node_modules", "!**/dist", "!pnpm-lock.yaml", "!docs/data.json", "!data", "!**/coverage"]
