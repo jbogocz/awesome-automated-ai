@@ -1,14 +1,14 @@
 import { resolve } from "node:path";
 import { parseArgs } from "node:util";
-import { defaultAuditOptions, renderAuditReport, runAuditCommand } from "./commands/audit.js";
-import { defaultCheckLinksOptions, runCheckLinksCommand } from "./commands/check-links.js";
-import { runDiscoverCommand } from "./commands/discover.js";
-import { runGenerateCommand } from "./commands/generate.js";
-import { runReclassifyCommand } from "./commands/reclassify.js";
-import { runRefreshTagsCommand } from "./commands/refresh-tags.js";
-import { runValidateCommand } from "./commands/validate.js";
-import { logger } from "./utils/logger.js";
-import { emitReport } from "./utils/report.js";
+import { defaultAuditOptions, renderAuditReport, runAuditCommand } from "./commands/audit.ts";
+import { defaultCheckLinksOptions, runCheckLinksCommand } from "./commands/check-links.ts";
+import { runDiscoverCommand } from "./commands/discover.ts";
+import { runGenerateCommand } from "./commands/generate.ts";
+import { runReclassifyCommand } from "./commands/reclassify.ts";
+import { runRefreshTagsCommand } from "./commands/refresh-tags.ts";
+import { runValidateCommand } from "./commands/validate.ts";
+import { logger } from "./utils/logger.ts";
+import { emitReport } from "./utils/report.ts";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const PROJECTS_YAML = resolve(ROOT, "projects.yaml");
@@ -19,7 +19,7 @@ const CACHE_FILE = resolve(ROOT, "data/api_cache.json");
 const RECLASSIFY_REPORT = resolve(ROOT, "data/reclassify-report.md");
 
 const USAGE =
-  "Usage: tsx src/cli.ts <discover|generate|refresh-tags|reclassify|validate|check-links|audit> [--dry-run] [--limit=N] [--report=FILE] [--no-fetch] [--strict] [--verbose]";
+  "Usage: node src/cli.ts <discover|generate|refresh-tags|reclassify|validate|check-links|audit> [--dry-run] [--limit=N] [--report=FILE] [--no-fetch] [--strict] [--verbose]";
 
 function usage(): never {
   logger.error(USAGE);

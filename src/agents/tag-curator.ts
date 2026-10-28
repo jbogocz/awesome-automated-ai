@@ -1,6 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
-import { getModel, MAX_TOKENS_TAG_CURATION } from "./llm.js";
+import { getModel, MAX_TOKENS_TAG_CURATION } from "./llm.ts";
 
 const CuratedTagsSchema = z.object({
   tags: z.array(z.string()).min(3).max(20),

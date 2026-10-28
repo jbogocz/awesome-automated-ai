@@ -1,4 +1,4 @@
-import { clamp } from "./utils.js";
+import { clamp } from "./utils.ts";
 
 export interface ScoreInput {
   stars: number;

@@ -1,8 +1,8 @@
 import { mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import Database from "better-sqlite3";
-import { logger } from "../utils/logger.js";
-import type { AgentName, DecisionInsert, ProjectInsert, ProjectRow, RunStatus } from "./types.js";
+import { logger } from "../utils/logger.ts";
+import type { AgentName, DecisionInsert, ProjectInsert, ProjectRow, RunStatus } from "./types.ts";
 
 export class DB {
   private sqlite: Database.Database;

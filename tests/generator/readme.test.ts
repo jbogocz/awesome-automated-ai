@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { type ApiData, type ApiRepoData, generateReadme } from "../../src/generator/readme.js";
+import { type ApiData, type ApiRepoData, generateReadme } from "../../src/generator/readme.ts";
 
 const SAMPLE_YAML = `categories:
 - name: General-Purpose AutoML

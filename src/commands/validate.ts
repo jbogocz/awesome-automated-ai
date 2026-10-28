@@ -1,17 +1,17 @@
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
-import { loadManifest } from "../categories.js";
-import { DB } from "../db/client.js";
-import { repoStatus } from "../status.js";
-import { logger } from "../utils/logger.js";
+import { loadManifest } from "../categories.ts";
+import { DB } from "../db/client.ts";
+import { repoStatus } from "../status.ts";
+import { logger } from "../utils/logger.ts";
 import {
   findCrossCategoryDuplicates,
   findDeadEntriesWithoutNote,
   findDuplicateReposInCategories,
   findStaleNoteYears,
   validateProjectsYaml,
-} from "../validation/projects-yaml.js";
+} from "../validation/projects-yaml.ts";
 
 export interface ValidateOptions {
   projectsYamlPath: string;

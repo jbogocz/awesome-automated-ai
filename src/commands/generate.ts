@@ -1,11 +1,11 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { parse as parseYaml } from "yaml";
-import { loadManifest } from "../categories.js";
-import { MIN_FRESH_RATIO, README_RENDER_LIMIT_BYTES, README_WARN_BYTES } from "../constants.js";
-import { fetchRepoData, freshRatio, loadApiDataFromDB } from "../generator/fetch-api.js";
-import { type ApiData, generateReadme } from "../generator/readme.js";
-import { logger } from "../utils/logger.js";
-import { validateProjectsYaml } from "../validation/projects-yaml.js";
+import { loadManifest } from "../categories.ts";
+import { MIN_FRESH_RATIO, README_RENDER_LIMIT_BYTES, README_WARN_BYTES } from "../constants.ts";
+import { fetchRepoData, freshRatio, loadApiDataFromDB } from "../generator/fetch-api.ts";
+import { type ApiData, generateReadme } from "../generator/readme.ts";
+import { logger } from "../utils/logger.ts";
+import { validateProjectsYaml } from "../validation/projects-yaml.ts";
 
 export interface GenerateOptions {
   projectsYamlPath: string;

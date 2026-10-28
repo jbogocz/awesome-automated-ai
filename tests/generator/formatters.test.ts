@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { escapeHtml, formatDateMonth, formatStarsShort, generateTagline } from "../../src/generator/formatters.js";
+import { escapeHtml, formatDateMonth, formatStarsShort, generateTagline } from "../../src/generator/formatters.ts";
 
 describe("formatStarsShort", () => {
   it("returns '0' for 0", () => {

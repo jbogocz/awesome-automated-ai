@@ -1,8 +1,8 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
-import { type CategoryInfo, renderCategoryCatalog } from "../categories.js";
-import type { GitHubCandidate } from "../github/search.js";
-import { getModel, MAX_TOKENS_ANALYSIS } from "./llm.js";
+import { type CategoryInfo, renderCategoryCatalog } from "../categories.ts";
+import type { GitHubCandidate } from "../github/search.ts";
+import { getModel, MAX_TOKENS_ANALYSIS } from "./llm.ts";
 
 const AnalysisSchema = z.object({
   relevant: z.boolean(),

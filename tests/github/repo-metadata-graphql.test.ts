@@ -6,7 +6,7 @@ vi.mock("node:child_process", () => ({
 }));
 
 const { buildMetadataQuery, parseMetadataResponse, fetchRepoMetadataBatch } = await import(
-  "../../src/github/repo-metadata-graphql.js"
+  "../../src/github/repo-metadata-graphql.ts"
 );
 
 describe("buildMetadataQuery", () => {

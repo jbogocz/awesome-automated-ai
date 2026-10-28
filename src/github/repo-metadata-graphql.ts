@@ -1,7 +1,7 @@
-import { PULSE_WINDOW_DAYS } from "../constants.js";
-import { isPrereleaseTag } from "../status.js";
-import { logger } from "../utils/logger.js";
-import { ghGraphQL } from "./graphql.js";
+import { PULSE_WINDOW_DAYS } from "../constants.ts";
+import { isPrereleaseTag } from "../status.ts";
+import { logger } from "../utils/logger.ts";
+import { ghGraphQL } from "./graphql.ts";
 
 // Live repo metadata for the weekly regen, fetched as alias-batched GraphQL:
 // one query per CHUNK_SIZE repos instead of several REST calls per repo, so

@@ -1,8 +1,8 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
-import { logger } from "../utils/logger.js";
-import { emitReport } from "../utils/report.js";
+import { logger } from "../utils/logger.ts";
+import { emitReport } from "../utils/report.ts";
 
 /**
  * Probes the URLs the pipeline never touches.

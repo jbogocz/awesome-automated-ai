@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { metadataFindings, renderAuditReport, UNFETCHABLE_DAYS, unfetchableDetail } from "../../src/commands/audit.js";
-import type { RepoMetadata } from "../../src/github/repo-metadata-graphql.js";
+import { metadataFindings, renderAuditReport, UNFETCHABLE_DAYS, unfetchableDetail } from "../../src/commands/audit.ts";
+import type { RepoMetadata } from "../../src/github/repo-metadata-graphql.ts";
 
 const NOW = new Date("2026-10-05T06:00:00Z");
 

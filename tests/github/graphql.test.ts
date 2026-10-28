@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { type GhDeps, ghGraphQL, isRateLimited, retryAfterMs } from "../../src/github/graphql.js";
+import { type GhDeps, ghGraphQL, isRateLimited, retryAfterMs } from "../../src/github/graphql.ts";
 
 describe("isRateLimited", () => {
   it("matches primary, secondary and GraphQL-level rate limiting", () => {

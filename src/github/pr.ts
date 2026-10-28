@@ -1,6 +1,6 @@
 import { Octokit } from "@octokit/rest";
 import { stringify } from "yaml";
-import type { Config } from "../config.js";
+import type { Config } from "../config.ts";
 
 interface PrEntryInput {
   name: string;

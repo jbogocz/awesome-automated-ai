@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { refreshTags } from "../agents/refresh-tags.js";
-import type { ApiData } from "../generator/readme.js";
-import { logger } from "../utils/logger.js";
+import { refreshTags } from "../agents/refresh-tags.ts";
+import type { ApiData } from "../generator/readme.ts";
+import { logger } from "../utils/logger.ts";
 
 export interface RefreshTagsOptions {
   projectsYamlPath: string;

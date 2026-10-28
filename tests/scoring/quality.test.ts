@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computeQualityScore, type QualityInput } from "../../src/scoring/quality.js";
+import { computeQualityScore, type QualityInput } from "../../src/scoring/quality.ts";
 
 describe("computeQualityScore", () => {
   it("scores a healthy active project high", () => {

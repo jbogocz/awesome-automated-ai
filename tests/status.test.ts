@@ -9,7 +9,7 @@ import {
   type StatusSignals,
   stableShippedAt,
   statusDot,
-} from "../src/status.js";
+} from "../src/status.ts";
 
 const NOW = new Date("2026-07-17T08:00:00Z").getTime();
 

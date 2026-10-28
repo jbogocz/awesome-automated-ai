@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { logger } from "../utils/logger.js";
+import { logger } from "../utils/logger.ts";
 
 /**
  * Shared `gh api graphql` transport.

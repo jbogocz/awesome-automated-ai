@@ -1,8 +1,8 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { reclassifyEntries, renderReport } from "../agents/reclassify.js";
-import { loadManifest } from "../categories.js";
-import { logger } from "../utils/logger.js";
+import { reclassifyEntries, renderReport } from "../agents/reclassify.ts";
+import { loadManifest } from "../categories.ts";
+import { logger } from "../utils/logger.ts";
 
 export interface ReclassifyOptions {
   projectsYamlPath: string;

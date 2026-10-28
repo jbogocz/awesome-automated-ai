@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { parse } from "yaml";
-import { buildYamlEntry, insertEntry } from "../../src/github/pr.js";
+import { buildYamlEntry, insertEntry } from "../../src/github/pr.ts";
 
 /** Parse an entry back in the projects.yaml structure it gets spliced into. */
 function roundTrip(entry: string): Record<string, unknown> {

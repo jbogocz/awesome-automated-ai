@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { extractUrls, isMeaningfulRedirect, isThrottled, renderLinkReport } from "../../src/commands/check-links.js";
+import { extractUrls, isMeaningfulRedirect, isThrottled, renderLinkReport } from "../../src/commands/check-links.ts";
 
 /**
  * Every "moved" finding lands in the weekly drift issue, so a redirect that is

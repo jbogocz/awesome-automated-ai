@@ -1,7 +1,7 @@
 import { type Document, isMap, isScalar, isSeq, parseDocument, type YAMLMap, type YAMLSeq } from "yaml";
-import type { ApiData } from "../generator/readme.js";
-import { logger } from "../utils/logger.js";
-import { curateTags } from "./tag-curator.js";
+import type { ApiData } from "../generator/readme.ts";
+import { logger } from "../utils/logger.ts";
+import { curateTags } from "./tag-curator.ts";
 
 export interface RefreshTagsOptions {
   yamlContent: string;

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildTagCorpus, selectTags } from "../../src/generator/tags.js";
+import { buildTagCorpus, selectTags } from "../../src/generator/tags.ts";
 
 /** Build a corpus where `spec` maps a tag to how many entries carry it. */
 function corpusOf(spec: Record<string, number>, entryCount: number) {

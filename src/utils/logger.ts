@@ -2,7 +2,7 @@
  * Simple structured logger with level filtering.
  *
  * Usage:
- *   import { logger } from "./utils/logger.js";
+ *   import { logger } from "./utils/logger.ts";
  *   logger.info("Starting discovery…");
  *   logger.warn(`Rate limit low: ${remaining} remaining`);
  *   logger.debug("Parsed response:", data);

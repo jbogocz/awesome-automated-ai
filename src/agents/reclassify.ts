@@ -1,9 +1,9 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { isMap, isScalar, isSeq, parseDocument } from "yaml";
 import { z } from "zod";
-import { type Manifest, renderCategoryCatalog } from "../categories.js";
-import { logger } from "../utils/logger.js";
-import { getModel } from "./llm.js";
+import { type Manifest, renderCategoryCatalog } from "../categories.ts";
+import { logger } from "../utils/logger.ts";
+import { getModel } from "./llm.ts";
 
 const MAX_TOKENS = 512;
 

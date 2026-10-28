@@ -4,7 +4,7 @@ import {
   findDuplicateReposInCategories,
   findStaleNoteYears,
   validateProjectsYaml,
-} from "../../src/validation/projects-yaml.js";
+} from "../../src/validation/projects-yaml.ts";
 
 describe("validateProjectsYaml", () => {
   it("accepts a minimal valid document", () => {

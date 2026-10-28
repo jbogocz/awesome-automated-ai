@@ -1,12 +1,12 @@
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
-import { DB } from "../db/client.js";
-import { fetchRepoMetadataBatch } from "../github/repo-metadata-graphql.js";
-import { computeQualityScore } from "../scoring/quality.js";
-import { computeTrends } from "../scoring/trends.js";
-import { lastLifeSign } from "../status.js";
-import { logger } from "../utils/logger.js";
-import type { ApiData, ApiRepoData } from "./readme.js";
+import { DB } from "../db/client.ts";
+import { fetchRepoMetadataBatch } from "../github/repo-metadata-graphql.ts";
+import { computeQualityScore } from "../scoring/quality.ts";
+import { computeTrends } from "../scoring/trends.ts";
+import { lastLifeSign } from "../status.ts";
+import { logger } from "../utils/logger.ts";
+import type { ApiData, ApiRepoData } from "./readme.ts";
 
 /**
  * Build an ApiData entry from the latest DB snapshot. Shared by the offline

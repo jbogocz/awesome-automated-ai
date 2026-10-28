@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computeScore, type ScoreInput } from "../../src/scoring/composite.js";
+import { computeScore, type ScoreInput } from "../../src/scoring/composite.ts";
 
 describe("computeScore", () => {
   it("scores a healthy popular project high", () => {

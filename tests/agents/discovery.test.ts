@@ -3,11 +3,11 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import Database from "better-sqlite3";
 import { describe, expect, it, vi } from "vitest";
-import { analyzeCandidate } from "../../src/agents/analysis.js";
-import { classifyCandidate } from "../../src/agents/discovery.js";
-import type { Config } from "../../src/config.js";
+import { analyzeCandidate } from "../../src/agents/analysis.ts";
+import { classifyCandidate } from "../../src/agents/discovery.ts";
+import type { Config } from "../../src/config.ts";
 
-vi.mock("../../src/github/search.js", () => ({
+vi.mock("../../src/github/search.ts", () => ({
   getDefaultTopics: () => ["automl"],
   fetchRepoSignals: vi.fn(async () => ({ commitCount30d: 60, contributorCount: 120 })),
   searchGitHub: vi.fn(async () => [
@@ -40,11 +40,11 @@ vi.mock("../../src/github/search.js", () => ({
   ]),
 }));
 
-vi.mock("../../src/github/pr.js", () => ({
+vi.mock("../../src/github/pr.ts", () => ({
   createPr: vi.fn(async () => 123),
 }));
 
-vi.mock("../../src/agents/analysis.js", () => ({
+vi.mock("../../src/agents/analysis.ts", () => ({
   analyzeCandidate: vi.fn(async () => ({
     relevant: true,
     category: "General-Purpose AutoML",
@@ -90,7 +90,7 @@ describe("runDiscovery daily PR cap", () => {
     const projectsYamlPath = join(dir, "projects.yaml");
     writeFileSync(projectsYamlPath, PROJECTS_YAML);
 
-    const { runDiscovery } = await import("../../src/agents/discovery.js");
+    const { runDiscovery } = await import("../../src/agents/discovery.ts");
     const result = await runDiscovery(testConfig(1), projectsYamlPath);
 
     expect(result.candidatesFound).toBe(2);
@@ -135,7 +135,7 @@ describe("runDiscovery category validation", () => {
     });
 
     try {
-      const { runDiscovery } = await import("../../src/agents/discovery.js");
+      const { runDiscovery } = await import("../../src/agents/discovery.ts");
       const result = await runDiscovery(testConfig(10), projectsYamlPath);
       expect(result.prsCreated).toBe(0);
       expect(result.queued).toBe(2);

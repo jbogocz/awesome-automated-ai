@@ -1,12 +1,12 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
-import { MIN_FRESH_RATIO } from "../constants.js";
-import { DB } from "../db/client.js";
-import { fetchRepoMetadataBatch, type RepoMetadata } from "../github/repo-metadata-graphql.js";
-import { repoStatus } from "../status.js";
-import { logger } from "../utils/logger.js";
-import { yearsCitedIn } from "../validation/projects-yaml.js";
+import { MIN_FRESH_RATIO } from "../constants.ts";
+import { DB } from "../db/client.ts";
+import { fetchRepoMetadataBatch, type RepoMetadata } from "../github/repo-metadata-graphql.ts";
+import { repoStatus } from "../status.ts";
+import { logger } from "../utils/logger.ts";
+import { yearsCitedIn } from "../validation/projects-yaml.ts";
 
 /**
  * Reports catalog drift the weekly regeneration cannot fix by itself.

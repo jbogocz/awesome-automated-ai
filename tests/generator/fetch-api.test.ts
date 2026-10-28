@@ -3,10 +3,10 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import Database from "better-sqlite3";
 import { afterAll, describe, expect, it } from "vitest";
-import { MIN_FRESH_RATIO } from "../../src/constants.js";
-import { DB } from "../../src/db/client.js";
-import { type FetchResult, freshRatio, loadApiDataFromDB } from "../../src/generator/fetch-api.js";
-import { buildSiteData } from "../../src/generator/site-data.js";
+import { MIN_FRESH_RATIO } from "../../src/constants.ts";
+import { DB } from "../../src/db/client.ts";
+import { type FetchResult, freshRatio, loadApiDataFromDB } from "../../src/generator/fetch-api.ts";
+import { buildSiteData } from "../../src/generator/site-data.ts";
 
 function result(over: Partial<FetchResult>): FetchResult {
   return { data: {}, stale: [], failed: [], attempted: 0, ...over };

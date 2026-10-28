@@ -1,9 +1,9 @@
 import { parse as parseYaml } from "yaml";
-import { RELEASE_STALE_MONTHS, STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.js";
-import { assessRepo, displayBucket, lastLifeSign, STATUS_DOT, type StatusReason } from "../status.js";
-import type { Category, Entry } from "../validation/projects-yaml.js";
-import { displayLicense, escapeHtml, formatDateMonth, formatStarsShort, generateTagline } from "./formatters.js";
-import { buildTagCorpus, selectTags, type TagCorpus } from "./tags.js";
+import { RELEASE_STALE_MONTHS, STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.ts";
+import { assessRepo, displayBucket, lastLifeSign, STATUS_DOT, type StatusReason } from "../status.ts";
+import type { Category, Entry } from "../validation/projects-yaml.ts";
+import { displayLicense, escapeHtml, formatDateMonth, formatStarsShort, generateTagline } from "./formatters.ts";
+import { buildTagCorpus, selectTags, type TagCorpus } from "./tags.ts";
 
 export interface ApiRepoData {
   stars: number;

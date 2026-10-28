@@ -1,13 +1,9 @@
 {
   // Type-checks the tests against the sources they import. Separate from the
-  // root config so `pnpm run build` keeps rootDir=src and emits nothing extra.
+  // root config so the root stays scoped to src.
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "noEmit": true,
-    "rootDir": "..",
-    "declaration": false,
-    "declarationMap": false,
-    "sourceMap": false
+    "rootDir": ".."
   },
   "include": ["../src", ".", "../vitest.config.ts"],
   "exclude": []

@@ -16,9 +16,8 @@ permissions: {}
 
 jobs:
   # Everything that executes third-party code lives here: `pnpm install` runs
-  # native build scripts (better-sqlite3) and tsx loads ~80 packages. With a
-  # contents:write token in reach, any one of them could push to main or cut a
-  # release. So this job holds a read-only token and hands its output to the
+  # native build scripts (better-sqlite3). With a contents:write token in
+  # reach, any one of them could push to main or cut a release. So this job holds a read-only token and hands its output to the
   # jobs below as artifacts; those run git and gh only, never pnpm.
   regenerate:
     runs-on: ubuntu-24.04 # pinned: the native better-sqlite3 build must not move with ubuntu-latest
@@ -134,7 +133,7 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-  # Holds the write token, so it runs no pnpm, no tsx and no project code:
+  # Holds the write token, so it runs no pnpm and no project code:
   # only git on a fresh checkout and the regenerated files from above.
   publish:
     needs: regenerate

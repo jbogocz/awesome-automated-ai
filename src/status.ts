@@ -1,4 +1,4 @@
-import { MAINTAINED_DAYS, PULSE_MIN_COMMITS, RELEASE_STALE_DAYS, SHIPPED_FRESH_DAYS, STALE_DAYS } from "./constants.js";
+import { MAINTAINED_DAYS, PULSE_MIN_COMMITS, RELEASE_STALE_DAYS, SHIPPED_FRESH_DAYS, STALE_DAYS } from "./constants.ts";
 
 /**
  * Single source of truth for repository health status.

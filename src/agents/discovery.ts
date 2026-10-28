@@ -1,14 +1,14 @@
 import { mkdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
-import { loadManifest } from "../categories.js";
-import type { Config } from "../config.js";
-import { DB } from "../db/client.js";
-import { createPr } from "../github/pr.js";
-import { fetchRepoSignals, type GitHubCandidate, getDefaultTopics, searchGitHub } from "../github/search.js";
-import { computeScore } from "../scoring/composite.js";
-import { logger } from "../utils/logger.js";
-import { analyzeCandidate } from "./analysis.js";
+import { loadManifest } from "../categories.ts";
+import type { Config } from "../config.ts";
+import { DB } from "../db/client.ts";
+import { createPr } from "../github/pr.ts";
+import { fetchRepoSignals, type GitHubCandidate, getDefaultTopics, searchGitHub } from "../github/search.ts";
+import { computeScore } from "../scoring/composite.ts";
+import { logger } from "../utils/logger.ts";
+import { analyzeCandidate } from "./analysis.ts";
 
 export type CandidateDecision = "auto" | "queue" | "discard";
 

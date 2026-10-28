@@ -1,6 +1,6 @@
-import { runDiscovery } from "../agents/discovery.js";
-import { loadConfig } from "../config.js";
-import { logger } from "../utils/logger.js";
+import { runDiscovery } from "../agents/discovery.ts";
+import { loadConfig } from "../config.ts";
+import { logger } from "../utils/logger.ts";
 
 export interface DiscoverOptions {
   projectsYamlPath: string;

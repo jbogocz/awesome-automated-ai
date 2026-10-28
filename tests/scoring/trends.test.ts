@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computeTrends } from "../../src/scoring/trends.js";
+import { computeTrends } from "../../src/scoring/trends.ts";
 
 // Fixed reference date so window arithmetic is deterministic.
 const TODAY = new Date("2026-08-14T00:00:00Z");

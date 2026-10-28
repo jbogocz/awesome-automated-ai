@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import Database from "better-sqlite3";
 import { afterAll, describe, expect, it } from "vitest";
-import { DB } from "../../src/db/client.js";
+import { DB } from "../../src/db/client.ts";
 
 const tmpDir = mkdtempSync(join(tmpdir(), "curator-db-test-"));
 afterAll(() => {
