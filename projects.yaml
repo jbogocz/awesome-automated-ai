@@ -427,6 +427,7 @@ categories:
     tags: [ai, chatbot, chatgpt, fedramp, fine-tuning, finetuning, generative, generative-ai, gpt, llama, llama2, llm, llm-training]
   - name: LLM Foundry
     repo: mosaicml/llm-foundry
+    note: Archived by Databricks; LitGPT and TRL cover pretraining and fine-tuning for new work.
     description: Composable building blocks for pretraining, fine-tuning, and evaluating foundation models with efficient distributed training (Databricks).
     tagline: Composable pretraining and fine-tuning for foundation models
     tags: [deep-learning, llm, neural-networks, nlp, pytorch]
@@ -1243,6 +1244,7 @@ categories:
     tags: [agents, deep-learning, fine-tuning, instruction-tuning, llm, machine-learning, natural-language-processing, prompt, python, synthetic-data, synthetic-dataset-generation]
   - name: Synthetic Data Kit
     repo: meta-llama/synthetic-data-kit
+    note: Unmaintained upstream; Curator and NeMo Data Designer are the maintained synthetic-data pipelines.
     description: Toolkit for generating high-quality synthetic datasets to fine-tune models with LLM-generated training data at scale (Meta).
     tagline: LLM-generated training data at scale for fine-tuning
     tags: [data, generation, llm, python, synthetic]

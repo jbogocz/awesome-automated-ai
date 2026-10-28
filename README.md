@@ -1426,7 +1426,7 @@ Native PyTorch library for fine-tuning LLMs with composable building blocks and 
 
 <br>
 
-*Composable building blocks for pretraining, fine-tuning, and evaluating foundation models with efficient distributed training (Databricks). **Archived.***
+*Composable building blocks for pretraining, fine-tuning, and evaluating foundation models with efficient distributed training (Databricks). **Archived by Databricks; LitGPT and TRL cover pretraining and fine-tuning for new work.***
 
 ```
   Score     0/100
@@ -4017,7 +4017,7 @@ Synthetic Data Vault with multiple generative models (GaussianCopula, CTGAN, TVA
 
 <br>
 
-*Toolkit for generating high-quality synthetic datasets to fine-tune models with LLM-generated training data at scale (Meta). **Unmaintained - no activity for 12+ months.***
+*Toolkit for generating high-quality synthetic datasets to fine-tune models with LLM-generated training data at scale (Meta). **Unmaintained upstream; Curator and NeMo Data Designer are the maintained synthetic-data pipelines.***
 
 ```
   Score     52/100
@@ -4384,16 +4384,16 @@ Experiment tracking, visualization, and collaboration platform for ML teams (Wei
 
 </details>
 
-<details><summary>🟢 <b>9</b> <b><a href="https://github.com/kubeflow/kubeflow">Kubeflow</a></b> <code>⭐ 15.9K</code> <code>↗️ +44</code> <code>Apache-2.0</code> Kubernetes ML toolkit for portable scalable pipelines</summary>
+<details><summary>🟡 <b>9</b> <b><a href="https://github.com/kubeflow/kubeflow">Kubeflow</a></b> <code>⭐ 15.9K</code> <code>↗️ +44</code> <code>Apache-2.0</code> Kubernetes ML toolkit for portable scalable pipelines</summary>
 
 <br>
 
-ML toolkit on Kubernetes for building portable, scalable ML pipelines and training workflows.
+ML toolkit on Kubernetes for building portable, scalable ML pipelines and training workflows. **Quiet - minimal recent development.**
 
 ```
   Score     71/100
   Stars     ⭐ 15,925 (+44 last 28d, +10 last 7d)
-  Activity  🟢 Sep 2026
+  Activity  🟡 Sep 2026
   Release   📦 Apr 2026
   License   Apache-2.0
   Tags      ml · tensorflow · kubernetes · jupyter · kubeflow

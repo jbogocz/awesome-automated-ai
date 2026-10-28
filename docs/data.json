@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-26T11:53:29.365Z",
+  "generated": "2026-10-28T15:18:42.888Z",
   "dataAsOf": "2026-10-26",
   "categories": [
     {
@@ -6206,7 +6206,7 @@
           "url": "https://github.com/mosaicml/llm-foundry",
           "description": "Composable building blocks for pretraining, fine-tuning, and evaluating foundation models with efficient distributed training (Databricks).",
           "tagline": "Composable pretraining and fine-tuning for foundation models",
-          "note": "",
+          "note": "Archived by Databricks; LitGPT and TRL cover pretraining and fine-tuning for new work.",
           "stars": 4460,
           "trend": 12,
           "trendDays": 28,
@@ -19739,7 +19739,7 @@
           "url": "https://github.com/meta-llama/synthetic-data-kit",
           "description": "Toolkit for generating high-quality synthetic datasets to fine-tune models with LLM-generated training data at scale (Meta).",
           "tagline": "LLM-generated training data at scale for fine-tuning",
-          "note": "",
+          "note": "Unmaintained upstream; Curator and NeMo Data Designer are the maintained synthetic-data pipelines.",
           "stars": 1650,
           "trend": 10,
           "trendDays": 28,
@@ -21305,7 +21305,7 @@
           "lastCommit": "2026-09-30T23:20:10Z",
           "lastRelease": "2026-04-29T13:58:28Z",
           "archived": false,
-          "status": "active",
+          "status": "quiet",
           "bucket": "live",
           "tags": [
             "ml",
