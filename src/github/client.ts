@@ -108,6 +108,11 @@ export async function request<T>(
   deps: GitHubDeps = defaultDeps,
 ): Promise<GitHubResponse<T>> {
   const method = opts.method ?? "GET";
+  // The token rides on every request, so a full URL must still be GitHub's
+  // API: pagination links are, and nothing else may receive it.
+  if (path.startsWith("https://") && !path.startsWith(`${API}/`)) {
+    throw new Error(`Refusing to send the GitHub token outside ${API}: ${path}`);
+  }
   const url = path.startsWith("https://") ? path : `${API}${path}`;
   const label = `${method} ${path.startsWith(API) ? path.slice(API.length) : path}`;
 

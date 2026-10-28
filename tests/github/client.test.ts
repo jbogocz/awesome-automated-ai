@@ -122,6 +122,16 @@ describe("request retry policy", () => {
     expect(gh.calls()).toBe(1);
   });
 
+  it("never sends the token to a host other than the GitHub API", async () => {
+    const gh = fakeGitHub([json(ok)]);
+    await expect(request("https://example.com/collect", {}, gh)).rejects.toThrow(/Refusing to send the GitHub token/);
+    await expect(request("https://api.github.com.example.com/x", {}, gh)).rejects.toThrow(/Refusing/);
+    expect(gh.calls()).toBe(0);
+    await expect(
+      request("https://api.github.com/repositories/1/stargazers/history?page=2", {}, gh),
+    ).resolves.toBeTruthy();
+  });
+
   it("sends the token and a JSON body", async () => {
     const gh = fakeGitHub([json(ok)]);
     await graphql("query { viewer { login } }", gh);
