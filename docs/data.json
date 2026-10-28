@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T15:34:08.047Z",
+  "generated": "2026-10-28T16:35:44.442Z",
   "dataAsOf": "2026-10-28",
   "categories": [
     {
@@ -1442,8 +1442,8 @@
           "description": "High-performance symbolic regression that automatically discovers interpretable equations from data, with a multi-population evolutionary engine in Julia and a scikit-learn-style Python API. A favorite in scientific ML.",
           "tagline": "Automated interpretable equation discovery from data",
           "note": "",
-          "stars": 4209,
-          "trend": 431,
+          "stars": 4210,
+          "trend": 432,
           "trendDays": 30,
           "score": 80,
           "license": "Apache-2.0",
@@ -1527,7 +1527,7 @@
             ],
             [
               "2026-10-28",
-              4209
+              4210
             ]
           ]
         },
@@ -4018,8 +4018,8 @@
           "description": "Tabular foundation model that matches tuned XGBoost in 2.8 seconds with a single forward pass - 100% win rate vs default XGBoost on datasets under 10K rows (Nature 2024, now v2.6 supporting up to 100K rows).",
           "tagline": "Beats tuned XGBoost in 2.8 seconds flat",
           "note": "",
-          "stars": 8308,
-          "trend": 234,
+          "stars": 8307,
+          "trend": 233,
           "trendDays": 30,
           "score": 75,
           "license": "Apache-2.0",
@@ -4101,7 +4101,7 @@
             ],
             [
               "2026-10-28",
-              8308
+              8307
             ]
           ]
         },
@@ -5523,12 +5523,12 @@
           "description": "Fine-tune LLMs 2-5x faster with 80% less memory on a single GPU through optimized kernels and custom autograd.",
           "tagline": "Fine-tune LLMs 2-5x faster, 80% less memory",
           "note": "",
-          "stars": 78673,
-          "trend": 1778,
+          "stars": 78674,
+          "trend": 1779,
           "trendDays": 30,
           "score": 82,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T15:32:59Z",
+          "lastCommit": "2026-10-28T16:32:18Z",
           "lastRelease": "2026-10-28T14:09:50Z",
           "archived": false,
           "status": "active",
@@ -5608,7 +5608,7 @@
             ],
             [
               "2026-10-28",
-              78673
+              78674
             ]
           ]
         },
@@ -5720,7 +5720,7 @@
           "trendDays": 30,
           "score": 75,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T14:33:35Z",
+          "lastCommit": "2026-10-28T16:00:01Z",
           "lastRelease": "2026-10-15T18:00:33Z",
           "archived": false,
           "status": "active",
@@ -5811,8 +5811,8 @@
           "description": "Recipes for pretraining, fine-tuning, and deploying 20+ LLM architectures on your own data (Lightning AI).",
           "tagline": "Pretrain, fine-tune, and deploy 20+ LLM architectures",
           "note": "",
-          "stars": 13734,
-          "trend": 47,
+          "stars": 13735,
+          "trend": 48,
           "trendDays": 30,
           "score": 73,
           "license": "Apache-2.0",
@@ -5895,7 +5895,7 @@
             ],
             [
               "2026-10-28",
-              13734
+              13735
             ]
           ]
         },
@@ -6656,8 +6656,8 @@
           "description": "Trainer that turns agent execution traces into reinforcement-learning signal, optimizing the underlying models with almost zero changes to existing agent code - works with any agent framework (Microsoft).",
           "tagline": "Train and optimize agents with reinforcement learning",
           "note": "",
-          "stars": 18834,
-          "trend": 315,
+          "stars": 18835,
+          "trend": 316,
           "trendDays": 30,
           "score": 75,
           "license": "MIT",
@@ -6740,7 +6740,7 @@
             ],
             [
               "2026-10-28",
-              18834
+              18835
             ]
           ]
         }
@@ -6758,8 +6758,8 @@
           "description": "Declarative framework replacing hand-written prompts with automatic optimizers - GPT-3.5 with DSPy outperforms expert prompts by up to 46% (Stanford NLP).",
           "tagline": "Automatic prompt optimizers replacing hand-written prompts",
           "note": "",
-          "stars": 38830,
-          "trend": 436,
+          "stars": 38833,
+          "trend": 439,
           "trendDays": 30,
           "score": 78,
           "license": "MIT",
@@ -6841,7 +6841,7 @@
             ],
             [
               "2026-10-28",
-              38830
+              38833
             ]
           ]
         },
@@ -7802,8 +7802,8 @@
           "description": "LangChain's graph-based runtime for building stateful, resilient agents with checkpointing, human-in-the-loop, and controllable multi-actor workflows.",
           "tagline": "Stateful graph runtime for agents",
           "note": "",
-          "stars": 44048,
-          "trend": 1642,
+          "stars": 44051,
+          "trend": 1645,
           "trendDays": 30,
           "score": 83,
           "license": "MIT",
@@ -7887,7 +7887,7 @@
             ],
             [
               "2026-10-28",
-              44048
+              44051
             ]
           ]
         },
@@ -8085,12 +8085,12 @@
           "description": "Google's code-first Python toolkit for building, evaluating, and deploying production AI agents with the same stack powering Gemini and Agentspace.",
           "tagline": "Google's production agent development kit",
           "note": "",
-          "stars": 22029,
-          "trend": 359,
+          "stars": 22030,
+          "trend": 360,
           "trendDays": 30,
           "score": 77,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T13:34:00Z",
+          "lastCommit": "2026-10-28T16:16:40Z",
           "lastRelease": "2026-10-23T18:08:23Z",
           "archived": false,
           "status": "active",
@@ -8170,7 +8170,7 @@
             ],
             [
               "2026-10-28",
-              22029
+              22030
             ]
           ]
         },
@@ -8181,8 +8181,8 @@
           "description": "Universal memory layer that gives AI agents persistent, personalized long-term memory with extraction, retrieval, and graph-backed storage.",
           "tagline": "Universal memory layer for agents",
           "note": "",
-          "stars": 67988,
-          "trend": 1797,
+          "stars": 67995,
+          "trend": 1804,
           "trendDays": 30,
           "score": 82,
           "license": "Apache-2.0",
@@ -8266,7 +8266,7 @@
             ],
             [
               "2026-10-28",
-              67988
+              67995
             ]
           ]
         },
@@ -8277,8 +8277,8 @@
           "description": "Playwright-powered agent harness that makes websites accessible to LLMs so they can navigate, fill forms, and automate tasks across real browsers.",
           "tagline": "LLM-driven browser automation framework",
           "note": "",
-          "stars": 119369,
-          "trend": 2788,
+          "stars": 119377,
+          "trend": 2796,
           "trendDays": 30,
           "score": 84,
           "license": "MIT",
@@ -8360,7 +8360,7 @@
             ],
             [
               "2026-10-28",
-              119369
+              119377
             ]
           ]
         },
@@ -8376,7 +8376,7 @@
           "trendDays": 30,
           "score": 79,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T15:14:54Z",
+          "lastCommit": "2026-10-28T16:05:38Z",
           "lastRelease": "2026-10-28T07:57:03Z",
           "archived": false,
           "status": "active",
@@ -8562,12 +8562,12 @@
           "description": "Unified 1.0 SDK (April 2026) that merges Semantic Kernel and AutoGen into a single production-ready framework for agents and multi-agent workflows (Microsoft).",
           "tagline": "Unified Semantic Kernel plus AutoGen successor",
           "note": "",
-          "stars": 14358,
-          "trend": 521,
+          "stars": 14359,
+          "trend": 522,
           "trendDays": 30,
-          "score": 78,
+          "score": 79,
           "license": "MIT",
-          "lastCommit": "2026-10-28T13:50:26Z",
+          "lastCommit": "2026-10-28T16:21:39Z",
           "lastRelease": "2026-10-23T14:32:13Z",
           "archived": false,
           "status": "active",
@@ -8645,7 +8645,7 @@
             ],
             [
               "2026-10-28",
-              14358
+              14359
             ]
           ]
         },
@@ -8656,8 +8656,8 @@
           "description": "Lightweight framework for multi-agent workflows with handoffs, guardrails, tracing, and voice-agent support across Python and JavaScript (OpenAI).",
           "tagline": "OpenAI's multi-agent and voice-agent SDK",
           "note": "",
-          "stars": 30352,
-          "trend": 613,
+          "stars": 30354,
+          "trend": 615,
           "trendDays": 30,
           "score": 78,
           "license": "MIT",
@@ -8740,7 +8740,7 @@
             ],
             [
               "2026-10-28",
-              30352
+              30354
             ]
           ]
         },
@@ -8751,12 +8751,12 @@
           "description": "Model-driven SDK that builds agents in a few lines of code - 14M+ downloads, Python and TypeScript builds, deploys to Bedrock AgentCore, Lambda, Fargate, or Kubernetes (AWS).",
           "tagline": "AWS model-driven agents SDK, 14M downloads",
           "note": "",
-          "stars": 8984,
-          "trend": 477,
+          "stars": 8985,
+          "trend": 478,
           "trendDays": 30,
           "score": 80,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T15:18:46Z",
+          "lastCommit": "2026-10-28T16:27:35Z",
           "lastRelease": "2026-10-22T18:49:37Z",
           "archived": false,
           "status": "active",
@@ -8836,7 +8836,7 @@
             ],
             [
               "2026-10-28",
-              8984
+              8985
             ]
           ]
         },
@@ -8847,12 +8847,12 @@
           "description": "Self-hosted personal AI assistant that answers on 15+ channels you already use - WhatsApp, Telegram, Slack, Discord, iMessage - with voice on macOS/iOS/Android and a live Canvas. The fastest-growing open-source project of 2026.",
           "tagline": "Self-hosted personal AI assistant on your channels",
           "note": "",
-          "stars": 393260,
-          "trend": 2558,
+          "stars": 393267,
+          "trend": 2565,
           "trendDays": 30,
           "score": 85,
           "license": "MIT",
-          "lastCommit": "2026-10-28T15:29:24Z",
+          "lastCommit": "2026-10-28T16:33:44Z",
           "lastRelease": "2026-10-27T11:56:59Z",
           "archived": false,
           "status": "active",
@@ -8930,7 +8930,7 @@
             ],
             [
               "2026-10-28",
-              393260
+              393267
             ]
           ]
         },
@@ -8941,12 +8941,12 @@
           "description": "Self-improving agent with a built-in learning loop - it creates skills from experience, searches its own past conversations, and builds a model of you across sessions. Runs anywhere from a $5 VPS to a GPU cluster (Nous Research).",
           "tagline": "Self-improving agent that learns skills from experience",
           "note": "",
-          "stars": 257977,
-          "trend": 8302,
+          "stars": 257996,
+          "trend": 8321,
           "trendDays": 30,
           "score": 88,
           "license": "MIT",
-          "lastCommit": "2026-10-28T15:27:39Z",
+          "lastCommit": "2026-10-28T15:56:59Z",
           "lastRelease": "2026-10-23T05:28:45Z",
           "archived": false,
           "status": "active",
@@ -9025,7 +9025,7 @@
             ],
             [
               "2026-10-28",
-              257977
+              257996
             ]
           ]
         },
@@ -9036,8 +9036,8 @@
           "description": "The project that ignited the autonomous-agent wave in 2023, now a full platform for building, deploying, and monitoring continuous agents with a visual workflow builder.",
           "tagline": "The original autonomous agent, now a platform",
           "note": "",
-          "stars": 187803,
-          "trend": 205,
+          "stars": 187804,
+          "trend": 206,
           "trendDays": 30,
           "score": 78,
           "license": "Other",
@@ -9119,7 +9119,7 @@
             ],
             [
               "2026-10-28",
-              187803
+              187804
             ]
           ]
         },
@@ -9130,12 +9130,12 @@
           "description": "Production-ready platform for building agentic workflows visually, with built-in RAG pipelines, model management, and observability. The go-to self-hosted choice for shipping LLM apps without glue code.",
           "tagline": "Visual platform for production agentic workflows",
           "note": "",
-          "stars": 159813,
-          "trend": 2411,
+          "stars": 159820,
+          "trend": 2418,
           "trendDays": 30,
           "score": 80,
           "license": "Other",
-          "lastCommit": "2026-10-28T15:07:17Z",
+          "lastCommit": "2026-10-28T16:23:39Z",
           "lastRelease": "2026-10-23T06:33:50Z",
           "archived": false,
           "status": "active",
@@ -9215,7 +9215,7 @@
             ],
             [
               "2026-10-28",
-              159813
+              159820
             ]
           ]
         },
@@ -9226,8 +9226,8 @@
           "description": "The framework that defined LLM application development, now an agent engineering platform with the largest integration ecosystem in the space. Pairs with LangGraph when you need production-grade control.",
           "tagline": "The original LLM framework, evolved for agents",
           "note": "",
-          "stars": 148617,
-          "trend": 1424,
+          "stars": 148620,
+          "trend": 1427,
           "trendDays": 30,
           "score": 82,
           "license": "MIT",
@@ -9311,7 +9311,7 @@
             ],
             [
               "2026-10-28",
-              148617
+              148620
             ]
           ]
         },
@@ -9322,8 +9322,8 @@
           "description": "Open-source super-agent harness that orchestrates sub-agents, memory, and sandboxes through extensible skills - the 2.0 rewrite topped GitHub Trending in February 2026 (ByteDance).",
           "tagline": "Super-agent harness with sub-agents and sandboxes",
           "note": "",
-          "stars": 84566,
-          "trend": 1425,
+          "stars": 84571,
+          "trend": 1430,
           "trendDays": 30,
           "score": 82,
           "license": "MIT",
@@ -9407,7 +9407,7 @@
             ],
             [
               "2026-10-28",
-              84566
+              84571
             ]
           ]
         },
@@ -9418,8 +9418,8 @@
           "description": "All-in-one local-first AI workspace - chat with documents, run agents, and keep every byte on your own hardware, with desktop and Docker distributions and multi-user support.",
           "tagline": "Local-first all-in-one agent and RAG workspace",
           "note": "",
-          "stars": 67674,
-          "trend": 1125,
+          "stars": 67680,
+          "trend": 1131,
           "trendDays": 30,
           "score": 81,
           "license": "MIT",
@@ -9503,7 +9503,7 @@
             ],
             [
               "2026-10-28",
-              67674
+              67680
             ]
           ]
         },
@@ -9514,8 +9514,8 @@
           "description": "Visual drag-and-drop builder for AI agents and LLM workflows - wire up chains, tools, and memory in the browser and deploy as APIs without writing orchestration code.",
           "tagline": "Build AI agents visually, deploy as APIs",
           "note": "Project wound down; repository archived upstream.",
-          "stars": 55530,
-          "trend": 42,
+          "stars": 55531,
+          "trend": 43,
           "trendDays": 30,
           "score": 0,
           "license": "Other",
@@ -9599,7 +9599,7 @@
             ],
             [
               "2026-10-28",
-              55530
+              55531
             ]
           ]
         },
@@ -9704,8 +9704,8 @@
           "description": "Lightweight open-source AI agent for your tools, chats, and workflows - pip-installable and refreshingly small compared to heavyweight agent platforms (HKU Data Science Lab).",
           "tagline": "Lightweight AI agent for tools and workflows",
           "note": "",
-          "stars": 49561,
-          "trend": 925,
+          "stars": 49564,
+          "trend": 928,
           "trendDays": 30,
           "score": 80,
           "license": "MIT",
@@ -9788,7 +9788,7 @@
             ],
             [
               "2026-10-28",
-              49561
+              49564
             ]
           ]
         },
@@ -9895,8 +9895,8 @@
           "description": "Stateful agents framework from the team behind MemGPT - agents get editable long-term memory that persists across sessions, served via REST APIs with a visual development environment.",
           "tagline": "Stateful agents with editable long-term memory",
           "note": "",
-          "stars": 25272,
-          "trend": 331,
+          "stars": 25273,
+          "trend": 332,
           "trendDays": 30,
           "score": 76,
           "license": "Apache-2.0",
@@ -9978,7 +9978,7 @@
             ],
             [
               "2026-10-28",
-              25272
+              25273
             ]
           ]
         },
@@ -9989,8 +9989,8 @@
           "description": "Persistent memory plugin for Claude Code - captures everything the agent does in a session, compresses it with AI, and injects the relevant context into future sessions.",
           "tagline": "Persistent compressed memory across agent sessions",
           "note": "",
-          "stars": 103918,
-          "trend": 9098,
+          "stars": 103938,
+          "trend": 9118,
           "trendDays": 30,
           "score": 92,
           "license": "Apache-2.0",
@@ -10072,7 +10072,7 @@
             ],
             [
               "2026-10-28",
-              103918
+              103938
             ]
           ]
         },
@@ -10083,12 +10083,12 @@
           "description": "Agent memory engine built for learning rather than plain recall - backed by a published paper and SDKs for Python and TypeScript, positioning itself as the post-RAG approach to agent memory.",
           "tagline": "Agent memory that learns, not just remembers",
           "note": "",
-          "stars": 54622,
-          "trend": 15059,
+          "stars": 54939,
+          "trend": 15376,
           "trendDays": 30,
           "score": 89,
           "license": "MIT",
-          "lastCommit": "2026-10-28T14:55:38Z",
+          "lastCommit": "2026-10-28T15:35:46Z",
           "lastRelease": "2026-10-21T16:41:42Z",
           "archived": false,
           "status": "active",
@@ -10167,7 +10167,7 @@
             ],
             [
               "2026-10-28",
-              54622
+              54939
             ]
           ]
         },
@@ -10183,7 +10183,7 @@
           "trendDays": 30,
           "score": 78,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T12:34:12Z",
+          "lastCommit": "2026-10-28T16:25:01Z",
           "lastRelease": "2026-10-27T19:28:44Z",
           "archived": false,
           "status": "active",
@@ -10274,8 +10274,8 @@
           "description": "Framework for building document agents over private data, covering ingestion, parsing, indexing, and retrieval for RAG and agentic workflows.",
           "tagline": "Document agents and retrieval over private data",
           "note": "",
-          "stars": 52711,
-          "trend": 377,
+          "stars": 52713,
+          "trend": 379,
           "trendDays": 30,
           "score": 77,
           "license": "MIT",
@@ -10351,7 +10351,7 @@
             ],
             [
               "2026-10-28",
-              52711
+              52713
             ]
           ]
         },
@@ -10362,12 +10362,12 @@
           "description": "Orchestration framework for production LLM applications, composing retrieval, routing, memory, and generation into explicit modular pipelines.",
           "tagline": "Modular pipelines for production LLM apps",
           "note": "",
-          "stars": 26869,
-          "trend": 246,
+          "stars": 26870,
+          "trend": 247,
           "trendDays": 30,
           "score": 76,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T15:32:49Z",
+          "lastCommit": "2026-10-28T16:08:06Z",
           "lastRelease": "2026-10-21T19:10:58Z",
           "archived": false,
           "status": "active",
@@ -10439,7 +10439,7 @@
             ],
             [
               "2026-10-28",
-              26869
+              26870
             ]
           ]
         },
@@ -10450,12 +10450,12 @@
           "description": "TypeScript framework for AI agents with typed workflows, tool calling, memory, and evaluations, deployable to standard Node and edge runtimes.",
           "tagline": "TypeScript agent framework with typed workflows",
           "note": "",
-          "stars": 29147,
-          "trend": 762,
+          "stars": 29151,
+          "trend": 766,
           "trendDays": 30,
           "score": 75,
           "license": "Other",
-          "lastCommit": "2026-10-28T15:27:58Z",
+          "lastCommit": "2026-10-28T16:32:23Z",
           "lastRelease": "2026-10-28T15:23:57Z",
           "archived": false,
           "status": "active",
@@ -10527,7 +10527,7 @@
             ],
             [
               "2026-10-28",
-              29147
+              29151
             ]
           ]
         }
@@ -10545,12 +10545,12 @@
           "description": "AI software development platform achieving 53-72% resolve rate on SWE-Bench Verified.",
           "tagline": "AI dev platform, 53-72% SWE-Bench resolve rate",
           "note": "",
-          "stars": 92092,
-          "trend": 2725,
+          "stars": 92095,
+          "trend": 2728,
           "trendDays": 30,
           "score": 84,
           "license": "MIT",
-          "lastCommit": "2026-10-28T13:16:27Z",
+          "lastCommit": "2026-10-28T16:22:14Z",
           "lastRelease": "2026-10-27T14:35:23Z",
           "archived": false,
           "status": "active",
@@ -10630,7 +10630,7 @@
             ],
             [
               "2026-10-28",
-              92092
+              92095
             ]
           ]
         },
@@ -10641,8 +10641,8 @@
           "description": "AI pair programmer in the terminal that edits code directly in your local repository.",
           "tagline": "AI pair programmer editing your local repository",
           "note": "",
-          "stars": 49792,
-          "trend": 563,
+          "stars": 49793,
+          "trend": 564,
           "trendDays": 30,
           "score": 70,
           "license": "Apache-2.0",
@@ -10726,7 +10726,7 @@
             ],
             [
               "2026-10-28",
-              49792
+              49793
             ]
           ]
         },
@@ -10737,8 +10737,8 @@
           "description": "Autonomous agent that solves real GitHub issues by reading, editing, and testing code (NeurIPS 2024).",
           "tagline": "Autonomous agent solving real GitHub issues",
           "note": "",
-          "stars": 20668,
-          "trend": 235,
+          "stars": 20669,
+          "trend": 236,
           "trendDays": 30,
           "score": 69,
           "license": "MIT",
@@ -10819,7 +10819,7 @@
             ],
             [
               "2026-10-28",
-              20668
+              20669
             ]
           ]
         },
@@ -11021,7 +11021,7 @@
           "trendDays": 30,
           "score": 82,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T00:34:58Z",
+          "lastCommit": "2026-10-28T16:19:48Z",
           "lastRelease": "2026-10-26T09:06:50Z",
           "archived": false,
           "status": "active",
@@ -11112,8 +11112,8 @@
           "description": "Open-source IDE assistant and CLI that supports source-controlled AI checks enforceable in CI, across VS Code, JetBrains, and terminal.",
           "tagline": "Open-source IDE assistant with CI-enforceable AI checks",
           "note": "",
-          "stars": 36358,
-          "trend": 306,
+          "stars": 36360,
+          "trend": 308,
           "trendDays": 30,
           "score": 71,
           "license": "Apache-2.0",
@@ -11197,7 +11197,7 @@
             ],
             [
               "2026-10-28",
-              36358
+              36360
             ]
           ]
         },
@@ -11208,12 +11208,12 @@
           "description": "Terminal-native AI coding agent that is model-agnostic and scriptable for headless workflows, breakout 2026 OSS entry.",
           "tagline": "Terminal-native, model-agnostic coding agent",
           "note": "",
-          "stars": 222641,
-          "trend": 12107,
+          "stars": 222660,
+          "trend": 12126,
           "trendDays": 30,
           "score": 92,
           "license": "MIT",
-          "lastCommit": "2026-10-28T15:17:47Z",
+          "lastCommit": "2026-10-28T16:27:29Z",
           "lastRelease": "2026-10-28T06:17:49Z",
           "archived": false,
           "status": "active",
@@ -11292,7 +11292,7 @@
             ],
             [
               "2026-10-28",
-              222641
+              222660
             ]
           ]
         },
@@ -11303,8 +11303,8 @@
           "description": "Local, extensible AI agent that handles complex engineering tasks end-to-end via the Model Context Protocol.",
           "tagline": "Local MCP-based engineering agent",
           "note": "",
-          "stars": 55862,
-          "trend": 1131,
+          "stars": 55863,
+          "trend": 1132,
           "trendDays": 30,
           "score": 81,
           "license": "Apache-2.0",
@@ -11385,7 +11385,7 @@
             ],
             [
               "2026-10-28",
-              55862
+              55863
             ]
           ]
         },
@@ -11396,12 +11396,12 @@
           "description": "Open-source agentic CLI bringing Gemini models and ReAct-style tool use directly to the terminal (Google).",
           "tagline": "Google's open-source agentic terminal for Gemini",
           "note": "",
-          "stars": 108595,
-          "trend": 1427,
+          "stars": 108598,
+          "trend": 1430,
           "trendDays": 30,
           "score": 82,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T01:27:48Z",
+          "lastCommit": "2026-10-28T16:05:27Z",
           "lastRelease": "2026-10-27T20:26:28Z",
           "archived": false,
           "status": "active",
@@ -11481,7 +11481,7 @@
             ],
             [
               "2026-10-28",
-              108595
+              108598
             ]
           ]
         },
@@ -11492,8 +11492,8 @@
           "description": "Terminal-native coding agent that hits ~80.8% on SWE-bench Verified with Opus 4.6 and ships as CLI plus IDE extensions (Anthropic).",
           "tagline": "Anthropic's 80.8% SWE-bench terminal coding agent",
           "note": "",
-          "stars": 153695,
-          "trend": 5262,
+          "stars": 153704,
+          "trend": 5271,
           "trendDays": 30,
           "score": 79,
           "license": null,
@@ -11577,7 +11577,7 @@
             ],
             [
               "2026-10-28",
-              153695
+              153704
             ]
           ]
         },
@@ -11588,8 +11588,8 @@
           "description": "Terminal-native coding agent with the signature glamorous TUI - model-agnostic, with LSP integration and MCP support, from the makers of Bubble Tea (Charm).",
           "tagline": "Glamorous terminal coding agent from Charm",
           "note": "",
-          "stars": 28848,
-          "trend": 512,
+          "stars": 28849,
+          "trend": 513,
           "trendDays": 30,
           "score": 74,
           "license": "Other",
@@ -11673,7 +11673,7 @@
             ],
             [
               "2026-10-28",
-              28848
+              28849
             ]
           ]
         },
@@ -11753,12 +11753,12 @@
           "description": "OpenAI's terminal coding agent that reads, edits, and runs code in a local sandbox, with the same agent available in the IDE and on the web.",
           "tagline": "Terminal coding agent from OpenAI",
           "note": "",
-          "stars": 131410,
-          "trend": 4503,
+          "stars": 131415,
+          "trend": 4508,
           "trendDays": 30,
           "score": 86,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T15:10:52Z",
+          "lastCommit": "2026-10-28T16:15:21Z",
           "lastRelease": "2026-10-27T20:09:38Z",
           "archived": false,
           "status": "active",
@@ -11830,7 +11830,7 @@
             ],
             [
               "2026-10-28",
-              131410
+              131415
             ]
           ]
         },
@@ -11841,13 +11841,13 @@
           "description": "Terminal coding agent from the Qwen team, adapted for Qwen3-Coder models with parser and tool support tuned for agentic workflows.",
           "tagline": "Terminal coding agent tuned for Qwen3-Coder",
           "note": "",
-          "stars": 28774,
-          "trend": 582,
+          "stars": 28773,
+          "trend": 581,
           "trendDays": 30,
           "score": 78,
           "license": "Apache-2.0",
           "lastCommit": "2026-10-28T14:52:47Z",
-          "lastRelease": "2026-10-28T14:36:14Z",
+          "lastRelease": "2026-10-28T16:16:39Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
@@ -11918,7 +11918,7 @@
             ],
             [
               "2026-10-28",
-              28774
+              28773
             ]
           ]
         },
@@ -11929,12 +11929,12 @@
           "description": "Agentic coding platform for VS Code and JetBrains that plans, edits across files, and runs commands, with model choice spanning several providers.",
           "tagline": "Agentic coding for VS Code and JetBrains",
           "note": "",
-          "stars": 27777,
-          "trend": 348,
+          "stars": 27779,
+          "trend": 350,
           "trendDays": 30,
           "score": 77,
           "license": "MIT",
-          "lastCommit": "2026-10-28T15:30:13Z",
+          "lastCommit": "2026-10-28T16:01:43Z",
           "lastRelease": "2026-10-26T09:05:47Z",
           "archived": false,
           "status": "active",
@@ -12005,7 +12005,7 @@
             ],
             [
               "2026-10-28",
-              27777
+              27779
             ]
           ]
         }
@@ -12023,8 +12023,8 @@
           "description": "Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026).",
           "tagline": "Agents run 100 ML experiments overnight autonomously",
           "note": "",
-          "stars": 98767,
-          "trend": 1850,
+          "stars": 98769,
+          "trend": 1852,
           "trendDays": 30,
           "score": 64,
           "license": null,
@@ -12107,7 +12107,7 @@
             ],
             [
               "2026-10-28",
-              98767
+              98769
             ]
           ]
         },
@@ -12310,8 +12310,8 @@
           "description": "High-accuracy retrieval-augmented generation for answering questions from scientific literature.",
           "tagline": "High-accuracy RAG over scientific literature",
           "note": "",
-          "stars": 9488,
-          "trend": 225,
+          "stars": 9490,
+          "trend": 227,
           "trendDays": 30,
           "score": 75,
           "license": "Apache-2.0",
@@ -12392,7 +12392,7 @@
             ],
             [
               "2026-10-28",
-              9488
+              9490
             ]
           ]
         },
@@ -13252,8 +13252,8 @@
           "description": "Open implementation of AlphaEvolve that evolves whole programs with an LLM-guided evolutionary loop against a user-supplied evaluator.",
           "tagline": "LLM-guided evolutionary program search",
           "note": "",
-          "stars": 7668,
-          "trend": 218,
+          "stars": 7669,
+          "trend": 219,
           "trendDays": 30,
           "score": 75,
           "license": "Apache-2.0",
@@ -13327,7 +13327,7 @@
             ],
             [
               "2026-10-28",
-              7668
+              7669
             ]
           ]
         },
@@ -13793,8 +13793,8 @@
           "description": "Pytest-like framework with 14+ evaluation metrics for RAG, fine-tuning, and alignment assessment.",
           "tagline": "Pytest-style LLM evaluation with 14+ metrics",
           "note": "",
-          "stars": 19166,
-          "trend": 683,
+          "stars": 19167,
+          "trend": 684,
           "trendDays": 30,
           "score": 79,
           "license": "Apache-2.0",
@@ -13876,7 +13876,7 @@
             ],
             [
               "2026-10-28",
-              19166
+              19167
             ]
           ]
         },
@@ -13887,8 +13887,8 @@
           "description": "Evaluation framework for RAG quality assessment measuring both retrieval and generation with LLM-based and traditional metrics.",
           "tagline": "Evaluate RAG retrieval and generation quality",
           "note": "",
-          "stars": 16171,
-          "trend": 307,
+          "stars": 16172,
+          "trend": 308,
           "trendDays": 30,
           "score": 65,
           "license": "Apache-2.0",
@@ -13969,7 +13969,7 @@
             ],
             [
               "2026-10-28",
-              16171
+              16172
             ]
           ]
         },
@@ -14175,7 +14175,7 @@
           "trendDays": 30,
           "score": 67,
           "license": "Other",
-          "lastCommit": "2026-10-28T11:21:35Z",
+          "lastCommit": "2026-10-28T15:45:27Z",
           "lastRelease": "2026-10-28T11:21:43Z",
           "archived": false,
           "status": "active",
@@ -14367,7 +14367,7 @@
           "trendDays": 30,
           "score": 72,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T13:47:16Z",
+          "lastCommit": "2026-10-28T16:31:34Z",
           "lastRelease": "2026-10-28T08:08:03Z",
           "archived": false,
           "status": "active",
@@ -14551,8 +14551,8 @@
           "description": "Framework for reproducible LLM evals with sandboxed agent execution, 100+ prebuilt evaluations, and VS Code integration (UK AI Safety Institute).",
           "tagline": "Reproducible sandboxed LLM evals, 100+ prebuilt",
           "note": "",
-          "stars": 3121,
-          "trend": 250,
+          "stars": 3122,
+          "trend": 251,
           "trendDays": 30,
           "score": 79,
           "license": "MIT",
@@ -14635,7 +14635,7 @@
             ],
             [
               "2026-10-28",
-              3121
+              3122
             ]
           ]
         },
@@ -14835,8 +14835,8 @@
           "description": "Full-lifecycle agent optimization platform covering prompt development, evaluation, and observability with tracing for agent applications (ByteDance Coze team).",
           "tagline": "Full-lifecycle agent evaluation and optimization",
           "note": "",
-          "stars": 5790,
-          "trend": 41,
+          "stars": 5791,
+          "trend": 42,
           "trendDays": 30,
           "score": 70,
           "license": "Apache-2.0",
@@ -14919,7 +14919,7 @@
             ],
             [
               "2026-10-28",
-              5790
+              5791
             ]
           ]
         }
@@ -14937,12 +14937,12 @@
           "description": "Unified API gateway for 100+ LLMs with load balancing, cost tracking, and automatic fallback routing.",
           "tagline": "Unified API gateway for 100+ LLMs",
           "note": "",
-          "stars": 62239,
-          "trend": 2464,
+          "stars": 62241,
+          "trend": 2466,
           "trendDays": 30,
           "score": 80,
           "license": "Other",
-          "lastCommit": "2026-10-28T14:32:41Z",
+          "lastCommit": "2026-10-28T16:32:47Z",
           "lastRelease": "2026-10-27T19:58:45Z",
           "archived": false,
           "status": "active",
@@ -15022,7 +15022,7 @@
             ],
             [
               "2026-10-28",
-              62239
+              62241
             ]
           ]
         },
@@ -15415,12 +15415,12 @@
           "description": "High-performance enterprise AI gateway with adaptive load balancing, cluster mode, guardrails, and 1000+ model support; claims 50x lower latency than LiteLLM at under 100µs overhead at 5K RPS (Maxim AI).",
           "tagline": "Enterprise AI gateway with <100µs overhead at 5K RPS",
           "note": "",
-          "stars": 9177,
-          "trend": 758,
+          "stars": 9178,
+          "trend": 759,
           "trendDays": 30,
           "score": 83,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T14:29:08Z",
+          "lastCommit": "2026-10-28T16:18:08Z",
           "lastRelease": "2026-10-21T01:04:28Z",
           "archived": false,
           "status": "active",
@@ -15500,7 +15500,7 @@
             ],
             [
               "2026-10-28",
-              9177
+              9178
             ]
           ]
         },
@@ -15707,8 +15707,8 @@
           "description": "Testing and evaluation for ML and LLM models covering bias, performance regression, and security vulnerabilities.",
           "tagline": "ML and LLM testing for bias and security vulnerabilities",
           "note": "",
-          "stars": 5932,
-          "trend": 91,
+          "stars": 5933,
+          "trend": 92,
           "trendDays": 30,
           "score": 72,
           "license": "Apache-2.0",
@@ -15792,7 +15792,7 @@
             ],
             [
               "2026-10-28",
-              5932
+              5933
             ]
           ]
         },
@@ -16284,9 +16284,9 @@
           "stars": 6243,
           "trend": 60,
           "trendDays": 30,
-          "score": 70,
+          "score": 71,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-20T06:02:37Z",
+          "lastCommit": "2026-10-28T15:59:49Z",
           "lastRelease": "2025-08-21T18:47:38Z",
           "archived": false,
           "status": "active",
@@ -16672,7 +16672,7 @@
           "trendDays": 30,
           "score": 70,
           "license": "Other",
-          "lastCommit": "2026-10-28T09:35:46Z",
+          "lastCommit": "2026-10-28T16:14:42Z",
           "lastRelease": "2026-09-16T17:15:59Z",
           "archived": false,
           "status": "active",
@@ -16957,7 +16957,7 @@
           "trendDays": 30,
           "score": 74,
           "license": "MIT",
-          "lastCommit": "2026-10-28T14:42:00Z",
+          "lastCommit": "2026-10-28T16:07:45Z",
           "lastRelease": "2026-09-04T22:19:28Z",
           "archived": false,
           "status": "active",
@@ -17046,8 +17046,8 @@
           "description": "Time-series foundation model for zero-shot forecasting across domains without task-specific training (Google).",
           "tagline": "Zero-shot time-series forecasting foundation model",
           "note": "",
-          "stars": 34807,
-          "trend": 904,
+          "stars": 34808,
+          "trend": 905,
           "trendDays": 30,
           "score": 78,
           "license": "Apache-2.0",
@@ -17131,7 +17131,7 @@
             ],
             [
               "2026-10-28",
-              34807
+              34808
             ]
           ]
         },
@@ -19919,12 +19919,12 @@
           "description": "AI-assisted annotation with Segment Anything and other foundation models for automatic segmentation, detection, and classification pre-labeling.",
           "tagline": "SAM-powered annotation for auto-segmentation and detection",
           "note": "",
-          "stars": 10834,
-          "trend": 277,
+          "stars": 10836,
+          "trend": 279,
           "trendDays": 30,
           "score": 75,
           "license": "GPL-3.0",
-          "lastCommit": "2026-10-28T06:54:18Z",
+          "lastCommit": "2026-10-28T15:57:02Z",
           "lastRelease": "2026-10-28T07:10:01Z",
           "archived": false,
           "status": "active",
@@ -20004,7 +20004,7 @@
             ],
             [
               "2026-10-28",
-              10834
+              10836
             ]
           ]
         },
@@ -20986,7 +20986,7 @@
           "trendDays": 30,
           "score": 72,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-27T21:37:58Z",
+          "lastCommit": "2026-10-28T16:28:02Z",
           "lastRelease": "2026-09-22T18:59:17Z",
           "archived": false,
           "status": "active",
@@ -21837,12 +21837,12 @@
           "description": "End-to-end ML lifecycle platform with experiment tracking, model registry, and integrated prompt optimization.",
           "tagline": "End-to-end ML lifecycle with experiment tracking and registry",
           "note": "",
-          "stars": 28570,
-          "trend": 410,
+          "stars": 28572,
+          "trend": 412,
           "trendDays": 30,
           "score": 77,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T15:15:49Z",
+          "lastCommit": "2026-10-28T16:18:54Z",
           "lastRelease": "2026-10-21T03:51:13Z",
           "archived": false,
           "status": "active",
@@ -21922,7 +21922,7 @@
             ],
             [
               "2026-10-28",
-              28570
+              28572
             ]
           ]
         },
@@ -21933,12 +21933,12 @@
           "description": "Open-source LLM engineering platform with tracing, evaluations, prompt management, and cost analytics.",
           "tagline": "Open-source LLM tracing, evals, and prompt management",
           "note": "",
-          "stars": 36647,
-          "trend": 1510,
+          "stars": 36651,
+          "trend": 1514,
           "trendDays": 30,
           "score": 79,
           "license": "Other",
-          "lastCommit": "2026-10-28T15:23:28Z",
+          "lastCommit": "2026-10-28T16:25:53Z",
           "lastRelease": "2026-10-27T15:03:06Z",
           "archived": false,
           "status": "active",
@@ -22018,7 +22018,7 @@
             ],
             [
               "2026-10-28",
-              36647
+              36651
             ]
           ]
         },
@@ -22029,8 +22029,8 @@
           "description": "Modern data workflow automation with retries, caching, and real-time logging.",
           "tagline": "Modern data workflow automation with retries and caching",
           "note": "",
-          "stars": 24092,
-          "trend": 150,
+          "stars": 24093,
+          "trend": 151,
           "trendDays": 30,
           "score": 75,
           "license": "Apache-2.0",
@@ -22114,7 +22114,7 @@
             ],
             [
               "2026-10-28",
-              24092
+              24093
             ]
           ]
         },
@@ -22125,13 +22125,13 @@
           "description": "LLM debugging, evaluation, and monitoring platform with detailed tracing and quality dashboards (Comet).",
           "tagline": "LLM debugging, evaluation, and quality dashboards",
           "note": "",
-          "stars": 22987,
-          "trend": 716,
+          "stars": 22989,
+          "trend": 718,
           "trendDays": 30,
           "score": 79,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T14:40:30Z",
-          "lastRelease": "2026-10-28T12:54:22Z",
+          "lastCommit": "2026-10-28T16:03:29Z",
+          "lastRelease": "2026-10-28T15:54:26Z",
           "archived": false,
           "status": "active",
           "bucket": "live",
@@ -22210,7 +22210,7 @@
             ],
             [
               "2026-10-28",
-              22987
+              22989
             ]
           ]
         },
@@ -22699,8 +22699,8 @@
           "description": "Human-centric framework for managing real-life data science and ML projects at scale (Netflix).",
           "tagline": "Human-centric framework for real-life ML projects at scale",
           "note": "",
-          "stars": 10321,
-          "trend": 39,
+          "stars": 10322,
+          "trend": 40,
           "trendDays": 30,
           "score": 71,
           "license": "Apache-2.0",
@@ -22784,7 +22784,7 @@
             ],
             [
               "2026-10-28",
-              10321
+              10322
             ]
           ]
         },
@@ -23082,8 +23082,8 @@
           "description": "Self-hosted experiment tracker with a high-performance UI that handles 10,000+ training runs.",
           "tagline": "Self-hosted experiment tracker for 10,000+ training runs",
           "note": "",
-          "stars": 6291,
-          "trend": 22,
+          "stars": 6292,
+          "trend": 23,
           "trendDays": 30,
           "score": 58,
           "license": "Apache-2.0",
@@ -23167,7 +23167,7 @@
             ],
             [
               "2026-10-28",
-              6291
+              6292
             ]
           ]
         },
@@ -23286,7 +23286,7 @@
           "trendDays": 30,
           "score": 76,
           "license": "MIT",
-          "lastCommit": "2026-10-28T12:51:01Z",
+          "lastCommit": "2026-10-28T16:30:32Z",
           "lastRelease": "2026-10-26T19:29:51Z",
           "archived": false,
           "status": "active",
@@ -23474,7 +23474,7 @@
           "trendDays": 30,
           "score": 74,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T11:25:26Z",
+          "lastCommit": "2026-10-28T14:32:11Z",
           "lastRelease": "2026-10-01T13:45:59Z",
           "archived": false,
           "status": "active",
@@ -23762,7 +23762,7 @@
           "trendDays": 30,
           "score": 67,
           "license": "Other",
-          "lastCommit": "2026-10-28T15:14:45Z",
+          "lastCommit": "2026-10-28T16:03:23Z",
           "lastRelease": "2026-09-23T16:58:34Z",
           "archived": false,
           "status": "active",
@@ -24138,8 +24138,8 @@
           "description": "Docker-like local LLM runner for getting models up and running quickly for prototyping.",
           "tagline": "Docker-like local LLM runner for fast prototyping",
           "note": "",
-          "stars": 185109,
-          "trend": 3261,
+          "stars": 185115,
+          "trend": 3267,
           "trendDays": 30,
           "score": 84,
           "license": "MIT",
@@ -24223,7 +24223,7 @@
             ],
             [
               "2026-10-28",
-              185109
+              185115
             ]
           ]
         },
@@ -24234,12 +24234,12 @@
           "description": "LLM inference in C/C++ with broad hardware support - the foundation for most local LLM applications.",
           "tagline": "C/C++ LLM inference, foundation for local apps",
           "note": "",
-          "stars": 132627,
-          "trend": 2867,
+          "stars": 132634,
+          "trend": 2874,
           "trendDays": 30,
           "score": 84,
           "license": "MIT",
-          "lastCommit": "2026-10-28T15:32:38Z",
+          "lastCommit": "2026-10-28T16:01:37Z",
           "lastRelease": "2026-10-28T12:47:51Z",
           "archived": false,
           "status": "active",
@@ -24315,7 +24315,7 @@
             ],
             [
               "2026-10-28",
-              132627
+              132634
             ]
           ]
         },
@@ -24326,12 +24326,12 @@
           "description": "High-throughput LLM serving engine with PagedAttention, powering most open-source LLM deployments in production.",
           "tagline": "High-throughput PagedAttention engine for production LLMs",
           "note": "",
-          "stars": 95771,
-          "trend": 2912,
+          "stars": 95774,
+          "trend": 2915,
           "trendDays": 30,
           "score": 84,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T15:09:05Z",
+          "lastCommit": "2026-10-28T16:34:00Z",
           "lastRelease": "2026-10-18T06:50:48Z",
           "archived": false,
           "status": "active",
@@ -24411,7 +24411,7 @@
             ],
             [
               "2026-10-28",
-              95771
+              95774
             ]
           ]
         },
@@ -24422,8 +24422,8 @@
           "description": "High-performance LLM serving framework powering 400K+ GPUs with best-in-class structured and constrained decoding.",
           "tagline": "High-performance LLM serving with constrained decoding",
           "note": "",
-          "stars": 38314,
-          "trend": 1792,
+          "stars": 38315,
+          "trend": 1793,
           "trendDays": 30,
           "score": 84,
           "license": "Apache-2.0",
@@ -24507,7 +24507,7 @@
             ],
             [
               "2026-10-28",
-              38314
+              38315
             ]
           ]
         },
@@ -24523,7 +24523,7 @@
           "trendDays": 30,
           "score": 71,
           "license": "Other",
-          "lastCommit": "2026-10-28T14:33:10Z",
+          "lastCommit": "2026-10-28T16:28:42Z",
           "lastRelease": "2026-04-20T11:51:33Z",
           "archived": false,
           "status": "active",
@@ -24892,7 +24892,7 @@
           "trendDays": 30,
           "score": 71,
           "license": "Other",
-          "lastCommit": "2026-10-28T15:27:51Z",
+          "lastCommit": "2026-10-28T16:16:42Z",
           "lastRelease": "2026-10-27T20:24:42Z",
           "archived": false,
           "status": "active",
@@ -24975,12 +24975,12 @@
           "description": "Kubernetes-native distributed inference stack with prefix-cache-aware routing and disaggregated serving, built on vLLM and the Gateway API.",
           "tagline": "Kubernetes-native distributed LLM inference",
           "note": "",
-          "stars": 5072,
-          "trend": 406,
+          "stars": 5074,
+          "trend": 408,
           "trendDays": 30,
           "score": 81,
           "license": "Apache-2.0",
-          "lastCommit": "2026-10-28T15:21:30Z",
+          "lastCommit": "2026-10-28T16:22:00Z",
           "lastRelease": "2026-10-20T02:30:10Z",
           "archived": false,
           "status": "active",
@@ -25051,7 +25051,7 @@
             ],
             [
               "2026-10-28",
-              5072
+              5074
             ]
           ]
         },
