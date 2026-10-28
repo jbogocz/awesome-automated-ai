@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const mockExec = vi.fn();
-vi.mock("node:child_process", () => ({
-  execFileSync: (...args: unknown[]) => mockExec(...args),
+const mockGraphql = vi.fn();
+vi.mock("../../src/github/client.ts", () => ({
+  graphql: (...args: unknown[]) => mockGraphql(...args),
 }));
 
 const { buildMetadataQuery, parseMetadataResponse, fetchRepoMetadataBatch } = await import(
@@ -192,20 +192,13 @@ describe("parseMetadataResponse", () => {
 
 describe("fetchRepoMetadataBatch transport", () => {
   beforeEach(() => {
-    mockExec.mockReset();
+    mockGraphql.mockReset();
   });
 
-  it("recovers partial data when gh exits non-zero because one alias errored", async () => {
-    // gh api graphql exits 1 whenever the response carries `errors`, but the
-    // full JSON body (with data for the healthy aliases) is on stdout.
-    const body = JSON.stringify({
+  it("keeps the healthy aliases when one alias in the batch errored", async () => {
+    mockGraphql.mockResolvedValue({
       data: { r0: { stargazerCount: 7, pushedAt: "2026-01-01T00:00:00Z", isArchived: false }, r1: null },
       errors: [{ path: ["r1"], message: "Could not resolve to a Repository", type: "NOT_FOUND" }],
-    });
-    mockExec.mockImplementation(() => {
-      const err = new Error("Command failed: gh api graphql") as Error & { stdout: string };
-      err.stdout = body;
-      throw err;
     });
 
     const out = await fetchRepoMetadataBatch(["ok/repo", "gone/repo"]);
@@ -213,12 +206,8 @@ describe("fetchRepoMetadataBatch transport", () => {
     expect(out.has("gone/repo")).toBe(false);
   });
 
-  it("omits the whole chunk on a non-JSON hard failure", async () => {
-    mockExec.mockImplementation(() => {
-      const err = new Error("gh: command not found") as Error & { stdout: string };
-      err.stdout = "";
-      throw err;
-    });
+  it("omits the whole chunk when the request itself fails", async () => {
+    mockGraphql.mockRejectedValue(new Error("GitHub POST /graphql failed: HTTP 502"));
     const out = await fetchRepoMetadataBatch(["a/b"]);
     expect(out.has("a/b")).toBe(false);
   });

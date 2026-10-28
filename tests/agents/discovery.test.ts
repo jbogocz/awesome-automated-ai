@@ -72,7 +72,6 @@ const PROJECTS_YAML = `categories:
 function testConfig(maxPrsPerDay: number): Config {
   return {
     anthropicApiKey: "test-key",
-    githubToken: "test-token",
     githubRepoOwner: "owner",
     githubRepoName: "repo",
     dbPath: "curator.db",

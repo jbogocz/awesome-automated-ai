@@ -1,6 +1,6 @@
-import { Octokit } from "@octokit/rest";
 import { stringify } from "yaml";
 import type { Config } from "../config.ts";
+import { request } from "./client.ts";
 
 interface PrEntryInput {
   name: string;
@@ -79,18 +79,19 @@ ${input.reasoning}
 
 export async function createPr(opts: CreatePrOptions): Promise<number> {
   const { config, entry, category, bodyInput } = opts;
-  const octokit = new Octokit({ auth: config.githubToken });
-  const owner = config.githubRepoOwner;
-  const repo = config.githubRepoName;
+  const base = `/repos/${config.githubRepoOwner}/${config.githubRepoName}`;
 
-  const { data: ref } = await octokit.git.getRef({ owner, repo, ref: "heads/main" });
-  const baseSha = ref.object.sha;
-
+  const { data: ref } = await request<{ object: { sha: string } }>(`${base}/git/ref/heads/main`);
   const branchName = `ai-curator/add-${entry.repo.replace("/", "-")}-${Date.now()}`;
-  await octokit.git.createRef({ owner, repo, ref: `refs/heads/${branchName}`, sha: baseSha });
+  await request(`${base}/git/refs`, {
+    method: "POST",
+    body: { ref: `refs/heads/${branchName}`, sha: ref.object.sha },
+  });
 
-  const { data: fileData } = await octokit.repos.getContent({ owner, repo, path: "projects.yaml", ref: branchName });
-  if (!("content" in fileData) || typeof fileData.content !== "string") {
+  const { data: fileData } = await request<{ content?: string; sha: string }>(
+    `${base}/contents/projects.yaml?ref=${encodeURIComponent(branchName)}`,
+  );
+  if (typeof fileData.content !== "string") {
     throw new Error("Could not read projects.yaml");
   }
 
@@ -98,23 +99,19 @@ export async function createPr(opts: CreatePrOptions): Promise<number> {
   const yamlEntry = buildYamlEntry(entry);
   const updatedContent = insertEntry(currentContent, category, yamlEntry);
 
-  await octokit.repos.createOrUpdateFileContents({
-    owner,
-    repo,
-    path: "projects.yaml",
-    message: `feat: add ${entry.name} to ${category}\n\nProposed by AI Curator Engine`,
-    content: Buffer.from(updatedContent).toString("base64"),
-    sha: (fileData as { sha: string }).sha,
-    branch: branchName,
+  await request(`${base}/contents/projects.yaml`, {
+    method: "PUT",
+    body: {
+      message: `feat: add ${entry.name} to ${category}\n\nProposed by AI Curator Engine`,
+      content: Buffer.from(updatedContent).toString("base64"),
+      sha: fileData.sha,
+      branch: branchName,
+    },
   });
 
-  const { data: pr } = await octokit.pulls.create({
-    owner,
-    repo,
-    title: `Add ${entry.name} to ${category}`,
-    body: buildPrBody(bodyInput),
-    head: branchName,
-    base: "main",
+  const { data: pr } = await request<{ number: number }>(`${base}/pulls`, {
+    method: "POST",
+    body: { title: `Add ${entry.name} to ${category}`, body: buildPrBody(bodyInput), head: branchName, base: "main" },
   });
 
   return pr.number;

@@ -2,7 +2,6 @@ import { z } from "zod";
 
 const ConfigSchema = z.object({
   anthropicApiKey: z.string().min(1),
-  githubToken: z.string().min(1),
   githubRepoOwner: z.string().min(1),
   githubRepoName: z.string().min(1),
   dbPath: z.string().min(1).default("data/curator.db"),
@@ -18,7 +17,6 @@ export type Config = z.infer<typeof ConfigSchema>;
 export function loadConfig(): Config {
   return ConfigSchema.parse({
     anthropicApiKey: process.env.ANTHROPIC_API_KEY,
-    githubToken: process.env.GITHUB_TOKEN,
     githubRepoOwner: process.env.GITHUB_REPO_OWNER,
     githubRepoName: process.env.GITHUB_REPO_NAME,
     dbPath: process.env.DB_PATH ?? "data/curator.db",

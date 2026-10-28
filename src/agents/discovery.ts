@@ -63,7 +63,6 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
     const manifest = loadManifest();
 
     const candidates = await searchGitHub({
-      token: config.githubToken,
       topics: getDefaultTopics(),
       minStars: 50,
       maxResults: config.maxCandidatesPerRun,
@@ -89,7 +88,7 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
       });
       tokensUsed += analysis.tokensUsed;
 
-      const signals = await fetchRepoSignals(config.githubToken, candidate.repo);
+      const signals = await fetchRepoSignals(candidate.repo);
 
       // starsLastMonth and issueResponseHours left undefined: fetching either
       // requires paginated stargazer-timeline / issue-comments walks per

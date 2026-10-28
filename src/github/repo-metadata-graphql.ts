@@ -1,7 +1,7 @@
 import { PULSE_WINDOW_DAYS } from "../constants.ts";
 import { isPrereleaseTag } from "../status.ts";
 import { logger } from "../utils/logger.ts";
-import { ghGraphQL } from "./graphql.ts";
+import { graphql } from "./client.ts";
 
 // Live repo metadata for the weekly regen, fetched as alias-batched GraphQL:
 // one query per CHUNK_SIZE repos instead of several REST calls per repo, so
@@ -181,11 +181,11 @@ export async function fetchRepoMetadataBatch(repos: string[]): Promise<Map<strin
   for (let i = 0; i < repos.length; i += CHUNK_SIZE) {
     const chunk = repos.slice(i, i + CHUNK_SIZE);
     try {
-      const resp = await ghGraphQL<MetadataGraphQLResponse>(buildMetadataQuery(chunk));
+      const resp = await graphql<MetadataGraphQLResponse>(buildMetadataQuery(chunk));
       for (const [repo, meta] of parseMetadataResponse(chunk, resp)) out.set(repo, meta);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      // Not every error here was retried — ghGraphQL only retries transient
+      // Not every error here was retried — the client only retries transient
       // ones — so don't claim it was.
       logger.warn(`Metadata batch ${i}-${i + chunk.length} failed (${chunk.length} repos skipped): ${msg}`);
     }
