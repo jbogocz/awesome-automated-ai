@@ -366,7 +366,7 @@ function rowHtml(e) {
     <span class="row__tagline">${escapeText(e.tagline || e.description || "")}</span>
     <span class="row__tags">${tagsHtml}</span>
     <span class="row__spark">${sparkSvg(e, mag)}</span>
-    <span class="row__metric row__metric--score" title="Quality score: stars 50%, trend 25%, freshness 15%, licence 10%">${e.external || e.archived || e.score == null ? "—" : e.score}</span>
+    <span class="row__metric row__metric--score" title="Quality score: stars 50%, trend 25%, maintenance 15%, licence 10%">${e.external || e.archived || e.score == null ? "—" : e.score}</span>
     <span class="row__metric row__metric--stars">${e.external ? "—" : fmtStars(e.stars)}</span>
     <span class="row__metric row__metric--trend ${t.cls}">${t.txt}</span>
     <span class="row__metric row__metric--age">${e.external ? "—" : fmtAge(e.lastCommit)}</span>

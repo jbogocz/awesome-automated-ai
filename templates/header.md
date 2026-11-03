@@ -63,7 +63,7 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 | :green_circle: :yellow_circle: :red_circle: | Project health: active (fresh mainline commits, plus stable releases still shipping for projects that ship at all) / quiet (slow, coasting, or no stable release in 2 years) / dead (archived or silent for 12+ months) |
 | :white_circle: | Stats pending - new entry awaiting its first weekly data refresh |
 | :1st_place_medal: :2nd_place_medal: :3rd_place_medal: **4** **5** | Rank within the category by quality score |
-| `Score 72/100` (inside an entry) | Quality score: stars 50%, trend 25%, freshness 15%, license 10%; archived repos score 0 |
+| `Score 72/100` (inside an entry) | Quality score: stars 50%, trend 25%, maintenance 15% (about a commit a week over 90 days, or a stable release within 60 days fading to zero at 12 months), license 10%; archived repos score 0 |
 | :star: 11.7K | GitHub stars |
 | :arrow_upper_right: +340 :arrow_lower_right: -286 | Stars gained or lost since the measured snapshot nearest 30 days ago (shown when the change is at least 10 either way); each entry states the window it actually covers. Blank until an entry has two measurements 30 days apart |
 | :zzz: | Retired - archived upstream, or no sign of life for 12+ months |

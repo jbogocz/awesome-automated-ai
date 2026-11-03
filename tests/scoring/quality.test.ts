@@ -1,15 +1,21 @@
 import { describe, expect, it } from "vitest";
-import { computeQualityScore, medianMomentum, type QualityInput } from "../../src/scoring/quality.ts";
+import {
+  computeMaintenanceScore,
+  computeQualityScore,
+  medianMomentum,
+  type QualityInput,
+} from "../../src/scoring/quality.ts";
 
 describe("computeQualityScore", () => {
   it("scores a healthy active project high", () => {
     const input: QualityInput = {
       stars: 10000,
       starsPrevious: 9700,
-      lastLifeSign: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+      lastStableShip: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
       license: "MIT",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     const score = computeQualityScore(input);
     expect(score).toBeGreaterThanOrEqual(70);
@@ -24,12 +30,13 @@ describe("computeQualityScore", () => {
     const abandoned: QualityInput = {
       stars: 8000,
       starsPrevious: 8000,
-      lastLifeSign: new Date(Date.now() - 1215 * 24 * 60 * 60 * 1000).toISOString(),
+      lastStableShip: new Date(Date.now() - 1215 * 24 * 60 * 60 * 1000).toISOString(),
       license: "BSD-3-Clause",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
-    const live: QualityInput = { ...abandoned, lastLifeSign: new Date(Date.now() - 46 * 86400000).toISOString() };
+    const live: QualityInput = { ...abandoned, lastStableShip: new Date(Date.now() - 46 * 86400000).toISOString() };
     expect(computeQualityScore(abandoned)).toBeLessThan(computeQualityScore(live));
     expect(computeQualityScore(abandoned)).toBeLessThan(60);
   });
@@ -38,28 +45,30 @@ describe("computeQualityScore", () => {
     const input: QualityInput = {
       stars: 1000,
       starsPrevious: 1000,
-      lastLifeSign: null,
+      lastStableShip: null,
       license: "MIT",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     expect(computeQualityScore(input)).toBeGreaterThanOrEqual(0);
     expect(computeQualityScore(input)).toBeLessThan(
-      computeQualityScore({ ...input, lastLifeSign: new Date().toISOString() }),
+      computeQualityScore({ ...input, lastStableShip: new Date().toISOString() }),
     );
   });
 
   // Regression guard: freshness decayed from day 0, so tsfresh (9.5k stars,
-  // last commit 120 days earlier, growing) ranked below skrub (1.7k stars,
-  // pushed the day before) although the status rule calls both maintained.
-  it("does not let a recent push outweigh stars while both repos are maintained", () => {
+  // no commit in 90 days but a stable release 157 days earlier) ranked below
+  // skrub (1.7k stars, 92 commits in 90 days) on recency alone.
+  it("keeps a mature library that still ships above a much smaller busy one", () => {
     const day = 86400000;
     const mature: QualityInput = {
       stars: 9486,
       starsPrevious: null,
       trend30d: 51,
       trend30dDays: 28,
-      lastLifeSign: new Date(Date.now() - 120 * day).toISOString(),
+      commits90d: 0,
+      lastStableShip: new Date(Date.now() - 157 * day).toISOString(),
       license: "MIT",
       archived: false,
       peerMomentum: 56,
@@ -69,24 +78,46 @@ describe("computeQualityScore", () => {
       stars: 1666,
       trend30d: null,
       trend30dDays: null,
-      lastLifeSign: new Date(Date.now() - day).toISOString(),
+      commits90d: 92,
+      lastStableShip: new Date(Date.now() - 34 * day).toISOString(),
       license: "BSD-3-Clause",
     };
     expect(computeQualityScore(mature)).toBeGreaterThan(computeQualityScore(young));
-    // Past the maintained window freshness still decays.
-    expect(
-      computeQualityScore({ ...mature, lastLifeSign: new Date(Date.now() - 300 * day).toISOString() }),
-    ).toBeLessThan(computeQualityScore(mature));
+  });
+
+  // Regression guard: a flat 180-day plateau let 15 quiet repos outrank active
+  // peers of similar size, e.g. Portkey Gateway (13.3k stars, no commit in 90
+  // days, last release 296 days earlier) above agentgateway (5.9k, busy).
+  it("ranks a quiet repo below an active peer of similar size", () => {
+    const day = 86400000;
+    const quiet: QualityInput = {
+      stars: 13301,
+      starsPrevious: null,
+      commits90d: 0,
+      lastStableShip: new Date(Date.now() - 296 * day).toISOString(),
+      license: "MIT",
+      archived: false,
+      peerMomentum: 56,
+    };
+    const active: QualityInput = {
+      ...quiet,
+      stars: 5883,
+      commits90d: 60,
+      lastStableShip: new Date(Date.now() - 10 * day).toISOString(),
+      license: "Apache-2.0",
+    };
+    expect(computeQualityScore(active)).toBeGreaterThan(computeQualityScore(quiet));
   });
 
   it("scores an unmaintained project low", () => {
     const input: QualityInput = {
       stars: 500,
       starsPrevious: 510,
-      lastLifeSign: new Date(Date.now() - 400 * 24 * 60 * 60 * 1000).toISOString(),
+      lastStableShip: new Date(Date.now() - 400 * 24 * 60 * 60 * 1000).toISOString(),
       license: null,
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     const score = computeQualityScore(input);
     expect(score).toBeLessThan(45);
@@ -96,10 +127,11 @@ describe("computeQualityScore", () => {
     const input: QualityInput = {
       stars: 5000,
       starsPrevious: null,
-      lastLifeSign: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
+      lastStableShip: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
       license: "Apache-2.0",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     const score = computeQualityScore(input);
     expect(score).toBeGreaterThanOrEqual(50);
@@ -109,10 +141,11 @@ describe("computeQualityScore", () => {
     const active: QualityInput = {
       stars: 5000,
       starsPrevious: 4900,
-      lastLifeSign: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
+      lastStableShip: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
       license: "MIT",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     const archived: QualityInput = { ...active, archived: true };
     expect(computeQualityScore(active)).toBeGreaterThan(computeQualityScore(archived));
@@ -122,10 +155,11 @@ describe("computeQualityScore", () => {
     const extreme: QualityInput = {
       stars: 999999,
       starsPrevious: 1,
-      lastLifeSign: new Date().toISOString(),
+      lastStableShip: new Date().toISOString(),
       license: "MIT",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     expect(computeQualityScore(extreme)).toBeLessThanOrEqual(100);
     expect(computeQualityScore(extreme)).toBeGreaterThanOrEqual(0);
@@ -135,10 +169,11 @@ describe("computeQualityScore", () => {
     const base: QualityInput = {
       stars: 0,
       starsPrevious: null,
-      lastLifeSign: new Date().toISOString(),
+      lastStableShip: new Date().toISOString(),
       license: "MIT",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     const hundredK = computeQualityScore({ ...base, stars: 100_000 });
     const hundredFortyK = computeQualityScore({ ...base, stars: 145_000 });
@@ -151,10 +186,11 @@ describe("computeQualityScore", () => {
     const base: QualityInput = {
       stars: 10000,
       starsPrevious: null,
-      lastLifeSign: new Date().toISOString(),
+      lastStableShip: new Date().toISOString(),
       license: "MIT",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     const mit = computeQualityScore(base);
     const gpl = computeQualityScore({ ...base, license: "GPL-3.0" });
@@ -173,10 +209,11 @@ describe("computeQualityScore", () => {
     const base: QualityInput = {
       stars: 6400,
       starsPrevious: null,
-      lastLifeSign: new Date().toISOString(),
+      lastStableShip: new Date().toISOString(),
       license: "Apache-2.0",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     // An established peer four times larger, growing at exactly the median rate
     // (momentum 56 = 0.2% a week over the 30-day window).
@@ -196,14 +233,15 @@ describe("computeQualityScore", () => {
     const healthy: QualityInput = {
       stars: 145000,
       starsPrevious: null,
-      lastLifeSign: new Date().toISOString(),
+      lastStableShip: new Date().toISOString(),
       license: "MIT",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     const poor: QualityInput = {
       ...healthy,
-      lastLifeSign: new Date(Date.now() - 400 * 86400000).toISOString(),
+      lastStableShip: new Date(Date.now() - 400 * 86400000).toISOString(),
       license: null,
     };
     expect(computeQualityScore(healthy)).toBeGreaterThan(computeQualityScore(poor));
@@ -215,10 +253,11 @@ describe("computeQualityScore", () => {
       starsPrevious: 9500, // legacy -> +500
       trend30d: 0, // 30d -> 0 (flat)
       trend7d: 500, // 7d -> +500 (hot)
-      lastLifeSign: new Date().toISOString(),
+      lastStableShip: new Date().toISOString(),
       license: "MIT",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     // trend30d=0 wins, momentum should be neutral 50
     const score30d = computeQualityScore(base);
@@ -234,10 +273,11 @@ describe("computeQualityScore", () => {
       stars: 10000,
       starsPrevious: null,
       trend30d: 300,
-      lastLifeSign: new Date().toISOString(),
+      lastStableShip: new Date().toISOString(),
       license: "MIT",
       archived: false,
       peerMomentum: 56,
+      commits90d: null,
     };
     const nominal = computeQualityScore(base);
     expect(computeQualityScore({ ...base, trend30dDays: 30 })).toBe(nominal);
@@ -253,5 +293,23 @@ describe("medianMomentum", () => {
 
   it("returns the zero-growth score when nothing is measured, which ranks every entry alike", () => {
     expect(medianMomentum([])).toBe(50);
+  });
+});
+
+describe("computeMaintenanceScore", () => {
+  const daysAgo = (d: number) => new Date(Date.now() - d * 86400000).toISOString();
+  it("gives full marks for a weekly commit pulse or a stable ship within 60 days", () => {
+    expect(computeMaintenanceScore(13, null)).toBe(100);
+    expect(computeMaintenanceScore(0, daysAgo(59))).toBe(100);
+  });
+  it("fades shipping credit linearly to zero at twelve months", () => {
+    const mid = computeMaintenanceScore(0, daysAgo(212));
+    expect(mid).toBeGreaterThan(45);
+    expect(mid).toBeLessThan(55);
+    expect(computeMaintenanceScore(0, daysAgo(366))).toBe(0);
+  });
+  it("scores no commits and no stable ship as zero", () => {
+    expect(computeMaintenanceScore(0, null)).toBe(0);
+    expect(computeMaintenanceScore(null, null)).toBe(0);
   });
 });

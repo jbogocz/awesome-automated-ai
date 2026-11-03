@@ -17,6 +17,15 @@ export const PULSE_MIN_COMMITS = 3;
 export const PULSE_WINDOW_DAYS = 90;
 export const SHIPPED_FRESH_DAYS = 180;
 
+// Maintenance term of the quality score (src/scoring/quality.ts). Full marks
+// for about one mainline commit a week over PULSE_WINDOW_DAYS (OpenSSF
+// Scorecard's "Maintained" bar), or for a stable ship within
+// SHIP_FULL_CREDIT_DAYS; the shipping credit fades to zero at STALE_DAYS, where
+// the status rule calls a repo dead. Measured 2026-11-03: the p90 of the median
+// gap between stable releases is 59 days.
+export const MAINTAINED_COMMITS = 13;
+export const SHIP_FULL_CREDIT_DAYS = 60;
+
 // Minimum absolute star delta to render as a trend indicator (noise filter)
 export const TREND_DISPLAY_MIN = 10;
 

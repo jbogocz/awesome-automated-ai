@@ -2,7 +2,7 @@ import { parse as parseYaml } from "yaml";
 import { fetchRepoMetadataBatch } from "../github/repo-metadata-graphql.ts";
 import { computeMomentumScore, computeQualityScore, medianMomentum } from "../scoring/quality.ts";
 import { computeTrends } from "../scoring/trends.ts";
-import { lastLifeSign } from "../status.ts";
+import { stableShippedAt } from "../status.ts";
 import { findLatest, type LatestRepo, type LatestState, latestDate, loadLatest, saveLatest } from "../store/latest.ts";
 import { type DataPaths, defaultDataPaths } from "../store/paths.ts";
 import {
@@ -185,7 +185,8 @@ export async function fetchRepoData(yamlContent: string, paths: DataPaths = defa
       trend30d,
       trend7dDays,
       trend30dDays,
-      lastLifeSign: lastLifeSign({
+      commits90d: raw.commits90d,
+      lastStableShip: stableShippedAt({
         archived: raw.archived,
         lastCommit: raw.lastCommit,
         lastRelease: raw.lastRelease,

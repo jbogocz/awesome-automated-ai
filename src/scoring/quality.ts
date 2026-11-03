@@ -1,4 +1,4 @@
-import { MAINTAINED_DAYS } from "../constants.ts";
+import { MAINTAINED_COMMITS, SHIP_FULL_CREDIT_DAYS, STALE_DAYS } from "../constants.ts";
 import { clamp } from "./utils.ts";
 
 export interface QualityInput {
@@ -9,12 +9,15 @@ export interface QualityInput {
   /** Days trend7d / trend30d actually span (src/scoring/trends.ts); nominal 7 / 30 when unknown. */
   trend7dDays?: number | null;
   trend30dDays?: number | null;
+  /** Mainline commits in the last PULSE_WINDOW_DAYS; null = unknown. */
+  commits90d: number | null;
   /**
-   * Newest life sign — mainline commit, release or tag (src/status.ts).
-   * Deliberately NOT pushedAt: that updates on pushes to any branch, so bot
-   * and PR-head traffic would make an abandoned repo look fresh.
+   * Newest stable ship — GitHub release or stable-named tag (stableShippedAt
+   * in src/status.ts). Deliberately NOT pushedAt: that updates on pushes to
+   * any branch, so bot and PR-head traffic would make an abandoned repo look
+   * maintained.
    */
-  lastLifeSign: string | null;
+  lastStableShip: string | null;
   license: string | null;
   archived: boolean;
   /**
@@ -47,17 +50,17 @@ export function computeQualityScore(input: QualityInput): number {
   if (input.archived) return 0;
 
   const starsScore = computeStarsScore(input.stars);
-  const freshnessScore = computeFreshnessScore(input.lastLifeSign);
+  const maintenanceScore = computeMaintenanceScore(input.commits90d, input.lastStableShip);
   const licenseScore = computeLicenseScore(input.license);
 
   // Real momentum signal if snapshots allow it, otherwise the catalog median.
   // A fixed 50 (zero growth) penalised every newly listed entry; imputing from
-  // the entry's own stars, freshness and license over-rewarded them instead:
+  // the entry's own stars, maintenance and license over-rewarded them instead:
   // an active MIT repo imputed ~88 against a measured median of 56, so on
   // 2026-11-03 the 49 repos added that day took first place in 14 categories.
   const momentumScore = computeMomentumScore(input) ?? input.peerMomentum;
 
-  const raw = starsScore * 0.5 + momentumScore * 0.25 + freshnessScore * 0.15 + licenseScore * 0.1;
+  const raw = starsScore * 0.5 + momentumScore * 0.25 + maintenanceScore * 0.15 + licenseScore * 0.1;
   return clamp(Math.round(raw), 0, 100);
 }
 
@@ -67,18 +70,27 @@ function computeStarsScore(stars: number): number {
   return clamp((Math.log10(Math.max(stars, 1)) / 6) * 100, 0, 100);
 }
 
-// Full marks while the entry counts as maintained under the status rule
-// (src/status.ts: a life sign within MAINTAINED_DAYS), then exponential decay:
-// 180d=100, 270d=61, 365d=22. Decaying from day 0 ranked a mature library that
-// commits every few months below any repo pushed yesterday: tsfresh (9.5k
-// stars, last commit 120 days earlier) scored under skrub (1.7k) on freshness
-// alone, although both are maintained by the list's own definition.
-function computeFreshnessScore(lastLifeSign: string | null): number {
-  if (!lastLifeSign) return 0;
-  const days = (Date.now() - new Date(lastLifeSign).getTime()) / (24 * 60 * 60 * 1000);
-  if (Number.isNaN(days)) return 0;
-  if (days <= MAINTAINED_DAYS) return 100;
-  return clamp(100 * Math.exp(-(days - MAINTAINED_DAYS) / 180), 0, 100);
+// Maintenance as activity, not as the age of the newest signal: the stronger
+// of a commit pulse (log-scaled to full marks at MAINTAINED_COMMITS in 90
+// days) and shipping recency (full for SHIP_FULL_CREDIT_DAYS, then linear to
+// zero at STALE_DAYS). Two earlier shapes failed against the catalog:
+// exponential decay of the last life sign from day 0 ranked tsfresh (9.5k
+// stars, a release five months earlier) below skrub (1.7k, pushed the day
+// before); a flat 180-day plateau let 15 quiet repos outrank active ones of
+// similar size. This shape leaves none, and still gives a mature library that
+// ships every few months most of the term.
+export function computeMaintenanceScore(commits90d: number | null, lastStableShip: string | null): number {
+  const pulse =
+    commits90d != null && commits90d > 0 ? Math.min(1, Math.log1p(commits90d) / Math.log1p(MAINTAINED_COMMITS)) : 0;
+  let ship = 0;
+  if (lastStableShip) {
+    const days = (Date.now() - new Date(lastStableShip).getTime()) / (24 * 60 * 60 * 1000);
+    if (!Number.isNaN(days)) {
+      ship =
+        days <= SHIP_FULL_CREDIT_DAYS ? 1 : clamp((STALE_DAYS - days) / (STALE_DAYS - SHIP_FULL_CREDIT_DAYS), 0, 1);
+    }
+  }
+  return 100 * Math.max(pulse, ship);
 }
 
 // Tiered so NOASSERTION (license file exists but not SPDX-parseable) isn't
