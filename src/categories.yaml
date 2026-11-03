@@ -44,7 +44,7 @@ categories:
     scope_out:
       - General AutoML that only tunes hyperparameters on fixed architectures (see Hyperparameter Optimization).
       - Architecture design handled entirely by humans.
-    examples: [AutoKeras, AutoGL, Microsoft NNI]
+    examples: [AutoKeras, AutoGL, NNI]
 
   - id: hyperparameter-optimization
     name: Hyperparameter Optimization
@@ -68,7 +68,7 @@ categories:
     scope_out:
       - Data preprocessing broadly (see Automated Data Preprocessing).
       - End-to-end AutoML systems where feature engineering is a side effect.
-    examples: [Featuretools, feature-engine, AutoFeat]
+    examples: [Featuretools, Feature-engine, AutoFeat]
 
   - id: tabular-foundation-models
     name: Tabular Foundation Models
@@ -156,7 +156,7 @@ categories:
     scope_out:
       - Generic SWE agents (see Coding Agents).
       - Agent frameworks (see Agent Frameworks).
-    examples: [AI-Scientist, AIDE, AutoML-Agent, GPT Researcher]
+    examples: [AI-Scientist, AIDE, R&D-Agent, GPT Researcher]
 
   # --- Evaluate & Monitor AI ------------------------------------------------
   - id: llm-evaluation-and-testing
@@ -195,7 +195,7 @@ categories:
     scope_out:
       - Pre-deployment eval (see LLM Evaluation and Testing).
       - Experiment tracking during training (see MLOps and Experiment Tracking).
-    examples: [Evidently, Arize, WhyLabs]
+    examples: [Evidently, Langfuse, Phoenix]
 
   - id: automated-ai-safety
     name: Automated AI Safety
@@ -281,7 +281,7 @@ categories:
     scope_out:
       - Deployment-only serving (see Model Serving).
       - Pure LLM observability (see Automated Monitoring and Observability).
-    examples: [MLflow, Weights & Biases, Kubeflow, DVC, Metaflow]
+    examples: [MLflow, W&B, Kubeflow, DVC, Metaflow]
 
   # --- Deploy AI ------------------------------------------------------------
   - id: model-serving
@@ -295,7 +295,7 @@ categories:
     scope_out:
       - LLM-focused inference engines (see LLM Inference Runtimes).
       - MLOps platforms where serving is a sub-feature (see MLOps and Experiment Tracking).
-    examples: [BentoML, KServe, Triton, ONNX Runtime, OpenVINO]
+    examples: [BentoML, KServe, Triton Inference Server, ONNX Runtime, OpenVINO]
 
   - id: llm-inference-runtimes
     name: LLM Inference Runtimes
