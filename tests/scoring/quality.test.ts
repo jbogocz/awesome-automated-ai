@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computeQualityScore, type QualityInput } from "../../src/scoring/quality.ts";
+import { computeQualityScore, medianMomentum, type QualityInput } from "../../src/scoring/quality.ts";
 
 describe("computeQualityScore", () => {
   it("scores a healthy active project high", () => {
@@ -9,6 +9,7 @@ describe("computeQualityScore", () => {
       lastLifeSign: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
       license: "MIT",
       archived: false,
+      peerMomentum: 56,
     };
     const score = computeQualityScore(input);
     expect(score).toBeGreaterThanOrEqual(70);
@@ -26,6 +27,7 @@ describe("computeQualityScore", () => {
       lastLifeSign: new Date(Date.now() - 1215 * 24 * 60 * 60 * 1000).toISOString(),
       license: "BSD-3-Clause",
       archived: false,
+      peerMomentum: 56,
     };
     const live: QualityInput = { ...abandoned, lastLifeSign: new Date(Date.now() - 46 * 86400000).toISOString() };
     expect(computeQualityScore(abandoned)).toBeLessThan(computeQualityScore(live));
@@ -39,6 +41,7 @@ describe("computeQualityScore", () => {
       lastLifeSign: null,
       license: "MIT",
       archived: false,
+      peerMomentum: 56,
     };
     expect(computeQualityScore(input)).toBeGreaterThanOrEqual(0);
     expect(computeQualityScore(input)).toBeLessThan(
@@ -53,6 +56,7 @@ describe("computeQualityScore", () => {
       lastLifeSign: new Date(Date.now() - 400 * 24 * 60 * 60 * 1000).toISOString(),
       license: null,
       archived: false,
+      peerMomentum: 56,
     };
     const score = computeQualityScore(input);
     expect(score).toBeLessThan(45);
@@ -65,6 +69,7 @@ describe("computeQualityScore", () => {
       lastLifeSign: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
       license: "Apache-2.0",
       archived: false,
+      peerMomentum: 56,
     };
     const score = computeQualityScore(input);
     expect(score).toBeGreaterThanOrEqual(50);
@@ -77,6 +82,7 @@ describe("computeQualityScore", () => {
       lastLifeSign: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
       license: "MIT",
       archived: false,
+      peerMomentum: 56,
     };
     const archived: QualityInput = { ...active, archived: true };
     expect(computeQualityScore(active)).toBeGreaterThan(computeQualityScore(archived));
@@ -89,6 +95,7 @@ describe("computeQualityScore", () => {
       lastLifeSign: new Date().toISOString(),
       license: "MIT",
       archived: false,
+      peerMomentum: 56,
     };
     expect(computeQualityScore(extreme)).toBeLessThanOrEqual(100);
     expect(computeQualityScore(extreme)).toBeGreaterThanOrEqual(0);
@@ -101,6 +108,7 @@ describe("computeQualityScore", () => {
       lastLifeSign: new Date().toISOString(),
       license: "MIT",
       archived: false,
+      peerMomentum: 56,
     };
     const hundredK = computeQualityScore({ ...base, stars: 100_000 });
     const hundredFortyK = computeQualityScore({ ...base, stars: 145_000 });
@@ -116,6 +124,7 @@ describe("computeQualityScore", () => {
       lastLifeSign: new Date().toISOString(),
       license: "MIT",
       archived: false,
+      peerMomentum: 56,
     };
     const mit = computeQualityScore(base);
     const gpl = computeQualityScore({ ...base, license: "GPL-3.0" });
@@ -126,25 +135,48 @@ describe("computeQualityScore", () => {
     expect(noassert).toBeGreaterThan(proprietary);
   });
 
-  it("imputes momentum from other dimensions when no snapshot history", () => {
-    const healthyNoHistory: QualityInput = {
+  // Regression guard: momentum used to be imputed from the entry's own stars,
+  // freshness and license, which put every active newcomer near 88 against a
+  // measured catalog median of 56; the 49 repos added on 2026-11-03 took first
+  // place in 14 categories with a fraction of their neighbours' stars.
+  it("scores an entry without history at the catalog's median momentum", () => {
+    const base: QualityInput = {
+      stars: 6400,
+      starsPrevious: null,
+      lastLifeSign: new Date().toISOString(),
+      license: "Apache-2.0",
+      archived: false,
+      peerMomentum: 56,
+    };
+    // An established peer four times larger, growing at exactly the median rate
+    // (momentum 56 = 0.2% a week over the 30-day window).
+    const peer: QualityInput = {
+      ...base,
+      stars: 22000,
+      trend30d: Math.round(((22000 * 0.2) / 100 / 7) * 30),
+      trend30dDays: 30,
+    };
+    expect(computeQualityScore(base)).toBeLessThan(computeQualityScore(peer));
+    // Without history the score equals that of the same repo measured at the median.
+    const measuredAtMedian: QualityInput = { ...base, trend30d: ((6400 * 0.2) / 100 / 7) * 30, trend30dDays: 30 };
+    expect(computeQualityScore(base)).toBe(computeQualityScore(measuredAtMedian));
+  });
+
+  it("still separates healthy from poor entries that both lack history", () => {
+    const healthy: QualityInput = {
       stars: 145000,
       starsPrevious: null,
       lastLifeSign: new Date().toISOString(),
       license: "MIT",
       archived: false,
+      peerMomentum: 56,
     };
-    const poorNoHistory: QualityInput = {
-      stars: 145000,
-      starsPrevious: null,
-      lastLifeSign: new Date(Date.now() - 400 * 24 * 60 * 60 * 1000).toISOString(),
+    const poor: QualityInput = {
+      ...healthy,
+      lastLifeSign: new Date(Date.now() - 400 * 86400000).toISOString(),
       license: null,
-      archived: false,
     };
-    // A healthy-but-new repo should not be penalised for lacking snapshot history;
-    // its momentum should mirror its other (good) signals, not default to 50.
-    expect(computeQualityScore(healthyNoHistory)).toBeGreaterThan(computeQualityScore(poorNoHistory));
-    expect(computeQualityScore(healthyNoHistory)).toBeGreaterThanOrEqual(85);
+    expect(computeQualityScore(healthy)).toBeGreaterThan(computeQualityScore(poor));
   });
 
   it("prefers trend30d over trend7d over legacy starsPrevious", () => {
@@ -156,6 +188,7 @@ describe("computeQualityScore", () => {
       lastLifeSign: new Date().toISOString(),
       license: "MIT",
       archived: false,
+      peerMomentum: 56,
     };
     // trend30d=0 wins, momentum should be neutral 50
     const score30d = computeQualityScore(base);
@@ -174,9 +207,21 @@ describe("computeQualityScore", () => {
       lastLifeSign: new Date().toISOString(),
       license: "MIT",
       archived: false,
+      peerMomentum: 56,
     };
     const nominal = computeQualityScore(base);
     expect(computeQualityScore({ ...base, trend30dDays: 30 })).toBe(nominal);
     expect(computeQualityScore({ ...base, trend30dDays: 14 })).toBeGreaterThan(nominal);
+  });
+});
+
+describe("medianMomentum", () => {
+  it("takes the middle measured value, averaging the two middle ones for an even count", () => {
+    expect(medianMomentum([70, 50, 56])).toBe(56);
+    expect(medianMomentum([50, 52, 60, 80])).toBe(56);
+  });
+
+  it("returns the zero-growth score when nothing is measured, which ranks every entry alike", () => {
+    expect(medianMomentum([])).toBe(50);
   });
 });

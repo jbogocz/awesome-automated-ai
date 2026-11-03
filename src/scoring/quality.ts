@@ -16,6 +16,13 @@ export interface QualityInput {
   lastLifeSign: string | null;
   license: string | null;
   archived: boolean;
+  /**
+   * Momentum assumed for an entry with no measured growth yet: the median
+   * measured momentum across the catalog (see medianMomentum). A newly listed
+   * repo is assumed to grow like a typical listed repo until its own
+   * snapshots exist.
+   */
+  peerMomentum: number;
 }
 
 const PERMISSIVE_LICENSES = new Set([
@@ -42,11 +49,12 @@ export function computeQualityScore(input: QualityInput): number {
   const freshnessScore = computeFreshnessScore(input.lastLifeSign);
   const licenseScore = computeLicenseScore(input.license);
 
-  // Real momentum signal if snapshots allow it, otherwise impute neutrally from the
-  // other dimensions. Using an arbitrary 50/100 baseline systematically penalised
-  // any entry added recently to the list.
-  const momentumRaw = computeMomentumScore(input);
-  const momentumScore = momentumRaw ?? (starsScore + freshnessScore + licenseScore) / 3;
+  // Real momentum signal if snapshots allow it, otherwise the catalog median.
+  // A fixed 50 (zero growth) penalised every newly listed entry; imputing from
+  // the entry's own stars, freshness and license over-rewarded them instead:
+  // an active MIT repo imputed ~88 against a measured median of 56, so on
+  // 2026-11-03 the 49 repos added that day took first place in 14 categories.
+  const momentumScore = computeMomentumScore(input) ?? input.peerMomentum;
 
   const raw = starsScore * 0.5 + momentumScore * 0.25 + freshnessScore * 0.15 + licenseScore * 0.1;
   return clamp(Math.round(raw), 0, 100);
@@ -88,7 +96,9 @@ function computeLicenseScore(license: string | null): number {
 // Deltas are normalised by the window they actually span: weekly snapshots
 // put the "30d" anchor at t-28 as often as not, and dividing by a fixed 30
 // understated that growth.
-function computeMomentumScore(input: QualityInput): number | null {
+export function computeMomentumScore(
+  input: Pick<QualityInput, "stars" | "starsPrevious" | "trend7d" | "trend30d" | "trend7dDays" | "trend30dDays">,
+): number | null {
   let weeklyPct: number | null = null;
   if (input.trend30d != null && input.stars > 0) {
     weeklyPct = (((input.trend30d / (input.trend30dDays ?? 30)) * 7) / input.stars) * 100;
@@ -100,4 +110,18 @@ function computeMomentumScore(input: QualityInput): number | null {
   if (weeklyPct === null) return null;
   // 0% weekly -> 50, 1% -> 80, 1.67% -> 100; negative growth penalised symmetrically.
   return clamp(50 + weeklyPct * 30, 0, 100);
+}
+
+/**
+ * Median of the measured momentum scores, the value an entry without its own
+ * history is scored with. With nothing measured at all (a fresh fork) every
+ * entry takes the same value, so the constant cannot change any ranking; 50 is
+ * the score for zero growth.
+ */
+export function medianMomentum(measured: number[]): number {
+  if (measured.length === 0) return 50;
+  const sorted = [...measured].sort((a, b) => a - b);
+  const upper = sorted[Math.floor(sorted.length / 2)] as number;
+  const lower = sorted[Math.ceil(sorted.length / 2) - 1] as number;
+  return (lower + upper) / 2;
 }

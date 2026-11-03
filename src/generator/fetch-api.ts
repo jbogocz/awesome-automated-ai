@@ -1,6 +1,6 @@
 import { parse as parseYaml } from "yaml";
 import { fetchRepoMetadataBatch } from "../github/repo-metadata-graphql.ts";
-import { computeQualityScore } from "../scoring/quality.ts";
+import { computeMomentumScore, computeQualityScore, medianMomentum } from "../scoring/quality.ts";
 import { computeTrends } from "../scoring/trends.ts";
 import { lastLifeSign } from "../status.ts";
 import { findLatest, type LatestRepo, type LatestState, latestDate, loadLatest, saveLatest } from "../store/latest.ts";
@@ -131,6 +131,28 @@ export async function fetchRepoData(yamlContent: string, paths: DataPaths = defa
   const history = mergeSnapshots(loadSnapshots(paths.snapshotsDir), measured);
   const seriesByRepoId = seriesById(history);
 
+  const trendsFor = (raw: { githubId: number; stars: number }) => {
+    const series = seriesByRepoId.get(raw.githubId) ?? [];
+    const starsPrevious = previousStars(series);
+    const trends = computeTrends({
+      currentStars: raw.stars,
+      stars7dAgo: starsNDaysAgo(series, 7),
+      stars30dAgo: starsNDaysAgo(series, 30),
+      starsPrevious,
+    });
+    return { series, starsPrevious, ...trends };
+  };
+  // First pass: the catalog's measured momentum, so entries without history
+  // are scored against their peers rather than against their own other signals.
+  const measuredMomentum: number[] = [];
+  for (const { repo } of repos) {
+    const raw = rawByRepo.get(repo);
+    if (raw?.githubId == null) continue;
+    const m = computeMomentumScore({ stars: raw.stars, ...trendsFor({ githubId: raw.githubId, stars: raw.stars }) });
+    if (m != null) measuredMomentum.push(m);
+  }
+  const peerMomentum = medianMomentum(measuredMomentum);
+
   const data: ApiData = {};
   const latest: LatestState = {};
   const stale: string[] = [];
@@ -151,13 +173,9 @@ export async function fetchRepoData(yamlContent: string, paths: DataPaths = defa
       continue;
     }
 
-    const series = seriesByRepoId.get(raw.githubId) ?? [];
-    const starsPrevious = previousStars(series);
-    const { trend, trend7d, trend30d, trend30dDays, trend7dDays } = computeTrends({
-      currentStars: raw.stars,
-      stars7dAgo: starsNDaysAgo(series, 7),
-      stars30dAgo: starsNDaysAgo(series, 30),
-      starsPrevious,
+    const { series, starsPrevious, trend, trend7d, trend30d, trend30dDays, trend7dDays } = trendsFor({
+      githubId: raw.githubId,
+      stars: raw.stars,
     });
 
     const score = computeQualityScore({
@@ -177,6 +195,7 @@ export async function fetchRepoData(yamlContent: string, paths: DataPaths = defa
       }),
       license: raw.license,
       archived: raw.archived,
+      peerMomentum,
     });
 
     latest[repo] = {
