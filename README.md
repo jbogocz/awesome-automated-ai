@@ -560,7 +560,7 @@ Modular NAS framework for reproducible architecture search research (Microsoft).
 
 <br>
 
-*NAS research library from AutoML Freiburg with interfaces to state-of-the-art search spaces and optimizers. **Reference implementation; NAS-Bench-201 remains the usable benchmark.***
+*NAS research library from AutoML Freiburg with interfaces to state-of-the-art search spaces and optimizers. **Reference implementation; loads NAS-Bench-101, 201, 301 and other NAS benchmarks behind one interface.***
 
 ```
   Score     46/100
@@ -681,7 +681,7 @@ Gradient-free optimization toolbox with CMA-ES, differential evolution, and part
 
 </details>
 
-<details><summary>🟢 <b>5</b> <b><a href="https://github.com/facebook/Ax">Ax</a></b> <code>⭐ 2.8K</code> <code>↗️ +18</code> <code>MIT</code> Adaptive experimentation for multi-objective optimization</summary>
+<details><summary>🟢 <b>5</b> <b><a href="https://github.com/meta/Ax">Ax</a></b> <code>⭐ 2.8K</code> <code>↗️ +18</code> <code>MIT</code> Adaptive experimentation for multi-objective optimization</summary>
 
 <br>
 
@@ -1148,7 +1148,7 @@ Benchmark using 75 Kaggle competitions to evaluate ML engineering agents (OpenAI
 
 <br>
 
-*Reproducible benchmark with 15,625 evaluated architectures across three datasets for fair NAS comparison. **Unmaintained - no activity for 12+ months.***
+*Reproducible benchmark with 15,625 evaluated architectures across three datasets for fair NAS comparison. **Deprecated upstream in favour of NATS-Bench, which extends the same search space but is unmaintained too; the benchmark data stays the standard reference for comparing NAS methods.***
 
 ```
   Score     48/100
@@ -1181,7 +1181,7 @@ Benchmark using 75 Kaggle competitions to evaluate ML engineering agents (OpenAI
 
 <br>
 
-*Benchmark dataset with 423,624 evaluated neural architectures for efficient NAS research (Google). **Archived. Reference benchmark; use NAS-Bench-201 for new work.***
+*Benchmark dataset with 423,624 evaluated neural architectures for efficient NAS research (Google). **Archived. Reference benchmark; NAS-Bench-201 extends benchmarking to weight-sharing NAS methods, which this search space cannot evaluate directly.***
 
 ```
   Score     0/100

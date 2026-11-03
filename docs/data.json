@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T14:13:17.708Z",
+  "generated": "2026-11-02T23:59:03.655Z",
   "dataAsOf": "2026-11-02",
   "categories": [
     {
@@ -2009,7 +2009,7 @@
           "url": "https://github.com/automl/NASLib",
           "description": "NAS research library from AutoML Freiburg with interfaces to state-of-the-art search spaces and optimizers.",
           "tagline": "NAS research library with standardized search spaces",
-          "note": "Reference implementation; NAS-Bench-201 remains the usable benchmark.",
+          "note": "Reference implementation; loads NAS-Bench-101, 201, 301 and other NAS benchmarks behind one interface.",
           "stars": 595,
           "trend": 0,
           "trendDays": 30,
@@ -2765,8 +2765,8 @@
         },
         {
           "name": "Ax",
-          "repo": "facebook/Ax",
-          "url": "https://github.com/facebook/Ax",
+          "repo": "meta/Ax",
+          "url": "https://github.com/meta/Ax",
           "description": "Adaptive experimentation platform for multi-objective optimization with BoTorch integration (Meta).",
           "tagline": "Adaptive experimentation for multi-objective optimization",
           "note": "",
@@ -4960,7 +4960,7 @@
           "url": "https://github.com/google-research/nasbench",
           "description": "Benchmark dataset with 423,624 evaluated neural architectures for efficient NAS research (Google).",
           "tagline": "423,624 evaluated neural architectures for NAS research",
-          "note": "Reference benchmark; use NAS-Bench-201 for new work.",
+          "note": "Reference benchmark; NAS-Bench-201 extends benchmarking to weight-sharing NAS methods, which this search space cannot evaluate directly.",
           "stars": 721,
           "trend": 2,
           "trendDays": 30,
@@ -5056,7 +5056,7 @@
           "url": "https://github.com/D-X-Y/NAS-Bench-201",
           "description": "Reproducible benchmark with 15,625 evaluated architectures across three datasets for fair NAS comparison.",
           "tagline": "15,625 architectures across three datasets for fair NAS",
-          "note": "",
+          "note": "Deprecated upstream in favour of NATS-Bench, which extends the same search space but is unmaintained too; the benchmark data stays the standard reference for comparing NAS methods.",
           "stars": 649,
           "trend": 1,
           "trendDays": 30,

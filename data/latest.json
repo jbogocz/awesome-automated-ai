@@ -1828,21 +1828,6 @@
     "lastStableTag": "2026-09-11T09:55:57+01:00",
     "commits90d": 3
   },
-  "facebook/Ax": {
-    "date": "2026-11-02",
-    "id": 169880381,
-    "stars": 2836,
-    "score": 67,
-    "archived": false,
-    "pushed": "2026-11-01T05:53:35Z",
-    "license": "MIT",
-    "topics": [],
-    "lastRelease": "2026-06-09T17:00:13Z",
-    "lastCommit": "2026-10-29T17:40:12Z",
-    "lastTag": "2026-06-09T16:51:14Z",
-    "lastStableTag": "2026-06-09T16:51:14Z",
-    "commits90d": 38
-  },
   "facebookresearch/nevergrad": {
     "date": "2026-11-02",
     "id": 158468845,
@@ -3737,6 +3722,21 @@
     "lastTag": "2025-04-07T18:51:02Z",
     "lastStableTag": "2025-04-07T18:51:02Z",
     "commits90d": 0
+  },
+  "meta/Ax": {
+    "date": "2026-11-02",
+    "id": 169880381,
+    "stars": 2836,
+    "score": 67,
+    "archived": false,
+    "pushed": "2026-11-01T05:53:35Z",
+    "license": "MIT",
+    "topics": [],
+    "lastRelease": "2026-06-09T17:00:13Z",
+    "lastCommit": "2026-10-29T17:40:12Z",
+    "lastTag": "2026-06-09T16:51:14Z",
+    "lastStableTag": "2026-06-09T16:51:14Z",
+    "commits90d": 38
   },
   "microsoft/agent-framework": {
     "date": "2026-11-02",
