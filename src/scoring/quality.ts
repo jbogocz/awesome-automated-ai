@@ -1,3 +1,4 @@
+import { MAINTAINED_DAYS } from "../constants.ts";
 import { clamp } from "./utils.ts";
 
 export interface QualityInput {
@@ -66,17 +67,18 @@ function computeStarsScore(stars: number): number {
   return clamp((Math.log10(Math.max(stars, 1)) / 6) * 100, 0, 100);
 }
 
-// Continuous exponential decay so a 1-day-old push outranks a 29-day-old one.
-// 0d=100, 30d=85, 90d=61, 180d=37, 365d=13.
+// Full marks while the entry counts as maintained under the status rule
+// (src/status.ts: a life sign within MAINTAINED_DAYS), then exponential decay:
+// 180d=100, 270d=61, 365d=22. Decaying from day 0 ranked a mature library that
+// commits every few months below any repo pushed yesterday: tsfresh (9.5k
+// stars, last commit 120 days earlier) scored under skrub (1.7k) on freshness
+// alone, although both are maintained by the list's own definition.
 function computeFreshnessScore(lastLifeSign: string | null): number {
   if (!lastLifeSign) return 0;
-  try {
-    const days = (Date.now() - new Date(lastLifeSign).getTime()) / (24 * 60 * 60 * 1000);
-    if (days < 0) return 100;
-    return clamp(100 * Math.exp(-days / 180), 0, 100);
-  } catch {
-    return 0;
-  }
+  const days = (Date.now() - new Date(lastLifeSign).getTime()) / (24 * 60 * 60 * 1000);
+  if (Number.isNaN(days)) return 0;
+  if (days <= MAINTAINED_DAYS) return 100;
+  return clamp(100 * Math.exp(-(days - MAINTAINED_DAYS) / 180), 0, 100);
 }
 
 // Tiered so NOASSERTION (license file exists but not SPDX-parseable) isn't

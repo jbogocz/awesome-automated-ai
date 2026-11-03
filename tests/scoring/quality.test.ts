@@ -49,6 +49,36 @@ describe("computeQualityScore", () => {
     );
   });
 
+  // Regression guard: freshness decayed from day 0, so tsfresh (9.5k stars,
+  // last commit 120 days earlier, growing) ranked below skrub (1.7k stars,
+  // pushed the day before) although the status rule calls both maintained.
+  it("does not let a recent push outweigh stars while both repos are maintained", () => {
+    const day = 86400000;
+    const mature: QualityInput = {
+      stars: 9486,
+      starsPrevious: null,
+      trend30d: 51,
+      trend30dDays: 28,
+      lastLifeSign: new Date(Date.now() - 120 * day).toISOString(),
+      license: "MIT",
+      archived: false,
+      peerMomentum: 56,
+    };
+    const young: QualityInput = {
+      ...mature,
+      stars: 1666,
+      trend30d: null,
+      trend30dDays: null,
+      lastLifeSign: new Date(Date.now() - day).toISOString(),
+      license: "BSD-3-Clause",
+    };
+    expect(computeQualityScore(mature)).toBeGreaterThan(computeQualityScore(young));
+    // Past the maintained window freshness still decays.
+    expect(
+      computeQualityScore({ ...mature, lastLifeSign: new Date(Date.now() - 300 * day).toISOString() }),
+    ).toBeLessThan(computeQualityScore(mature));
+  });
+
   it("scores an unmaintained project low", () => {
     const input: QualityInput = {
       stars: 500,
