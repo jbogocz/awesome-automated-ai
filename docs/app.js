@@ -738,30 +738,46 @@ function applyHashToUI() {
 }
 
 // ── Boot ─────────────────────────────────────────────────────────────
+// Every control below the theme toggle needs the catalog. Without it they are
+// removed rather than left clickable and dead, and nothing keeps saying
+// "loading…" or describing a sort order that isn't there.
+function renderLoadError(err) {
+  render(
+    els.stream,
+    html`<div class="empty" role="alert">
+      <p class="empty__title">Couldn't load catalog.</p>
+      <p class="empty__hint">${err.message}</p>
+      <p class="empty__hint">
+        <button class="chip" type="button" id="load-retry">Try again</button>
+        or browse the <a href="https://github.com/jbogocz/awesome-automated-ai#readme">list on GitHub</a>.
+      </p>
+    </div>`,
+  );
+  $("#load-retry").addEventListener("click", () => location.reload());
+  for (const el of [...$$(".lensbar, .filterbar, .legend"), els.cmdkTrigger, els.menuTrigger, els.catAll]) {
+    el.style.display = "none";
+  }
+  els.brandSubText.textContent = "Catalog unavailable";
+}
+
 async function main() {
+  if (els.cmdkHint) els.cmdkHint.replaceChildren(html`<kbd>${MOD_KEY}</kbd>${MOD_KEY === "⌘" ? "" : "+"}K`);
+  bindTheme();
   try {
     await load();
   } catch (err) {
-    render(
-      els.stream,
-      html`<div class="empty">
-      <p class="empty__title">Couldn't load catalog.</p>
-      <p class="empty__hint">${err.message}</p>
-    </div>`,
-    );
+    renderLoadError(err);
     console.error(err);
     return;
   }
   renderSidebar();
   applyTrendWindow();
-  if (els.cmdkHint) els.cmdkHint.replaceChildren(html`<kbd>${MOD_KEY}</kbd>${MOD_KEY === "⌘" ? "" : "+"}K`);
   renderCounts();
   bindSidebar();
   bindLenses();
   bindFilterbar();
   bindAvatarFallback();
   bindStream();
-  bindTheme();
   bindSearch();
   bindGlobalKeys();
   readHash();
