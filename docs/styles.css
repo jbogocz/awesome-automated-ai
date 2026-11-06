@@ -591,6 +591,9 @@
   .main {
     display: flex;
     flex-direction: column;
+    /* Keeps a row reached with Shift+Tab clear of the sticky filter bar, which
+       measures up to 93px here, 119px at 900px and below, 151px on a phone. */
+    scroll-padding-top: 104px;
   }
 
   /* Lensbar: curated views (editorial). Sits above the mechanical filters. */
@@ -1504,6 +1507,10 @@
         "main";
     }
 
+    .main {
+      scroll-padding-top: 130px;
+    }
+
     .side {
       position: fixed;
       top: var(--topbar-h);
@@ -1650,6 +1657,9 @@
   }
 
   @media (max-width: 600px) {
+    .main {
+      scroll-padding-top: 162px;
+    }
     .filterbar__count {
       display: none;
     }
