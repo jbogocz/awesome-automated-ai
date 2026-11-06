@@ -70,7 +70,7 @@ const PROJECTS_YAML = `categories:
     repo: owner/existing
 `;
 
-function testConfig(maxPrsPerDay: number): Config {
+function testConfig(maxPrsPerDay: number, dryRun = false): Config {
   return {
     anthropicApiKey: "test-key",
     githubRepoOwner: "owner",
@@ -80,7 +80,7 @@ function testConfig(maxPrsPerDay: number): Config {
     scoreThresholdAuto: 70,
     scoreThresholdQueue: 50,
     maxPrsPerDay,
-    dryRun: false,
+    dryRun,
   };
 }
 
@@ -107,6 +107,36 @@ describe("runDiscovery daily PR cap", () => {
 
     // Cross-run cap accounting: the PR opened above is what the next run counts.
     expect(decisions.filter((d) => d.prNumber !== undefined && d.date === todayUtc())).toHaveLength(1);
+  });
+});
+
+describe("runDiscovery dry run", () => {
+  // Any earlier verdict is final for discovery, so a dry run that wrote
+  // "queue" and "reject" rows would bury those candidates from the real run.
+  it("opens no PR and records no decision, whatever the verdict", async () => {
+    const { createPr } = await import("../../src/github/pr.ts");
+    const dir = mkdtempSync(join(tmpdir(), "discovery-test-"));
+    const projectsYamlPath = join(dir, "projects.yaml");
+    writeFileSync(projectsYamlPath, PROJECTS_YAML);
+    vi.mocked(createPr).mockClear();
+    const real = vi.mocked(analyzeCandidate).getMockImplementation();
+    let n = 0;
+    vi.mocked(analyzeCandidate).mockImplementation(async (...args) => {
+      const analysis = await (real as typeof analyzeCandidate)(...args);
+      // First candidate: auto. Second: not relevant, so rejected.
+      return n++ === 0 ? analysis : { ...analysis, relevant: false };
+    });
+
+    try {
+      const { runDiscovery } = await import("../../src/agents/discovery.ts");
+      const result = await runDiscovery(testConfig(10, true), projectsYamlPath);
+      expect(result.prsCreated).toBe(1);
+      expect(result.discarded).toBe(1);
+      expect(createPr).not.toHaveBeenCalled();
+      expect(loadDecisions(join(dir, "decisions.jsonl"))).toEqual([]);
+    } finally {
+      if (real) vi.mocked(analyzeCandidate).mockImplementation(real);
+    }
   });
 });
 

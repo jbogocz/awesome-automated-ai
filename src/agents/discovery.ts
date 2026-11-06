@@ -41,7 +41,10 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
   const decisionsPath = resolve(projectsYamlPath, "..", config.decisionsPath);
   const decided = loadDecisions(decisionsPath);
   const today = todayUtc();
-  const record = (repo: string, decision: Decision["decision"], reasoning: string, prNumber?: number) =>
+  // A dry run records nothing: any earlier verdict is final, so a row written
+  // here would hide the candidate from the real run.
+  const record = (repo: string, decision: Decision["decision"], reasoning: string, prNumber?: number) => {
+    if (config.dryRun) return;
     appendDecision(decisionsPath, {
       date: today,
       repo,
@@ -49,6 +52,7 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
       reasoning,
       ...(prNumber === undefined ? {} : { prNumber }),
     });
+  };
 
   let tokensUsed = 0;
   let prsCreated = 0;
