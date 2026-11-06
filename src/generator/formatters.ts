@@ -37,6 +37,15 @@ export function escapeHtml(text: string): string {
 }
 
 /**
+ * Escape text for a card body, which unlike a <summary> is live Markdown: an
+ * unescaped `[` is a link or, after `!`, a remote image. For prose that may
+ * derive from a third party's README.
+ */
+export function escapeCardBody(text: string): string {
+  return escapeHtml(text).replace(/\[/g, "\\[");
+}
+
+/**
  * Format an ISO date string as "Mon YYYY" (e.g. "Apr 2026").
  * Returns "-" for empty string or parse error.
  */

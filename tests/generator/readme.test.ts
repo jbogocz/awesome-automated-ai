@@ -80,6 +80,36 @@ const SAMPLE_MANIFEST = {
   ],
 };
 
+describe("generateReadme untrusted text", () => {
+  // Descriptions can come from a model reading a third party's README. The card
+  // body is live Markdown, so escaping HTML alone still let these through.
+  it("does not render a description or note as a link or image", () => {
+    const evil = "Fast ![pixel](https://evil.example/p.png) [click](https://evil.example)";
+    const yamlContent = `categories:
+- name: C
+  entries:
+  - name: Listed
+    repo: autogluon/autogluon
+    tagline: inert
+    description: "${evil}"
+    note: "${evil}"
+  - name: Pending
+    repo: not/fetched
+    tagline: inert
+    description: "${evil}"
+  - name: External
+    url: https://example.com
+    tagline: inert
+    description: "${evil}"
+    note: "${evil}"
+`;
+    const result = generateReadme({ yamlContent, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });
+    expect(result).not.toContain("![pixel](");
+    expect(result).not.toMatch(/(^|[^\\])\[click\]\(/m);
+    expect(result).toContain("!\\[pixel](https://evil.example/p.png)");
+  });
+});
+
 describe("generateReadme", () => {
   it("produces details/summary cards instead of tables", () => {
     const result = generateReadme({ yamlContent: SAMPLE_YAML, header: HEADER, footer: FOOTER, apiData: SAMPLE_API });

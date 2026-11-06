@@ -2,7 +2,14 @@ import { parse as parseYaml } from "yaml";
 import { RELEASE_STALE_MONTHS, STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.ts";
 import { assessRepo, displayBucket, lastLifeSign, STATUS_DOT, type StatusReason } from "../status.ts";
 import type { Category, Entry } from "../validation/projects-yaml.ts";
-import { displayLicense, escapeHtml, formatDateMonth, formatStarsShort, generateTagline } from "./formatters.ts";
+import {
+  displayLicense,
+  escapeCardBody,
+  escapeHtml,
+  formatDateMonth,
+  formatStarsShort,
+  generateTagline,
+} from "./formatters.ts";
 import { buildTagCorpus, selectTags, type TagCorpus } from "./tags.ts";
 
 export interface ApiRepoData {
@@ -247,8 +254,8 @@ function buildExternalCard(entry: Entry, corpus: TagCorpus): string[] {
   const taglinePart = tagline ? ` ${escapeHtml(tagline)}` : "";
   const summary = `<details><summary>${icon} ${nameHtml}${taglinePart}</summary>`;
 
-  const desc = escapeHtml(entry.description ?? "");
-  const note = escapeHtml(entry.note ?? "");
+  const desc = escapeCardBody(entry.description ?? "");
+  const note = escapeCardBody(entry.note ?? "");
   const fullDesc = note ? `${desc} **${note}**` : desc;
 
   const metaLines: string[] = [];
@@ -313,8 +320,8 @@ function buildOneCard(s: ScoredEntry, rank: number | null, corpus: TagCorpus): s
 
   const summary = `<details><summary>${dot}${rankLabel} ${nameHtml} ${starsBadge}${trendBadge}${licenseBadge}${staleBadge}${taglinePart}</summary>`;
 
-  const desc = escapeHtml(entry.description ?? "");
-  const fullDesc = note ? `${desc} **${escapeHtml(note)}**` : desc;
+  const desc = escapeCardBody(entry.description ?? "");
+  const fullDesc = note ? `${desc} **${escapeCardBody(note)}**` : desc;
   const displayDesc = isDead ? `*${fullDesc}*` : fullDesc;
 
   const starsExact = rd.stars.toLocaleString("en-US");
@@ -382,7 +389,7 @@ function buildPendingCard(entry: Entry, url: string): string[] {
   const tagline = entry.tagline ?? generateTagline(entry.description ?? "");
   const taglinePart = tagline ? ` ${escapeHtml(tagline)}` : "";
   const summary = `<details><summary>⚪ <b><a href="${escapeHtml(url)}">${escapeHtml(entry.name)}</a></b>${taglinePart}</summary>`;
-  const desc = escapeHtml(entry.description ?? "");
+  const desc = escapeCardBody(entry.description ?? "");
   const pendingNote = "*Stats pending - this entry is new and gets its data on the next weekly refresh.*";
   return [summary, "", "<br>", "", desc, "", pendingNote, "", "</details>"];
 }
