@@ -30,7 +30,7 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 >
 > Most curated lists are a snapshot of the day someone wrote them. This one is rebuilt weekly from live GitHub data, which matters because the field moved:
 >
-> - **Foundation models replaced entire ML pipelines** - TabPFN beats tuned baselines on small tabular data in seconds ([Nature, 2024](https://www.nature.com/articles/s41586-024-08328-6)).
+> - **Foundation models replaced entire ML pipelines** - TabPFN beats tuned baselines on small tabular data in seconds ([Nature, 2025](https://www.nature.com/articles/s41586-024-08328-6)).
 > - **Autonomous AI agents** now run hundreds of ML experiments overnight without human intervention.
 > - **Prompt engineering became prompt optimization** - DSPy outperforms expert-written prompts by up to 46% ([ICLR, 2024](https://arxiv.org/abs/2310.03714)).
 > - **ML engineering itself got automated** - from data labeling to deployment to monitoring.
@@ -799,7 +799,7 @@ Library that prepares dataframes for scikit-learn, with TableVectorizer and tabu
   Activity  🟢 Nov 2026
   Release   📦 Oct 2026
   License   BSD-3-Clause
-  Tags      data
+  Tags      data · dataframe
 ```
 
 </details>
@@ -1361,7 +1361,7 @@ Agent Reinforcement Trainer: trains multi-step LLM agents on real tasks with GRP
   Activity  🟢 Oct 2026
   Release   📦 Oct 2026
   License   Apache-2.0
-  Tags      agent · llms · reinforcement-learning · qwen · lora
+  Tags      agent · llms · reinforcement-learning · agentic-ai · qwen
 ```
 
 </details>
@@ -1970,7 +1970,7 @@ Lightweight framework for multi-agent workflows with handoffs, guardrails, traci
   Activity  🟢 Oct 2026
   Release   📦 Oct 2026
   License   MIT
-  Tags      openai · agent · ai-agents · multi-agent
+  Tags      openai · agent · ai-agents · multi-agent · agents-sdk
 ```
 
 </details>
@@ -1987,7 +1987,7 @@ Model-driven SDK that builds agents in a few lines of code - 14M+ downloads, Pyt
   Activity  🟢 Oct 2026
   Release   📦 Oct 2026
   License   Apache-2.0
-  Tags      agent · multi-agent · typescript · aws · bedrock
+  Tags      agent · multi-agent · typescript · agents-sdk · aws
 ```
 
 </details>
@@ -2436,7 +2436,7 @@ Minimalist roughly 100-line coding agent from the SWE-agent team that matches SW
   Activity  🟢 Sep 2026
   Release   📦 Jul 2026
   License   MIT
-  Tags      agent · ai-agent
+  Tags      agent · agentic-ai · ai-agent
 ```
 
 </details>
@@ -2833,7 +2833,7 @@ Agentic LLM for autonomous data science that plans analyses, writes and runs cod
   Stars     ⭐ 4,768 (+99 last 30d, +14 last 7d)
   Activity  🟢 Nov 2026
   License   MIT
-  Tags      agent · data-analysis · deep-research · jupyter
+  Tags      agent · agentic-ai · data-analysis · deep-research · jupyter
 ```
 
 </details>
@@ -3143,7 +3143,7 @@ Open-source evals, red teaming, and test generation for LLM agents and RAG, with
   Activity  🟢 Nov 2026
   Release   📦 Oct 2026
   License   Apache-2.0
-  Tags      mlops · llmops · llm-evaluation · llm-security · agent-evaluation
+  Tags      mlops · llmops · llm-evaluation · llm-security · llm-eval
 ```
 
 </details>
@@ -3597,7 +3597,7 @@ Holistic ML validation covering data integrity, drift detection, and model evalu
   Activity  🟡 Nov 2025
   Release   📦 Dec 2024
   License   Other
-  Tags      mlops · jupyter-notebook · pandas-dataframe · data-drift · data-validation
+  Tags      mlops · ml · jupyter-notebook · pandas-dataframe · data-drift
 ```
 
 </details>
@@ -3650,7 +3650,7 @@ Outlier, adversarial, and drift detection algorithms for tabular, text, image, a
   Activity  🔴 Jul 2025 - unmaintained 12+ months
   Release   📦 Jul 2025
   License   Apache-2.0
-  Tags      mlops · data-analysis · jupyter-notebook · data-drift · model-monitoring
+  Tags      mlops · ml · data-analysis · jupyter-notebook · data-drift
 ```
 
 </details>
@@ -3742,7 +3742,7 @@ Tencent Zhuque Lab full-stack AI red-teaming platform that scans agents, MCP ser
   Activity  🟢 Nov 2026
   Release   📦 Oct 2026
   License   Apache-2.0
-  Tags      agent · llm-evaluation · llm-security · ai-safety · ai-security
+  Tags      agent · llm-evaluation · agentic-ai · llm-security · ai-safety
 ```
 
 </details>
@@ -4281,7 +4281,7 @@ Clean APIs for data cleaning with a fluent method-chaining interface for pandas 
   Activity  🟢 Nov 2026
   Release   📦 Nov 2026
   License   MIT
-  Tags      hacktoberfest · data · pandas
+  Tags      hacktoberfest · data · pandas · dataframe
 ```
 
 </details>
@@ -4941,7 +4941,7 @@ Human-centric framework for managing real-life data science and ML projects at s
   Activity  🟢 Oct 2026
   Release   📦 Oct 2026
   License   Apache-2.0
-  Tags      agents · mlops · llmops · generative-ai · kubernetes
+  Tags      agents · mlops · llmops · generative-ai · ml
 ```
 
 </details>
@@ -4975,7 +4975,7 @@ Open-source feature store for managing and serving ML features in real-time and 
   Activity  🟢 Nov 2026
   Release   📦 Oct 2026
   License   Apache-2.0
-  Tags      mlops · data-quality · data-engineering · big-data · feature-store
+  Tags      mlops · ml · data-quality · data-engineering · big-data
 ```
 
 </details>
@@ -5009,7 +5009,7 @@ Framework for building portable, production-ready ML pipelines that run on any i
   Activity  🟢 Oct 2026
   Release   📦 Oct 2026
   License   Apache-2.0
-  Tags      agents · automl · mlops · llmops · tensorflow
+  Tags      agents · automl · mlops · llmops · ml
 ```
 
 </details>
@@ -5110,7 +5110,7 @@ Self-hosted experiment tracker with a high-performance UI that handles 10,000+ t
   Activity  🟡 Dec 2025
   Release   📦 May 2025
   License   Apache-2.0
-  Tags      mlops · tensorflow · prompt-engineering · data-visualization · visualization
+  Tags      mlops · ml · tensorflow · prompt-engineering · data-visualization
 ```
 
 </details>
@@ -5529,7 +5529,7 @@ Toolkit for compressing, deploying, and serving large language and vision-langua
   Activity  🟢 Oct 2026
   Release   📦 Sep 2026
   License   Apache-2.0
-  Tags      llama · llm-inference
+  Tags      llama · llm-inference · llama3 · llama2
 ```
 
 </details>
@@ -6126,7 +6126,7 @@ Curated list of MLOps tools organised by pipeline stage.
   Stars     ⭐ 5,304 (+20 last 30d, +9 last 7d)
   Activity  🟢 Oct 2026
   License   -
-  Tags      mlops · awesome · machine-learning-engineering
+  Tags      mlops · ml · awesome · machine-learning-engineering
 ```
 
 </details>

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T15:33:31.279Z",
+  "generated": "2026-11-06T16:58:48.912Z",
   "dataAsOf": "2026-11-02",
   "categories": [
     {
@@ -3806,7 +3806,8 @@
           "status": "active",
           "bucket": "live",
           "tags": [
-            "data"
+            "data",
+            "dataframe"
           ],
           "external": false,
           "history": [
@@ -6614,8 +6615,8 @@
             "agent",
             "llms",
             "reinforcement-learning",
-            "qwen",
-            "lora"
+            "agentic-ai",
+            "qwen"
           ],
           "external": false,
           "history": [
@@ -8492,7 +8493,8 @@
             "openai",
             "agent",
             "ai-agents",
-            "multi-agent"
+            "multi-agent",
+            "agents-sdk"
           ],
           "external": false,
           "history": [
@@ -8587,8 +8589,8 @@
             "agent",
             "multi-agent",
             "typescript",
-            "aws",
-            "bedrock"
+            "agents-sdk",
+            "aws"
           ],
           "external": false,
           "history": [
@@ -10954,6 +10956,7 @@
           "bucket": "live",
           "tags": [
             "agent",
+            "agentic-ai",
             "ai-agent"
           ],
           "external": false,
@@ -13484,6 +13487,7 @@
           "bucket": "live",
           "tags": [
             "agent",
+            "agentic-ai",
             "data-analysis",
             "deep-research",
             "jupyter"
@@ -14970,7 +14974,7 @@
             "llmops",
             "llm-evaluation",
             "llm-security",
-            "agent-evaluation"
+            "llm-eval"
           ],
           "external": false,
           "history": [
@@ -16017,10 +16021,10 @@
           "bucket": "live",
           "tags": [
             "mlops",
+            "ml",
             "jupyter-notebook",
             "pandas-dataframe",
-            "data-drift",
-            "data-validation"
+            "data-drift"
           ],
           "external": false,
           "history": [
@@ -16304,10 +16308,10 @@
           "bucket": "deprecated",
           "tags": [
             "mlops",
+            "ml",
             "data-analysis",
             "jupyter-notebook",
-            "data-drift",
-            "model-monitoring"
+            "data-drift"
           ],
           "external": false,
           "history": [
@@ -17477,9 +17481,9 @@
           "tags": [
             "agent",
             "llm-evaluation",
+            "agentic-ai",
             "llm-security",
-            "ai-safety",
-            "ai-security"
+            "ai-safety"
           ],
           "external": false,
           "history": [
@@ -19527,7 +19531,8 @@
           "tags": [
             "hacktoberfest",
             "data",
-            "pandas"
+            "pandas",
+            "dataframe"
           ],
           "external": false,
           "history": [
@@ -23265,7 +23270,7 @@
             "mlops",
             "llmops",
             "generative-ai",
-            "kubernetes"
+            "ml"
           ],
           "external": false,
           "history": [
@@ -23358,10 +23363,10 @@
           "bucket": "live",
           "tags": [
             "mlops",
+            "ml",
             "data-quality",
             "data-engineering",
-            "big-data",
-            "feature-store"
+            "big-data"
           ],
           "external": false,
           "history": [
@@ -23549,10 +23554,10 @@
           "bucket": "live",
           "tags": [
             "mlops",
+            "ml",
             "tensorflow",
             "prompt-engineering",
-            "data-visualization",
-            "visualization"
+            "data-visualization"
           ],
           "external": false,
           "history": [
@@ -23648,7 +23653,7 @@
             "automl",
             "mlops",
             "llmops",
-            "tensorflow"
+            "ml"
           ],
           "external": false,
           "history": [
@@ -25228,7 +25233,9 @@
           "bucket": "live",
           "tags": [
             "llama",
-            "llm-inference"
+            "llm-inference",
+            "llama3",
+            "llama2"
           ],
           "external": false,
           "history": [
@@ -27246,6 +27253,7 @@
           "bucket": "live",
           "tags": [
             "mlops",
+            "ml",
             "awesome",
             "machine-learning-engineering"
           ],
