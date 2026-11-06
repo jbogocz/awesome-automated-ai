@@ -76,18 +76,30 @@ describe("searchGitHub README", () => {
     expect(candidate?.readme).toBe("# Linux");
   });
 
-  it("treats a repository without a README as empty and any other failure as an error", async () => {
-    const respond = (readmeStatus: number) =>
-      vi.mocked(request).mockImplementation((async (path: string) => {
-        if (path.startsWith("/search/repositories")) return { data: { items: [item] }, headers: new Headers() };
-        throw new GitHubError(`GitHub GET ${path} failed: HTTP ${readmeStatus}`, readmeStatus);
-      }) as typeof request);
-    const search = () => searchGitHub({ topics: ["automl"], minStars: 50, maxResults: 1, isKnown: () => false });
+  it("treats a repository without a README as empty", async () => {
+    vi.mocked(request).mockImplementation((async (path: string) => {
+      if (path.startsWith("/search/repositories")) return { data: { items: [item] }, headers: new Headers() };
+      throw new GitHubError(`GitHub GET ${path} failed: HTTP 404`, 404);
+    }) as typeof request);
 
-    respond(404);
-    expect((await search())[0]?.readme).toBe("");
+    const found = await searchGitHub({ topics: ["automl"], minStars: 50, maxResults: 1, isKnown: () => false });
 
-    respond(502);
-    await expect(search()).rejects.toThrow(/HTTP 502/);
+    expect(found[0]?.readme).toBe("");
+  });
+
+  // Scored as README-less it would get a final verdict; thrown, one takedown
+  // (HTTP 451) or one flaky response ended the search for every other candidate.
+  it.each([451, 502])("leaves out only the candidate whose README answered HTTP %i", async (status) => {
+    const blocked = { ...item, full_name: "o/blocked", name: "blocked" };
+    const fine = { ...item, full_name: "o/fine", name: "fine" };
+    vi.mocked(request).mockImplementation((async (path: string) => {
+      if (path.startsWith("/search/repositories")) return { data: { items: [blocked, fine] }, headers: new Headers() };
+      if (path === "/repos/o/blocked/readme") throw new GitHubError(`GitHub GET ${path} failed`, status);
+      return { data: { content: "" }, headers: new Headers() };
+    }) as typeof request);
+
+    const found = await searchGitHub({ topics: ["automl"], minStars: 50, maxResults: 5, isKnown: () => false });
+
+    expect(found.map((c) => c.repo)).toEqual(["o/fine"]);
   });
 });

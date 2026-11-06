@@ -1,3 +1,4 @@
+import { logger } from "../utils/logger.ts";
 import { GitHubError, request } from "./client.ts";
 
 export interface GitHubCandidate {
@@ -82,7 +83,15 @@ export async function searchGitHub(opts: SearchOptions): Promise<GitHubCandidate
       if (opts.isKnown(item.full_name)) continue;
       seen.add(item.full_name);
 
-      const readme = await fetchReadme(item.full_name);
+      let readme: string;
+      try {
+        readme = await fetchReadme(item.full_name);
+      } catch (err) {
+        // Left out for this run only: no verdict is recorded, so the next run
+        // sees it again. One takedown must not end the search for the others.
+        logger.warn(`Skipping ${item.full_name}: ${err instanceof Error ? err.message : String(err)}`);
+        continue;
+      }
 
       candidates.push({
         repo: item.full_name,
