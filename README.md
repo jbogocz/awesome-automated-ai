@@ -2909,7 +2909,7 @@ End-to-end ML algorithm design and optimization via progressive search and exper
 
 <br>
 
-Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026). **Published without a license file, so treat it as a reference design rather than reusable code.**
+Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026). **The README states MIT, but the repository has no license file.**
 
 ```
   Score     59/100

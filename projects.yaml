@@ -858,7 +858,7 @@ categories:
     description: Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026).
     tagline: Agents run 100 ML experiments overnight autonomously
     tags: [agents, automated-research, autonomous-agents, llm, machine-learning, python, research]
-    note: Published without a license file, so treat it as a reference design rather than reusable code.
+    note: The README states MIT, but the repository has no license file.
   - name: STORM
     repo: stanford-oval/storm
     description: LLM-powered knowledge curation that researches topics and generates full articles with citations (Stanford).

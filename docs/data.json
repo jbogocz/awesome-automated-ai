@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T16:58:48.912Z",
+  "generated": "2026-11-06T17:05:38.441Z",
   "dataAsOf": "2026-11-02",
   "categories": [
     {
@@ -12254,7 +12254,7 @@
           "url": "https://github.com/karpathy/autoresearch",
           "description": "Minimal script enabling AI agents to autonomously run ~100 ML experiments overnight at ~12/hour, finding genuine improvements that transfer to larger models (Karpathy, March 2026).",
           "tagline": "Agents run 100 ML experiments overnight autonomously",
-          "note": "Published without a license file, so treat it as a reference design rather than reusable code.",
+          "note": "The README states MIT, but the repository has no license file.",
           "stars": 99073,
           "trend": 1888,
           "trendDays": 30,
