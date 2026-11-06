@@ -983,20 +983,6 @@
       opacity: 0;
     }
   }
-  @media (prefers-reduced-motion: reduce) {
-    .avatar[data-trend="hot"]::after {
-      animation: none;
-    }
-    .loading-skeleton {
-      animation: none;
-    }
-    .sheet,
-    .cmdk,
-    .side {
-      transition: none;
-    }
-  }
-
   /* ── Row content ──────────────────────────────────────────────────────── */
 
   .row__name {
@@ -1680,6 +1666,20 @@
     .cmdk-trigger {
       height: 30px;
       font-size: 12px;
+    }
+  }
+
+  /* In this layer so it outranks the components it stills and the mobile
+     drawer above; earlier in the cascade the base rules silently won. */
+  @media (prefers-reduced-motion: reduce) {
+    .avatar[data-trend="hot"]::after,
+    .loading-skeleton {
+      animation: none;
+    }
+    .sheet,
+    .cmdk,
+    .side {
+      transition: none;
     }
   }
 
