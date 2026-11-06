@@ -495,6 +495,19 @@ function syncModalChrome() {
 }
 
 // ── Bindings ─────────────────────────────────────────────────────────
+// A logo that fails to load would cover the letter behind it with a broken
+// image; removing it lets the letter show. Error events do not bubble, so this
+// listens in the capture phase and also covers the sheet's avatar.
+function bindAvatarFallback() {
+  document.addEventListener(
+    "error",
+    (ev) => {
+      if (ev.target.classList?.contains("avatar__img")) ev.target.remove();
+    },
+    true,
+  );
+}
+
 function bindStream() {
   els.stream.addEventListener("click", (ev) => {
     const row = ev.target.closest(".row");
@@ -747,6 +760,7 @@ async function main() {
   bindSidebar();
   bindLenses();
   bindFilterbar();
+  bindAvatarFallback();
   bindStream();
   bindTheme();
   bindSearch();
