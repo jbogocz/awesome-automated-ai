@@ -30,7 +30,7 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 >
 > Most curated lists are a snapshot of the day someone wrote them. This one is rebuilt weekly from live GitHub data, which matters because the field moved:
 >
-> - **Foundation models replaced entire ML pipelines** - TabPFN beats tuned baselines on small tabular data in seconds ([Nature, 2024](https://www.nature.com/articles/s41586-024-08328-6)).
+> - **Foundation models replaced entire ML pipelines** - TabPFN beats tuned baselines on small tabular data in seconds ([Nature, 2025](https://www.nature.com/articles/s41586-024-08328-6)).
 > - **Autonomous AI agents** now run hundreds of ML experiments overnight without human intervention.
 > - **Prompt engineering became prompt optimization** - DSPy outperforms expert-written prompts by up to 46% ([ICLR, 2024](https://arxiv.org/abs/2310.03714)).
 > - **ML engineering itself got automated** - from data labeling to deployment to monitoring.
