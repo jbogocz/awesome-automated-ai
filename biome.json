@@ -61,7 +61,16 @@
     "formatter": { "enabled": false }
   },
   "files": {
-    "includes": ["**", "!**/node_modules", "!**/dist", "!pnpm-lock.yaml", "!docs/data.json", "!data", "!**/coverage"]
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/dist",
+      "!pnpm-lock.yaml",
+      "!docs/data.json",
+      "!data",
+      "!**/coverage",
+      "!**/.claude"
+    ]
   },
   "overrides": [
     {
