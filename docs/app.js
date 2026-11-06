@@ -160,13 +160,13 @@ async function load() {
 function renderSidebar() {
   const frag = document.createDocumentFragment();
   for (const sec of state.sections) {
-    const totalCount = sec.categories.reduce((n, c) => n + c.entries.length, 0);
+    // Counts are filled by renderCounts, which knows what is currently listed.
     const catsHtml = sec.categories
       .map(
         (c) =>
           `<button class="cat" type="button" data-cat="${escapeText(c.id)}" aria-pressed="false">
         <span>${escapeText(c.name)}</span>
-        <span class="cat__count">${c.entries.length}</span>
+        <span class="cat__count"></span>
       </button>`,
       )
       .join("");
@@ -176,7 +176,7 @@ function renderSidebar() {
         <button class="section-group__head" type="button" aria-expanded="true">
           <svg class="section-group__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
           <span>${sec.name}</span>
-          <span class="section-group__count">${totalCount}</span>
+          <span class="section-group__count"></span>
         </button>
         <div class="section-group__list">${raw(catsHtml)}</div>
       </div>`);
@@ -270,7 +270,20 @@ function renderCounts() {
     if (e.archived && !state.filters.archived) continue;
     for (const n of lensNames) if (LENSES[n].test(e)) lensCounts[n] += 1;
   }
-  els.catAllCount.textContent = String(state.entries.length);
+  // A sidebar number is what picking that item lists, so hidden archived
+  // entries stay out of it; "Neural Architecture Search 6" used to list 4.
+  const listed = (entries) => (state.filters.archived ? entries.length : entries.filter((e) => !e.archived).length);
+  els.catAllCount.textContent = String(listed(state.entries));
+  state.sections.forEach((sec, i) => {
+    const group = els.sectionGroups.children[i];
+    let total = 0;
+    for (const c of sec.categories) {
+      const n = listed(c.entries);
+      total += n;
+      $(`.cat[data-cat="${CSS.escape(c.id)}"] .cat__count`, group).textContent = String(n);
+    }
+    $(".section-group__count", group).textContent = String(total);
+  });
   els.chipAliveCount.textContent = String(alive);
   const age = dataAgeDays();
   const ageTxt =

@@ -72,7 +72,8 @@ function renderCmdk(q) {
         items: cats.map((c) => ({
           key: `cat-${c.id}`,
           name: c.name,
-          meta: `${c.entries.length} · ${c.section}`,
+          // What jumping there lists: archived entries stay hidden unless shown.
+          meta: `${_state.filters.archived ? c.entries.length : c.entries.filter((e) => !e.archived).length} · ${c.section}`,
           action: () => {
             closeCmdk();
             _setCategory(c.id);
