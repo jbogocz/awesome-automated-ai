@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-03T01:03:22.424Z",
-  "dataAsOf": "2026-11-03",
+  "generated": "2026-11-06T15:33:31.279Z",
+  "dataAsOf": "2026-11-02",
   "categories": [
     {
       "name": "General-Purpose AutoML",
@@ -24,7 +24,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llama",
             "fine-tuning",
@@ -121,7 +120,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "time-series",
@@ -218,7 +216,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "hyperparameter-optimization",
@@ -315,7 +312,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "ml",
@@ -413,7 +409,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "hyperparameter-optimization",
@@ -510,7 +505,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "gpu",
@@ -607,7 +601,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "hyperparameter-optimization",
@@ -704,7 +697,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "classification",
@@ -799,7 +791,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "hyperparameter-optimization",
@@ -896,7 +887,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "automated-machine-learning",
@@ -993,7 +983,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "automated-machine-learning"
@@ -1088,7 +1077,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "hyperparameter-optimization",
@@ -1185,7 +1173,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl"
           ],
@@ -1493,7 +1480,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "mlops",
@@ -1590,7 +1576,6 @@
           "archived": true,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "object-detection"
@@ -1685,7 +1670,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "neural-architecture-search",
@@ -1780,7 +1764,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "hyperparameter-optimization",
@@ -1877,7 +1860,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "hyperparameter-optimization",
@@ -1973,7 +1955,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "automated-machine-learning",
@@ -2077,7 +2058,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hyperparameter-optimization",
             "optimization",
@@ -2174,7 +2154,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hyperparameter-optimization",
             "distributed",
@@ -2269,7 +2248,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hacktoberfest"
           ],
@@ -2362,7 +2340,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hyperparameter-optimization",
             "bayesian-optimization",
@@ -2458,7 +2435,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "hyperparameter-optimization",
@@ -2554,7 +2530,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hyperparameter-optimization",
             "bayesian-optimization",
@@ -2649,7 +2624,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "hyperparameter-optimization",
@@ -2746,7 +2720,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hyperparameter-optimization",
             "open-source",
@@ -2843,7 +2816,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hyperparameter-optimization",
             "bayesian-optimization",
@@ -2939,7 +2911,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hyperparameter-optimization",
             "kubernetes",
@@ -3072,7 +3043,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "feature-extraction"
@@ -3167,7 +3137,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "automated-machine-learning",
@@ -3264,7 +3233,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "feature-engineering",
@@ -3360,7 +3328,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "scikit-learn",
             "tabular-data",
@@ -3457,7 +3424,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "automated-machine-learning",
@@ -3554,7 +3520,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "feature-engineering",
@@ -3649,7 +3614,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "scikit-learn",
             "feature-engineering",
@@ -3745,7 +3709,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "feature-engineering",
             "gpu",
@@ -3877,7 +3840,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "tabular-data",
             "foundation-models",
@@ -3972,7 +3934,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "tabular-data",
             "neural-networks"
@@ -4066,7 +4027,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "tabular-data",
             "foundation-models",
@@ -4161,7 +4121,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "transformers",
             "classification",
@@ -4256,7 +4215,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "tabular-data",
             "foundation-models",
@@ -4351,7 +4309,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "tabular-data",
             "foundation-models"
@@ -4445,7 +4402,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "tabular-data",
             "foundation-models"
@@ -4539,7 +4495,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "tabular-data",
             "classification",
@@ -4639,7 +4594,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "openai",
@@ -4737,7 +4691,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "tensorflow",
@@ -4834,7 +4787,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "dataset",
@@ -4929,7 +4881,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "benchmark"
@@ -5023,7 +4974,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "tabular-data",
@@ -5119,7 +5069,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -5212,7 +5161,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "tabular-data",
             "tabular-methods"
@@ -5313,7 +5261,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "large-language-models",
@@ -5410,7 +5357,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "agent",
@@ -5507,7 +5453,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "transformers",
             "fine-tuning",
@@ -5604,7 +5549,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "transformers",
             "fine-tuning",
@@ -5701,7 +5645,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llms",
             "large-language-models",
@@ -5797,7 +5740,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "fine-tuning"
           ],
@@ -5890,7 +5832,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "chatgpt",
             "transformer",
@@ -5986,7 +5927,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "fine-tuning",
             "meta"
@@ -6080,7 +6020,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "natural-language-processing",
             "huggingface"
@@ -6174,7 +6113,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "generative-ai",
             "llama",
@@ -6271,7 +6209,6 @@
           "archived": true,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "nlp",
             "neural-networks"
@@ -6365,7 +6302,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "reinforcement-learning"
           ],
@@ -6458,7 +6394,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "fine-tuning",
@@ -6714,7 +6649,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "nlp",
             "prompt-optimization",
@@ -6809,7 +6743,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "prompt-engineering",
@@ -6906,7 +6839,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "large-language-models",
             "prompt-optimization"
@@ -7000,7 +6932,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "optimization",
             "prompt-optimization",
@@ -7095,7 +7026,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "prompt-engineering",
             "synthetic-dataset-generation"
@@ -7189,7 +7119,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "nlp",
@@ -7284,7 +7213,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llama",
             "prompt-engineering",
@@ -7380,7 +7308,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "prompt-optimization",
             "evolutionary-algorithms",
@@ -7515,7 +7442,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "llms",
@@ -7611,7 +7537,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llms",
             "mcp",
@@ -7708,7 +7633,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "openai",
@@ -7805,7 +7729,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "genai",
             "agent-framework",
@@ -7900,7 +7823,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "huggingface"
@@ -7994,7 +7916,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "llms",
@@ -8091,7 +8012,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "ai-agents",
@@ -8188,7 +8108,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "ai-agents",
             "browser-automation",
@@ -8284,7 +8203,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "agent",
@@ -8381,7 +8299,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "autogen",
@@ -8477,7 +8394,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "multi-agent",
@@ -8572,7 +8488,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "agent",
@@ -8668,7 +8583,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "multi-agent",
@@ -8765,7 +8679,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "self-hosted",
@@ -8860,7 +8773,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent-memory",
             "ai-agent",
@@ -8956,7 +8868,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "autonomous-agents",
             "orchestration",
@@ -9051,7 +8962,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llmops",
             "rag",
@@ -9148,7 +9058,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "openai",
@@ -9245,7 +9154,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "multi-agent",
             "agent-memory",
@@ -9342,7 +9250,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "ai-agents",
             "rag",
@@ -9439,7 +9346,6 @@
           "archived": true,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "workflow",
@@ -9536,7 +9442,6 @@
           "archived": true,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "developer-tools",
             "self-hosted",
@@ -9632,7 +9537,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "open-source",
             "ai-agent",
@@ -9728,7 +9632,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "autonomous-agents",
             "self-hosted",
@@ -9825,7 +9728,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "framework",
             "agent-memory",
@@ -9920,7 +9822,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "ai-agents",
             "developer-tools",
@@ -10015,7 +9916,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "typescript",
@@ -10111,7 +10011,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "developer-tools",
@@ -10208,7 +10107,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "rag",
@@ -10301,7 +10199,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "mcp",
@@ -10394,7 +10291,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "mcp",
@@ -10771,7 +10667,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "agent",
@@ -10868,7 +10763,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "llama",
@@ -10965,7 +10859,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "developer-tools"
@@ -11059,7 +10952,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "ai-agent"
@@ -11154,7 +11046,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "autonomous-agents"
@@ -11248,7 +11139,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "developer-tools",
@@ -11345,7 +11235,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "developer-tools",
             "open-source",
@@ -11442,7 +11331,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "cli",
@@ -11538,7 +11426,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "mcp"
@@ -11632,7 +11519,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "cli",
@@ -11729,7 +11615,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "cli",
@@ -11826,7 +11711,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mcp",
             "agentic-ai",
@@ -11992,7 +11876,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "agent",
@@ -12085,7 +11968,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "developer-tools",
             "mcp",
@@ -12178,7 +12060,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "cli",
             "ai-coding",
@@ -12381,7 +12262,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "autonomous-agents",
@@ -12477,7 +12357,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "large-language-models",
             "nlp",
@@ -12574,7 +12453,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "autonomous-agents",
@@ -12671,7 +12549,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "rag",
             "search"
@@ -12765,7 +12642,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "autonomous-agents",
@@ -12861,7 +12737,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "ai-researcher"
           ],
@@ -12954,7 +12829,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automated-machine-learning",
             "ai-agents",
@@ -13049,7 +12923,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "llms",
@@ -13146,7 +13019,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "multi-agent",
@@ -13243,7 +13115,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "autonomous-agents",
@@ -13339,7 +13210,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "automl",
@@ -13434,7 +13304,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "coding-agent",
             "evolutionary-algorithms",
@@ -13525,7 +13394,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "evolutionary-algorithms"
           ],
@@ -13614,7 +13482,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "data-analysis",
@@ -13706,7 +13573,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "multi-agent",
@@ -13864,7 +13730,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "evaluation",
@@ -13961,7 +13826,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llmops",
             "evaluation",
@@ -14058,7 +13922,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llm-evaluation",
             "evaluation-framework",
@@ -14153,7 +14016,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llmops",
             "evaluation"
@@ -14247,7 +14109,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "transformer",
             "evaluation-framework",
@@ -14342,7 +14203,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "evaluation",
@@ -14439,7 +14299,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llmops",
             "llms",
@@ -14536,7 +14395,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "llmops",
@@ -14633,7 +14491,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "evaluation",
             "huggingface"
@@ -14727,7 +14584,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "evaluation",
             "llm-evaluation",
@@ -14825,7 +14681,6 @@
           "status": "quiet",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "evaluation",
@@ -14922,7 +14777,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "chatgpt",
             "api"
@@ -15016,7 +14870,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llmops",
             "evaluation",
@@ -15112,7 +14965,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "llmops",
@@ -15302,7 +15154,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "llmops",
@@ -15399,7 +15250,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "llmops",
@@ -15497,7 +15347,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "inference",
             "serving",
@@ -15593,7 +15442,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "inference",
             "research",
@@ -15689,7 +15537,6 @@
           "archived": true,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "openai",
@@ -15786,7 +15633,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "ai-gateway",
             "rust",
@@ -15883,7 +15729,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "llmops",
@@ -16074,7 +15919,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "llmops",
@@ -16171,7 +16015,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "jupyter-notebook",
@@ -16268,7 +16111,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "data-quality",
@@ -16365,7 +16207,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "tabular-data",
@@ -16461,7 +16302,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "data-analysis",
@@ -16558,7 +16398,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llmops",
             "generative-ai",
@@ -16655,7 +16494,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "llmops",
@@ -16752,7 +16590,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "llmops",
@@ -16849,7 +16686,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "openai",
@@ -16946,7 +16782,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "llmops",
@@ -17050,7 +16885,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llm-evaluation",
             "llm-security"
@@ -17144,7 +16978,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "foundation-model",
@@ -17239,7 +17072,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "llms",
@@ -17336,7 +17168,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hacktoberfest",
             "llm-safety"
@@ -17430,7 +17261,6 @@
           "archived": true,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "llmops",
             "large-language-models",
@@ -17527,7 +17357,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "generative-ai",
             "responsible-ai",
@@ -17684,7 +17513,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -17781,7 +17609,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -17878,7 +17705,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -17974,7 +17800,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -18071,7 +17896,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -18166,7 +17990,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "time-series",
@@ -18263,7 +18086,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -18360,7 +18182,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -18458,7 +18279,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -18555,7 +18375,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -18652,7 +18471,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "time-series",
@@ -18749,7 +18567,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -18846,7 +18663,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -18942,7 +18758,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series"
           ],
@@ -19035,7 +18850,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "forecasting",
@@ -19230,7 +19044,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hacktoberfest",
             "data-quality",
@@ -19327,7 +19140,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "data-quality",
@@ -19424,7 +19236,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "pandas",
             "data-cleaning",
@@ -19521,7 +19332,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "data-analysis",
             "exploratory-data-analysis",
@@ -19618,7 +19428,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hacktoberfest",
             "computer-vision",
@@ -19715,7 +19524,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hacktoberfest",
             "data",
@@ -19810,7 +19618,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "visualization"
           ],
@@ -19903,7 +19710,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "large-language-models",
             "fine-tuning",
@@ -20000,7 +19806,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "transformers",
             "nlp",
@@ -20161,7 +19966,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "data-quality",
             "anomaly-detection",
@@ -20258,7 +20062,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "computer-vision",
@@ -20355,7 +20158,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "labeling",
             "weak-supervision",
@@ -20450,7 +20252,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "nlp",
@@ -20547,7 +20348,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "foundation-models",
             "computer-vision",
@@ -20644,7 +20444,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "artificial-intelligence",
             "computer-vision",
@@ -20741,7 +20540,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agent",
             "autonomous-agents",
@@ -20836,7 +20634,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "computer-vision",
             "annotation",
@@ -21004,7 +20801,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "time-series",
             "generative-ai",
@@ -21100,7 +20896,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "llmops",
@@ -21197,7 +20992,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "fine-tuning",
@@ -21294,7 +21088,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "data",
             "generation"
@@ -21388,7 +21181,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mcp",
             "agentic-ai",
@@ -21485,7 +21277,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "llms",
@@ -21590,7 +21381,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "inference",
             "quantization",
@@ -21687,7 +21477,6 @@
           "status": "dead",
           "bucket": "historical",
           "lifecycle": "historical",
-          "stale": "2026-11-02",
           "tags": [
             "transformers",
             "model-compression",
@@ -21782,7 +21571,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "quantization",
             "compression"
@@ -21876,7 +21664,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "large-language-models",
             "quantization",
@@ -21973,7 +21760,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "inference",
             "quantization",
@@ -22070,7 +21856,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "transformers",
             "quantization",
@@ -22167,7 +21952,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "quantization",
             "qlora"
@@ -22261,7 +22045,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "inference",
             "transformers",
@@ -22358,7 +22141,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "inference",
             "fine-tuning",
@@ -22455,7 +22237,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "inference",
             "quantization",
@@ -22548,7 +22329,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "quantization",
             "neural-architecture-search",
@@ -22714,7 +22494,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "hyperparameter-optimization",
             "large-language-models",
@@ -22811,7 +22590,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "mlops",
@@ -22908,7 +22686,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "data",
             "orchestration",
@@ -23005,7 +22782,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "ml",
             "tensorflow",
@@ -23102,7 +22878,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "developer-tools",
             "unstructured-data",
@@ -23197,7 +22972,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "orchestration",
@@ -23294,7 +23068,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "hyperparameter-optimization",
@@ -23391,7 +23164,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "hacktoberfest",
@@ -23488,7 +23260,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "mlops",
@@ -23585,7 +23356,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "data-quality",
@@ -23682,7 +23452,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "machinelearning",
@@ -23778,7 +23547,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "tensorflow",
@@ -23875,7 +23643,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "agents",
             "automl",
@@ -23972,7 +23739,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "tensorflow"
           ],
@@ -24162,7 +23928,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "tensorflow",
             "scikit-learn",
@@ -24258,7 +24023,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "inference",
             "gpu"
@@ -24352,7 +24116,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "generative-ai",
             "inference",
@@ -24449,7 +24212,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "llmops",
@@ -24546,7 +24308,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "tensorflow",
@@ -24643,7 +24404,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "neural-network",
             "gpu"
@@ -24737,7 +24497,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "artificial-intelligence",
             "developer-tools",
@@ -24834,7 +24593,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "tensorflow",
             "cuda"
@@ -24993,7 +24751,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llms",
             "llama",
@@ -25090,7 +24847,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "ggml"
           ],
@@ -25183,7 +24939,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "openai",
             "inference",
@@ -25280,7 +25035,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "inference",
             "llama",
@@ -25377,7 +25131,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "cuda",
             "llm-serving",
@@ -25473,7 +25226,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llama",
             "llm-inference"
@@ -25567,7 +25319,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llama",
             "nlp",
@@ -25663,7 +25414,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "inference",
             "quantization",
@@ -25754,7 +25504,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llm-inference",
             "kubernetes",
@@ -25847,7 +25596,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "inference",
             "kubernetes",
@@ -25939,7 +25687,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "llms",
             "inference",
@@ -26030,7 +25777,6 @@
           "archived": true,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "llmops",
             "transformers",
@@ -27026,7 +26772,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "awesome",
             "curated-list"
@@ -27120,7 +26865,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "neural-network",
             "awesome"
@@ -27214,7 +26958,6 @@
           "archived": false,
           "status": "dead",
           "bucket": "deprecated",
-          "stale": "2026-11-02",
           "tags": [
             "large-language-models",
             "nlp",
@@ -27310,7 +27053,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "awesome",
@@ -27407,7 +27149,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "large-language-models",
             "generative-ai",
@@ -27503,7 +27244,6 @@
           "archived": false,
           "status": "active",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "mlops",
             "awesome",
@@ -27594,7 +27334,6 @@
           "archived": false,
           "status": "quiet",
           "bucket": "live",
-          "stale": "2026-11-02",
           "tags": [
             "automl",
             "ml",
