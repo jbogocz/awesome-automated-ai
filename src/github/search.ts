@@ -1,4 +1,4 @@
-import { request } from "./client.ts";
+import { GitHubError, request } from "./client.ts";
 
 export interface GitHubCandidate {
   repo: string;
@@ -95,10 +95,14 @@ export async function searchGitHub(opts: SearchOptions): Promise<GitHubCandidate
 
 async function fetchReadme(repo: string): Promise<string> {
   try {
-    const { data } = await request<{ content?: string }>(`/repos/${repo}/contents/README.md`);
+    const { data } = await request<{ content?: string }>(`/repos/${repo}/readme`);
     return typeof data.content === "string" ? Buffer.from(data.content, "base64").toString("utf-8").slice(0, 5000) : "";
-  } catch {
-    return "";
+  } catch (err) {
+    // Only "this repository has no README" is an empty README. Any other
+    // failure would otherwise score the candidate as README-less and the
+    // verdict recorded for it is final.
+    if (err instanceof GitHubError && err.status === 404) return "";
+    throw err;
   }
 }
 
