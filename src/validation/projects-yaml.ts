@@ -85,10 +85,12 @@ export function findDuplicateReposInCategories(data: ProjectsYaml): string[] {
     const seen = new Set<string>();
     for (const entry of cat.entries ?? []) {
       if (!entry.repo) continue;
-      if (seen.has(entry.repo)) {
+      // GitHub slugs ignore case.
+      const key = entry.repo.toLowerCase();
+      if (seen.has(key)) {
         duplicates.push(`${cat.name} / ${entry.repo}`);
       }
-      seen.add(entry.repo);
+      seen.add(key);
     }
   }
   return duplicates;

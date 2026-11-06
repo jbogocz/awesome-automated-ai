@@ -94,6 +94,14 @@ describe("findDuplicateReposInCategories", () => {
     expect(dups).toEqual(["HPO / a/b"]);
   });
 
+  // GitHub slugs ignore case, so these are one repository listed twice.
+  it("flags the same repo under another case", () => {
+    const dups = findDuplicateReposInCategories({
+      categories: [{ name: "HPO", entries: [entry("e2b-dev/E2B"), entry("e2b-dev/e2b")] }],
+    });
+    expect(dups).toEqual(["HPO / e2b-dev/e2b"]);
+  });
+
   it("allows the same repo across different categories (cross-listing)", () => {
     const dups = findDuplicateReposInCategories({
       categories: [
