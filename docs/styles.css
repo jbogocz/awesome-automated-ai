@@ -102,6 +102,12 @@
     --dur-3: 320ms;
   }
 
+  /* "dark light" lets the OS choose, so a dark theme picked on a light OS
+     would otherwise keep light scrollbars and form controls. */
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+  }
+
   /* Light mode — a daytime observatory deck.
    Same hue, inverted lightness, slightly warmer. */
   :root[data-theme="light"] {
