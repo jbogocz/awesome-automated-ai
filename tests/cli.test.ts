@@ -8,9 +8,11 @@ const mocks = vi.hoisted(() => ({
     discarded: 0,
     tokensUsed: 0,
   })),
+  runRefreshTagsCommand: vi.fn(async () => {}),
 }));
 
 vi.mock("../src/agents/discovery.ts", () => ({ runDiscovery: mocks.runDiscovery }));
+vi.mock("../src/commands/refresh-tags.ts", () => ({ runRefreshTagsCommand: mocks.runRefreshTagsCommand }));
 
 /** Runs src/cli.ts as `node src/cli.ts <args>`; it executes on import. */
 async function cli(...args: string[]): Promise<void> {
@@ -59,5 +61,24 @@ describe("discover", () => {
     vi.stubEnv("DRY_RUN", "true");
     await cli("discover");
     expect(discoveryDryRun()).toBe(true);
+  });
+});
+
+describe("--limit", () => {
+  it("passes a positive integer through", async () => {
+    await cli("refresh-tags", "--limit=5");
+    expect(mocks.runRefreshTagsCommand).toHaveBeenCalledWith(expect.objectContaining({ limit: 5 }));
+  });
+
+  it("leaves the limit unset when the flag is absent", async () => {
+    await cli("refresh-tags");
+    expect(mocks.runRefreshTagsCommand).toHaveBeenCalledWith(expect.objectContaining({ limit: undefined }));
+  });
+
+  // "abc" parsed to NaN and processed nothing, "-1" sliced off only the last
+  // entry and "5x" parsed to 5, all with exit code 0.
+  it.each(["abc", "-1", "0", "5x", "1.5", ""])("rejects --limit=%s", async (value) => {
+    await expect(cli("refresh-tags", `--limit=${value}`)).rejects.toThrow("exit 1");
+    expect(mocks.runRefreshTagsCommand).not.toHaveBeenCalled();
   });
 });

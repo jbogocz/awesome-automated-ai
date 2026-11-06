@@ -25,6 +25,15 @@ function usage(): never {
   process.exit(1);
 }
 
+/** A positive integer or nothing: the value goes straight into a slice, where NaN means none and -1 all but one. */
+function parseLimit(value: string): number {
+  if (!/^[1-9]\d*$/.test(value)) {
+    logger.error(`--limit must be a positive integer, got "${value}"`);
+    process.exit(1);
+  }
+  return Number(value);
+}
+
 async function main() {
   const { values, positionals } = parseArgs({
     args: process.argv.slice(2),
@@ -43,7 +52,7 @@ async function main() {
   const dryRun = values["dry-run"] ?? false;
   const noFetch = values["no-fetch"] ?? false;
   const verbose = values.verbose ?? false;
-  const limit = values.limit !== undefined ? Number.parseInt(values.limit, 10) : undefined;
+  const limit = values.limit !== undefined ? parseLimit(values.limit) : undefined;
   // Env var as well as a flag: `pnpm run <script> -- --report=X` forwards a
   // literal "--" into argv, and parseArgs treats everything after it as
   // positional, so the flag silently never arrives. An env var cannot be
