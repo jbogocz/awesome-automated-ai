@@ -64,6 +64,18 @@ describe("isPrereleaseTag", () => {
   });
 });
 
+describe("newest signal across time zones", () => {
+  // A tagger date keeps its author's offset, while commits and releases come
+  // back in UTC, so comparing the strings chose by clock face. 14:18+04:00 is
+  // 10:18Z, and the 10:24Z release is the later of the two (aimhubio/aim).
+  it("compares instants, not strings", () => {
+    const release = "2025-05-08T10:24:23Z";
+    const tag = "2025-05-08T14:18:20+04:00";
+    expect(stableShippedAt(signals({ lastRelease: release, lastStableTag: tag }))).toBe(release);
+    expect(lastLifeSign(signals({ lastCommit: release, lastTag: tag }))).toBe(release);
+  });
+});
+
 describe("stableShippedAt / anyShippedAt", () => {
   it("stable uses latestRelease and stable tags only", () => {
     const s = signals({ lastRelease: daysAgo(810), lastTag: daysAgo(83), lastStableTag: daysAgo(810) });

@@ -61,11 +61,13 @@ function isDate(d: string | null | undefined): d is string {
   return typeof d === "string" && d.length > 0 && !Number.isNaN(new Date(d).getTime());
 }
 
-/** ISO-8601 sorts lexicographically, so max string = newest timestamp. */
+/**
+ * Compared as instants: tagger dates keep their author's UTC offset, so these
+ * strings do not sort chronologically.
+ */
 function newest(dates: (string | null | undefined)[]): string | null {
   const valid = dates.filter(isDate);
-  // biome-ignore lint/complexity/useMathMinMax: ISO date strings compare lexically; Math.max would coerce them to NaN
-  return valid.length > 0 ? valid.reduce((a, b) => (a > b ? a : b)) : null;
+  return valid.length > 0 ? valid.reduce((a, b) => (Date.parse(a) > Date.parse(b) ? a : b)) : null;
 }
 
 /**
