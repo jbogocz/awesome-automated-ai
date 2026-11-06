@@ -282,7 +282,9 @@ function renderCounts() {
           : `updated ${age}d ago`;
   els.brandSubText.textContent = `Catalog · ${state.entries.length} tools · ${ageTxt}`;
   if (els.freshnessDot) els.freshnessDot.dataset.stale = age != null && age > 8 ? "true" : "false";
-  if (els.cmdkFreshness) els.cmdkFreshness.textContent = age == null ? "" : `snapshot ${age}d ago`;
+  if (els.cmdkFreshness) {
+    els.cmdkFreshness.textContent = age == null ? "" : age < 1 ? "snapshot today" : `snapshot ${age}d ago`;
+  }
 
   for (const lensName of lensNames) {
     const node = document.querySelector(`.lens__count[data-count="${lensName}"]`);

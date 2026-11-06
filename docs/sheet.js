@@ -24,6 +24,12 @@ let _syncModal;
 const GITHUB_PATH =
   "M12 .3a12 12 0 0 0-3.8 23.38c.6.11.82-.26.82-.58v-2.1c-3.34.72-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.72.08-.72 1.21.08 1.85 1.24 1.85 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.77-1.61-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.4 1.24-3.24-.12-.31-.54-1.54.12-3.2 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.89.12 3.2.77.84 1.24 1.92 1.24 3.24 0 4.63-2.81 5.65-5.48 5.95.43.37.81 1.1.81 2.22v3.29c0 .33.22.7.83.58A12 12 0 0 0 12 .3";
 
+// fmtAge answers "today" or "—" as well as a span, and neither takes "ago".
+function ago(iso) {
+  const age = fmtAge(iso);
+  return age === "today" || age === "—" ? age : `${age} ago`;
+}
+
 // The CTA is labelled by where it goes: 33 entries link to a paper, a vendor
 // site or project docs, and "View on GitHub" on those was simply wrong.
 function ctaHtml(e, url) {
@@ -117,8 +123,8 @@ export function openSheet(e) {
 
       <div class="stat__label">Last commit</div>
       <div class="stat__label">Last release</div>
-      <div class="stat__val">${showAge ? `${fmtAge(e.lastCommit)} ago` : "—"}</div>
-      <div class="stat__val">${showRelease ? `${fmtAge(e.lastRelease)} ago` : "—"}</div>
+      <div class="stat__val">${showAge ? ago(e.lastCommit) : "—"}</div>
+      <div class="stat__val">${showRelease ? ago(e.lastRelease) : "—"}</div>
     </div>`);
 
   if (e.tags?.length) {
