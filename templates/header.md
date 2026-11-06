@@ -53,8 +53,8 @@ A curated list of tools for Automated AI/ML - from hyperparameter optimization t
 
 **Resources**
 - [Research Notes by Topic](#research-notes-by-topic)
-- [Books and Courses](#books-and-courses) (3)
-- [Conferences and Communities](#conferences-and-communities) (4)
+- [Books and Courses](#books-and-courses)
+- [Conferences and Communities](#conferences-and-communities)
 
 ### Legend
 

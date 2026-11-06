@@ -22,7 +22,9 @@ Guidelines:
 - **Relevance:** the tool must automate some part of the AI/ML lifecycle — AutoML, NAS, HPO,
   fine-tuning, prompt optimization, agents, evaluation, serving, and so on.
 - **Signal:** active maintenance (or clearly-flagged historical importance), a real README,
-  and a license. Commercial platforms are welcome with `commercial: true`.
+  and a license.
+- **Commercial platforms** are welcome. They have no repository, so list them by `url` and add
+  `vendor`, `pricing` and `commercial: true` instead of `repo` (see the existing commercial entries).
 - **No self-promotion spam:** it's fine to submit your own project if it genuinely fits.
 
 Before opening the PR, validate your change:
@@ -32,8 +34,8 @@ pnpm install
 pnpm validate
 ```
 
-The toolchain is pinned in `package.json`: Node 26 (the Active LTS line CI runs)
-and pnpm 12, which `packageManager` fetches for you on first use.
+The toolchain is pinned in `package.json`: Node 26, the version CI runs, and pnpm 12.
+Whichever pnpm you have installed switches to the version `packageManager` pins.
 
 Don't edit `README.md` directly — it is regenerated weekly from `projects.yaml`
 plus live GitHub data, and manual edits will be overwritten.
