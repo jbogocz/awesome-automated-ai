@@ -61,11 +61,17 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
 
   try {
     const yamlContent = readFileSync(projectsYamlPath, "utf-8");
-    const doc = parseYaml(yamlContent) as { categories: { name: string; entries?: { repo: string }[] }[] };
+    const doc = parseYaml(yamlContent) as { categories: { name: string; entries?: { repo?: string }[] }[] };
+    // GitHub slugs ignore case and the search reports the canonical spelling,
+    // so both sides of every "already known" check are compared lowercased.
     const existingRepos = new Set<string>();
     for (const cat of doc.categories) {
-      for (const entry of cat.entries ?? []) existingRepos.add(entry.repo);
+      for (const entry of cat.entries ?? []) {
+        // Commercial entries are listed by url and have no repo.
+        if (entry.repo) existingRepos.add(entry.repo.toLowerCase());
+      }
     }
+    const decidedRepos = new Set(decided.map((d) => d.repo.toLowerCase()));
     // Where a PR can file an entry. The model is told to pick an exact name
     // but nothing enforced it, and insertEntry has nowhere sensible to put
     // a name that matches no heading.
@@ -80,9 +86,9 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
 
     const newCandidates: GitHubCandidate[] = [];
     for (const c of candidates) {
-      if (existingRepos.has(c.repo)) continue;
+      if (existingRepos.has(c.repo.toLowerCase())) continue;
       // Any earlier verdict, including a queued one, is final for discovery.
-      if (decided.some((d) => d.repo === c.repo)) continue;
+      if (decidedRepos.has(c.repo.toLowerCase())) continue;
       newCandidates.push(c);
     }
 

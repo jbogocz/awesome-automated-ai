@@ -140,6 +140,33 @@ describe("runDiscovery dry run", () => {
   });
 });
 
+describe("runDiscovery known repositories", () => {
+  // GitHub slugs ignore case and the search returns the canonical spelling,
+  // while projects.yaml and decisions.jsonl keep whatever was typed
+  // (e2b-dev/E2B is listed, e2b-dev/e2b is what the search reports).
+  it("skips a candidate the list or the decisions log already holds under another case", async () => {
+    const { createPr } = await import("../../src/github/pr.ts");
+    const dir = mkdtempSync(join(tmpdir(), "discovery-test-"));
+    const projectsYamlPath = join(dir, "projects.yaml");
+    // A commercial entry has a url and no repo; it must not trip the lookup.
+    writeFileSync(
+      projectsYamlPath,
+      `${PROJECTS_YAML.replace("owner/existing", "Owner/One")}  - name: Vendor\n    url: https://example.com\n`,
+    );
+    writeFileSync(
+      join(dir, "decisions.jsonl"),
+      `${JSON.stringify({ date: "2026-07-16", repo: "OWNER/Two", decision: "reject", reasoning: "off topic" })}\n`,
+    );
+    vi.mocked(createPr).mockClear();
+
+    const { runDiscovery } = await import("../../src/agents/discovery.ts");
+    const result = await runDiscovery(testConfig(10), projectsYamlPath);
+
+    expect(result.candidatesFound).toBe(0);
+    expect(createPr).not.toHaveBeenCalled();
+  });
+});
+
 describe("runDiscovery category validation", () => {
   it("queues instead of opening a PR when the model's category matches nothing", async () => {
     const dir = mkdtempSync(join(tmpdir(), "discovery-test-"));
