@@ -163,6 +163,32 @@ describe("request retry policy", () => {
     expect(gh.calls()).toBe(1);
   });
 
+  it("doubles the delay between transient retries, then gives up", async () => {
+    const gh = fakeGitHub([json({ message: "Bad Gateway" }, 502)]);
+    await expect(graphql("q", gh)).rejects.toThrow();
+    expect(gh.delays).toEqual([2_000, 4_000, 8_000, 16_000]);
+  });
+
+  it("doubles the delay after a dropped connection and after a query that failed inside a 200", async () => {
+    const dropped = fakeGitHub([new Error("socket hang up")]);
+    await expect(graphql("q", dropped)).rejects.toThrow("socket hang up");
+    expect(dropped.delays).toEqual([2_000, 4_000, 8_000, 16_000]);
+
+    const failed = fakeGitHub([json({ data: null, errors: [{ message: "Something went wrong" }] })]);
+    await graphql("q", failed);
+    expect(failed.delays).toEqual([2_000, 4_000, 8_000, 16_000]);
+  });
+
+  it("doubles the rate-limit delay without a hint and caps a long hint at five minutes", async () => {
+    const backoff = fakeGitHub([json({ message: "rate limit" }, 429)]);
+    await expect(graphql("q", backoff)).rejects.toThrow();
+    expect(backoff.delays).toEqual([30_000, 60_000, 120_000, 240_000]);
+
+    const capped = fakeGitHub([json({ message: "rate limit" }, 429, { "retry-after": "3600" }), json(ok)]);
+    await graphql("q", capped);
+    expect(capped.delays).toEqual([300_000]);
+  });
+
   it("never sends the token to a host other than the GitHub API", async () => {
     const gh = fakeGitHub([json(ok)]);
     await expect(request("https://example.com/collect", {}, gh)).rejects.toThrow(/Refusing to send the GitHub token/);
@@ -170,7 +196,8 @@ describe("request retry policy", () => {
     expect(gh.calls()).toBe(0);
     await expect(
       request("https://api.github.com/repositories/1/stargazers/history?page=2", {}, gh),
-    ).resolves.toBeTruthy();
+    ).resolves.toMatchObject({ data: ok });
+    expect(gh.calls()).toBe(1);
   });
 
   it("sends the token and a JSON body", async () => {

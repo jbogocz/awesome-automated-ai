@@ -39,6 +39,11 @@ describe("snapshot files", () => {
     expect(merged.map((r) => r.stars).sort()).toEqual([105, 90]);
   });
 
+  it("keeps two repositories measured on the same day apart", () => {
+    const merged = mergeSnapshots([row("2026-10-26", 100, 1, "a/one")], [row("2026-10-26", 200, 2, "b/two")]);
+    expect(merged.map((r) => r.id).sort()).toEqual([1, 2]);
+  });
+
   it("returns nothing for a directory that does not exist yet", () => {
     expect(loadSnapshots(join(tmpDir, "missing"))).toEqual([]);
   });

@@ -55,7 +55,7 @@ function readDataAsOf(): string | null {
   return lastRunDate(loadLatest(defaultDataPaths().latestPath));
 }
 
-function main() {
+export function main() {
   const yamlContent = readFileSync(PROJECTS_YAML, "utf-8");
 
   let sectionByCategory = new Map<string, string>();
