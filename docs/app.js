@@ -583,7 +583,7 @@ function setCategory(id) {
     btn.setAttribute("aria-pressed", match ? "true" : "false");
   });
   if (mqMobile.matches) setDrawer(false);
-  writeHash();
+  writeHash({ push: true });
   renderStream();
 }
 
@@ -718,7 +718,10 @@ function readHash() {
   state.filters.q = params.get("q") ?? "";
 }
 
-function writeHash() {
+// A category is a place, so it gets a history entry and Back returns from it
+// instead of leaving the site. Filters and sort refine the current view and
+// replace its entry, so a dozen toggles don't take a dozen Backs to undo.
+function writeHash({ push = false } = {}) {
   const f = state.filters;
   const params = new URLSearchParams();
   if (f.categoryId) params.set("cat", f.categoryId);
@@ -730,7 +733,9 @@ function writeHash() {
   if (f.oss) params.set("oss", "1");
   if (f.q) params.set("q", f.q);
   const s = params.toString();
-  history.replaceState(null, "", s ? `#${s}` : "#");
+  const url = s ? `#${s}` : "#";
+  if (push && url !== (location.hash || "#")) history.pushState(null, "", url);
+  else history.replaceState(null, "", url);
 }
 
 function applyHashToUI() {
@@ -798,6 +803,10 @@ async function main() {
   renderStream();
 
   window.addEventListener("hashchange", () => {
+    // Back can land here with a layer open; the list would change behind it.
+    if (_cmdk?.isOpen()) _cmdk.closeCmdk();
+    _sheet?.closeSheet();
+    if (drawerIsOpen()) setDrawer(false);
     readHash();
     applyHashToUI();
     renderStream();
