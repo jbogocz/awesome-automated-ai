@@ -97,6 +97,18 @@ describe("request retry policy", () => {
     expect(gh.calls()).toBe(1);
   });
 
+  it("fails at once when there is no token, without retrying", async () => {
+    const gh: GitHubDeps & { calls: () => number; delays: number[] } = {
+      ...fakeGitHub([json(ok)]),
+      token: () => {
+        throw new Error("GH_TOKEN (or GITHUB_TOKEN) is not set");
+      },
+    };
+    await expect(graphql("q", gh)).rejects.toThrow(/not set/);
+    expect(gh.calls()).toBe(0);
+    expect(gh.delays).toEqual([]);
+  });
+
   it("backs off on GraphQL's in-band RATE_LIMITED", async () => {
     const gh = fakeGitHub([json({ errors: [{ type: "RATE_LIMITED" }] }), json(ok)]);
     await expect(graphql("q", gh)).resolves.toEqual(ok);

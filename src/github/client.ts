@@ -115,6 +115,8 @@ export async function request<T>(
   }
   const url = path.startsWith("https://") ? path : `${API}${path}`;
   const label = `${method} ${path.startsWith(API) ? path.slice(API.length) : path}`;
+  // Outside the retry loop: a missing token is not a transient failure.
+  const token = deps.token();
 
   for (let attempt = 0; ; attempt++) {
     let res: Response;
@@ -123,7 +125,7 @@ export async function request<T>(
         method,
         headers: {
           Accept: "application/vnd.github+json",
-          Authorization: `Bearer ${deps.token()}`,
+          Authorization: `Bearer ${token}`,
           "User-Agent": "awesome-automated-ai",
           "X-GitHub-Api-Version": "2022-11-28",
           ...(opts.body === undefined ? {} : { "Content-Type": "application/json" }),
