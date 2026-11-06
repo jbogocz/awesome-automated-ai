@@ -5,7 +5,7 @@ import { type Manifest, renderCategoryCatalog } from "../categories.ts";
 import { logger } from "../utils/logger.ts";
 import { getModel, toolInput } from "./llm.ts";
 
-const MAX_TOKENS = 512;
+const MAX_TOKENS = 16000;
 
 export type Verdict = "fits" | "move_to" | "uncertain";
 

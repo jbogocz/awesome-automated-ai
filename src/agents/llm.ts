@@ -2,8 +2,8 @@ import type Anthropic from "@anthropic-ai/sdk";
 
 export const DEFAULT_MODEL = "claude-sonnet-5-5";
 
-export const MAX_TOKENS_ANALYSIS = 1024;
-export const MAX_TOKENS_TAG_CURATION = 512;
+export const MAX_TOKENS_ANALYSIS = 16000;
+export const MAX_TOKENS_TAG_CURATION = 16000;
 
 export function getModel(): string {
   return process.env.ANTHROPIC_MODEL ?? DEFAULT_MODEL;
