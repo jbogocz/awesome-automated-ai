@@ -136,6 +136,9 @@ async function probe(url: string, where: string): Promise<LinkResult> {
     return { url, where, status: null, finalUrl: null, error: err instanceof Error ? err.message : String(err) };
   } finally {
     clearTimeout(timer);
+    // Only the status is wanted. A body left unread holds its connection, and
+    // the process with it, until undici's 300s body timeout.
+    controller.abort();
   }
 }
 

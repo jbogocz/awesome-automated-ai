@@ -1,5 +1,59 @@
-import { describe, expect, it } from "vitest";
-import { extractUrls, isMeaningfulRedirect, isThrottled, renderLinkReport } from "../../src/commands/check-links.ts";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { createServer } from "node:http";
+import type { AddressInfo } from "node:net";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { afterAll, describe, expect, it } from "vitest";
+import {
+  extractUrls,
+  isMeaningfulRedirect,
+  isThrottled,
+  renderLinkReport,
+  runCheckLinksCommand,
+} from "../../src/commands/check-links.ts";
+
+const tmpDir = mkdtempSync(join(tmpdir(), "check-links-test-"));
+afterAll(() => {
+  rmSync(tmpDir, { recursive: true, force: true });
+});
+
+function writeYaml(name: string, entries: string): string {
+  const path = join(tmpDir, name);
+  writeFileSync(path, `categories:\n  - name: C\n    entries:\n${entries}`);
+  return path;
+}
+
+describe("runCheckLinksCommand", () => {
+  // Only the status is wanted. An unread body held the connection, and with it
+  // the process, for undici's 300s body timeout after the report was written.
+  it("closes the connection of a response whose body it did not read", async () => {
+    const closed = Promise.withResolvers<void>();
+    const server = createServer((req, res) => {
+      if (req.method === "HEAD") {
+        res.statusCode = 405;
+        res.end();
+        return;
+      }
+      res.writeHead(200);
+      res.flushHeaders();
+      res.on("close", () => closed.resolve());
+    });
+    await new Promise<void>((ready) => server.listen(0, "127.0.0.1", ready));
+    try {
+      const { port } = server.address() as AddressInfo;
+      const path = writeYaml(
+        "silent.yaml",
+        `      - { name: Silent, url: 'http://127.0.0.1:${port}/', description: d }\n`,
+      );
+      await expect(runCheckLinksCommand({ projectsYamlPath: path, templatePaths: [] })).resolves.toBe(0);
+      const timeout = new Promise<string>((done) => setTimeout(() => done("still open"), 2_000));
+      await expect(Promise.race([closed.promise.then(() => "closed"), timeout])).resolves.toBe("closed");
+    } finally {
+      server.closeAllConnections();
+      server.close();
+    }
+  });
+});
 
 /**
  * Every "moved" finding lands in the weekly drift issue, so a redirect that is
