@@ -1675,6 +1675,13 @@
     }
   }
 
+  /* The topbar's minimum width overflowed a 320px viewport by 4px. */
+  @media (max-width: 360px) {
+    .topbar {
+      gap: var(--s-2);
+    }
+  }
+
   /* In this layer so it outranks the components it stills and the mobile
      drawer above; earlier in the cascade the base rules silently won. */
   @media (prefers-reduced-motion: reduce) {
