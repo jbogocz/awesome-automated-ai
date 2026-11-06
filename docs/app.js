@@ -73,25 +73,27 @@ const state = {
 // were chosen (2026-05-11: score p90 = 80, stars p50 = 4302, trend p90 = 1125).
 // They are deliberately fixed thresholds, not recomputed percentiles, so a
 // lens means the same thing from one week to the next.
+const tools = (n) => (n === 1 ? "tool" : "tools");
 const LENSES = {
   all: {
     test: () => true,
-    caption: (n) => `Showing <b>${n}</b> tools.`,
+    caption: (n) => `Showing <b>${n}</b> ${tools(n)}.`,
   },
   top: {
     // Highest composite score AND still maintained.
     test: (e) => isAlive(e) && (e.score ?? 0) >= 80,
-    caption: (n) => `<b>${n}</b> highest-scoring tools that are still actively maintained.`,
+    caption: (n) =>
+      `<b>${n}</b> highest-scoring ${tools(n)} that ${n === 1 ? "is" : "are"} still actively maintained.`,
   },
   trending: {
     // Big star growth over the trend window (any size).
     test: (e) => isAlive(e) && (e.trend ?? 0) >= 200,
-    caption: (n) => `<b>${n}</b> maintained tools with major star growth ${trendWindowText()}.`,
+    caption: (n) => `<b>${n}</b> maintained ${tools(n)} with major star growth ${trendWindowText()}.`,
   },
   gems: {
     // High curator score but under-median popularity — quality below the radar.
     test: (e) => isAlive(e) && (e.score ?? 0) >= 70 && (e.stars ?? 0) < 5000,
-    caption: (n) => `<b>${n}</b> high-quality tools flying under the radar (under 5k stars).`,
+    caption: (n) => `<b>${n}</b> high-quality ${tools(n)} flying under the radar (under 5k stars).`,
   },
 };
 
