@@ -20,16 +20,27 @@ export function loadConfig(): Config {
     githubRepoOwner: process.env.GITHUB_REPO_OWNER,
     githubRepoName: process.env.GITHUB_REPO_NAME,
     decisionsPath: process.env.DECISIONS_PATH ?? "data/decisions.jsonl",
-    maxCandidatesPerRun: maybeInt(process.env.MAX_CANDIDATES_PER_RUN) ?? 50,
-    scoreThresholdAuto: maybeInt(process.env.SCORE_THRESHOLD_AUTO) ?? 70,
-    scoreThresholdQueue: maybeInt(process.env.SCORE_THRESHOLD_QUEUE) ?? 50,
-    maxPrsPerDay: maybeInt(process.env.MAX_PRS_PER_DAY) ?? 3,
-    dryRun: process.env.DRY_RUN === "true",
+    maxCandidatesPerRun: intVar("MAX_CANDIDATES_PER_RUN") ?? 50,
+    scoreThresholdAuto: intVar("SCORE_THRESHOLD_AUTO") ?? 70,
+    scoreThresholdQueue: intVar("SCORE_THRESHOLD_QUEUE") ?? 50,
+    maxPrsPerDay: intVar("MAX_PRS_PER_DAY") ?? 3,
+    dryRun: boolVar("DRY_RUN") ?? false,
   });
 }
 
-function maybeInt(val: string | undefined): number | undefined {
-  if (val === undefined) return undefined;
-  const n = parseInt(val, 10);
-  return Number.isNaN(n) ? undefined : n;
+// A variable that is set but unreadable is an error, not a default: DRY_RUN=TRUE
+// used to mean "not a dry run" and open real pull requests, and parseInt read
+// SCORE_THRESHOLD_AUTO=7o as 7. An empty value counts as unset.
+function intVar(name: string): number | undefined {
+  const val = process.env[name];
+  if (val === undefined || val === "") return undefined;
+  if (!/^-?\d+$/.test(val)) throw new Error(`${name} must be an integer, got "${val}"`);
+  return Number(val);
+}
+
+function boolVar(name: string): boolean | undefined {
+  const val = process.env[name];
+  if (val === undefined || val === "") return undefined;
+  if (val !== "true" && val !== "false") throw new Error(`${name} must be "true" or "false", got "${val}"`);
+  return val === "true";
 }
