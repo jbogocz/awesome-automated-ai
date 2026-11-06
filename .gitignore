@@ -42,7 +42,6 @@
 !/biome.json
 !/package.json
 !/pnpm-lock.yaml
-!/pnpm-workspace.yaml
 !/projects.yaml
 !/tsconfig.json
 !/vitest.config.ts
