@@ -120,6 +120,7 @@ export async function request<T>(
 
   for (let attempt = 0; ; attempt++) {
     let res: Response;
+    let text: string;
     try {
       res = await deps.fetch(url, {
         method,
@@ -133,8 +134,9 @@ export async function request<T>(
         body: opts.body === undefined ? undefined : JSON.stringify(opts.body),
         signal: AbortSignal.timeout(TIMEOUT_MS),
       });
+      text = await res.text();
     } catch (err) {
-      // No answer at all: dropped connection, DNS failure or timeout.
+      // No complete answer: dropped connection, DNS failure or timeout.
       if (attempt >= MAX_RETRIES) throw err;
       const delay = BASE_BACKOFF_MS * 2 ** attempt;
       const msg = err instanceof Error ? err.message : String(err);
@@ -145,7 +147,6 @@ export async function request<T>(
       continue;
     }
 
-    const text = await res.text();
     if (res.ok) {
       const data = (text === "" ? null : JSON.parse(text)) as T;
       if (graphqlRateLimited(data) && attempt < MAX_RETRIES) {

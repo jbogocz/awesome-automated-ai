@@ -97,6 +97,17 @@ describe("request retry policy", () => {
     expect(gh.calls()).toBe(1);
   });
 
+  it("retries a connection dropped while the body is being read", async () => {
+    const dropped = new Response(
+      new ReadableStream({
+        start: (controller) => controller.error(new TypeError("terminated")),
+      }),
+    );
+    const gh = fakeGitHub([dropped, json(ok)]);
+    await expect(graphql("q", gh)).resolves.toEqual(ok);
+    expect(gh.calls()).toBe(2);
+  });
+
   it("fails at once when there is no token, without retrying", async () => {
     const gh: GitHubDeps & { calls: () => number; delays: number[] } = {
       ...fakeGitHub([json(ok)]),
