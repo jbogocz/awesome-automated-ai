@@ -130,9 +130,10 @@ function thirtyDaysAgo(): string {
   return d.toISOString().slice(0, 10);
 }
 
+/** Undefined when the read failed, which scoring treats as neutral. A failure is not a measured zero. */
 export interface RepoSignals {
-  commitCount30d: number;
-  contributorCount: number;
+  commitCount30d: number | undefined;
+  contributorCount: number | undefined;
 }
 
 export async function fetchRepoSignals(repo: string): Promise<RepoSignals> {
@@ -144,21 +145,23 @@ export async function fetchRepoSignals(repo: string): Promise<RepoSignals> {
   return { commitCount30d, contributorCount };
 }
 
-async function fetchCommitCount(repo: string, since: string): Promise<number> {
+async function fetchCommitCount(repo: string, since: string): Promise<number | undefined> {
   try {
     const { data } = await request<unknown[]>(`/repos/${repo}/commits?since=${since}&per_page=100`);
     return data.length;
-  } catch {
-    return 0;
+  } catch (err) {
+    logger.warn(`Commit count for ${repo} unknown: ${err instanceof Error ? err.message : String(err)}`);
+    return undefined;
   }
 }
 
-async function fetchContributorCount(repo: string): Promise<number> {
+async function fetchContributorCount(repo: string): Promise<number | undefined> {
   try {
     const { data, headers } = await request<unknown[]>(`/repos/${repo}/contributors?per_page=1`);
     const match = headers.get("link")?.match(/<[^>]*[?&]page=(\d+)[^>]*>;\s*rel="last"/);
     return match ? Number(match[1]) : data.length;
-  } catch {
-    return 0;
+  } catch (err) {
+    logger.warn(`Contributor count for ${repo} unknown: ${err instanceof Error ? err.message : String(err)}`);
+    return undefined;
   }
 }

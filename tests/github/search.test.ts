@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { GitHubError, request } from "../../src/github/client.ts";
-import { searchGitHub } from "../../src/github/search.ts";
+import { fetchRepoSignals, searchGitHub } from "../../src/github/search.ts";
 
 vi.mock("../../src/github/client.ts", async (importOriginal) => ({
   ...(await importOriginal<typeof import("../../src/github/client.ts")>()),
@@ -55,6 +55,27 @@ describe("searchGitHub candidate budget", () => {
     const found = await searchGitHub({ topics: ["t"], minStars: 50, maxResults: 2, isKnown: () => false });
 
     expect(found.map((c) => c.repo)).toEqual(["o/a", "o/b"]);
+  });
+});
+
+describe("fetchRepoSignals", () => {
+  // A failed read recorded as a measured zero took commit frequency from up to
+  // 100 down to 0, and the verdict that score produced is final. Unknown is the
+  // neutral 50 in src/scoring/composite.ts.
+  it("reports a signal it could not read as unknown, not as zero", async () => {
+    vi.mocked(request).mockRejectedValue(new GitHubError("GitHub GET failed: HTTP 502", 502));
+
+    await expect(fetchRepoSignals("o/r")).resolves.toEqual({ commitCount30d: undefined, contributorCount: undefined });
+  });
+
+  it("reads the counts when the API answers", async () => {
+    vi.mocked(request).mockImplementation((async (path: string) => {
+      if (path.includes("/commits")) return { data: [1, 2, 3], headers: new Headers() };
+      const link = '<https://api.github.com/repos/o/r/contributors?per_page=1&page=42>; rel="last"';
+      return { data: [1], headers: new Headers({ link }) };
+    }) as typeof request);
+
+    await expect(fetchRepoSignals("o/r")).resolves.toEqual({ commitCount30d: 3, contributorCount: 42 });
   });
 });
 
