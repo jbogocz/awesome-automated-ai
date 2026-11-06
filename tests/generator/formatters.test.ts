@@ -21,6 +21,11 @@ describe("formatStarsShort", () => {
     expect(formatStarsShort(69721)).toBe("69.7K");
   });
 
+  it("rolls over to M where one decimal of K would round up to 1000", () => {
+    expect(formatStarsShort(999_949)).toBe("999.9K");
+    expect(formatStarsShort(999_950)).toBe("1.0M");
+  });
+
   it("returns one-decimal M for millions", () => {
     expect(formatStarsShort(1200000)).toBe("1.2M");
   });
