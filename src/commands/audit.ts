@@ -53,7 +53,7 @@ export const UNFETCHABLE_DAYS = 14;
 export function unfetchableDetail(repo: string, latestSnapshot: string | null, now: Date = new Date()): string | null {
   if (!latestSnapshot) return `${repo} has never been fetched successfully; it renders as "stats pending"`;
   const ageDays = Math.floor((now.getTime() - Date.parse(`${latestSnapshot}T00:00:00Z`)) / 86_400_000);
-  if (ageDays <= UNFETCHABLE_DAYS) return null;
+  if (ageDays < UNFETCHABLE_DAYS) return null;
   return `${repo} last refreshed ${latestSnapshot} (${ageDays} days ago); every run since served that snapshot`;
 }
 

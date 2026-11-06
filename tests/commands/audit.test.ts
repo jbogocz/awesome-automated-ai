@@ -42,9 +42,14 @@ describe("unfetchableDetail", () => {
   });
 
   // One missed week is already covered by the generate fallback's stale marker.
-  it(`stays quiet within ${UNFETCHABLE_DAYS} days`, () => {
+  it(`stays quiet under ${UNFETCHABLE_DAYS} days`, () => {
     expect(unfetchableDetail("o/r", "2026-10-05", NOW)).toBeNull();
-    expect(unfetchableDetail("o/r", "2026-09-21", NOW)).toBeNull();
+    expect(unfetchableDetail("o/r", "2026-09-22", NOW)).toBeNull();
+  });
+
+  // Two missed weekly runs leave a snapshot exactly 14 days old.
+  it("reports an entry that missed two weekly runs", () => {
+    expect(unfetchableDetail("o/r", "2026-09-21", NOW)).toMatch(/last refreshed 2026-09-21 \(14 days ago\)/);
   });
 });
 
