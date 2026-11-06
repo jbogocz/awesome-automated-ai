@@ -82,8 +82,7 @@ const LENSES = {
   top: {
     // Highest composite score AND still maintained.
     test: (e) => isAlive(e) && (e.score ?? 0) >= 80,
-    caption: (n) =>
-      `<b>${n}</b> highest-scoring ${tools(n)} that ${n === 1 ? "is" : "are"} still actively maintained.`,
+    caption: (n) => `<b>${n}</b> highest-scoring ${tools(n)} that ${n === 1 ? "is" : "are"} still actively maintained.`,
   },
   trending: {
     // Big star growth over the trend window (any size).
