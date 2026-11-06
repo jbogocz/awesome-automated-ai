@@ -4,7 +4,7 @@ import { parse as parseYaml } from "yaml";
 import { loadManifest } from "../categories.ts";
 import type { Config } from "../config.ts";
 import { createPr } from "../github/pr.ts";
-import { fetchRepoSignals, type GitHubCandidate, getDefaultTopics, searchGitHub } from "../github/search.ts";
+import { fetchRepoSignals, getDefaultTopics, searchGitHub } from "../github/search.ts";
 import { computeScore } from "../scoring/composite.ts";
 import { appendDecision, type Decision, loadDecisions } from "../store/decisions.ts";
 import { todayUtc } from "../store/snapshots.ts";
@@ -78,21 +78,15 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
     const knownCategories = new Set(doc.categories.map((c) => c.name));
     const manifest = loadManifest();
 
-    const candidates = await searchGitHub({
+    const newCandidates = await searchGitHub({
       topics: getDefaultTopics(),
       minStars: 50,
       maxResults: config.maxCandidatesPerRun,
+      // Any earlier verdict, including a queued one, is final for discovery.
+      isKnown: (repo) => existingRepos.has(repo.toLowerCase()) || decidedRepos.has(repo.toLowerCase()),
     });
 
-    const newCandidates: GitHubCandidate[] = [];
-    for (const c of candidates) {
-      if (existingRepos.has(c.repo.toLowerCase())) continue;
-      // Any earlier verdict, including a queued one, is final for discovery.
-      if (decidedRepos.has(c.repo.toLowerCase())) continue;
-      newCandidates.push(c);
-    }
-
-    logger.info(`Discovery: ${candidates.length} found, ${newCandidates.length} new`);
+    logger.info(`Discovery: ${newCandidates.length} new`);
 
     const prsToday = decided.filter((d) => d.prNumber !== undefined && d.date === today).length;
 

@@ -18,6 +18,46 @@ const item = {
   topics: ["automl"],
 };
 
+describe("searchGitHub candidate budget", () => {
+  const itemNamed = (full_name: string) => ({ ...item, full_name, name: full_name.split("/")[1] ?? "" });
+  const readme = { data: { content: "" }, headers: new Headers() };
+
+  // Measured 2026-11-06: of the 50 slots only 30 went to new repositories, and
+  // the run stopped before ai-agents, llm-evaluation, mlops and three more
+  // topics were ever searched. Those held 75 new repositories in their top 30.
+  it("does not spend the budget on repositories already known", async () => {
+    const searched: string[] = [];
+    vi.mocked(request).mockImplementation((async (path: string) => {
+      if (!path.startsWith("/search/repositories")) return readme;
+      const topic = new URLSearchParams(path.split("?")[1]).get("q")?.match(/topic:(\S+)/)?.[1] ?? "";
+      searched.push(topic);
+      const items = topic === "listed" ? [itemNamed("o/known1"), itemNamed("o/known2")] : [itemNamed("o/new")];
+      return { data: { items }, headers: new Headers() };
+    }) as typeof request);
+
+    const found = await searchGitHub({
+      topics: ["listed", "fresh"],
+      minStars: 50,
+      maxResults: 2,
+      isKnown: (repo) => repo.startsWith("o/known"),
+    });
+
+    expect(searched).toEqual(["listed", "fresh"]);
+    expect(found.map((c) => c.repo)).toEqual(["o/new"]);
+  });
+
+  it("stops at the budget inside a topic", async () => {
+    vi.mocked(request).mockImplementation((async (path: string) => {
+      if (!path.startsWith("/search/repositories")) return readme;
+      return { data: { items: [itemNamed("o/a"), itemNamed("o/b"), itemNamed("o/c")] }, headers: new Headers() };
+    }) as typeof request);
+
+    const found = await searchGitHub({ topics: ["t"], minStars: 50, maxResults: 2, isKnown: () => false });
+
+    expect(found.map((c) => c.repo)).toEqual(["o/a", "o/b"]);
+  });
+});
+
 describe("searchGitHub README", () => {
   // The contents API is case- and extension-sensitive: torvalds/linux ships a
   // bare README, so .../contents/README.md answers 404 for it. /readme is the
@@ -31,7 +71,7 @@ describe("searchGitHub README", () => {
       throw new GitHubError(`GitHub GET ${path} failed: HTTP 404`, 404);
     }) as typeof request);
 
-    const [candidate] = await searchGitHub({ topics: ["automl"], minStars: 50, maxResults: 1 });
+    const [candidate] = await searchGitHub({ topics: ["automl"], minStars: 50, maxResults: 1, isKnown: () => false });
 
     expect(candidate?.readme).toBe("# Linux");
   });
@@ -42,7 +82,7 @@ describe("searchGitHub README", () => {
         if (path.startsWith("/search/repositories")) return { data: { items: [item] }, headers: new Headers() };
         throw new GitHubError(`GitHub GET ${path} failed: HTTP ${readmeStatus}`, readmeStatus);
       }) as typeof request);
-    const search = () => searchGitHub({ topics: ["automl"], minStars: 50, maxResults: 1 });
+    const search = () => searchGitHub({ topics: ["automl"], minStars: 50, maxResults: 1, isKnown: () => false });
 
     respond(404);
     expect((await search())[0]?.readme).toBe("");

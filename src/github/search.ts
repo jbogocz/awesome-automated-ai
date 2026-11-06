@@ -18,7 +18,14 @@ interface SearchOptions {
   topics: string[];
   minStars: number;
   maxResults?: number;
+  /** Repositories discovery has already settled. They must not spend `maxResults`. */
+  isKnown: (repo: string) => boolean;
 }
+
+// The search API's page limit. Results are sorted by stars and the top of each
+// topic is mostly already listed, so a page sized to the remaining budget can
+// hold nothing new.
+const SEARCH_PAGE_SIZE = 100;
 
 const SEARCH_TOPICS = [
   "automl",
@@ -64,13 +71,15 @@ export async function searchGitHub(opts: SearchOptions): Promise<GitHubCandidate
       q,
       sort: "stars",
       order: "desc",
-      per_page: String(Math.min(30, maxResults - candidates.length)),
+      per_page: String(SEARCH_PAGE_SIZE),
     });
     const { data } = await request<{ items: SearchItem[] }>(`/search/repositories?${params}`);
 
     for (const item of data.items) {
+      if (candidates.length >= maxResults) break;
       if (seen.has(item.full_name)) continue;
       if (item.stargazers_count < opts.minStars) continue;
+      if (opts.isKnown(item.full_name)) continue;
       seen.add(item.full_name);
 
       const readme = await fetchReadme(item.full_name);
