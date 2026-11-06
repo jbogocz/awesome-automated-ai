@@ -65,9 +65,7 @@ function renderCmdk(q) {
 
   if (q === "" || q.startsWith(":") || q.startsWith(">")) {
     const cleanQ = q.replace(/^[:>]\s*/, "");
-    const cats = [..._state.categoryById.values()]
-      .filter((c) => !cleanQ || c.name.toLowerCase().includes(cleanQ))
-      .slice(0, 8);
+    const cats = [..._state.categoryById.values()].filter((c) => !cleanQ || c.name.toLowerCase().includes(cleanQ));
     if (cats.length)
       groups.push({
         label: "Categories",
