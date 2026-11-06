@@ -445,8 +445,8 @@ function renderStream({ animate = true } = {}) {
   };
   const wantsMotion = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (animate && wantsMotion && document.startViewTransition) {
-    // A skipped transition rejects; that is expected here, not an error.
-    document.startViewTransition(apply).finished.catch(() => {});
+    // A skipped transition rejects `ready`; that is expected here, not an error.
+    document.startViewTransition(apply).ready.catch(() => {});
   } else {
     apply();
   }
