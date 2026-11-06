@@ -1416,18 +1416,26 @@
     color: var(--starlight);
   }
 
+  /* The name is what is being picked, so the meta gives way first: a long
+     category used to squeeze a name to 12px on a phone. */
   .cmdk__item-name {
-    flex: 1;
+    flex: 0 0 auto;
+    max-width: 70%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .cmdk__item-meta {
+    flex: 0 1 auto;
+    min-width: 0;
+    margin-left: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-family: var(--font-mono);
     font-size: 10.5px;
     color: var(--dust);
-    flex-shrink: 0;
   }
 
   .cmdk__empty {
