@@ -82,7 +82,7 @@ async function main() {
         break;
       }
       case "discover": {
-        await runDiscoverCommand({ projectsYamlPath: PROJECTS_YAML });
+        await runDiscoverCommand({ projectsYamlPath: PROJECTS_YAML, dryRun });
         break;
       }
       case "generate": {
