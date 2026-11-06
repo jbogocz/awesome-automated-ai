@@ -4,7 +4,7 @@ import { parse as parseYaml } from "yaml";
 import { loadManifest } from "../categories.ts";
 import type { Config } from "../config.ts";
 import { createPr } from "../github/pr.ts";
-import { fetchRepoSignals, getDefaultTopics, searchGitHub } from "../github/search.ts";
+import { fetchRepoSignals, type GitHubCandidate, getDefaultTopics, searchGitHub } from "../github/search.ts";
 import { computeScore } from "../scoring/composite.ts";
 import { appendDecision, type Decision, loadDecisions } from "../store/decisions.ts";
 import { todayUtc } from "../store/snapshots.ts";
@@ -90,7 +90,7 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
 
     const prsToday = decided.filter((d) => d.prNumber !== undefined && d.date === today).length;
 
-    for (const candidate of newCandidates) {
+    const evaluate = async (candidate: GitHubCandidate) => {
       const analysis = await analyzeCandidate({
         apiKey: config.anthropicApiKey,
         candidate,
@@ -175,12 +175,29 @@ export async function runDiscovery(config: Config, projectsYamlPath: string): Pr
         record(candidate.repo, "reject", analysis.reasoning);
         discarded++;
       }
+    };
+
+    // No verdict is recorded for a candidate that fails, so the next run tries
+    // it again. Ending the run here would stop every run at that same candidate.
+    const failed: string[] = [];
+    for (const candidate of newCandidates) {
+      try {
+        await evaluate(candidate);
+      } catch (err) {
+        failed.push(candidate.repo);
+        logger.warn(`Could not evaluate ${candidate.repo}: ${err instanceof Error ? err.message : String(err)}`);
+      }
     }
 
     logger.info(
       `Discovery finished: ${newCandidates.length} new, ${prsCreated} PRs, ${queued} queued, ` +
-        `${discarded} discarded, ${tokensUsed} tokens`,
+        `${discarded} discarded, ${failed.length} failed, ${tokensUsed} tokens`,
     );
+    if (failed.length > 0) {
+      throw new Error(
+        `${failed.length} of ${newCandidates.length} candidates could not be evaluated: ${failed.join(", ")}`,
+      );
+    }
     return { candidatesFound: newCandidates.length, prsCreated, queued, discarded, tokensUsed };
   } catch (error) {
     logger.error(

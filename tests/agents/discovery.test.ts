@@ -169,6 +169,23 @@ describe("runDiscovery known repositories", () => {
   });
 });
 
+describe("runDiscovery failures", () => {
+  // A refusal or a truncated reply on one README used to end the run, and since
+  // no verdict is recorded the next run stopped at the same repository.
+  it("carries on past a candidate that fails, leaves it unjudged and still ends in an error", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "discovery-test-"));
+    const projectsYamlPath = join(dir, "projects.yaml");
+    writeFileSync(projectsYamlPath, PROJECTS_YAML);
+    vi.mocked(analyzeCandidate).mockRejectedValueOnce(new Error("Claude refused owner/one"));
+
+    const { runDiscovery } = await import("../../src/agents/discovery.ts");
+    await expect(runDiscovery(testConfig(10), projectsYamlPath)).rejects.toThrow(/1 of 2 .*owner\/one/);
+
+    const decisions = loadDecisions(join(dir, "decisions.jsonl"));
+    expect(decisions.map((d) => d.repo)).toEqual(["owner/two"]);
+  });
+});
+
 describe("runDiscovery category validation", () => {
   it("queues instead of opening a PR when the model's category matches nothing", async () => {
     const dir = mkdtempSync(join(tmpdir(), "discovery-test-"));
