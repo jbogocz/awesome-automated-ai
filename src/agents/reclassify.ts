@@ -203,7 +203,7 @@ function stringFrom(node: unknown): string | undefined {
   return undefined;
 }
 
-export function renderReport(records: ReclassifyRecord[]): string {
+export function renderReport(records: ReclassifyRecord[], failures: ReclassifyResult["failures"]): string {
   const fits = records.filter((r) => r.decision.verdict === "fits");
   const moves = records.filter((r) => r.decision.verdict === "move_to");
   const uncertain = records.filter((r) => r.decision.verdict === "uncertain");
@@ -238,6 +238,13 @@ export function renderReport(records: ReclassifyRecord[]): string {
       lines.push(`- **${r.name}** (${r.repo}): in \`${r.currentCategory}\``);
       lines.push(`  - ${r.decision.reason}`);
     }
+    lines.push("");
+  }
+
+  if (failures.length > 0) {
+    lines.push(`## Not classified - the call failed`);
+    lines.push("");
+    for (const f of failures) lines.push(`- **${f.name}**: ${f.error}`);
     lines.push("");
   }
 

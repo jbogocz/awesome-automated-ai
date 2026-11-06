@@ -27,7 +27,14 @@ export async function runReclassifyCommand(options: ReclassifyOptions): Promise<
     },
   });
 
+  // Thrown before the write: the report is untracked and a full pass paid for
+  // it, so a run that classified nothing must not replace it with an empty one.
+  const [first] = result.failures;
+  if (result.records.length === 0 && first) {
+    throw new Error(`All ${result.failures.length} entries failed; report left as it was. First error: ${first.error}`);
+  }
+
   mkdirSync(resolve(options.reportPath, ".."), { recursive: true });
-  writeFileSync(options.reportPath, renderReport(result.records));
+  writeFileSync(options.reportPath, renderReport(result.records, result.failures));
   logger.info(`Wrote ${options.reportPath}. Tokens used: ${result.tokensUsed}`);
 }
