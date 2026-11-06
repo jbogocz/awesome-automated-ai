@@ -2,7 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { type CategoryInfo, renderCategoryCatalog } from "../categories.ts";
 import type { GitHubCandidate } from "../github/search.ts";
-import { getModel, MAX_TOKENS_ANALYSIS } from "./llm.ts";
+import { getModel, MAX_TOKENS_ANALYSIS, toolInput } from "./llm.ts";
 
 const AnalysisSchema = z.object({
   relevant: z.boolean(),
@@ -126,16 +126,11 @@ Call the evaluate_project tool with your assessment.`;
     model: getModel(),
     max_tokens: MAX_TOKENS_ANALYSIS,
     tools: [TOOL_DEFINITION],
-    tool_choice: { type: "tool", name: "evaluate_project" },
+    tool_choice: { type: "auto" },
     messages: [{ role: "user", content: prompt }],
   });
 
-  const toolUse = response.content.find((c) => c.type === "tool_use");
-  if (toolUse?.type !== "tool_use") {
-    throw new Error("Claude did not return a tool call");
-  }
-
-  const parsed = AnalysisSchema.parse(toolUse.input);
+  const parsed = AnalysisSchema.parse(toolInput(response, TOOL_DEFINITION.name, candidate.repo));
   const tokensUsed = (response.usage?.input_tokens ?? 0) + (response.usage?.output_tokens ?? 0);
 
   return { ...parsed, tokensUsed };

@@ -1,6 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
-import { getModel, MAX_TOKENS_TAG_CURATION } from "./llm.ts";
+import { getModel, MAX_TOKENS_TAG_CURATION, toolInput } from "./llm.ts";
 
 const CuratedTagsSchema = z.object({
   tags: z.array(z.string()).min(3).max(20),
@@ -103,16 +103,11 @@ Call the submit_tags tool with the curated list.`;
     model: getModel(),
     max_tokens: MAX_TOKENS_TAG_CURATION,
     tools: [TOOL_DEFINITION],
-    tool_choice: { type: "tool", name: "submit_tags" },
+    tool_choice: { type: "auto" },
     messages: [{ role: "user", content: prompt }],
   });
 
-  const toolUse = response.content.find((c) => c.type === "tool_use");
-  if (toolUse?.type !== "tool_use") {
-    throw new Error("Claude did not return a tool call");
-  }
-
-  const parsed = CuratedTagsSchema.parse(toolUse.input);
+  const parsed = CuratedTagsSchema.parse(toolInput(response, TOOL_DEFINITION.name, input.repo));
   const tokensUsed = (response.usage?.input_tokens ?? 0) + (response.usage?.output_tokens ?? 0);
 
   return { ...parsed, tokensUsed };

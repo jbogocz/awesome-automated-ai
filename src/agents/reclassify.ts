@@ -3,7 +3,7 @@ import { isMap, isScalar, isSeq, parseDocument } from "yaml";
 import { z } from "zod";
 import { type Manifest, renderCategoryCatalog } from "../categories.ts";
 import { logger } from "../utils/logger.ts";
-import { getModel } from "./llm.ts";
+import { getModel, toolInput } from "./llm.ts";
 
 const MAX_TOKENS = 512;
 
@@ -145,16 +145,11 @@ Call the submit_verdict tool.`;
     model: getModel(),
     max_tokens: MAX_TOKENS,
     tools: [TOOL_DEFINITION],
-    tool_choice: { type: "tool", name: "submit_verdict" },
+    tool_choice: { type: "auto" },
     messages: [{ role: "user", content: prompt }],
   });
 
-  const toolUse = response.content.find((c) => c.type === "tool_use");
-  if (toolUse?.type !== "tool_use") {
-    throw new Error(`No tool call for ${candidate.repo}`);
-  }
-
-  const parsed = VerdictSchema.parse(toolUse.input);
+  const parsed = VerdictSchema.parse(toolInput(response, TOOL_DEFINITION.name, candidate.repo));
   const target = parsed.verdict === "move_to" ? parsed.target : null;
 
   if (parsed.verdict === "move_to" && (!target || !allowedNames.has(target))) {
