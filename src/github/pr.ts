@@ -57,11 +57,24 @@ export function buildYamlEntry(input: PrEntryInput): string {
   return lines.join("\n");
 }
 
+/**
+ * Model text is written from untrusted READMEs. In a code fence it renders as
+ * plain text: no images, no mentions, no "Fixes #12" closing an issue on merge.
+ * The fence outruns every backtick run in the text, so the text cannot close it.
+ */
+function inertBlock(text: string): string {
+  const longestRun = Math.max(0, ...[...text.matchAll(/`+/g)].map((m) => m[0].length));
+  const fence = "`".repeat(Math.max(3, longestRun + 1));
+  return `${fence}text\n${text}\n${fence}`;
+}
+
 export function buildPrBody(input: PrBodyInput): string {
   return `## Add [${input.repo}](https://github.com/${input.repo})
 
 **Category:** ${input.category}
-**Description:** ${input.description}
+
+### Description
+${inertBlock(input.description)}
 
 ### Scores
 | Metric | Score |
@@ -70,7 +83,7 @@ export function buildPrBody(input: PrBodyInput): string {
 | Quality | ${input.qualityScore}/100 |
 
 ### Reasoning
-${input.reasoning}
+${inertBlock(input.reasoning)}
 
 ---
 *Proposed by automated discovery (source: ${input.source})*

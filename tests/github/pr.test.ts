@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { parse } from "yaml";
-import { buildYamlEntry, insertEntry } from "../../src/github/pr.ts";
+import { buildPrBody, buildYamlEntry, insertEntry } from "../../src/github/pr.ts";
 
 /** Parse an entry back in the projects.yaml structure it gets spliced into. */
 function roundTrip(entry: string): Record<string, unknown> {
@@ -101,6 +101,31 @@ describe("buildYamlEntry escaping (values derive from untrusted READMEs via the 
     });
     expect(entry).toContain("    description: Stack ensembling for tabular, text, and image data.");
     expect(entry).toContain("    tags: [automl, deep-learning]");
+  });
+});
+
+describe("buildPrBody", () => {
+  const input = {
+    repo: "o/r",
+    category: "Cat",
+    description: "Great ![pixel](https://evil.example/p.png) tool",
+    relevanceScore: 90,
+    qualityScore: 80,
+    reasoning: "Fixes #12, cc @someone",
+    source: "github",
+  };
+
+  // Both come from a model reading an untrusted README. As live Markdown they
+  // load remote images, ping people, and "Fixes #12" closes an issue on merge.
+  it("renders model text inert, inside code fences", () => {
+    const body = buildPrBody(input);
+    expect(body).toContain(`\`\`\`text\n${input.description}\n\`\`\``);
+    expect(body).toContain(`\`\`\`text\n${input.reasoning}\n\`\`\``);
+  });
+
+  it("uses a fence the text cannot close", () => {
+    const reasoning = "x\n```\n@someone\n````\n";
+    expect(buildPrBody({ ...input, reasoning })).toContain(`\`\`\`\`\`text\n${reasoning}\n\`\`\`\`\``);
   });
 });
 
