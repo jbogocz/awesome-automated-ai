@@ -167,8 +167,9 @@ export function collectTargets(opts: CheckLinksOptions): { url: string; where: s
   };
   for (const cat of doc.categories) {
     for (const entry of cat.entries ?? []) {
-      // Repo-backed entries are covered by the weekly metadata fetch.
-      if (!entry.url || entry.repo) continue;
+      // Without a url the entry links to its repo, which the weekly metadata
+      // fetch covers. A url is what the entry renders, so it is probed either way.
+      if (!entry.url) continue;
       if (!targets.has(entry.url)) targets.set(entry.url, `projects.yaml: ${cat.name} / ${entry.name}`);
     }
   }

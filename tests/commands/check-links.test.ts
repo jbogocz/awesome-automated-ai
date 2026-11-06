@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
 import {
+  collectTargets,
   extractUrls,
   isMeaningfulRedirect,
   isThrottled,
@@ -22,6 +23,21 @@ function writeYaml(name: string, entries: string): string {
   writeFileSync(path, `categories:\n  - name: C\n    entries:\n${entries}`);
   return path;
 }
+
+describe("collectTargets", () => {
+  // The custom url is the link the README and dashboard render for the entry,
+  // and the metadata fetch only ever visits the repo.
+  it("probes a repo-backed entry's own url", () => {
+    const path = writeYaml(
+      "targets.yaml",
+      "      - { name: Tune, repo: o/r, url: 'https://docs.example.com/tune/', description: d }\n" +
+        "      - { name: Plain, repo: o/plain, description: d }\n",
+    );
+    expect(collectTargets({ projectsYamlPath: path, templatePaths: [] }).map((t) => t.url)).toEqual([
+      "https://docs.example.com/tune/",
+    ]);
+  });
+});
 
 describe("runCheckLinksCommand", () => {
   // Only the status is wanted. An unread body held the connection, and with it
