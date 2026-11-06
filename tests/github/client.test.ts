@@ -97,6 +97,24 @@ describe("request retry policy", () => {
     expect(gh.calls()).toBe(1);
   });
 
+  // GitHub's answer when a query fails as a whole: HTTP 200, no data, and an
+  // error tied to no field. Measured: it cleared on the next attempt, and
+  // unretried it costs every repo in the batch a week of data.
+  it("retries a query that failed as a whole inside an HTTP 200", async () => {
+    const failed = { data: null, errors: [{ message: "Something went wrong while executing your query" }] };
+    const gh = fakeGitHub([json(failed), json(ok)]);
+    await expect(graphql("q", gh)).resolves.toEqual(ok);
+    expect(gh.calls()).toBe(2);
+    expect(gh.delays).toEqual([2_000]);
+  });
+
+  it("hands back a whole-query failure once the retry budget is spent", async () => {
+    const failed = { data: null, errors: [{ message: "Something went wrong while executing your query" }] };
+    const gh = fakeGitHub([json(failed)]);
+    await expect(graphql("q", gh)).resolves.toEqual(failed);
+    expect(gh.calls()).toBe(5);
+  });
+
   it("retries a connection dropped while the body is being read", async () => {
     const dropped = new Response(
       new ReadableStream({

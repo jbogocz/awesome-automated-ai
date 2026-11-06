@@ -86,6 +86,17 @@ function graphqlRateLimited(data: unknown): boolean {
   return Array.isArray(errors) && errors.some((e) => e.type === "RATE_LIMITED");
 }
 
+/**
+ * A query that failed as a whole, also inside an HTTP 200: no data, and errors
+ * tied to no field ("Something went wrong while executing your query"). Unlike
+ * a NOT_FOUND alias, which carries a path, this says nothing about the repos.
+ */
+function graphqlQueryFailed(data: unknown): boolean {
+  const body = data as { data?: unknown; errors?: { path?: unknown }[] } | null;
+  const errors = body?.errors;
+  return body?.data == null && Array.isArray(errors) && errors.length > 0 && errors.every((e) => e.path === undefined);
+}
+
 function rateLimitDelay(attempt: number, headers?: Headers): number {
   const hinted = headers ? retryAfterMs(headers) : null;
   return Math.min(hinted ?? RATE_LIMIT_BASE_BACKOFF_MS * 2 ** attempt, RATE_LIMIT_MAX_BACKOFF_MS);
@@ -152,6 +163,12 @@ export async function request<T>(
       if (graphqlRateLimited(data) && attempt < MAX_RETRIES) {
         const delay = rateLimitDelay(attempt);
         logger.warn(`GitHub ${label} returned RATE_LIMITED; retrying in ${Math.round(delay / 1000)}s`);
+        await deps.sleep(delay);
+        continue;
+      }
+      if (graphqlQueryFailed(data) && attempt < MAX_RETRIES) {
+        const delay = BASE_BACKOFF_MS * 2 ** attempt;
+        logger.warn(`GitHub ${label} failed as a whole inside an HTTP 200; retrying in ${delay / 1000}s`);
         await deps.sleep(delay);
         continue;
       }
