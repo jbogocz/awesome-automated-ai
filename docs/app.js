@@ -578,6 +578,8 @@ function bindLenses() {
 
 function setCategory(id) {
   state.filters.categoryId = id;
+  // The old scroll offset would land mid-list, or at the tail of a short one.
+  els.main.scrollTop = 0;
   $$(".cat", els.sidebar).forEach((btn) => {
     const match = btn.dataset.cat === id || (btn === els.catAll && !id);
     btn.setAttribute("aria-pressed", match ? "true" : "false");
@@ -807,7 +809,9 @@ async function main() {
     if (_cmdk?.isOpen()) _cmdk.closeCmdk();
     _sheet?.closeSheet();
     if (drawerIsOpen()) setDrawer(false);
+    const prevCategory = state.filters.categoryId;
     readHash();
+    if (state.filters.categoryId !== prevCategory) els.main.scrollTop = 0;
     applyHashToUI();
     renderStream();
   });
