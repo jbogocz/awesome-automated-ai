@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { escapeHtml, formatDateMonth, formatStarsShort, generateTagline } from "../../src/generator/formatters.ts";
+import {
+  escapeCardBody,
+  escapeHtml,
+  formatDateMonth,
+  formatStarsShort,
+  generateTagline,
+} from "../../src/generator/formatters.ts";
 
 describe("formatStarsShort", () => {
   it("returns '0' for 0", () => {
@@ -78,5 +84,22 @@ describe("escapeHtml", () => {
 
   it("leaves markdown syntax alone", () => {
     expect(escapeHtml("**bold** `code` [link](https://a.dev)")).toBe("**bold** `code` [link](https://a.dev)");
+  });
+});
+
+describe("escapeCardBody", () => {
+  // Each result was checked against GitHub's renderer: no link or image in any.
+  it.each([
+    ["[click](https://a.dev)", "\\[click](https://a.dev)"],
+    ["![pixel](https://a.dev/p.png)", "!\\[pixel](https://a.dev/p.png)"],
+    ["\\[click](https://a.dev)", "\\\\\\[click](https://a.dev)"],
+    ["\\\\[click](https://a.dev)", "\\\\\\\\\\[click](https://a.dev)"],
+    ["!\\[pixel](https://a.dev/p.png)", "!\\\\\\[pixel](https://a.dev/p.png)"],
+  ])("leaves %s inert", (input, expected) => {
+    expect(escapeCardBody(input)).toBe(expected);
+  });
+
+  it("escapes HTML as well", () => {
+    expect(escapeCardBody("<img src=x>")).toBe("&lt;img src=x&gt;");
   });
 });

@@ -38,11 +38,12 @@ export function escapeHtml(text: string): string {
 
 /**
  * Escape text for a card body, which unlike a <summary> is live Markdown: an
- * unescaped `[` is a link or, after `!`, a remote image. For prose that may
- * derive from a third party's README.
+ * unescaped `[` is a link or, after `!`, a remote image. Backslashes go first:
+ * otherwise `\[` becomes `\\[`, an escaped backslash before a live bracket. For
+ * prose that may derive from a third party's README.
  */
 export function escapeCardBody(text: string): string {
-  return escapeHtml(text).replace(/\[/g, "\\[");
+  return escapeHtml(text).replace(/\\/g, "\\\\").replace(/\[/g, "\\[");
 }
 
 /**
