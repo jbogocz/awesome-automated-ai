@@ -73,7 +73,7 @@ export function buildPrBody(input: PrBodyInput): string {
 ${input.reasoning}
 
 ---
-*Proposed by AI Curator Engine (discovery source: ${input.source})*
+*Proposed by automated discovery (source: ${input.source})*
 *Review and merge to add this project to the list.*`;
 }
 
@@ -82,7 +82,7 @@ export async function createPr(opts: CreatePrOptions): Promise<number> {
   const base = `/repos/${config.githubRepoOwner}/${config.githubRepoName}`;
 
   const { data: ref } = await request<{ object: { sha: string } }>(`${base}/git/ref/heads/main`);
-  const branchName = `ai-curator/add-${entry.repo.replace("/", "-")}-${Date.now()}`;
+  const branchName = `discovery/add-${entry.repo.replace("/", "-")}-${Date.now()}`;
   await request(`${base}/git/refs`, {
     method: "POST",
     body: { ref: `refs/heads/${branchName}`, sha: ref.object.sha },
@@ -102,7 +102,7 @@ export async function createPr(opts: CreatePrOptions): Promise<number> {
   await request(`${base}/contents/projects.yaml`, {
     method: "PUT",
     body: {
-      message: `feat: add ${entry.name} to ${category}\n\nProposed by AI Curator Engine`,
+      message: `feat: add ${entry.name} to ${category}\n\nProposed by automated discovery`,
       content: Buffer.from(updatedContent).toString("base64"),
       sha: fileData.sha,
       branch: branchName,
