@@ -42,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # The fetch goes through `gh api graphql`, which reads GH_TOKEN. A
+      # src/github/client.ts reads GH_TOKEN and sends it to api.github.com. A
       # contents:read token reads public repositories just as well as a
       # write token did; the write scope never reached other owners' repos.
       - name: Regenerate README with fresh API data
