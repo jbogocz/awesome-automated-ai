@@ -40,7 +40,7 @@
      Four levels, used deliberately. */
     --starlight: oklch(0.965 0.008 95);
     --moonlight: oklch(0.78 0.012 250);
-    --dust: oklch(0.6 0.01 248);
+    --dust: oklch(0.65 0.01 248); /* 4.52:1 on --surface-3; was 3.71:1 */
     --shadow-ink: oklch(0.42 0.008 248);
 
     /* Single accent — Sirius-blue / young O-class star. */
@@ -148,7 +148,7 @@
     --mag-4: oklch(0.62 0.16 55);
     --mag-3: oklch(0.58 0.12 60);
     --mag-2: oklch(0.55 0.07 65);
-    --mag-paper: oklch(0.55 0.08 80);
+    --mag-paper: oklch(0.5 0.08 80); /* 4.97:1 on the paper badge; was 4.04:1 */
     --mag-extinct: oklch(0.55 0.015 40); /* 4.68:1; was 2.39:1 */
   }
 } /* end @layer tokens */
