@@ -1667,6 +1667,12 @@
       height: 30px;
       font-size: 12px;
     }
+    /* Two lines rather than an ellipsis: spark, stars and trend leave the name
+       about 84px here, which cut a quarter of the project names short. */
+    .row__name {
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
   }
 
   /* In this layer so it outranks the components it stills and the mobile
