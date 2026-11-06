@@ -133,6 +133,22 @@ describe("loadApiData", () => {
     expect(data["o/lagging"]?.stale).toBe(daysAgo(7));
   });
 
+  // A repo listed between weekly runs is measured on its own. On 2026-11-03
+  // that one off-cycle day marked 261 of 356 entries "as of" the day before,
+  // under a tooltip saying their live fetch had failed.
+  it("does not mark entries stale because a new repo was measured after the run", () => {
+    const paths = seedData("off-cycle", [
+      ["o/fresh", 3, 500],
+      ["o/lagging", 3, 900],
+      ["o/new", 0, 10],
+    ]);
+    const yaml = `${YAML}  - name: New\n    repo: o/new\n`;
+    const data = loadApiData(yaml, paths);
+    expect(data["o/fresh"]?.stale).toBeUndefined();
+    expect(data["o/lagging"]?.stale).toBeUndefined();
+    expect(data["o/new"]?.stale).toBeUndefined();
+  });
+
   // A week-old fallback measured from today compared its count with itself
   // ("+0 last 7d") and stretched the 30-day window to 37 days.
   it("anchors trend windows on the entry's own measurement date", () => {

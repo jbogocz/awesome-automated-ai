@@ -48,9 +48,23 @@ export function findLatest(state: LatestState, repo: string): LatestRepo | undef
   return undefined;
 }
 
-/** Newest measurement date across the state: the real "data as of" of the last run. */
-export function latestDate(state: LatestState): string | null {
-  let max: string | null = null;
-  for (const entry of Object.values(state)) if (max === null || entry.date > max) max = entry.date;
-  return max;
+/**
+ * The last full run's date: the day most entries were measured, the newer day
+ * on a tie. Not simply the newest date, because a repo listed between weekly
+ * runs is measured on its own, and that day would make every other entry look
+ * like a failed refresh. A run publishes only with most of the list fresh
+ * (MIN_FRESH_RATIO), so its date holds the majority.
+ */
+export function lastRunDate(state: LatestState): string | null {
+  const counts = new Map<string, number>();
+  for (const { date } of Object.values(state)) counts.set(date, (counts.get(date) ?? 0) + 1);
+  let best: string | null = null;
+  let bestCount = 0;
+  for (const [date, count] of counts) {
+    if (count > bestCount || (count === bestCount && best !== null && date > best)) {
+      best = date;
+      bestCount = count;
+    }
+  }
+  return best;
 }

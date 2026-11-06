@@ -3,7 +3,7 @@ import { fetchRepoMetadataBatch } from "../github/repo-metadata-graphql.ts";
 import { computeMomentumScore, computeQualityScore, medianMomentum } from "../scoring/quality.ts";
 import { computeTrends } from "../scoring/trends.ts";
 import { stableShippedAt } from "../status.ts";
-import { findLatest, type LatestRepo, type LatestState, latestDate, loadLatest, saveLatest } from "../store/latest.ts";
+import { findLatest, type LatestRepo, type LatestState, lastRunDate, loadLatest, saveLatest } from "../store/latest.ts";
 import { type DataPaths, defaultDataPaths } from "../store/paths.ts";
 import {
   loadSnapshots,
@@ -257,9 +257,9 @@ export function loadApiData(yamlContent: string, paths: DataPaths = defaultDataP
   const state = loadLatest(paths.latestPath);
   const seriesByRepoId = seriesById(loadSnapshots(paths.snapshotsDir));
 
-  // The newest measurement is the last run's fetch date; an entry whose own
-  // measurement is older failed to refresh on that run.
-  const runDate = latestDate(state);
+  // An entry whose own measurement is older than the last run failed to
+  // refresh on that run.
+  const runDate = lastRunDate(state);
   const data: ApiData = {};
   const missing: string[] = [];
   for (const { repo } of repos) {

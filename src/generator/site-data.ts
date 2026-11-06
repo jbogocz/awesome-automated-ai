@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 import { MIN_SITE_COVERAGE } from "../constants.ts";
 import { displayBucket, repoStatus } from "../status.ts";
-import { latestDate, loadLatest } from "../store/latest.ts";
+import { lastRunDate, loadLatest } from "../store/latest.ts";
 import { defaultDataPaths } from "../store/paths.ts";
 import { logger } from "../utils/logger.ts";
 import type { Category } from "../validation/projects-yaml.ts";
@@ -46,13 +46,13 @@ const EMPTY_API = {
 } as const satisfies Partial<ApiRepoData> & Record<string, unknown>;
 
 /**
- * The date the underlying measurements were actually taken: the newest one
- * in data/latest.json. `generated` only says when this file was written — on
+ * The date the underlying measurements were actually taken: the last run's,
+ * from data/latest.json. `generated` only says when this file was written — on
  * a degraded run the two diverge, and the dashboard must show the measured
  * date rather than assert a currency nothing verified.
  */
 function readDataAsOf(): string | null {
-  return latestDate(loadLatest(defaultDataPaths().latestPath));
+  return lastRunDate(loadLatest(defaultDataPaths().latestPath));
 }
 
 function main() {

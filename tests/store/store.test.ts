@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
 import { appendDecision, loadDecisions } from "../../src/store/decisions.ts";
-import { findLatest, type LatestRepo, latestDate } from "../../src/store/latest.ts";
+import { findLatest, type LatestRepo, lastRunDate } from "../../src/store/latest.ts";
 import {
   loadSnapshots,
   mergeSnapshots,
@@ -117,9 +117,23 @@ describe("latest state", () => {
     expect(findLatest({ "e2b-dev/E2B": entry("2026-10-26") }, "e2b-dev/e2b")?.date).toBe("2026-10-26");
   });
 
-  it("reports the newest measurement as the data date", () => {
-    expect(latestDate({ "a/a": entry("2026-10-19"), "b/b": entry("2026-10-26") })).toBe("2026-10-26");
-    expect(latestDate({})).toBeNull();
+  it("takes the day most entries were measured as the last run", () => {
+    const state = {
+      "a/a": entry("2026-11-02"),
+      "b/b": entry("2026-11-02"),
+      "c/c": entry("2026-10-26"), // its fetch failed on 2026-11-02
+      "d/d": entry("2026-11-03"), // listed after the run and measured on its own
+    };
+    expect(lastRunDate(state)).toBe("2026-11-02");
+  });
+
+  it("breaks a tie towards the newer day", () => {
+    expect(lastRunDate({ "a/a": entry("2026-10-19"), "b/b": entry("2026-10-26") })).toBe("2026-10-26");
+    expect(lastRunDate({ "b/b": entry("2026-10-26"), "a/a": entry("2026-10-19") })).toBe("2026-10-26");
+  });
+
+  it("has no run date for an empty state", () => {
+    expect(lastRunDate({})).toBeNull();
   });
 });
 
