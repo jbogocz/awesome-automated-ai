@@ -35,10 +35,34 @@ describe("selectTags", () => {
     expect(selectTags(["llm", "prompt-optimization"], corpus)).toEqual(["prompt-optimization"]);
   });
 
-  it("keeps the specific form when one tag is a truncation of another", () => {
+  it("drops a tag that is a truncation of another", () => {
     // Ludwig printed `deep · deep-learning`.
     const corpus = corpusOf({ deep: 4, "deep-learning": 9 }, 100);
     expect(selectTags(["deep", "deep-learning"], corpus)).toEqual(["deep-learning"]);
+  });
+
+  it("keeps the more shared of two forms", () => {
+    const corpus = corpusOf({ automl: 9, "automl-python": 2 }, 100);
+    expect(selectTags(["automl", "automl-python"], corpus)).toEqual(["automl"]);
+  });
+
+  it("treats a plural as the same tag", () => {
+    const corpus = corpusOf({ alzheimer: 9, alzheimers: 4 }, 100);
+    expect(selectTags(["alzheimer", "alzheimers"], corpus)).toEqual(["alzheimer"]);
+  });
+
+  // Sharing leading letters is not redundancy: 9 entries lost `ml` to `mlops`,
+  // and the R language tag lost to `random-forest`.
+  it("keeps tags that only share leading letters", () => {
+    const corpus = corpusOf({ r: 5, "random-forest": 9, ml: 3, mlops: 8, data: 7, dataframe: 2 }, 100);
+    expect(selectTags(["r", "random-forest", "ml", "mlops", "data", "dataframe"], corpus, 10)).toEqual([
+      "random-forest",
+      "mlops",
+      "data",
+      "r",
+      "ml",
+      "dataframe",
+    ]);
   });
 
   it("ranks the most-shared tag first", () => {

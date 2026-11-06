@@ -77,14 +77,20 @@ export function selectTags(tags: string[] | undefined, corpus: TagCorpus, limit 
 
 /**
  * Drops a tag that is only a truncation of one already chosen — `deep` next to
- * `deep-learning`, `alzheimer` next to `alzheimers`. Keeps the longer, more
- * specific form, which is the one that reads as deliberate.
+ * `deep-learning`, `alzheimer` next to `alzheimers`. Keeps whichever is more
+ * shared, the one that comes first in `sorted`: always keeping the longer form
+ * would replace `automl` with `automl-python` on an AutoML library.
  */
 function dropRedundant(sorted: string[]): string[] {
   const out: string[] = [];
   for (const tag of sorted) {
-    const redundant = out.some((kept) => kept.startsWith(tag) || tag.startsWith(kept));
+    const redundant = out.some((kept) => isTruncationOf(tag, kept) || isTruncationOf(kept, tag));
     if (!redundant) out.push(tag);
   }
   return out;
+}
+
+/** Whole words only: `data` truncates `data-analysis` but not `dataframe`, and `r` nothing beginning with r. */
+function isTruncationOf(short: string, long: string): boolean {
+  return long.startsWith(short) && /^(-|s$)/.test(long.slice(short.length));
 }
