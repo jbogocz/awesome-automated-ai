@@ -521,6 +521,7 @@ function bindAvatarFallback() {
 }
 
 function bindStream() {
+  $("#skip-to-results").addEventListener("click", () => ($(".row", els.stream) ?? els.filterQ).focus());
   els.stream.addEventListener("click", (ev) => {
     const row = ev.target.closest(".row");
     if (!row) return;
@@ -774,7 +775,7 @@ function renderLoadError(err) {
     </div>`,
   );
   $("#load-retry").addEventListener("click", () => location.reload());
-  for (const el of [...$$(".lensbar, .filterbar, .legend"), els.cmdkTrigger, els.menuTrigger, els.catAll]) {
+  for (const el of [...$$(".lensbar, .filterbar, .legend, .skip-link"), els.cmdkTrigger, els.menuTrigger, els.catAll]) {
     el.style.display = "none";
   }
   els.brandSubText.textContent = "Catalog unavailable";

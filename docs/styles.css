@@ -275,6 +275,24 @@
 } /* end @layer layout */
 
 @layer components {
+  /* Off-screen until tabbed to: the first row is otherwise 53 Tabs away. */
+  .skip-link {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 40;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--starlight);
+    background: var(--surface);
+    border: 1px solid var(--edge);
+    border-radius: var(--r-sm);
+    transform: translateY(-300%);
+  }
+  .skip-link:focus {
+    transform: none;
+  }
+
   /* ── Top bar ───────────────────────────────────────────────────────────── */
 
   .topbar {
