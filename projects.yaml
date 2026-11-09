@@ -149,7 +149,8 @@ categories:
     repo: google/automl
     description: Research code for EfficientNet, EfficientDet, MnasNet, and other NAS-discovered architectures (Google Brain).
     tagline: Research code behind EfficientNet and EfficientDet
-    note: Research code accompanying the EfficientDet papers, not a supported library.
+    note: Archived upstream; research code accompanying the EfficientNet and EfficientDet papers, not a supported library.
+    lifecycle: historical
     tags: [automl, efficientdet, efficientnet, efficientnetv2, object-detection]
   - name: NASLib
     repo: automl/NASLib

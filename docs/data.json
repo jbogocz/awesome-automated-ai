@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T17:33:07.181Z",
+  "generated": "2026-11-09T17:43:12.288Z",
   "dataAsOf": "2026-11-09",
   "categories": [
     {
@@ -1565,7 +1565,7 @@
           "url": "https://github.com/google/automl",
           "description": "Research code for EfficientNet, EfficientDet, MnasNet, and other NAS-discovered architectures (Google Brain).",
           "tagline": "Research code behind EfficientNet and EfficientDet",
-          "note": "Research code accompanying the EfficientDet papers, not a supported library.",
+          "note": "Archived upstream; research code accompanying the EfficientNet and EfficientDet papers, not a supported library.",
           "stars": 6477,
           "trend": 5,
           "trendDays": 28,
@@ -1575,7 +1575,8 @@
           "lastRelease": "2021-03-04T06:03:52Z",
           "archived": true,
           "status": "dead",
-          "bucket": "deprecated",
+          "bucket": "historical",
+          "lifecycle": "historical",
           "tags": [
             "automl",
             "object-detection"

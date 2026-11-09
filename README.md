@@ -552,11 +552,11 @@ Neural architecture search for deep learning models built on top of Keras. **Qui
 
 </details>
 
-<details><summary>🔴 💤 <i><a href="https://github.com/google/automl">Google AutoML</a></i> <code>⭐ 6.5K</code> <code>Apache-2.0</code> Research code behind EfficientNet and EfficientDet</summary>
+<details><summary>🔴 🗄️ <i><a href="https://github.com/google/automl">Google AutoML</a></i> <code>⭐ 6.5K</code> <code>Apache-2.0</code> Research code behind EfficientNet and EfficientDet</summary>
 
 <br>
 
-*Research code for EfficientNet, EfficientDet, MnasNet, and other NAS-discovered architectures (Google Brain). **Archived. Research code accompanying the EfficientDet papers, not a supported library.***
+*Research code for EfficientNet, EfficientDet, MnasNet, and other NAS-discovered architectures (Google Brain). **Archived upstream; research code accompanying the EfficientNet and EfficientDet papers, not a supported library.***
 
 ```
   Score     0/100

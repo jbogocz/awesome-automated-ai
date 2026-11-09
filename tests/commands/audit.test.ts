@@ -96,6 +96,17 @@ describe("metadataFindings", () => {
     expect(kinds({ lifecycle: "historical" }, meta(STALE))).toEqual([]);
   });
 
+  // google/automl was archived upstream while its note said "research code,
+  // not a supported library", and any note at all silenced the finding.
+  it("reports an archived repo whose note does not say so", () => {
+    expect(kinds({ note: "Research code, not a supported library." }, meta({ archived: true }))).toEqual(["archived"]);
+  });
+
+  // A historical entry is listed for what it was, so archiving changes nothing for the reader.
+  it("asks nothing of an archived repo the curator marked historical", () => {
+    expect(kinds({ lifecycle: "historical", note: "Reference benchmark." }, meta({ archived: true }))).toEqual([]);
+  });
+
   // A note explains the project's state, not its slug, so it never silences a rename.
   it("reports a rename even when the entry carries a note", () => {
     expect(kinds({ note: "Archived." }, meta({ nameWithOwner: "o/new", archived: true }))).toEqual(["renamed"]);

@@ -111,14 +111,14 @@ export function metadataFindings(
     });
   }
 
-  // Only when the entry does not already say so — an archived repo whose
-  // note explains it needs no decision, and reporting it every week would
-  // train the reader to ignore the issue.
-  if (entry.note || entry.lifecycle) return findings;
-
   // An archived repo is dead by definition and one note answers both, so it
   // is filed once. Listing it under both headings counted one decision twice.
+  // It is checked before the note silences the rest: google/automl was
+  // archived while its note said only "research code, not a supported
+  // library", and any note at all used to hide that. A note that says
+  // "archived", or a declared lifecycle, already tells the reader.
   if (meta.archived) {
+    if (entry.lifecycle || (entry.note && /archived/i.test(entry.note))) return findings;
     findings.push({
       kind: "archived",
       entry: where,
@@ -126,6 +126,11 @@ export function metadataFindings(
     });
     return findings;
   }
+
+  // Only when the entry does not already say so: a quiet repo whose note
+  // explains it needs no decision, and reporting it every week would train
+  // the reader to ignore the issue.
+  if (entry.note || entry.lifecycle) return findings;
 
   const status = repoStatus(
     {
