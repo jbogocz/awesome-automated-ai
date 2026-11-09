@@ -17,16 +17,11 @@ import { emitReport } from "../utils/report.ts";
  * covers them, and it now reports renames too.
  */
 
+/** Per request, so a slow HEAD does not eat the GET fallback's time. */
 const TIMEOUT_MS = 25_000;
 const CONCURRENCY = 8;
-
-/** Hosts that answer 403 to any non-browser client. A 403 from these is not rot. */
-const BOT_WALLED = [
-  /(^|\.)academic\.oup\.com$/,
-  /(^|\.)dl\.acm\.org$/,
-  /(^|\.)sciencedirect\.com$/,
-  /(^|\.)ieee\.org$/,
-];
+/** Pause before asking a failing link once more within the same run. */
+const RETRY_DELAY_MS = 30_000;
 
 /**
  * URLs whose status says nothing about rot. GitHub answers 404 on
@@ -68,6 +63,8 @@ export interface CheckLinksOptions {
   outagesPath?: string;
   /** YYYY-MM-DD; defaults to the current UTC date. */
   today?: string;
+  /** Pause before the in-run retry of links that got no answer or a 5xx. */
+  retryDelayMs?: number;
 }
 
 /** Every http(s) URL in a markdown file, with duplicates collapsed. */
@@ -77,22 +74,16 @@ export function extractUrls(text: string): string[] {
   return [...new Set(found.map((u) => u.replace(/[.,;:]+$/, "")))];
 }
 
-function isBotWalled(url: string): boolean {
-  try {
-    const host = new URL(url).hostname;
-    return BOT_WALLED.some((re) => re.test(host));
-  } catch {
-    return false;
-  }
-}
-
 /**
- * 429 means "you asked too often", not "this page is gone". devin.ai answers
- * 429 to every datacenter client including a browser user agent, and was
- * reported as dead in the weekly run for weeks while the site was up.
+ * A refusal says the host will not serve this client, not that the page is
+ * gone; a page that is gone answers 404 or 410. devin.ai answered 429 to every
+ * datacenter client and was reported dead for weeks while the site was up;
+ * OUP, ACM, ScienceDirect and IEEE answer 403 to any non-browser client; and
+ * www.ibm.com answers 403 to curl but 200 to Node's fetch for the same URL,
+ * so a host list can never keep up with which client a wall lets through.
  */
-export function isThrottled(status: number | null): boolean {
-  return status === 429;
+export function isRefused(status: number | null): boolean {
+  return status === 401 || status === 403 || status === 429 || status === 451;
 }
 
 /**
@@ -181,34 +172,31 @@ export function isMeaningfulRedirect(from: string, to: string): boolean {
   }
 }
 
-async function probe(url: string, where: string): Promise<LinkResult> {
+/** One request with its own deadline. The body is never read, only the status. */
+async function request(url: string, method: "HEAD" | "GET"): Promise<Response> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
-    // HEAD first; many hosts reject it, so fall back to a ranged GET rather
-    // than pulling whole pages.
-    let res = await fetch(url, {
-      method: "HEAD",
-      redirect: "follow",
-      signal: controller.signal,
-      headers: { "user-agent": USER_AGENT },
-    });
-    if (res.status === 405 || res.status === 501 || res.status === 403) {
-      res = await fetch(url, {
-        method: "GET",
-        redirect: "follow",
-        signal: controller.signal,
-        headers: { "user-agent": USER_AGENT, range: "bytes=0-2048" },
-      });
-    }
-    return { url, where, status: res.status, finalUrl: res.url };
-  } catch (err) {
-    return { url, where, status: null, finalUrl: null, error: describeError(err) };
+    const headers: Record<string, string> = { "user-agent": USER_AGENT };
+    if (method === "GET") headers.range = "bytes=0-2048";
+    return await fetch(url, { method, redirect: "follow", signal: controller.signal, headers });
   } finally {
     clearTimeout(timer);
     // Only the status is wanted. A body left unread holds its connection, and
     // the process with it, until undici's 300s body timeout.
     controller.abort();
+  }
+}
+
+async function probe(url: string, where: string): Promise<LinkResult> {
+  try {
+    // HEAD first; hosts that reject it or answer it differently from a page
+    // view get a ranged GET rather than a whole page pulled.
+    let res = await request(url, "HEAD");
+    if (res.status >= 400) res = await request(url, "GET");
+    return { url, where, status: res.status, finalUrl: res.url };
+  } catch (err) {
+    return { url, where, status: null, finalUrl: null, error: describeError(err) };
   }
 }
 
@@ -265,15 +253,25 @@ export async function runCheckLinksCommand(opts: CheckLinksOptions): Promise<num
   const targets = collectTargets(opts);
   logger.info(`Probing ${targets.length} URLs the metadata fetch never touches...`);
 
-  const results = await mapLimit(targets, CONCURRENCY, (t) => probe(t.url, t.where));
+  const first = await mapLimit(targets, CONCURRENCY, (t) => probe(t.url, t.where));
+  // A healthy host misses a request now and then (www.openml.org timed out
+  // once in three runs and answered in 185 ms otherwise), so anything that got
+  // no answer or a 5xx is asked once more before it counts as down.
+  const failing = first.filter(isOutage);
+  let results = first;
+  if (failing.length > 0) {
+    await new Promise((done) => setTimeout(done, opts.retryDelayMs ?? RETRY_DELAY_MS));
+    const again = new Map((await mapLimit(failing, CONCURRENCY, (r) => probe(r.url, r.where))).map((r) => [r.url, r]));
+    results = first.map((r) => again.get(r.url) ?? r);
+  }
 
   const judgeable = results.filter((r) => !NOT_JUDGEABLE.some((re) => re.test(r.url)));
-  const isRot = (r: LinkResult): boolean => (r.status === null || r.status >= 400) && !isThrottled(r.status);
-  const unwalled = judgeable.filter(isRot).filter((r) => !isBotWalled(r.url));
-  let broken = unwalled;
+  const isRot = (r: LinkResult): boolean => (r.status === null || r.status >= 400) && !isRefused(r.status);
+  const rot = judgeable.filter(isRot);
+  let broken = rot;
   if (opts.outagesPath) {
     const today = opts.today ?? new Date().toISOString().slice(0, 10);
-    const { report, next } = carryOutages(unwalled.filter(isOutage), readOutages(opts.outagesPath), today);
+    const { report, next } = carryOutages(rot.filter(isOutage), readOutages(opts.outagesPath), today);
     const held = Object.keys(next).filter((url) => !report.some((r) => r.url === url));
     if (held.length > 0) {
       logger.warn(
@@ -281,10 +279,9 @@ export async function runCheckLinksCommand(opts: CheckLinksOptions): Promise<num
       );
     }
     writeFileSync(opts.outagesPath, `${JSON.stringify(next, null, 2)}\n`, "utf-8");
-    broken = [...unwalled.filter((r) => !isOutage(r)), ...report];
+    broken = [...rot.filter((r) => !isOutage(r)), ...report];
   }
-  const walled = judgeable.filter((r) => isRot(r) && isBotWalled(r.url));
-  const throttled = judgeable.filter((r) => isThrottled(r.status));
+  const refused = judgeable.filter((r) => isRefused(r.status));
   const moved = opts.reportRedirects
     ? judgeable.filter(
         (r) => r.status !== null && r.status < 400 && r.finalUrl && isMeaningfulRedirect(r.url, r.finalUrl),
@@ -294,20 +291,15 @@ export async function runCheckLinksCommand(opts: CheckLinksOptions): Promise<num
   for (const r of moved) {
     logger.warn(`moved: ${r.url} -> ${r.finalUrl} (${r.where})`);
   }
-  if (walled.length > 0) {
+  if (refused.length > 0) {
     logger.info(
-      `${walled.length} URL(s) on known bot-walled publishers were not judged: ${walled.map((r) => r.url).join(", ")}`,
-    );
-  }
-  if (throttled.length > 0) {
-    logger.info(
-      `${throttled.length} URL(s) rate-limited us, which says nothing: ${throttled.map((r) => r.url).join(", ")}`,
+      `${refused.length} URL(s) refused this client, which says nothing about the page: ${refused.map((r) => `${r.url} (HTTP ${r.status})`).join(", ")}`,
     );
   }
   for (const r of broken) {
     logger.error(`${label(r)}: ${r.url} -> ${r.error ?? `HTTP ${r.status}`} (${r.where})`);
   }
-  if (unwalled.length === 0) {
+  if (rot.length === 0) {
     logger.info(`All ${targets.length} URLs resolved.`);
   } else if (broken.length === 0) {
     logger.info(`No URL has been down long enough to report.`);

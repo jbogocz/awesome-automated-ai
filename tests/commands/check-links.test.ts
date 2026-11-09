@@ -10,7 +10,7 @@ import {
   extractUrls,
   isMeaningfulRedirect,
   isOutage,
-  isThrottled,
+  isRefused,
   type LinkResult,
   renderLinkReport,
   runCheckLinksCommand,
@@ -166,11 +166,74 @@ describe("carryOutages", () => {
   });
 });
 
-describe("isThrottled", () => {
-  it("treats only 429 as throttling", () => {
-    expect(isThrottled(429)).toBe(true);
-    expect(isThrottled(404)).toBe(false);
-    expect(isThrottled(null)).toBe(false);
+/**
+ * A refusal says the host will not serve this client, not that the page is
+ * gone: www.ibm.com answers 403 to curl and 200 to Node's fetch for the same
+ * URL, and the publisher list this replaced needed four hosts on day one.
+ */
+describe("isRefused", () => {
+  it("treats 401, 403, 429 and 451 as a refusal", () => {
+    for (const status of [401, 403, 429, 451]) expect(isRefused(status)).toBe(true);
+  });
+
+  it("treats a missing page and no answer as something else", () => {
+    expect(isRefused(404)).toBe(false);
+    expect(isRefused(410)).toBe(false);
+    expect(isRefused(null)).toBe(false);
+  });
+});
+
+describe("runCheckLinksCommand probing", () => {
+  async function serve(handler: Parameters<typeof createServer>[1]) {
+    const server = createServer(handler);
+    await new Promise<void>((ready) => server.listen(0, "127.0.0.1", ready));
+    const { port } = server.address() as AddressInfo;
+    return { url: `http://127.0.0.1:${port}/`, close: () => server.close() };
+  }
+
+  it("does not file a refused link as rot", async () => {
+    const s = await serve((_req, res) => {
+      res.statusCode = 403;
+      res.end();
+    });
+    try {
+      const yaml = writeYaml("refused.yaml", `      - { name: Walled, url: '${s.url}', description: d }\n`);
+      await expect(runCheckLinksCommand({ projectsYamlPath: yaml, templatePaths: [] })).resolves.toBe(0);
+    } finally {
+      s.close();
+    }
+  });
+
+  // Some servers answer HEAD with a 4xx and serve the page to GET.
+  it("asks again with GET when HEAD gets any 4xx", async () => {
+    const s = await serve((req, res) => {
+      res.statusCode = req.method === "HEAD" ? 404 : 200;
+      res.end();
+    });
+    try {
+      const yaml = writeYaml("head404.yaml", `      - { name: HeadShy, url: '${s.url}', description: d }\n`);
+      await expect(runCheckLinksCommand({ projectsYamlPath: yaml, templatePaths: [] })).resolves.toBe(0);
+    } finally {
+      s.close();
+    }
+  });
+
+  // www.openml.org timed out once in three runs and answered in 185 ms otherwise.
+  it("asks a failing link once more before counting it down", async () => {
+    let calls = 0;
+    const s = await serve((_req, res) => {
+      calls++;
+      res.statusCode = calls <= 2 ? 503 : 200;
+      res.end();
+    });
+    try {
+      const yaml = writeYaml("blip.yaml", `      - { name: Blip, url: '${s.url}', description: d }\n`);
+      await expect(runCheckLinksCommand({ projectsYamlPath: yaml, templatePaths: [], retryDelayMs: 10 })).resolves.toBe(
+        0,
+      );
+    } finally {
+      s.close();
+    }
   });
 });
 
@@ -231,7 +294,7 @@ describe("runCheckLinksCommand with an outage file", () => {
     const yaml = writeYaml("outage.yaml", `      - { name: Down, url: 'http://127.0.0.1:${port}/', description: d }\n`);
     const outagesPath = join(tmpDir, "outages.json");
     const reportPath = join(tmpDir, "outage-report.md");
-    const opts = { projectsYamlPath: yaml, templatePaths: [], outagesPath, reportPath };
+    const opts = { projectsYamlPath: yaml, templatePaths: [], outagesPath, reportPath, retryDelayMs: 10 };
 
     await expect(runCheckLinksCommand({ ...opts, today: "2026-11-09" })).resolves.toBe(0);
     expect(existsSync(reportPath)).toBe(false);
@@ -251,6 +314,8 @@ describe("runCheckLinksCommand with an outage file", () => {
       "outage-now.yaml",
       `      - { name: Down, url: 'http://127.0.0.1:${port}/', description: d }\n`,
     );
-    await expect(runCheckLinksCommand({ projectsYamlPath: yaml, templatePaths: [] })).resolves.toBe(1);
+    await expect(runCheckLinksCommand({ projectsYamlPath: yaml, templatePaths: [], retryDelayMs: 10 })).resolves.toBe(
+      1,
+    );
   });
 });
