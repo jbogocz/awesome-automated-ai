@@ -1,13 +1,9 @@
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { parse as parseYaml } from "yaml";
 import { loadManifest } from "../categories.ts";
-import { repoStatus } from "../status.ts";
-import { findLatest, loadLatest } from "../store/latest.ts";
-import { defaultDataPaths } from "../store/paths.ts";
 import { logger } from "../utils/logger.ts";
 import {
   findCrossCategoryDuplicates,
-  findDeadEntriesWithoutNote,
   findDuplicateReposInCategories,
   findStaleNoteYears,
   validateProjectsYaml,
@@ -15,21 +11,6 @@ import {
 
 export interface ValidateOptions {
   projectsYamlPath: string;
-}
-
-/**
- * Health lookup backed by data/latest.json, or undefined when there is none
- * (a fresh clone before the first fetch). validate must keep working
- * offline, so the data-derived checks simply do not run rather than failing.
- */
-function deadRepoPredicate(): ((repo: string) => boolean) | undefined {
-  const path = defaultDataPaths().latestPath;
-  if (!existsSync(path)) return undefined;
-  const state = loadLatest(path);
-  return (repo: string) => {
-    const latest = findLatest(state, repo);
-    return latest !== undefined && repoStatus(latest) === "dead";
-  };
 }
 
 export function runValidateCommand(options: ValidateOptions): void {
@@ -97,17 +78,6 @@ export function runValidateCommand(options: ValidateOptions): void {
     logger.warn(
       `Cross-listed repos share one repo's stats, score and tagline: ${crossListed.join("; ")} ` +
         `— give each entry its own url + tagline, or drop one.`,
-    );
-  }
-
-  // Entries the data calls dead but whose text still reads like a
-  // recommendation. Advisory: an entry crosses the 365-day line with no code
-  // change, so this must never fail a build.
-  const deadWithoutNote = findDeadEntriesWithoutNote(validation.data, deadRepoPredicate());
-  if (deadWithoutNote.length > 0) {
-    logger.warn(
-      `${deadWithoutNote.length} entr${deadWithoutNote.length === 1 ? "y" : "ies"} render dead with no note ` +
-        `telling the reader what to use instead: ${deadWithoutNote.join("; ")}`,
     );
   }
 

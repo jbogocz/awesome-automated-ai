@@ -1,6 +1,6 @@
 import { parse as parseYaml } from "yaml";
-import { RELEASE_STALE_MONTHS, STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.ts";
-import { assessRepo, displayBucket, lastLifeSign, STATUS_DOT, type StatusReason } from "../status.ts";
+import { STALE_MONTHS, TREND_DISPLAY_MIN } from "../constants.ts";
+import { assessRepo, displayBucket, lastLifeSign, STATUS_DOT } from "../status.ts";
 import type { Category, Entry } from "../validation/projects-yaml.ts";
 import {
   displayLicense,
@@ -10,6 +10,7 @@ import {
   formatStarsShort,
   generateTagline,
 } from "./formatters.ts";
+import { entryNote, maintainedAlternatives } from "./notes.ts";
 import { buildTagCorpus, selectTags, type TagCorpus } from "./tags.ts";
 
 export interface ApiRepoData {
@@ -167,23 +168,6 @@ interface ScoredEntry {
   isHistorical: boolean;
 }
 
-/** Honest note for the status the dot shows — one per rule leg. */
-function statusNote(reason: StatusReason | null): string {
-  switch (reason) {
-    case "stale":
-    case "no-signals":
-      return `Unmaintained - no activity for ${STALE_MONTHS}+ months.`;
-    case "shipping-stalled":
-      return `No stable release for ${RELEASE_STALE_MONTHS}+ months.`;
-    case "aging":
-      return "Quiet - no commits for 6+ months.";
-    case "coasting":
-      return "Quiet - minimal recent development.";
-    default:
-      return "";
-  }
-}
-
 function buildCards(entries: Entry[], apiData: ApiData, corpus: TagCorpus): string[] {
   const githubEntries = entries.filter((e) => e.repo);
   const externalEntries = entries.filter((e) => !e.repo);
@@ -201,7 +185,7 @@ function buildCards(entries: Entry[], apiData: ApiData, corpus: TagCorpus): stri
       topics: [],
       tagline: null,
     };
-    const { status, reason } = assessRepo({
+    const { status } = assessRepo({
       archived: rd.archived,
       lastCommit: rd.lastCommit,
       lastRelease: rd.lastRelease,
@@ -209,9 +193,7 @@ function buildCards(entries: Entry[], apiData: ApiData, corpus: TagCorpus): stri
       lastStableTag: rd.lastStableTag,
       commits90d: rd.commits90d,
     });
-    let note = entry.note ?? "";
-    if (rd.archived && !note.includes("Archived")) note = `Archived. ${note}`.trim();
-    else if (!note && hasData) note = statusNote(reason);
+    const note = entryNote(entry, hasData ? rd : undefined, maintainedAlternatives(entry, entries, apiData, corpus));
     // Presentation comes from status.ts, never from parsing the note text.
     const bucket = displayBucket(hasData ? status : "active", entry.lifecycle);
     const isHistorical = bucket === "historical";

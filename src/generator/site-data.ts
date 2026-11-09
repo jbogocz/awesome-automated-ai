@@ -11,6 +11,7 @@ import { logger } from "../utils/logger.ts";
 import type { Category } from "../validation/projects-yaml.ts";
 import { loadApiData } from "./fetch-api.ts";
 import { displayLicense } from "./formatters.ts";
+import { entryNote, maintainedAlternatives } from "./notes.ts";
 import type { ApiData, ApiRepoData } from "./readme.ts";
 import { buildTagCorpus, selectTags } from "./tags.ts";
 
@@ -145,7 +146,12 @@ export function buildSiteData(input: {
           // Per-entry YAML first — the cached tagline is repo-keyed, so
           // cross-listed entries would otherwise share one line.
           tagline: entry.tagline ?? api.tagline ?? "",
-          note: entry.note ?? "",
+          // Same note the README renders (src/generator/notes.ts).
+          note: entryNote(
+            entry,
+            hasApi ? api : undefined,
+            maintainedAlternatives(entry, cat.entries ?? [], apiData, tagCorpus),
+          ),
           // Null, not zero, when nothing resolved. EMPTY_API's zeros exist so
           // the shape is stable, but publishing them made an unresolved entry
           // render "0 stars, score 0" — a measurement nobody took, and a

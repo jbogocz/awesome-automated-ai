@@ -4,7 +4,6 @@ import { parse as parseYaml } from "yaml";
 import { MIN_FRESH_RATIO } from "../constants.ts";
 import { fetchRepoMetadataBatch, type RepoMetadata } from "../github/repo-metadata-graphql.ts";
 import { fetchStarHistory, starsGivenBetween } from "../github/star-history.ts";
-import { repoStatus } from "../status.ts";
 import { findLatest, loadLatest } from "../store/latest.ts";
 import { type DataPaths, defaultDataPaths } from "../store/paths.ts";
 import { loadSnapshots, seriesById, starsNDaysAgo } from "../store/snapshots.ts";
@@ -18,12 +17,14 @@ import { yearsCitedIn } from "../validation/projects-yaml.ts";
  * So eighteen consecutive green runs sailed past nine upstream renames, three
  * wound-down projects, twenty-three dead entries with no successor note and a
  * 404 in the footer — none of which any job was looking for. This looks for
- * exactly those, and writes a report the workflow turns into one tracking
- * issue. It changes nothing and fails nothing.
+ * what still needs a person, and writes a report the workflow turns into one
+ * tracking issue. It changes nothing and fails nothing. A dead entry with no
+ * note no longer needs one: its card names the closest maintained options
+ * from the data (src/generator/notes.ts).
  */
 
 export interface AuditFinding {
-  kind: "renamed" | "archived" | "dead-no-note" | "stale-note" | "unreachable" | "unfetchable" | "star-history";
+  kind: "renamed" | "archived" | "stale-note" | "unreachable" | "unfetchable" | "star-history";
   entry: string;
   detail: string;
 }
@@ -99,7 +100,6 @@ export function metadataFindings(
   repo: string,
   entry: Pick<YamlEntry, "note" | "lifecycle">,
   meta: RepoMetadata,
-  now: number = Date.now(),
 ): AuditFinding[] {
   const findings: AuditFinding[] = [];
 
@@ -111,45 +111,20 @@ export function metadataFindings(
     });
   }
 
-  // An archived repo is dead by definition and one note answers both, so it
-  // is filed once. Listing it under both headings counted one decision twice.
-  // It is checked before the note silences the rest: google/automl was
-  // archived while its note said only "research code, not a supported
-  // library", and any note at all used to hide that. A note that says
-  // "archived", or a declared lifecycle, already tells the reader.
-  if (meta.archived) {
-    if (entry.lifecycle || (entry.note && /archived/i.test(entry.note))) return findings;
+  // A note or a declared lifecycle silences this only when it tells the
+  // reader: google/automl was archived while its note said only "research
+  // code, not a supported library", and any note at all used to hide that.
+  // A repo that merely went quiet needs no decision: its card names the
+  // maintained alternatives from the data (src/generator/notes.ts).
+  const told = entry.lifecycle !== undefined || /archived/i.test(entry.note ?? "");
+  if (meta.archived && !told) {
     findings.push({
       kind: "archived",
       entry: where,
       detail: `${repo} is archived upstream and the entry does not say so`,
     });
-    return findings;
   }
 
-  // Only when the entry does not already say so: a quiet repo whose note
-  // explains it needs no decision, and reporting it every week would train
-  // the reader to ignore the issue.
-  if (entry.note || entry.lifecycle) return findings;
-
-  const status = repoStatus(
-    {
-      archived: meta.archived,
-      lastCommit: meta.lastCommit,
-      lastRelease: meta.lastRelease,
-      lastTag: meta.lastTag,
-      lastStableTag: meta.lastStableTag,
-      commits90d: meta.commits90d,
-    },
-    now,
-  );
-  if (status === "dead") {
-    findings.push({
-      kind: "dead-no-note",
-      entry: where,
-      detail: `${repo} renders dead but the text still reads like a recommendation, with no successor named`,
-    });
-  }
   return findings;
 }
 
@@ -298,7 +273,6 @@ export function renderAuditReport(findings: AuditFinding[]): string {
     unfetchable: `Not refreshed in ${UNFETCHABLE_DAYS}+ days - fetch keeps failing`,
     renamed: "Renamed or transferred upstream",
     archived: "Archived upstream",
-    "dead-no-note": "Dead with no successor named",
     "stale-note": "Note asserts a hard-coded year",
     "star-history": "Our star counts disagree with GitHub's star history",
   };

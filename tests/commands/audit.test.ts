@@ -74,9 +74,8 @@ describe("renderAuditReport", () => {
 });
 
 describe("metadataFindings", () => {
-  const at = NOW.getTime();
   const kinds = (entry: { note?: string; lifecycle?: string }, m: RepoMetadata) =>
-    metadataFindings("Cat / Tool", "o/r", entry, m, at).map((f) => f.kind);
+    metadataFindings("Cat / Tool", "o/r", entry, m).map((f) => f.kind);
 
   it("stays quiet for a healthy repo", () => {
     expect(kinds({}, meta())).toEqual([]);
@@ -87,8 +86,10 @@ describe("metadataFindings", () => {
     expect(kinds({}, meta({ archived: true, ...STALE }))).toEqual(["archived"]);
   });
 
-  it("files a repo that went quiet past the twelve-month line as dead", () => {
-    expect(kinds({}, meta(STALE))).toEqual(["dead-no-note"]);
+  // Its card names the maintained alternatives from the data instead, so a
+  // repo crossing the twelve-month line no longer reopens the drift issue.
+  it("asks nothing of a repo that went quiet past the twelve-month line", () => {
+    expect(kinds({}, meta(STALE))).toEqual([]);
   });
 
   it("asks nothing of an entry whose note or lifecycle already explains it", () => {

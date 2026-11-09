@@ -156,25 +156,3 @@ export function findStaleNoteYears(data: ProjectsYaml, currentYear: number): str
   }
   return stale;
 }
-
-/**
- * Entries the published data marks dead that carry no note. The red dot is
- * correct, but the entry text still reads like a recommendation and offers no
- * migration target — which is what a reader actually needs.
- *
- * Takes the statuses from the caller rather than reading data/, so this stays
- * a pure function and validate keeps working offline. Advisory only: an entry
- * crosses the 12-month line with no code change at all, so making this fatal
- * would red-build unrelated pull requests.
- */
-export function findDeadEntriesWithoutNote(data: ProjectsYaml, isDead?: (repo: string) => boolean): string[] {
-  if (!isDead) return [];
-  const out: string[] = [];
-  for (const cat of data.categories) {
-    for (const entry of cat.entries ?? []) {
-      if (!entry.repo || entry.note || entry.lifecycle) continue;
-      if (isDead(entry.repo)) out.push(`${cat.name} / ${entry.name}`);
-    }
-  }
-  return out;
-}
