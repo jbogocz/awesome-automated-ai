@@ -30,6 +30,7 @@
 !/data/
 !/data/latest.json
 !/data/decisions.jsonl
+!/data/link-outages.json
 !/data/snapshots/
 !/data/snapshots/*.jsonl
 

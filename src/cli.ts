@@ -18,7 +18,7 @@ const README_MD = resolve(ROOT, "README.md");
 const RECLASSIFY_REPORT = resolve(ROOT, "data/reclassify-report.md");
 
 const USAGE =
-  "Usage: node src/cli.ts <discover|generate|refresh-tags|reclassify|validate|check-links|audit> [--dry-run] [--limit=N] [--report=FILE] [--no-fetch] [--strict] [--verbose]";
+  "Usage: node src/cli.ts <discover|generate|refresh-tags|reclassify|validate|check-links|audit> [--dry-run] [--limit=N] [--report=FILE] [--outages=FILE] [--no-fetch] [--strict] [--verbose]";
 
 function usage(): never {
   logger.error(USAGE);
@@ -44,6 +44,7 @@ async function main() {
       verbose: { type: "boolean" },
       limit: { type: "string" },
       report: { type: "string" },
+      outages: { type: "string" },
       strict: { type: "boolean" },
     },
   });
@@ -86,6 +87,10 @@ async function main() {
           ...defaultCheckLinksOptions(ROOT),
           reportRedirects: true,
           reportPath,
+          // The weekly workflow keeps data/link-outages.json, so a host that is
+          // down for one run is not filed as link rot. Env var for the same
+          // reason as DRIFT_REPORT above.
+          outagesPath: values.outages ?? process.env.LINK_OUTAGES,
         });
         if (strict && broken > 0) process.exit(1);
         break;

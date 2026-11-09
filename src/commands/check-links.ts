@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { logger } from "../utils/logger.ts";
@@ -49,6 +49,8 @@ export interface LinkResult {
   status: number | null;
   finalUrl: string | null;
   error?: string;
+  /** First run that found this link unreachable, when an outage file is kept. */
+  downSince?: string;
 }
 
 export interface CheckLinksOptions {
@@ -58,6 +60,14 @@ export interface CheckLinksOptions {
   reportRedirects?: boolean;
   /** Append findings here instead of stdout. See src/utils/report.ts. */
   reportPath?: string;
+  /**
+   * Outages carried between runs (url -> first day seen down). With it, an
+   * outage is reported only once it has lasted into the next weekly run;
+   * without it, every unreachable link is reported at once.
+   */
+  outagesPath?: string;
+  /** YYYY-MM-DD; defaults to the current UTC date. */
+  today?: string;
 }
 
 /** Every http(s) URL in a markdown file, with duplicates collapsed. */
@@ -83,6 +93,66 @@ function isBotWalled(url: string): boolean {
  */
 export function isThrottled(status: number | null): boolean {
   return status === 429;
+}
+
+/**
+ * A failure that says the host is down rather than that the page is gone: no
+ * answer at all, or a server error. On 2026-11-09 the one server behind
+ * proceedings.neurips.cc and proceedings.iclr.cc refused every connection for
+ * hours, and four correct paper links were filed as dead. A 4xx is the host
+ * answering about the page, so that stays a finding on the first run.
+ */
+export function isOutage(r: LinkResult): boolean {
+  return r.status === null || r.status >= 500;
+}
+
+/**
+ * Days an outage must have lasted before it is reported. The weekly runs are 7
+ * days apart, so the second run that finds a host down reports it, and a
+ * dispatch or a hand run mid-week never promotes a fresh outage.
+ */
+export const OUTAGE_GRACE_DAYS = 6;
+
+export type Outages = Record<string, string>;
+
+/**
+ * Splits this run's outages into the ones that have lasted long enough to
+ * report and the record to carry to the next run. A link that answers again is
+ * dropped from the record, so a later outage starts its own clock.
+ */
+export function carryOutages(
+  outages: LinkResult[],
+  previous: Outages,
+  today: string,
+): { report: LinkResult[]; next: Outages } {
+  const next: Outages = {};
+  const report: LinkResult[] = [];
+  for (const r of [...outages].sort((a, b) => a.url.localeCompare(b.url))) {
+    const since = previous[r.url] ?? today;
+    next[r.url] = since;
+    const days = (Date.parse(`${today}T00:00:00Z`) - Date.parse(`${since}T00:00:00Z`)) / 86_400_000;
+    if (days >= OUTAGE_GRACE_DAYS) report.push({ ...r, downSince: since });
+  }
+  return { report, next };
+}
+
+function readOutages(path: string): Outages {
+  let text: string;
+  try {
+    text = readFileSync(path, "utf-8");
+  } catch (err) {
+    // First run with an outage file: nothing has been seen down yet.
+    if ((err as NodeJS.ErrnoException).code === "ENOENT") return {};
+    throw err;
+  }
+  return JSON.parse(text) as Outages;
+}
+
+/** undici reports every network failure as "fetch failed"; the cause says which. */
+function describeError(err: unknown): string {
+  if (!(err instanceof Error)) return String(err);
+  const code = (err.cause as { code?: unknown } | undefined)?.code;
+  return typeof code === "string" ? `${err.message} (${code})` : err.message;
 }
 
 /** True when a redirect changed more than the trailing slash or the scheme. */
@@ -133,7 +203,7 @@ async function probe(url: string, where: string): Promise<LinkResult> {
     }
     return { url, where, status: res.status, finalUrl: res.url };
   } catch (err) {
-    return { url, where, status: null, finalUrl: null, error: err instanceof Error ? err.message : String(err) };
+    return { url, where, status: null, finalUrl: null, error: describeError(err) };
   } finally {
     clearTimeout(timer);
     // Only the status is wanted. A body left unread holds its connection, and
@@ -199,7 +269,20 @@ export async function runCheckLinksCommand(opts: CheckLinksOptions): Promise<num
 
   const judgeable = results.filter((r) => !NOT_JUDGEABLE.some((re) => re.test(r.url)));
   const isRot = (r: LinkResult): boolean => (r.status === null || r.status >= 400) && !isThrottled(r.status);
-  const broken = judgeable.filter(isRot).filter((r) => !isBotWalled(r.url));
+  const unwalled = judgeable.filter(isRot).filter((r) => !isBotWalled(r.url));
+  let broken = unwalled;
+  if (opts.outagesPath) {
+    const today = opts.today ?? new Date().toISOString().slice(0, 10);
+    const { report, next } = carryOutages(unwalled.filter(isOutage), readOutages(opts.outagesPath), today);
+    const held = Object.keys(next).filter((url) => !report.some((r) => r.url === url));
+    if (held.length > 0) {
+      logger.warn(
+        `${held.length} URL(s) unreachable for less than a week, reported if still down next run: ${held.map((u) => `${u} (since ${next[u]})`).join(", ")}`,
+      );
+    }
+    writeFileSync(opts.outagesPath, `${JSON.stringify(next, null, 2)}\n`, "utf-8");
+    broken = [...unwalled.filter((r) => !isOutage(r)), ...report];
+  }
   const walled = judgeable.filter((r) => isRot(r) && isBotWalled(r.url));
   const throttled = judgeable.filter((r) => isThrottled(r.status));
   const moved = opts.reportRedirects
@@ -222,10 +305,12 @@ export async function runCheckLinksCommand(opts: CheckLinksOptions): Promise<num
     );
   }
   for (const r of broken) {
-    logger.error(`dead: ${r.url} -> ${r.error ?? `HTTP ${r.status}`} (${r.where})`);
+    logger.error(`${label(r)}: ${r.url} -> ${r.error ?? `HTTP ${r.status}`} (${r.where})`);
   }
-  if (broken.length === 0) {
+  if (unwalled.length === 0) {
     logger.info(`All ${targets.length} URLs resolved.`);
+  } else if (broken.length === 0) {
+    logger.info(`No URL has been down long enough to report.`);
   } else {
     logger.error(`${broken.length} of ${targets.length} URLs are unreachable.`);
   }
@@ -235,12 +320,16 @@ export async function runCheckLinksCommand(opts: CheckLinksOptions): Promise<num
   return broken.length;
 }
 
+function label(r: LinkResult): string {
+  return r.downSince ? `unreachable since ${r.downSince}` : "dead";
+}
+
 /** The link check's section of the weekly drift issue. Empty when every link is healthy. */
 export function renderLinkReport(broken: LinkResult[], moved: LinkResult[]): string {
   if (broken.length === 0 && moved.length === 0) return "";
   const lines: string[] = [`### Link rot (${broken.length + moved.length})`, ""];
   for (const r of broken) {
-    lines.push(`- **dead** \`${r.url}\` -> ${r.error ?? `HTTP ${r.status}`} (${r.where})`);
+    lines.push(`- **${label(r)}** \`${r.url}\` -> ${r.error ?? `HTTP ${r.status}`} (${r.where})`);
   }
   for (const r of moved) {
     lines.push(`- **moved** \`${r.url}\` -> \`${r.finalUrl}\` (${r.where})`);

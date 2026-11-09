@@ -104,10 +104,14 @@ jobs:
             printf '### The audit failed to run\n\n`pnpm run audit` exited non-zero, so catalog drift is UNKNOWN for this run, not clean. See [the run log](%s).\n\n' "$RUN_URL" >> "$DRIFT_REPORT"
           fi
 
+      # LINK_OUTAGES carries "url -> first day seen down" from run to run, so a
+      # host that is down for one run (proceedings.neurips.cc on 2026-11-09)
+      # is reported only if the next weekly run finds it down too.
       - name: Check links the metadata fetch never touches
         continue-on-error: true
         env:
           DRIFT_REPORT: audit-report.md
+          LINK_OUTAGES: data/link-outages.json
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           if ! timeout 10m pnpm run check-links; then
@@ -115,6 +119,17 @@ jobs:
             # shellcheck disable=SC2016 # the backticks are markdown, not a command
             printf '### The link check failed to run\n\n`pnpm run check-links` exited non-zero, so link rot is UNKNOWN for this run, not clean. See [the run log](%s).\n\n' "$RUN_URL" >> "$DRIFT_REPORT"
           fi
+
+      # Separate from regenerated-files, which is uploaded before the reporters
+      # run. The file is committed, so it exists even if the link check crashed;
+      # then it is handed on unchanged and the crash files the drift issue.
+      - name: Hand the outage record to the publish job
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: link-outages
+          path: data/link-outages.json
+          if-no-files-found: error
+          retention-days: 14
 
       - name: Decide whether anything drifted
         id: audit
@@ -165,6 +180,11 @@ jobs:
           name: regenerated-files
           path: ${{ runner.temp }}/regenerated
 
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: link-outages
+          path: ${{ runner.temp }}/outages
+
       - name: Commit and push changes
         id: commit
         env:
@@ -199,6 +219,14 @@ jobs:
             fi
             cp "$path" "data/snapshots/$name"
           done
+          # The outage record is data the link check reads back next week:
+          # only an object of http(s) URL -> date is accepted.
+          OUTAGES="$RUNNER_TEMP/outages/link-outages.json"
+          if ! jq -e 'type == "object" and all(to_entries[]; (.key | test("^https?://")) and (.value | test("^[0-9]{4}-[0-9]{2}-[0-9]{2}$")))' "$OUTAGES" > /dev/null; then
+            echo "::error::the link-outages artifact is not a url -> date object"
+            exit 1
+          fi
+          cp "$OUTAGES" data/link-outages.json
           VERSION=$(jq -r '.version' "$STAGED/package.json")
           # [[ =~ ]] anchors to the whole string; grep would pass a value whose
           # first line matches.
@@ -212,7 +240,7 @@ jobs:
           git config user.name "$BOT_NAME"
           git config user.email "$BOT_EMAIL"
           # shellcheck disable=SC2086 # word splitting over FILES is intended
-          git add -- $FILES data/snapshots
+          git add -- $FILES data/snapshots data/link-outages.json
           # Not a "nothing to do" case: a successful run always records a new
           # measurement per listed project, so an empty diff means the
           # regeneration produced nothing and must not be reported as success.

@@ -1,14 +1,17 @@
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
 import {
+  carryOutages,
   collectTargets,
   extractUrls,
   isMeaningfulRedirect,
+  isOutage,
   isThrottled,
+  type LinkResult,
   renderLinkReport,
   runCheckLinksCommand,
 } from "../../src/commands/check-links.ts";
@@ -115,6 +118,54 @@ describe("isMeaningfulRedirect", () => {
   });
 });
 
+/**
+ * 2026-11-09: proceedings.neurips.cc and proceedings.iclr.cc (one server)
+ * refused every connection for hours, and four correct links were filed as
+ * dead. A single run cannot tell an outage from a host that is gone, so a
+ * connection failure or 5xx is reported only when the next weekly run sees it too.
+ */
+describe("isOutage", () => {
+  it("treats connection failures and server errors as outages", () => {
+    expect(isOutage({ url: "u", where: "w", status: null, finalUrl: null, error: "fetch failed" })).toBe(true);
+    expect(isOutage({ url: "u", where: "w", status: 503, finalUrl: "u" })).toBe(true);
+  });
+
+  it("treats a 4xx as an answer about the page, not an outage", () => {
+    expect(isOutage({ url: "u", where: "w", status: 404, finalUrl: "u" })).toBe(false);
+  });
+});
+
+describe("carryOutages", () => {
+  const down = (url: string): LinkResult => ({ url, where: "w", status: null, finalUrl: null, error: "fetch failed" });
+
+  it("holds back an outage seen for the first time and remembers when it started", () => {
+    const { report, next } = carryOutages([down("https://a.example/")], {}, "2026-11-09");
+    expect(report).toEqual([]);
+    expect(next).toEqual({ "https://a.example/": "2026-11-09" });
+  });
+
+  it("reports an outage the previous weekly run already saw", () => {
+    const { report, next } = carryOutages(
+      [down("https://a.example/")],
+      { "https://a.example/": "2026-11-09" },
+      "2026-11-16",
+    );
+    expect(report).toEqual([{ ...down("https://a.example/"), downSince: "2026-11-09" }]);
+    expect(next).toEqual({ "https://a.example/": "2026-11-09" });
+  });
+
+  // A dispatch or a hand run mid-week must not promote a fresh outage.
+  it("does not report an outage that started earlier the same week", () => {
+    const { report } = carryOutages([down("https://a.example/")], { "https://a.example/": "2026-11-09" }, "2026-11-11");
+    expect(report).toEqual([]);
+  });
+
+  it("forgets a link once it answers again", () => {
+    const { next } = carryOutages([], { "https://a.example/": "2026-11-09" }, "2026-11-16");
+    expect(next).toEqual({});
+  });
+});
+
 describe("isThrottled", () => {
   it("treats only 429 as throttling", () => {
     expect(isThrottled(429)).toBe(true);
@@ -146,5 +197,60 @@ describe("renderLinkReport", () => {
         "- **dead** `https://a.example/` -> HTTP 404 (projects.yaml: A)\n" +
         "- **moved** `https://b.example/old` -> `https://b.example/new` (projects.yaml: B)\n",
     );
+  });
+
+  it("says since when an outage has lasted", () => {
+    const report = renderLinkReport(
+      [
+        {
+          url: "https://a.example/",
+          where: "templates/footer.md",
+          status: null,
+          finalUrl: null,
+          error: "fetch failed (ECONNREFUSED)",
+          downSince: "2026-11-09",
+        },
+      ],
+      [],
+    );
+    expect(report).toBe(
+      "### Link rot (1)\n\n" +
+        "- **unreachable since 2026-11-09** `https://a.example/` -> fetch failed (ECONNREFUSED) (templates/footer.md)\n",
+    );
+  });
+});
+
+describe("runCheckLinksCommand with an outage file", () => {
+  // A closed port refuses the connection, as 198.202.70.94 did.
+  it("records a first outage without reporting it, then reports it a week later", async () => {
+    const server = createServer();
+    await new Promise<void>((ready) => server.listen(0, "127.0.0.1", ready));
+    const { port } = server.address() as AddressInfo;
+    await new Promise<void>((done) => server.close(() => done()));
+
+    const yaml = writeYaml("outage.yaml", `      - { name: Down, url: 'http://127.0.0.1:${port}/', description: d }\n`);
+    const outagesPath = join(tmpDir, "outages.json");
+    const reportPath = join(tmpDir, "outage-report.md");
+    const opts = { projectsYamlPath: yaml, templatePaths: [], outagesPath, reportPath };
+
+    await expect(runCheckLinksCommand({ ...opts, today: "2026-11-09" })).resolves.toBe(0);
+    expect(existsSync(reportPath)).toBe(false);
+    expect(JSON.parse(readFileSync(outagesPath, "utf-8"))).toEqual({ [`http://127.0.0.1:${port}/`]: "2026-11-09" });
+
+    await expect(runCheckLinksCommand({ ...opts, today: "2026-11-16" })).resolves.toBe(1);
+    expect(readFileSync(reportPath, "utf-8")).toContain("**unreachable since 2026-11-09**");
+  });
+
+  it("reports an outage at once when no outage file is kept", async () => {
+    const server = createServer();
+    await new Promise<void>((ready) => server.listen(0, "127.0.0.1", ready));
+    const { port } = server.address() as AddressInfo;
+    await new Promise<void>((done) => server.close(() => done()));
+
+    const yaml = writeYaml(
+      "outage-now.yaml",
+      `      - { name: Down, url: 'http://127.0.0.1:${port}/', description: d }\n`,
+    );
+    await expect(runCheckLinksCommand({ projectsYamlPath: yaml, templatePaths: [] })).resolves.toBe(1);
   });
 });
