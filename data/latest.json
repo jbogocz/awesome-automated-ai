@@ -1,11 +1,11 @@
 {
   "4paradigm/OpenMLDB": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 346976717,
-    "stars": 1715,
-    "score": 58,
+    "stars": 1716,
+    "score": 61,
     "archived": false,
-    "pushed": "2026-11-02T07:02:10Z",
+    "pushed": "2026-11-08T12:39:10Z",
     "license": "Apache-2.0",
     "topics": [
       "feature-engineering",
@@ -21,18 +21,18 @@
       "mlops"
     ],
     "lastRelease": "2025-02-21T06:58:05Z",
-    "lastCommit": "2026-09-10T11:00:31Z",
+    "lastCommit": "2026-11-08T07:26:01Z",
     "lastTag": "2025-02-19T07:33:49Z",
     "lastStableTag": "2025-02-19T07:33:49Z",
-    "commits90d": 4
+    "commits90d": 7
   },
   "aaif-goose/goose": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 846698999,
-    "stars": 56131,
+    "stars": 56395,
     "score": 81,
     "archived": false,
-    "pushed": "2026-11-02T04:38:01Z",
+    "pushed": "2026-11-09T06:55:06Z",
     "license": "Apache-2.0",
     "topics": [
       "mcp",
@@ -41,18 +41,18 @@
       "ai-agents"
     ],
     "lastRelease": "2026-10-28T19:26:10Z",
-    "lastCommit": "2026-11-02T04:27:38Z",
+    "lastCommit": "2026-11-09T06:46:24Z",
     "lastTag": "2026-10-27T17:47:18Z",
     "lastStableTag": "2026-10-27T17:47:18Z",
-    "commits90d": 683
+    "commits90d": 618
   },
   "aeon-toolkit/aeon": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 580387696,
-    "stars": 1472,
+    "stars": 1477,
     "score": 66,
     "archived": false,
-    "pushed": "2026-11-02T00:45:31Z",
+    "pushed": "2026-11-09T10:13:33Z",
     "license": "BSD-3-Clause",
     "topics": [
       "data-mining",
@@ -74,18 +74,18 @@
       "artificial-intelligence"
     ],
     "lastRelease": "2026-09-18T16:13:58Z",
-    "lastCommit": "2026-11-01T17:36:26Z",
+    "lastCommit": "2026-11-08T21:23:03Z",
     "lastTag": "2026-09-18T14:56:49Z",
     "lastStableTag": "2026-09-18T14:56:49Z",
-    "commits90d": 142
+    "commits90d": 144
   },
   "ag2ai/ag2": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 886912514,
-    "stars": 5040,
+    "stars": 5053,
     "score": 71,
     "archived": false,
-    "pushed": "2026-11-02T00:07:28Z",
+    "pushed": "2026-11-09T00:06:12Z",
     "license": "Apache-2.0",
     "topics": [
       "a2a",
@@ -105,19 +105,19 @@
       "open-source",
       "ag2"
     ],
-    "lastRelease": "2026-10-27T20:53:06Z",
-    "lastCommit": "2026-11-01T19:23:22Z",
-    "lastTag": "2026-10-27T20:18:30Z",
-    "lastStableTag": "2026-10-27T20:18:30Z",
-    "commits90d": 289
+    "lastRelease": "2026-11-04T09:21:14Z",
+    "lastCommit": "2026-11-08T13:59:36Z",
+    "lastTag": "2026-11-04T09:16:46Z",
+    "lastStableTag": "2026-11-04T09:16:46Z",
+    "commits90d": 301
   },
   "agentgateway/agentgateway": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 950891299,
-    "stars": 5883,
-    "score": 70,
+    "stars": 6060,
+    "score": 82,
     "archived": false,
-    "pushed": "2026-11-03T00:32:04Z",
+    "pushed": "2026-11-09T14:06:17Z",
     "license": "Apache-2.0",
     "topics": [
       "agents",
@@ -133,18 +133,18 @@
       "api-gateway"
     ],
     "lastRelease": "2026-10-27T17:18:28Z",
-    "lastCommit": "2026-11-03T00:32:04Z",
+    "lastCommit": "2026-11-09T14:06:16Z",
     "lastTag": "2026-10-27T16:26:24Z",
     "lastStableTag": "2026-10-27T16:26:24Z",
-    "commits90d": 845
+    "commits90d": 844
   },
   "agno-agi/agno": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 488641606,
-    "stars": 43015,
+    "stars": 43118,
     "score": 78,
     "archived": false,
-    "pushed": "2026-11-02T14:00:22Z",
+    "pushed": "2026-11-09T14:22:27Z",
     "license": "Apache-2.0",
     "topics": [
       "developer-tools",
@@ -154,18 +154,18 @@
       "ai-agents"
     ],
     "lastRelease": "2026-10-29T14:00:55Z",
-    "lastCommit": "2026-11-02T06:42:34Z",
+    "lastCommit": "2026-11-09T10:56:29Z",
     "lastTag": "2026-10-29T14:00:28Z",
     "lastStableTag": "2026-10-29T14:00:28Z",
-    "commits90d": 391
+    "commits90d": 400
   },
   "ai-dynamo/dynamo": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 942206898,
-    "stars": 8424,
+    "stars": 8461,
     "score": 71,
     "archived": false,
-    "pushed": "2026-11-02T13:40:43Z",
+    "pushed": "2026-11-09T14:39:18Z",
     "license": "NOASSERTION",
     "topics": [
       "diffusion",
@@ -179,32 +179,32 @@
       "tensorrt-llm",
       "vllm"
     ],
-    "lastRelease": "2026-10-27T20:24:42Z",
-    "lastCommit": "2026-11-02T12:13:49Z",
-    "lastTag": "2026-10-24T02:31:48Z",
-    "lastStableTag": "2026-10-24T02:31:48Z",
-    "commits90d": 1902
+    "lastRelease": "2026-11-05T22:11:38Z",
+    "lastCommit": "2026-11-09T12:13:13Z",
+    "lastTag": "2026-11-06T21:01:27Z",
+    "lastStableTag": "2026-11-06T21:01:27Z",
+    "commits90d": 1960
   },
   "aibuildai-inc/AI-Build-AI": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1182597039,
     "stars": 382,
-    "score": 64,
+    "score": 62,
     "archived": false,
-    "pushed": "2026-10-29T22:40:29Z",
+    "pushed": "2026-11-08T21:56:00Z",
     "license": "MIT",
     "topics": [],
     "lastRelease": "2026-09-03T21:51:09Z",
-    "lastCommit": "2026-10-29T22:40:26Z",
+    "lastCommit": "2026-11-08T21:55:59Z",
     "lastTag": "2026-09-06T15:22:22Z",
     "lastStableTag": "2026-09-06T15:22:22Z",
-    "commits90d": 136
+    "commits90d": 142
   },
   "Aider-AI/aider": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 638629097,
-    "stars": 49901,
-    "score": 69,
+    "stars": 50032,
+    "score": 68,
     "archived": false,
     "pushed": "2026-05-22T14:02:20Z",
     "license": "Apache-2.0",
@@ -230,12 +230,12 @@
     "commits90d": 0
   },
   "aimhubio/aim": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 189640071,
-    "stars": 6291,
-    "score": 55,
+    "stars": 6295,
+    "score": 54,
     "archived": false,
-    "pushed": "2026-11-01T23:14:40Z",
+    "pushed": "2026-11-07T03:07:01Z",
     "license": "Apache-2.0",
     "topics": [
       "python",
@@ -262,9 +262,9 @@
     "commits90d": 0
   },
   "aiming-lab/AutoResearchClaw": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 1182108611,
-    "stars": 14807,
+    "stars": 14846,
     "score": 74,
     "archived": false,
     "pushed": "2026-08-19T03:35:13Z",
@@ -284,15 +284,15 @@
     "lastCommit": "2026-08-19T03:24:41Z",
     "lastTag": "2026-05-20T04:39:11Z",
     "lastStableTag": "2026-05-20T04:39:11Z",
-    "commits90d": 14
+    "commits90d": 12
   },
   "algorithmicsuperintelligence/openevolve": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 984096689,
-    "stars": 7690,
+    "stars": 7742,
     "score": 75,
     "archived": false,
-    "pushed": "2026-11-02T06:35:07Z",
+    "pushed": "2026-11-08T22:50:07Z",
     "license": "Apache-2.0",
     "topics": [
       "alphacode",
@@ -316,15 +316,15 @@
       "openevolve"
     ],
     "lastRelease": "2026-11-02T06:35:08Z",
-    "lastCommit": "2026-11-02T06:31:18Z",
+    "lastCommit": "2026-11-08T22:50:07Z",
     "lastTag": "2026-11-02T06:31:18Z",
     "lastStableTag": "2026-11-02T06:31:18Z",
-    "commits90d": 81
+    "commits90d": 86
   },
   "alteryx/featuretools": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 102908804,
-    "stars": 7694,
+    "stars": 7696,
     "score": 55,
     "archived": false,
     "pushed": "2026-09-11T08:13:00Z",
@@ -346,10 +346,10 @@
     "commits90d": 0
   },
   "amazon-science/chronos-forecasting": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 762224673,
-    "stars": 6236,
-    "score": 77,
+    "stars": 6277,
+    "score": 75,
     "archived": false,
     "pushed": "2026-10-05T14:25:02Z",
     "license": "Apache-2.0",
@@ -375,57 +375,57 @@
     "commits90d": 7
   },
   "anomalyco/opencode": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 975734319,
-    "stars": 224006,
-    "score": 92,
+    "stars": 225680,
+    "score": 93,
     "archived": false,
-    "pushed": "2026-11-02T14:05:47Z",
+    "pushed": "2026-11-09T14:30:14Z",
     "license": "MIT",
     "topics": [],
     "lastRelease": "2026-10-28T06:17:49Z",
-    "lastCommit": "2026-11-02T11:30:32Z",
-    "lastTag": "2026-10-30T22:06:51Z",
-    "lastStableTag": "2026-10-30T22:06:51Z",
-    "commits90d": 5477
+    "lastCommit": "2026-11-09T14:25:06Z",
+    "lastTag": "2026-11-06T22:49:49Z",
+    "lastStableTag": "2026-11-06T22:49:49Z",
+    "commits90d": 5705
   },
   "anthropics/claude-agent-sdk-python": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 1000486904,
-    "stars": 8413,
-    "score": 72,
-    "archived": false,
-    "pushed": "2026-11-02T20:10:12Z",
-    "license": "MIT",
-    "topics": [],
-    "lastRelease": "2026-10-31T01:47:13Z",
-    "lastCommit": "2026-11-02T20:10:08Z",
-    "lastTag": "2026-10-31T01:47:10Z",
-    "lastStableTag": "2026-10-31T01:47:10Z",
-    "commits90d": 203
-  },
-  "anthropics/claude-code": {
-    "date": "2026-11-02",
-    "id": 937253475,
-    "stars": 154258,
+    "stars": 8502,
     "score": 79,
     "archived": false,
-    "pushed": "2026-11-02T07:12:58Z",
-    "license": null,
+    "pushed": "2026-11-06T17:57:32Z",
+    "license": "MIT",
     "topics": [],
-    "lastRelease": "2026-10-31T01:01:35Z",
-    "lastCommit": "2026-11-02T07:12:56Z",
-    "lastTag": "2026-10-31T01:01:10Z",
-    "lastStableTag": "2026-10-31T01:01:10Z",
-    "commits90d": 243
+    "lastRelease": "2026-11-06T17:57:35Z",
+    "lastCommit": "2026-11-06T17:57:27Z",
+    "lastTag": "2026-11-06T17:57:30Z",
+    "lastStableTag": "2026-11-06T17:57:30Z",
+    "commits90d": 196
   },
-  "apache/airflow": {
-    "date": "2026-11-03",
-    "id": 33884891,
-    "stars": 47350,
+  "anthropics/claude-code": {
+    "date": "2026-11-09",
+    "id": 937253475,
+    "stars": 155079,
     "score": 78,
     "archived": false,
-    "pushed": "2026-11-02T23:34:44Z",
+    "pushed": "2026-11-06T17:04:01Z",
+    "license": null,
+    "topics": [],
+    "lastRelease": "2026-11-06T17:04:01Z",
+    "lastCommit": "2026-11-06T17:03:45Z",
+    "lastTag": "2026-11-06T17:03:45Z",
+    "lastStableTag": "2026-11-06T17:03:45Z",
+    "commits90d": 245
+  },
+  "apache/airflow": {
+    "date": "2026-11-09",
+    "id": 33884891,
+    "stars": 47422,
+    "score": 78,
+    "archived": false,
+    "pushed": "2026-11-09T14:18:23Z",
     "license": "Apache-2.0",
     "topics": [
       "airflow",
@@ -449,19 +449,19 @@
       "workflow-engine",
       "workflow-orchestration"
     ],
-    "lastRelease": "2026-09-17T11:10:15Z",
-    "lastCommit": "2026-11-02T23:34:44Z",
-    "lastTag": "2026-11-02T21:35:32+08:00",
-    "lastStableTag": "2026-11-01T19:30:01+01:00",
-    "commits90d": 2536
+    "lastRelease": "2026-11-06T13:08:22Z",
+    "lastCommit": "2026-11-09T14:18:22Z",
+    "lastTag": "2026-11-09T16:17:08+05:30",
+    "lastStableTag": "2026-11-06T17:50:07+05:30",
+    "commits90d": 2660
   },
   "argilla-io/argilla": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 362500938,
-    "stars": 5192,
+    "stars": 5196,
     "score": 55,
     "archived": false,
-    "pushed": "2026-10-26T22:51:18Z",
+    "pushed": "2026-11-02T23:56:00Z",
     "license": "Apache-2.0",
     "topics": [
       "human-in-the-loop",
@@ -489,12 +489,12 @@
     "commits90d": 0
   },
   "argilla-io/distilabel": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 705695450,
-    "stars": 3448,
+    "stars": 3454,
     "score": 54,
     "archived": false,
-    "pushed": "2026-10-26T22:50:44Z",
+    "pushed": "2026-11-02T23:56:20Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -514,12 +514,12 @@
     "commits90d": 0
   },
   "Arize-ai/phoenix": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 564072810,
-    "stars": 12103,
+    "stars": 12215,
     "score": 74,
     "archived": false,
-    "pushed": "2026-11-02T14:02:09Z",
+    "pushed": "2026-11-09T13:12:35Z",
     "license": "NOASSERTION",
     "topics": [
       "llmops",
@@ -539,19 +539,19 @@
       "llamaindex",
       "smolagents"
     ],
-    "lastRelease": "2026-10-30T03:37:14Z",
-    "lastCommit": "2026-11-01T11:10:06Z",
-    "lastTag": "2026-10-30T03:30:15Z",
-    "lastStableTag": "2026-10-30T03:30:15Z",
-    "commits90d": 1161
+    "lastRelease": "2026-11-07T00:08:09Z",
+    "lastCommit": "2026-11-07T11:10:12Z",
+    "lastTag": "2026-11-07T00:07:10Z",
+    "lastStableTag": "2026-11-07T00:07:10Z",
+    "commits90d": 1083
   },
   "assafelovic/gpt-researcher": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 639835356,
-    "stars": 30432,
+    "stars": 30597,
     "score": 78,
     "archived": false,
-    "pushed": "2026-10-10T22:03:53Z",
+    "pushed": "2026-11-09T11:06:26Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -567,18 +567,18 @@
       "mcp-server"
     ],
     "lastRelease": "2026-09-26T17:46:25Z",
-    "lastCommit": "2026-10-10T22:03:51Z",
+    "lastCommit": "2026-11-09T10:39:49Z",
     "lastTag": "2026-09-26T16:56:07Z",
     "lastStableTag": "2026-09-26T16:56:07Z",
-    "commits90d": 138
+    "commits90d": 271
   },
   "astroautomata/PySR": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 295391759,
-    "stars": 4241,
+    "stars": 4259,
     "score": 80,
     "archived": false,
-    "pushed": "2026-10-28T19:24:36Z",
+    "pushed": "2026-11-06T19:24:21Z",
     "license": "Apache-2.0",
     "topics": [
       "symbolic-regression",
@@ -601,12 +601,12 @@
     "lastCommit": "2026-10-28T00:27:57Z",
     "lastTag": "2026-10-19T19:36:17Z",
     "lastStableTag": "2026-10-19T19:36:17Z",
-    "commits90d": 114
+    "commits90d": 103
   },
   "AutoCodeRoverSG/auto-code-rover": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 783546882,
-    "stars": 3103,
+    "stars": 3105,
     "score": 48,
     "archived": false,
     "pushed": "2026-11-01T12:04:27Z",
@@ -619,7 +619,7 @@
     "commits90d": 0
   },
   "autodistill/autodistill": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 650318075,
     "stars": 2798,
     "score": 58,
@@ -652,12 +652,12 @@
     "commits90d": 2
   },
   "autogluon/autogluon": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 199509705,
-    "stars": 10809,
+    "stars": 10822,
     "score": 72,
     "archived": false,
-    "pushed": "2026-11-02T09:03:15Z",
+    "pushed": "2026-11-09T09:03:16Z",
     "license": "Apache-2.0",
     "topics": [
       "automl",
@@ -682,15 +682,15 @@
       "python"
     ],
     "lastRelease": "2026-09-18T08:43:32Z",
-    "lastCommit": "2026-10-30T23:04:18Z",
+    "lastCommit": "2026-11-08T23:30:09Z",
     "lastTag": "2026-09-18T08:42:27Z",
     "lastStableTag": "2026-09-18T08:42:27Z",
-    "commits90d": 142
+    "commits90d": 127
   },
   "autogluon/autogluon-assistant": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 793416920,
-    "stars": 310,
+    "stars": 311,
     "score": 55,
     "archived": false,
     "pushed": "2026-09-01T19:58:29Z",
@@ -711,24 +711,24 @@
     "commits90d": 5
   },
   "autogluon/tabarena": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 641024512,
-    "stars": 354,
-    "score": 70,
+    "stars": 363,
+    "score": 69,
     "archived": false,
-    "pushed": "2026-11-02T13:02:30Z",
+    "pushed": "2026-11-09T14:27:53Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-09-03T15:41:13Z",
-    "lastCommit": "2026-11-02T13:02:18Z",
+    "lastCommit": "2026-11-09T14:27:53Z",
     "lastTag": "2026-09-03T15:27:25Z",
     "lastStableTag": "2026-09-03T15:27:25Z",
-    "commits90d": 193
+    "commits90d": 204
   },
   "automl/Auto-PyTorch": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 159791040,
-    "stars": 2542,
+    "stars": 2541,
     "score": 51,
     "archived": false,
     "pushed": "2024-04-09T06:17:08Z",
@@ -746,9 +746,9 @@
     "commits90d": 0
   },
   "automl/auto-sklearn": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 38441254,
-    "stars": 8149,
+    "stars": 8146,
     "score": 55,
     "archived": false,
     "pushed": "2026-09-15T14:03:23Z",
@@ -772,7 +772,7 @@
     "commits90d": 0
   },
   "automl/autoweka": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 43972447,
     "stars": 334,
     "score": 36,
@@ -787,9 +787,9 @@
     "commits90d": 0
   },
   "automl/NASLib": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 185628775,
-    "stars": 595,
+    "stars": 596,
     "score": 46,
     "archived": false,
     "pushed": "2024-11-11T15:56:07Z",
@@ -806,12 +806,12 @@
     "commits90d": 0
   },
   "automl/SMAC3": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 65900469,
-    "stars": 1267,
-    "score": 61,
+    "stars": 1272,
+    "score": 62,
     "archived": false,
-    "pushed": "2026-11-02T11:48:53Z",
+    "pushed": "2026-11-09T13:33:47Z",
     "license": "NOASSERTION",
     "topics": [
       "bayesian-optimization",
@@ -833,10 +833,10 @@
     "commits90d": 6
   },
   "awslabs/gluonts": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 186872119,
-    "stars": 5257,
-    "score": 68,
+    "stars": 5260,
+    "score": 67,
     "archived": false,
     "pushed": "2026-10-13T12:42:28Z",
     "license": "Apache-2.0",
@@ -864,28 +864,28 @@
     "commits90d": 2
   },
   "axolotl-ai-cloud/axolotl": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 627727693,
-    "stars": 12656,
-    "score": 74,
+    "stars": 12674,
+    "score": 73,
     "archived": false,
-    "pushed": "2026-11-02T13:50:14Z",
+    "pushed": "2026-11-09T14:34:46Z",
     "license": "Apache-2.0",
     "topics": [
       "fine-tuning",
       "llm"
     ],
     "lastRelease": "2026-10-27T09:57:05Z",
-    "lastCommit": "2026-11-02T13:46:29Z",
-    "lastTag": "2026-11-02T08:46:53-05:00",
-    "lastStableTag": "2026-11-02T08:46:53-05:00",
-    "commits90d": 247
+    "lastCommit": "2026-11-09T14:25:34Z",
+    "lastTag": "2026-11-09T08:53:54-05:00",
+    "lastStableTag": "2026-11-09T08:53:54-05:00",
+    "commits90d": 269
   },
   "bayesian-optimization/BayesianOptimization": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 20556335,
-    "stars": 8729,
-    "score": 72,
+    "stars": 8730,
+    "score": 70,
     "archived": false,
     "pushed": "2026-10-16T14:06:17Z",
     "license": "MIT",
@@ -903,9 +903,9 @@
     "commits90d": 6
   },
   "beeevita/EvoPrompt": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 703337948,
-    "stars": 254,
+    "stars": 255,
     "score": 43,
     "archived": false,
     "pushed": "2025-09-22T11:43:23Z",
@@ -918,12 +918,12 @@
     "commits90d": 0
   },
   "bentoml/BentoML": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 178976529,
-    "stars": 8933,
-    "score": 72,
+    "stars": 8935,
+    "score": 71,
     "archived": false,
-    "pushed": "2026-10-29T11:04:15Z",
+    "pushed": "2026-11-02T17:14:27Z",
     "license": "Apache-2.0",
     "topics": [
       "model-serving",
@@ -949,12 +949,12 @@
     "commits90d": 13
   },
   "BerriAI/litellm": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 671269505,
-    "stars": 62551,
-    "score": 80,
+    "stars": 62969,
+    "score": 79,
     "archived": false,
-    "pushed": "2026-11-02T13:57:51Z",
+    "pushed": "2026-11-09T14:29:37Z",
     "license": "NOASSERTION",
     "topics": [
       "anthropic",
@@ -974,19 +974,19 @@
       "rust",
       "rust-ai"
     ],
-    "lastRelease": "2026-10-28T23:03:09Z",
-    "lastCommit": "2026-11-02T13:57:51Z",
-    "lastTag": "2026-10-30T01:15:44Z",
-    "lastStableTag": "2026-10-28T19:49:33Z",
-    "commits90d": 13462
+    "lastRelease": "2026-11-07T22:29:58Z",
+    "lastCommit": "2026-11-09T01:59:55Z",
+    "lastTag": "2026-11-08T00:57:20Z",
+    "lastStableTag": "2026-11-07T19:05:20Z",
+    "commits90d": 13105
   },
   "bespokelabsai/curator": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 879473096,
-    "stars": 1761,
+    "stars": 1763,
     "score": 67,
     "archived": false,
-    "pushed": "2026-10-28T08:30:25Z",
+    "pushed": "2026-11-02T15:19:00Z",
     "license": "Apache-2.0",
     "topics": [
       "synthetic-data",
@@ -1002,18 +1002,18 @@
       "natural-language-processing"
     ],
     "lastRelease": "2026-10-25T18:01:39Z",
-    "lastCommit": "2026-10-25T23:11:18Z",
+    "lastCommit": "2026-11-02T15:19:00Z",
     "lastTag": "2026-10-25T11:01:33-07:00",
     "lastStableTag": "2026-10-25T11:01:33-07:00",
-    "commits90d": 23
+    "commits90d": 25
   },
   "bitsandbytes-foundation/bitsandbytes": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 373674258,
-    "stars": 8535,
+    "stars": 8536,
     "score": 71,
     "archived": false,
-    "pushed": "2026-10-27T21:28:24Z",
+    "pushed": "2026-11-02T14:36:37Z",
     "license": "MIT",
     "topics": [
       "llm",
@@ -1029,10 +1029,10 @@
     "commits90d": 21
   },
   "blue-yonder/tsfresh": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 71996613,
-    "stars": 9486,
-    "score": 67,
+    "stars": 9490,
+    "score": 66,
     "archived": false,
     "pushed": "2026-07-06T01:28:19Z",
     "license": "MIT",
@@ -1048,12 +1048,12 @@
     "commits90d": 0
   },
   "browser-use/browser-use": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 881458615,
-    "stars": 119826,
+    "stars": 120416,
     "score": 84,
     "archived": false,
-    "pushed": "2026-11-02T01:31:56Z",
+    "pushed": "2026-11-09T09:48:24Z",
     "license": "MIT",
     "topics": [
       "llm",
@@ -1078,15 +1078,15 @@
     "lastCommit": "2026-10-30T04:28:48Z",
     "lastTag": "2026-10-26T22:00:27Z",
     "lastStableTag": "2026-10-26T22:00:27Z",
-    "commits90d": 418
+    "commits90d": 406
   },
   "browserbase/stagehand": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 776908852,
-    "stars": 25911,
-    "score": 76,
+    "stars": 25992,
+    "score": 77,
     "archived": false,
-    "pushed": "2026-11-02T21:57:06Z",
+    "pushed": "2026-11-09T12:53:06Z",
     "license": "MIT",
     "topics": [
       "agents",
@@ -1105,18 +1105,18 @@
       "web-scraping"
     ],
     "lastRelease": "2026-10-23T18:09:00Z",
-    "lastCommit": "2026-10-30T01:04:01Z",
-    "lastTag": "2026-10-30T01:04:01Z",
-    "lastStableTag": "2026-10-23T18:02:22Z",
-    "commits90d": 248
+    "lastCommit": "2026-11-08T23:49:13Z",
+    "lastTag": "2026-11-04T17:01:05Z",
+    "lastStableTag": "2026-11-04T17:01:05Z",
+    "commits90d": 254
   },
   "bytedance/deer-flow": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 979115477,
-    "stars": 84879,
+    "stars": 85183,
     "score": 82,
     "archived": false,
-    "pushed": "2026-11-02T13:37:00Z",
+    "pushed": "2026-11-09T13:53:27Z",
     "license": "MIT",
     "topics": [
       "agent",
@@ -1138,19 +1138,19 @@
       "harness",
       "superagent"
     ],
-    "lastRelease": "2026-09-24T10:40:44Z",
-    "lastCommit": "2026-11-02T13:36:59Z",
-    "lastTag": "2026-10-29T12:53:45Z",
-    "lastStableTag": "2026-09-24T13:52:13+08:00",
-    "commits90d": 1731
+    "lastRelease": "2026-11-04T12:56:57Z",
+    "lastCommit": "2026-11-09T13:53:26Z",
+    "lastTag": "2026-11-04T06:46:47Z",
+    "lastStableTag": "2026-11-04T06:46:47Z",
+    "commits90d": 1801
   },
   "camel-ai/camel": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 615510678,
-    "stars": 18008,
-    "score": 75,
+    "stars": 18023,
+    "score": 74,
     "archived": false,
-    "pushed": "2026-11-02T10:15:02Z",
+    "pushed": "2026-11-09T10:25:06Z",
     "license": "Apache-2.0",
     "topics": [
       "ai-societies",
@@ -1164,18 +1164,18 @@
       "agent"
     ],
     "lastRelease": "2026-03-22T08:37:36Z",
-    "lastCommit": "2026-11-02T10:15:00Z",
+    "lastCommit": "2026-11-09T10:25:05Z",
     "lastTag": "2026-09-03T13:27:43+08:00",
     "lastStableTag": "2026-03-22T16:35:56+08:00",
     "commits90d": 32
   },
   "charmbracelet/crush": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 987670088,
-    "stars": 28912,
+    "stars": 29015,
     "score": 73,
     "archived": false,
-    "pushed": "2026-11-02T11:14:30Z",
+    "pushed": "2026-11-09T14:30:09Z",
     "license": "NOASSERTION",
     "topics": [
       "agentic-ai",
@@ -1183,17 +1183,17 @@
       "llms",
       "ravishing"
     ],
-    "lastRelease": "2026-10-29T16:25:08Z",
-    "lastCommit": "2026-11-02T07:41:21Z",
-    "lastTag": "2026-11-01T08:59:49Z",
-    "lastStableTag": "2026-10-29T20:06:21+04:00",
-    "commits90d": 442
+    "lastRelease": "2026-11-05T17:47:22Z",
+    "lastCommit": "2026-11-09T13:55:57Z",
+    "lastTag": "2026-11-07T22:12:59Z",
+    "lastStableTag": "2026-11-05T21:33:47+04:00",
+    "commits90d": 516
   },
   "ChristosChristofidis/awesome-deep-learning": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 28723659,
-    "stars": 29127,
-    "score": 52,
+    "stars": 29167,
+    "score": 53,
     "archived": false,
     "pushed": "2025-05-26T12:28:00Z",
     "license": null,
@@ -1215,10 +1215,10 @@
     "commits90d": 0
   },
   "cleanlab/cleanlab": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 132975485,
-    "stars": 11728,
-    "score": 61,
+    "stars": 11739,
+    "score": 60,
     "archived": false,
     "pushed": "2026-01-13T17:39:04Z",
     "license": "Apache-2.0",
@@ -1251,12 +1251,12 @@
     "commits90d": 0
   },
   "clearml/clearml": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 191126383,
-    "stars": 6927,
+    "stars": 6934,
     "score": 70,
     "archived": false,
-    "pushed": "2026-10-29T18:36:40Z",
+    "pushed": "2026-11-03T17:32:39Z",
     "license": "Apache-2.0",
     "topics": [
       "version-control",
@@ -1275,29 +1275,29 @@
       "mlops",
       "llmops"
     ],
-    "lastRelease": "2026-08-19T11:35:05Z",
-    "lastCommit": "2026-10-29T18:36:39Z",
-    "lastTag": "2026-08-19T11:11:44Z",
-    "lastStableTag": "2026-08-19T11:11:44Z",
-    "commits90d": 50
+    "lastRelease": "2026-11-03T17:32:39Z",
+    "lastCommit": "2026-11-03T17:15:07Z",
+    "lastTag": "2026-11-03T17:15:07Z",
+    "lastStableTag": "2026-11-03T17:15:07Z",
+    "commits90d": 48
   },
   "cline/cline": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 824874689,
-    "stars": 71209,
+    "stars": 71491,
     "score": 81,
     "archived": false,
-    "pushed": "2026-11-02T12:39:56Z",
+    "pushed": "2026-11-09T14:41:17Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-10-26T09:06:50Z",
-    "lastCommit": "2026-10-30T21:21:13Z",
-    "lastTag": "2026-10-30T21:21:13Z",
-    "lastStableTag": "2026-10-30T21:21:13Z",
-    "commits90d": 888
+    "lastCommit": "2026-11-09T06:17:43Z",
+    "lastTag": "2026-11-04T21:08:20Z",
+    "lastStableTag": "2026-11-04T21:08:20Z",
+    "commits90d": 807
   },
   "cod3licious/autofeat": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 167006843,
     "stars": 546,
     "score": 45,
@@ -1322,12 +1322,12 @@
     "commits90d": 0
   },
   "comet-ml/opik": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 638951438,
-    "stars": 23119,
+    "stars": 23282,
     "score": 80,
     "archived": false,
-    "pushed": "2026-11-02T13:55:54Z",
+    "pushed": "2026-11-09T11:37:56Z",
     "license": "Apache-2.0",
     "topics": [
       "open-source",
@@ -1344,19 +1344,19 @@
       "hacktoberfest2025",
       "evaluation"
     ],
-    "lastRelease": "2026-11-02T10:48:55Z",
-    "lastCommit": "2026-11-02T12:51:02Z",
-    "lastTag": "2026-11-02T12:34:06Z",
-    "lastStableTag": "2026-11-02T12:34:06Z",
-    "commits90d": 1216
+    "lastRelease": "2026-11-06T08:48:18Z",
+    "lastCommit": "2026-11-09T11:37:53Z",
+    "lastTag": "2026-11-06T12:29:00Z",
+    "lastStableTag": "2026-11-06T12:29:00Z",
+    "commits90d": 1270
   },
   "Companion-Inc/feynman": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 1186559664,
-    "stars": 10062,
-    "score": 72,
+    "stars": 10099,
+    "score": 74,
     "archived": false,
-    "pushed": "2026-10-31T14:05:32Z",
+    "pushed": "2026-11-08T15:13:32Z",
     "license": "MIT",
     "topics": [
       "ai-agent",
@@ -1366,19 +1366,19 @@
       "pi-coding-agent",
       "research"
     ],
-    "lastRelease": "2026-10-30T11:08:21Z",
-    "lastCommit": "2026-10-31T14:05:21Z",
-    "lastTag": "2026-10-30T10:44:46Z",
-    "lastStableTag": "2026-10-30T10:44:46Z",
-    "commits90d": 531
+    "lastRelease": "2026-11-08T15:08:17Z",
+    "lastCommit": "2026-11-08T14:54:39Z",
+    "lastTag": "2026-11-08T14:54:39Z",
+    "lastStableTag": "2026-11-08T14:54:39Z",
+    "commits90d": 516
   },
   "confident-ai/deepeval": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 676829188,
-    "stars": 19249,
+    "stars": 19383,
     "score": 79,
     "archived": false,
-    "pushed": "2026-11-02T12:02:14Z",
+    "pushed": "2026-11-07T21:30:17Z",
     "license": "Apache-2.0",
     "topics": [
       "evaluation-metrics",
@@ -1389,15 +1389,15 @@
       "python"
     ],
     "lastRelease": "2026-09-22T16:36:00Z",
-    "lastCommit": "2026-11-02T12:02:10Z",
-    "lastTag": "2026-10-27T16:28:24Z",
-    "lastStableTag": "2026-10-27T16:28:24Z",
-    "commits90d": 537
+    "lastCommit": "2026-11-07T21:30:17Z",
+    "lastTag": "2026-11-04T11:28:58Z",
+    "lastStableTag": "2026-11-04T11:28:58Z",
+    "commits90d": 539
   },
   "confident-ai/deepteam": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 943088234,
-    "stars": 3081,
+    "stars": 3092,
     "score": 72,
     "archived": false,
     "pushed": "2026-10-23T11:32:04Z",
@@ -1413,15 +1413,15 @@
     "lastCommit": "2026-10-23T11:32:00Z",
     "lastTag": "2026-08-12T19:00:52Z",
     "lastStableTag": "2026-08-12T19:00:52Z",
-    "commits90d": 57
+    "commits90d": 55
   },
   "continuedev/continue": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 644686905,
-    "stars": 36401,
+    "stars": 36442,
     "score": 73,
     "archived": false,
-    "pushed": "2026-11-02T12:11:19Z",
+    "pushed": "2026-11-05T15:28:28Z",
     "license": "Apache-2.0",
     "topics": [
       "open-source",
@@ -1437,12 +1437,12 @@
     "commits90d": 0
   },
   "coze-dev/coze-loop": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1007406267,
-    "stars": 5799,
+    "stars": 5803,
     "score": 70,
     "archived": false,
-    "pushed": "2026-11-02T09:51:03Z",
+    "pushed": "2026-11-09T14:00:23Z",
     "license": "Apache-2.0",
     "topics": [
       "agent",
@@ -1464,18 +1464,18 @@
       "coze"
     ],
     "lastRelease": "2026-01-20T12:35:01Z",
-    "lastCommit": "2026-11-02T09:51:00Z",
+    "lastCommit": "2026-11-09T07:53:31Z",
     "lastTag": "2026-03-26T10:01:46Z",
     "lastStableTag": "2026-03-26T10:01:46Z",
-    "commits90d": 63
+    "commits90d": 60
   },
   "crewAIInc/crewAI": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 710601088,
-    "stars": 60421,
+    "stars": 60687,
     "score": 81,
     "archived": false,
-    "pushed": "2026-11-02T10:15:05Z",
+    "pushed": "2026-11-09T10:14:16Z",
     "license": "MIT",
     "topics": [
       "agents",
@@ -1484,19 +1484,19 @@
       "llms",
       "aiagentframework"
     ],
-    "lastRelease": "2026-11-01T21:21:56Z",
-    "lastCommit": "2026-11-01T22:32:38Z",
-    "lastTag": "2026-11-01T13:21:53-08:00",
-    "lastStableTag": "2026-11-01T13:21:53-08:00",
-    "commits90d": 421
+    "lastRelease": "2026-11-09T01:07:14Z",
+    "lastCommit": "2026-11-09T06:33:41Z",
+    "lastTag": "2026-11-08T17:07:11-08:00",
+    "lastStableTag": "2026-11-08T17:07:11-08:00",
+    "commits90d": 439
   },
   "cvat-ai/cvat": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 139156354,
-    "stars": 17051,
-    "score": 74,
+    "stars": 17101,
+    "score": 75,
     "archived": false,
-    "pushed": "2026-11-02T17:35:28Z",
+    "pushed": "2026-11-09T14:42:10Z",
     "license": "MIT",
     "topics": [
       "video-annotation",
@@ -1520,19 +1520,19 @@
       "audio-transcription",
       "yolo"
     ],
-    "lastRelease": "2026-10-29T06:09:01Z",
-    "lastCommit": "2026-11-02T16:31:37Z",
-    "lastTag": "2026-10-29T06:08:57Z",
-    "lastStableTag": "2026-10-29T06:08:57Z",
-    "commits90d": 350
+    "lastRelease": "2026-11-05T14:06:13Z",
+    "lastCommit": "2026-11-09T14:38:09Z",
+    "lastTag": "2026-11-05T14:06:08Z",
+    "lastStableTag": "2026-11-05T14:06:08Z",
+    "commits90d": 342
   },
   "CVHub520/X-AnyLabeling": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 644293378,
-    "stars": 10871,
+    "stars": 10925,
     "score": 75,
     "archived": false,
-    "pushed": "2026-11-02T00:45:52Z",
+    "pushed": "2026-11-08T16:30:11Z",
     "license": "GPL-3.0",
     "topics": [
       "sam",
@@ -1556,14 +1556,14 @@
       "ai",
       "point-cloud"
     ],
-    "lastRelease": "2026-10-31T18:32:38Z",
-    "lastCommit": "2026-11-02T00:45:49Z",
-    "lastTag": "2026-10-31T18:17:44Z",
-    "lastStableTag": "2026-10-31T18:17:44Z",
-    "commits90d": 144
+    "lastRelease": "2026-11-08T16:51:58Z",
+    "lastCommit": "2026-11-08T16:30:01Z",
+    "lastTag": "2026-11-08T16:30:01Z",
+    "lastStableTag": "2026-11-08T16:30:01Z",
+    "commits90d": 139
   },
   "D-X-Y/NAS-Bench-201": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 89270920,
     "stars": 649,
     "score": 46,
@@ -1584,12 +1584,12 @@
     "commits90d": 0
   },
   "dagster-io/dagster": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 131619646,
-    "stars": 16361,
+    "stars": 16379,
     "score": 74,
     "archived": false,
-    "pushed": "2026-10-30T22:21:47Z",
+    "pushed": "2026-11-09T14:37:26Z",
     "license": "Apache-2.0",
     "topics": [
       "data-pipelines",
@@ -1608,19 +1608,19 @@
       "data-integration",
       "metadata"
     ],
-    "lastRelease": "2026-10-30T15:31:35Z",
-    "lastCommit": "2026-10-30T22:21:43Z",
-    "lastTag": "2026-10-30T15:30:45Z",
-    "lastStableTag": "2026-10-30T15:30:45Z",
-    "commits90d": 345
+    "lastRelease": "2026-11-05T18:38:24Z",
+    "lastCommit": "2026-11-09T14:37:17Z",
+    "lastTag": "2026-11-05T18:37:41Z",
+    "lastStableTag": "2026-11-05T18:37:41Z",
+    "commits90d": 341
   },
   "Data-Centric-AI-Community/fg-data-profiling": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 49346299,
-    "stars": 13745,
+    "stars": 13755,
     "score": 72,
     "archived": false,
-    "pushed": "2026-10-31T01:10:24Z",
+    "pushed": "2026-11-05T02:14:48Z",
     "license": "MIT",
     "topics": [
       "pandas-profiling",
@@ -1645,18 +1645,18 @@
       "hacktoberfest"
     ],
     "lastRelease": "2026-09-11T19:49:46Z",
-    "lastCommit": "2026-10-31T01:09:31Z",
-    "lastTag": "2026-10-31T01:10:23Z",
+    "lastCommit": "2026-11-04T20:05:22Z",
+    "lastTag": "2026-11-04T20:06:33Z",
     "lastStableTag": "2026-09-11T18:43:12Z",
-    "commits90d": 7
+    "commits90d": 11
   },
   "data-privacy-stack/presidio": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 132129752,
-    "stars": 11634,
+    "stars": 11794,
     "score": 79,
     "archived": false,
-    "pushed": "2026-11-01T09:32:36Z",
+    "pushed": "2026-11-08T06:40:46Z",
     "license": "MIT",
     "topics": [
       "python",
@@ -1681,16 +1681,16 @@
       "anonymization"
     ],
     "lastRelease": "2026-10-27T09:26:55Z",
-    "lastCommit": "2026-11-01T09:32:35Z",
+    "lastCommit": "2026-11-08T06:40:43Z",
     "lastTag": "2026-10-27T09:03:13Z",
     "lastStableTag": "2026-10-27T09:03:13Z",
-    "commits90d": 37
+    "commits90d": 33
   },
   "datadreamer-dev/DataDreamer": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 648788010,
-    "stars": 1126,
-    "score": 49,
+    "stars": 1127,
+    "score": 48,
     "archived": false,
     "pushed": "2025-02-02T21:23:50Z",
     "license": "MIT",
@@ -1721,12 +1721,12 @@
     "commits90d": 0
   },
   "datajuicer/data-juicer": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 673277958,
-    "stars": 7211,
-    "score": 71,
+    "stars": 7232,
+    "score": 72,
     "archived": false,
-    "pushed": "2026-11-02T04:20:29Z",
+    "pushed": "2026-11-09T08:44:21Z",
     "license": "Apache-2.0",
     "topics": [
       "data-analysis",
@@ -1744,16 +1744,16 @@
       "data-processing",
       "foundation-models"
     ],
-    "lastRelease": "2026-10-19T06:03:52Z",
-    "lastCommit": "2026-11-02T04:00:35Z",
-    "lastTag": "2026-10-19T06:00:44Z",
-    "lastStableTag": "2026-10-19T06:00:44Z",
+    "lastRelease": "2026-11-04T01:57:33Z",
+    "lastCommit": "2026-11-09T08:34:09Z",
+    "lastTag": "2026-11-04T01:56:46Z",
+    "lastStableTag": "2026-11-04T01:56:46Z",
     "commits90d": 80
   },
   "daytonaio/daytona": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 753490180,
-    "stars": 71394,
+    "stars": 71342,
     "score": 0,
     "archived": true,
     "pushed": "2026-07-24T07:12:07Z",
@@ -1775,7 +1775,7 @@
     "commits90d": 0
   },
   "deepchecks/deepchecks": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 415969774,
     "stars": 4069,
     "score": 49,
@@ -1805,12 +1805,12 @@
     "commits90d": 0
   },
   "deepset-ai/haystack": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 221654678,
-    "stars": 26911,
+    "stars": 26954,
     "score": 76,
     "archived": false,
-    "pushed": "2026-11-02T14:04:57Z",
+    "pushed": "2026-11-09T14:32:10Z",
     "license": "Apache-2.0",
     "topics": [
       "semantic-search",
@@ -1834,19 +1834,19 @@
       "mcp",
       "multi-agent"
     ],
-    "lastRelease": "2026-10-21T19:10:58Z",
-    "lastCommit": "2026-11-02T11:58:42Z",
-    "lastTag": "2026-10-21T19:10:10Z",
-    "lastStableTag": "2026-10-21T19:10:10Z",
-    "commits90d": 716
+    "lastRelease": "2026-11-03T09:27:48Z",
+    "lastCommit": "2026-11-09T14:28:03Z",
+    "lastTag": "2026-11-09T12:35:21Z",
+    "lastStableTag": "2026-11-03T09:26:58Z",
+    "commits90d": 765
   },
   "e2b-dev/E2B": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 609539715,
-    "stars": 14669,
-    "score": 79,
+    "stars": 14781,
+    "score": 78,
     "archived": false,
-    "pushed": "2026-11-02T07:10:58Z",
+    "pushed": "2026-11-09T07:11:03Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -1868,31 +1868,31 @@
       "code-interpreter",
       "copilot"
     ],
-    "lastRelease": "2026-10-28T20:24:33Z",
-    "lastCommit": "2026-10-30T22:03:45Z",
-    "lastTag": "2026-10-28T20:24:24Z",
+    "lastRelease": "2026-11-04T16:41:55Z",
+    "lastCommit": "2026-11-06T16:50:59Z",
+    "lastTag": "2026-11-04T16:41:46Z",
     "lastStableTag": null,
-    "commits90d": 235
+    "commits90d": 236
   },
   "earendil-works/pi": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 1035029907,
-    "stars": 119604,
-    "score": 81,
+    "stars": 121022,
+    "score": 90,
     "archived": false,
-    "pushed": "2026-11-02T23:53:09Z",
+    "pushed": "2026-11-09T14:29:55Z",
     "license": "MIT",
     "topics": [],
     "lastRelease": "2026-11-02T11:05:31Z",
-    "lastCommit": "2026-11-02T23:53:07Z",
+    "lastCommit": "2026-11-09T14:29:52Z",
     "lastTag": "2026-11-02T10:38:21Z",
     "lastStableTag": "2026-11-02T10:38:21Z",
-    "commits90d": 1979
+    "commits90d": 2046
   },
   "Eladlev/AutoPrompt": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 726570398,
-    "stars": 3022,
+    "stars": 3023,
     "score": 52,
     "archived": false,
     "pushed": "2025-12-02T17:23:20Z",
@@ -1909,12 +1909,12 @@
     "commits90d": 0
   },
   "EleutherAI/lm-evaluation-harness": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 290909192,
-    "stars": 14371,
+    "stars": 14431,
     "score": 75,
     "archived": false,
-    "pushed": "2026-09-14T10:51:06Z",
+    "pushed": "2026-11-04T14:34:40Z",
     "license": "MIT",
     "topics": [
       "evaluation-framework",
@@ -1925,12 +1925,12 @@
     "lastCommit": "2026-09-14T10:51:05Z",
     "lastTag": "2026-09-01T01:41:20+05:00",
     "lastStableTag": "2026-09-01T01:41:20+05:00",
-    "commits90d": 85
+    "commits90d": 67
   },
   "EpistasisLab/tpot": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 45495679,
-    "stars": 10057,
+    "stars": 10060,
     "score": 55,
     "archived": false,
     "pushed": "2025-09-11T21:32:19Z",
@@ -1964,12 +1964,12 @@
     "commits90d": 0
   },
   "EthicalML/awesome-production-machine-learning": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 144863525,
-    "stars": 21067,
+    "stars": 21084,
     "score": 74,
     "archived": false,
-    "pushed": "2026-11-01T05:14:48Z",
+    "pushed": "2026-11-08T10:41:03Z",
     "license": "MIT",
     "topics": [
       "machine-learning",
@@ -1993,16 +1993,16 @@
       "awesome-list"
     ],
     "lastRelease": "2026-11-01T05:14:49Z",
-    "lastCommit": "2026-10-28T08:14:26Z",
+    "lastCommit": "2026-11-08T10:41:02Z",
     "lastTag": "2026-10-28T08:14:26Z",
     "lastStableTag": "2026-10-28T08:14:26Z",
-    "commits90d": 21
+    "commits90d": 25
   },
   "evidentlyai/evidently": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 315977578,
-    "stars": 8030,
-    "score": 71,
+    "stars": 8052,
+    "score": 72,
     "archived": false,
     "pushed": "2026-09-29T08:32:43Z",
     "license": "Apache-2.0",
@@ -2029,12 +2029,12 @@
     "commits90d": 3
   },
   "EvolvingLMMs-Lab/lmms-eval": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 768612800,
-    "stars": 4479,
+    "stars": 4490,
     "score": 66,
     "archived": false,
-    "pushed": "2026-11-02T14:17:20Z",
+    "pushed": "2026-11-09T14:31:22Z",
     "license": "NOASSERTION",
     "topics": [
       "agi",
@@ -2050,30 +2050,30 @@
       "multimodal-evaluation"
     ],
     "lastRelease": "2026-10-30T13:51:49Z",
-    "lastCommit": "2026-11-02T14:17:19Z",
+    "lastCommit": "2026-11-09T14:31:22Z",
     "lastTag": "2026-10-30T13:16:36Z",
     "lastStableTag": "2026-10-30T13:16:36Z",
-    "commits90d": 126
+    "commits90d": 145
   },
   "exo-explore/exo": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 819554665,
-    "stars": 48153,
-    "score": 78,
+    "stars": 48265,
+    "score": 79,
     "archived": false,
-    "pushed": "2026-11-02T23:48:17Z",
+    "pushed": "2026-11-06T22:00:57Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-04-23T15:04:10Z",
-    "lastCommit": "2026-11-01T18:24:03Z",
+    "lastCommit": "2026-11-06T22:00:55Z",
     "lastTag": "2026-04-23T14:28:40Z",
     "lastStableTag": "2026-04-23T14:28:40Z",
-    "commits90d": 124
+    "commits90d": 173
   },
   "facebookresearch/nevergrad": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 158468845,
-    "stars": 4224,
+    "stars": 4225,
     "score": 62,
     "archived": false,
     "pushed": "2026-11-02T12:10:18Z",
@@ -2086,10 +2086,10 @@
     "commits90d": 4
   },
   "fbdesignpro/sweetviz": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 262600128,
-    "stars": 3131,
-    "score": 60,
+    "stars": 3133,
+    "score": 59,
     "archived": false,
     "pushed": "2026-04-11T19:21:12Z",
     "license": "MIT",
@@ -2115,12 +2115,12 @@
     "commits90d": 0
   },
   "feast-dev/feast": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 161133770,
-    "stars": 7353,
+    "stars": 7357,
     "score": 71,
     "archived": false,
-    "pushed": "2026-11-01T04:05:21Z",
+    "pushed": "2026-11-06T23:30:13Z",
     "license": "Apache-2.0",
     "topics": [
       "machine-learning",
@@ -2135,16 +2135,16 @@
       "data-quality"
     ],
     "lastRelease": "2026-10-13T13:23:18Z",
-    "lastCommit": "2026-11-01T04:05:21Z",
+    "lastCommit": "2026-11-06T23:28:58Z",
     "lastTag": "2026-10-13T13:23:10Z",
     "lastStableTag": "2026-10-13T13:23:10Z",
-    "commits90d": 179
+    "commits90d": 187
   },
   "feature-engine/feature_engine": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 163630824,
     "stars": 2296,
-    "score": 64,
+    "score": 63,
     "archived": false,
     "pushed": "2026-09-19T11:20:06Z",
     "license": "BSD-3-Clause",
@@ -2164,12 +2164,12 @@
     "commits90d": 6
   },
   "fivetran/great_expectations": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 103071520,
-    "stars": 11913,
+    "stars": 11921,
     "score": 72,
     "archived": false,
-    "pushed": "2026-11-02T10:23:26Z",
+    "pushed": "2026-11-09T10:25:22Z",
     "license": "Apache-2.0",
     "topics": [
       "pipeline-tests",
@@ -2194,15 +2194,15 @@
       "mlops"
     ],
     "lastRelease": "2026-10-22T22:09:53Z",
-    "lastCommit": "2026-11-02T10:23:23Z",
+    "lastCommit": "2026-11-09T10:25:18Z",
     "lastTag": "2026-10-22T22:38:17+02:00",
     "lastStableTag": "2026-10-22T22:38:17+02:00",
-    "commits90d": 166
+    "commits90d": 159
   },
   "FlowiseAI/Flowise": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 621803253,
-    "stars": 55543,
+    "stars": 55564,
     "score": 0,
     "archived": true,
     "pushed": "2026-08-13T12:38:19Z",
@@ -2230,15 +2230,15 @@
     "lastCommit": "2026-08-13T12:38:19Z",
     "lastTag": "2026-07-29T09:59:33Z",
     "lastStableTag": "2026-07-29T09:59:33Z",
-    "commits90d": 7
+    "commits90d": 1
   },
   "flyteorg/flyte": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 216628419,
-    "stars": 7845,
-    "score": 72,
+    "stars": 7831,
+    "score": 68,
     "archived": false,
-    "pushed": "2026-11-02T23:35:41Z",
+    "pushed": "2026-11-09T09:44:46Z",
     "license": "Apache-2.0",
     "topics": [
       "machine-learning",
@@ -2257,16 +2257,16 @@
       "sovereign-ai",
       "sovereign-infrastructure"
     ],
-    "lastRelease": "2026-10-27T04:34:20Z",
-    "lastCommit": "2026-11-02T23:35:39Z",
-    "lastTag": "2026-10-27T04:34:09Z",
-    "lastStableTag": "2026-10-27T04:34:09Z",
-    "commits90d": 325
+    "lastRelease": "2026-11-03T18:56:05Z",
+    "lastCommit": "2026-11-06T20:46:45Z",
+    "lastTag": "2026-11-03T01:40:47Z",
+    "lastStableTag": "2026-11-03T01:40:47Z",
+    "commits90d": 326
   },
   "Fosowl/agenticSeek": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 935604638,
-    "stars": 27602,
+    "stars": 27646,
     "score": 75,
     "archived": false,
     "pushed": "2026-10-22T16:22:32Z",
@@ -2285,13 +2285,13 @@
     "lastCommit": "2026-10-22T16:22:32Z",
     "lastTag": null,
     "lastStableTag": null,
-    "commits90d": 47
+    "commits90d": 45
   },
   "Future-House/paper-qa": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 597583114,
-    "stars": 9531,
-    "score": 74,
+    "stars": 9569,
+    "score": 73,
     "archived": false,
     "pushed": "2026-10-26T17:35:47Z",
     "license": "Apache-2.0",
@@ -2308,27 +2308,46 @@
     "commits90d": 3
   },
   "gepa-ai/gepa": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1032419366,
-    "stars": 7246,
-    "score": 79,
+    "stars": 7346,
+    "score": 80,
     "archived": false,
-    "pushed": "2026-11-02T12:46:41Z",
+    "pushed": "2026-11-09T12:46:31Z",
     "license": "MIT",
-    "topics": [],
+    "topics": [
+      "agent-skills",
+      "coding-agent",
+      "discovery",
+      "distributed-evolutionary-algorithms",
+      "evolutionary-algorithms",
+      "genetic-algorithm",
+      "harness",
+      "harness-ai",
+      "harness-engineering",
+      "iterative-methods",
+      "iterative-refinement",
+      "llm-agents",
+      "llm-evaluation",
+      "optimization",
+      "optimization-algorithms",
+      "optimizer",
+      "prompt-engineering",
+      "prompt-optimization"
+    ],
     "lastRelease": "2026-07-15T14:50:58Z",
-    "lastCommit": "2026-10-31T19:40:38Z",
+    "lastCommit": "2026-11-09T09:07:36Z",
     "lastTag": "2026-07-15T14:44:09Z",
     "lastStableTag": "2026-07-15T14:44:09Z",
-    "commits90d": 76
+    "commits90d": 89
   },
   "getzep/graphiti": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 840056306,
-    "stars": 32455,
-    "score": 77,
+    "stars": 32676,
+    "score": 81,
     "archived": false,
-    "pushed": "2026-11-01T01:05:00Z",
+    "pushed": "2026-11-09T09:35:23Z",
     "license": "Apache-2.0",
     "topics": [
       "agents",
@@ -2337,35 +2356,35 @@
       "rag"
     ],
     "lastRelease": "2026-10-20T17:25:21Z",
-    "lastCommit": "2026-11-01T01:04:59Z",
+    "lastCommit": "2026-11-09T09:35:22Z",
     "lastTag": "2026-10-20T17:23:18Z",
     "lastStableTag": "2026-10-20T17:23:18Z",
-    "commits90d": 119
+    "commits90d": 120
   },
   "ggml-org/llama.cpp": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 612354784,
-    "stars": 133146,
+    "stars": 133819,
     "score": 84,
     "archived": false,
-    "pushed": "2026-11-02T13:20:02Z",
+    "pushed": "2026-11-09T14:23:26Z",
     "license": "MIT",
     "topics": [
       "ggml"
     ],
-    "lastRelease": "2026-10-28T12:47:51Z",
-    "lastCommit": "2026-11-02T13:20:02Z",
-    "lastTag": "2026-11-02T10:59:00Z",
-    "lastStableTag": "2026-11-02T10:59:00Z",
-    "commits90d": 1789
+    "lastRelease": "2026-11-04T13:08:06Z",
+    "lastCommit": "2026-11-09T13:48:32Z",
+    "lastTag": "2026-11-09T12:52:32Z",
+    "lastStableTag": "2026-11-09T12:52:32Z",
+    "commits90d": 1858
   },
   "Giskard-AI/giskard-oss": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 466864356,
-    "stars": 5940,
+    "stars": 5946,
     "score": 71,
     "archived": false,
-    "pushed": "2026-11-02T07:34:45Z",
+    "pushed": "2026-11-09T02:02:14Z",
     "license": "Apache-2.0",
     "topics": [
       "mlops",
@@ -2390,30 +2409,30 @@
     "lastCommit": "2026-11-02T06:12:19Z",
     "lastTag": "2026-10-25T07:34:41Z",
     "lastStableTag": "2026-10-25T07:34:41Z",
-    "commits90d": 152
+    "commits90d": 128
   },
   "google-ai-edge/LiteRT": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 851997597,
-    "stars": 3559,
-    "score": 69,
+    "stars": 3577,
+    "score": 72,
     "archived": false,
-    "pushed": "2026-11-03T00:30:08Z",
+    "pushed": "2026-11-09T14:38:40Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-10-26T20:48:08Z",
-    "lastCommit": "2026-11-02T23:17:23Z",
-    "lastTag": "2026-10-26T18:53:20Z",
-    "lastStableTag": "2026-10-26T18:53:20Z",
-    "commits90d": 1487
+    "lastCommit": "2026-11-09T14:38:28Z",
+    "lastTag": "2026-11-04T19:16:20Z",
+    "lastStableTag": "2026-11-04T19:16:20Z",
+    "commits90d": 1525
   },
   "google-gemini/gemini-cli": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 968197216,
-    "stars": 108670,
+    "stars": 108803,
     "score": 82,
     "archived": false,
-    "pushed": "2026-11-02T01:22:37Z",
+    "pushed": "2026-11-09T01:05:59Z",
     "license": "Apache-2.0",
     "topics": [
       "gemini",
@@ -2424,14 +2443,14 @@
       "mcp-client",
       "mcp-server"
     ],
-    "lastRelease": "2026-10-27T20:26:28Z",
-    "lastCommit": "2026-10-30T21:38:47Z",
-    "lastTag": "2026-11-02T01:14:47Z",
-    "lastStableTag": "2026-10-27T20:19:20Z",
-    "commits90d": 237
+    "lastRelease": "2026-11-04T20:27:11Z",
+    "lastCommit": "2026-11-06T21:43:53Z",
+    "lastTag": "2026-11-04T19:41:07Z",
+    "lastStableTag": "2026-11-04T20:19:06Z",
+    "commits90d": 245
   },
   "google-research/nasbench": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 162748370,
     "stars": 721,
     "score": 0,
@@ -2446,10 +2465,10 @@
     "commits90d": 0
   },
   "google-research/tabfm": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1271618207,
-    "stars": 2829,
-    "score": 72,
+    "stars": 2842,
+    "score": 70,
     "archived": false,
     "pushed": "2026-09-18T17:50:34Z",
     "license": "Apache-2.0",
@@ -2458,13 +2477,13 @@
     "lastCommit": "2026-08-18T17:12:51Z",
     "lastTag": "2026-07-09T20:26:05Z",
     "lastStableTag": "2026-07-09T20:26:05Z",
-    "commits90d": 4
+    "commits90d": 3
   },
   "google-research/timesfm": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 793784055,
-    "stars": 35003,
-    "score": 80,
+    "stars": 35341,
+    "score": 81,
     "archived": false,
     "pushed": "2026-09-29T19:36:25Z",
     "license": "Apache-2.0",
@@ -2476,12 +2495,12 @@
     "commits90d": 54
   },
   "google/adk-python": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 958830659,
-    "stars": 22082,
+    "stars": 22159,
     "score": 77,
     "archived": false,
-    "pushed": "2026-11-02T14:10:49Z",
+    "pushed": "2026-11-09T06:23:33Z",
     "license": "Apache-2.0",
     "topics": [
       "agent",
@@ -2501,16 +2520,16 @@
       "llm",
       "multi-agent"
     ],
-    "lastRelease": "2026-10-23T18:08:23Z",
-    "lastCommit": "2026-11-02T14:10:44Z",
-    "lastTag": "2026-10-23T18:06:07Z",
-    "lastStableTag": "2026-10-23T18:06:07Z",
-    "commits90d": 1555
+    "lastRelease": "2026-11-07T00:58:18Z",
+    "lastCommit": "2026-11-09T06:23:29Z",
+    "lastTag": "2026-11-07T00:52:39Z",
+    "lastStableTag": "2026-11-07T00:52:39Z",
+    "commits90d": 1547
   },
   "google/automl": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 246738676,
-    "stars": 6475,
+    "stars": 6477,
     "score": 0,
     "archived": true,
     "pushed": "2025-03-02T07:46:39Z",
@@ -2529,7 +2548,7 @@
     "commits90d": 0
   },
   "google/vizier": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 460172544,
     "stars": 1681,
     "score": 65,
@@ -2559,15 +2578,15 @@
     "lastCommit": "2026-10-20T10:20:23Z",
     "lastTag": "2025-02-01T16:37:49Z",
     "lastStableTag": "2025-02-01T16:37:49Z",
-    "commits90d": 21
+    "commits90d": 16
   },
   "guardrails-ai/guardrails": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 594609262,
-    "stars": 7580,
+    "stars": 7590,
     "score": 72,
     "archived": false,
-    "pushed": "2026-10-31T02:14:36Z",
+    "pushed": "2026-11-05T03:27:52Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -2580,15 +2599,15 @@
     "lastCommit": "2026-08-26T19:53:51Z",
     "lastTag": "2026-08-14T13:43:24Z",
     "lastStableTag": "2026-08-14T13:43:24Z",
-    "commits90d": 16
+    "commits90d": 14
   },
   "h2oai/h2o-3": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 17371412,
-    "stars": 7520,
+    "stars": 7519,
     "score": 70,
     "archived": false,
-    "pushed": "2026-10-22T13:08:19Z",
+    "pushed": "2026-11-09T12:19:40Z",
     "license": "Apache-2.0",
     "topics": [
       "h2o",
@@ -2614,17 +2633,17 @@
     ],
     "lastRelease": null,
     "lastCommit": "2026-09-20T11:18:58Z",
-    "lastTag": "2026-10-22T15:08:15+02:00",
-    "lastStableTag": "2026-10-22T15:08:15+02:00",
-    "commits90d": 36
+    "lastTag": "2026-11-02T17:13:09Z",
+    "lastStableTag": "2026-11-02T17:13:09Z",
+    "commits90d": 17
   },
   "h2oai/h2o-llmstudio": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 629142696,
-    "stars": 5191,
+    "stars": 5194,
     "score": 69,
     "archived": false,
-    "pushed": "2026-10-27T21:45:06Z",
+    "pushed": "2026-11-08T21:56:37Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -2641,16 +2660,16 @@
       "llm-training",
       "fedramp"
     ],
-    "lastRelease": "2026-10-24T12:02:27Z",
-    "lastCommit": "2026-10-27T21:44:26Z",
-    "lastTag": "2026-10-24T12:01:41Z",
-    "lastStableTag": "2026-10-24T12:01:41Z",
-    "commits90d": 30
+    "lastRelease": "2026-11-04T16:02:00Z",
+    "lastCommit": "2026-11-07T15:38:22Z",
+    "lastTag": "2026-11-04T15:47:23Z",
+    "lastStableTag": "2026-11-04T15:47:23Z",
+    "commits90d": 45
   },
   "Hannibal046/Awesome-LLM": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 603049672,
-    "stars": 27473,
+    "stars": 27491,
     "score": 60,
     "archived": false,
     "pushed": "2025-07-31T02:38:24Z",
@@ -2663,12 +2682,12 @@
     "commits90d": 0
   },
   "harbor-framework/harbor": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 1032170083,
-    "stars": 6725,
-    "score": 71,
+    "stars": 6908,
+    "score": 82,
     "archived": false,
-    "pushed": "2026-11-02T19:42:39Z",
+    "pushed": "2026-11-08T05:18:22Z",
     "license": "Apache-2.0",
     "topics": [
       "evals",
@@ -2676,15 +2695,15 @@
       "terminal-bench"
     ],
     "lastRelease": "2026-10-25T20:27:33Z",
-    "lastCommit": "2026-11-02T19:42:36Z",
+    "lastCommit": "2026-11-08T05:18:21Z",
     "lastTag": "2026-10-25T14:27:28-06:00",
     "lastStableTag": "2026-10-25T14:27:28-06:00",
-    "commits90d": 523
+    "commits90d": 563
   },
   "Helicone/helicone": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 595832198,
-    "stars": 6252,
+    "stars": 6274,
     "score": 71,
     "archived": false,
     "pushed": "2026-10-28T15:59:52Z",
@@ -2717,12 +2736,12 @@
     "commits90d": 14
   },
   "hiyouga/LlamaFactory": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 646410686,
-    "stars": 75846,
+    "stars": 75956,
     "score": 79,
     "archived": false,
-    "pushed": "2026-10-31T10:28:10Z",
+    "pushed": "2026-11-09T02:35:16Z",
     "license": "Apache-2.0",
     "topics": [
       "fine-tuning",
@@ -2747,16 +2766,16 @@
       "nlp"
     ],
     "lastRelease": "2026-05-30T15:57:58Z",
-    "lastCommit": "2026-10-31T10:28:09Z",
+    "lastCommit": "2026-11-09T02:35:16Z",
     "lastTag": "2026-05-30T15:57:09Z",
     "lastStableTag": "2026-05-30T15:57:09Z",
-    "commits90d": 30
+    "commits90d": 34
   },
   "HKUDS/AI-Researcher": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 946632749,
-    "stars": 5863,
-    "score": 49,
+    "stars": 5878,
+    "score": 48,
     "archived": false,
     "pushed": "2025-10-16T06:47:34Z",
     "license": null,
@@ -2770,12 +2789,12 @@
     "commits90d": 0
   },
   "HKUDS/nanobot": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1147094660,
-    "stars": 49762,
+    "stars": 49964,
     "score": 80,
     "archived": false,
-    "pushed": "2026-11-02T09:55:24Z",
+    "pushed": "2026-11-09T14:02:22Z",
     "license": "MIT",
     "topics": [
       "ai-agent",
@@ -2799,16 +2818,16 @@
       "webui",
       "workflow-automation"
     ],
-    "lastRelease": "2026-10-28T10:50:17Z",
-    "lastCommit": "2026-11-02T09:55:14Z",
-    "lastTag": "2026-10-28T17:59:21+08:00",
-    "lastStableTag": "2026-10-28T17:59:21+08:00",
-    "commits90d": 1347
+    "lastRelease": "2026-11-06T15:55:22Z",
+    "lastCommit": "2026-11-09T10:34:48Z",
+    "lastTag": "2026-11-06T23:26:29+08:00",
+    "lastStableTag": "2026-11-06T23:26:29+08:00",
+    "commits90d": 1360
   },
   "huggingface/autotrain-advanced": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 321753299,
-    "stars": 4619,
+    "stars": 4620,
     "score": 62,
     "archived": false,
     "pushed": "2026-10-29T12:50:23Z",
@@ -2829,39 +2848,39 @@
     "commits90d": 4
   },
   "huggingface/datatrove": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 653623369,
-    "stars": 3414,
-    "score": 69,
+    "stars": 3419,
+    "score": 68,
     "archived": false,
-    "pushed": "2026-11-03T00:08:07Z",
+    "pushed": "2026-11-04T14:03:22Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-09-30T08:30:49Z",
-    "lastCommit": "2026-10-27T09:50:09Z",
+    "lastCommit": "2026-11-04T14:03:22Z",
     "lastTag": "2026-09-30T08:12:03Z",
     "lastStableTag": "2026-09-30T08:12:03Z",
-    "commits90d": 28
+    "commits90d": 30
   },
   "huggingface/lerobot": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 748713144,
-    "stars": 28644,
+    "stars": 28774,
     "score": 79,
     "archived": false,
-    "pushed": "2026-11-02T13:59:23Z",
+    "pushed": "2026-11-09T13:37:13Z",
     "license": "Apache-2.0",
     "topics": [],
-    "lastRelease": "2026-08-03T14:19:42Z",
-    "lastCommit": "2026-11-02T12:31:37Z",
-    "lastTag": "2026-08-03T14:05:01Z",
-    "lastStableTag": "2026-08-03T14:05:01Z",
-    "commits90d": 226
+    "lastRelease": "2026-11-05T17:13:20Z",
+    "lastCommit": "2026-11-09T13:23:29Z",
+    "lastTag": "2026-11-05T16:45:23Z",
+    "lastStableTag": "2026-11-05T16:45:23Z",
+    "commits90d": 239
   },
   "huggingface/lighteval": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 748650671,
-    "stars": 2576,
+    "stars": 2582,
     "score": 67,
     "archived": false,
     "pushed": "2026-10-29T14:15:10Z",
@@ -2876,15 +2895,15 @@
     "lastCommit": "2026-10-29T14:15:10Z",
     "lastTag": "2025-11-24T16:35:28+01:00",
     "lastStableTag": "2025-11-24T16:35:28+01:00",
-    "commits90d": 11
+    "commits90d": 10
   },
   "huggingface/optimum": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 387786881,
-    "stars": 3520,
+    "stars": 3519,
     "score": 68,
     "archived": false,
-    "pushed": "2026-11-02T02:51:14Z",
+    "pushed": "2026-11-02T15:56:00Z",
     "license": "Apache-2.0",
     "topics": [
       "onnx",
@@ -2904,15 +2923,15 @@
     "lastCommit": "2026-11-02T02:51:13Z",
     "lastTag": "2026-08-04T17:19:04+02:00",
     "lastStableTag": "2026-08-04T17:19:04+02:00",
-    "commits90d": 13
+    "commits90d": 12
   },
   "huggingface/peft": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 570384908,
-    "stars": 21866,
+    "stars": 21880,
     "score": 75,
     "archived": false,
-    "pushed": "2026-11-02T02:34:51Z",
+    "pushed": "2026-11-09T05:48:03Z",
     "license": "Apache-2.0",
     "topics": [
       "adapter",
@@ -2927,18 +2946,18 @@
       "peft"
     ],
     "lastRelease": "2026-10-01T10:29:50Z",
-    "lastCommit": "2026-11-02T02:34:49Z",
+    "lastCommit": "2026-11-09T05:48:03Z",
     "lastTag": "2026-10-01T12:20:12+02:00",
     "lastStableTag": "2026-10-01T12:20:12+02:00",
-    "commits90d": 218
+    "commits90d": 230
   },
   "huggingface/smolagents": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 898968194,
-    "stars": 30188,
+    "stars": 30278,
     "score": 75,
     "archived": false,
-    "pushed": "2026-10-29T12:52:33Z",
+    "pushed": "2026-11-03T18:36:41Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-05-29T05:09:47Z",
@@ -2948,27 +2967,27 @@
     "commits90d": 7
   },
   "huggingface/trl": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 250510075,
-    "stars": 19659,
+    "stars": 19694,
     "score": 75,
     "archived": false,
-    "pushed": "2026-11-02T14:00:30Z",
+    "pushed": "2026-11-09T14:35:10Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-10-30T14:15:28Z",
-    "lastCommit": "2026-11-02T14:00:27Z",
+    "lastCommit": "2026-11-09T14:06:55Z",
     "lastTag": "2026-10-30T15:12:30+01:00",
     "lastStableTag": "2026-10-30T15:12:30+01:00",
-    "commits90d": 656
+    "commits90d": 741
   },
   "HumanSignal/Adala": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 685048844,
-    "stars": 1647,
-    "score": 63,
+    "stars": 1649,
+    "score": 62,
     "archived": false,
-    "pushed": "2026-10-30T21:43:13Z",
+    "pushed": "2026-11-05T21:41:51Z",
     "license": "Apache-2.0",
     "topics": [
       "agent",
@@ -2978,18 +2997,18 @@
       "gpt-4"
     ],
     "lastRelease": "2023-11-30T17:41:21Z",
-    "lastCommit": "2026-10-28T12:16:28Z",
+    "lastCommit": "2026-11-03T10:12:46Z",
     "lastTag": "2023-11-30T09:20:48Z",
     "lastStableTag": "2023-11-30T09:20:48Z",
-    "commits90d": 8
+    "commits90d": 7
   },
   "HumanSignal/label-studio": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 192640529,
-    "stars": 28614,
+    "stars": 28662,
     "score": 76,
     "archived": false,
-    "pushed": "2026-11-02T13:48:46Z",
+    "pushed": "2026-11-09T13:13:13Z",
     "license": "Apache-2.0",
     "topics": [
       "computer-vision",
@@ -3014,18 +3033,18 @@
       "mlops"
     ],
     "lastRelease": "2026-09-29T14:47:15Z",
-    "lastCommit": "2026-11-02T13:48:43Z",
-    "lastTag": "2026-10-30T21:47:55Z",
+    "lastCommit": "2026-11-09T13:13:10Z",
+    "lastTag": "2026-11-07T16:56:21Z",
     "lastStableTag": "2026-09-25T22:22:13Z",
-    "commits90d": 887
+    "commits90d": 400
   },
   "hyperopt/hyperopt": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 2337852,
-    "stars": 7599,
+    "stars": 7600,
     "score": 64,
     "archived": false,
-    "pushed": "2026-10-26T22:06:13Z",
+    "pushed": "2026-11-02T22:57:45Z",
     "license": "NOASSERTION",
     "topics": [
       "hacktoberfest"
@@ -3037,9 +3056,9 @@
     "commits90d": 0
   },
   "ibm-granite/granite-tsfm": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 607406380,
-    "stars": 918,
+    "stars": 920,
     "score": 64,
     "archived": false,
     "pushed": "2026-10-29T14:36:58Z",
@@ -3049,15 +3068,15 @@
     "lastCommit": "2026-10-29T01:50:06Z",
     "lastTag": "2026-10-29T01:50:06Z",
     "lastStableTag": "2026-10-29T01:50:06Z",
-    "commits90d": 101
+    "commits90d": 79
   },
   "intel/auto-round": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 738776129,
-    "stars": 1698,
-    "score": 66,
+    "stars": 1700,
+    "score": 65,
     "archived": false,
-    "pushed": "2026-11-02T10:18:03Z",
+    "pushed": "2026-11-09T09:32:39Z",
     "license": "Apache-2.0",
     "topics": [
       "int4",
@@ -3075,18 +3094,18 @@
       "omni"
     ],
     "lastRelease": "2026-10-16T03:10:46Z",
-    "lastCommit": "2026-11-02T10:18:00Z",
+    "lastCommit": "2026-11-09T09:27:48Z",
     "lastTag": "2026-10-16T03:00:02Z",
     "lastStableTag": "2026-10-16T03:00:02Z",
-    "commits90d": 235
+    "commits90d": 241
   },
   "intel/neural-compressor": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 281528773,
-    "stars": 2729,
+    "stars": 2730,
     "score": 67,
     "archived": false,
-    "pushed": "2026-11-02T08:55:04Z",
+    "pushed": "2026-11-09T12:17:27Z",
     "license": "Apache-2.0",
     "topics": [
       "low-precision",
@@ -3108,18 +3127,18 @@
       "sparsegpt"
     ],
     "lastRelease": "2026-09-29T07:11:03Z",
-    "lastCommit": "2026-10-30T13:02:49Z",
+    "lastCommit": "2026-11-06T02:40:51Z",
     "lastTag": "2026-09-28T09:20:46+08:00",
     "lastStableTag": "2026-09-28T09:20:46+08:00",
     "commits90d": 58
   },
   "InternLM/lmdeploy": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 654122609,
-    "stars": 8128,
+    "stars": 8136,
     "score": 71,
     "archived": false,
-    "pushed": "2026-10-30T13:22:28Z",
+    "pushed": "2026-11-09T13:15:17Z",
     "license": "Apache-2.0",
     "topics": [
       "cuda-kernels",
@@ -3135,16 +3154,16 @@
       "llama3"
     ],
     "lastRelease": "2026-09-28T07:04:58Z",
-    "lastCommit": "2026-10-30T13:22:28Z",
+    "lastCommit": "2026-11-06T11:25:02Z",
     "lastTag": "2026-09-28T07:03:42Z",
     "lastStableTag": "2026-09-28T07:03:42Z",
-    "commits90d": 148
+    "commits90d": 149
   },
   "InternScience/MLEvolve": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1157953649,
-    "stars": 467,
-    "score": 62,
+    "stars": 471,
+    "score": 64,
     "archived": false,
     "pushed": "2026-10-16T03:03:46Z",
     "license": "Apache-2.0",
@@ -3156,9 +3175,9 @@
     "commits90d": 5
   },
   "josephmisiti/awesome-machine-learning": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 21872392,
-    "stars": 74734,
+    "stars": 74785,
     "score": 75,
     "archived": false,
     "pushed": "2026-11-01T16:30:10Z",
@@ -3168,13 +3187,13 @@
     "lastCommit": "2026-11-01T16:30:10Z",
     "lastTag": null,
     "lastStableTag": null,
-    "commits90d": 33
+    "commits90d": 32
   },
   "karpathy/autoresearch": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1174820787,
-    "stars": 99073,
-    "score": 59,
+    "stars": 99664,
+    "score": 60,
     "archived": false,
     "pushed": "2026-03-26T00:07:37Z",
     "license": null,
@@ -3186,9 +3205,9 @@
     "commits90d": 0
   },
   "katanemo/plano": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 826498000,
-    "stars": 7104,
+    "stars": 7113,
     "score": 70,
     "archived": false,
     "pushed": "2026-10-24T19:03:25Z",
@@ -3216,15 +3235,15 @@
     "lastCommit": "2026-10-24T18:59:43Z",
     "lastTag": "2026-10-24T18:59:43Z",
     "lastStableTag": "2026-10-24T18:59:43Z",
-    "commits90d": 23
+    "commits90d": 16
   },
   "kedro-org/kedro": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 182067506,
-    "stars": 11041,
+    "stars": 11048,
     "score": 68,
     "archived": false,
-    "pushed": "2026-11-02T11:43:26Z",
+    "pushed": "2026-11-09T14:29:30Z",
     "license": "NOASSERTION",
     "topics": [
       "kedro",
@@ -3237,16 +3256,16 @@
       "agentic-workflow",
       "data-pipelines"
     ],
-    "lastRelease": "2026-09-28T16:13:19Z",
-    "lastCommit": "2026-11-02T10:08:26Z",
-    "lastTag": "2026-09-28T15:58:22Z",
-    "lastStableTag": "2026-09-28T15:58:22Z",
+    "lastRelease": "2026-11-09T12:35:54Z",
+    "lastCommit": "2026-11-09T12:21:50Z",
+    "lastTag": "2026-11-09T12:21:50Z",
+    "lastStableTag": "2026-11-09T12:21:50Z",
     "commits90d": 64
   },
   "kelvins/awesome-mlops": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 266895706,
-    "stars": 5304,
+    "stars": 5312,
     "score": 61,
     "archived": false,
     "pushed": "2026-10-30T19:41:45Z",
@@ -3268,9 +3287,9 @@
     "commits90d": 36
   },
   "keras-team/autokeras": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 111340129,
-    "stars": 9340,
+    "stars": 9341,
     "score": 56,
     "archived": false,
     "pushed": "2025-11-25T02:26:35Z",
@@ -3293,9 +3312,9 @@
     "commits90d": 0
   },
   "keras-team/keras-tuner": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 190658443,
-    "stars": 2922,
+    "stars": 2924,
     "score": 52,
     "archived": false,
     "pushed": "2025-12-01T22:23:25Z",
@@ -3315,12 +3334,12 @@
     "commits90d": 0
   },
   "Kilo-Org/kilocode": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 946087422,
-    "stars": 27833,
+    "stars": 27914,
     "score": 77,
     "archived": false,
-    "pushed": "2026-11-02T14:06:56Z",
+    "pushed": "2026-11-09T14:36:16Z",
     "license": "MIT",
     "topics": [
       "ai-coding",
@@ -3336,19 +3355,19 @@
       "cli",
       "jetbrains"
     ],
-    "lastRelease": "2026-10-26T09:05:47Z",
-    "lastCommit": "2026-11-02T14:02:20Z",
-    "lastTag": "2026-10-28T20:43:16Z",
-    "lastStableTag": "2026-10-28T20:43:16Z",
-    "commits90d": 5684
+    "lastRelease": "2026-11-05T12:40:58Z",
+    "lastCommit": "2026-11-07T21:51:09Z",
+    "lastTag": "2026-11-07T16:49:34Z",
+    "lastStableTag": "2026-11-07T16:49:34Z",
+    "commits90d": 5211
   },
   "kserve/kserve": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 178075572,
-    "stars": 6182,
+    "stars": 6205,
     "score": 72,
     "archived": false,
-    "pushed": "2026-10-31T01:35:15Z",
+    "pushed": "2026-11-09T14:38:41Z",
     "license": "Apache-2.0",
     "topics": [
       "knative",
@@ -3373,18 +3392,18 @@
       "vllm"
     ],
     "lastRelease": "2026-09-25T17:04:20Z",
-    "lastCommit": "2026-10-31T01:35:15Z",
+    "lastCommit": "2026-11-09T14:38:40Z",
     "lastTag": "2026-09-24T20:10:37Z",
     "lastStableTag": "2026-09-24T20:10:37Z",
-    "commits90d": 296
+    "commits90d": 288
   },
   "kubeflow/katib": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 127941481,
     "stars": 1707,
-    "score": 54,
+    "score": 56,
     "archived": false,
-    "pushed": "2026-10-31T19:35:23Z",
+    "pushed": "2026-11-09T10:57:28Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -3403,15 +3422,15 @@
       "tensorflow"
     ],
     "lastRelease": "2025-10-30T23:58:41Z",
-    "lastCommit": "2026-09-20T06:37:59Z",
+    "lastCommit": "2026-11-06T19:17:22Z",
     "lastTag": "2025-10-30T22:45:32Z",
     "lastStableTag": "2025-10-30T22:45:32Z",
-    "commits90d": 1
+    "commits90d": 2
   },
   "kubeflow/kubeflow": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 112647343,
-    "stars": 15947,
+    "stars": 15956,
     "score": 67,
     "archived": false,
     "pushed": "2026-09-30T23:20:11Z",
@@ -3440,25 +3459,25 @@
     "commits90d": 2
   },
   "kvcache-ai/ktransformers": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 833984877,
-    "stars": 19653,
+    "stars": 19659,
     "score": 74,
     "archived": false,
-    "pushed": "2026-10-28T06:08:08Z",
+    "pushed": "2026-11-06T04:49:27Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-10-15T07:09:13Z",
-    "lastCommit": "2026-10-28T06:08:08Z",
+    "lastCommit": "2026-11-06T04:49:26Z",
     "lastTag": "2026-10-12T11:30:24Z",
     "lastStableTag": "2026-10-12T11:30:24Z",
-    "commits90d": 55
+    "commits90d": 53
   },
   "LAMDA-Tabular/TALENT": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 796930485,
-    "stars": 873,
-    "score": 60,
+    "stars": 871,
+    "score": 58,
     "archived": false,
     "pushed": "2026-10-13T01:14:33Z",
     "license": "MIT",
@@ -3478,12 +3497,12 @@
     "commits90d": 6
   },
   "langchain-ai/deepagents": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 1027384981,
-    "stars": 30916,
-    "score": 76,
+    "stars": 31137,
+    "score": 81,
     "archived": false,
-    "pushed": "2026-11-03T00:10:22Z",
+    "pushed": "2026-11-09T08:21:29Z",
     "license": "MIT",
     "topics": [
       "deepagents",
@@ -3495,19 +3514,19 @@
       "harness",
       "harness-engineering"
     ],
-    "lastRelease": "2026-10-23T21:30:34Z",
-    "lastCommit": "2026-11-02T23:05:37Z",
-    "lastTag": "2026-11-02T23:05:37Z",
-    "lastStableTag": "2026-11-02T23:05:37Z",
-    "commits90d": 1423
+    "lastRelease": "2026-11-05T21:15:33Z",
+    "lastCommit": "2026-11-09T08:18:39Z",
+    "lastTag": "2026-11-07T04:57:19Z",
+    "lastStableTag": "2026-11-07T04:57:19Z",
+    "commits90d": 1429
   },
   "langchain-ai/langchain": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 552661142,
-    "stars": 148880,
-    "score": 82,
+    "stars": 149262,
+    "score": 83,
     "archived": false,
-    "pushed": "2026-11-02T08:20:13Z",
+    "pushed": "2026-11-09T08:20:32Z",
     "license": "MIT",
     "topics": [
       "ai",
@@ -3531,19 +3550,19 @@
       "langgraph",
       "typescript"
     ],
-    "lastRelease": "2026-10-29T20:56:12Z",
-    "lastCommit": "2026-11-02T00:44:54Z",
-    "lastTag": "2026-10-29T20:46:26Z",
-    "lastStableTag": "2026-10-29T20:46:26Z",
-    "commits90d": 599
+    "lastRelease": "2026-11-05T00:22:12Z",
+    "lastCommit": "2026-11-09T01:34:51Z",
+    "lastTag": "2026-11-05T22:54:06Z",
+    "lastStableTag": "2026-11-05T22:54:06Z",
+    "commits90d": 595
   },
   "langchain-ai/langgraph": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 676672661,
-    "stars": 44333,
+    "stars": 44693,
     "score": 83,
     "archived": false,
-    "pushed": "2026-11-02T04:37:36Z",
+    "pushed": "2026-11-08T00:33:40Z",
     "license": "MIT",
     "topics": [
       "agents",
@@ -3565,19 +3584,19 @@
       "python",
       "rag"
     ],
-    "lastRelease": "2026-10-30T22:23:43Z",
-    "lastCommit": "2026-11-02T04:33:29Z",
-    "lastTag": "2026-10-30T22:14:31Z",
-    "lastStableTag": "2026-10-30T22:14:31Z",
-    "commits90d": 250
+    "lastRelease": "2026-11-06T03:03:34Z",
+    "lastCommit": "2026-11-06T16:08:12Z",
+    "lastTag": "2026-11-06T03:00:30Z",
+    "lastStableTag": "2026-11-06T03:00:30Z",
+    "commits90d": 245
   },
   "langflow-ai/langflow": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 599320067,
-    "stars": 156268,
+    "stars": 156470,
     "score": 82,
     "archived": false,
-    "pushed": "2026-11-03T00:24:25Z",
+    "pushed": "2026-11-09T14:31:00Z",
     "license": "MIT",
     "topics": [
       "react-flow",
@@ -3587,19 +3606,19 @@
       "agents",
       "multiagent"
     ],
-    "lastRelease": "2026-10-22T21:20:30Z",
-    "lastCommit": "2026-10-30T01:56:07Z",
-    "lastTag": "2026-11-03T00:24:21Z",
-    "lastStableTag": "2026-10-30T16:09:46Z",
-    "commits90d": 897
+    "lastRelease": "2026-11-04T03:14:15Z",
+    "lastCommit": "2026-11-04T05:50:51Z",
+    "lastTag": "2026-11-09T00:27:17Z",
+    "lastStableTag": "2026-11-08T04:43:07Z",
+    "commits90d": 868
   },
   "langfuse/langfuse": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 642497346,
-    "stars": 36886,
+    "stars": 37199,
     "score": 79,
     "archived": false,
-    "pushed": "2026-11-02T14:12:28Z",
+    "pushed": "2026-11-09T14:38:34Z",
     "license": "NOASSERTION",
     "topics": [
       "analytics",
@@ -3622,19 +3641,19 @@
       "llm-observability",
       "autogen"
     ],
-    "lastRelease": "2026-10-29T16:14:48Z",
-    "lastCommit": "2026-11-02T13:52:26Z",
-    "lastTag": "2026-10-29T16:13:29Z",
-    "lastStableTag": "2026-10-29T16:13:29Z",
-    "commits90d": 2259
+    "lastRelease": "2026-11-09T12:21:23Z",
+    "lastCommit": "2026-11-09T14:30:08Z",
+    "lastTag": "2026-11-09T12:18:47Z",
+    "lastStableTag": "2026-11-09T12:18:47Z",
+    "commits90d": 2392
   },
   "langgenius/dify": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 626805178,
-    "stars": 160233,
+    "stars": 160755,
     "score": 80,
     "archived": false,
-    "pushed": "2026-11-02T12:54:20Z",
+    "pushed": "2026-11-09T13:28:47Z",
     "license": "NOASSERTION",
     "topics": [
       "ai",
@@ -3657,19 +3676,19 @@
       "skills",
       "deepseek"
     ],
-    "lastRelease": "2026-10-23T06:33:50Z",
-    "lastCommit": "2026-11-02T11:13:21Z",
-    "lastTag": "2026-10-23T05:04:49Z",
-    "lastStableTag": "2026-10-23T05:04:49Z",
-    "commits90d": 2484
+    "lastRelease": "2026-11-04T07:36:16Z",
+    "lastCommit": "2026-11-09T13:22:03Z",
+    "lastTag": "2026-11-04T15:20:24+08:00",
+    "lastStableTag": "2026-11-04T15:20:24+08:00",
+    "commits90d": 2510
   },
   "langwatch/langwatch": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 689299900,
-    "stars": 5004,
-    "score": 72,
+    "stars": 5019,
+    "score": 71,
     "archived": false,
-    "pushed": "2026-11-02T14:11:38Z",
+    "pushed": "2026-11-09T14:38:06Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -3689,31 +3708,31 @@
       "observability-platform",
       "simulation-testing"
     ],
-    "lastRelease": "2026-11-02T14:01:24Z",
-    "lastCommit": "2026-11-02T13:48:42Z",
-    "lastTag": "2026-11-02T09:23:38Z",
-    "lastStableTag": "2026-11-02T09:23:38Z",
-    "commits90d": 1340
+    "lastRelease": "2026-11-05T20:20:20Z",
+    "lastCommit": "2026-11-09T14:34:49Z",
+    "lastTag": "2026-11-05T19:45:07Z",
+    "lastStableTag": "2026-11-05T19:45:07Z",
+    "commits90d": 1297
   },
   "layer6ai-labs/TabDPT-inference": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 874894130,
-    "stars": 128,
-    "score": 66,
+    "stars": 130,
+    "score": 62,
     "archived": false,
-    "pushed": "2026-10-29T19:46:05Z",
+    "pushed": "2026-11-02T23:04:23Z",
     "license": "Apache-2.0",
     "topics": [],
-    "lastRelease": "2026-09-21T18:23:10Z",
-    "lastCommit": "2026-09-21T18:19:14Z",
-    "lastTag": "2026-09-21T18:19:14Z",
-    "lastStableTag": "2026-09-21T18:19:14Z",
-    "commits90d": 21
+    "lastRelease": "2026-11-02T23:05:08Z",
+    "lastCommit": "2026-11-02T21:30:47Z",
+    "lastTag": "2026-11-02T21:30:47Z",
+    "lastStableTag": "2026-11-02T21:30:47Z",
+    "commits90d": 20
   },
   "letta-ai/letta": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 703411624,
-    "stars": 25320,
+    "stars": 25393,
     "score": 73,
     "archived": false,
     "pushed": "2026-10-18T22:28:04Z",
@@ -3731,9 +3750,9 @@
     "commits90d": 7
   },
   "Lightning-AI/litgpt": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 636372163,
-    "stars": 13742,
+    "stars": 13746,
     "score": 72,
     "archived": false,
     "pushed": "2026-11-01T10:26:54Z",
@@ -3754,10 +3773,10 @@
     "commits90d": 11
   },
   "Lightning-AI/LitServe": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 730728120,
-    "stars": 3980,
-    "score": 69,
+    "stars": 3992,
+    "score": 70,
     "archived": false,
     "pushed": "2026-11-01T21:03:30Z",
     "license": "Apache-2.0",
@@ -3776,15 +3795,15 @@
     "lastCommit": "2026-10-13T16:00:48Z",
     "lastTag": "2026-09-09T17:06:45Z",
     "lastStableTag": "2026-09-09T17:06:45Z",
-    "commits90d": 29
+    "commits90d": 23
   },
   "limix-ldm-ai/LimiX": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1045442783,
-    "stars": 4403,
-    "score": 66,
+    "stars": 4409,
+    "score": 65,
     "archived": false,
-    "pushed": "2026-10-30T23:35:49Z",
+    "pushed": "2026-11-06T03:05:06Z",
     "license": "NOASSERTION",
     "topics": [
       "foundation-models",
@@ -3796,18 +3815,18 @@
       "tabular-foundation-models"
     ],
     "lastRelease": "2025-11-10T08:04:54Z",
-    "lastCommit": "2026-10-30T23:35:49Z",
+    "lastCommit": "2026-11-06T03:04:50Z",
     "lastTag": "2025-11-10T06:45:12Z",
     "lastStableTag": "2025-11-10T06:45:12Z",
-    "commits90d": 71
+    "commits90d": 72
   },
   "livekit/agents": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 707441527,
-    "stars": 15065,
-    "score": 74,
+    "stars": 15156,
+    "score": 78,
     "archived": false,
-    "pushed": "2026-11-02T23:21:48Z",
+    "pushed": "2026-11-09T10:56:08Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -3817,19 +3836,19 @@
       "agents",
       "openai"
     ],
-    "lastRelease": "2026-10-29T17:00:12Z",
-    "lastCommit": "2026-11-02T22:34:22Z",
-    "lastTag": "2026-10-28T17:15:43Z",
-    "lastStableTag": "2026-10-28T17:15:43Z",
-    "commits90d": 636
+    "lastRelease": "2026-11-05T19:48:29Z",
+    "lastCommit": "2026-11-09T10:56:05Z",
+    "lastTag": "2026-11-05T19:44:15Z",
+    "lastStableTag": "2026-11-05T19:44:15Z",
+    "commits90d": 634
   },
   "llm-d/llm-d": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 975070903,
-    "stars": 5126,
+    "stars": 5193,
     "score": 81,
     "archived": false,
-    "pushed": "2026-11-02T13:43:43Z",
+    "pushed": "2026-11-09T12:20:02Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -3843,15 +3862,15 @@
       "model-server"
     ],
     "lastRelease": "2026-10-20T02:30:10Z",
-    "lastCommit": "2026-11-01T19:51:41Z",
+    "lastCommit": "2026-11-06T01:45:43Z",
     "lastTag": "2026-10-19T18:41:33-07:00",
     "lastStableTag": "2026-10-19T18:41:33-07:00",
-    "commits90d": 543
+    "commits90d": 499
   },
   "lm-sys/RouteLLM": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 809559722,
-    "stars": 5664,
+    "stars": 5690,
     "score": 57,
     "archived": false,
     "pushed": "2024-08-10T19:10:15Z",
@@ -3864,12 +3883,12 @@
     "commits90d": 0
   },
   "LMCache/LMCache": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 807305060,
-    "stars": 12262,
-    "score": 73,
+    "stars": 12313,
+    "score": 75,
     "archived": false,
-    "pushed": "2026-11-03T00:01:03Z",
+    "pushed": "2026-11-09T12:32:14Z",
     "license": "Apache-2.0",
     "topics": [
       "amd",
@@ -3883,19 +3902,19 @@
       "fast",
       "speed"
     ],
-    "lastRelease": "2026-10-14T22:21:42Z",
-    "lastCommit": "2026-11-03T00:01:02Z",
-    "lastTag": "2026-11-02T07:10:51Z",
-    "lastStableTag": "2026-11-02T07:10:51Z",
-    "commits90d": 678
+    "lastRelease": "2026-11-05T23:41:01Z",
+    "lastCommit": "2026-11-09T09:31:32Z",
+    "lastTag": "2026-11-09T07:45:39Z",
+    "lastStableTag": "2026-11-09T07:45:39Z",
+    "commits90d": 730
   },
   "ludwig-ai/ludwig": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 163346054,
-    "stars": 11793,
+    "stars": 11791,
     "score": 72,
     "archived": false,
-    "pushed": "2026-10-27T01:16:30Z",
+    "pushed": "2026-11-02T22:48:31Z",
     "license": "Apache-2.0",
     "topics": [
       "deep-learning",
@@ -3926,12 +3945,12 @@
     "commits90d": 10
   },
   "lukasmasuch/best-of-ml-python": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 317029148,
-    "stars": 23853,
+    "stars": 23859,
     "score": 60,
     "archived": false,
-    "pushed": "2026-10-29T14:11:25Z",
+    "pushed": "2026-11-05T14:09:31Z",
     "license": "CC-BY-SA-4.0",
     "topics": [
       "python",
@@ -3961,12 +3980,12 @@
     "commits90d": 1
   },
   "Marker-Inc-Korea/AutoRAG": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 741450201,
-    "stars": 5260,
-    "score": 74,
+    "stars": 5424,
+    "score": 79,
     "archived": false,
-    "pushed": "2026-11-02T12:48:28Z",
+    "pushed": "2026-11-09T08:00:56Z",
     "license": "Apache-2.0",
     "topics": [
       "document-parser",
@@ -3980,19 +3999,19 @@
       "agent",
       "librarian"
     ],
-    "lastRelease": "2026-10-31T18:02:30Z",
-    "lastCommit": "2026-11-01T16:51:40Z",
-    "lastTag": "2026-10-31T17:57:00Z",
-    "lastStableTag": "2026-10-31T17:57:00Z",
-    "commits90d": 427
+    "lastRelease": "2026-11-08T13:22:43Z",
+    "lastCommit": "2026-11-09T04:50:38Z",
+    "lastTag": "2026-11-08T22:18:53+09:00",
+    "lastStableTag": "2026-11-08T22:18:53+09:00",
+    "commits90d": 441
   },
   "mastra-ai/mastra": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 839037098,
-    "stars": 29277,
+    "stars": 29431,
     "score": 75,
     "archived": false,
-    "pushed": "2026-11-02T14:05:38Z",
+    "pushed": "2026-11-09T14:40:14Z",
     "license": "NOASSERTION",
     "topics": [
       "agents",
@@ -4009,19 +4028,19 @@
       "mcp",
       "tts"
     ],
-    "lastRelease": "2026-11-02T12:33:26Z",
-    "lastCommit": "2026-11-02T12:19:20Z",
-    "lastTag": "2026-10-30T23:21:20Z",
-    "lastStableTag": "2026-10-30T23:21:20Z",
-    "commits90d": 5072
+    "lastRelease": "2026-11-04T10:59:56Z",
+    "lastCommit": "2026-11-09T13:54:22Z",
+    "lastTag": "2026-11-03T23:55:15Z",
+    "lastStableTag": "2026-11-03T23:55:15Z",
+    "commits90d": 4942
   },
   "maximhq/bifrost": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 951115072,
-    "stars": 9291,
+    "stars": 9448,
     "score": 83,
     "archived": false,
-    "pushed": "2026-11-02T14:12:24Z",
+    "pushed": "2026-11-09T14:37:59Z",
     "license": "Apache-2.0",
     "topics": [
       "gateway",
@@ -4045,19 +4064,19 @@
       "openai-compatible",
       "semantic-cache"
     ],
-    "lastRelease": "2026-11-02T04:58:18Z",
-    "lastCommit": "2026-11-02T14:12:20Z",
-    "lastTag": "2026-11-02T04:53:25Z",
-    "lastStableTag": "2026-11-02T04:53:25Z",
-    "commits90d": 2760
+    "lastRelease": "2026-11-06T18:38:12Z",
+    "lastCommit": "2026-11-09T10:36:16Z",
+    "lastTag": "2026-11-06T18:34:26Z",
+    "lastStableTag": "2026-11-06T18:34:26Z",
+    "commits90d": 2901
   },
   "mem0ai/mem0": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 656099147,
-    "stars": 68277,
+    "stars": 68689,
     "score": 82,
     "archived": false,
-    "pushed": "2026-10-30T21:36:23Z",
+    "pushed": "2026-11-06T16:53:07Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -4076,16 +4095,16 @@
       "agentic-memory-system"
     ],
     "lastRelease": "2026-09-25T17:36:35Z",
-    "lastCommit": "2026-10-30T21:35:34Z",
+    "lastCommit": "2026-11-06T16:53:06Z",
     "lastTag": "2026-09-25T17:34:12Z",
     "lastStableTag": "2026-09-25T17:34:12Z",
-    "commits90d": 121
+    "commits90d": 109
   },
   "meta-llama/prompt-ops": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 948652842,
-    "stars": 1029,
-    "score": 47,
+    "stars": 989,
+    "score": 39,
     "archived": false,
     "pushed": "2026-04-21T18:28:47Z",
     "license": "MIT",
@@ -4097,9 +4116,9 @@
     "commits90d": 0
   },
   "meta-llama/PurpleLlama": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 728399986,
-    "stars": 4460,
+    "stars": 4470,
     "score": 64,
     "archived": false,
     "pushed": "2026-10-30T17:56:26Z",
@@ -4109,12 +4128,12 @@
     "lastCommit": "2026-10-30T17:43:40Z",
     "lastTag": null,
     "lastStableTag": null,
-    "commits90d": 10
+    "commits90d": 9
   },
   "meta-llama/synthetic-data-kit": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 955760324,
-    "stars": 1650,
+    "stars": 1652,
     "score": 50,
     "archived": false,
     "pushed": "2025-10-28T20:10:55Z",
@@ -4133,24 +4152,24 @@
     "commits90d": 0
   },
   "meta-pytorch/botorch": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 142940093,
-    "stars": 3644,
+    "stars": 3648,
     "score": 69,
     "archived": false,
-    "pushed": "2026-10-28T13:10:46Z",
+    "pushed": "2026-11-06T00:12:49Z",
     "license": "MIT",
     "topics": [],
     "lastRelease": "2026-06-08T22:13:44Z",
-    "lastCommit": "2026-10-16T15:47:26Z",
+    "lastCommit": "2026-11-06T00:11:11Z",
     "lastTag": "2026-06-08T22:10:32Z",
     "lastStableTag": "2026-06-08T22:10:32Z",
-    "commits90d": 29
+    "commits90d": 33
   },
   "meta-pytorch/torchtune": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 707869465,
-    "stars": 5820,
+    "stars": 5818,
     "score": 54,
     "archived": false,
     "pushed": "2026-09-09T11:38:33Z",
@@ -4163,9 +4182,9 @@
     "commits90d": 0
   },
   "meta/Ax": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 169880381,
-    "stars": 2836,
+    "stars": 2838,
     "score": 67,
     "archived": false,
     "pushed": "2026-11-01T05:53:35Z",
@@ -4175,15 +4194,15 @@
     "lastCommit": "2026-10-29T17:40:12Z",
     "lastTag": "2026-06-09T16:51:14Z",
     "lastStableTag": "2026-06-09T16:51:14Z",
-    "commits90d": 38
+    "commits90d": 36
   },
   "meta/prophet": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 73872834,
-    "stars": 20472,
-    "score": 75,
+    "stars": 20473,
+    "score": 73,
     "archived": false,
-    "pushed": "2026-10-22T11:32:07Z",
+    "pushed": "2026-11-05T02:14:29Z",
     "license": "MIT",
     "topics": [
       "forecasting",
@@ -4197,12 +4216,12 @@
     "commits90d": 14
   },
   "microsoft/agent-framework": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 974445592,
-    "stars": 14495,
+    "stars": 14604,
     "score": 79,
     "archived": false,
-    "pushed": "2026-11-02T13:04:54Z",
+    "pushed": "2026-11-09T13:54:16Z",
     "license": "MIT",
     "topics": [
       "agent-framework",
@@ -4216,19 +4235,19 @@
       "dotnet",
       "python"
     ],
-    "lastRelease": "2026-10-30T21:52:13Z",
-    "lastCommit": "2026-11-02T12:51:57Z",
-    "lastTag": "2026-10-30T11:25:14Z",
-    "lastStableTag": "2026-10-30T11:25:14Z",
-    "commits90d": 1068
+    "lastRelease": "2026-11-07T15:52:42Z",
+    "lastCommit": "2026-11-09T12:35:07Z",
+    "lastTag": "2026-11-06T16:05:38Z",
+    "lastStableTag": "2026-11-06T16:05:38Z",
+    "commits90d": 1150
   },
   "microsoft/agent-lightning": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1004147641,
-    "stars": 18872,
+    "stars": 18929,
     "score": 76,
     "archived": false,
-    "pushed": "2026-11-02T08:13:34Z",
+    "pushed": "2026-11-05T03:09:26Z",
     "license": "MIT",
     "topics": [
       "agent",
@@ -4237,19 +4256,19 @@
       "mlops",
       "reinforcement-learning"
     ],
-    "lastRelease": "2026-09-29T08:28:15Z",
-    "lastCommit": "2026-11-02T08:07:45Z",
-    "lastTag": "2026-09-29T16:13:19+08:00",
-    "lastStableTag": "2026-09-29T16:13:19+08:00",
-    "commits90d": 62
+    "lastRelease": "2026-11-03T08:47:17Z",
+    "lastCommit": "2026-11-05T03:08:59Z",
+    "lastTag": "2026-11-03T16:39:47+08:00",
+    "lastStableTag": "2026-11-03T16:39:47+08:00",
+    "commits90d": 64
   },
   "microsoft/archai": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 245036506,
-    "stars": 487,
-    "score": 60,
+    "stars": 489,
+    "score": 61,
     "archived": false,
-    "pushed": "2026-11-02T12:48:05Z",
+    "pushed": "2026-11-03T17:03:55Z",
     "license": "MIT",
     "topics": [
       "python",
@@ -4266,16 +4285,16 @@
       "automl"
     ],
     "lastRelease": "2023-09-15T18:08:17Z",
-    "lastCommit": "2026-10-26T16:35:35Z",
+    "lastCommit": "2026-11-03T17:03:55Z",
     "lastTag": "2025-11-23T19:11:55-08:00",
     "lastStableTag": "2025-11-23T19:11:55-08:00",
-    "commits90d": 18
+    "commits90d": 20
   },
   "microsoft/BitNet": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 838253246,
-    "stars": 41445,
-    "score": 63,
+    "stars": 41513,
+    "score": 62,
     "archived": false,
     "pushed": "2026-07-27T05:52:06Z",
     "license": "MIT",
@@ -4287,27 +4306,27 @@
     "commits90d": 0
   },
   "microsoft/data-formulator": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 812077621,
-    "stars": 17649,
+    "stars": 17673,
     "score": 74,
     "archived": false,
-    "pushed": "2026-11-02T14:12:05Z",
+    "pushed": "2026-11-09T14:13:49Z",
     "license": "MIT",
     "topics": [],
     "lastRelease": "2026-08-15T20:54:12Z",
     "lastCommit": "2026-08-15T20:35:31Z",
     "lastTag": "2026-08-15T20:35:31Z",
     "lastStableTag": "2026-05-28T08:53:19Z",
-    "commits90d": 32
+    "commits90d": 20
   },
   "microsoft/FLAML": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 289107293,
     "stars": 4417,
-    "score": 69,
+    "score": 68,
     "archived": false,
-    "pushed": "2026-11-02T13:23:41Z",
+    "pushed": "2026-11-09T03:52:44Z",
     "license": "MIT",
     "topics": [
       "automl",
@@ -4330,14 +4349,14 @@
       "finetuning",
       "tabular-data"
     ],
-    "lastRelease": "2026-09-18T05:31:39Z",
-    "lastCommit": "2026-11-02T13:17:34Z",
-    "lastTag": "2026-09-18T05:13:16Z",
-    "lastStableTag": "2026-09-18T05:13:16Z",
-    "commits90d": 57
+    "lastRelease": "2026-11-06T07:01:18Z",
+    "lastCommit": "2026-11-06T06:42:52Z",
+    "lastTag": "2026-11-06T06:42:52Z",
+    "lastStableTag": "2026-11-06T06:42:52Z",
+    "commits90d": 60
   },
   "microsoft/magentic-ui": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 978331188,
     "stars": 10110,
     "score": 66,
@@ -4364,9 +4383,9 @@
     "commits90d": 0
   },
   "microsoft/nni": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 135673451,
-    "stars": 14366,
+    "stars": 14363,
     "score": 0,
     "archived": true,
     "pushed": "2024-07-03T10:55:10Z",
@@ -4400,27 +4419,27 @@
     "commits90d": 0
   },
   "microsoft/Olive": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 201991558,
     "stars": 2410,
     "score": 67,
     "archived": false,
-    "pushed": "2026-11-01T09:23:43Z",
+    "pushed": "2026-11-09T04:19:35Z",
     "license": "MIT",
     "topics": [],
     "lastRelease": "2026-06-09T21:32:24Z",
-    "lastCommit": "2026-10-30T22:31:11Z",
+    "lastCommit": "2026-11-05T22:29:05Z",
     "lastTag": "2026-06-09T20:25:10Z",
     "lastStableTag": "2026-06-09T20:25:10Z",
-    "commits90d": 89
+    "commits90d": 83
   },
   "microsoft/onnxruntime": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 156939672,
-    "stars": 22206,
-    "score": 75,
+    "stars": 22270,
+    "score": 76,
     "archived": false,
-    "pushed": "2026-11-02T14:02:49Z",
+    "pushed": "2026-11-09T14:26:04Z",
     "license": "MIT",
     "topics": [
       "deep-learning",
@@ -4434,15 +4453,15 @@
       "scikit-learn"
     ],
     "lastRelease": "2026-10-26T19:29:51Z",
-    "lastCommit": "2026-11-02T10:01:27Z",
+    "lastCommit": "2026-11-08T20:19:34Z",
     "lastTag": "2026-10-27T23:01:51Z",
     "lastStableTag": "2026-10-27T23:01:51Z",
-    "commits90d": 923
+    "commits90d": 959
   },
   "microsoft/PromptWizard": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 808015120,
-    "stars": 4029,
+    "stars": 4032,
     "score": 53,
     "archived": false,
     "pushed": "2025-10-13T21:51:01Z",
@@ -4455,12 +4474,12 @@
     "commits90d": 0
   },
   "microsoft/PyRIT": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 730753909,
-    "stars": 4725,
-    "score": 74,
+    "stars": 4773,
+    "score": 75,
     "archived": false,
-    "pushed": "2026-11-02T12:32:50Z",
+    "pushed": "2026-11-09T09:11:58Z",
     "license": "MIT",
     "topics": [
       "ai-red-team",
@@ -4485,16 +4504,16 @@
       "security"
     ],
     "lastRelease": "2026-09-04T22:19:28Z",
-    "lastCommit": "2026-11-02T07:44:11Z",
+    "lastCommit": "2026-11-09T09:11:58Z",
     "lastTag": "2026-09-04T14:44:51-07:00",
     "lastStableTag": "2026-09-04T14:44:51-07:00",
-    "commits90d": 918
+    "commits90d": 1028
   },
   "microsoft/RD-Agent": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 781261349,
-    "stars": 15190,
-    "score": 76,
+    "stars": 15298,
+    "score": 77,
     "archived": false,
     "pushed": "2026-10-21T16:01:22Z",
     "license": "MIT",
@@ -4515,12 +4534,12 @@
     "commits90d": 11
   },
   "Mintplex-Labs/anything-llm": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 649170660,
-    "stars": 67851,
+    "stars": 68104,
     "score": 81,
     "archived": false,
-    "pushed": "2026-10-30T23:50:45Z",
+    "pushed": "2026-11-07T02:20:14Z",
     "license": "MIT",
     "topics": [
       "rag",
@@ -4540,15 +4559,15 @@
       "agentic-workflow"
     ],
     "lastRelease": "2026-10-26T16:14:51Z",
-    "lastCommit": "2026-10-30T20:49:57Z",
+    "lastCommit": "2026-11-06T04:09:55Z",
     "lastTag": "2026-10-25T18:20:42Z",
     "lastStableTag": "2026-10-25T18:20:42Z",
-    "commits90d": 354
+    "commits90d": 388
   },
   "mit-han-lab/llm-awq": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 647984858,
-    "stars": 3661,
+    "stars": 3663,
     "score": 53,
     "archived": false,
     "pushed": "2025-07-17T19:44:51Z",
@@ -4561,10 +4580,10 @@
     "commits90d": 0
   },
   "mit-han-lab/tinyengine": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 528570641,
-    "stars": 968,
-    "score": 48,
+    "stars": 969,
+    "score": 49,
     "archived": false,
     "pushed": "2024-11-27T18:51:37Z",
     "license": "MIT",
@@ -4587,27 +4606,27 @@
     "commits90d": 0
   },
   "ml-explore/mlx-lm": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 946767878,
-    "stars": 7533,
-    "score": 77,
+    "stars": 7600,
+    "score": 78,
     "archived": false,
-    "pushed": "2026-10-30T09:28:48Z",
+    "pushed": "2026-11-06T11:23:26Z",
     "license": "MIT",
     "topics": [
       "llms",
       "mlx"
     ],
     "lastRelease": "2026-10-16T02:49:02Z",
-    "lastCommit": "2026-10-30T09:28:47Z",
+    "lastCommit": "2026-11-05T20:48:53Z",
     "lastTag": "2026-10-16T02:48:11Z",
     "lastStableTag": "2026-10-16T02:48:11Z",
-    "commits90d": 148
+    "commits90d": 147
   },
   "mlc-ai/mlc-llm": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 634081686,
-    "stars": 23296,
+    "stars": 23315,
     "score": 75,
     "archived": false,
     "pushed": "2026-10-30T09:07:12Z",
@@ -4625,12 +4644,12 @@
     "commits90d": 18
   },
   "mlflow/mlflow": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 136202695,
-    "stars": 28628,
+    "stars": 28733,
     "score": 77,
     "archived": false,
-    "pushed": "2026-11-02T14:12:51Z",
+    "pushed": "2026-11-09T14:41:21Z",
     "license": "Apache-2.0",
     "topics": [
       "machine-learning",
@@ -4652,19 +4671,19 @@
       "ai-governance",
       "mlops"
     ],
-    "lastRelease": "2026-10-21T03:51:13Z",
-    "lastCommit": "2026-11-02T13:37:04Z",
-    "lastTag": "2026-11-02T13:01:39Z",
-    "lastStableTag": "2026-11-02T13:01:39Z",
-    "commits90d": 1432
+    "lastRelease": "2026-11-04T06:51:02Z",
+    "lastCommit": "2026-11-09T14:26:04Z",
+    "lastTag": "2026-11-09T01:11:26Z",
+    "lastStableTag": "2026-11-09T01:11:26Z",
+    "commits90d": 1471
   },
   "mljar/mljar-supervised": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 156218203,
     "stars": 3307,
     "score": 67,
     "archived": false,
-    "pushed": "2026-11-02T12:04:47Z",
+    "pushed": "2026-11-05T10:53:02Z",
     "license": "MIT",
     "topics": [
       "automl",
@@ -4687,18 +4706,18 @@
       "automl-python"
     ],
     "lastRelease": "2026-07-27T09:30:27Z",
-    "lastCommit": "2026-11-02T12:04:44Z",
-    "lastTag": "2026-10-26T13:03:59+01:00",
+    "lastCommit": "2026-11-05T10:24:21Z",
+    "lastTag": "2026-11-05T10:24:21Z",
     "lastStableTag": "2026-07-27T09:28:56Z",
-    "commits90d": 64
+    "commits90d": 72
   },
   "ModelCloud/GPTQModel": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 816158613,
-    "stars": 1284,
+    "stars": 1289,
     "score": 62,
     "archived": false,
-    "pushed": "2026-11-02T11:24:53Z",
+    "pushed": "2026-11-09T14:06:39Z",
     "license": "NOASSERTION",
     "topics": [
       "gptq",
@@ -4709,19 +4728,19 @@
       "transformers",
       "vllm"
     ],
-    "lastRelease": "2026-10-23T10:42:30Z",
-    "lastCommit": "2026-11-02T11:24:50Z",
-    "lastTag": "2026-10-23T06:47:18Z",
-    "lastStableTag": "2026-10-23T06:47:18Z",
-    "commits90d": 453
+    "lastRelease": "2026-11-06T10:33:13Z",
+    "lastCommit": "2026-11-09T14:06:36Z",
+    "lastTag": "2026-11-06T10:10:01Z",
+    "lastStableTag": "2026-11-06T10:10:01Z",
+    "commits90d": 666
   },
   "modelscope/ms-swift": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 673412924,
-    "stars": 16021,
-    "score": 74,
+    "stars": 16066,
+    "score": 75,
     "archived": false,
-    "pushed": "2026-11-02T16:04:41Z",
+    "pushed": "2026-11-09T12:13:45Z",
     "license": "Apache-2.0",
     "topics": [
       "llm",
@@ -4745,18 +4764,18 @@
       "jev"
     ],
     "lastRelease": "2026-10-13T13:30:04Z",
-    "lastCommit": "2026-11-02T08:37:42Z",
+    "lastCommit": "2026-11-06T09:57:31Z",
     "lastTag": "2026-10-13T11:48:10Z",
     "lastStableTag": "2026-10-13T11:48:10Z",
-    "commits90d": 332
+    "commits90d": 330
   },
   "ModelTC/LightLLM": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 669420857,
-    "stars": 4350,
+    "stars": 4358,
     "score": 70,
     "archived": false,
-    "pushed": "2026-11-02T12:22:59Z",
+    "pushed": "2026-11-09T09:28:02Z",
     "license": "Apache-2.0",
     "topics": [
       "deep-learning",
@@ -4768,15 +4787,15 @@
       "openai-triton"
     ],
     "lastRelease": "2026-08-10T04:20:46Z",
-    "lastCommit": "2026-11-02T09:02:02Z",
+    "lastCommit": "2026-11-09T05:49:11Z",
     "lastTag": "2026-08-10T04:12:03Z",
     "lastStableTag": "2026-08-10T04:12:03Z",
-    "commits90d": 121
+    "commits90d": 115
   },
   "mosaicml/llm-foundry": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 634046345,
-    "stars": 4462,
+    "stars": 4460,
     "score": 0,
     "archived": true,
     "pushed": "2026-03-25T17:22:01Z",
@@ -4795,12 +4814,12 @@
     "commits90d": 0
   },
   "mozilla-ai/llamafile": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 689773665,
-    "stars": 26548,
+    "stars": 26591,
     "score": 72,
     "archived": false,
-    "pushed": "2026-10-12T00:26:41Z",
+    "pushed": "2026-11-09T00:15:20Z",
     "license": "NOASSERTION",
     "topics": [
       "cross-platform",
@@ -4814,18 +4833,18 @@
       "speech-to-text"
     ],
     "lastRelease": "2026-09-15T16:02:33Z",
-    "lastCommit": "2026-10-08T19:53:38Z",
+    "lastCommit": "2026-11-05T17:24:26Z",
     "lastTag": "2026-09-15T10:32:07Z",
     "lastStableTag": "2026-09-15T10:32:07Z",
-    "commits90d": 12
+    "commits90d": 21
   },
   "mudler/LocalAI": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 615869301,
-    "stars": 50143,
-    "score": 78,
+    "stars": 50273,
+    "score": 79,
     "archived": false,
-    "pushed": "2026-11-02T23:50:42Z",
+    "pushed": "2026-11-09T14:37:58Z",
     "license": "MIT",
     "topics": [
       "llama",
@@ -4848,15 +4867,15 @@
       "agents"
     ],
     "lastRelease": "2026-10-23T10:27:00Z",
-    "lastCommit": "2026-11-02T23:50:40Z",
+    "lastCommit": "2026-11-09T14:01:16Z",
     "lastTag": "2026-10-23T10:03:52Z",
     "lastStableTag": "2026-10-23T10:03:52Z",
-    "commits90d": 1417
+    "commits90d": 2158
   },
   "NannyML/nannyml": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 452328925,
-    "stars": 2163,
+    "stars": 2161,
     "score": 51,
     "archived": false,
     "pushed": "2025-07-12T08:12:42Z",
@@ -4886,12 +4905,12 @@
     "commits90d": 0
   },
   "Netflix/metaflow": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 209120637,
-    "stars": 10335,
+    "stars": 10341,
     "score": 72,
     "archived": false,
-    "pushed": "2026-10-29T20:10:02Z",
+    "pushed": "2026-11-09T07:55:52Z",
     "license": "Apache-2.0",
     "topics": [
       "machine-learning",
@@ -4915,19 +4934,19 @@
       "cost-optimization",
       "distributed-training"
     ],
-    "lastRelease": "2026-10-29T20:12:18Z",
-    "lastCommit": "2026-10-29T20:08:10Z",
-    "lastTag": "2026-10-29T20:08:10Z",
-    "lastStableTag": "2026-10-29T20:08:10Z",
-    "commits90d": 33
+    "lastRelease": "2026-11-06T18:53:26Z",
+    "lastCommit": "2026-11-09T07:55:52Z",
+    "lastTag": "2026-11-06T18:50:38Z",
+    "lastStableTag": "2026-11-06T18:50:38Z",
+    "commits90d": 38
   },
   "Nixtla/mlforecast": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 361892304,
-    "stars": 1299,
-    "score": 66,
+    "stars": 1305,
+    "score": 67,
     "archived": false,
-    "pushed": "2026-11-02T05:05:03Z",
+    "pushed": "2026-11-06T20:06:05Z",
     "license": "Apache-2.0",
     "topics": [
       "forecast",
@@ -4940,18 +4959,18 @@
       "time-series"
     ],
     "lastRelease": "2026-07-10T00:51:51Z",
-    "lastCommit": "2026-10-27T23:07:59Z",
+    "lastCommit": "2026-11-06T20:06:02Z",
     "lastTag": "2026-07-09T21:25:52Z",
     "lastStableTag": "2026-07-09T21:25:52Z",
-    "commits90d": 59
+    "commits90d": 66
   },
   "Nixtla/neuralforecast": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 361568869,
-    "stars": 4303,
+    "stars": 4312,
     "score": 69,
     "archived": false,
-    "pushed": "2026-10-27T14:47:13Z",
+    "pushed": "2026-11-05T17:01:08Z",
     "license": "Apache-2.0",
     "topics": [
       "deep-learning",
@@ -4976,18 +4995,18 @@
       "hint"
     ],
     "lastRelease": "2026-10-07T14:47:45Z",
-    "lastCommit": "2026-10-27T14:47:12Z",
+    "lastCommit": "2026-11-05T17:01:07Z",
     "lastTag": "2026-10-07T14:44:44Z",
     "lastStableTag": "2026-10-07T14:44:44Z",
-    "commits90d": 34
+    "commits90d": 35
   },
   "Nixtla/statsforecast": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 431319532,
-    "stars": 4958,
+    "stars": 4971,
     "score": 70,
     "archived": false,
-    "pushed": "2026-10-29T03:30:57Z",
+    "pushed": "2026-11-04T22:07:23Z",
     "license": "Apache-2.0",
     "topics": [
       "time-series",
@@ -5012,13 +5031,13 @@
       "data-science"
     ],
     "lastRelease": "2026-07-16T18:08:43Z",
-    "lastCommit": "2026-10-29T03:30:54Z",
+    "lastCommit": "2026-11-04T22:07:23Z",
     "lastTag": "2026-07-16T17:51:57Z",
     "lastStableTag": "2026-07-16T17:51:57Z",
-    "commits90d": 50
+    "commits90d": 52
   },
   "noahho/CAAFE": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 635388216,
     "stars": 204,
     "score": 39,
@@ -5040,12 +5059,12 @@
     "commits90d": 0
   },
   "NousResearch/hermes-agent": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1024554267,
-    "stars": 259696,
+    "stars": 261974,
     "score": 89,
     "archived": false,
-    "pushed": "2026-11-02T13:39:11Z",
+    "pushed": "2026-11-09T14:36:04Z",
     "license": "MIT",
     "topics": [
       "ai",
@@ -5062,14 +5081,14 @@
       "nous-research",
       "openai"
     ],
-    "lastRelease": "2026-10-23T05:28:45Z",
-    "lastCommit": "2026-11-02T13:35:47Z",
-    "lastTag": "2026-11-02T06:50:14Z",
-    "lastStableTag": "2026-11-02T06:50:14Z",
-    "commits90d": 40423
+    "lastRelease": "2026-11-05T21:32:33Z",
+    "lastCommit": "2026-11-09T14:20:28Z",
+    "lastTag": "2026-11-09T06:51:47Z",
+    "lastStableTag": "2026-11-09T06:51:47Z",
+    "commits90d": 43243
   },
   "NVIDIA-Merlin/NVTabular": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 252778465,
     "stars": 1154,
     "score": 48,
@@ -5094,12 +5113,12 @@
     "commits90d": 0
   },
   "NVIDIA-NeMo/Curator": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 772255271,
-    "stars": 1847,
+    "stars": 1856,
     "score": 70,
     "archived": false,
-    "pushed": "2026-10-31T07:43:00Z",
+    "pushed": "2026-11-09T11:24:56Z",
     "license": "Apache-2.0",
     "topics": [
       "data-curation",
@@ -5123,18 +5142,18 @@
       "semantic-deduplication"
     ],
     "lastRelease": "2026-10-09T01:13:48Z",
-    "lastCommit": "2026-10-30T02:05:51Z",
+    "lastCommit": "2026-11-06T22:55:17Z",
     "lastTag": "2026-10-09T01:03:42Z",
     "lastStableTag": "2026-10-09T01:03:42Z",
-    "commits90d": 157
+    "commits90d": 150
   },
   "NVIDIA-NeMo/DataDesigner": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1077662591,
-    "stars": 2387,
+    "stars": 2402,
     "score": 72,
     "archived": false,
-    "pushed": "2026-10-30T23:40:50Z",
+    "pushed": "2026-11-09T01:19:21Z",
     "license": "Apache-2.0",
     "topics": [
       "agentic-ai",
@@ -5149,19 +5168,19 @@
       "tool-use",
       "sdg"
     ],
-    "lastRelease": "2026-10-22T02:03:03Z",
-    "lastCommit": "2026-10-30T23:17:25Z",
-    "lastTag": "2026-10-30T23:39:18Z",
-    "lastStableTag": "2026-10-22T01:42:51Z",
-    "commits90d": 107
+    "lastRelease": "2026-11-02T16:00:17Z",
+    "lastCommit": "2026-11-07T01:36:33Z",
+    "lastTag": "2026-11-02T22:17:54Z",
+    "lastStableTag": "2026-10-30T23:17:25Z",
+    "commits90d": 106
   },
   "NVIDIA-NeMo/Guardrails": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 629494390,
-    "stars": 7414,
+    "stars": 7458,
     "score": 70,
     "archived": false,
-    "pushed": "2026-11-01T11:27:59Z",
+    "pushed": "2026-11-07T02:47:40Z",
     "license": "NOASSERTION",
     "topics": [
       "agents",
@@ -5175,18 +5194,18 @@
       "llm-security"
     ],
     "lastRelease": "2026-09-16T17:15:59Z",
-    "lastCommit": "2026-10-30T19:43:15Z",
+    "lastCommit": "2026-11-07T02:27:20Z",
     "lastTag": "2026-09-16T17:01:11Z",
     "lastStableTag": "2026-09-16T17:01:11Z",
-    "commits90d": 132
+    "commits90d": 164
   },
   "NVIDIA/garak": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 639097338,
-    "stars": 9831,
-    "score": 78,
+    "stars": 9962,
+    "score": 79,
     "archived": false,
-    "pushed": "2026-10-27T18:16:24Z",
+    "pushed": "2026-11-06T23:26:29Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -5196,33 +5215,33 @@
       "vulnerability-assessment"
     ],
     "lastRelease": "2026-10-16T20:14:17Z",
-    "lastCommit": "2026-10-27T17:57:22Z",
+    "lastCommit": "2026-11-06T23:26:28Z",
     "lastTag": "2026-10-16T19:55:50Z",
     "lastStableTag": "2026-10-16T19:55:50Z",
-    "commits90d": 211
+    "commits90d": 254
   },
   "NVIDIA/Model-Optimizer": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 790916393,
-    "stars": 5494,
+    "stars": 5567,
     "score": 78,
     "archived": false,
-    "pushed": "2026-11-02T11:06:47Z",
+    "pushed": "2026-11-09T13:48:41Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-11-02T10:57:53Z",
-    "lastCommit": "2026-11-02T11:00:52Z",
-    "lastTag": "2026-10-28T22:53:48Z",
-    "lastStableTag": "2026-10-28T22:53:48Z",
-    "commits90d": 529
+    "lastCommit": "2026-11-09T01:50:17Z",
+    "lastTag": "2026-11-05T13:41:41Z",
+    "lastStableTag": "2026-11-05T13:41:41Z",
+    "commits90d": 563
   },
   "NVIDIA/TensorRT-LLM": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 679366051,
-    "stars": 14992,
+    "stars": 15046,
     "score": 71,
     "archived": false,
-    "pushed": "2026-11-02T13:42:54Z",
+    "pushed": "2026-11-09T13:56:58Z",
     "license": "NOASSERTION",
     "topics": [
       "blackwell",
@@ -5232,18 +5251,18 @@
       "llm-serving"
     ],
     "lastRelease": "2026-04-20T11:51:33Z",
-    "lastCommit": "2026-11-02T13:42:53Z",
-    "lastTag": "2026-10-28T05:29:36Z",
+    "lastCommit": "2026-11-09T13:56:58Z",
+    "lastTag": "2026-11-03T11:21:00Z",
     "lastStableTag": null,
-    "commits90d": 2446
+    "commits90d": 2479
   },
   "ollama/ollama": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 658928958,
-    "stars": 185661,
+    "stars": 186456,
     "score": 85,
     "archived": false,
-    "pushed": "2026-11-02T05:30:37Z",
+    "pushed": "2026-11-08T00:36:55Z",
     "license": "MIT",
     "topics": [
       "llama",
@@ -5261,19 +5280,19 @@
       "minimax",
       "muse"
     ],
-    "lastRelease": "2026-10-28T19:55:04Z",
-    "lastCommit": "2026-10-31T22:46:17Z",
-    "lastTag": "2026-10-28T22:20:04Z",
-    "lastStableTag": "2026-10-28T22:20:04Z",
-    "commits90d": 366
+    "lastRelease": "2026-11-03T22:52:31Z",
+    "lastCommit": "2026-11-08T00:36:53Z",
+    "lastTag": "2026-11-05T21:41:21Z",
+    "lastStableTag": "2026-11-05T21:41:21Z",
+    "commits90d": 360
   },
   "open-compass/opencompass": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 654124617,
-    "stars": 7560,
-    "score": 71,
+    "stars": 7578,
+    "score": 72,
     "archived": false,
-    "pushed": "2026-11-02T08:42:21Z",
+    "pushed": "2026-11-09T10:37:41Z",
     "license": "Apache-2.0",
     "topics": [
       "evaluation",
@@ -5282,31 +5301,31 @@
       "llm",
       "llm-eval"
     ],
-    "lastRelease": "2026-08-26T06:41:29Z",
-    "lastCommit": "2026-11-02T08:42:20Z",
-    "lastTag": "2026-08-26T06:17:57Z",
-    "lastStableTag": "2026-08-26T06:17:57Z",
-    "commits90d": 71
+    "lastRelease": "2026-11-06T08:08:44Z",
+    "lastCommit": "2026-11-09T10:37:41Z",
+    "lastTag": "2026-11-06T07:37:22Z",
+    "lastStableTag": "2026-11-06T07:37:22Z",
+    "commits90d": 78
   },
   "openai/codex": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 965415649,
-    "stars": 132854,
-    "score": 87,
+    "stars": 134266,
+    "score": 88,
     "archived": false,
-    "pushed": "2026-11-02T14:06:35Z",
+    "pushed": "2026-11-09T12:55:22Z",
     "license": "Apache-2.0",
     "topics": [],
-    "lastRelease": "2026-10-29T19:47:53Z",
-    "lastCommit": "2026-11-02T14:06:17Z",
-    "lastTag": "2026-11-01T17:58:59-03:00",
-    "lastStableTag": "2026-10-29T14:44:31-03:00",
-    "commits90d": 4094
+    "lastRelease": "2026-11-06T01:40:00Z",
+    "lastCommit": "2026-11-09T12:54:46Z",
+    "lastTag": "2026-11-08T23:29:29-08:00",
+    "lastStableTag": "2026-11-05T15:31:20-08:00",
+    "commits90d": 4218
   },
   "openai/evals": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 592489166,
-    "stars": 19687,
+    "stars": 19721,
     "score": 56,
     "archived": false,
     "pushed": "2026-04-14T15:29:57Z",
@@ -5319,9 +5338,9 @@
     "commits90d": 0
   },
   "openai/mle-bench": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 869660918,
-    "stars": 1789,
+    "stars": 1793,
     "score": 48,
     "archived": false,
     "pushed": "2026-04-24T17:33:44Z",
@@ -5334,12 +5353,12 @@
     "commits90d": 0
   },
   "openai/openai-agents-python": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 946380199,
-    "stars": 30457,
+    "stars": 30578,
     "score": 79,
     "archived": false,
-    "pushed": "2026-11-01T04:56:10Z",
+    "pushed": "2026-11-09T14:15:48Z",
     "license": "MIT",
     "topics": [
       "agents",
@@ -5351,18 +5370,18 @@
       "harness"
     ],
     "lastRelease": "2026-10-15T02:20:12Z",
-    "lastCommit": "2026-10-30T20:13:59Z",
-    "lastTag": "2026-10-15T02:08:00Z",
+    "lastCommit": "2026-11-09T07:06:14Z",
+    "lastTag": "2026-11-08T06:56:18Z",
     "lastStableTag": "2026-10-15T02:08:00Z",
-    "commits90d": 642
+    "commits90d": 526
   },
   "openclaw/openclaw": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1103012935,
-    "stars": 393709,
+    "stars": 394231,
     "score": 85,
     "archived": false,
-    "pushed": "2026-11-02T14:11:52Z",
+    "pushed": "2026-11-09T14:41:45Z",
     "license": "MIT",
     "topics": [
       "ai",
@@ -5373,17 +5392,17 @@
       "molty",
       "openclaw"
     ],
-    "lastRelease": "2026-10-29T15:54:35Z",
-    "lastCommit": "2026-11-02T14:11:49Z",
-    "lastTag": "2026-11-01T03:47:30Z",
-    "lastStableTag": "2026-10-30T18:21:47Z",
-    "commits90d": 47786
+    "lastRelease": "2026-11-08T19:31:04Z",
+    "lastCommit": "2026-11-09T14:07:20Z",
+    "lastTag": "2026-11-08T01:51:42Z",
+    "lastStableTag": "2026-11-08T01:51:42Z",
+    "commits90d": 48834
   },
   "opendatalab/labelU": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 554107151,
-    "stars": 1700,
-    "score": 65,
+    "stars": 1703,
+    "score": 64,
     "archived": false,
     "pushed": "2026-07-28T12:11:08Z",
     "license": "Apache-2.0",
@@ -5395,12 +5414,12 @@
     "commits90d": 0
   },
   "OpenHands/OpenHands": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 771302083,
-    "stars": 92493,
+    "stars": 93030,
     "score": 84,
     "archived": false,
-    "pushed": "2026-11-02T14:07:51Z",
+    "pushed": "2026-11-09T14:10:32Z",
     "license": "MIT",
     "topics": [
       "agent",
@@ -5413,19 +5432,19 @@
       "gpt",
       "openai"
     ],
-    "lastRelease": "2026-10-27T14:35:23Z",
-    "lastCommit": "2026-11-02T13:11:30Z",
-    "lastTag": "2026-10-29T21:17:05Z",
-    "lastStableTag": "2026-10-29T21:17:05Z",
-    "commits90d": 886
+    "lastRelease": "2026-11-06T12:54:14Z",
+    "lastCommit": "2026-11-09T13:13:07Z",
+    "lastTag": "2026-11-06T12:40:30Z",
+    "lastStableTag": "2026-11-06T12:40:30Z",
+    "commits90d": 988
   },
   "openinterpreter/openinterpreter": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 666299222,
-    "stars": 68783,
+    "stars": 68845,
     "score": 79,
     "archived": false,
-    "pushed": "2026-11-01T10:01:41Z",
+    "pushed": "2026-11-09T01:22:10Z",
     "license": "Apache-2.0",
     "topics": [
       "coding-agent",
@@ -5436,19 +5455,19 @@
       "acp",
       "python"
     ],
-    "lastRelease": "2026-11-01T11:40:50Z",
-    "lastCommit": "2026-11-01T09:59:54Z",
-    "lastTag": "2026-11-01T10:01:35Z",
-    "lastStableTag": "2026-11-01T10:01:35Z",
-    "commits90d": 1591
+    "lastRelease": "2026-11-09T03:21:08Z",
+    "lastCommit": "2026-11-09T01:20:58Z",
+    "lastTag": "2026-11-09T01:20:58Z",
+    "lastStableTag": "2026-11-09T01:20:58Z",
+    "commits90d": 1405
   },
   "openml/automlbenchmark": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 143762859,
     "stars": 474,
-    "score": 47,
+    "score": 46,
     "archived": false,
-    "pushed": "2026-10-26T19:57:02Z",
+    "pushed": "2026-11-02T20:24:16Z",
     "license": "MIT",
     "topics": [
       "automl",
@@ -5462,12 +5481,12 @@
     "commits90d": 0
   },
   "OpenPipe/ART": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 946178371,
-    "stars": 10837,
-    "score": 73,
+    "stars": 10849,
+    "score": 72,
     "archived": false,
-    "pushed": "2026-10-26T23:55:47Z",
+    "pushed": "2026-11-08T03:04:10Z",
     "license": "Apache-2.0",
     "topics": [
       "llms",
@@ -5480,19 +5499,19 @@
       "qwen",
       "qwen3"
     ],
-    "lastRelease": "2026-10-26T23:55:54Z",
-    "lastCommit": "2026-10-26T23:51:14Z",
-    "lastTag": "2026-10-26T23:51:14Z",
-    "lastStableTag": "2026-10-26T23:51:14Z",
-    "commits90d": 244
+    "lastRelease": "2026-11-04T22:54:31Z",
+    "lastCommit": "2026-11-07T20:16:41Z",
+    "lastTag": "2026-11-04T22:50:00Z",
+    "lastStableTag": "2026-11-04T22:50:00Z",
+    "commits90d": 259
   },
   "OpenRLHF/OpenRLHF": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 672415139,
-    "stars": 10136,
+    "stars": 10146,
     "score": 72,
     "archived": false,
-    "pushed": "2026-10-05T17:33:02Z",
+    "pushed": "2026-11-03T03:17:19Z",
     "license": "Apache-2.0",
     "topics": [
       "transformers",
@@ -5505,18 +5524,18 @@
       "visual-language-models"
     ],
     "lastRelease": "2026-09-14T01:51:43Z",
-    "lastCommit": "2026-09-17T05:49:37Z",
+    "lastCommit": "2026-11-03T03:17:18Z",
     "lastTag": "2026-09-14T01:51:19Z",
     "lastStableTag": "2026-09-14T01:51:19Z",
-    "commits90d": 37
+    "commits90d": 39
   },
   "openvinotoolkit/openvino": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 153097643,
-    "stars": 11105,
+    "stars": 11136,
     "score": 74,
     "archived": false,
-    "pushed": "2026-11-02T12:14:39Z",
+    "pushed": "2026-11-09T13:33:56Z",
     "license": "Apache-2.0",
     "topics": [
       "inference",
@@ -5540,16 +5559,16 @@
       "good-first-issue"
     ],
     "lastRelease": "2026-10-01T13:45:59Z",
-    "lastCommit": "2026-11-02T07:45:29Z",
+    "lastCommit": "2026-11-09T12:16:05Z",
     "lastTag": "2026-09-23T14:20:47Z",
     "lastStableTag": "2026-09-23T14:20:47Z",
-    "commits90d": 1070
+    "commits90d": 1101
   },
   "OptimalScale/LMFlow": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 619825247,
-    "stars": 8483,
-    "score": 68,
+    "stars": 8484,
+    "score": 55,
     "archived": false,
     "pushed": "2026-08-10T06:56:25Z",
     "license": "Apache-2.0",
@@ -5566,15 +5585,15 @@
     "lastCommit": "2026-08-10T06:55:22Z",
     "lastTag": "2025-07-08T12:44:27Z",
     "lastStableTag": "2025-07-08T12:44:27Z",
-    "commits90d": 9
+    "commits90d": 0
   },
   "optuna/optuna": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 122299416,
-    "stars": 15003,
+    "stars": 15022,
     "score": 74,
     "archived": false,
-    "pushed": "2026-10-30T08:28:36Z",
+    "pushed": "2026-11-09T05:31:20Z",
     "license": "MIT",
     "topics": [
       "python",
@@ -5584,18 +5603,18 @@
       "hyperparameter-optimization"
     ],
     "lastRelease": "2026-09-07T05:15:45Z",
-    "lastCommit": "2026-10-30T08:28:35Z",
+    "lastCommit": "2026-11-09T05:31:20Z",
     "lastTag": "2026-09-04T06:00:11Z",
     "lastStableTag": "2026-09-04T06:00:11Z",
-    "commits90d": 284
+    "commits90d": 279
   },
   "oumi-ai/oumi": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 797371964,
-    "stars": 9422,
-    "score": 72,
+    "stars": 9429,
+    "score": 71,
     "archived": false,
-    "pushed": "2026-10-30T18:23:45Z",
+    "pushed": "2026-11-09T12:55:56Z",
     "license": "Apache-2.0",
     "topics": [
       "dpo",
@@ -5620,18 +5639,18 @@
       "vlm"
     ],
     "lastRelease": "2026-09-16T21:48:48Z",
-    "lastCommit": "2026-10-30T18:09:57Z",
+    "lastCommit": "2026-11-09T12:42:46Z",
     "lastTag": "2026-09-16T21:11:42Z",
     "lastStableTag": "2026-09-16T21:11:42Z",
     "commits90d": 115
   },
   "pipecat-ai/pipecat": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 736272311,
-    "stars": 17011,
-    "score": 74,
+    "stars": 17152,
+    "score": 80,
     "archived": false,
-    "pushed": "2026-11-03T00:27:37Z",
+    "pushed": "2026-11-09T02:57:16Z",
     "license": "BSD-2-Clause",
     "topics": [
       "ai",
@@ -5642,15 +5661,15 @@
       "chatbots"
     ],
     "lastRelease": "2026-10-29T05:50:54Z",
-    "lastCommit": "2026-11-02T15:43:40Z",
+    "lastCommit": "2026-11-09T00:19:49Z",
     "lastTag": "2026-10-28T22:49:20-07:00",
     "lastStableTag": "2026-10-28T22:49:20-07:00",
-    "commits90d": 3502
+    "commits90d": 3796
   },
   "Portkey-AI/gateway": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 682080300,
-    "stars": 13301,
+    "stars": 13353,
     "score": 63,
     "archived": false,
     "pushed": "2026-05-25T13:54:51Z",
@@ -5679,7 +5698,7 @@
     "commits90d": 0
   },
   "predibase/lorax": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 707818217,
     "stars": 3835,
     "score": 0,
@@ -5706,12 +5725,12 @@
     "commits90d": 0
   },
   "PrefectHQ/prefect": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 139199684,
-    "stars": 24108,
+    "stars": 24140,
     "score": 75,
     "archived": false,
-    "pushed": "2026-11-02T13:27:50Z",
+    "pushed": "2026-11-09T05:37:53Z",
     "license": "Apache-2.0",
     "topics": [
       "python",
@@ -5729,19 +5748,19 @@
       "observability",
       "pipeline"
     ],
-    "lastRelease": "2026-10-30T15:50:58Z",
-    "lastCommit": "2026-11-02T01:02:12Z",
-    "lastTag": "2026-11-02T01:02:12Z",
-    "lastStableTag": "2026-10-30T15:50:33Z",
-    "commits90d": 504
+    "lastRelease": "2026-11-06T21:19:09Z",
+    "lastCommit": "2026-11-06T21:12:22Z",
+    "lastTag": "2026-11-06T21:12:22Z",
+    "lastStableTag": "2026-11-06T21:12:22Z",
+    "commits90d": 521
   },
   "PriorLabs/TabPFN": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 509436902,
-    "stars": 8346,
+    "stars": 8396,
     "score": 75,
     "archived": false,
-    "pushed": "2026-10-30T14:52:31Z",
+    "pushed": "2026-11-09T14:38:13Z",
     "license": "Apache-2.0",
     "topics": [
       "data-science",
@@ -5751,18 +5770,18 @@
       "tabular-data"
     ],
     "lastRelease": "2026-10-12T15:13:01Z",
-    "lastCommit": "2026-10-29T15:34:05Z",
+    "lastCommit": "2026-11-09T09:00:36Z",
     "lastTag": "2026-10-12T14:32:57Z",
     "lastStableTag": "2026-10-12T14:32:57Z",
-    "commits90d": 129
+    "commits90d": 125
   },
   "promptfoo/promptfoo": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 633927609,
-    "stars": 26745,
-    "score": 81,
+    "stars": 26988,
+    "score": 82,
     "archived": false,
-    "pushed": "2026-11-02T13:51:34Z",
+    "pushed": "2026-11-09T12:44:49Z",
     "license": "MIT",
     "topics": [
       "llm",
@@ -5785,15 +5804,15 @@
       "vulnerability-scanners"
     ],
     "lastRelease": "2026-10-25T01:53:11Z",
-    "lastCommit": "2026-11-02T13:47:34Z",
+    "lastCommit": "2026-11-09T12:42:28Z",
     "lastTag": "2026-10-25T01:52:56Z",
     "lastStableTag": "2026-10-25T01:52:56Z",
-    "commits90d": 1186
+    "commits90d": 1332
   },
   "protectai/llm-guard": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 671629770,
-    "stars": 3219,
+    "stars": 3218,
     "score": 0,
     "archived": true,
     "pushed": "2026-07-08T23:58:40Z",
@@ -5817,7 +5836,7 @@
     "commits90d": 0
   },
   "pycaret/pycaret": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 223636350,
     "stars": 9859,
     "score": 52,
@@ -5848,12 +5867,12 @@
     "commits90d": 0
   },
   "pydantic/pydantic-ai": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 818331198,
-    "stars": 20997,
-    "score": 79,
+    "stars": 21102,
+    "score": 78,
     "archived": false,
-    "pushed": "2026-11-02T14:11:08Z",
+    "pushed": "2026-11-09T14:36:43Z",
     "license": "MIT",
     "topics": [
       "agent-framework",
@@ -5864,19 +5883,19 @@
       "harness",
       "harness-engineering"
     ],
-    "lastRelease": "2026-10-30T23:27:24Z",
-    "lastCommit": "2026-11-02T03:48:25Z",
-    "lastTag": "2026-11-01T15:54:55Z",
-    "lastStableTag": "2026-10-30T22:35:55Z",
-    "commits90d": 2346
+    "lastRelease": "2026-11-04T11:51:46Z",
+    "lastCommit": "2026-11-09T14:19:04Z",
+    "lastTag": "2026-11-09T14:19:04Z",
+    "lastStableTag": "2026-11-04T03:59:13Z",
+    "commits90d": 2547
   },
   "pyjanitor-devs/pyjanitor": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 123836190,
-    "stars": 1499,
+    "stars": 1498,
     "score": 64,
     "archived": false,
-    "pushed": "2026-11-02T10:14:37Z",
+    "pushed": "2026-11-09T05:46:03Z",
     "license": "MIT",
     "topics": [
       "pandas",
@@ -5887,19 +5906,19 @@
       "pydata",
       "hacktoberfest"
     ],
-    "lastRelease": "2026-11-01T16:32:26Z",
-    "lastCommit": "2026-11-02T05:51:15Z",
-    "lastTag": "2026-11-01T16:32:18Z",
-    "lastStableTag": "2026-11-01T16:32:18Z",
-    "commits90d": 171
+    "lastRelease": "2026-11-04T00:14:24Z",
+    "lastCommit": "2026-11-04T00:14:15Z",
+    "lastTag": "2026-11-04T00:14:15Z",
+    "lastStableTag": "2026-11-04T00:14:15Z",
+    "commits90d": 176
   },
   "pytorch/ao": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 714073518,
-    "stars": 3019,
+    "stars": 3025,
     "score": 64,
     "archived": false,
-    "pushed": "2026-11-02T10:12:13Z",
+    "pushed": "2026-11-09T03:06:16Z",
     "license": "NOASSERTION",
     "topics": [
       "brrr",
@@ -5916,18 +5935,18 @@
       "llama"
     ],
     "lastRelease": "2026-08-03T20:44:24Z",
-    "lastCommit": "2026-10-31T09:40:15Z",
-    "lastTag": "2026-10-30T04:28:44Z",
-    "lastStableTag": "2026-10-30T04:28:44Z",
-    "commits90d": 109
+    "lastCommit": "2026-11-07T06:21:50Z",
+    "lastTag": "2026-11-09T03:00:29Z",
+    "lastStableTag": "2026-11-09T03:00:29Z",
+    "commits90d": 97
   },
   "pytorch/executorch": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 463628495,
-    "stars": 5151,
+    "stars": 5164,
     "score": 67,
     "archived": false,
-    "pushed": "2026-11-02T14:12:04Z",
+    "pushed": "2026-11-09T14:41:32Z",
     "license": "NOASSERTION",
     "topics": [
       "deep-learning",
@@ -5939,18 +5958,18 @@
       "gpu"
     ],
     "lastRelease": "2026-09-23T16:58:34Z",
-    "lastCommit": "2026-11-02T13:34:32Z",
-    "lastTag": "2026-11-02T11:33:04Z",
-    "lastStableTag": "2026-11-02T13:36:14Z",
-    "commits90d": 1702
+    "lastCommit": "2026-11-09T14:41:31Z",
+    "lastTag": "2026-11-09T14:22:35Z",
+    "lastStableTag": "2026-11-09T14:22:35Z",
+    "commits90d": 1850
   },
   "qualcomm/aimet": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 257688216,
     "stars": 2744,
-    "score": 64,
+    "score": 62,
     "archived": false,
-    "pushed": "2026-11-02T18:35:57Z",
+    "pushed": "2026-11-08T01:05:14Z",
     "license": "NOASSERTION",
     "topics": [
       "quantization",
@@ -5966,18 +5985,18 @@
       "opensource"
     ],
     "lastRelease": "2026-10-30T05:21:41Z",
-    "lastCommit": "2026-11-02T18:35:34Z",
+    "lastCommit": "2026-11-08T01:04:56Z",
     "lastTag": "2026-10-29T17:54:45Z",
     "lastStableTag": "2026-10-29T17:54:45Z",
-    "commits90d": 295
+    "commits90d": 309
   },
   "QwenLM/qwen-code": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1008713177,
-    "stars": 28886,
-    "score": 78,
+    "stars": 29130,
+    "score": 79,
     "archived": false,
-    "pushed": "2026-11-02T14:07:43Z",
+    "pushed": "2026-11-09T14:40:50Z",
     "license": "Apache-2.0",
     "topics": [
       "agentic",
@@ -5993,19 +6012,19 @@
       "terminal",
       "typescript"
     ],
-    "lastRelease": "2026-11-01T03:22:50Z",
-    "lastCommit": "2026-11-02T14:03:14Z",
-    "lastTag": "2026-11-01T00:28:52Z",
-    "lastStableTag": "2026-11-01T00:28:52Z",
-    "commits90d": 3624
+    "lastRelease": "2026-11-09T13:30:44Z",
+    "lastCommit": "2026-11-09T13:42:49Z",
+    "lastTag": "2026-11-09T13:19:59Z",
+    "lastStableTag": "2026-11-09T13:19:59Z",
+    "commits90d": 3802
   },
   "ray-project/ray": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 71932349,
-    "stars": 44182,
+    "stars": 44242,
     "score": 77,
     "archived": false,
-    "pushed": "2026-11-02T14:09:09Z",
+    "pushed": "2026-11-09T10:17:51Z",
     "license": "Apache-2.0",
     "topics": [
       "ray",
@@ -6029,16 +6048,16 @@
       "llm",
       "llm-inference"
     ],
-    "lastRelease": "2026-10-02T07:04:37Z",
-    "lastCommit": "2026-11-02T13:27:21Z",
-    "lastTag": "2026-10-08T23:14:08Z",
-    "lastStableTag": "2026-10-08T23:14:08Z",
-    "commits90d": 1112
+    "lastRelease": "2026-11-04T02:08:53Z",
+    "lastCommit": "2026-11-09T10:10:54Z",
+    "lastTag": "2026-11-04T01:03:21Z",
+    "lastStableTag": "2026-11-04T01:03:21Z",
+    "commits90d": 1158
   },
   "Renumics/spotlight": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 594756461,
-    "stars": 1284,
+    "stars": 1285,
     "score": 64,
     "archived": false,
     "pushed": "2026-10-28T13:23:25Z",
@@ -6062,15 +6081,15 @@
     "lastCommit": "2026-10-28T13:23:21Z",
     "lastTag": "2026-08-03T10:34:52Z",
     "lastStableTag": "2026-08-03T10:34:52Z",
-    "commits90d": 117
+    "commits90d": 111
   },
   "replicate/cog": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 342728683,
-    "stars": 9494,
+    "stars": 9497,
     "score": 71,
     "archived": false,
-    "pushed": "2026-10-31T23:09:21Z",
+    "pushed": "2026-11-07T18:43:08Z",
     "license": "Apache-2.0",
     "topics": [
       "containers",
@@ -6085,13 +6104,13 @@
     "lastCommit": "2026-10-27T20:21:22Z",
     "lastTag": "2026-10-19T18:42:32Z",
     "lastStableTag": "2026-10-19T18:42:32Z",
-    "commits90d": 28
+    "commits90d": 23
   },
   "ruc-datalab/DeepAnalyze": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1074218324,
-    "stars": 4768,
-    "score": 72,
+    "stars": 4802,
+    "score": 73,
     "archived": false,
     "pushed": "2026-11-02T13:47:42Z",
     "license": "MIT",
@@ -6124,12 +6143,12 @@
     "commits90d": 67
   },
   "run-llama/llama_index": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 560704231,
-    "stars": 52777,
+    "stars": 52856,
     "score": 78,
     "archived": false,
-    "pushed": "2026-10-26T21:25:10Z",
+    "pushed": "2026-11-08T21:41:55Z",
     "license": "MIT",
     "topics": [
       "agents",
@@ -6144,16 +6163,16 @@
       "multi-agents"
     ],
     "lastRelease": "2026-09-21T16:22:27Z",
-    "lastCommit": "2026-10-14T15:29:28Z",
+    "lastCommit": "2026-11-08T21:41:55Z",
     "lastTag": "2026-09-21T16:20:40Z",
     "lastStableTag": "2026-09-21T16:20:40Z",
-    "commits90d": 88
+    "commits90d": 78
   },
   "SakanaAI/AI-Scientist": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 841376583,
-    "stars": 14918,
-    "score": 56,
+    "stars": 14967,
+    "score": 57,
     "archived": false,
     "pushed": "2025-12-19T07:46:21Z",
     "license": "NOASSERTION",
@@ -6165,9 +6184,9 @@
     "commits90d": 0
   },
   "SakanaAI/AI-Scientist-v2": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 962431643,
-    "stars": 7431,
+    "stars": 7484,
     "score": 55,
     "archived": false,
     "pushed": "2025-12-19T07:46:32Z",
@@ -6180,39 +6199,39 @@
     "commits90d": 0
   },
   "SakanaAI/ShinkaEvolve": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1058901043,
-    "stars": 1491,
-    "score": 72,
+    "stars": 1501,
+    "score": 71,
     "archived": false,
-    "pushed": "2026-10-05T04:18:29Z",
+    "pushed": "2026-11-09T14:26:24Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-06-02T16:44:18Z",
-    "lastCommit": "2026-10-05T04:18:27Z",
+    "lastCommit": "2026-11-09T14:26:22Z",
     "lastTag": "2026-06-02T18:37:01+02:00",
     "lastStableTag": "2026-06-02T18:37:01+02:00",
-    "commits90d": 42
+    "commits90d": 62
   },
   "SalesforceAIResearch/gift-eval": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 872423220,
     "stars": 278,
     "score": 65,
     "archived": false,
-    "pushed": "2026-10-30T08:38:33Z",
+    "pushed": "2026-11-06T03:33:53Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": null,
-    "lastCommit": "2026-10-30T08:38:33Z",
+    "lastCommit": "2026-11-06T03:33:53Z",
     "lastTag": null,
     "lastStableTag": null,
-    "commits90d": 47
+    "commits90d": 48
   },
   "SalesforceAIResearch/promptomatix": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1016307304,
-    "stars": 982,
+    "stars": 980,
     "score": 48,
     "archived": false,
     "pushed": "2026-06-02T18:56:57Z",
@@ -6225,9 +6244,9 @@
     "commits90d": 0
   },
   "SalesforceAIResearch/uni2ts": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 754173470,
-    "stars": 1619,
+    "stars": 1624,
     "score": 51,
     "archived": false,
     "pushed": "2026-06-02T18:53:33Z",
@@ -6251,10 +6270,10 @@
     "commits90d": 0
   },
   "SAP-samples/sap-rpt-1-oss": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 993063967,
     "stars": 193,
-    "score": 45,
+    "score": 44,
     "archived": false,
     "pushed": "2026-06-16T15:12:14Z",
     "license": "Apache-2.0",
@@ -6273,7 +6292,7 @@
     "commits90d": 0
   },
   "sapientml/sapientml": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 672722037,
     "stars": 446,
     "score": 59,
@@ -6295,12 +6314,12 @@
     "commits90d": 7
   },
   "sb-ai-lab/LightAutoML": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 482970740,
     "stars": 1483,
-    "score": 51,
+    "score": 50,
     "archived": false,
-    "pushed": "2026-11-02T12:34:09Z",
+    "pushed": "2026-11-09T14:24:01Z",
     "license": "Apache-2.0",
     "topics": [
       "automl",
@@ -6324,7 +6343,7 @@
     "commits90d": 0
   },
   "scikit-learn-contrib/boruta_py": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 50732993,
     "stars": 1634,
     "score": 50,
@@ -6339,12 +6358,12 @@
     "commits90d": 0
   },
   "sdv-dev/SDV": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 133060053,
-    "stars": 3589,
-    "score": 64,
+    "stars": 3604,
+    "score": 65,
     "archived": false,
-    "pushed": "2026-11-02T13:56:18Z",
+    "pushed": "2026-11-09T00:31:13Z",
     "license": "NOASSERTION",
     "topics": [
       "synthetic-data",
@@ -6363,16 +6382,16 @@
       "generative-model",
       "generativeai"
     ],
-    "lastRelease": "2026-10-30T19:37:31Z",
-    "lastCommit": "2026-10-30T19:35:48Z",
-    "lastTag": "2026-10-30T19:35:46Z",
-    "lastStableTag": "2026-10-30T19:35:46Z",
-    "commits90d": 88
+    "lastRelease": "2026-11-06T19:17:12Z",
+    "lastCommit": "2026-11-06T19:15:11Z",
+    "lastTag": "2026-11-06T19:15:08Z",
+    "lastStableTag": "2026-11-06T19:15:08Z",
+    "commits90d": 90
   },
   "SeldonIO/alibi-detect": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 213390927,
-    "stars": 2554,
+    "stars": 2555,
     "score": 49,
     "archived": false,
     "pushed": "2025-12-11T16:35:15Z",
@@ -6399,12 +6418,12 @@
     "commits90d": 0
   },
   "sgl-project/sglang": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 740303686,
-    "stars": 38371,
+    "stars": 38619,
     "score": 83,
     "archived": false,
-    "pushed": "2026-11-02T13:53:02Z",
+    "pushed": "2026-11-09T14:13:17Z",
     "license": "Apache-2.0",
     "topics": [
       "cuda",
@@ -6426,16 +6445,16 @@
       "reinforcement-learning",
       "wan"
     ],
-    "lastRelease": "2026-10-19T02:55:19Z",
-    "lastCommit": "2026-11-02T13:53:02Z",
+    "lastRelease": "2026-11-02T22:14:10Z",
+    "lastCommit": "2026-11-09T13:58:41Z",
     "lastTag": "2026-10-29T17:13:59-07:00",
     "lastStableTag": "2026-10-29T17:13:59-07:00",
-    "commits90d": 5499
+    "commits90d": 5624
   },
   "shankarpandala/lazypredict": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 222079167,
-    "stars": 3349,
+    "stars": 3350,
     "score": 67,
     "archived": false,
     "pushed": "2026-10-31T19:00:54Z",
@@ -6453,9 +6472,9 @@
     "commits90d": 63
   },
   "ShishirPatil/gorilla": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 642608852,
-    "stars": 13062,
+    "stars": 13065,
     "score": 57,
     "archived": false,
     "pushed": "2026-10-17T06:06:24Z",
@@ -6477,12 +6496,12 @@
     "commits90d": 0
   },
   "Significant-Gravitas/AutoGPT": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 614765452,
-    "stars": 187871,
+    "stars": 187967,
     "score": 78,
     "archived": false,
-    "pushed": "2026-11-02T14:11:46Z",
+    "pushed": "2026-11-09T14:41:10Z",
     "license": "NOASSERTION",
     "topics": [
       "ai",
@@ -6497,19 +6516,19 @@
       "claude",
       "gpt"
     ],
-    "lastRelease": "2026-10-27T16:25:28Z",
-    "lastCommit": "2026-11-01T13:03:00Z",
-    "lastTag": "2026-11-01T22:44:41Z",
-    "lastStableTag": "2026-11-01T22:44:41Z",
-    "commits90d": 1396
+    "lastRelease": "2026-11-06T03:36:16Z",
+    "lastCommit": "2026-11-05T21:18:08Z",
+    "lastTag": "2026-11-09T05:12:41Z",
+    "lastStableTag": "2026-11-09T05:12:41Z",
+    "commits90d": 1599
   },
   "skforecast/skforecast": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 337705968,
     "stars": 1546,
     "score": 65,
     "archived": false,
-    "pushed": "2026-11-02T12:15:13Z",
+    "pushed": "2026-11-09T14:36:51Z",
     "license": "BSD-3-Clause",
     "topics": [
       "forecasting",
@@ -6537,15 +6556,15 @@
     "lastCommit": "2026-10-13T13:14:57Z",
     "lastTag": "2026-10-08T20:11:05Z",
     "lastStableTag": "2026-10-08T20:11:05Z",
-    "commits90d": 505
+    "commits90d": 474
   },
   "skrub-data/skrub": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 124964482,
-    "stars": 1666,
+    "stars": 1669,
     "score": 66,
     "archived": false,
-    "pushed": "2026-11-02T14:17:34Z",
+    "pushed": "2026-11-09T13:58:23Z",
     "license": "BSD-3-Clause",
     "topics": [
       "machine-learning",
@@ -6561,18 +6580,18 @@
       "dataframes"
     ],
     "lastRelease": "2026-10-01T11:40:16Z",
-    "lastCommit": "2026-11-02T14:17:33Z",
+    "lastCommit": "2026-11-09T13:58:23Z",
     "lastTag": "2026-10-01T09:14:13Z",
     "lastStableTag": "2026-10-01T09:14:13Z",
-    "commits90d": 92
+    "commits90d": 104
   },
   "sktime/pytorch-forecasting": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 276901861,
     "stars": 5010,
-    "score": 70,
+    "score": 68,
     "archived": false,
-    "pushed": "2026-10-31T18:40:27Z",
+    "pushed": "2026-11-09T11:08:26Z",
     "license": "MIT",
     "topics": [
       "pytorch",
@@ -6594,18 +6613,18 @@
       "hacktoberfest"
     ],
     "lastRelease": "2026-06-24T16:42:23Z",
-    "lastCommit": "2026-10-31T18:39:47Z",
+    "lastCommit": "2026-11-09T11:08:25Z",
     "lastTag": "2026-06-24T16:42:05Z",
     "lastStableTag": "2026-06-24T16:42:05Z",
     "commits90d": 42
   },
   "sktime/sktime": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 156401841,
-    "stars": 10088,
+    "stars": 10093,
     "score": 71,
     "archived": false,
-    "pushed": "2026-11-01T18:04:34Z",
+    "pushed": "2026-11-08T23:46:00Z",
     "license": "BSD-3-Clause",
     "topics": [
       "time-series",
@@ -6624,16 +6643,16 @@
       "sktime",
       "time-series-segmentation"
     ],
-    "lastRelease": "2026-09-22T22:10:05Z",
-    "lastCommit": "2026-11-01T18:04:34Z",
-    "lastTag": "2026-09-22T21:59:46Z",
-    "lastStableTag": "2026-09-22T21:59:46Z",
-    "commits90d": 343
+    "lastRelease": "2026-11-08T23:46:01Z",
+    "lastCommit": "2026-11-08T23:45:51Z",
+    "lastTag": "2026-11-08T23:45:51Z",
+    "lastStableTag": "2026-11-08T23:45:51Z",
+    "commits90d": 374
   },
   "snorkel-team/snorkel": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 52581991,
-    "stars": 6026,
+    "stars": 6028,
     "score": 54,
     "archived": false,
     "pushed": "2026-10-13T01:53:34Z",
@@ -6657,9 +6676,9 @@
     "commits90d": 0
   },
   "soda-inria/carte": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 808484740,
-    "stars": 175,
+    "stars": 176,
     "score": 42,
     "archived": false,
     "pushed": "2025-08-11T09:20:00Z",
@@ -6679,10 +6698,10 @@
     "commits90d": 0
   },
   "soda-inria/tabicl": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 929149640,
-    "stars": 1459,
-    "score": 67,
+    "stars": 1477,
+    "score": 68,
     "archived": false,
     "pushed": "2026-10-27T20:09:26Z",
     "license": "NOASSERTION",
@@ -6698,13 +6717,13 @@
     "lastCommit": "2026-10-27T20:09:25Z",
     "lastTag": "2026-09-02T13:49:56Z",
     "lastStableTag": "2026-09-02T13:49:56Z",
-    "commits90d": 15
+    "commits90d": 14
   },
   "stanford-crfm/helm": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 432968463,
-    "stars": 2964,
-    "score": 62,
+    "stars": 2968,
+    "score": 61,
     "archived": false,
     "pushed": "2026-09-01T01:33:19Z",
     "license": "Apache-2.0",
@@ -6716,9 +6735,9 @@
     "commits90d": 0
   },
   "stanford-oval/storm": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 776854298,
-    "stars": 31771,
+    "stars": 31842,
     "score": 61,
     "archived": false,
     "pushed": "2025-09-30T18:07:21Z",
@@ -6741,24 +6760,24 @@
     "commits90d": 0
   },
   "stanfordnlp/dspy": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 587050620,
-    "stars": 38884,
+    "stars": 38983,
     "score": 78,
     "archived": false,
-    "pushed": "2026-11-01T14:28:30Z",
+    "pushed": "2026-11-09T14:33:42Z",
     "license": "MIT",
     "topics": [],
     "lastRelease": "2026-10-12T23:12:32Z",
-    "lastCommit": "2026-10-29T13:15:19Z",
+    "lastCommit": "2026-11-09T14:00:34Z",
     "lastTag": "2026-10-12T22:37:05Z",
     "lastStableTag": "2026-10-12T22:37:05Z",
-    "commits90d": 207
+    "commits90d": 220
   },
   "steven2358/awesome-generative-ai": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 554771302,
-    "stars": 12800,
+    "stars": 12818,
     "score": 73,
     "archived": false,
     "pushed": "2026-10-30T17:31:48Z",
@@ -6780,12 +6799,12 @@
     "commits90d": 23
   },
   "strands-agents/harness-sdk": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 983715534,
-    "stars": 9028,
-    "score": 78,
+    "stars": 9086,
+    "score": 77,
     "archived": false,
-    "pushed": "2026-11-02T07:58:35Z",
+    "pushed": "2026-11-09T14:33:46Z",
     "license": "Apache-2.0",
     "topics": [
       "agentic",
@@ -6809,19 +6828,19 @@
       "typescript",
       "harness"
     ],
-    "lastRelease": "2026-10-30T19:53:20Z",
-    "lastCommit": "2026-10-30T20:27:44Z",
-    "lastTag": "2026-10-30T17:43:32Z",
-    "lastStableTag": "2026-10-30T17:43:32Z",
-    "commits90d": 848
+    "lastRelease": "2026-11-04T19:54:03Z",
+    "lastCommit": "2026-11-09T14:33:45Z",
+    "lastTag": "2026-11-04T18:32:42Z",
+    "lastStableTag": "2026-11-04T18:32:42Z",
+    "commits90d": 861
   },
   "SWE-agent/mini-swe-agent": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1010318950,
-    "stars": 9035,
+    "stars": 9456,
     "score": 81,
     "archived": false,
-    "pushed": "2026-10-26T22:39:14Z",
+    "pushed": "2026-11-02T23:40:17Z",
     "license": "MIT",
     "topics": [
       "agent",
@@ -6838,12 +6857,12 @@
     "commits90d": 3
   },
   "SWE-agent/SWE-agent": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 780737106,
-    "stars": 20712,
-    "score": 60,
+    "stars": 20766,
+    "score": 61,
     "archived": false,
-    "pushed": "2026-10-26T22:40:23Z",
+    "pushed": "2026-11-02T23:40:08Z",
     "license": "MIT",
     "topics": [
       "agent",
@@ -6861,9 +6880,9 @@
     "commits90d": 0
   },
   "SylphAI-Inc/AdalFlow": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 788791942,
-    "stars": 4223,
+    "stars": 4229,
     "score": 69,
     "archived": false,
     "pushed": "2026-11-01T06:27:23Z",
@@ -6897,12 +6916,12 @@
     "commits90d": 31
   },
   "Tencent/AI-Infra-Guard": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 908108028,
-    "stars": 7341,
-    "score": 71,
+    "stars": 7444,
+    "score": 82,
     "archived": false,
-    "pushed": "2026-11-02T11:50:22Z",
+    "pushed": "2026-11-05T04:01:52Z",
     "license": "Apache-2.0",
     "topics": [
       "agent",
@@ -6926,17 +6945,17 @@
       "ai-safety",
       "agentic-ai"
     ],
-    "lastRelease": "2026-10-29T04:02:30Z",
-    "lastCommit": "2026-11-02T11:49:45Z",
-    "lastTag": "2026-10-29T04:01:59Z",
-    "lastStableTag": "2026-10-29T04:01:59Z",
-    "commits90d": 269
+    "lastRelease": "2026-11-05T04:02:07Z",
+    "lastCommit": "2026-11-05T04:01:44Z",
+    "lastTag": "2026-11-05T04:01:44Z",
+    "lastStableTag": "2026-11-05T04:01:44Z",
+    "commits90d": 254
   },
   "tensorchord/Awesome-LLMOps": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 481805419,
-    "stars": 5969,
-    "score": 71,
+    "stars": 5971,
+    "score": 69,
     "archived": false,
     "pushed": "2026-10-16T06:34:42Z",
     "license": "CC0-1.0",
@@ -6953,12 +6972,12 @@
     "commits90d": 114
   },
   "tensorflow/serving": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 50461701,
     "stars": 6366,
-    "score": 71,
+    "score": 69,
     "archived": false,
-    "pushed": "2026-10-21T06:28:06Z",
+    "pushed": "2026-11-06T21:10:36Z",
     "license": "Apache-2.0",
     "topics": [
       "machine-learning",
@@ -6972,33 +6991,33 @@
       "tensorflow"
     ],
     "lastRelease": "2026-09-29T20:49:45Z",
-    "lastCommit": "2026-10-21T06:28:02Z",
+    "lastCommit": "2026-11-06T21:10:27Z",
     "lastTag": "2026-09-28T21:51:00Z",
     "lastStableTag": "2026-09-28T21:51:00Z",
-    "commits90d": 47
+    "commits90d": 48
   },
   "tensorflow/tensorboard": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 91379993,
-    "stars": 7243,
-    "score": 70,
+    "stars": 7241,
+    "score": 68,
     "archived": false,
-    "pushed": "2026-10-29T00:06:23Z",
+    "pushed": "2026-11-04T18:02:26Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-06-29T19:59:51Z",
-    "lastCommit": "2026-10-29T00:06:23Z",
+    "lastCommit": "2026-11-04T18:02:25Z",
     "lastTag": "2026-06-27T00:40:58Z",
     "lastStableTag": "2026-06-27T00:40:58Z",
     "commits90d": 10
   },
   "tensorflow/tfx": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 169116405,
-    "stars": 2192,
-    "score": 64,
+    "stars": 2189,
+    "score": 65,
     "archived": false,
-    "pushed": "2026-10-30T23:57:38Z",
+    "pushed": "2026-11-04T18:39:42Z",
     "license": "Apache-2.0",
     "topics": [
       "tensorflow",
@@ -7006,15 +7025,15 @@
       "apache-beam"
     ],
     "lastRelease": "2026-06-18T03:59:37Z",
-    "lastCommit": "2026-09-22T19:13:25Z",
+    "lastCommit": "2026-11-04T18:39:41Z",
     "lastTag": "2026-06-17T23:36:53Z",
     "lastStableTag": "2026-06-17T23:36:53Z",
-    "commits90d": 10
+    "commits90d": 16
   },
   "tensorzero/tensorzero": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 829640443,
-    "stars": 11709,
+    "stars": 11705,
     "score": 0,
     "archived": true,
     "pushed": "2026-06-11T01:48:44Z",
@@ -7048,12 +7067,12 @@
     "commits90d": 0
   },
   "thedotmack/claude-mem": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1048065319,
-    "stars": 110316,
+    "stars": 115232,
     "score": 92,
     "archived": false,
-    "pushed": "2026-11-02T10:09:11Z",
+    "pushed": "2026-11-09T11:26:08Z",
     "license": "Apache-2.0",
     "topics": [
       "ai",
@@ -7077,17 +7096,17 @@
       "memory-engine",
       "rag"
     ],
-    "lastRelease": "2026-11-02T06:26:25Z",
-    "lastCommit": "2026-11-02T10:09:11Z",
-    "lastTag": "2026-11-01T22:26:19-08:00",
-    "lastStableTag": "2026-11-01T22:26:19-08:00",
-    "commits90d": 1456
+    "lastRelease": "2026-11-09T10:06:27Z",
+    "lastCommit": "2026-11-09T11:26:08Z",
+    "lastTag": "2026-11-09T02:06:16-08:00",
+    "lastStableTag": "2026-11-09T02:06:16-08:00",
+    "commits90d": 1701
   },
   "Time-MoE/Time-MoE": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 861259190,
     "stars": 1009,
-    "score": 49,
+    "score": 48,
     "archived": false,
     "pushed": "2026-03-21T16:00:55Z",
     "license": "Apache-2.0",
@@ -7106,9 +7125,9 @@
     "commits90d": 0
   },
   "time-series-foundation-models/lag-llama": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 754066467,
-    "stars": 1601,
+    "stars": 1600,
     "score": 49,
     "archived": false,
     "pushed": "2025-06-06T12:23:52Z",
@@ -7133,12 +7152,12 @@
     "commits90d": 0
   },
   "traceloop/openllmetry": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 686364232,
-    "stars": 7518,
+    "stars": 7527,
     "score": 71,
     "archived": false,
-    "pushed": "2026-11-02T13:34:23Z",
+    "pushed": "2026-11-09T13:57:46Z",
     "license": "Apache-2.0",
     "topics": [
       "llmops",
@@ -7160,19 +7179,19 @@
       "llm",
       "open-source"
     ],
-    "lastRelease": "2026-09-29T10:41:17Z",
-    "lastCommit": "2026-11-02T13:34:23Z",
-    "lastTag": "2026-09-29T10:41:07Z",
-    "lastStableTag": "2026-09-29T10:41:07Z",
-    "commits90d": 24
+    "lastRelease": "2026-11-05T10:08:57Z",
+    "lastCommit": "2026-11-05T10:08:48Z",
+    "lastTag": "2026-11-05T10:08:48Z",
+    "lastStableTag": "2026-11-05T10:08:48Z",
+    "commits90d": 22
   },
   "treeverse/dvc": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 83878269,
-    "stars": 15958,
-    "score": 65,
+    "stars": 15969,
+    "score": 71,
     "archived": false,
-    "pushed": "2026-11-02T02:03:47Z",
+    "pushed": "2026-11-09T02:02:24Z",
     "license": "Apache-2.0",
     "topics": [
       "data-science",
@@ -7184,18 +7203,18 @@
       "unstructured-data"
     ],
     "lastRelease": "2026-03-31T05:06:44Z",
-    "lastCommit": "2026-08-06T04:17:40Z",
+    "lastCommit": "2026-11-06T15:50:56Z",
     "lastTag": "2026-03-31T05:04:52Z",
     "lastStableTag": "2026-03-31T05:04:52Z",
-    "commits90d": 2
+    "commits90d": 8
   },
   "triton-inference-server/server": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 151636194,
-    "stars": 11125,
-    "score": 73,
+    "stars": 11136,
+    "score": 72,
     "archived": false,
-    "pushed": "2026-11-02T08:18:51Z",
+    "pushed": "2026-11-05T16:38:00Z",
     "license": "BSD-3-Clause",
     "topics": [
       "inference",
@@ -7206,19 +7225,19 @@
       "datacenter",
       "edge"
     ],
-    "lastRelease": "2026-09-30T22:26:40Z",
-    "lastCommit": "2026-10-28T20:28:06Z",
-    "lastTag": "2026-09-29T04:05:22Z",
-    "lastStableTag": "2026-09-29T04:05:22Z",
-    "commits90d": 60
+    "lastRelease": "2026-11-02T17:26:31Z",
+    "lastCommit": "2026-11-05T16:37:56Z",
+    "lastTag": "2026-10-30T19:50:31Z",
+    "lastStableTag": "2026-10-30T19:50:31Z",
+    "commits90d": 64
   },
   "truera/trulens": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 309504885,
-    "stars": 3622,
+    "stars": 3633,
     "score": 69,
     "archived": false,
-    "pushed": "2026-10-31T23:48:56Z",
+    "pushed": "2026-11-06T20:05:52Z",
     "license": "MIT",
     "topics": [
       "machine-learning",
@@ -7236,31 +7255,31 @@
       "agent-evaluation"
     ],
     "lastRelease": "2026-10-19T17:17:18Z",
-    "lastCommit": "2026-10-28T13:27:13Z",
+    "lastCommit": "2026-11-04T14:35:01Z",
     "lastTag": "2026-10-16T16:01:41Z",
     "lastStableTag": "2026-10-16T16:01:41Z",
-    "commits90d": 181
+    "commits90d": 172
   },
   "UKGovernmentBEIS/inspect_ai": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 718665019,
-    "stars": 3156,
+    "stars": 3208,
     "score": 79,
     "archived": false,
-    "pushed": "2026-11-02T13:57:42Z",
+    "pushed": "2026-11-09T14:27:14Z",
     "license": "MIT",
     "topics": [],
-    "lastRelease": "2026-10-31T16:33:20Z",
-    "lastCommit": "2026-11-02T13:57:41Z",
-    "lastTag": "2026-10-31T16:33:06Z",
-    "lastStableTag": "2026-10-31T16:33:06Z",
-    "commits90d": 1149
+    "lastRelease": "2026-11-07T01:13:21Z",
+    "lastCommit": "2026-11-09T14:16:29Z",
+    "lastTag": "2026-11-07T01:13:08Z",
+    "lastStableTag": "2026-11-07T01:13:08Z",
+    "commits90d": 1144
   },
   "ulab-uiuc/LLMRouter": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1071843152,
-    "stars": 3055,
-    "score": 70,
+    "stars": 3074,
+    "score": 71,
     "archived": false,
     "pushed": "2026-10-19T18:48:19Z",
     "license": "MIT",
@@ -7269,15 +7288,15 @@
     "lastCommit": "2026-10-09T00:34:16Z",
     "lastTag": null,
     "lastStableTag": null,
-    "commits90d": 31
+    "commits90d": 28
   },
   "unionai-oss/pandera": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 155649699,
-    "stars": 4507,
-    "score": 69,
+    "stars": 4522,
+    "score": 70,
     "archived": false,
-    "pushed": "2026-11-02T04:59:49Z",
+    "pushed": "2026-11-06T21:04:33Z",
     "license": "MIT",
     "topics": [
       "pandas",
@@ -7300,18 +7319,18 @@
       "data-processing"
     ],
     "lastRelease": "2026-10-25T02:32:14Z",
-    "lastCommit": "2026-11-02T03:28:40Z",
+    "lastCommit": "2026-11-06T21:04:33Z",
     "lastTag": "2026-10-25T02:18:29Z",
     "lastStableTag": "2026-10-25T02:18:29Z",
-    "commits90d": 104
+    "commits90d": 108
   },
   "unit8co/darts": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 148657183,
-    "stars": 9573,
+    "stars": 9580,
     "score": 71,
     "archived": false,
-    "pushed": "2026-10-30T17:16:15Z",
+    "pushed": "2026-11-06T11:02:20Z",
     "license": "Apache-2.0",
     "topics": [
       "python",
@@ -7323,18 +7342,18 @@
       "data-science"
     ],
     "lastRelease": "2026-10-16T15:29:36Z",
-    "lastCommit": "2026-10-30T17:16:15Z",
+    "lastCommit": "2026-11-06T11:02:15Z",
     "lastTag": "2026-10-16T15:29:34Z",
     "lastStableTag": "2026-10-16T15:29:34Z",
-    "commits90d": 80
+    "commits90d": 92
   },
   "unslothai/unsloth": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 725205304,
-    "stars": 78955,
+    "stars": 79234,
     "score": 82,
     "archived": false,
-    "pushed": "2026-11-02T14:11:01Z",
+    "pushed": "2026-11-09T14:37:14Z",
     "license": "Apache-2.0",
     "topics": [
       "fine-tuning",
@@ -7358,17 +7377,17 @@
       "ai",
       "python"
     ],
-    "lastRelease": "2026-10-30T14:46:03Z",
-    "lastCommit": "2026-11-02T14:11:01Z",
-    "lastTag": "2026-10-30T14:36:06Z",
+    "lastRelease": "2026-11-06T14:43:33Z",
+    "lastCommit": "2026-11-09T14:21:42Z",
+    "lastTag": "2026-11-06T14:29:30Z",
     "lastStableTag": "2026-09-27T03:05:30Z",
-    "commits90d": 6529
+    "commits90d": 6669
   },
   "VainF/Torch-Pruning": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 228203350,
-    "stars": 3368,
-    "score": 52,
+    "stars": 3369,
+    "score": 53,
     "archived": false,
     "pushed": "2025-09-07T17:25:20Z",
     "license": "MIT",
@@ -7387,12 +7406,12 @@
     "commits90d": 0
   },
   "vectorize-io/hindsight": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 1086419061,
-    "stars": 57958,
+    "stars": 60033,
     "score": 90,
     "archived": false,
-    "pushed": "2026-11-02T13:54:11Z",
+    "pushed": "2026-11-09T14:31:53Z",
     "license": "MIT",
     "topics": [
       "agentic-ai",
@@ -7400,19 +7419,19 @@
       "agents",
       "ai-memory"
     ],
-    "lastRelease": "2026-10-21T16:41:42Z",
-    "lastCommit": "2026-11-02T13:34:25Z",
-    "lastTag": "2026-10-30T12:15:05+01:00",
-    "lastStableTag": "2026-10-30T12:15:05+01:00",
-    "commits90d": 1673
+    "lastRelease": "2026-11-03T11:38:19Z",
+    "lastCommit": "2026-11-09T14:23:26Z",
+    "lastTag": "2026-11-06T11:33:49+01:00",
+    "lastStableTag": "2026-11-06T11:33:49+01:00",
+    "commits90d": 1647
   },
   "vercel/ai": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 644461337,
-    "stars": 27697,
-    "score": 72,
+    "stars": 27830,
+    "score": 75,
     "archived": false,
-    "pushed": "2026-11-02T23:56:43Z",
+    "pushed": "2026-11-09T02:57:28Z",
     "license": "NOASSERTION",
     "topics": [
       "artificial-intelligence",
@@ -7431,31 +7450,31 @@
       "anthropic",
       "gemini"
     ],
-    "lastRelease": "2026-11-02T20:28:21Z",
-    "lastCommit": "2026-11-02T23:10:06Z",
-    "lastTag": "2026-11-02T20:16:22Z",
-    "lastStableTag": "2026-11-02T20:16:22Z",
-    "commits90d": 1606
+    "lastRelease": "2026-11-09T02:57:49Z",
+    "lastCommit": "2026-11-09T02:50:58Z",
+    "lastTag": "2026-11-09T02:50:58Z",
+    "lastStableTag": "2026-11-09T02:50:58Z",
+    "commits90d": 1697
   },
   "verl-project/verl": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 881221486,
-    "stars": 24111,
+    "stars": 24173,
     "score": 76,
     "archived": false,
-    "pushed": "2026-11-02T19:04:27Z",
+    "pushed": "2026-11-09T12:09:38Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2026-09-20T07:24:43Z",
-    "lastCommit": "2026-11-02T11:38:17Z",
+    "lastCommit": "2026-11-09T12:09:37Z",
     "lastTag": "2026-09-20T07:21:24Z",
     "lastStableTag": "2026-09-20T07:21:24Z",
-    "commits90d": 328
+    "commits90d": 330
   },
   "vibrantlabsai/ragas": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 637924634,
-    "stars": 16216,
+    "stars": 16269,
     "score": 64,
     "archived": false,
     "pushed": "2026-02-24T07:47:19Z",
@@ -7472,30 +7491,30 @@
     "commits90d": 0
   },
   "vllm-project/llm-compressor": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 817962136,
-    "stars": 3937,
+    "stars": 3957,
     "score": 72,
     "archived": false,
-    "pushed": "2026-10-31T05:03:06Z",
+    "pushed": "2026-11-08T01:40:47Z",
     "license": "Apache-2.0",
     "topics": [
       "compression",
       "quantization"
     ],
     "lastRelease": "2026-10-29T17:18:28Z",
-    "lastCommit": "2026-10-31T04:45:03Z",
-    "lastTag": "2026-10-28T17:12:10Z",
-    "lastStableTag": "2026-10-28T17:12:10Z",
-    "commits90d": 233
+    "lastCommit": "2026-11-06T20:08:58Z",
+    "lastTag": "2026-11-05T16:57:48Z",
+    "lastStableTag": "2026-11-05T16:57:48Z",
+    "commits90d": 253
   },
   "vllm-project/semantic-router": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 1045247072,
-    "stars": 6381,
-    "score": 71,
+    "stars": 6430,
+    "score": 76,
     "archived": false,
-    "pushed": "2026-11-02T23:16:11Z",
+    "pushed": "2026-11-09T14:26:21Z",
     "license": "Apache-2.0",
     "topics": [
       "mixture-of-models",
@@ -7511,18 +7530,18 @@
       "transformer"
     ],
     "lastRelease": "2026-09-27T06:59:53Z",
-    "lastCommit": "2026-11-02T23:16:01Z",
+    "lastCommit": "2026-11-09T14:26:16Z",
     "lastTag": "2026-09-27T13:56:22+08:00",
     "lastStableTag": "2026-09-27T13:56:22+08:00",
-    "commits90d": 1287
+    "commits90d": 1367
   },
   "vllm-project/vllm": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 599547518,
-    "stars": 96132,
+    "stars": 96601,
     "score": 85,
     "archived": false,
-    "pushed": "2026-11-02T14:00:27Z",
+    "pushed": "2026-11-09T14:34:16Z",
     "license": "Apache-2.0",
     "topics": [
       "gpt",
@@ -7547,18 +7566,18 @@
       "qwen3"
     ],
     "lastRelease": "2026-11-02T10:10:05Z",
-    "lastCommit": "2026-11-02T13:53:38Z",
+    "lastCommit": "2026-11-09T14:34:15Z",
     "lastTag": "2026-11-01T01:21:10-08:00",
     "lastStableTag": "2026-11-01T01:21:10-08:00",
-    "commits90d": 4835
+    "commits90d": 5139
   },
   "voxel51/fiftyone": {
-    "date": "2026-11-03",
+    "date": "2026-11-09",
     "id": 257913595,
-    "stars": 11264,
+    "stars": 11284,
     "score": 73,
     "archived": false,
-    "pushed": "2026-11-02T23:13:27Z",
+    "pushed": "2026-11-09T14:16:33Z",
     "license": "Apache-2.0",
     "topics": [
       "machine-learning",
@@ -7580,18 +7599,18 @@
       "visualization"
     ],
     "lastRelease": "2026-09-29T23:31:11Z",
-    "lastCommit": "2026-10-28T17:35:04Z",
-    "lastTag": "2026-10-15T13:05:23Z",
-    "lastStableTag": "2026-10-15T13:05:23Z",
-    "commits90d": 2912
+    "lastCommit": "2026-11-06T18:23:08Z",
+    "lastTag": "2026-11-05T05:18:57Z",
+    "lastStableTag": "2026-11-05T05:18:57Z",
+    "commits90d": 2500
   },
   "wandb/wandb": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 86031674,
-    "stars": 11312,
+    "stars": 11314,
     "score": 72,
     "archived": false,
-    "pushed": "2026-11-02T07:45:08Z",
+    "pushed": "2026-11-07T06:05:52Z",
     "license": "MIT",
     "topics": [
       "machine-learning",
@@ -7615,16 +7634,16 @@
       "ai"
     ],
     "lastRelease": "2026-10-16T19:10:51Z",
-    "lastCommit": "2026-11-02T07:42:45Z",
+    "lastCommit": "2026-11-06T22:20:51Z",
     "lastTag": "2026-10-16T18:14:31Z",
     "lastStableTag": "2026-10-16T18:14:31Z",
-    "commits90d": 522
+    "commits90d": 514
   },
   "WecoAI/aideml": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 781524183,
-    "stars": 1603,
-    "score": 66,
+    "stars": 1618,
+    "score": 65,
     "archived": false,
     "pushed": "2026-10-16T14:33:42Z",
     "license": "MIT",
@@ -7644,15 +7663,15 @@
     "lastCommit": "2026-10-16T14:33:37Z",
     "lastTag": "2025-09-23T09:49:00Z",
     "lastStableTag": "2025-09-23T09:49:00Z",
-    "commits90d": 7
+    "commits90d": 5
   },
   "WenjieDu/PyPOTS": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 475477908,
-    "stars": 2091,
+    "stars": 2094,
     "score": 67,
     "archived": false,
-    "pushed": "2026-10-31T04:31:23Z",
+    "pushed": "2026-11-09T14:30:05Z",
     "license": "BSD-3-Clause",
     "topics": [
       "time-series",
@@ -7671,16 +7690,16 @@
       "data-science",
       "neural-networks"
     ],
-    "lastRelease": "2026-10-30T12:50:32Z",
-    "lastCommit": "2026-10-16T10:49:25Z",
-    "lastTag": "2026-10-16T10:49:25Z",
-    "lastStableTag": "2026-10-16T10:49:25Z",
-    "commits90d": 3
+    "lastRelease": "2026-11-09T14:30:06Z",
+    "lastCommit": "2026-11-09T14:28:19Z",
+    "lastTag": "2026-11-09T14:28:19Z",
+    "lastStableTag": "2026-11-09T14:28:19Z",
+    "commits90d": 4
   },
   "whylabs/whylogs": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 287642401,
-    "stars": 2837,
+    "stars": 2838,
     "score": 51,
     "archived": false,
     "pushed": "2025-01-10T20:14:49Z",
@@ -7712,12 +7731,12 @@
     "commits90d": 0
   },
   "winedarksea/AutoTS": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 224208127,
     "stars": 1434,
     "score": 64,
     "archived": false,
-    "pushed": "2026-10-31T03:28:21Z",
+    "pushed": "2026-11-09T14:25:31Z",
     "license": "MIT",
     "topics": [
       "time-series",
@@ -7729,34 +7748,34 @@
       "preprocessing",
       "feature-engineering"
     ],
-    "lastRelease": "2026-08-20T03:59:07Z",
-    "lastCommit": "2026-08-20T03:57:05Z",
-    "lastTag": "2026-08-20T03:57:05Z",
-    "lastStableTag": "2026-08-20T03:57:05Z",
-    "commits90d": 15
+    "lastRelease": "2026-11-09T05:17:31Z",
+    "lastCommit": "2026-11-09T05:16:31Z",
+    "lastTag": "2026-11-09T05:16:31Z",
+    "lastStableTag": "2026-11-09T05:16:31Z",
+    "commits90d": 83
   },
   "yandex-research/tabm": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 881630020,
-    "stars": 1132,
-    "score": 50,
+    "stars": 1135,
+    "score": 54,
     "archived": false,
-    "pushed": "2025-11-10T07:18:37Z",
+    "pushed": "2026-11-07T14:02:28Z",
     "license": "Apache-2.0",
     "topics": [],
     "lastRelease": "2025-08-14T16:25:02Z",
-    "lastCommit": "2025-11-10T07:17:57Z",
+    "lastCommit": "2026-11-07T14:02:26Z",
     "lastTag": "2025-08-14T19:14:00+03:00",
     "lastStableTag": "2025-08-14T19:14:00+03:00",
-    "commits90d": 0
+    "commits90d": 1
   },
   "zenml-io/zenml": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 314197645,
-    "stars": 5634,
+    "stars": 5639,
     "score": 70,
     "archived": false,
-    "pushed": "2026-10-30T16:14:52Z",
+    "pushed": "2026-11-09T13:51:53Z",
     "license": "Apache-2.0",
     "topics": [
       "mlops",
@@ -7780,16 +7799,16 @@
       "agents",
       "genai"
     ],
-    "lastRelease": "2026-10-14T08:50:05Z",
-    "lastCommit": "2026-10-14T13:21:19Z",
-    "lastTag": "2026-10-14T07:57:07Z",
-    "lastStableTag": "2026-10-14T07:57:07Z",
-    "commits90d": 123
+    "lastRelease": "2026-11-04T05:40:29Z",
+    "lastCommit": "2026-11-05T16:16:28Z",
+    "lastTag": "2026-11-03T17:21:05Z",
+    "lastStableTag": "2026-11-03T17:21:05Z",
+    "commits90d": 134
   },
   "zou-group/textgrad": {
-    "date": "2026-11-02",
+    "date": "2026-11-09",
     "id": 813368909,
-    "stars": 3783,
+    "stars": 3788,
     "score": 54,
     "archived": false,
     "pushed": "2025-07-25T14:30:39Z",
