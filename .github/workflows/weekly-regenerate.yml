@@ -2,7 +2,9 @@ name: Weekly Regenerate
 
 on:
   schedule:
-    - cron: "0 6 * * 1"
+    # Off the hour: GitHub delays and may drop scheduled runs at the top of
+    # the hour under load. The last ten runs set for 06:00 started 11:14-14:41.
+    - cron: "37 4 * * 1"
   workflow_dispatch: {}
 
 # Two runs at once would race each other's push and drift issue. Pushes from
@@ -317,7 +319,9 @@ jobs:
           # accumulates a pile of near-identical reports.
           # --state all, so a closed issue is reopened rather than duplicated.
           # A failed lookup must stop here, not fall through to a duplicate.
-          FOUND=$(gh issue list --state all --search "$TITLE in:title" --json number,title,state \
+          # --author: the repo is public, and anyone can open an issue with
+          # this title; the bot must never rewrite, reopen or close theirs.
+          FOUND=$(gh issue list --state all --author app/github-actions --search "$TITLE in:title" --json number,title,state \
                   --jq "[.[] | select(.title == \"$TITLE\")] | .[0] | select(.) | \"\(.number) \(.state)\"")
           read -r NUM STATE <<<"$FOUND"
           if [ -n "$NUM" ]; then
@@ -337,7 +341,7 @@ jobs:
         env:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          NUM=$(gh issue list --state open --search "$TITLE in:title" --json number,title \
+          NUM=$(gh issue list --state open --author app/github-actions --search "$TITLE in:title" --json number,title \
                   --jq "[.[] | select(.title == \"$TITLE\")] | .[0].number // empty")
           if [ -n "$NUM" ]; then
             gh issue close "$NUM" --comment "No drift found by the weekly run ($RUN_URL). Closing; the next run reopens this if drift returns."
