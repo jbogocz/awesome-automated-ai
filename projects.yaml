@@ -470,6 +470,13 @@ categories:
     description: "Agent Reinforcement Trainer: trains multi-step LLM agents on real tasks with GRPO using trajectories from their own runs."
     tagline: GRPO training for multi-step agents
     tags: [agent, agentic-ai, grpo, llms, lora, qwen, qwen3, reinforcement-learning, rl]
+  - name: Adaption AutoScientist
+    url: https://adaptionlabs.ai
+    description: Managed service from Adaption that automates the research loop behind model training and alignment. It optimizes the data and training recipe, trains a model with SFT or DPO (LoRA or full fine-tuning), evaluates it, and repeats until it reaches a target win rate.
+    tagline: Automates the research loop behind model training
+    vendor: Adaption
+    pricing: pay-as-you-go
+    commercial: true
 - name: Automated Prompt Optimization
   description: Systematic optimization of prompts, instructions, and demonstrations to improve LLM performance without manual tuning.
   entries:
