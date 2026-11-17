@@ -851,6 +851,13 @@ categories:
     vendor: AWS
     pricing: freemium
     commercial: true
+  - name: Mel
+    url: https://www.openmel.dev
+    description: Multi-agent, multi-model AI terminal for macOS, Windows and Linux with a VS Code extension, running teams of coding agents with configurable approvals.
+    tagline: Multi-agent AI terminal with configurable approvals
+    vendor: Thinkverse AI
+    pricing: freemium
+    commercial: true
 - name: ML and Research Agents
   description: Ready-to-use agents that autonomously run ML experiments, design studies, or conduct scientific research end-to-end.
   entries:
