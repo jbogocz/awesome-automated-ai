@@ -726,6 +726,11 @@ categories:
     description: Open-source Python framework for voice agents and realtime multimodal apps, composing transports, STT, LLM, and TTS services into streaming pipelines (maintained by Daily).
     tagline: Python framework for realtime voice agents
     tags: [ai, chatbot-framework, chatbots, real-time, voice, voice-assistant]
+  - name: Open Agent API
+    repo: jiangxingfan1-coder/Open-Agent-API
+    description: Self-hosted infrastructure for invoking locally configured coding agents from existing apps through an OpenAI-compatible API, with run inspection and permission approvals.
+    tagline: Call local coding agents over HTTP
+    tags: [acp, agent-infrastructure, coding-agents, openai-compatible, self-hosted]
 - name: Coding Agents
   description: Ready-to-use AI agents that autonomously write, debug, refactor, and review software code.
   entries:
